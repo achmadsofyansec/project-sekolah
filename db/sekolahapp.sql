@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.0.1 (64 bit)
-MySQL - 10.6.5-MariaDB : Database - sekolahapp
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.5.9-MariaDB : Database - sekolahapp
 *********************************************************************
 */
 
@@ -48,8 +48,26 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (22,'2014_10_12_100000_create_password_resets_table',1),
 (23,'2019_08_19_000000_create_failed_jobs_table',1),
 (24,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(27,'2022_07_14_015617_create_roles_table',2),
-(28,'2022_07_15_064050_sekolah',3);
+(25,'2022_07_14_015617_create_roles_table',2),
+(26,'2022_07_15_064050_sekolah',2),
+(28,'2022_07_15_133155_create_notifs_table',3);
+
+/*Table structure for table `notifs` */
+
+DROP TABLE IF EXISTS `notifs`;
+
+CREATE TABLE `notifs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nama_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `notifs` */
 
 /*Table structure for table `password_resets` */
 
@@ -143,13 +161,12 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`role`,`id_role`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'Administrator','admin@sipinter.com',NULL,'$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa','admin','0',NULL,NULL,NULL),
-(2,'Administrator','admin@jamanu.com',NULL,'$2y$10$otWU8EbYYO5FOhS3lvCUUeWJ6HKASiUk6wloI8WDOAdlkNABKXeNC','admin','0',NULL,NULL,NULL);
+(1,'Administrator','admin@sipinter.com',NULL,'$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa','admin','0',NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
