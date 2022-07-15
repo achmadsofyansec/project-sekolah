@@ -17,5 +17,33 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row-mb-2">
+      <div class="row">
+        <div class="col-md-8 mt-1">
+          <div class="card card-success card-outline">
+            <div class="card-header">
+              <h1 class="card-title">Singkronisasi</h1>
+            </div>
+            <div class="card-body">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-1">
+          <div class="card card-success card-outline">
+            <div class="card-header">
+              <h1 class="card-title">Petunjuk</h1>
+            </div>
+            <div class="card-body">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 @endsection

@@ -17,5 +17,33 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row-mb-2">
+          <div class="col-md-12 mt-1">
+            <div class="card card-success card-outline">
+              <div class="card-header">
+                <input type="button" value="+ Tambah" class="btn btn-success"/>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="dataTable" class="table table-border">
+                    <thead>
+                      <th>No</th>
+                      <th>Nama Pengumuman</th>
+                      <th>Isi Pengumuman</th>
+                      <th>Aksi</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 @endsection
