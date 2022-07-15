@@ -30,7 +30,12 @@
                                         <th>Nama Jabatan</th>
                                     </thead>
                                     <tbody>
-
+                                      @foreach ($data as $item)
+                                          <tr>
+                                            <td>{{$item->count()}}</td>
+                                            <td>{{$item->roles_name}}</td>
+                                          </tr>
+                                      @endforeach
                                     </tbody>
                                 </table>
                            </div>

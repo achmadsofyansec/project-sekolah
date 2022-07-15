@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,14 +14,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+       $data = User::latest()->get();
+       return view('users.index',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //

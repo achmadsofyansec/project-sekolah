@@ -38,6 +38,21 @@
                                     </thead>
                                     <tbody>
 
+                                      @forelse ($data as $item)
+                                          <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td>*******</td>
+                                            <td>{{$item->role}}</td>
+                                          </tr>
+                                      @empty
+
+                                          <tr>
+                                            <td colspan="5">Tidak Ada Data</td>
+                                          </tr>
+
+                                      @endforelse
                                     </tbody>
                                 </table>
                            </div>
