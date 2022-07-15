@@ -8,9 +8,8 @@
     <div class="card-header text-center">
       <a href="#" class="h1"><b>SIPINTER</b></a>
     </div>
-    <div class="card-body">
-      <p class="login-box-msg">Sign in Here</p>
-
+    <div class="card-body">           
+              <p class="login-box-msg">Sign In Here</p>
       <form action="<?php echo url('/signin') ?>" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -30,16 +29,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-success">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Show Password
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-12">
             <button type="submit" class="btn btn-success btn-block">Sign In</button>
           </div>
           <!-- /.col -->

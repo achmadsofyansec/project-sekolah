@@ -31,7 +31,5 @@ class PageController extends Controller
     public function view_singkronisasi(){
         return view('singkronisasi.index');
     }
-    public function view_login(){
-        return view('auth.signin');
-    }
+    
 }

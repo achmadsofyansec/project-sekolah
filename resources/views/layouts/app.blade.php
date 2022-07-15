@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -93,9 +94,12 @@
           <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-          <span class="badge badge-info right ">Administrator</span>
-          <a href="#"><span class="badge badge-danger right ">Logout <i class="nav-icon fas fa-sign-out-alt"></i></span></a>
+          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
+          <span class="badge badge-info right "><?php echo strtoupper(auth()->user()->role);?></span>
+          <form action="/signout" method="post">
+          @csrf
+          <button type="submit" class="badge badge-danger right ">Logout <i class="nav-icon fas fa-sign-out-alt"></i></button>
+          </form>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -211,43 +215,19 @@
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <script type="text/javascript">
-    <!--
-    function showTime() {
-        var a_p = "";
-        var today = new Date();
-        var curr_hour = today.getHours();
-        var curr_minute = today.getMinutes();
-        var curr_second = today.getSeconds();
-        if (curr_hour < 12) {
-            a_p = "AM";
-        } else {
-            a_p = "PM";
-        }
-        if (curr_hour == 0) {
-            curr_hour = 12;
-        }
-        if (curr_hour > 12) {
-            curr_hour = curr_hour - 12;
-        }
-        curr_hour = checkTime(curr_hour);
-        curr_minute = checkTime(curr_minute);
-        curr_second = checkTime(curr_second);
-     document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
-        }
-
-    function checkTime(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-    setInterval(showTime, 500);
-    //-->
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      scrollY: '200px',
+        scrollCollapse: true,
+        paging: false,
+    });
+} );
     </script>
 </body>
 </html>
