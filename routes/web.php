@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
             Route::get('/sekolah',[PageController::class,'view_sekolah']);
             Route::get('/jabatan',[RoleController::class,'index']);
             Route::get('/user',[UsersController::class,'index']);
-            Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
+            Route::get('/pengumuman',[PengumumanController::class,'index']);
             Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
             Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
         });

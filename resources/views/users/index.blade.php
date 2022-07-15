@@ -50,7 +50,6 @@
                                           <tr>
                                             <td colspan="5">Tidak Ada Data</td>
                                           </tr>
-
                                       @endforelse
                                     </tbody>
                                 </table>

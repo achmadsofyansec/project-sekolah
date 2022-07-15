@@ -16,12 +16,6 @@ class PageController extends Controller
     public function view_sekolah(){
         return view('sekolah.index');
     }
-    public function view_jabatan(){
-        return view('jabatan.index');
-    }
-    public function view_users(){
-        return view('users.index');
-    }
     public function view_pengumuman(){
         return view('pengumuman.index');
     }

@@ -27,7 +27,7 @@
               <h1 class="card-title">Pemeliharaan</h1>
             </div>
             <div class="card-body">
-
+                <button class="btn btn-success"><i class="fas fa-save"></i> Backup Database</button>
             </div>
           </div>
         </div>
@@ -37,7 +37,11 @@
               <h1 class="card-title">Petunjuk</h1>
             </div>
             <div class="card-body">
-              
+              <p>1. Gunakan Fitur Ini Dengan Baik dan Benar.</p>
+              <p>2. Backup Database Dengan Cara Menekan <b>Tombol Backup</b> Yang Berada Di Form </p>
+            </div>
+            <div class="card-footer">
+              Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
             </div>
           </div>
         </div>
