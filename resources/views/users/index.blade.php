@@ -23,7 +23,7 @@
                 <div class="col-md-12 mt-1">
                     <div class="card card-outline card-success">
                        <div class="card-header">
-                            <input type="button" value="+ Tambah" class="btn btn-success"/>
+                       <a type="button" href="{{ route('user.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">
@@ -39,16 +39,24 @@
                                     <tbody>
                                       @forelse ($data as $item)
                                           <tr>
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$loop->index + 1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->email}}</td>
                                             <td>*******</td>
-                                            <td>{{$item->role}}</td>
+                                            <td>{{$item->roles_name}}</td>
+                                            <td>
+                                              <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                              action="{{ route('user.destroy',$item->userid) }}" method="POST">
+                                              <a href="{{ route('user.edit',$item->userid) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                              </form>
+                                            </td>
                                           </tr>
                                       @empty
 
                                           <tr>
-                                            <td colspan="5">Tidak Ada Data</td>
+                                            <td class="text-center text-mute" colspan="5">Tidak Ada Data</td>
                                           </tr>
                                       @endforelse
                                     </tbody>

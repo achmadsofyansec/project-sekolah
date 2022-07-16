@@ -29,8 +29,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
             Route::get('/home',[PageController::class,'index'])->name('dashboard');
             Route::get('/sekolah',[PageController::class,'view_sekolah']);
             Route::get('/jabatan',[RoleController::class,'index']);
-            Route::get('/user',[UsersController::class,'index']);
-            Route::get('/pengumuman',[PengumumanController::class,'index']);
+            Route::resource('user',UsersController::class);
+            Route::resource('pengumuman',PengumumanController::class);
             Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
             Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
         });

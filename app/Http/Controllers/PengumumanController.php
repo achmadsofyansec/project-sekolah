@@ -26,6 +26,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
+        return view('pengumuman.create');
         //
     }
 
@@ -59,6 +60,8 @@ class PengumumanController extends Controller
      */
     public function edit($id)
     {
+        $data = Notif::findOrFail($id);
+        return view('pengumuman.edit',compact('data'));
         //
     }
 

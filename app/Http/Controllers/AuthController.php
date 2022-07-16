@@ -23,7 +23,7 @@ class AuthController extends Controller
             return redirect()->intended('/');   
        }
        
-       return redirect('login');
+       return redirect('login')->with('error',"Email Or Password Incorrect")->onlyInput('email');
    }
    public function logout(Request $request){
     Auth::logout();

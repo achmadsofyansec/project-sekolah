@@ -95,7 +95,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
-          <span class="badge badge-info right "><?php echo strtoupper(auth()->user()->role);?></span>
+          <span class="badge badge-info right ">Administrator</span>
           <form action="/signout" method="post">
           @csrf
           <button type="submit" class="badge badge-danger right ">Logout <i class="nav-icon fas fa-sign-out-alt"></i></button>

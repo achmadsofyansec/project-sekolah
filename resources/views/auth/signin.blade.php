@@ -8,7 +8,12 @@
     <div class="card-header text-center">
       <a href="#" class="h1"><b>SIPINTER</b></a>
     </div>
-    <div class="card-body">           
+    <div class="card-body">
+      @if(session('error'))
+          <div class="alert alert-danger text-center">
+              {{ session('error') }}
+          </div>
+      @endif   
               <p class="login-box-msg">Sign In Here</p>
       <form action="<?php echo url('/signin') ?>" method="post">
         @csrf

@@ -23,7 +23,7 @@
           <div class="col-md-12 mt-1">
             <div class="card card-success card-outline">
               <div class="card-header">
-                <input type="button" value="+ Tambah" class="btn btn-success"/>
+              <a type="button" href="{{route('pengumuman.create')}}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -32,10 +32,28 @@
                       <th>No</th>
                       <th>Nama Pengumuman</th>
                       <th>Isi Pengumuman</th>
+                      <th>Tanggal</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
-
+                      @forelse ($data as $item)
+                          <tr>
+                          <td>{{$loop->index + 1}}</td>
+                          <td>{{$item->nama_pengumuman}}</td>
+                          <td>{{$item->isi_pengumuman}}</td>
+                          <td>{{$item->created_at}}</td>
+                          <td>
+                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                              action="{{ route('pengumuman.destroy',$item->id) }}" method="POST">
+                              <a href="{{ route('pengumuman.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                            </form>
+                          </td>
+                          </tr>
+                      @empty
+                          
+                      @endforelse
                     </tbody>
                   </table>
                 </div>
