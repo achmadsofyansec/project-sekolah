@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class SekolahController extends Controller
@@ -12,8 +13,8 @@ class SekolahController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {       
+        return view('sekolah.index');
     }
 
     /**

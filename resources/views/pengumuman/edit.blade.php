@@ -26,8 +26,9 @@
             <div class="card-header">
               <h1 class="card-title"><i class="nav-icon fas fa-paste text-success"></i> Data Pengumuman</h1>
             </div>
-            <form action="{{route('pengumuman.update',$data->id)}}" action="POST">
+            <form action="{{route('pengumuman.update',$data->id)}}" enctype="multipart/form-data" method="post">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
                         <label>Nama Pengumuman</label>
@@ -37,11 +38,21 @@
                         <label> Isi Pengumuman</label>
                         <textarea name="isi_pengumuman" id="isi_pengumuman" cols="30" rows="10" class="form-control" placeholder="Masukkan Isi">{{$data->isi_pengumuman}}</textarea>
                     </div>
-                    <div class="form-grup">
-                        <label>Foto Pengumuman</label>
-                        <input type="file" name="file_pengumuman" id="file_pengumuman" class="form-control" value="{{$data->file_pengumuman}}">
-                        
+                    <div class="row">
+                      <div class="col-md-4">
+                        @if ($data->file_pengumuman != null)
+                      <img src="{{asset('uploads/'.$data->file_pengumuman)}}" alt="Image" class="img" width="100" height="100">
+                      <p>{{$data->file_pengumuman}}</p>
+                        @endif
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-grup">
+                          <label>Foto Pengumuman</label>
+                          <input type="file" name="file_pengumuman" id="file_pengumuman" class="form-control">
+                      </div>
+                      </div>
                     </div>
+                   
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>

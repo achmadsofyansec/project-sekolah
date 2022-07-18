@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::group(['middleware'=>['authCheck:admin']],function(){
             Route::get('/',[PageController::class,'index'])->name('dashboard');
             Route::get('/home',[PageController::class,'index'])->name('dashboard');
-            Route::get('/sekolah',[PageController::class,'view_sekolah']);
+            Route::resource('sekolah',SekolahController::class);
             Route::get('/jabatan',[RoleController::class,'index']);
             Route::resource('user',UsersController::class);
             Route::resource('pengumuman',PengumumanController::class);

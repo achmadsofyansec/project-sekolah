@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jabatan</label>
-                                    <select name="id_role" id="id_role" class="form-control">
+                                    <select name="id_role" id="id_role" class="form-control" required>
                                         <option value="">Pilih Jabatan</option>
                                         @forelse ($data as $item)
                                             <option value="{{$item->id}}">{{$item->roles_name}}</option>

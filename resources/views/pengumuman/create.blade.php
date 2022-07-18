@@ -26,20 +26,20 @@
             <div class="card-header">
               <h1 class="card-title"><i class="nav-icon fas fa-paste text-success"></i> Data Pengumuman</h1>
             </div>
-        <form action="{{route('pengumuman.store')}}" action="POST">
+        <form action="{{route('pengumuman.store')}}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="card-body">
             <div class="form-group">
                 <label>Nama Pengumuman</label>
-                <input type="text" name="nama_pengumuman" id="nama_pengumuman" class="form-control" placeholder="Masukkan Nama Pengumuman">
+                <input type="text" name="nama_pengumuman" id="nama_pengumuman" class="form-control" placeholder="Masukkan Nama Pengumuman" required>
             </div>
             <div class="form-group">
                 <label> Isi Pengumuman</label>
-                <textarea name="isi_pengumuman" id="isi_pengumuman" cols="30" rows="10" class="form-control" placeholder="Masukkan Isi"></textarea>
+                <textarea name="isi_pengumuman" id="isi_pengumuman" cols="30" rows="10" class="form-control" placeholder="Masukkan Isi" required></textarea>
             </div>
             <div class="form-grup">
                 <label>Foto Pengumuman</label>
-                <input type="file" name="file_pengumuman" id="file_pengumuman" class="form-control">
+                <input type="file" name="file_pengumuman" id="file_pengumuman" class="form-control" accept="image/*">
             </div>
         </div>
         <div class="card-footer">

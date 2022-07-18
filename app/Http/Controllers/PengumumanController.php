@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notif;
+use App\Models\Upload;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -38,7 +39,39 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'nama_pengumuman' => ['required'],
+            'isi_pengumuman' => ['required'],
+        ]);
+        if($credential){
+            $data = [];
+            $file = $request->file('file_pengumuman');
+            $name = $request->file('file_pengumuman')->getClientOriginalName();
+            $file->move(public_path('uploads'),$name);
+            $create = Notif::create([
+                'nama_pengumuman' => $request->nama_pengumuman,
+                'isi_pengumuman' => $request->isi_pengumuman,
+                'file_pengumuman' => $name,
+                'status_pengumuman'=> '0',
+            ]);
+            if($create){
+                Upload::create([
+                    'name' => $name,
+                    'path' => public_path('uploads')."/".$name
+                ]);
+                return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'success' => 'Pengumuman Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -74,7 +107,49 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $update = Notif::findOrFail($id);
+       $credential = $this->validate($request,[
+        'nama_pengumuman' => ['required'],
+        'isi_pengumuman' => ['required'],
+        ]);
+        if($credential){
+            $data = [];
+            $file = $request->file('file_pengumuman');
+            if($file != null){
+                $name = $request->file('file_pengumuman')->getClientOriginalName();
+                $file->move(public_path('uploads'),$name);
+                $data = [
+                    'nama_pengumuman' => $request->nama_pengumuman,
+                    'isi_pengumuman' => $request->isi_pengumuman,
+                    'file_pengumuman' => $name,
+                    'status_pengumuman'=> '0',
+                ];
+                Upload::create([
+                    'name' => $name,
+                    'path' => public_path('uploads')."/".$name
+                ]);
+            }else{
+                $data = [
+                    'nama_pengumuman' => $request->nama_pengumuman,
+                    'isi_pengumuman' => $request->isi_pengumuman,
+                    'status_pengumuman'=> '0',
+                ];
+            }
+            $update->update($data);
+            if($update){
+                return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'success' => 'Pengumuman Has Been Edited'
+                ]);
+            }else{
+                return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -85,6 +160,20 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Notif::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'success' => 'Pengumuman has been deleted successfully'
+                ]);
+        }else{
+            return redirect()
+                ->route('pengumuman.index')
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+        }
     }
 }
