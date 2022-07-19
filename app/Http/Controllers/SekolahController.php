@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sekolah;
+use App\Models\kecamatan;
+use App\Models\kelurahan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class SekolahController extends Controller
@@ -14,7 +16,10 @@ class SekolahController extends Controller
      */
     public function index()
     {       
-        return view('sekolah.index');
+        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+        $kecamatan = DB::table('kecamatan')->select(['kecamatan.*'])->get();
+        $kelurahan = DB::table('kelurahan')->select(['kelurahan.*'])->get();
+        return view('sekolah.index',compact(['data','kecamatan','kelurahan']));
     }
 
     /**
@@ -69,7 +74,7 @@ class SekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+     // Update Data Sekolah   
     }
 
     /**
