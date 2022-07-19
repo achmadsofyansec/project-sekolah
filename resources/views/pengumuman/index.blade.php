@@ -51,7 +51,7 @@
                           <td>{{$loop->index + 1}}</td>
                           <td>
                             @if ($item->file_pengumuman != null)
-                            <img src="{{asset('uploads/'.$item->file_pengumuman)}}" alt="Image" class="img" width="100" height="100">
+                            <img src="{{asset('public/uploads/'.$item->file_pengumuman)}}" alt="Image" class="img" width="100" height="100">
                             @else
                                 <p>Tidak Ada Foto</p>
                             @endif

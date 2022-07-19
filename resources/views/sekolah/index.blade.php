@@ -153,10 +153,10 @@
                 <div class="row">
                   <div class="col-md-4">
                     @if ($data->logo_sekolah != "-")
-                  <img src="{{asset('uploads/'.$data->logo_sekolah)}}" alt="Image" class="img" width="100" height="100">
+                  <img src="{{asset('public/uploads/'.$data->logo_sekolah)}}" alt="Image" class="img" width="100" height="100">
                   <p>{{$data->logo_sekolah}}</p>
                   @else
-                  <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="100" height="100">
+                  <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="100" height="100">
                     @endif
                   </div>
                   <div class="col-md-8">

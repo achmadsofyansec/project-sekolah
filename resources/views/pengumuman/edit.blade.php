@@ -41,7 +41,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         @if ($data->file_pengumuman != null)
-                      <img src="{{asset('uploads/'.$data->file_pengumuman)}}" alt="Image" class="img" width="100" height="100">
+                      <img src="{{asset('public/uploads/'.$data->file_pengumuman)}}" alt="Image" class="img" width="100" height="100">
                       <p>{{$data->file_pengumuman}}</p>
                         @endif
                       </div>
