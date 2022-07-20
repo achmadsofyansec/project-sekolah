@@ -31,14 +31,14 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-info navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-white"></i></a>
       </li>
       <li class="nav-item">
-
+        <!--Tanggal Atau Lain Lain-->
       </li>
     </ul>
 
@@ -79,7 +79,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-info elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -112,6 +112,172 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Umum</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
+              <p>
+                Master Data
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fas fa-chalkboard-teacher nav-icon text-primary"></i>
+                  <p>Guru</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-users nav-icon text-danger"></i>
+                  <p>Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-calendar nav-icon text-success"></i>
+                  <p>Tahun Ajaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-chalkboard nav-icon text-info"></i>
+                  <p>Kelas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-building nav-icon text-primary"></i>
+                  <p>Jurusan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book text-primary"></i>
+              <p>
+               Pembelajaran
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-boxes nav-icon text-success"></i>
+                  <p>Kelompok Pelajaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-book-open nav-icon text-danger"></i>
+                  <p>Mata Pelajaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-calendar-alt nav-icon text-info"></i>
+                  <p>Jadwal Pelajaran</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon 	fas fa-clipboard text-warning"></i>
+              <p>
+               Nilai
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fas fa-clipboard nav-icon text-danger"></i>
+                  <p>Nilai / Predikat</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Lain Lain</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-calendar-alt text-danger"></i>
+              <p>
+                Absensi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-calendar-check nav-icon text-primary"></i>
+                  <p>Absensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-calendar-times nav-icon text-danger"></i>
+                  <p>Perizinan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list text-success"></i>
+              <p>
+                Input Nilai
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Harian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Ujian</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy text-primary"></i>
+              <p>
+               Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-clipboard nav-icon text-success"></i>
+                  <p>Nilai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-calendar-alt nav-icon text-success"></i>
+                  <p>Absensi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cogs text-info"></i>
+              <p>
+               Pengaturan
               </p>
             </a>
           </li>
