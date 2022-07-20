@@ -1,8 +1,6 @@
 <p align="center"><a href="https://jamanu.maarifnumalang.id/" target="_blank"><img src="https://jamanu.maarifnumalang.id/assets/dist/img/Logo/jamanu.png" width="400"></a></p>
 
 
-
-
 ## JAMANU School
 
 JAMANU School Adalah sebuah aplikasi berbasis web menggunakan frame work Laravel. Aplikasi tersebut bertujuan untuk memudahkan untuk mengelola Data sekolah serta berhubungan dengan Jamanu Lembaga Maarif.
