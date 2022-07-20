@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIPINTER | @yield('page')</title>
+  <title>AKADEMIK | @yield('page')</title>
   <link rel="shortcut icon" href="{{asset('public/dist/img/AdminLTELogo.png')}}" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -83,7 +83,7 @@
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SIPINTER</span>
+      <span class="brand-text font-weight-light">AKADEMIK</span>
     </a>
 
     <!-- Sidebar -->
@@ -113,59 +113,6 @@
               <p>
                 Dashboard
               </p>
-            </a>
-          </li>
-          <li class="nav-header">Data Master</li>
-          <li class="nav-item">
-            <a href="<?php echo url('/sekolah') ?>" class="nav-link">
-              <i class="nav-icon fas fa-school text-success"></i>
-              <p>
-               Sekolah
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user text-success"></i>
-              <p>
-                Management Users
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo url('/user') ?>" class="nav-link">
-                  <i class="fas fa-angle-right nav-icon text-success"></i>
-                  <p>Administrator</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/jabatan') ?>" class="nav-link">
-              <i class="nav-icon fas fa-id-card-alt text-success"></i>
-              <p>
-                Jabatan
-              </p>
-            </a>
-          </li>
-          <li class="nav-header">Pengaturan</li>
-          <li class="nav-item">
-            <a href="<?php echo url('/pengumuman') ?>" class="nav-link">
-              <i class="nav-icon far fa-clipboard text-danger"></i>
-              <p>Pengumuman</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/pemeliharaan') ?>" class="nav-link">
-              <i class="nav-icon fas fa-database text-success"></i>
-              <p>Pemeliharaan</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/singkronisasi') ?>" class="nav-link">
-              <i class="nav-icon fas fa-cube text-info"></i>
-              <p>Singkronisasi</p>
             </a>
           </li>
         </ul>

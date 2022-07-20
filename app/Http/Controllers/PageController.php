@@ -10,17 +10,17 @@ class PageController extends Controller
 {
     
     //VIEW Pages
-    public function index(){
+    public function index(Request $request){
         return view('dashboard');
     }
-    public function view_sekolah(){
-        return view('sekolah.index');
-    }
-    public function view_pemeliharaan(){
-        return view('pemeliharaan.index');
-    }
-    public function view_singkronisasi(){
-        return view('singkronisasi.index');
-    }
+    public function logout(Request $request){
+        Auth::logout();
+     
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+     
+        return redirect('../sekolahApp/');
+       }
     
 }

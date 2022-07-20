@@ -20,25 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //View Pages In Admin Dashboard
-Route::get('/login',[AuthController::class,'index'])->name('login');
-Route::post('/signin',[AuthController::class,'authenticate']);
-Route::post('/signout',[AuthController::class,'logout']);
-Route::group(['middleware'=>['prevent-back']],function(){
-    Route::group(['middleware'=>['auth']],function(){
-        Route::group(['middleware'=>['authCheck:admin']],function(){
-            Route::get('/',[PageController::class,'index'])->name('dashboard');
-            Route::get('/home',[PageController::class,'index'])->name('dashboard');
-            Route::resource('sekolah',SekolahController::class);
-            Route::get('/jabatan',[RoleController::class,'index']);
-            Route::resource('user',UsersController::class);
-            Route::resource('pengumuman',PengumumanController::class);
-            Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
-            Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
-        });
-    });
-});
 
-
+Route::get('/',[PageController::class,'index'])->name('dashboard');
+Route::post('/signout',[PageController::class,'logout']);
 
 
 
