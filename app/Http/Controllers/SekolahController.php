@@ -40,6 +40,7 @@ class SekolahController extends Controller
      */
     public function store(Request $request)
     {
+        
         //
     }
 
@@ -74,7 +75,81 @@ class SekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
      // Update Data Sekolah   
+     $credential = $this->validate($request,[
+            'kode_sekolah' => ['required'],
+            'nsm' =>['required'],
+            'npsn' => ['required'],
+            'akreditasi' => ['required'],
+            'nama_sekolah' => ['required'],
+            'alamat_sekolah' => ['required'],
+            'longtitude' => ['required'],
+            'latitude' => ['required'],
+            'kecamatan' => ['required'],
+            'kelurahan' => ['required'],
+            'kode_pos' => ['required'],
+            'nomor_hp' => ['required'],
+            'email' =>['required'],
+            'website' => ['required'],
+            
+     ]);
+     if($credential){
+         $data = [];
+         $file = $request->file('logo_sekolah');
+         if($file != null){
+            $name = $request->file('logo_sekolah')->getClientOriginalName();
+            $file->move(public_path('uploads'),$name);
+            $data = [
+                'kode_sekolah' => $request->kode_sekolah,
+                'nsm' =>  $request->nsm,
+                'npsn' =>  $request->npsn,
+                'akreditasi' =>  $request->akreditasi,
+                'nama_sekolah' =>  $request->nama_sekolah,
+                'alamat_sekolah' =>  $request->alamat_sekolah,
+                'longtitude' =>  $request->longtitude,
+                'latitude' =>  $request->latitude,
+                'kode_kecamatan' =>  $request->kecamatan,
+                'kode_kelurahan' =>  $request->kelurahan,
+                'kode_pos' =>  $request->kode_pos,
+                'nomor_hp' =>  $request->nomor_hp,
+                'email' =>  $request->email,
+                'website' =>  $request->website,
+                'logo_sekolah' =>  $name,
+            ];
+         }else{
+            $data = [
+                'kode_sekolah' => $request->kode_sekolah,
+                'nsm' =>  $request->nsm,
+                'npsn' =>  $request->npsn,
+                'akreditasi' =>  $request->akreditasi,
+                'nama_sekolah' =>  $request->nama_sekolah,
+                'alamat_sekolah' =>  $request->alamat_sekolah,
+                'longtitude' =>  $request->longtitude,
+                'latitude' =>  $request->latitude,
+                'kode_kecamatan' =>  $request->kecamatan,
+                'kode_kelurahan' =>  $request->kelurahan,
+                'kode_pos' =>  $request->kode_pos,
+                'nomor_hp' =>  $request->nomor_hp,
+                'email' =>  $request->email,
+                'website' =>  $request->website,
+            ];
+         }
+         $update = DB::table('sekolahs')->where('sekolahs.id','=',$id)->update($data);
+         if($update){
+            return redirect()
+            ->route('sekolah.index')
+            ->with([
+                'success' => 'Sekolah Has Been Edited'
+            ]);
+        }else{
+            return redirect()
+            ->route('sekolah.index')
+            ->with([
+                'error' => 'Some problem has occurred, please try again '
+            ]);
+        }         
+     }
     }
 
     /**
