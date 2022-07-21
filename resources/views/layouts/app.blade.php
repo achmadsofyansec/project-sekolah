@@ -126,31 +126,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/guru') ?>" class="nav-link">
                   <i class="fas fas fa-chalkboard-teacher nav-icon text-primary"></i>
                   <p>Guru</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/siswa') ?>" class="nav-link">
                   <i class="fas fa-users nav-icon text-danger"></i>
                   <p>Siswa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/tahun_ajaran') ?>" class="nav-link">
                   <i class="fas fa-calendar nav-icon text-success"></i>
                   <p>Tahun Ajaran</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/kelas') ?>" class="nav-link">
                   <i class="fas fa-chalkboard nav-icon text-info"></i>
                   <p>Kelas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/jurusan') ?>" class="nav-link">
                   <i class="fas fa-building nav-icon text-primary"></i>
                   <p>Jurusan</p>
                 </a>
@@ -167,19 +167,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/kelompok_mapel') ?>" class="nav-link">
                   <i class="fas fa-boxes nav-icon text-success"></i>
                   <p>Kelompok Pelajaran</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/mapel') ?>" class="nav-link">
                   <i class="fas fa-book-open nav-icon text-danger"></i>
                   <p>Mata Pelajaran</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/jadwal') ?>" class="nav-link">
                   <i class="fas fa-calendar-alt nav-icon text-info"></i>
                   <p>Jadwal Pelajaran</p>
                 </a>
@@ -196,14 +196,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/predikat') ?>" class="nav-link">
                   <i class="fas fas fa-clipboard nav-icon text-danger"></i>
                   <p>Nilai / Predikat</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-header">Lain Lain</li>
+          <li class="nav-header">Kegiatan</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt text-danger"></i>
@@ -214,19 +214,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/absensi') ?>" class="nav-link">
                   <i class="fas fa-calendar-check nav-icon text-primary"></i>
                   <p>Absensi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/perizinan') ?>" class="nav-link">
                   <i class="fas fa-calendar-times nav-icon text-danger"></i>
                   <p>Perizinan</p>
                 </a>
               </li>
             </ul>
           </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list text-success"></i>
@@ -237,19 +238,60 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/input_harian') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-success"></i>
                   <p>Harian</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/input_ujian') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-success"></i>
                   <p>Ujian</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/input_prestasi') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Prestasi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/input_ekstra') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Ekstrakulikuler</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/input_capaian') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Capaian Hasil Belajar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/input_rapor') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Rapor</p>
+                </a>
+              </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/ekstrakulikuler') ?>" class="nav-link">
+              <i class="nav-icon fas fa-child text-primary"></i>
+              <p>
+                Ekstrakulikuler
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/pindah_kelas') ?>" class="nav-link">
+              <i class="nav-icon 	fas fa-balance-scale text-warning"></i>
+              <p>
+                Pindah / Kenaikan Kelas
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Lain Lain</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy text-primary"></i>
@@ -260,26 +302,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/lap_nilai') ?>" class="nav-link">
                   <i class="fas fa-clipboard nav-icon text-success"></i>
                   <p>Nilai</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo url('/lap_absensi') ?>" class="nav-link">
                   <i class="fas fa-calendar-alt nav-icon text-success"></i>
                   <p>Absensi</p>
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs text-info"></i>
-              <p>
-               Pengaturan
-              </p>
-            </a>
           </li>
         </ul>
       </nav>
