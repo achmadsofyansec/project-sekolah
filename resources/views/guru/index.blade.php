@@ -20,7 +20,41 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      </div>
+        <div class="row-mb-2">
+            <div class="col-md-12 mt-1">
+              @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
+                <div class="card card-outline card-info">
+                   <div class="card-header">
+                   <a type="button" href="#" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-file-import"></i>Import</a>
+                   <a type="button" href="#" class="btn btn-info"><i class="	fas fa-file-export"></i>Export</a>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                <thead>
+                                    <th>No</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
