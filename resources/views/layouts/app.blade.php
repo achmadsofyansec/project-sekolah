@@ -31,7 +31,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-navy navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -79,7 +79,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-navy elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -114,6 +114,106 @@
                 Dashboard
               </p>
             </a>
+          </li>
+          <li class="nav-header">Umum</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-navy"></i>
+              <p>
+                Master Data
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/point_pelanggaran') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-navy"></i>
+                  <p>Point Pelanggaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/sanksi') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-navy"></i>
+                  <p>Sanksi Pelanggaran</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/pelanggaran') ?>" class="nav-link">
+              <i class="nav-icon fas fa-user-minus text-navy"></i>
+              <p>
+                Pelanggaran
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/kehadiran') ?>" class="nav-link">
+              <i class="nav-icon 	fas fa-calendar-check text-navy"></i>
+              <p>
+                Kehadiran / Absensi
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/barang_sitaan') ?>" class="nav-link">
+              <i class="nav-icon fas fa-box-open text-navy"></i>
+              <p>
+                Barang Sitaan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/peminjaman') ?>" class="nav-link">
+              <i class="nav-icon fas fa-people-carry text-navy"></i>
+              <p>
+                Peminjaman Barang
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Lain Lain</li>
+          <li class="nav-item">
+            <a href="<?php echo url('/point_siswa') ?>" class="nav-link">
+              <i class="nav-icon fas fa-user-graduate text-navy"></i>
+              <p>
+                Point Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy text-navy"></i>
+              <p>
+                Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/lap_pelanggaran') ?>" class="nav-link">
+                  <i class="fas fas fa-user-minus nav-icon text-navy"></i>
+                  <p>Pelanggaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/lap_kehadiran') ?>" class="nav-link">
+                  <i class="fas fa-calendar-check nav-icon text-navy"></i>
+                  <p>Kehadiran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/lap_peminjaman') ?>" class="nav-link">
+                  <i class="fas fa-people-carry nav-icon text-navy"></i>
+                  <p>Peminjaman</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/lap_sitaan') ?>" class="nav-link">
+                  <i class="fas fa-box-open nav-icon text-navy"></i>
+                  <p>Barang Sitaan</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
