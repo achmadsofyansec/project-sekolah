@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIPINTER | @yield('page')</title>
+  <title>JAMANU | @yield('page')</title>
   <link rel="shortcut icon" href="{{asset('public/dist/img/AdminLTELogo.png')}}" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -69,7 +69,7 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <form action="<?php echo url('/signout') ?>" method="post">
           @csrf
-          <input type="submit" class="dropdown-item dropdown-footer" value="Log out"></input>
+          <input type="submit" class="dropdown-item dropdown-footer" value="Log out">
           </form>
          
         </div>
@@ -83,7 +83,7 @@
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SIPINTER</span>
+      <span class="brand-text font-weight-light">JAMANU</span>
     </a>
 
     <!-- Sidebar -->

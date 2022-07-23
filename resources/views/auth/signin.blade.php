@@ -6,7 +6,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-success">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>SIPINTER</b></a>
+      <a href="#" class="h1"><b>JAMANU</b></a>
     </div>
     <div class="card-body">
       @if(session('error'))
