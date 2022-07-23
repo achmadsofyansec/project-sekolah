@@ -13,12 +13,6 @@ class PageController extends Controller
     public function index(){
         return view('dashboard');
     }
-    public function view_siswa(){
-        return view('siswa.index');
-    }
-    public function view_guru(){
-        return view('guru.index');
-    }
     public function view_kelas(){
         return view('kelas.index');
     }

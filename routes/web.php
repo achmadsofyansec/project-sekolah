@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         // Page View
         Route::get('/',[PageController::class,'index'])->name('dashboard');
-        Route::get('/siswa',[PageController::class,'view_siswa'])->name('siswa');
-        Route::get('/guru',[PageController::class,'view_guru'])->name('guru');
+        Route::resource('siswa',SiswaController::class);
+        Route::resource('guru',GuruController::class);
         Route::get('/kelas',[PageController::class,'view_kelas'])->name('kelas');
         Route::get('/jurusan',[PageController::class,'view_jurusan'])->name('jurusan');
         Route::get('/tahun_ajaran',[PageController::class,'view_tahunajaran'])->name('tahun_ajaran');
