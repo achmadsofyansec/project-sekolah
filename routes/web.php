@@ -22,7 +22,22 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 
 Route::get('/',[PageController::class,'index'])->name('dashboard');
+
 Route::post('/signout',[PageController::class,'logout']);
-
-
-
+Route::get('/master/buku',[PageController::class,'buku']);
+Route::get('/master/tambah',[PageController::class,'tambah_buku']);
+Route::get('/master/export',[PageController::class,'export']);
+Route::get('/master/kategori',[PageController::class,'kategori']);
+Route::get('/master/kategori_tambah',[PageController::class,'kategori_tambah']);
+Route::get('/master/sumber',[PageController::class,'sumber']);
+Route::get('/master/sumber_tambah',[PageController::class,'sumber_tambah']);
+Route::get('/pengaturan/denda',[PageController::class,'denda']);
+Route::get('/transaksi/peminjaman',[PageController::class,'peminjaman']);
+Route::get('/transaksi/pengembalian',[PageController::class,'pengembalian']);
+Route::get('/transaksi/daftar_peminjaman',[PageController::class,'daftar_peminjaman']);
+Route::get('/siswa/siswa',[PageController::class,'siswa']);
+Route::get('/laporan/buku',[PageController::class,'buku']);
+Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
+Route::get('/laporan/buku',[PageController::class,'laporan_buku']);
+Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
+Route::get('/app/password',[PageController::class,'password']);

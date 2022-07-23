@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AKADEMIK | @yield('page')</title>
+  <title>Perpustakaan | @yield('page')</title>
   <link rel="shortcut icon" href="{{asset('public/dist/img/AdminLTELogo.png')}}" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,6 +38,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-white"></i></a>
       </li>
       <li class="nav-item">
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo url('/'); ?>/app/home" target="_blank"><i class="fas fa-spin fa-globe text-white"></i></a>
+        </li>
 
       </li>
     </ul>
@@ -45,6 +48,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Notifications Dropdown Menu -->
+
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell text-white"></i>
@@ -62,6 +66,7 @@
           <i class="fas fa-expand-arrows-alt text-white"></i>
         </a>
       </li>
+              
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-user text-white"></i>
@@ -83,7 +88,7 @@
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AKADEMIK</span>
+      <span class="brand-text font-weight-light">PEPUSTAKAAN</span>
     </a>
 
     <!-- Sidebar -->
@@ -94,7 +99,6 @@
           <img src="{{asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
           <span class="badge badge-info right ">Administrator</span>
           <form action="<?php echo url('/signout') ?>" method="post">
           @csrf
@@ -102,17 +106,161 @@
           </form>
         </div>
       </div>
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="<?php echo url('/') ?>" class="nav-link active">
+          <li class="nav-item has-treeview menu-open">
+            <a href="<?php echo url('/'); ?>" class="nav-link active bg-navy">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Dashboard
+                DAHSBOARD
               </p>
+            </a>
+          </li>
+          <li class="nav-header">DATA MANAJEMEN</li>
+
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-database text-navy"></i>
+              <p>
+                Master Data
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/master/buku" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Data Buku</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/master/kategori" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Kategori Buku</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/master/sumber" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Sumber Buku</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+         
+         <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-database text-navy"></i>
+              <p>
+                Transaksi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/transaksi/peminjaman" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Peminjaman</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/transaksi/pengembalian" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Pengembalian</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/master/data_denda" class="nav-link">
+                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <p>Daftar Denda</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+         <li class="nav-header text-navy">LAPORAN</li>
+          <li class="nav-item has-treeview">
+            <a href="<?php echo url('/'); ?>/siswa/siswa" class="nav-link">
+              <i class="nav-icon fas fa-id-card text-navy"></i>
+              <p>
+                Data Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-print text-navy"></i>
+              <p>
+                Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/laporan/buku" class="nav-link">
+                  <i class="fas fas fa-print nav-icon text-navy"></i>
+                  <p>Data Buku</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/laporan/peminjaman" class="nav-link">
+                  <i class="fas fas fa-print nav-icon text-navy"></i>
+                  <p>Laporan Peminjaman</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/'); ?>/laporan/pengunjung" class="nav-link">
+                  <i class="fas fas fa-print nav-icon text-navy"></i>
+                  <p>Laporan Pengunjung</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="<?php echo url('/'); ?>/app/password" class="nav-link">
+              <i class="nav-icon fas fa-lock text-navy"></i>
+              <p>
+                Ubah Password
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="<?php echo url('/'); ?>/pengaturan/denda" class="nav-link">
+              <i class="nav-icon fas fa-money-check text-navy"></i>
+              <p>
+                Pengaturan Denda
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book text-navy"></i>
+              <p>
+                Manual Book
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item has-treeview">
+            <a href="<?php echo url('/'); ?>/logout" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt text-navy"></i>
+              <p> Logout </p>
             </a>
           </li>
         </ul>
@@ -167,7 +315,55 @@
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
-<script type="text/javascript">
+  <script type="text/javascript">
+    <!--
+    function showTime() {
+        var a_p = "";
+        var today = new Date();
+        var curr_hour = today.getHours();
+        var curr_minute = today.getMinutes();
+        var curr_second = today.getSeconds();
+        if (curr_hour < 12) {
+            a_p = "AM";
+        } else {
+            a_p = "PM";
+        }
+        if (curr_hour == 0) {
+            curr_hour = 12;
+        }
+        if (curr_hour > 12) {
+            curr_hour = curr_hour - 12;
+        }
+        curr_hour = checkTime(curr_hour);
+        curr_minute = checkTime(curr_minute);
+        curr_second = checkTime(curr_second);
+     document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+        }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    setInterval(showTime, 500);
+    //-->
+    </script>
+
+  <script>
+    $(document).ready(function(){
+      if($('input[name=username]').val().trim()=='') $('input[name=username]').focus();
+      else $('input[name=password]').focus();
+
+      $("#show_password").change(function(event) {
+        if($(this).is(':checked')){
+          $("input[name=password]").prop('type', "text");
+        }else{
+          $("input[name=password]").prop('type', "password");
+        }
+      });
+    });
+
 $(document).ready( function () {
     $('#dataTable').DataTable({
       scrollY: '200px',
