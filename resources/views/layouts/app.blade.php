@@ -94,8 +94,8 @@
           <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
-          <span class="badge badge-info right "><?php echo strtoupper(auth()->user()->role);?></span>
+          
+          
           <form action="/signout" method="post">
           @csrf
           <button type="submit" class="badge badge-danger right ">Logout <i class="nav-icon fas fa-sign-out-alt"></i></button>
@@ -117,10 +117,18 @@
           </li>
           <li class="nav-header">Data Master</li>
           <li class="nav-item">
-            <a href="<?php echo url('/sekolah') ?>" class="nav-link">
+            <a href="<?php echo url('/datasiswa') ?>" class="nav-link">
               <i class="nav-icon fas fa-user text-success"></i>
               <p>
                Data Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/pengaturan') ?>" class="nav-link">
+              <i class="nav-icon fas fa-cogs text-success"></i>
+              <p>
+               Pengaturan
               </p>
             </a>
           </li>

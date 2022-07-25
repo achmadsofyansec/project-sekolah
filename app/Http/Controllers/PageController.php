@@ -13,8 +13,8 @@ class PageController extends Controller
     public function index(){
         return view('dashboard');
     }
-    public function view_sekolah(){
-        return view('sekolah.index');
+    public function view_pengaturan(){
+        return view('pengaturan.index');
     }
     public function view_jabatan(){
         return view('jabatan.index');
