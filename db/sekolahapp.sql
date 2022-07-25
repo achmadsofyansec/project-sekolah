@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.0.1 (64 bit)
-MySQL - 10.6.5-MariaDB : Database - sekolahapp
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.5.9-MariaDB : Database - sekolahapp
 *********************************************************************
 */
 
@@ -139,7 +139,7 @@ CREATE TABLE `jurusans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `jurusans` */
 
@@ -174,7 +174,7 @@ CREATE TABLE `kelas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelas` */
 
@@ -190,7 +190,7 @@ CREATE TABLE `kelompok_pelajarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelompok_pelajarans` */
 
@@ -220,12 +220,13 @@ DROP TABLE IF EXISTS `mata_pelajarans`;
 CREATE TABLE `mata_pelajarans` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `kode_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `mata_pelajarans` */
 
@@ -238,7 +239,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -259,10 +260,10 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (52,'2022_07_23_054739_create_jurusans_table',8),
 (53,'2022_07_23_055106_create_tahun_ajarans_table',8),
 (54,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
-(55,'2022_07_23_055445_create_mata_pelajarans_table',8),
 (56,'2022_07_23_061916_create_data_siswas_table',8),
 (57,'2022_07_23_061930_create_data_gurus_table',8),
-(58,'2022_07_23_061955_create_data_ortus_table',8);
+(58,'2022_07_23_061955_create_data_ortus_table',8),
+(59,'2022_07_23_055445_create_mata_pelajarans_table',9);
 
 /*Table structure for table `notifs` */
 
@@ -387,8 +388,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('AJbBhBWAJQqREkUtuDzNPBgeHL9RBQQ3zLd5DNrI',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSkhDNHY3SU9sSlFLZXM1ZFpoc012d0o0QWZBSWxEaGZUZGRMeVFQZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrL2d1cnUvY3JlYXRlIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658562582),
-('cT5Af3vi8U0zYZI9krfhmpe59YAaJhAVhIi5vc1p',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUGYxdlFyQXFBN0o4YnIxaXllcTNLNmhPZzZQQ2dFU0ZGcGF3Ym1BTSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vbG9jYWxob3N0L3Nla29sYWhBcHAvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1658558150);
+('sYIun12bFJr9RN2umkhlWrNMXb5xW3YsWQZg433n',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoicUxFbGZvZzUxTFpMU2U4RThLNWRTUzYxeHM0NlpYbkdGNU5zSmJUTSI7czozOiJ1cmwiO2E6MDp7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3QvYWthZGVtaWsiO319',1658722375);
 
 /*Table structure for table `tahun_ajarans` */
 
