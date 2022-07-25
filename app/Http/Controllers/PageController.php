@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
+use App\Models\Buku;
 
 class PageController extends Controller
 {
@@ -12,11 +13,6 @@ class PageController extends Controller
     //VIEW Pages
     public function index(Request $request){
         return view('dashboard');
-    }
-
-    public function buku()
-    {
-        return view('master.buku');
     }
 
     public function tambah_buku()
@@ -92,6 +88,16 @@ class PageController extends Controller
     public function sumber_tambah()
     {
         return view('master.sumber_tambah');
+    }
+
+    public function data_denda()
+    {
+        return view('master.data_denda');
+    }
+
+    public function siswa_detail()
+    {
+        return view('siswa.siswa_detail');
     }
 
 

@@ -124,7 +124,7 @@
 
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database text-navy"></i>
+              <i class="nav-icon fad fa-books-medical text-navy"></i>
               <p>
                 Master Data
                 <i class="fas fa-angle-left right"></i>
@@ -133,7 +133,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/master/buku" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <i class="fad fa-book-medical nav-icon text-navy"></i>
                   <p>Data Buku</p>
                 </a>
               </li>
@@ -141,7 +141,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/master/kategori" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <i class="fad fa-book-spells nav-icon text-navy"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
@@ -149,7 +149,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/master/sumber" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <i class="fad fa-book-heart nav-icon text-navy"></i>
                   <p>Sumber Buku</p>
                 </a>
               </li>
@@ -158,7 +158,7 @@
          
          <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database text-navy"></i>
+              <i class="fad fa-laptop-medical nav-icon text-navy"></i>
               <p>
                 Transaksi
                 <i class="fas fa-angle-left right"></i>
@@ -167,7 +167,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/transaksi/peminjaman" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <i class="fad fa-person-carry nav-icon text-navy"></i>
                   <p>Peminjaman</p>
                 </a>
               </li>
@@ -175,7 +175,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/transaksi/pengembalian" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                  <i class="fad fa-people-carry nav-icon text-navy"></i>
                   <p>Pengembalian</p>
                 </a>
               </li>
@@ -183,7 +183,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo url('/'); ?>/master/data_denda" class="nav-link">
-                  <i class="fas fa-print nav-icon text-navy"></i>
+                   <i class="fad fa-person-sign nav-icon text-navy"></i>
                   <p>Daftar Denda</p>
                 </a>
               </li>

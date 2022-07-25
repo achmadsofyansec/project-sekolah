@@ -57,7 +57,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                   <div class="btn-group btn-group-sm">
-                  <a class="btn btn-danger" href="<?php echo url('/'); ?>home"><i class="fa fa-arrow-left"> </i> Kembali</a>
+                  <a class="btn btn-danger" href="<?php echo url('/'); ?>/"><i class="fa fa-arrow-left"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 </div>

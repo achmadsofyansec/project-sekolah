@@ -31,7 +31,7 @@
               <div class="card-header col-md-12">
 
                 <a><i class="fa fa-file-search text-info"> </i> Cari Data Pengunjung Berdasarkan</a>
-                <form role="form" action="<?php echo url('/'); ?>laporan/proses_tampil_pengunjung" method="post">
+                <form role="form" action="<?php echo url('/'); ?>/laporan/proses_tampil_pengunjung" method="post">
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">

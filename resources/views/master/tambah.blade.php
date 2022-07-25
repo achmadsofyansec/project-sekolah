@@ -36,6 +36,8 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form class="form-horizontal" role="form" action="<?php echo url('/'); ?>/master/buku_save" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

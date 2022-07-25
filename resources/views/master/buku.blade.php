@@ -52,18 +52,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
+                                @foreach ($data_buku as $item) 
+                                <?php $i = 1?>
                                 
-                                    ?>
                                 <tr class="text-sm">
-                                    <td>no</td>
-                                    <td>kode buku</td>
-                                    <td>jdulu buku</td>
-                                    <td>pengarang</td>
-                                    <td>penerbit</td>
-                                    <td>malang</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><?php echo $i++ ?></td>
+                                    <td>{{$item['kode_buku']}}</td>
+                                    <td>{{$item['judul_buku']}}</td>
+                                    <td>{{$item['pengarang']}}</td>
+                                    <td>{{$item['penerbit']}}</td>
+                                    <td>{{$item['lokasi']}}</td>
+                                    <td>{{$item['jumlah_buku']}}</td>
+                                    <td>{{$item['stok']}}</td>
                                     <td style="text-align:center; ">
                                     	<div class="btn-group btn-group-xs">
                                         <a class="btn bg-navy btn-xs detail-buku" href="#" data-toggle="modal" data-target="#modalView" data-id_buku=""><i class="fa fa-eye"> </i></a>
@@ -71,7 +71,7 @@
                                     </div>
                                     </td>
                                 </tr>
-                                <?php ?>
+                                  @endforeach
                   </tbody>
                 </table>
               </div>
