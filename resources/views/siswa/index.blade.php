@@ -51,7 +51,35 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($siswa as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>
+                                        @if ($item->foto_siswa != null)
+                                      <img src="{{asset('public/upload/').$item->foto_siswa}}">
+                                        @else
+                                        <p>Tidak Ada Foto</p>
+                                        @endif
+                                      </td>
+                                      <td>{{$item->nisn}}</td>
+                                      <td>{{$item->nama}}</td>
+                                      <td>{{$item->tmp_lahir}}, {{$item->tgl_lhr}}</td>
+                                      <td>{{$item->status_siswa}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('siswa.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('siswa.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

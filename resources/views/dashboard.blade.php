@@ -27,7 +27,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-graduation-cap"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-danger" ><b>Siswa</b></span>
-                <font  style="text-shadow: 2px 2px 4px #827e7e">0</font>
+                <font  style="text-shadow: 2px 2px 4px #827e7e">{{$siswa->count()}}</font>
               </div>
             </div></a>
           </div>
@@ -37,7 +37,7 @@
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-primary" ><b>Guru</b></span>
-                <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+                <font style="text-shadow: 2px 2px 4px #827e7e">{{$guru->count()}}</font>
               </div>
             </div></a>
           </div>
@@ -47,7 +47,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-chalkboard"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-success" ><b>Kelas</b></span>
-                <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+                <font style="text-shadow: 2px 2px 4px #827e7e">{{$kelas->count()}}</font>
               </div>
             </div></a>
           </div>
@@ -57,7 +57,7 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-book-open"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-info" ><b>Mata Pelajaran</b></span>
-                <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+                <font style="text-shadow: 2px 2px 4px #827e7e">{{$mapel->count()}}</font>
               </div>
             </div></a>
           </div>

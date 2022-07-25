@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Kelompok')
+@section('page', 'Kelompok Mata Pelajaran')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,17 +34,40 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{route('kelompok_mapel.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Kode Kelompok</th>
+                                    <th>Nama Kelompok</th>
+                                    <th>Status Kelompok</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($kelompok as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->kode_kelompok}}</td>
+                                      <td>{{$item->nama_kelompok}}</td>
+                                      <td>{{$item->status_kelompok}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('kelompok_mapel.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('kelompok_mapel.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

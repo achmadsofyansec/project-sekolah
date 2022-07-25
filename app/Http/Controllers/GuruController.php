@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_guru;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
@@ -13,7 +15,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('guru.index');
+        $guru = data_guru::latest()->get();
+        return view('guru.index',compact('guru'));
         //
     }
 
@@ -24,7 +27,9 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('guru.create');
+        $kecamatan = DB::table('kecamatan')->select(['kecamatan.*'])->get();
+        $kelurahan = DB::table('kelurahan')->select(['kelurahan.*'])->get();
+        return view('guru.create',compact(['kecamatan','kelurahan']));
         //
     }
 

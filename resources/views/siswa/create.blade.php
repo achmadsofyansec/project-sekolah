@@ -51,7 +51,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select name="status_siswa" id="status_siswa" class="form-control">
+                                        <select name="status_siswa" id="status_siswa" class="form-control" required>
                                             <option value="">--Pilih Status--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak Aktif">Tidak Aktif</option>
@@ -61,7 +61,7 @@
                                         <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" name="foto_siswa" id="foto_siswa" class="form-control">
+                                        <input type="file" name="foto_siswa" id="foto_siswa" class="form-control" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -101,7 +101,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>KIP</label>
-                                                <input type="text" class="form-control" name="kip" id="kip" required>
+                                                <input type="text" class="form-control" name="kip" id="kip">
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama Siswa</label>
@@ -123,7 +123,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Jenis Kelamin</label>
-                                                <select name="jns_kelamin" id="jns_kelamin" class="form-control">
+                                                <select name="jns_kelamin" id="jns_kelamin" class="form-control" required>
                                                     <option value="">--Pilih Jenis Kelamin--</option>
                                                     <option value="Laki Laki">Laki Laki</option>
                                                     <option value="Perempuan">Perempuan</option>
@@ -131,7 +131,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Agama</label>
-                                                <select name="agama" id="agama" class="form-control">
+                                                <select name="agama" id="agama" class="form-control" required>
                                                     <option value="">--Pilih Agama--</option>
                                                     <option value="Islam">Islam</option>
                                                     <option value="Katholik">Katholik</option>
@@ -143,19 +143,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Alamat</label>
-                                                <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control" required></textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Anak Ke</label>
-                                                        <input type="number" name="anak_ke" id="anak_ke" class="form-control">
+                                                        <input type="number" name="anak_ke" id="anak_ke" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Jumlah Saudara</label>
-                                                        <input type="number" name="jml_saudara" id="jml_saudara" class="form-control">
+                                                        <input type="number" name="jml_saudara" id="jml_saudara" class="form-control" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,7 +177,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Yang Membiayai Sekolah</label>
-                                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control">
+                                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control" required>
                                                         <option value="">--Pilih Pembiaya--</option>
                                                         <option value="Orang Tua">Orang Tua</option>
                                                         <option value="Sendiri">Sendiri</option>
@@ -194,7 +194,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tempat_tinggal" id="status_tempat_tiggal" class="form-control">
+                                                    <select name="status_tempat_tinggal" id="status_tempat_tiggal" class="form-control" required>
                                                         <option value="">--Status Tempat Tinggal--</option>
                                                         <option value="Tinggal Dengan Orangtua/Wali">Tinggal Dengan Orangtua/Wali</option>
                                                         <option value="Tinggal Sendiri">Tinggal Sendiri / Kos</option>
@@ -217,7 +217,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Transportasi Ke Sekolah</label>
-                                                            <select name="transportasi" id="transportasi" class="form-control">
+                                                            <select name="transportasi" id="transportasi" class="form-control" required>
                                                                 <option value="">--Pilih Transportasi--</option>
                                                                 <option value="Diantar">Diantar</option>
                                                                 <option value="Bawa Kendaraan">Bawa Kendaraan</option>
@@ -284,7 +284,7 @@
                                                     <input type="text" name="penghasilan_ayah" id="penghasilan_ayah" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Penghasilan Ayah</label>
+                                                    <label>Alamat Ayah</label>
                                                    <textarea name="alamat_ayah" id="alamat_ayah" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -351,7 +351,7 @@
                                                     <input type="text" name="penghasilan_ibu" id="penghasilan_ibu" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Penghasilan ibu</label>
+                                                    <label>Alamat ibu</label>
                                                    <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -418,7 +418,7 @@
                                                     <input type="text" name="penghasilan_wali" id="penghasilan_wali" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Penghasilan wali</label>
+                                                    <label>Alamat wali</label>
                                                    <textarea name="alamat_wali" id="alamat_wali" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
                                                 </div>
                                                 <div class="form-group">

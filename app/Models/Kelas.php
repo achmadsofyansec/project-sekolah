@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_kelas',
+        'nama_kelas',
+        'status_kelas',
+    ];
 }

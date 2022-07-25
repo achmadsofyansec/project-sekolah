@@ -203,6 +203,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/ekstrakulikuler') ?>" class="nav-link">
+              <i class="nav-icon fas fa-child text-primary"></i>
+              <p>
+                Ekstrakulikuler
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Kegiatan</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -227,7 +235,6 @@
               </li>
             </ul>
           </li>
-          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list text-success"></i>
@@ -275,14 +282,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/ekstrakulikuler') ?>" class="nav-link">
-              <i class="nav-icon fas fa-child text-primary"></i>
-              <p>
-                Ekstrakulikuler
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="<?php echo url('/pindah_kelas') ?>" class="nav-link">
               <i class="nav-icon 	fas fa-balance-scale text-warning"></i>

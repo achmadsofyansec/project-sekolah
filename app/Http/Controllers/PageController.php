@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_guru;
+use App\Models\data_siswa;
+use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
@@ -11,22 +15,14 @@ class PageController extends Controller
     
     //VIEW Pages
     public function index(){
-        return view('dashboard');
-    }
-    public function view_kelas(){
-        return view('kelas.index');
-    }
-    public function view_mapel(){
-        return view('pembelajaran.mata_pelajaran.index');
-    }
-    public function view_jurusan(){
-        return view('jurusan.index');
+        $siswa = data_siswa::latest()->get();
+        $guru = data_guru::latest()->get();
+        $kelas = Kelas::latest()->get();
+        $mapel = MataPelajaran::latest()->get();
+        return view('dashboard',compact(['siswa','guru','kelas','mapel']));
     }
     public function view_tahunajaran(){
         return view('tahun_ajaran.index');
-    }
-    public function view_kelompok(){
-        return view('pembelajaran.kelompok.index');
     }
     public function view_jadwal(){
         return view('pembelajaran.jadwal.index');

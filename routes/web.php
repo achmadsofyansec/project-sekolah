@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\KelompokMapelController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +29,12 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         Route::resource('siswa',SiswaController::class);
         Route::resource('guru',GuruController::class);
-        Route::get('/kelas',[PageController::class,'view_kelas'])->name('kelas');
-        Route::get('/jurusan',[PageController::class,'view_jurusan'])->name('jurusan');
+        Route::resource('kelas',KelasController::class);
+        Route::resource('jurusan',JurusanController::class);
         Route::get('/tahun_ajaran',[PageController::class,'view_tahunajaran'])->name('tahun_ajaran');
         //Pembelajaran
-        Route::get('/mapel',[PageController::class,'view_mapel'])->name('mapel');
-        Route::get('/kelompok_mapel',[PageController::class,'view_kelompok'])->name('kelompok_mapel');
+        Route::resource('mapel',MapelController::class);
+        Route::resource('kelompok_mapel',KelompokMapelController::class);
         Route::get('/jadwal',[PageController::class,'view_jadwal'])->name('jadwal');
         //Nilai
         Route::get('/predikat',[PageController::class,'view_predikat'])->name('predikat');

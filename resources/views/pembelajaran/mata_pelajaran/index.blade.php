@@ -34,17 +34,42 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{route('mapel.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Kode Mapel</th>
+                                    <th>Nama Mapel</th>
+                                    <th>Kelompok</th>
+                                    <th>Status Mapel</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($mapel as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->kode_mapel}}</td>
+                                      <td>{{$item->nama_mapel}}</td>
+                                      <td>{{$item->nama_kelompok}}</td>
+                                      <td>{{$item->status_mapel}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('mapel.destroy',$item->mapelid) }}" method="POST">
+                                        <a href="{{ route('mapel.edit',$item->mapelid) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="6" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

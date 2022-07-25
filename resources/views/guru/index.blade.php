@@ -43,10 +43,35 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>NIPTK</th>
+                                    <th>NUPTK</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($guru as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->niptk}}</td>
+                                      <td>{{$item->nuptk}}</td>
+                                      <td>{{$item->nama}}</td>
+                                      <td>{{$item->jabatan}}</td>
+                                      <td>{{$item->status}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('guru.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('guru.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

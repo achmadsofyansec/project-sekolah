@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Tambah Data Guru')
+@section('page', 'Edit Data Guru')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
