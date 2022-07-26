@@ -15,9 +15,9 @@ class CreateDataSiswasTable extends Migration
     {
         Schema::create('data_siswas', function (Blueprint $table) {
             $table->id();
-            $table->integer('nik');
+            $table->string('nik');
             $table->string('nama');
-            $table->integer('nisn');
+            $table->string('nisn');
             $table->string('kip');
             $table->string('tmp_lahir');
             $table->string('tgl_lhr');
@@ -27,7 +27,7 @@ class CreateDataSiswasTable extends Migration
             $table->integer('jml_saudara');
             $table->string('hobi');
             $table->string('cita_cita');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->string('email')->unique();
             $table->string('biaya_sekolah');
             $table->string('kebutuhan_disabilitas');

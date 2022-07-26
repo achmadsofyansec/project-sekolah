@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Data Guru')
+@section('page', 'Edut Data Guru')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -36,7 +36,9 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                <form action="{{route('guru.store')}}" method="post">
+                <form action="{{route('guru.update',$data->id)}}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  @method('PUT')
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-outline card-info">
@@ -49,14 +51,23 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status_guru" id="status_guru" class="form-control">
+                                    <select name="status_guru" id="status_guru" class="form-control" required>
                                         <option value="">--Pilih Status--</option>
-                                                <option value="Aktif">Aktif</option>
-                                                <option value="Tidak Aktif">Tidak Aktif</option>
+                                        <option value="Aktif" @if ($data->status == "Aktif")
+                                          {{'selected'}}
+                                      @endif>Aktif</option>
+                                      <option value="Nonaktif" @if ($data->status == "Nonaktif")
+                                          {{'selected'}}
+                                      @endif>Nonaktif</option>
                                     </select>
                                 </div>
                                 <div class="form-group text-center">
-                                    <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
+                                  @if ($data->foto_guru != '-')
+                                  <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">
+                                  @else
+                                      <h1>Tidak Ada Foto</h1>
+                                  @endif
+                                    
                                 </div>
                                 <div class="form-group">
                                     <input type="file" name="foto_guru" id="foto_guru" class="form-control">
@@ -79,57 +90,88 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>NIK</label>
-                                    <input type="text" class="form-control" name="nik" id="nik" required>
+                                    <input type="text" value="{{$data->nik}}" class="form-control" name="nik" id="nik" required>
                                 </div>
                                 <div class="form-group">
                                     <label>NIPTK</label>
-                                    <input type="text" class="form-control" name="niptk" id="niptk" required>
+                                    <input type="text"value="{{$data->niptk}}" class="form-control" name="niptk" id="niptk" required>
                                 </div>
                                 <div class="form-group">
                                     <label>NUPTK</label>
-                                    <input type="text" class="form-control" name="nuptk" id="nuptk" required>
+                                    <input type="text"value="{{$data->nuptk}}" class="form-control" name="nuptk" id="nuptk" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Guru</label>
-                                    <input type="text" class="form-control" name="nama_guru" id="nama_guru" required>
+                                    <input type="text"value="{{$data->nama}}" class="form-control" name="nama_guru" id="nama_guru" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Tempat Lahir</label>
-                                            <input type="text" class="form-control" name="tmp_lahir" id="tmp_lahir" required>
+                                            <input type="text"value="{{$data->tmp_lahir}}" class="form-control" name="tmp_lahir" id="tmp_lahir" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Tanggal Lahir</label>
-                                            <input type="date" class="form-control" name="tgl_lhr" id="tgl_lhr" required>
+                                            <input type="date"value="{{$data->tgl_lhr}}" class="form-control" name="tgl_lhr" id="tgl_lhr" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Jenis Kelamin</label>
-                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control">
+                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control" required>
                                         <option value="">--Pilih Jenis Kelamin--</option>
-                                        <option value="Laki Laki">Laki Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="Laki Laki" @if ($data->jns_kelamin == "Laki Laki")
+                                          {{'selected'}}
+                                      @endif>Laki Laki</option>
+                                      <option value="Perempuan" @if ($data->jns_kelamin == "Perempuan")
+                                          {{'selected'}}
+                                      @endif>Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Agama</label>
-                                    <select name="agama" id="agama" class="form-control">
+                                    <select name="agama" id="agama" class="form-control" required>
                                         <option value="">--Pilih Agama--</option>
-                                        <option value="Islam">Islam</option>
-                                        <option value="Katholik">Katholik</option>
-                                        <option value="Kristen">Kristen</option>
-                                        <option value="Hindu">Hindu</option>
-                                        <option value="Budha">Budha</option>
-                                        <option value="Konghucu">Konghucu</option>
+                                        <option value="Islam" @if ($data->agama == "Islam")
+                                          {{'selected'}}
+                                        @endif>Islam</option>
+                                        <option value="Islam" @if ($data->agama == "Islam")
+                                          {{'selected'}}
+                                        @endif>Katholik</option>
+                                        <option value="Katholik" @if ($data->agama == "Katholik")
+                                          {{'selected'}}
+                                        @endif>Kristen</option>
+                                        <option value="Kristen" @if ($data->agama == "Kristen")
+                                          {{'selected'}}
+                                        @endif>Hindu</option>
+                                        <option value="Hindu" @if ($data->agama == "Hindu")
+                                          {{'selected'}}
+                                        @endif>Budha</option>
+                                        <option value="Islam" @if ($data->agama == "Budha")
+                                          {{'selected'}}
+                                      @endif>Budha</option>
+                                        <option value="Konghucu" @if ($data->agama == "Konghucu")
+                                          {{'selected'}}
+                                      @endif>Konghucu</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                  <label>kewarganegaraan</label>
+                                  <select name="kewarganegaraan" id="kewarganegaraan" class="form-control" required>
+                                      <option value="">--Pilih Kewarganegaraan--</option>
+                                      <option value="WNI" @if ($data->kewarganegaraan == "WNI")
+                                        {{'selected'}}
+                                      @endif>WNI</option>
+                                      <option value="WNA" @if ($data->kewarganegaraan == "WNA")
+                                        {{'selected'}}
+                                      @endif>WNA</option>
+                                  </select>
+                              </div>
+                                <div class="form-group">
                                     <label>Alamat</label>
-                                    <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control" required>{{$data->alamat}}</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -138,7 +180,9 @@
                                         <select name="kecamatan" id="kecamatan" class="form-control" required>
                                           <option value="">Pilih Kecamatan</option>
                                           @forelse ($kecamatan as $item)
-                                        <option value="{{$item->kode_kecamatan}}">{{$item->nama_kecamatan}}</option>
+                                        <option value="{{$item->kode_kecamatan}}" @if ($data->kecamatan == $item->kode_kecamatan)
+                                          {{'selected'}}
+                                        @endif>{{$item->nama_kecamatan}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -151,7 +195,9 @@
                                         <select name="kelurahan" id="kelurahan" class="form-control" required>
                                           <option value="">Pilih Kelurahan</option>
                                           @forelse ($kelurahan as $item)
-                                        <option value="{{$item->kode_kelurahan}}">{{$item->nama_kelurahan}}</option>
+                                        <option value="{{$item->kode_kelurahan}}" @if ($data->kelurahan == $item->kode_kelurahan)
+                                          {{'selected'}}
+                                        @endif>{{$item->nama_kelurahan}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -161,11 +207,27 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Jabatan</label>
-                                    <select name="jabatan_guru" id="jabatan_guru" class="form-control">
+                                    <select name="jabatan_guru" id="jabatan_guru" class="form-control" required>
                                         <option value="">--Pilih Jabatan--</option>
-                                        <option value="Guru Mapel">Guru Mapel</option>
-                                        <option value="Guru Bk">Guru Bk</option>
+                                        <option value="Guru Mapel" @if ($data->jabatan == "Guru Mapel")
+                                          {{'selected'}}
+                                      @endif>Guru Mapel</option>
+                                      <option value="Guru Bk" @if ($data->jabatan == "Guru Bk")
+                                          {{'selected'}}
+                                      @endif>Guru Bk</option>
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                  <label>No Hp</label>
+                                  <input type="text" value="{{$data->no_hp}}" class="form-control" name="no_hp" id="no_hp" required>
+                                </div>
+                                <div class="form-group">
+                                  <label>No Telepon</label>
+                                  <input type="text" value="{{$data->no_telp}}" class="form-control" name="no_telp" id="no_telp">
+                                </div>
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="email" value="{{$data->email}}" class="form-control" name="email" id="email" required>
                                 </div>
                             </div>
                         </div>

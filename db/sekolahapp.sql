@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.0.1 (64 bit)
-MySQL - 10.6.5-MariaDB : Database - sekolahapp
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.5.9-MariaDB : Database - sekolahapp
 *********************************************************************
 */
 
@@ -18,9 +18,9 @@ DROP TABLE IF EXISTS `data_gurus`;
 
 CREATE TABLE `data_gurus` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `niptk` int(11) NOT NULL,
-  `nuptk` int(11) NOT NULL,
-  `nik` int(11) NOT NULL,
+  `niptk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nuptk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jns_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lhr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -28,8 +28,8 @@ CREATE TABLE `data_gurus` (
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `kelurahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_hp` int(11) NOT NULL,
-  `no_telp` int(11) NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -51,15 +51,15 @@ DROP TABLE IF EXISTS `data_ortus`;
 
 CREATE TABLE `data_ortus` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `nik` int(11) NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tmp_lahir_ortu` int(11) NOT NULL,
-  `tgl_lhr_ortu` int(11) NOT NULL,
+  `tmp_lahir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_lhr_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pendidikan_terakhir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pekerjaan_terakhir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `domisili_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_tlp_ortu` int(11) NOT NULL,
+  `no_tlp_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat_ortu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `tmp_tinggal_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -77,9 +77,9 @@ DROP TABLE IF EXISTS `data_siswas`;
 
 CREATE TABLE `data_siswas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `nik` int(11) NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nisn` int(11) NOT NULL,
+  `nisn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tmp_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lhr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `data_siswas` (
   `jml_saudara` int(11) NOT NULL,
   `hobi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cita_cita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_hp` int(11) NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `biaya_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kebutuhan_disabilitas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE `jurusans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `jurusans` */
 
@@ -174,7 +174,7 @@ CREATE TABLE `kelas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelas` */
 
@@ -190,7 +190,7 @@ CREATE TABLE `kelompok_pelajarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelompok_pelajarans` */
 
@@ -220,6 +220,7 @@ DROP TABLE IF EXISTS `mata_pelajarans`;
 CREATE TABLE `mata_pelajarans` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `kode_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -238,7 +239,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -259,10 +260,10 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (52,'2022_07_23_054739_create_jurusans_table',8),
 (53,'2022_07_23_055106_create_tahun_ajarans_table',8),
 (54,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
-(55,'2022_07_23_055445_create_mata_pelajarans_table',8),
-(56,'2022_07_23_061916_create_data_siswas_table',8),
-(57,'2022_07_23_061930_create_data_gurus_table',8),
-(58,'2022_07_23_061955_create_data_ortus_table',8);
+(65,'2022_07_23_055445_create_mata_pelajarans_table',9),
+(66,'2022_07_23_061916_create_data_siswas_table',9),
+(67,'2022_07_23_061930_create_data_gurus_table',9),
+(68,'2022_07_23_061955_create_data_ortus_table',9);
 
 /*Table structure for table `notifs` */
 
@@ -387,8 +388,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('AJbBhBWAJQqREkUtuDzNPBgeHL9RBQQ3zLd5DNrI',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSkhDNHY3SU9sSlFLZXM1ZFpoc012d0o0QWZBSWxEaGZUZGRMeVFQZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrL2d1cnUvY3JlYXRlIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658562582),
-('cT5Af3vi8U0zYZI9krfhmpe59YAaJhAVhIi5vc1p',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUGYxdlFyQXFBN0o4YnIxaXllcTNLNmhPZzZQQ2dFU0ZGcGF3Ym1BTSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vbG9jYWxob3N0L3Nla29sYWhBcHAvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1658558150);
+('OEjMYPbw8VbwVpJV863KQAwHIKTsg38YnsQCcT1u',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNndzWmNmMUhwelp1UGVuUjFsYWE3dlBEZndvSlpDb2pJSE9Tb1g2aCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658813210);
 
 /*Table structure for table `tahun_ajarans` */
 

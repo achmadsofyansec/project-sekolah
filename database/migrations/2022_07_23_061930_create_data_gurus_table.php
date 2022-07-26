@@ -15,9 +15,9 @@ class CreateDataGurusTable extends Migration
     {
         Schema::create('data_gurus', function (Blueprint $table) {
             $table->id();
-            $table->integer('niptk');
-            $table->integer('nuptk');
-            $table->integer('nik');
+            $table->string('niptk');
+            $table->string('nuptk');
+            $table->string('nik');
             $table->string('nama');
             $table->string('jns_kelamin');
             $table->string('tgl_lhr');
@@ -25,8 +25,8 @@ class CreateDataGurusTable extends Migration
             $table->text('alamat');
             $table->string('kelurahan');
             $table->string('kecamatan');
-            $table->integer('no_hp');
-            $table->integer('no_telp');
+            $table->string('no_hp');
+            $table->string('no_telp');
             $table->string('email')->unique();
             $table->string('agama');
             $table->string('kewarganegaraan');

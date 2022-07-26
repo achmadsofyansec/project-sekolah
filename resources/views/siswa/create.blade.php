@@ -37,8 +37,8 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                
-                    <form action="{{ route('siswa.store')}}" method="post">
+                    <form action="{{ route('siswa.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                         <div class="col-md-4">
                             <div class="card card-outline card-info">
@@ -177,7 +177,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Yang Membiayai Sekolah</label>
-                                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control" required>
+                                                    <select name="biaya_sekolah" id="biaya_sekolah" class="form-control" required>
                                                         <option value="">--Pilih Pembiaya--</option>
                                                         <option value="Orang Tua">Orang Tua</option>
                                                         <option value="Sendiri">Sendiri</option>
@@ -211,7 +211,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Waktu Tempuh</label>
-                                                            <input type="number" class="form-control" name="jarak_tinggal" id="jarak_tinggal">
+                                                            <input type="number" class="form-control" name="waktu_tempuh" id="waktu_tempuh">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">

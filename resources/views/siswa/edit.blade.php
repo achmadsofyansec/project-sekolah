@@ -37,7 +37,7 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                    <form action="{{ route('siswa.update')}}" method="post">
+                    <form action="{{ route('siswa.update',$data->id)}}" method="post">
                         <div class="row">
                         <div class="col-md-4">
                             <div class="card card-outline card-info">
@@ -52,12 +52,21 @@
                                         <label>Status</label>
                                         <select name="status_siswa" id="status_siswa" class="form-control">
                                             <option value="">--Pilih Status--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak Aktif">Tidak Aktif</option>
+                                            <option value="Aktif" @if ($data->status_siswa == "Aktif")
+                                                {{'selected'}}
+                                            @endif>Aktif</option>
+                                            <option value="Nonaktif" @if ($data->status_siswa == "Nonaktif")
+                                                {{'selected'}}
+                                            @endif>Nonaktif</option>
                                         </select>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
+                                        @if ($data->foto_siswa != '-')
+                                            <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">        
+                                        @else
+                                            <h1>Tidak Ada Foto</h1>
+                                        @endif
+                                    
                                     </div>
                                     <div class="form-group">
                                         <input type="file" name="foto_siswa" id="foto_siswa" class="form-control">
@@ -92,31 +101,31 @@
                                         <div class="tab-pane active" id="data_siswa" style="position: relative;">
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input type="text" class="form-control" name="nik" id="nik" required>
+                                            <input type="text" class="form-control" value="{{$data->nik}}" name="nik" id="nik" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>NISN</label>
-                                                <input type="text" class="form-control" name="nisn" id="nisn" required>
+                                                <input type="text" class="form-control" value="{{$data->nisn}}" name="nisn" id="nisn" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>KIP</label>
-                                                <input type="text" class="form-control" name="kip" id="kip" required>
+                                                <input type="text" class="form-control" value="{{$data->kip}}" name="kip" id="kip" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama Siswa</label>
-                                                <input type="text" class="form-control" name="nama_siswa" id="nama_siswa" required>
+                                                <input type="text" class="form-control" value="{{$data->nama}}" name="nama_siswa" id="nama_siswa" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Tempat Lahir</label>
-                                                        <input type="text" class="form-control" name="tmp_lahir" id="tmp_lahir" required>
+                                                        <input type="text" class="form-control" value="{{$data->tmp_lahir}}" name="tmp_lahir" id="tmp_lahir" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Tanggal Lahir</label>
-                                                        <input type="date" class="form-control" name="tgl_lhr" id="tgl_lhr" required>
+                                                        <input type="date" class="form-control" value="{{$data->tgl_lhr}}" name="tgl_lhr" id="tgl_lhr" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,93 +133,124 @@
                                                 <label>Jenis Kelamin</label>
                                                 <select name="jns_kelamin" id="jns_kelamin" class="form-control">
                                                     <option value="">--Pilih Jenis Kelamin--</option>
-                                                    <option value="Laki Laki">Laki Laki</option>
-                                                    <option value="Perempuan">Perempuan</option>
+                                                    <option value="Laki Laki" @if ($data->jns_kelamin == "Laki Laki")
+                                                        {{'selected'}}
+                                                    @endif>Laki Laki</option>
+                                                    <option value="Perempuan" @if ($data->jns_kelamin == "Perempuan")
+                                                        {{'selected'}}
+                                                    @endif>Perempuan</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Agama</label>
                                                 <select name="agama" id="agama" class="form-control">
                                                     <option value="">--Pilih Agama--</option>
-                                                    <option value="Islam">Islam</option>
-                                                    <option value="Katholik">Katholik</option>
-                                                    <option value="Kristen">Kristen</option>
-                                                    <option value="Hindu">Hindu</option>
-                                                    <option value="Budha">Budha</option>
-                                                    <option value="Konghucu">Konghucu</option>
+                                                    <option value="Islam" @if ($data->agama == "Islam")
+                                                        {{'selected'}}
+                                                      @endif>Islam</option>
+                                                      <option value="Islam" @if ($data->agama == "Islam")
+                                                        {{'selected'}}
+                                                      @endif>Katholik</option>
+                                                      <option value="Katholik" @if ($data->agama == "Katholik")
+                                                        {{'selected'}}
+                                                      @endif>Kristen</option>
+                                                      <option value="Kristen" @if ($data->agama == "Kristen")
+                                                        {{'selected'}}
+                                                      @endif>Hindu</option>
+                                                      <option value="Hindu" @if ($data->agama == "Hindu")
+                                                        {{'selected'}}
+                                                      @endif>Budha</option>
+                                                      <option value="Islam" @if ($data->agama == "Budha")
+                                                        {{'selected'}}
+                                                    @endif>Budha</option>
+                                                      <option value="Konghucu" @if ($data->agama == "Konghucu")
+                                                        {{'selected'}}
+                                                    @endif>Konghucu</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Alamat</label>
-                                                <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control">{{$data->alamat}}</textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Anak Ke</label>
-                                                        <input type="number" name="anak_ke" id="anak_ke" class="form-control">
+                                                        <input type="number" name="anak_ke" value="{{$data->anak}}" id="anak_ke" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Jumlah Saudara</label>
-                                                        <input type="number" name="jml_saudara" id="jml_saudara" class="form-control">
+                                                        <input type="number" name="jml_saudara" id="jml_saudara"value="{{$data->jml_saudara}}" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                                 <div class="form-group">
                                                     <label>Hobi</label>
-                                                    <input type="text" class="form-control" name="hobi" id="hobi">
+                                                    <input type="text" class="form-control"value="{{$data->hobi}}" name="hobi" id="hobi">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Cita Cita</label>
-                                                    <input type="text" class="form-control" name="cita_cita" id="cita_cita">
+                                                    <input type="text" class="form-control"value="{{$data->cita_cita}}" name="cita_cita" id="cita_cita">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>No Hp</label>
-                                                    <input type="text" class="form-control" name="no_hp" id="no_hp">
+                                                    <input type="text" class="form-control"value="{{$data->no_hp}}" name="no_hp" id="no_hp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control" name="email" id="email">
+                                                    <input type="email" class="form-control"value="{{$data->email}}" name="email" id="email">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Yang Membiayai Sekolah</label>
                                                     <select name="jns_kelamin" id="jns_kelamin" class="form-control">
                                                         <option value="">--Pilih Pembiaya--</option>
-                                                        <option value="Orang Tua">Orang Tua</option>
-                                                        <option value="Sendiri">Sendiri</option>
-                                                        <option value="Saudara">Saudara</option>
+                                                        <option value="Orang Tua" @if ($data->biaya_sekolah == "Orang Tua")
+                                                            {{'selected'}}
+                                                        @endif>Orang Tua</option>
+                                                        <option value="Sendiri" @if ($data->biaya_sekolah == "Sendiri")
+                                                            {{'selected'}}
+                                                        @endif>Sendiri</option>
+                                                        <option value="Saudara" @if ($data->biaya_sekolah == "Saudara")
+                                                            {{'selected'}}
+                                                        @endif>Saudara</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kebutuhan Disabilitas</label>
-                                                    <input type="text" class="form-control" name="kebutuhan_disabilitas" id="kebutuhan_disabilitas">
+                                                    <input type="text" class="form-control"value="{{$data->kebutuhan_disabilitas}}" name="kebutuhan_disabilitas" id="kebutuhan_disabilitas">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kebutuhan Khusus</label>
-                                                    <input type="text" class="form-control" name="kebutuhan_khusus" id="kebutuhan_khusus">
+                                                    <input type="text" class="form-control"value="{{$data->kebutuhan_khusus}}" name="kebutuhan_khusus" id="kebutuhan_khusus">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
                                                     <select name="status_tempat_tinggal" id="status_tempat_tiggal" class="form-control">
                                                         <option value="">--Status Tempat Tinggal--</option>
-                                                        <option value="Tinggal Dengan Orangtua/Wali">Tinggal Dengan Orangtua/Wali</option>
-                                                        <option value="Tinggal Sendiri">Tinggal Sendiri / Kos</option>
-                                                        <option value="Tinggal Dengan Saudara">Tinggal Dengan Saudara</option>
+                                                        <option value="Tinggal Dengan Orangtua/Wali" @if ($data->tmp_tinggal == "Tinggal Dengan Orangtua/Wali")
+                                                            {{'selected'}}
+                                                        @endif>Tinggal Dengan Orangtua/Wali</option>
+                                                        <option value="Tinggal Sendiri" @if ($data->tmp_tinggal == "Tinggal Sendiri")
+                                                            {{'selected'}}
+                                                        @endif>Tinggal Sendiri</option>
+                                                        <option value="Tinggal Dengan Saudara" @if ($data->tmp_tinggal == "Tinggal Dengan Saudara")
+                                                            {{'selected'}}
+                                                        @endif>Tinggal Dengan Saudara</option>
                                                     </select>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Jarak Tempat Tinggal</label>
-                                                            <input type="number" class="form-control" name="jarak_tinggal" id="jarak_tinggal">
+                                                            <input type="number" class="form-control" value="{{$data->jarak_tinggal}}" name="jarak_tinggal" id="jarak_tinggal">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Waktu Tempuh</label>
-                                                            <input type="number" class="form-control" name="jarak_tinggal" id="jarak_tinggal">
+                                                            <input type="number" class="form-control" value="{{$data->waktu_tempuh}}" name="waktu_tempuh" id="waktu_tempuh">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -218,9 +258,15 @@
                                                             <label>Transportasi Ke Sekolah</label>
                                                             <select name="transportasi" id="transportasi" class="form-control">
                                                                 <option value="">--Pilih Transportasi--</option>
-                                                                <option value="Diantar">Diantar</option>
-                                                                <option value="Bawa Kendaraan">Bawa Kendaraan</option>
-                                                                <option value="Jalan Kaki">Jalan Kaki</option>
+                                                                <option value="Diantar" @if ($data->antar_jemput == "Diantar")
+                                                                    {{'selected'}}
+                                                                @endif>Diantar</option>
+                                                                <option value="Bawa Kendaraan" @if ($data->antar_jemput == "Bawa Kendaraan")
+                                                                    {{'selected'}}
+                                                                @endif>Bawa Kendaraan</option>
+                                                                <option value="Jalan Kaki" @if ($data->antar_jemput == "Jalan Kaki")
+                                                                    {{'selected'}}
+                                                                @endif>Jalan Kaki</option>
                                                             </select>
                                                         </div>
                                                     </div>

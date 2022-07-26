@@ -55,8 +55,8 @@
                                       <tr>
                                       <td>{{$loop->index + 1}}</td>
                                       <td>
-                                        @if ($item->foto_siswa != null)
-                                      <img src="{{asset('public/upload/').$item->foto_siswa}}">
+                                        @if ($item->foto_siswa != '-')
+                                      <img src="{{config('app.url').'/assets/uploads/'.$item->foto_siswa}}" width="100">
                                         @else
                                         <p>Tidak Ada Foto</p>
                                         @endif

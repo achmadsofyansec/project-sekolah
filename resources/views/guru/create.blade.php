@@ -36,7 +36,8 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                <form action="{{route('guru.store')}}" method="post">
+                <form action="{{route('guru.store')}}" method="post" enctype="multipart/form-data">
+                  @csrf
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-outline card-info">
@@ -49,7 +50,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status_guru" id="status_guru" class="form-control">
+                                    <select name="status_guru" id="status_guru" class="form-control " required>
                                         <option value="">--Pilih Status--</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="Tidak Aktif">Tidak Aktif</option>
@@ -109,7 +110,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jenis Kelamin</label>
-                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control">
+                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control" required>
                                         <option value="">--Pilih Jenis Kelamin--</option>
                                         <option value="Laki Laki">Laki Laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -117,7 +118,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Agama</label>
-                                    <select name="agama" id="agama" class="form-control">
+                                    <select name="agama" id="agama" class="form-control" required>
                                         <option value="">--Pilih Agama--</option>
                                         <option value="Islam">Islam</option>
                                         <option value="Katholik">Katholik</option>
@@ -128,8 +129,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                  <label>kewarganegaraan</label>
+                                  <select name="kewarganegaraan" id="kewarganegaraan" class="form-control" required>
+                                      <option value="">--Pilih Kewarganegaraan--</option>
+                                      <option value="WNI">WNI</option>
+                                      <option value="WNA">WNA</option>
+                                  </select>
+                              </div>
+                                <div class="form-group">
                                     <label>Alamat</label>
-                                    <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                    <textarea name="alamat" id="alamat" cols="30" rows="10" placeholder="Alamat" class="form-control" required></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -161,11 +170,23 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Jabatan</label>
-                                    <select name="jabatan_guru" id="jabatan_guru" class="form-control">
+                                    <select name="jabatan_guru" id="jabatan_guru" class="form-control" required>
                                         <option value="">--Pilih Jabatan--</option>
                                         <option value="Guru Mapel">Guru Mapel</option>
                                         <option value="Guru Bk">Guru Bk</option>
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                  <label>No Hp</label>
+                                  <input type="text" class="form-control" name="no_hp" id="no_hp" required>
+                                </div>
+                                <div class="form-group">
+                                  <label>No Telepon</label>
+                                  <input type="text" class="form-control" name="no_telp" id="no_telp">
+                                </div>
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
                             </div>
                         </div>
