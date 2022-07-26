@@ -26,24 +26,9 @@ class PageController extends Controller
         return view('master.export');
     }
 
-    public function kategori()
-    {
-        return view('master.kategori');
-    }
-
-    public function sumber()
-    {
-        return view('master.sumber');
-    }
-
     public function denda()
     {
         return view('pengaturan.denda');
-    }
-
-    public function peminjaman()
-    {
-        return view('transaksi.peminjaman');
     }
 
     public function pengembalian()
