@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\data_ortu;
 use App\Models\data_siswa;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class SiswaController extends Controller
 {
     /**
@@ -168,7 +168,7 @@ class SiswaController extends Controller
                     'penghasilan_ortu' => $request->penghasilan_wali,
                     'alamat_ortu' => $request->alamat_wali,
                     'tmp_tinggal_ortu' => $request->status_tmp_wali,
-                    'jns_ortu' => 'ibu',
+                    'jns_ortu' => 'wali',
                 ];
                 $create_wali = data_ortu::create($data_wali);
             }
@@ -358,7 +358,7 @@ class SiswaController extends Controller
                 'penghasilan_ortu' => $request->penghasilan_wali,
                 'alamat_ortu' => $request->alamat_wali,
                 'tmp_tinggal_ortu' => $request->status_tmp_wali,
-                'jns_ortu' => 'ibu',
+                'jns_ortu' => 'wali',
             ];
             $update_wali = data_ortu::where([['id_siswa','=',$request->nik],['jns_ortu','=','wali']])->get()->first();
             if($update_wali != null){
@@ -387,7 +387,9 @@ class SiswaController extends Controller
     {
         //
         $data = data_siswa::findOrFail($id);
+        $data_ortu = DB::table('users')->where('id_siswa','=',$data->nik)->get();
         $data->delete();
+        $data_ortu->delete();
         if($data){
             return redirect()
             ->route('siswa.index')
