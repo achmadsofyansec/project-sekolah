@@ -14,8 +14,7 @@
                   <div class="col-sm-6">
                       <ol class="breadcrumb float-sm-right">
                           <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-                          <li class="breadcrumb-item">Judul 1</li>
-                          <li class="breadcrumb-item active">Judul 2</li>
+                          <li class="breadcrumb-item">Pengaturan</li>
                       </ol>
                   </div>
               </div><!-- /.row -->
@@ -50,24 +49,24 @@
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tanggal Pengumuman</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tanggal_pengumuman" value="" required />
+                                          <input type="text" class="form-control" name="tanggal_pengumuman" value="{{ $pengaturan->pengumuman }}" required />
                                       </div>
                                   </div>
 
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tahun Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tahun" value="" required />
+                                          <input type="text" class="form-control" name="tahun" value="{{ $pengaturan->tahun }}" required />
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Informasi Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_kelulusan"  required /></textarea>
+                                          <textarea type="text" class="form-control" name="informasi_kelulusan"  required />{{ $pengaturan->info_kelulusan }}</textarea>
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Informasi Lainnya</label>
+                                      <label class="col-sm-3 col-form-label">{{ $pengaturan->info_lainya }}</label>
                                       <div class="col-sm-12">
                                           <textarea type="text" class="form-control" name="informasi_lain" required /></textarea>
                                       </div>

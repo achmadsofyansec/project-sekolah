@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2022 at 04:56 PM
+-- Generation Time: Jul 27, 2022 at 08:06 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `sekolahapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cek_kelulusans`
+--
+
+CREATE TABLE `cek_kelulusans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -81,7 +93,8 @@ CREATE TABLE `data_siswas` (
 --
 
 INSERT INTO `data_siswas` (`id`, `nik`, `nama`, `nisn`, `kip`, `tmp_lahir`, `tgl_lhr`, `jns_kelamin`, `agama`, `anak`, `jml_saudara`, `hobi`, `cita_cita`, `no_hp`, `email`, `biaya_sekolah`, `kebutuhan_disabilitas`, `kebutuhan_khusus`, `alamat`, `tmp_tinggal`, `jarak_tinggal`, `waktu_tempuh`, `antar_jemput`, `foto_siswa`, `created_at`, `updated_at`) VALUES
-(1, 12345678, 'Achmad Sofyan Hadi', 12345678, 'ya', 'Malang', '20-14-2002', 'Laki-Laki', 'Islam', 1, 2, 'Mengoding', 'Pengusaha', 812345678, 'ash@me.com', 'orang tua', 'tidak ada', 'tidak ada', 'Jl rumah saya', 'Malang', '500', '5 menit', 'motor', '', NULL, NULL);
+(1, 12345678, 'Achmad Sofyan Hadi', 12345678, 'ya', 'Malang', '20-14-2002', 'Laki-Laki', 'Islam', 1, 2, 'Mengoding', 'Pengusaha', 812345678, 'ash@me.com', 'orang tua', 'tidak ada', 'tidak ada', 'Jl rumah saya', 'Malang', '500', '5 menit', 'motor', '', NULL, NULL),
+(2, 987654321, 'Dimas Nur Rohman', 234561, '', '', '', '', '', 0, 0, '', '', 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -136,7 +149,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (40, '2022_07_23_061916_create_data_siswas_table', 8),
 (41, '2022_07_23_061930_create_data_gurus_table', 8),
 (42, '2022_07_23_061955_create_data_ortus_table', 8),
-(43, '2022_07_24_132105_kelulusan', 9);
+(43, '2022_07_24_132105_kelulusan', 9),
+(44, '2022_07_26_124447_create_cek_kelulusans_table', 10),
+(45, '2022_07_26_140212_create_pengaturans_table', 10),
+(46, '2022_07_27_165720_create_pengaturan_kelulusans_table', 10);
 
 -- --------------------------------------------------------
 
@@ -172,6 +188,30 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengaturans`
+--
+
+CREATE TABLE `pengaturans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengumuman` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tahun` int(11) NOT NULL,
+  `info_kelulusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `info_lainya` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengaturans`
+--
+
+INSERT INTO `pengaturans` (`id`, `banner`, `pengumuman`, `tahun`, `info_kelulusan`, `info_lainya`, `created_at`, `updated_at`) VALUES
+(1, '', '2022-07-27 17:12:08', 2022, 'Info kelulusan 2022', 'tidak ada info', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -242,22 +282,6 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tahun_ajarans`
---
-
-CREATE TABLE `tahun_ajarans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `kode_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `semester` int(11) NOT NULL,
-  `status_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `uploads`
 --
 
@@ -309,6 +333,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `id
 --
 
 --
+-- Indexes for table `cek_kelulusans`
+--
+ALTER TABLE `cek_kelulusans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `data_kelulusan`
 --
 ALTER TABLE `data_kelulusan`
@@ -347,6 +377,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `pengaturans`
+--
+ALTER TABLE `pengaturans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -369,12 +405,6 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Indexes for table `tahun_ajarans`
---
-ALTER TABLE `tahun_ajarans`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `uploads`
 --
 ALTER TABLE `uploads`
@@ -392,6 +422,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cek_kelulusans`
+--
+ALTER TABLE `cek_kelulusans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `data_kelulusan`
 --
 ALTER TABLE `data_kelulusan`
@@ -401,7 +437,7 @@ ALTER TABLE `data_kelulusan`
 -- AUTO_INCREMENT for table `data_siswas`
 --
 ALTER TABLE `data_siswas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -413,13 +449,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `notifs`
 --
 ALTER TABLE `notifs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `pengaturans`
+--
+ALTER TABLE `pengaturans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -432,12 +474,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tahun_ajarans`
---
-ALTER TABLE `tahun_ajarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `uploads`

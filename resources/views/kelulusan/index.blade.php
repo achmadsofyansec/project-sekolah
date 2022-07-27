@@ -1,200 +1,102 @@
-@extends('layouts.auth_layout')
-@section('page', 'Kelulusan')
-@section('class-body', 'login-page')
-@section('content-auth')
-<div class="wrapper">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-12">
-            <!-- Widget: user widget style 1 -->
-            <div class="card card-widget widget-user">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-info">
-                <br>
-                <br>
-                <br>
-                <div class="widget-user-image">
-                  <img class="profile-user-img  elevation-2" >
-                </div>
-                <br>
-                <br>
-                <br>
-                <div class="description-block mt-4">
-                  <h4 class="m-0 text-white" style="text-shadow: 2px 2px 4px #black;">
-                    <b>
-                      nama seokolah
-                    </b>
-                  </h4>
-                  <span class="description-text">
-                    <b>SISTEM INFORMASI KELULUSAN
-                      <br>TAHUN 
-                      2022
-                    </b>
-                  </span>
-                </div>
-              </div>
-              <div class="card-body" >
-                <div id="clock" class="lead text-uppercase" style="font-weight:bold;color:red;">
-                </div>
-                <div class="row"id="xpengumuman" >
-                  <div class="col-md-12">
-                    nomor
-                    <div class="row">
-                      <div class="col-md-4">
-                      <!-- Widget: user widget style 2 -->
-                      <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="card-footer p-0">
-                          <ul class="nav flex-column ">
-                            <li class="nav-item bg-navy">
-                              <a href="#" class="nav-link">
-                                <i class="fad fa-bookmark"></i>
-                                <b>INFORMASI</b>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="#" class="nav-link text-danger">
-                                informasi_kelulusan 
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                informasi_lain 
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="aplikasi sederhana untuk menampilkan pengumuman hasil ujian nasional secara online">
+    <meta name="author" content="slamet.bsan@gmail.com">
+    <title>Pengumuman Kelulusan</title>
+    <link href="{{ asset('public/plugins/theme-kelulusan/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/plugins/theme-kelulusan/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/plugins/theme-kelulusan/css/kelulusan.css') }}" rel="stylesheet">
+</head>
 
-                        <a class="btn btn-danger btn-block float-right"><i class="fa fa-undo"> </i> Kembali</a>
-                        <!-- /.widget-user -->
-                      </div>
-                      <div class="col-md-8">
-                            <table class="table table-bordered table-hover table-striped dataTable no-footer responsive">
-                              <tr>
-                                <td>
-                                  <b>Nomor Ujian</b>
-                                    </td>
-                                <td>
-                                  <b>
-                                    no_ujian</b>
-                                    </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <b>Nama Siswa</b>
-                                    </td>
-                                <td><b>
-                                  nama_siswa</b>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <b>Jurusan</b>
-                                    </td>
-                                <td class="text-uppercase"><b>
-                                  jurusan</b>
-                                </td>
-                              </tr>
-                            </table>
-                            <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped dataTable no-footer ">
-                              <thead>
-                                <tr class="bg-navy text-center">
-                                  <th colspan="4">HASIL NILAI UN
-                                  </th>
-                                </tr>
-                                <tr class="bg-info text-center">
-                                  <th>Bahasa Indonesia
-                                  </th>
-                                  <th>Bahasa Inggris
-                                  </th>
-                                  <th>Matematika
-                                  </th>
-                                  <th>Kejuruan
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody class="text-center text-navy">
-                                <td class="text-danger">
-                                  <b>nilai_indo</b>
-                                </td>
-                                <td class="text-danger">
-                                  <b>nilai_eng</b>
-                                </td>
-                                <td class="text-danger">
-                                  <b>nilai_mtk</b>
-                                </td>
-                                <td class="text-danger">
-                                  <b>nilai_kejurusan</b>
-                                </td>
-                              </tbody>
-                            </table>
-                            </div>
-                      
-                      <div class="row">
-                      <div class="col-md-4">
-                      </div> 
-                      <div class="col-md-4">
-                        <div class="card card-widget widget-user">
-                          <!-- Add the bg color to the header using any of the bg-* classes -->
-                          <div class="widget-user-header bg-info">
-                            <h3 class="widget-user-username">
-                              <b>DATA INFORMASI KELULUSAN
-                              </b>
-                            </h3>
-                            <h5 class="widget-user-desc">
-                              <hr>
-                            </h5>
-                          </div>
-                          <div class="widget-user-image">
-                            <img class="img-rounded elevation-2">
-                          </div>
-                          <br>
-                          <div class="card-footer">
-                            <div class="row">
-                              <form class="lockscreen-credentials">
-                                <div class=t" name="nomor" class="form-control bg-navy text-white btn-lg" data-mask="9-99-99-99-9999-9999-9" placeholder="Nomor Ujian" required>
-                                  <div class="input-group-append">
-                                    <button type="submit" name="submit" class="btn bg-warning ">
-                                      <i class="fas fa-arrow-right text-muted">
-                                      </i>
-                                    </button>
-                                  </div>
-                                </div>
-                                <font size="1" class="text-navy" style="text-shadow: 2px 2px 4px #827e7e">
-                                  <i>*  Silakan Masukan Nomor Peserta Ujian 
-                                  </i>
-                                </font>
-                                <br>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                      </div> 
-                    </div>
-                      </div>
-
-                    </div>
-                                      </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <hr>
-              <div class="row" >
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                </div>
-              </div>
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="">INFO KELULUSAN </a>
             </div>
-            <!-- /.widget-user -->
-          </div>
-          <div class="col-md-2" >
-          </div>
         </div>
-@endsection
+    </nav>
+    
+    <div class="container">
+        <h2>Pengumuman Kelulusan 2022</h2>
+    <!-- countdown -->
+    
+    <div id="clock" class="lead" style="font-weight:bold;color:red;"></div>
+    
+    <div id="xpengumuman">
+      <table class="table table-bordered">
+        <tr><td>Nomor Ujian</td><td>{{ $kelulusan->nama }}</td></tr>
+        <tr><td>Nama Siswa</td><td>{{ $kelulusan->nama }}</td></tr>
+        <tr><td>Status</td><td>lulus</td></tr>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Bahasa Indonesia</th>
+          <th>Bahasa Inggris</th>
+          <th>Matematika</th>
+          <th>Kejuruan</th>
+        </tr>
+        </thead>
+        <tbody>
+          <td>90</td>
+          <td>90</td>
+          <td>90</td>
+          <td>90</td>
+        </tbody>
+      </table>
+      
+        <p>Masukkan nomor ujianmu pada form yang disediakan.</p>
+        
+        <form action="kelulusan/cari" method="GET">
+            <div class="input-group">
+                <input type="text" name="nomor" class="form-control" placeholder="Nomor Ujian" value="{{ old('cari') }}" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit" name="submit" value="cari">Periksa!</button>
+                </span>
+            </div>
+        </form>
+
+        <!-- <table border="1">
+          <tr>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Umur</th>
+            <th>Alamat</th>
+          </tr>
+          @foreach($kelulusan as $p)
+          <tr>
+            <td>{{ $p->nama }}</td>
+            <td>{{ $p->nik }}</td>
+            <td>umur</td>
+            <td>alamat</td>
+          </tr>
+          @endforeach -->
+      </table>
+    </div>
+    </div><!-- /.container -->
+  
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">&copy;</p>
+    </div>
+  </footer>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ asset('public/plugins/theme-kelulusan/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/theme-kelulusan/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/theme-kelulusan/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('public/plugins/theme-kelulusan/js/jasny-bootstrap.min.js') }}"></script>
+</body>
+</html>

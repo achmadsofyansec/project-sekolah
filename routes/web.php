@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Data_siswaController;
+use App\Http\Controllers\KelulusanController;
+use App\Http\Controllers\PengaturanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,9 @@ Route::get('/datasiswa', [Data_siswaController::class, 'index']);
 Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
 Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
 Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
-Route::get('/pengaturan',[PageController::class,'view_pengaturan']);
+Route::get('/pengaturan',[PengaturanController::class,'index']);
+Route::get('/kelulusan',[KelulusanController::class,'index']);
+Route::get('/kelulusan/cari',[KelulusanController::class,'cari']);
 
 // Route::get('/kelulusan', function () {
 //     return view('kelulusan.index');
