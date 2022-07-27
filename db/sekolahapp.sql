@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.7 (64 bit)
-MySQL - 10.5.9-MariaDB : Database - sekolahapp
+SQLyog Community v13.0.1 (64 bit)
+MySQL - 10.6.5-MariaDB : Database - sekolahapp
 *********************************************************************
 */
 
@@ -39,8 +39,7 @@ CREATE TABLE `data_gurus` (
   `jenis_guru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `data_gurus_email_unique` (`email`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_gurus` */
@@ -52,6 +51,10 @@ DROP TABLE IF EXISTS `data_ortus`;
 CREATE TABLE `data_ortus` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+<<<<<<< HEAD
+=======
+  `id_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 840b520bbeb43f7b59e06c372ce6ec5018462686
   `nama_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tmp_lahir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lhr_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -67,7 +70,7 @@ CREATE TABLE `data_ortus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_ortus` */
 
@@ -103,11 +106,31 @@ CREATE TABLE `data_siswas` (
   `status_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `data_siswas_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_siswas` */
+
+/*Table structure for table `ekstrakulikulers` */
+
+DROP TABLE IF EXISTS `ekstrakulikulers`;
+
+CREATE TABLE `ekstrakulikulers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kode_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wajib_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `ekstrakulikulers` */
+
+insert  into `ekstrakulikulers`(`id`,`kode_ekstra`,`nama_ekstra`,`desc_ekstra`,`status_ekstra`,`wajib_ekstra`,`created_at`,`updated_at`) values 
+(1,'EK-001','Kesenian Tari','Ekstra Tari Untuk Kesenian Tari','Aktif','Tidak Wajib','2022-07-27 02:15:33','2022-07-27 02:21:26');
 
 /*Table structure for table `failed_jobs` */
 
@@ -239,7 +262,11 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 840b520bbeb43f7b59e06c372ce6ec5018462686
 
 /*Data for the table `migrations` */
 
@@ -261,9 +288,17 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (53,'2022_07_23_055106_create_tahun_ajarans_table',8),
 (54,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
 (65,'2022_07_23_055445_create_mata_pelajarans_table',9),
+<<<<<<< HEAD
 (66,'2022_07_23_061916_create_data_siswas_table',9),
 (67,'2022_07_23_061930_create_data_gurus_table',9),
 (68,'2022_07_23_061955_create_data_ortus_table',9);
+=======
+(70,'2022_07_23_061916_create_data_siswas_table',10),
+(71,'2022_07_23_061930_create_data_gurus_table',10),
+(72,'2022_07_23_061955_create_data_ortus_table',10),
+(73,'2022_07_27_014724_create_ekstrakulikulers_table',11),
+(74,'2022_07_27_063906_create_predikats_table',12);
+>>>>>>> 840b520bbeb43f7b59e06c372ce6ec5018462686
 
 /*Table structure for table `notifs` */
 
@@ -318,6 +353,23 @@ CREATE TABLE `personal_access_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `personal_access_tokens` */
+
+/*Table structure for table `predikats` */
+
+DROP TABLE IF EXISTS `predikats`;
+
+CREATE TABLE `predikats` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `dari` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sampai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `grade` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `predikats` */
 
 /*Table structure for table `roles` */
 
@@ -388,7 +440,11 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
+<<<<<<< HEAD
 ('OEjMYPbw8VbwVpJV863KQAwHIKTsg38YnsQCcT1u',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNndzWmNmMUhwelp1UGVuUjFsYWE3dlBEZndvSlpDb2pJSE9Tb1g2aCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658813210);
+=======
+('irtLWj6skSHxZSBYaL35oM9x1lbIpik9qhn5YvAb',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTExzU0c5ZlNLMXE5alhRUGpVQk03RVFyZzNLaXhpNVV1cXhxQ0dmYiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrL3BpbmRhaF9rZWxhcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1658906324);
+>>>>>>> 840b520bbeb43f7b59e06c372ce6ec5018462686
 
 /*Table structure for table `tahun_ajarans` */
 
@@ -448,7 +504,7 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`id_role`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'CHOIRUL','admin@sipinter.com',NULL,'$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa','1',NULL,NULL,'2022-07-18 04:37:56'),
+(1,'Admin','admin@sipinter.com',NULL,'$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa','1',NULL,NULL,'2022-07-27 04:25:34'),
 (5,'Administrator','admin@gmail.com',NULL,'$2y$10$iHKGKSXkXhPhQOqFp71F/u34lxryrJv/MmK2B3l0Wu4NAr6QKfAqa','1',NULL,'2022-07-19 03:16:53','2022-07-19 03:16:53');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
