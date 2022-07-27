@@ -39,8 +39,7 @@ CREATE TABLE `data_gurus` (
   `jenis_guru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `data_gurus_email_unique` (`email`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_gurus` */
@@ -52,6 +51,7 @@ DROP TABLE IF EXISTS `data_ortus`;
 CREATE TABLE `data_ortus` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tmp_lahir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lhr_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -67,9 +67,12 @@ CREATE TABLE `data_ortus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_ortus` */
+
+insert  into `data_ortus`(`id`,`nik`,`id_siswa`,`nama_ortu`,`tmp_lahir_ortu`,`tgl_lhr_ortu`,`status_ortu`,`pendidikan_terakhir_ortu`,`pekerjaan_terakhir_ortu`,`domisili_ortu`,`no_tlp_ortu`,`penghasilan_ortu`,`alamat_ortu`,`tmp_tinggal_ortu`,`jns_ortu`,`created_at`,`updated_at`) values 
+(4,'1121','121241','MOCH.CHOLIL','Malang','2022-07-27','Masih Hidup','SD','Buruh','Dalam Negeri','089524610353','1000000','TELUK BAYUR NO.134.6','Milik Sendiri','ayah','2022-07-26 06:49:06','2022-07-26 06:49:06');
 
 /*Table structure for table `data_siswas` */
 
@@ -103,11 +106,31 @@ CREATE TABLE `data_siswas` (
   `status_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `data_siswas_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `data_siswas` */
+
+/*Table structure for table `ekstrakulikulers` */
+
+DROP TABLE IF EXISTS `ekstrakulikulers`;
+
+CREATE TABLE `ekstrakulikulers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kode_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wajib_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `ekstrakulikulers` */
+
+insert  into `ekstrakulikulers`(`id`,`kode_ekstra`,`nama_ekstra`,`desc_ekstra`,`status_ekstra`,`wajib_ekstra`,`created_at`,`updated_at`) values 
+(1,'EK-001','Kesenian Tari','Ekstra Tari Untuk Kesenian Tari','Aktif','Tidak Wajib','2022-07-27 02:15:33','2022-07-27 02:21:26');
 
 /*Table structure for table `failed_jobs` */
 
@@ -239,7 +262,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -261,9 +284,10 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (53,'2022_07_23_055106_create_tahun_ajarans_table',8),
 (54,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
 (65,'2022_07_23_055445_create_mata_pelajarans_table',9),
-(66,'2022_07_23_061916_create_data_siswas_table',9),
-(67,'2022_07_23_061930_create_data_gurus_table',9),
-(68,'2022_07_23_061955_create_data_ortus_table',9);
+(70,'2022_07_23_061916_create_data_siswas_table',10),
+(71,'2022_07_23_061930_create_data_gurus_table',10),
+(72,'2022_07_23_061955_create_data_ortus_table',10),
+(73,'2022_07_27_014724_create_ekstrakulikulers_table',11);
 
 /*Table structure for table `notifs` */
 
@@ -388,7 +412,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('OEjMYPbw8VbwVpJV863KQAwHIKTsg38YnsQCcT1u',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNndzWmNmMUhwelp1UGVuUjFsYWE3dlBEZndvSlpDb2pJSE9Tb1g2aCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658813210);
+('TZaemlY1RWNOBbU5VRbh9nWy3W8g2XqUapdTVVSO',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZEwxWkR3ZjU1RjZMN0UwVDVnM0luQ1FlZFVJcWFBaXFNV1NTaWZYTyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658888507);
 
 /*Table structure for table `tahun_ajarans` */
 
