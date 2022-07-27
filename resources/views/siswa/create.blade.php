@@ -233,33 +233,33 @@
                                                 <label> Data Ayah</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_ayah" id="nik_ayah" class="form-control">
+                                                    <input type="text" name="nik_ayah" id="nik_ayah" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama Ayah</label>
-                                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control">
+                                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control" required>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_ayah" id="tempat_lahir_ayah" class="form-control">
+                                                            <input type="text" name="tempat_lahir_ayah" id="tempat_lahir_ayah" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" class="form-control">
+                                                            <input type="date" name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control">
+                                                    <input type="text" name="status_ayah" id="status_ayah" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_ayah" id="status_pendidikan_ayah" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -269,11 +269,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" name="no_telp_ayah" id="no_telp_ayah" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_ayah" id="domisili_ayah" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -281,15 +285,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan Ayah</label>
-                                                    <input type="text" name="penghasilan_ayah" id="penghasilan_ayah" class="form-control">
+                                                    <input type="text" name="penghasilan_ayah" id="penghasilan_ayah" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Alamat Ayah</label>
-                                                   <textarea name="alamat_ayah" id="alamat_ayah" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                   <textarea name="alamat_ayah" id="alamat_ayah" cols="30" rows="10" placeholder="Alamat" class="form-control" required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ayah" id="status_tmp_ayah" class="form-control">
+                                                    <select name="status_tmp_ayah" id="status_tmp_ayah" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>
@@ -300,33 +304,33 @@
                                                 <label> Data ibu</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_ibu" id="nik_ibu" class="form-control">
+                                                    <input type="text" name="nik_ibu" id="nik_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama ibu</label>
-                                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control">
+                                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_ibu" id="tempat_lahir_ibu" class="form-control">
+                                                            <input type="text" name="tempat_lahir_ibu" id="tempat_lahir_ibu" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" class="form-control">
+                                                            <input type="date" name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control">
+                                                    <input type="text" name="status_ibu" id="status_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_ibu" id="status_pendidikan_ibu" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -336,11 +340,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" name="no_telp_ibu" id="no_telp_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_ibu" id="domisili_ibu" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -348,15 +356,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan ibu</label>
-                                                    <input type="text" name="penghasilan_ibu" id="penghasilan_ibu" class="form-control">
+                                                    <input type="text" name="penghasilan_ibu" id="penghasilan_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Alamat ibu</label>
-                                                   <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                   <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="10" placeholder="Alamat" class="form-control" required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ibu" id="status_tmp_ibu" class="form-control">
+                                                    <select name="status_tmp_ibu" id="status_tmp_ibu" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>
@@ -367,33 +375,33 @@
                                                 <label> Data wali</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_wali" id="nik_wali" class="form-control">
+                                                    <input type="text" name="nik_wali" id="nik_wali" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama wali</label>
-                                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control">
+                                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control" required>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_wali" id="tempat_lahir_wali" class="form-control">
+                                                            <input type="text" name="tempat_lahir_wali" id="tempat_lahir_wali" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_wali" id="tanggal_lahir_wali" class="form-control">
+                                                            <input type="date" name="tanggal_lahir_wali" id="tanggal_lahir_wali" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control">
+                                                    <input type="text" name="status_wali" id="status_ibu" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_wali" id="status_pendidikan_wali" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -403,11 +411,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" name="pekerjaan_wali" id="pekerjaan_wali" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" name="no_telp_wali" id="no_telp_wali" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_wali" id="domisili_wali" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -415,15 +427,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan wali</label>
-                                                    <input type="text" name="penghasilan_wali" id="penghasilan_wali" class="form-control">
+                                                    <input type="text" name="penghasilan_wali" id="penghasilan_wali" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Alamat wali</label>
-                                                   <textarea name="alamat_wali" id="alamat_wali" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                   <textarea name="alamat_wali" id="alamat_wali" cols="30" rows="10" placeholder="Alamat" class="form-control" required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_wali" id="status_tmp_wali" class="form-control">
+                                                    <select name="status_tmp_wali" id="status_tmp_wali" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>

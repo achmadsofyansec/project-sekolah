@@ -38,6 +38,8 @@
         <div class="row-mb-2">
             <div class="container-fluid">
                     <form action="{{ route('siswa.update',$data->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
                         <div class="row">
                         <div class="col-md-4">
                             <div class="card card-outline card-info">
@@ -204,7 +206,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Yang Membiayai Sekolah</label>
-                                                    <select name="jns_kelamin" id="jns_kelamin" class="form-control">
+                                                    <select name="biaya_sekolah" id="biaya_sekolah" class="form-control">
                                                         <option value="">--Pilih Pembiaya--</option>
                                                         <option value="Orang Tua" @if ($data->biaya_sekolah == "Orang Tua")
                                                             {{'selected'}}
@@ -278,200 +280,314 @@
                                                 <label> Data Ayah</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_ayah" id="nik_ayah" class="form-control">
+                                                    <input type="text" name="nik_ayah" @if ($data_ayah != null)
+                                                value="{{$data_ayah->nik}}"
+                                                    @endif id="nik_ayah" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama Ayah</label>
-                                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control">
+                                                    <input type="text" @if ($data_ayah != null)
+                                                    value="{{$data_ayah->nama_ortu}}"
+                                                        @endif name="nama_ayah" id="nama_ayah" class="form-control">
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_ayah" id="tempat_lahir_ayah" class="form-control">
+                                                            <input type="text" @if ($data_ayah != null)
+                                                            value="{{$data_ayah->tmp_lahir_ortu}}"
+                                                                @endif name="tempat_lahir_ayah" id="tempat_lahir_ayah" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" class="form-control">
+                                                            <input type="date" @if ($data_ayah != null)
+                                                            value="{{$data_ayah->tgl_lhr_ortu}}"
+                                                                @endif name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control">
+                                                    <input type="text" @if ($data_ayah != null)
+                                                    value="{{$data_ayah->status_ortu}}"
+                                                        @endif name="status_ayah" id="status_ayah" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_ayah" id="status_pendidikan_ayah" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
-                                                        <option value="SD">SD Sederajat</option>
-                                                        <option value="SMP">SMP Sederajat</option>
-                                                        <option value="SMA">SMA Sederajat</option>
-                                                        <option value="Kuliah">Kuliah</option>
+                                                        
+                                                        <option value="SD" @if ($data_ayah != null && $data_ayah->pendidikan_terakhir_ortu == 'SD')
+                                                        {{'selected'}}
+                                                        @endif>SD Sederajat</option>
+                                                        <option value="SMP"@if ($data_ayah != null && $data_ayah->pendidikan_terakhir_ortu == 'SMP')
+                                                            {{'selected'}}
+                                                            @endif>SMP Sederajat</option>
+                                                        <option value="SMA"@if ($data_ayah != null && $data_ayah->pendidikan_terakhir_ortu == 'SMA')
+                                                            {{'selected'}}
+                                                            @endif>SMA Sederajat</option>
+                                                        <option value="Kuliah"@if ($data_ayah != null && $data_ayah->pendidikan_terakhir_ortu == 'Kuliah')
+                                                            {{'selected'}}
+                                                            @endif>Kuliah</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" @if ($data_ayah != null)
+                                                    value="{{$data_ayah->pekerjaan_terakhir_ortu}}"
+                                                        @endif name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" @if ($data_ayah != null)
+                                                    value="{{$data_ayah->no_tlp_ortu}}"
+                                                        @endif name="no_telp_ayah" id="no_telp_ayah" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_ayah" id="domisili_ayah" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
-                                                        <option value="Dalam Negeri">Luar Negeri</option>
-                                                        <option value="Luar Negeri">Dalam Negeri</option>
+                                                        
+                                                        <option value="Dalam Negeri" @if ($data_ayah != null && $data_ayah->domisili_ortu == 'Dalam Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Luar Negeri</option>
+                                                        <option value="Luar Negeri" @if ($data_ayah != null && $data_ayah->domisili_ortu == 'Luar Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Dalam Negeri</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan Ayah</label>
-                                                    <input type="text" name="penghasilan_ayah" id="penghasilan_ayah" class="form-control">
+                                                    <input type="text" @if ($data_ayah != null)
+                                                    value="{{$data_ayah->penghasilan_ortu}}"
+                                                        @endif name="penghasilan_ayah" id="penghasilan_ayah" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan Ayah</label>
-                                                   <textarea name="alamat_ayah" id="alamat_ayah" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                   <textarea name="alamat_ayah" id="alamat_ayah" cols="30" rows="10" placeholder="Alamat" class="form-control">@if ($data_ayah != null){{$data_ayah->alamat_ortu}}@endif</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
                                                     <select name="status_tmp_ayah" id="status_tmp_ayah" class="form-control">
                                                         <option value="">--Pilih Status--</option>
-                                                        <option value="Milik Sendiri">Milik Sendiri</option>
-                                                        <option value="Kontrak">Kontrak</option>
+                                                        <option value="Milik Sendiri" @if ($data_ayah != null && $data_ayah->tmp_tinggal_ortu == 'Milik Sendiri')
+                                                            {{'selected'}}
+                                                            @endif>Milik Sendiri</option>
+                                                        <option value="Kontrak" @if ($data_ayah != null && $data_ayah->tmp_tinggal_ortu == 'Kontrak')
+                                                            {{'selected'}}
+                                                            @endif>Kontrak</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label> Data ibu</label>
+                                                <label> Data Ibu</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_ibu" id="nik_ibu" class="form-control">
+                                                    <input type="text" name="nik_ibu" @if ($data_ibu != null)
+                                                value="{{$data_ibu->nik}}"
+                                                    @endif id="nik_ibu" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama ibu</label>
-                                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control">
+                                                    <input type="text" @if ($data_ibu != null)
+                                                    value="{{$data_ibu->nama_ortu}}"
+                                                        @endif name="nama_ibu" id="nama_ibu" class="form-control">
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_ibu" id="tempat_lahir_ibu" class="form-control">
+                                                            <input type="text" @if ($data_ibu != null)
+                                                            value="{{$data_ibu->tmp_lahir_ortu}}"
+                                                                @endif name="tempat_lahir_ibu" id="tempat_lahir_ibu" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" class="form-control">
+                                                            <input type="date" @if ($data_ibu != null)
+                                                            value="{{$data_ibu->tgl_lhr_ortu}}"
+                                                                @endif name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control">
+                                                    <input type="text" @if ($data_ibu != null)
+                                                    value="{{$data_ibu->status_ortu}}"
+                                                        @endif name="status_ibu" id="status_ibu" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_ibu" id="status_pendidikan_ibu" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
-                                                        <option value="SD">SD Sederajat</option>
-                                                        <option value="SMP">SMP Sederajat</option>
-                                                        <option value="SMA">SMA Sederajat</option>
-                                                        <option value="Kuliah">Kuliah</option>
+                                                        
+                                                        <option value="SD" @if ($data_ibu != null && $data_ibu->pendidikan_terakhir_ortu == 'SD')
+                                                        {{'selected'}}
+                                                        @endif>SD Sederajat</option>
+                                                        <option value="SMP"@if ($data_ibu != null && $data_ibu->pendidikan_terakhir_ortu == 'SMP')
+                                                            {{'selected'}}
+                                                            @endif>SMP Sederajat</option>
+                                                        <option value="SMA"@if ($data_ibu != null && $data_ibu->pendidikan_terakhir_ortu == 'SMA')
+                                                            {{'selected'}}
+                                                            @endif>SMA Sederajat</option>
+                                                        <option value="Kuliah"@if ($data_ibu != null && $data_ibu->pendidikan_terakhir_ortu == 'Kuliah')
+                                                            {{'selected'}}
+                                                            @endif>Kuliah</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" @if ($data_ibu != null)
+                                                    value="{{$data_ibu->pekerjaan_terakhir_ortu}}"
+                                                        @endif name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" @if ($data_ibu != null)
+                                                    value="{{$data_ibu->no_tlp_ortu}}"
+                                                        @endif name="no_telp_ibu" id="no_telp_ibu" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_ibu" id="domisili_ibu" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
-                                                        <option value="Dalam Negeri">Luar Negeri</option>
-                                                        <option value="Luar Negeri">Dalam Negeri</option>
+                                                        
+                                                        <option value="Dalam Negeri" @if ($data_ibu != null && $data_ibu->domisili_ortu == 'Dalam Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Luar Negeri</option>
+                                                        <option value="Luar Negeri" @if ($data_ibu != null && $data_ibu->domisili_ortu == 'Luar Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Dalam Negeri</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan ibu</label>
-                                                    <input type="text" name="penghasilan_ibu" id="penghasilan_ibu" class="form-control">
+                                                    <input type="text" @if ($data_ibu != null)
+                                                    value="{{$data_ibu->penghasilan_ortu}}"
+                                                        @endif name="penghasilan_ibu" id="penghasilan_ibu" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Penghasilan ibu</label>
-                                                   <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                   <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="10" placeholder="Alamat" class="form-control">@if ($data_ibu != null){{$data_ibu->alamat_ortu}}@endif</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
                                                     <select name="status_tmp_ibu" id="status_tmp_ibu" class="form-control">
                                                         <option value="">--Pilih Status--</option>
-                                                        <option value="Milik Sendiri">Milik Sendiri</option>
-                                                        <option value="Kontrak">Kontrak</option>
+                                                        <option value="Milik Sendiri" @if ($data_ibu != null && $data_ibu->tmp_tinggal_ortu == 'Milik Sendiri')
+                                                            {{'selected'}}
+                                                            @endif>Milik Sendiri</option>
+                                                        <option value="Kontrak" @if ($data_ibu != null && $data_ibu->tmp_tinggal_ortu == 'Kontrak')
+                                                            {{'selected'}}
+                                                            @endif>Kontrak</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label> Data wali</label>
+                                                <label> Data Wali</label>
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input type="text" name="nik_wali" id="nik_wali" class="form-control">
+                                                    <input type="text" name="nik_wali" @if ($data_wali != null)
+                                                value="{{$data_wali->nik}}"
+                                                    @endif id="nik_wali" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nama wali</label>
-                                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control">
+                                                    <label>Nama Wali</label>
+                                                    <input type="text" @if ($data_wali != null)
+                                                    value="{{$data_wali->nama_ortu}}"
+                                                        @endif name="nama_wali" id="nama_wali" class="form-control">
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tempat Lahir</label>
-                                                            <input type="text" name="tempat_lahir_wali" id="tempat_lahir_wali" class="form-control">
+                                                            <input type="text" @if ($data_wali != null)
+                                                            value="{{$data_wali->tmp_lahir_ortu}}"
+                                                                @endif name="tempat_lahir_wali" id="tempat_lahir_wali" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Tanggal Lahir</label>
-                                                            <input type="date" name="tanggal_lahir_wali" id="tanggal_lahir_wali" class="form-control">
+                                                            <input type="date" @if ($data_wali != null)
+                                                            value="{{$data_wali->tgl_lhr_ortu}}"
+                                                                @endif name="tanggal_lahir_wali" id="tanggal_lahir_wali" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control">
+                                                    <input type="text" @if ($data_wali != null)
+                                                    value="{{$data_wali->status_ortu}}"
+                                                        @endif name="status_wali" id="status_wali" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan" id="status_pendidikan" class="form-control">
+                                                    <select name="status_pendidikan_wali" id="status_pendidikan_wali" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
-                                                        <option value="SD">SD Sederajat</option>
-                                                        <option value="SMP">SMP Sederajat</option>
-                                                        <option value="SMA">SMA Sederajat</option>
-                                                        <option value="Kuliah">Kuliah</option>
+                                                        
+                                                        <option value="SD" @if ($data_wali != null && $data_wali->pendidikan_terakhir_ortu == 'SD')
+                                                        {{'selected'}}
+                                                        @endif>SD Sederajat</option>
+                                                        <option value="SMP"@if ($data_wali != null && $data_wali->pendidikan_terakhir_ortu == 'SMP')
+                                                            {{'selected'}}
+                                                            @endif>SMP Sederajat</option>
+                                                        <option value="SMA"@if ($data_wali != null && $data_wali->pendidikan_terakhir_ortu == 'SMA')
+                                                            {{'selected'}}
+                                                            @endif>SMA Sederajat</option>
+                                                        <option value="Kuliah"@if ($data_wali != null && $data_wali->pendidikan_terakhir_ortu == 'Kuliah')
+                                                            {{'selected'}}
+                                                            @endif>Kuliah</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan" id="pekerjaan" class="form-control">
+                                                    <input type="text" @if ($data_wali != null)
+                                                    value="{{$data_wali->pekerjaan_terakhir_ortu}}"
+                                                        @endif name="pekerjaan_wali" id="pekerjaan_wali" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>No Telp</label>
+                                                    <input type="text" @if ($data_wali != null)
+                                                    value="{{$data_wali->no_tlp_ortu}}"
+                                                        @endif name="no_telp_wali" id="no_telp_wali" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili" id="domisili" class="form-control">
+                                                    <select name="domisili_wali" id="domisili_wali" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
-                                                        <option value="Dalam Negeri">Luar Negeri</option>
-                                                        <option value="Luar Negeri">Dalam Negeri</option>
+                                                        
+                                                        <option value="Dalam Negeri" @if ($data_wali != null && $data_wali->domisili_ortu == 'Dalam Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Luar Negeri</option>
+                                                        <option value="Luar Negeri" @if ($data_wali != null && $data_wali->domisili_ortu == 'Luar Negeri')
+                                                            {{'selected'}}
+                                                            @endif>Dalam Negeri</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Penghasilan wali</label>
-                                                    <input type="text" name="penghasilan_wali" id="penghasilan_wali" class="form-control">
+                                                    <label>Penghasilan Wali</label>
+                                                    <input type="text" @if ($data_wali != null)
+                                                    value="{{$data_wali->penghasilan_ortu}}"
+                                                        @endif name="penghasilan_wali" id="penghasilan_wali" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Penghasilan wali</label>
-                                                   <textarea name="alamat_wali" id="alamat_wali" cols="30" rows="10" placeholder="Alamat" class="form-control"></textarea>
+                                                    <label>Penghasilan Wali</label>
+                                                   <textarea name="alamat_wali" id="alamat_wali" cols="30" rows="10" placeholder="Alamat" class="form-control">@if ($data_wali != null){{$data_wali->alamat_ortu}}@endif</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
                                                     <select name="status_tmp_wali" id="status_tmp_wali" class="form-control">
                                                         <option value="">--Pilih Status--</option>
-                                                        <option value="Milik Sendiri">Milik Sendiri</option>
-                                                        <option value="Kontrak">Kontrak</option>
+                                                        <option value="Milik Sendiri" @if ($data_wali != null && $data_wali->tmp_tinggal_ortu == 'Milik Sendiri')
+                                                            {{'selected'}}
+                                                            @endif>Milik Sendiri</option>
+                                                        <option value="Kontrak" @if ($data_wali != null && $data_wali->tmp_tinggal_ortu == 'Kontrak')
+                                                            {{'selected'}}
+                                                            @endif>Kontrak</option>
                                                     </select>
                                                 </div>
                                             </div>

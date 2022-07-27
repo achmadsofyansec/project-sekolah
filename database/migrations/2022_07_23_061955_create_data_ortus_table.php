@@ -16,6 +16,7 @@ class CreateDataOrtusTable extends Migration
         Schema::create('data_ortus', function (Blueprint $table) {
             $table->id();
             $table->string('nik');
+            $table->string('id_siswa');
             $table->string('nama_ortu');
             $table->string('tmp_lahir_ortu');
             $table->string('tgl_lhr_ortu');

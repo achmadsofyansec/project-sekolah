@@ -27,7 +27,7 @@ class CreateDataGurusTable extends Migration
             $table->string('kecamatan');
             $table->string('no_hp');
             $table->string('no_telp');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('agama');
             $table->string('kewarganegaraan');
             $table->string('jabatan');

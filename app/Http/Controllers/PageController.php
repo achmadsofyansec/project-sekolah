@@ -60,9 +60,7 @@ class PageController extends Controller
     public function view_input_ujian(){
         return view('nilai.input_nilai.ujian.index');
     }
-    public function view_ekstra(){
-        return view('ekstrakulikuler.index');
-    }
+    
     public function view_pindah(){
         return view('pindah_kelas.index');
     }

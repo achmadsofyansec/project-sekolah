@@ -28,7 +28,7 @@ class CreateDataSiswasTable extends Migration
             $table->string('hobi');
             $table->string('cita_cita');
             $table->string('no_hp');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('biaya_sekolah');
             $table->string('kebutuhan_disabilitas');
             $table->string('kebutuhan_khusus');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
@@ -52,7 +53,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/input_rapor',[PageController::class,'view_input_rapor'])->name('input_rapor');
         Route::get('/input_ujian',[PageController::class,'view_input_ujian'])->name('input_ujian');
         //Ekstrakulikuler
-        Route::get('/ekstrakulikuler',[PageController::class,'view_ekstra'])->name('ekstrakulikuler');
+        Route::resource('ekstrakulikuler',EkstrakulikulerController::class);
         //Pindah / Naik Kelas
         Route::get('/pindah_kelas',[PageController::class,'view_pindah'])->name('pindah_kelas');
         
