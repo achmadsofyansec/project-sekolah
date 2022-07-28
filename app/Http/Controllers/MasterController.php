@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Sumber;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -27,8 +28,15 @@ class MasterController extends Controller
         return view('master.sumber',compact('sumber_buku'));
     }
 
+    public function siswa()
+    {
+        $data_siswa=Siswa::all();
+        return view('siswa.siswa',compact('data_siswa'));
+    }
+
     public function buku_save()
     {
     		return view();
     }
+
 }

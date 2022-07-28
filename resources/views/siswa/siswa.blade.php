@@ -30,7 +30,7 @@
           <div class="animated fadeInUp col-12">
             <div class="card card-navy card-outline">
               <div class="card-header">
-               <form role="form" action="<?php echo url('/'); ?>siswa/proses_tampil_siswa" method="post">
+               <form role="form" action="<?php echo url('/'); ?>/siswa/proses_tampil_siswa" method="post">
                             <div class="row">
                                 <div class="form-group col-3">
                                     <select class="form-control select2 text-navy" name="id_kelas" required>
@@ -59,18 +59,21 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($data_siswa as $item)
+                    <?php $i=1 ?>
                     <tr style="text-align:center;">
-                      <td class="text-sm" >no</td>
-                      <td class="text-sm">nis</td>
-                      <td class="text-sm" style="text-align:left;">nama_siswa</td>
-                      <td class="text-sm">jenis_kelamin</td>
-                      <td class="text-sm"></td>
-                      <td class="text-sm">nama_kelas</td>
-                      <td class="text-sm" style="text-align:center;">angkatan</td>
+                      <td class="text-sm" ><?php echo $i++ ?></td>
+                      <td class="text-sm">{{$item['nis']}}</td>
+                      <td class="text-sm" style="text-align:left;">{{$item['nama_siswa']}}</td>
+                      <td class="text-sm">{{$item['jenis_kelamin']}}</td>
+                      <td class="text-sm">{{$item['tanggal_lahir']}}</td>
+                      <td class="text-sm">{{$item["id_kelas"]}}</td>
+                      <td class="text-sm" style="text-align:center;">{{$item['angkatan']}}</td>
                       <td style="text-align:center;">
                         <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

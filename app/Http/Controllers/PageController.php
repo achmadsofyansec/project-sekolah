@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
 use App\Models\Buku;
+use App\Models\Peminjaman;
+use App\Models\Pengunjung;
 
 class PageController extends Controller
 {
@@ -35,19 +37,11 @@ class PageController extends Controller
     {
         return view('transaksi.pengembalian');
     }
-    public function daftar_peminjaman()
-    {
-        return view('transaksi.daftar_peminjaman');
-    }
-
-    public function siswa()
-    {
-        return view('siswa.siswa');
-    }
 
     public function laporan_peminjaman()
     {
-        return view('laporan.peminjaman');
+        $laporan_peminjaman=Peminjaman::all();
+        return view('laporan.peminjaman',compact('laporan_peminjaman'));
     }
 
     public function laporan_buku()
@@ -57,7 +51,9 @@ class PageController extends Controller
 
     public function laporan_pengunjung()
     {
-        return view('laporan.pengunjung');
+        $laporan_pengunjung=Pengunjung::all();
+        $laporan_peminjaman=Peminjaman::all();
+        return view('laporan.pengunjung',compact('laporan_pengunjung','laporan_peminjaman'));
     }
 
     public function password()
@@ -73,11 +69,6 @@ class PageController extends Controller
     public function sumber_tambah()
     {
         return view('master.sumber_tambah');
-    }
-
-    public function data_denda()
-    {
-        return view('master.data_denda');
     }
 
     public function siswa_detail()

@@ -50,18 +50,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                   
+                    @foreach ($daftar_peminjaman as $item)
+                      <?php $i = 1 ?>
                                     <tr>
-                                        <td>no</td>
+                                        <td><?php echo $i++ ?></td>
                                         <td>nama_siswa</td>
                                         <td>kode_buku</td>
                                         <td>judul_buku</td>
                                         <td>jumlah</td>
                                         <td></td>
+                                        <td></td>
+                                        <td><?php if ($item['status_input'] == 1) {
+                                          echo "ada";
+                                        } else {
+                                          echo "Belum";
+                                        } ?></td>
+                                        <td></td>
                                         <td>
+                                          <td style="text-align:center; ">
+                                      <div class="btn-group btn-group-xs">
+                                        <a class="btn bg-navy btn-xs detail-buku" href="#" data-toggle="modal" data-target="#modalView" data-id_buku=""><i class="fa fa-eye"> </i></a>
+                                        <a class="btn btn-danger btn-xs" href=""><i class="fa fa-edit"> </i></a>
+                                    </div>
                                         </div>
                                         </td>
                                     </tr>
+                      @endforeach
                   </tbody>
                 </table>
               </div>
