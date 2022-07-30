@@ -19,7 +19,8 @@ class SekolahController extends Controller
         $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
         $kecamatan = DB::table('kecamatan')->select(['kecamatan.*'])->get();
         $kelurahan = DB::table('kelurahan')->select(['kelurahan.*'])->get();
-        return view('sekolah.index',compact(['data','kecamatan','kelurahan']));
+        $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+        return view('sekolah.index',compact(['data','kecamatan','kelurahan','img']));
     }
 
     /**
@@ -99,7 +100,7 @@ class SekolahController extends Controller
          $file = $request->file('logo_sekolah');
          if($file != null){
             $name = $request->file('logo_sekolah')->getClientOriginalName();
-            $file->move(public_path('uploads'),$name);
+            $file->move('../assets/uploads',$name);
             $data = [
                 'kode_sekolah' => $request->kode_sekolah,
                 'nsm' =>  $request->nsm,
