@@ -47,8 +47,9 @@
                                     <th>Kejuruan</th>
                                     <th>Status</th>
                                 </thead>
-                                @foreach($siswa as $siswa)
+                                 @foreach($siswa as $siswa)
                                 <tbody>
+                                  <tr>
                                     <td>{{ $siswa->id }}</td>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nama }}</td>
@@ -58,7 +59,8 @@
                                     <td>{{ $siswa->ipa }}</td>
                                     <td>{{ $siswa->kejurusan }}</td>
                                     <td>{{ $siswa->status }}</td>
-                                </tbody>
+                                  </tr>
+                              </tbody>
                                 @endforeach
                             </table>
                        </div>

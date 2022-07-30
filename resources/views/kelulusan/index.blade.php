@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="">INFO KELULUSAN </a>
+              <a class="navbar-brand" href="">INFO KELULUSAN 2022</a>
             </div>
         </div>
     </nav>
@@ -35,10 +35,20 @@
     <div id="clock" class="lead" style="font-weight:bold;color:red;"></div>
     
     <div id="xpengumuman">
+      
       <table class="table table-bordered">
-        <tr><td>Nomor Ujian</td><td>{{ $kelulusan->nama }}</td></tr>
-        <tr><td>Nama Siswa</td><td>{{ $kelulusan->nama }}</td></tr>
-        <tr><td>Status</td><td>lulus</td></tr>
+        <thead>
+        <tr>
+          <th>Nomor Ujian</th>
+          <th>Nama Siswa</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+          <td>7252524222542</td>
+          <td>Achmad Sofyan Hadi</td>
+          <td>Lulus</td>
+        </tbody>
       </table>
       <table class="table table-bordered">
         <thead>
@@ -50,12 +60,13 @@
         </tr>
         </thead>
         <tbody>
-          <td>90</td>
-          <td>90</td>
-          <td>90</td>
-          <td>90</td>
+          <td>89</td>
+          <td>96</td>
+          <td>86</td>
+          <td>83</td>
         </tbody>
       </table>
+      
       
         <p>Masukkan nomor ujianmu pada form yang disediakan.</p>
         
@@ -67,33 +78,22 @@
                 </span>
             </div>
         </form>
-
-        <!-- <table border="1">
-          <tr>
-            <th>Nama</th>
-            <th>Jabatan</th>
-            <th>Umur</th>
-            <th>Alamat</th>
-          </tr>
-          @foreach($kelulusan as $p)
-          <tr>
-            <td>{{ $p->nama }}</td>
-            <td>{{ $p->nik }}</td>
-            <td>umur</td>
-            <td>alamat</td>
-          </tr>
-          @endforeach -->
       </table>
     </div>
     </div><!-- /.container -->
   
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">&copy;</p>
+      <p class="text-muted"><strong>Copyright &copy; 2014-2021 <a href="#">Jamanu Maarif NU</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0</p>
     </div>
   </footer>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script>
+    </script>
     <script src="{{ asset('public/plugins/theme-kelulusan/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/plugins/theme-kelulusan/js/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('public/plugins/theme-kelulusan/js/bootstrap.min.js') }}"></script>

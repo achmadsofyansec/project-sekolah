@@ -10,7 +10,7 @@ class Data_siswaController extends Controller
 {
     public function index()
     {
-        $siswa = data_siswa::get();
+        $siswa = data_siswa::latest()->get();
         // return view('sekolah.index', ['kelulusan' => $kelulusan]);
         return view('kelulusan.datasiswa', compact('siswa'));
     }

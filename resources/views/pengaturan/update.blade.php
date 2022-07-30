@@ -34,7 +34,9 @@
                           </div>
                           <!-- /.card-header -->
                           <!-- form start -->
-                          <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" action="">
+                          <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" action="{{ url('update-pengaturan/.$pengaturan->id) }}">
+                            @csrf
+                            @method('PUT')
 
                               <div class="card-body">
 
@@ -43,32 +45,32 @@
                                       <div class="col-sm-12"><center>
                                           <label class="col-sm-5 col-form-label text-uppercase">File Header Banner</label>
                                             </center><br>
-                                          <input type="file" class="form-control" name="file_banner" readonly>
+                                          <input type="file" class="form-control" name="file_banner">
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tanggal Pengumuman</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tanggal_pengumuman" value="{{ $pengaturan->pengumuman }}" readonly />
+                                          <input type="text" class="form-control" name="tanggal_pengumuman" value="{{ $pengaturan->pengumuman }}" required />
                                       </div>
                                   </div>
 
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tahun Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tahun" value="{{ $pengaturan->tahun }}" readonly />
+                                          <input type="text" class="form-control" name="tahun" value="{{ $pengaturan->tahun }}" required />
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Informasi Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_kelulusan"  readonly />{{ $pengaturan->info_kelulusan }}</textarea>
+                                          <textarea type="text" class="form-control" name="informasi_kelulusan"  required />{{ $pengaturan->info_kelulusan }}</textarea>
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">{{ $pengaturan->info_lainya }}</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_lain" readonly /></textarea>
+                                          <textarea type="text" class="form-control" name="informasi_lain" required /></textarea>
                                       </div>
                                   </div>
 
