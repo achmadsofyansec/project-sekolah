@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\data_ortu;
 use App\Models\data_siswa;
+use App\Models\jurusan;
+use App\Models\Kelas;
+use App\Models\tahun_ajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class SiswaController extends Controller
@@ -26,7 +29,10 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        $kelas = Kelas::latest()->get();        
+        $tahun_ajaran = tahun_ajaran::latest()->get();
+        $jurusan = jurusan::latest()->get();
+        return view('siswa.create',compact(['kelas','jurusan','tahun_ajaran']));
     }
     public function store(Request $request)
     {

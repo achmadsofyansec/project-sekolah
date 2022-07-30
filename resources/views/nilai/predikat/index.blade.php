@@ -38,10 +38,33 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Dari</th>
+                                    <th>Sampai</th>
+                                    <th>Grade</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($predikat as $item)
+                                  <tr>
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{$item->dari}}</td>
+                                    <td>{{$item->sampai}}</td>
+                                    <td>{{$item->grade}}</td>
+                                    <td>{{$item->keterangan}}</td>
+                                    <td>
+                                      <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                      action="{{ route('predikat.destroy',$item->id) }}" method="POST">
+                                      <a href="{{ route('predikat.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                      @csrf
+                                      </form>
+                                    </td>
+                                    </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="6" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

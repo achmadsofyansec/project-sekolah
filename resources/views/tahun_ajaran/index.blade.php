@@ -34,17 +34,42 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{route('tahun_ajaran.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Kode</th>
+                                    <th>Tahun Ajaran</th>
+                                    <th>Semester</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($data as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->kode_tahun_ajaran}}</td>
+                                      <td>{{$item->tahun_ajaran}}</td>
+                                      <td>{{$item->semester}}</td>
+                                      <td>{{$item->status_tahun_ajaran}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('tahun_ajaran.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('tahun_ajaran.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

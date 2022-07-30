@@ -34,17 +34,43 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{route('jadwal.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Mapel</th>
+                                    <th>Guru</th>
+                                    <th>Kelas</th>
+                                    <th>Tahun Ajaran</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                    @forelse ($data as $item)
+                                        <tr>
+                                          <td>{{$loop->index + 1}}</td>
+                                          <td>{{$item->nama_mapel }}</td>
+                                          <td>{{$item->nama }}</td>
+                                          <td>{{$item->nama_kelas }}</td>
+                                          <td>{{$item->tahun_ajaran }} ( Semester {{$item->semester}} ) </td>
+                                            <td>
+                                              <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                              action="{{ route('jadwal.destroy',$item->jadwalid) }}" method="POST">
+                                              <a href="{{ route('jadwal.edit',$item->jadwalid) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                              @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                              </form>
+                                            </td>
+                                          
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                          <td colspan="6" class="text-center text-mute">Tidak Ada Data</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                        </div>

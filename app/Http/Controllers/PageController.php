@@ -21,15 +21,7 @@ class PageController extends Controller
         $mapel = MataPelajaran::latest()->get();
         return view('dashboard',compact(['siswa','guru','kelas','mapel']));
     }
-    public function view_tahunajaran(){
-        return view('tahun_ajaran.index');
-    }
-    public function view_jadwal(){
-        return view('pembelajaran.jadwal.index');
-    }
-    public function view_predikat(){
-        return view('nilai.predikat.index');
-    }
+    
     public function view_absensi(){
         return view('absensi.absen.index');
     }

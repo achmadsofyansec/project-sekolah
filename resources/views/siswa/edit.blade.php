@@ -93,6 +93,9 @@
                                                 <a href="#data_siswa" class="nav-link active" data-toggle="tab">Data Siswa</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a href="#data_belajar" class="nav-link" data-toggle="tab">Aktivitas Belajar</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a href="#data_keluarga" class="nav-link" data-toggle="tab">Data Keluarga</a>
                                             </li>
                                         </ul>
@@ -274,6 +277,39 @@
                                                     </div>
                                                 </div>
                                                 
+                                        </div>
+                                        <div class="tab-pane" id="data_belajar" style="position: relative;">
+                                            <div class="form-group">
+                                                <label>Kelas</label>
+                                                <select name="kelas" id="kelas" class="form-control" required>
+                                                    <option value="">-- Pilih Kelas --</option>
+                                                    @forelse ($kelas as $item)
+                                                        <option value="{{$item->kode_kelas}}" >{{$item->nama_kelas}}</option>
+                                                    @empty
+                                                        
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tahun Ajaran</label>
+                                                <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                                    <option value="">-- Pilih Tahun Ajaran --</option>
+                                                    @forelse ($tahun_ajaran as $item)
+                                                        <option value="{{$item->kode_tahun_ajaran}}" >{{$item->tahun_ajaran}} ( Semester {{$item->semester}}) </option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Jurusan</label>
+                                                <select name="jurusan" id="jurusan" class="form-control" required>
+                                                    <option value="">-- Pilih Jurusan --</option>
+                                                    @forelse ($jurusan as $item)
+                                                        <option value="{{$item->kode_jurusan}}" >{{$item->nama_jurusan}}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="tab-pane" id="data_keluarga" style="position: relative;">
                                             <div class="form-group">

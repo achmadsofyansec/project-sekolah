@@ -5,13 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class predikat extends Model
+class aktivitas_belajar extends Model
 {
     use HasFactory;
-    protected $fillable = [
-      'dari',
-      'sampai',
-      'grade',
-      'keterangan',
-    ];
 }
