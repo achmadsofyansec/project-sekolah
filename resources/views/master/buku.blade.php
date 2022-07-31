@@ -1,19 +1,19 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Data Buku')
 @section('content-app')
-  <!-- Content Wrapper. Contains page content -->
+   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i>Judul</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">Judul</li>
+              <li class="breadcrumb-item active">@yield('page')</li>
             </ol>
           </div>
         </div><!-- /.row -->
@@ -27,12 +27,22 @@
         <!-- /.row -->
         <div class="row">
           <div class="animated fadeInUp col-12">
+            @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+                  @endif
+                  @if(session('success'))
+                  <div class="alert alert-primary">
+                      {{ session('success') }}
+                  </div>
+                  @endif
             <div class="card card-info card-outline">
               <div class="card-header">
-              	<div class="btn-group btn-group-sm">
-               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>/master/tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
+                <div class="btn-group btn-group-sm">
+               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>master/buku_tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
                <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalImport"><i class="fas fa-file-excel"> </i> Import Excel</a>
-               <a class="btn bg-navy btn-sm" href="<?php echo url('master/export'); ?>" ><i class="fa fa-download"> </i> Download Data Buku</a>
+               <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>master/buku_export" target="_blank"><i class="fa fa-download"> </i> Download Data Buku</a>
            </div>
               </div>
               <!-- /.card-header -->
@@ -40,7 +50,7 @@
                 <table id="datatb" class="table table-bordered table-hover table-striped table-sm">
                   <thead>
                     <tr class="text-info bg-navy text-center">
-                       	<th>No</th>
+                        <th>No</th>
                         <th>Kode Buku</th>
                         <th>Judul Buku</th>
                         <th>Pengarang</th>
@@ -52,27 +62,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                                @foreach ($data_buku as $item) 
-                                <?php $i = 1?>
-                                
                                 <tr class="text-sm">
-                                    <td><?php echo $i++ ?></td>
-                                    <td>{{$item['kode_buku']}}</td>
-                                    <td>{{$item['judul_buku']}}</td>
-                                    <td>{{$item['pengarang']}}</td>
-                                    <td>{{$item['penerbit']}}</td>
-                                    <td>{{$item['lokasi']}}</td>
-                                    <td>{{$item['jumlah_buku']}}</td>
-                                    <td>{{$item['stok']}}</td>
-                                    <td style="text-align:center; ">
-                                    	<div class="btn-group btn-group-xs">
-                                        <a class="btn bg-navy btn-xs detail-buku" href="#" data-toggle="modal" data-target="#modalView" data-id_buku=""><i class="fa fa-eye"> </i></a>
-                                        <a class="btn btn-danger btn-xs" href=""><i class="fa fa-edit"> </i></a>
+                                      <div class="btn-group btn-group-xs">
                                     </div>
                                     </td>
                                 </tr>
-                                  @endforeach
-                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->

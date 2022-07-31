@@ -27,24 +27,18 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="<?php echo base_url(); ?>app/password_save" method="post">
-                 <?php if($this->session->flashdata('error')) { ?>
+              <form class="form-horizontal" role="form" action="<?php echo url('/'); ?>app/password_save" method="post">
                 <div class="alert alert-danger" >
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="fa fa-remove"></i>
                   </button>
-                  <span style="text-align: left;"><?php echo $this->session->flashdata('error'); ?></span>
                 </div>
-                          <?php } ?>
                           
-                          <?php if ($this->session->flashdata('success')) { ?>
                                   <div class="alert alert-success">
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                           <i class="fa fa-remove"></i>
                                       </button>
-                                      <span style="text-align: left;"><?php echo $this->session->flashdata('success'); ?></span>
                                   </div>
-                              <?php } ?>
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Password Lama</label>
@@ -62,7 +56,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                   <div class="btn-group btn-group-sm">
-                  <a class="btn btn-danger" href="<?php echo base_url(); ?>home"><i class="fa fa-arrow-left"> </i> Kembali</a>
+                  <a class="btn btn-danger" href="<?php echo url('/'); ?>home"><i class="fa fa-arrow-left"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 </div>

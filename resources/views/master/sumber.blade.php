@@ -42,12 +42,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach ($sumber_buku as $item)
 
-                        <?php $i = 1 ?>
                                     <tr>
-                                        <td  style="text-align:center;width:20px;"><?php echo $i++ ?></td>
-                                        <td>{{$item['nama_sumber']}}</td>
+                                        <td  style="text-align:center;width:20px;">1</td>
+                                        <td>Khoirul</td>
                                         <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
                                             <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>
@@ -55,7 +53,6 @@
                                         </div>
                                         </td>
                                     </tr>
-                      @endforeach
                   </tbody>
                 </table>
               </div>

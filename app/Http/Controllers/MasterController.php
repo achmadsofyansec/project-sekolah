@@ -12,26 +12,22 @@ class MasterController extends Controller
 {
     public function buku()
     {
-        $data_buku=Buku::all();
-        return view('master.buku',compact('data_buku'));
+        return view('master.buku');
     }
 
     public function kategori()
     {
-    	$kategori_buku=Kategori::all();
-        return view('master.kategori',compact('kategori_buku'));
+        return view('master.kategori');
     }
 
     public function sumber()
     {
-    	$sumber_buku=Sumber::all();
-        return view('master.sumber',compact('sumber_buku'));
+        return view('master.sumber');
     }
 
     public function siswa()
     {
-        $data_siswa=Siswa::all();
-        return view('siswa.siswa',compact('data_siswa'));
+        return view('siswa.siswa');
     }
 
     public function buku_save()

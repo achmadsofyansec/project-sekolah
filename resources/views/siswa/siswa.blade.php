@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i>judul</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i>  Siswa</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">judul</li>
+              <li class="breadcrumb-item active">Siswa</li>
             </ol>
           </div>
         </div><!-- /.row -->
@@ -59,21 +59,40 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($data_siswa as $item)
-                    <?php $i=1 ?>
                     <tr style="text-align:center;">
-                      <td class="text-sm" ><?php echo $i++ ?></td>
-                      <td class="text-sm">{{$item['nis']}}</td>
-                      <td class="text-sm" style="text-align:left;">{{$item['nama_siswa']}}</td>
-                      <td class="text-sm">{{$item['jenis_kelamin']}}</td>
-                      <td class="text-sm">{{$item['tanggal_lahir']}}</td>
-                      <td class="text-sm">{{$item["id_kelas"]}}</td>
-                      <td class="text-sm" style="text-align:center;">{{$item['angkatan']}}</td>
+                      <td class="text-sm" >1</td>
+                      <td class="text-sm" >00989237</td>
+                      <td class="text-sm" >Sofyan Hadi</td>
+                      <td class="text-sm" >Laki Laki</td>
+                      <td class="text-sm" >03 Juni 2005</td>
+                      <td class="text-sm" >TKJ</td>
+                      <td class="text-sm" >2016</td>
+                      <td style="text-align:center;">
+                        <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
+                      </td>
+                    </tr><tr style="text-align:center;">
+                      <td class="text-sm" >2</td>
+                      <td class="text-sm" >00875421</td>
+                      <td class="text-sm" >Alilia Hadi</td>
+                      <td class="text-sm" >Perempuan</td>
+                      <td class="text-sm" >12 maret 2006</td>
+                      <td class="text-sm" >METRO</td>
+                      <td class="text-sm" >274</td>
+                      <td style="text-align:center;">
+                        <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
+                      </td>
+                    </tr><tr style="text-align:center;">
+                      <td class="text-sm" >3</td>
+                      <td class="text-sm" >00875212</td>
+                      <td class="text-sm" >Khoirul Anam</td>
+                      <td class="text-sm" >Laki Laki</td>
+                      <td class="text-sm" >33 januari 1992</td>
+                      <td class="text-sm" >RPL</td>
+                      <td class="text-sm" >1022</td>
                       <td style="text-align:center;">
                         <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
                       </td>
                     </tr>
-                    @endforeach
                   </tbody>
                 </table>
               </div>

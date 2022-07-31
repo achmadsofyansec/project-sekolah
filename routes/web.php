@@ -44,6 +44,6 @@ Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
 Route::get('/laporan/buku',[PageController::class,'laporan_buku']);
 Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
 Route::get('/app/password',[PageController::class,'password']);
-Route::get('/master/data_denda',[PageController::class,'data_denda']);
+Route::get('/master/data_denda',[TransaksiController::class,'data_denda']);
 Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
 Route::PUT('/master/buku_save',[MasterController::class,'buku_save']);

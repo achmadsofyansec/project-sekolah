@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
+use App\Models\Sekolah;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use App\Models\Pengunjung;
+use App\Models\Siswa;
 
 class PageController extends Controller
 {
@@ -40,8 +42,7 @@ class PageController extends Controller
 
     public function laporan_peminjaman()
     {
-        $laporan_peminjaman=Peminjaman::all();
-        return view('laporan.peminjaman',compact('laporan_peminjaman'));
+        return view('laporan.peminjaman');
     }
 
     public function laporan_buku()
@@ -51,9 +52,7 @@ class PageController extends Controller
 
     public function laporan_pengunjung()
     {
-        $laporan_pengunjung=Pengunjung::all();
-        $laporan_peminjaman=Peminjaman::all();
-        return view('laporan.pengunjung',compact('laporan_pengunjung','laporan_peminjaman'));
+        return view('laporan.pengunjung');
     }
 
     public function password()

@@ -53,19 +53,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($laporan_buku as $item)
-                          <?php $i=1 ?>
                                 <tr>
-                                    <td><?php echo $i++ ?></td>
-                                    <td>{{$item['kode_buku']}}</td>
-                                    <td>{{$item['judul_buku']}}</td>
-                                    <td>{{$item['pengarang']}}</td>
-                                    <td>{{$item['penerbit']}}</td>
-                                    <td>{{$item['lokasi']}}</td>
-                                    <td>{{$item['jumlah_buku']}}</td>
+                                    <td>1</td>
+                                    <td>991729</td>
+                                    <td>uwau</td>
+                                    <td>Khoirul</td>
+                                    <td>cv hawari</td>
+                                    <td>lawang</td>
+                                    <td>20</td>
                                    
                                 </tr>
-                          @endforeach
                         </tbody>
                       </table>
                     </div>
