@@ -13,6 +13,18 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
+    public function view_tamu(){
+        return view('tamu.data_tamu.index');
+    }
+    public function view_portal(){
+        return view('tamu.portal_tamu.index');
+    }
+    public function view_agenda(){
+        return view('agenda.index');
+    }
+    public function view_book(){
+        return view('manual_book.index');
+    }
     public function logout(Request $request){
         Auth::logout();
      
