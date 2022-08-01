@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class sanksi_pelanggaran extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_sanksi',
+        'dari_poin',
+        'sampai_poin',
+        'sanksi',
+    ];
 }

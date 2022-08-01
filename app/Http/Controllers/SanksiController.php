@@ -27,6 +27,7 @@ class SanksiController extends Controller
     public function create()
     {
         //
+        return view('pelanggaran.sanksi.create');
     }
 
     /**
@@ -38,6 +39,34 @@ class SanksiController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $this->validate($request,[
+            'kode_sanksi' => ['required'],
+            'dari_poin' => ['required'],
+            'sampai_poin' => ['required'],
+            'sanksi' => ['required'],
+        ]);
+        if($validate){
+            $create = sanksi_pelanggaran::create([
+                'kode_sanksi' => $request->kode_sanksi,
+                'dari_poin' => $request->dari_poin,
+                'sampai_poin' => $request->sampai_poin,
+                'sanksi' => $request->sanksi,
+
+            ]);
+            if($create){
+                return redirect()
+                ->route('sanksi.index')
+                ->with([
+                    'success' => 'Sanksi Has Been Add successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -60,6 +89,8 @@ class SanksiController extends Controller
     public function edit($id)
     {
         //
+        $data = sanksi_pelanggaran::findOrFail($id);
+        return view('pelanggaran.sanksi.edit',compact('data'));
     }
 
     /**
@@ -72,6 +103,35 @@ class SanksiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validate = $this->validate($request,[
+            'kode_sanksi' => ['required'],
+            'dari_poin' => ['required'],
+            'sampai_poin' => ['required'],
+            'sanksi' => ['required'],
+        ]);
+        if($validate){
+            $update = sanksi_pelanggaran::findOrFail($id);
+            $update->update([
+                'kode_sanksi' => $request->kode_sanksi,
+                'dari_poin' => $request->dari_poin,
+                'sampai_poin' => $request->sampai_poin,
+                'sanksi' => $request->sanksi,
+
+            ]);
+            if($update){
+                return redirect()
+                ->route('sanksi.index')
+                ->with([
+                    'success' => 'Sanksi Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -83,5 +143,20 @@ class SanksiController extends Controller
     public function destroy($id)
     {
         //
+        $data = sanksi_pelanggaran::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('sanksi.index')
+            ->with([
+                'success' => 'Sanksi Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

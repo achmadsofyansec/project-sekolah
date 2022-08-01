@@ -27,6 +27,7 @@ class PoinPelanggaranController extends Controller
     public function create()
     {
         //
+        return view('pelanggaran.point.create');
     }
 
     /**
@@ -38,6 +39,32 @@ class PoinPelanggaranController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $this->validate($request,[
+            'kode_poin_pelanggaran' => ['required'],
+            'nama_poin_pelanggaran' => ['required'],
+            'poin_pelanggaran' => ['required'],
+        ]);
+        if($validate){
+            $create = point_pelanggaran::create([
+                'kode_poin' => $request->kode_poin_pelanggaran,
+                'nama_poin_pelanggaran' => $request->nama_poin_pelanggaran,
+                'poin' => $request->poin_pelanggaran,
+
+            ]);
+            if($create){
+                return redirect()
+                ->route('point_pelanggaran.index')
+                ->with([
+                    'success' => 'Poin Has Been Add successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -60,6 +87,8 @@ class PoinPelanggaranController extends Controller
     public function edit($id)
     {
         //
+        $data = point_pelanggaran::findOrFail($id);
+        return view('pelanggaran.point.edit',compact('data'));
     }
 
     /**
@@ -72,6 +101,33 @@ class PoinPelanggaranController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validate = $this->validate($request,[
+            'kode_poin_pelanggaran' => ['required'],
+            'nama_poin_pelanggaran' => ['required'],
+            'poin_pelanggaran' => ['required'],
+        ]);
+        if($validate){
+            $update = point_pelanggaran::findOrFail($id);
+            $update->update([
+                'kode_poin' => $request->kode_poin_pelanggaran,
+                'nama_poin_pelanggaran' => $request->nama_poin_pelanggaran,
+                'poin' => $request->poin_pelanggaran,
+
+            ]);
+            if($update){
+                return redirect()
+                ->route('point_pelanggaran.index')
+                ->with([
+                    'success' => 'Poin Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -83,5 +139,20 @@ class PoinPelanggaranController extends Controller
     public function destroy($id)
     {
         //
+        $data = point_pelanggaran::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('point_pelanggaran.index')
+            ->with([
+                'success' => 'Poin Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

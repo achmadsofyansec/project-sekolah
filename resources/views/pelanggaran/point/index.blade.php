@@ -34,7 +34,7 @@
                   @endif
                     <div class="card card-outline card-navy">
                        <div class="card-header">
-                       <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                       <a type="button" href="{{route('point_pelanggaran.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">
@@ -47,7 +47,25 @@
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
-    
+                                      @forelse ($poin as $item)
+                                          <tr>
+                                            <td>{{$loop->index + 1}}</td>
+                                            <td>{{$item->kode_poin}}</td>
+                                            <td>{{$item->nama_poin_pelanggaran }}</td>
+                                            <td>{{$item->poin}}</td>
+                                            <td>
+                                              <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                              action="{{ route('point_pelanggaran.destroy',$item->id) }}" method="POST">
+                                              <a href="{{ route('point_pelanggaran.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                              @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                              </form>
+                                            </td>
+                                          </tr>
+                                      @empty
+                                          
+                                      @endforelse
                                     </tbody>
                                 </table>
                            </div>
