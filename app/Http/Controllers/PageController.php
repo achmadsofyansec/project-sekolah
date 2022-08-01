@@ -22,12 +22,6 @@ class PageController extends Controller
         return view('dashboard',compact(['siswa','guru','kelas','mapel']));
     }
     
-    public function view_absensi(){
-        return view('absensi.absen.index');
-    }
-    public function view_perizinan(){
-        return view('absensi.perizinan.index');
-    }
     public function view_lap_absensi(){
         return view('laporan.absensi.index');
     }

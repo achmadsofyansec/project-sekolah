@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelompokMapelController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PredikatController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
@@ -47,8 +49,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('predikat',PredikatController::class);
 
         //Absensi
-        Route::get('/absensi',[PageController::class,'view_absensi'])->name('absensi');
-        Route::get('/perizinan',[PageController::class,'view_perizinan'])->name('perizinan');
+        Route::resource('absensi',AbsensiController::class);
+        Route::resource('perizinan',PerizinanController::class);
 
         //Laporan
         Route::get('/lap_absensi',[PageController::class,'view_lap_absensi'])->name('laporan_absensi');

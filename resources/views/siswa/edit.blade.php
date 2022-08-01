@@ -284,7 +284,9 @@
                                                 <select name="kelas" id="kelas" class="form-control" required>
                                                     <option value="">-- Pilih Kelas --</option>
                                                     @forelse ($kelas as $item)
-                                                        <option value="{{$item->kode_kelas}}" >{{$item->nama_kelas}}</option>
+                                                        <option value="{{$item->kode_kelas}}" @if ($item->kode_kelas == $aktivitas->kode_kelas)
+                                                            {{'selected'}}
+                                                        @endif>{{$item->nama_kelas}}</option>
                                                     @empty
                                                         
                                                     @endforelse
@@ -295,7 +297,8 @@
                                                 <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
                                                     <option value="">-- Pilih Tahun Ajaran --</option>
                                                     @forelse ($tahun_ajaran as $item)
-                                                        <option value="{{$item->kode_tahun_ajaran}}" >{{$item->tahun_ajaran}} ( Semester {{$item->semester}}) </option>
+                                                        <option value="{{$item->kode_tahun_ajaran}}"@if ($item->kode_tahun_ajaran == $aktivitas->kode_tahun_ajaran)
+                                                            {{'selected'}}  @endif>{{$item->tahun_ajaran}} ( Semester {{$item->semester}}) </option>
                                                     @empty
                                                     @endforelse
                                                 </select>
@@ -305,7 +308,8 @@
                                                 <select name="jurusan" id="jurusan" class="form-control" required>
                                                     <option value="">-- Pilih Jurusan --</option>
                                                     @forelse ($jurusan as $item)
-                                                        <option value="{{$item->kode_jurusan}}" >{{$item->nama_jurusan}}</option>
+                                                        <option value="{{$item->kode_jurusan}}" @if ($item->kode_jurusan == $aktivitas->kode_jurusan)
+                                                            {{'selected'}}  @endif>{{$item->nama_jurusan}}</option>
                                                     @empty
                                                     @endforelse
                                                 </select>

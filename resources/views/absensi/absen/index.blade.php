@@ -38,6 +38,7 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th></th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>

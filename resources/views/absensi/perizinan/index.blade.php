@@ -33,9 +33,6 @@
               </div>
               @endif
                 <div class="card card-outline card-info">
-                   <div class="card-header">
-                   <a type="button" href="#" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
-                   </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">

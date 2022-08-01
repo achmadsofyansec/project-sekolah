@@ -7,6 +7,7 @@ use App\Models\data_siswa;
 use App\Models\jurusan;
 use App\Models\Kelas;
 use App\Models\tahun_ajaran;
+use App\Models\aktivitas_belajar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class SiswaController extends Controller
@@ -178,6 +179,15 @@ class SiswaController extends Controller
                 ];
                 $create_wali = data_ortu::create($data_wali);
             }
+            if($request->kelas != null){
+                $data_aktivitas = [
+                    'kode_siswa' => $request->nik,
+                    'kode_kelas' => $request->kelas,
+                    'kode_tahun_ajaran' => $request->tahun_ajaran,
+                    'kode_jurusan' => $request->jurusan,
+                ];
+                $create_activity = aktivitas_belajar::create($data_aktivitas);
+            }
             if($create){
                     return redirect()
                     ->route('siswa.index')
@@ -208,7 +218,12 @@ class SiswaController extends Controller
         $data_ayah = data_ortu::where([['id_siswa','=',$data->nik],['jns_ortu','=','ayah']])->get()->first();
         $data_ibu = data_ortu::where([['id_siswa','=',$data->nik],['jns_ortu','=','ibu']])->get()->first();
         $data_wali = data_ortu::where([['id_siswa','=',$data->nik],['jns_ortu','=','wali']])->get()->first();
-        return view('siswa.edit',compact(['data','img','data_ayah','data_wali','data_ibu']));
+        $kelas = Kelas::latest()->get();
+        $aktivitas = aktivitas_belajar::where([['kode_siswa','=',$data->nik]])->get()->first();
+        $tahun_ajaran = tahun_ajaran::latest()->get();
+        $jurusan = jurusan::latest()->get();
+        return view('siswa.edit',compact(['data','img','data_ayah','data_wali','data_ibu'
+                                        ,'kelas','aktivitas','tahun_ajaran','jurusan']));
         
     }
 
@@ -373,6 +388,20 @@ class SiswaController extends Controller
              $create_wali = data_ortu::create($data_wali);
             }
         }
+        if($request->kelas != null){
+            $data_aktivitas = [
+                'kode_siswa' => $request->nik,
+                'kode_kelas' => $request->kelas,
+                'kode_tahun_ajaran' => $request->tahun_ajaran,
+                'kode_jurusan' => $request->jurusan,
+            ];
+            $update_activity = aktivitas_belajar::where([['kode_siswa','=',$request->nik]])->get()->first();
+            if($update_activity != null){
+                $update_activity->update($data_aktivitas);
+            }else{
+                $create_activity = aktivitas_belajar::create($data_aktivitas);
+            }
+        }
            if($update){
                    return redirect()
                    ->route('siswa.index')
@@ -393,9 +422,9 @@ class SiswaController extends Controller
     {
         //
         $data = data_siswa::findOrFail($id);
-        $data_ortu = DB::table('users')->where('id_siswa','=',$data->nik)->get();
+        $data_aktivitas = DB::table('aktivitas_belajars')->where([['kode_siswa','=',$data->nik]])->delete();
+        $data_ortu = DB::table('data_ortus')->where([['id_siswa','=',$data->nik]])->delete();
         $data->delete();
-        $data_ortu->delete();
         if($data){
             return redirect()
             ->route('siswa.index')
