@@ -1,11 +1,6 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Pengunjung')
 @section('content-app')
-
-@foreach ($laporan_peminjaman as $item)
-<?php $tgl_awal = $item['tanggal_pinjam'] ?>
-<?php $tgl_akhir = $item['tanggal_kembali'] ?>
-@endforeach
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -13,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> Judul</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">Judul</li>
+              <li class="breadcrumb-item active">@yield('page')</li>
             </ol>
           </div>
         </div><!-- /.row -->
@@ -45,7 +40,7 @@
                           <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                             <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                           </div>
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="<?php echo $tgl_awal; ?>" required>
+                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                         </div>
                       </div>
                     </div>
@@ -55,7 +50,7 @@
                         <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                           <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="<?php echo $tgl_akhir; ?>" required>
+                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -75,7 +70,7 @@
                       <div class="btn-group btn-group-sm">
                         <button class="btn bg-info btn-sm"><i class="fa fa-search "> </i> Tampilkan Data</button>
                         <button class="btn bg-navy btn-sm" onclick="printDiv('cetak')"><i class="fa fa-print "> </i> Print Data</button>
-                        <a class="btn btn-danger btn-sm" href="<?php echo url('/'); ?>/laporan/pengunjung_excel/<?php echo date('Y-m-d', strtotime($tgl_awal)); ?>/<?php echo date('Y-m-d', strtotime($tgl_akhir)); ?>" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
+                        <a class="btn btn-danger btn-sm" href="<?php echo url('/'); ?>/laporan/pengunjung_excel/" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
                       </div>
                       </div>
                     </div> 

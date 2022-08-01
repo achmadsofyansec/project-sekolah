@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Pengembalian')
 @section('content-app')
 <div class="content-wrapper">
   <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> judul</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">judul</li>
+              <li class="breadcrumb-item active">@yield('page')</li>
             </ol>
           </div>
         </div><!-- /.row -->

@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Password')
 @section('content-app')
 <div class="content-wrapper">
   <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> Judul</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="fad fa-books-medical"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">Judul</li>
+              <li class="breadcrumb-item active">@yield('page')</li>
             </ol>
           </div>
         </div><!-- /.row -->
@@ -23,7 +23,7 @@
       <div class="col-md-8">
         <div class="card card-navy">
               <div class="card-header">
-                <h3 class="card-title"><i class="nav-icon fas fa-lock "></i> Rubah Password</h3>
+                <h3 class="card-title"><i class="nav-icon fas fa-lock "></i> Ubah @yield('page')</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -64,6 +64,7 @@
               </form>
             </div>
                 <!-- /.box -->
+                
             </div>
       </div>
       <!-- /.row -->

@@ -19,40 +19,60 @@ class PageController extends Controller
         return view('dashboard');
     }
 
+    public function buku()
+    {
+        return view('master.buku.index');
+    }
+
+    public function kategori()
+    {
+        return view('master.kategori.index');
+    }
+
+    public function sumber()
+    {
+        return view('master.sumber.index');
+    }
+
+    public function siswa()
+    {
+        return view('siswa.index');
+    }
+
     public function tambah_buku()
     {
-        return view('master.tambah');
+        return view('master.buku.tambah');
     }
 
     //export bermasalah
     public function export()
     {
-        return view('master.export');
+        return view('master.buku.export');
     }
 
     public function denda()
     {
-        return view('pengaturan.denda');
+        return view('pengaturan.denda.index');
     }
 
     public function pengembalian()
     {
-        return view('transaksi.pengembalian');
+        return view('transaksi.pengembalian.index');
     }
 
     public function laporan_peminjaman()
     {
-        return view('laporan.peminjaman');
+        return view('laporan.peminjaman.index');
     }
 
     public function laporan_buku()
     {
-        return view('laporan.buku');
+        return view('laporan.buku.index');
     }
 
     public function laporan_pengunjung()
     {
-        return view('laporan.pengunjung');
+        return view('laporan.pengunjung.index');
     }
 
     public function password()
@@ -62,17 +82,27 @@ class PageController extends Controller
 
     public function kategori_tambah()
     {
-        return view('master.kategori_tambah');
+        return view('master.kategori.kategori_tambah');
     }
 
     public function sumber_tambah()
     {
-        return view('master.sumber_tambah');
+        return view('master.sumber.sumber_tambah');
     }
 
     public function siswa_detail()
     {
         return view('siswa.siswa_detail');
+    }
+
+    public function peminjaman()
+    {
+        return view('transaksi.peminjaman.index');
+    }
+
+    public function data_denda()
+    {
+        return view('master.denda.index');
     }
 
 

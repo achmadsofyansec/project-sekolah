@@ -40,9 +40,9 @@
             <div class="card card-info card-outline">
               <div class="card-header">
                 <div class="btn-group btn-group-sm">
-               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>master/buku_tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
+               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>/master/buku/tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
                <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalImport"><i class="fas fa-file-excel"> </i> Import Excel</a>
-               <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>master/buku_export" target="_blank"><i class="fa fa-download"> </i> Download Data Buku</a>
+               <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>/master/buku/export" target="_blank"><i class="fa fa-download"> </i> Download Data Buku</a>
            </div>
               </div>
               <!-- /.card-header -->

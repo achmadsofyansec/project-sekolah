@@ -132,7 +132,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/'); ?>/master/buku" class="nav-link">
+                <a href="<?php echo url('/'); ?>/master/buku/" class="nav-link">
                   <i class="fad fa-book-medical nav-icon text-navy"></i>
                   <p>Data Buku</p>
                 </a>
@@ -140,7 +140,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/'); ?>/master/kategori" class="nav-link">
+                <a href="<?php echo url('/'); ?>/master/kategori/" class="nav-link">
                   <i class="fad fa-book-spells nav-icon text-navy"></i>
                   <p>Kategori Buku</p>
                 </a>
@@ -148,7 +148,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/'); ?>/master/sumber" class="nav-link">
+                <a href="<?php echo url('/'); ?>/master/sumber/" class="nav-link">
                   <i class="fad fa-book-heart nav-icon text-navy"></i>
                   <p>Sumber Buku</p>
                 </a>

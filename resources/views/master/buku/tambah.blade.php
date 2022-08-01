@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Tambah Buku')
 @section('content-app')
 
   <!-- Content Wrapper. Contains page content -->
@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> </h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item"><a href="<?php echo url('/'); ?>master/buku"></a></li>
+              <li class="breadcrumb-item"><a href="<?php echo url('/'); ?>master/buku">@yield('page')</a></li>
               <li class="breadcrumb-item active"></li>
             </ol>
           </div>
@@ -186,7 +186,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                     <div class="btn-group btn-group-sm">
-                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>master/buku"><i class="fa fa-undo"> </i> Kembali</a>
+                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>/master/buku"><i class="fa fa-undo"> </i> Kembali</a>
                     <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
                   
                     </div>

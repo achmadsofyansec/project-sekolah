@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Data Siswa')
 @section('content-app')
 
   <!-- Content Wrapper. Contains page content -->
@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i>  Siswa</h1>
+            <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i>  @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-              <li class="breadcrumb-item active">Siswa</li>
+              <li class="breadcrumb-item active">@yield('page')</li>
             </ol>
           </div>
         </div><!-- /.row -->
@@ -59,7 +59,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style="text-align:center;">
+                    <!-- <tr style="text-align:center;">
                       <td class="text-sm" >1</td>
                       <td class="text-sm" >00989237</td>
                       <td class="text-sm" >Sofyan Hadi</td>
@@ -70,29 +70,7 @@
                       <td style="text-align:center;">
                         <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
                       </td>
-                    </tr><tr style="text-align:center;">
-                      <td class="text-sm" >2</td>
-                      <td class="text-sm" >00875421</td>
-                      <td class="text-sm" >Alilia Hadi</td>
-                      <td class="text-sm" >Perempuan</td>
-                      <td class="text-sm" >12 maret 2006</td>
-                      <td class="text-sm" >METRO</td>
-                      <td class="text-sm" >274</td>
-                      <td style="text-align:center;">
-                        <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
-                      </td>
-                    </tr><tr style="text-align:center;">
-                      <td class="text-sm" >3</td>
-                      <td class="text-sm" >00875212</td>
-                      <td class="text-sm" >Khoirul Anam</td>
-                      <td class="text-sm" >Laki Laki</td>
-                      <td class="text-sm" >33 januari 1992</td>
-                      <td class="text-sm" >RPL</td>
-                      <td class="text-sm" >1022</td>
-                      <td style="text-align:center;">
-                        <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
-                      </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
