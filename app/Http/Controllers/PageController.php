@@ -13,20 +13,11 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
-    public function view_point_pelanggaran(){
-        return view('pelanggaran.point.index');
-    }
-    public function view_sanksi(){
-        return view('pelanggaran.sanksi.index');
-    }
     public function view_pelanggaran(){
         return view('pelanggaran.pelanggaran.index');
     }
     public function view_kehadiran(){
         return view('kehadiran.index');
-    }
-    public function view_barang_sitaan(){
-        return view('barang_sitaan.index');
     }
     public function view_peminjaman(){
         return view('peminjaman.index');

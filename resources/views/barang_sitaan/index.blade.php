@@ -41,6 +41,11 @@
                                 <table id="dataTable" class="table">
                                     <thead>
                                         <th>No</th>
+                                        <th>Tanggal</th>
+                                        <th>Nama Siswa</th>
+                                        <th>Kelas</th>
+                                        <th>Barang Sitaan</th>
+                                        <th>Di Input Oleh</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>

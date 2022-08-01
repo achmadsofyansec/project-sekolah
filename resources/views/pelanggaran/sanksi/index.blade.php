@@ -41,6 +41,10 @@
                                 <table id="dataTable" class="table">
                                     <thead>
                                         <th>No</th>
+                                        <th>Kode Sanksi</th>
+                                        <th>Dari Poin</th>
+                                        <th>Sampai Poin</th>
+                                        <th>Sanksi</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>

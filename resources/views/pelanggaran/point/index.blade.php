@@ -41,6 +41,9 @@
                                 <table id="dataTable" class="table">
                                     <thead>
                                         <th>No</th>
+                                        <th>Kode Poin</th>
+                                        <th>Nama Pelanggaran</th>
+                                        <th>Poin</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
