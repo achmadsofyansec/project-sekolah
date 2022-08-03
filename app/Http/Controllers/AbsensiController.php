@@ -15,7 +15,7 @@ class AbsensiController extends Controller
     public function index()
     {
         //
-        $absensi = Absensi::where('created_at','=','NOW()')->get();
+        $absensi = Absensi::join("data_siswas","absensis.kode_siswa","=",'data_siswas.id')->where([['data_siswas.status_siswa','=','Aktif']])->get(["data_siswas.*","absensis.*","absensis.id as id_absen"]);
         return view('absensi.absen.index',compact('absensi'));
     }
 

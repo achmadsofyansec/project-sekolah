@@ -38,11 +38,31 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
-                                    <th></th>
+                                    <th>Tgl Absensi</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Absensi</th>
+                                    <th>Penginput</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($absensi as $item)
+                                      <tr>
+                                        <td>{{$loop->index + 1}}</td>
+                                        <td>{{$item->tgl_absensi}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->keterangan}}</td>
+                                        <td>{{$item->created_by}}</td>
+                                        <td>
+                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                          action="{{ route('absensi.destroy',$item->id_absen) }}" method="POST">
+                                          <a href="{{ route('absensi.edit',$item->id_absen) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                          @csrf
+                                          </form>
+                                        </td>
+                                      </tr>
+                                  @empty
+                                      
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absensi;
 use Illuminate\Http\Request;
 
 class PerizinanController extends Controller
@@ -14,7 +15,8 @@ class PerizinanController extends Controller
     public function index()
     {
         //
-        return view('absensi.perizinan.index');
+        $perizinan = Absensi::join("data_siswas","absensis.kode_siswa","=",'data_siswas.id')->where([['data_siswas.status_siswa','=','Aktif'],['absensis.keterangan','!=','Masuk']])->get(["data_siswas.*","absensis.*","absensis.id as id_absen"]);
+        return view('absensi.perizinan.index',compact('perizinan'));
     }
 
     /**
