@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang_sitaan;
+use App\Models\data_siswa;
 use Illuminate\Http\Request;
 
 class BarangSitaanController extends Controller
@@ -27,6 +28,8 @@ class BarangSitaanController extends Controller
     public function create()
     {
         //
+        $siswa = data_siswa::latest()->get();
+        return view('barang_sitaan.create',compact('siswa'));
     }
 
     /**
