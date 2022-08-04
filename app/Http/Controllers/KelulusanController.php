@@ -13,7 +13,11 @@ class KelulusanController extends Controller
     {
         // $kelulusan = DB::table('kelulusan')->select(['kelulusan.*'])->get();
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        return view('kelulusan.index', compact('siswa'));
+        $kelulusan = DB::table('pengaturans')->select(['pengaturans.*'])->get();
+        return view('kelulusan.index', compact(['siswa', 'kelulusan']));
+
+        // $kelulusan = Pengaturan::latest()->get();
+        // return view('kelulusan.index',compact('kelulusan'));
     }
  
     // public function cari(Request $request)

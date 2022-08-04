@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="">INFO KELULUSAN 2022</a>
+              <a class="navbar-brand" href="">INFO KELULUSAN TAHUN</a>
             </div>
         </div>
     </nav>

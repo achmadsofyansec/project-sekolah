@@ -25,7 +25,7 @@ Route::get('/datasiswa', [Data_siswaController::class, 'index']);
 Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
 Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
 Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
-Route::get('/pengaturan/',[PengaturanController::class,'index']);
+Route::resource('pengaturan',PengaturanController::class);
 Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
 Route::get('/kelulusan',[KelulusanController::class,'index']);
 Route::get('/kelulusan/cari',[KelulusanController::class,'cari']);

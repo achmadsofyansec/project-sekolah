@@ -9,5 +9,10 @@ class Pengaturan extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+      'tahun',
+      'pengumuman',
+      'info_kelulusan',
+      'info_lainya',
+    ];
 }

@@ -9,7 +9,7 @@
               <div class="row mb-2">
                   <div class="col-sm-6 mt-2">
                       <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;">
-                          <i class="fas fa-books nav-icon text-info"></i> Judul</h1>
+                          <i class="fas fa-books nav-icon text-info"></i>Edit Judul</h1>
                   </div><!-- /.col -->
                   <div class="col-sm-6">
                       <ol class="breadcrumb float-sm-right">
@@ -34,52 +34,52 @@
                           </div>
                           <!-- /.card-header -->
                           <!-- form start -->
-                          <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" action="{{ url('update-pengaturan/.$pengaturan->id) }}">
+                          <form class="form-horizontal" action="{{route('pengaturan.update',$data->id)}}" method="POST">
                             @csrf
                             @method('PUT')
-
                               <div class="card-body">
 
                                   <div class="form-group row">
-                                      @foreach($pengaturan as $pengaturan)
+                            
                                       <div class="col-sm-12"><center>
                                           <label class="col-sm-5 col-form-label text-uppercase">File Header Banner</label>
                                             </center><br>
-                                          <input type="file" class="form-control" name="file_banner">
+                                          <!-- <input type="file" class="form-control" name="file_banner" required> -->
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tanggal Pengumuman</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tanggal_pengumuman" value="{{ $pengaturan->pengumuman }}" required />
+                                          <input type="text" class="form-control" id="tanggal_pengumuman" name="tanggal_pengumuman" value="{{ $data->pengumuman }}" required />
                                       </div>
                                   </div>
 
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tahun Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <input type="text" class="form-control" name="tahun" value="{{ $pengaturan->tahun }}" required />
+                                          <input type="text" class="form-control" id="tahun" name="tahun" value="{{ $data->tahun }}" required />
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Informasi Kelulusan</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_kelulusan"  required />{{ $pengaturan->info_kelulusan }}</textarea>
+                                          <textarea type="text" class="form-control" id="informasi_kelulusan" name="informasi_kelulusan"  required />{{ $data->info_kelulusan }}</textarea>
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">{{ $pengaturan->info_lainya }}</label>
+                                      <label class="col-sm-3 col-form-label">{{ $data->info_lainya }}</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_lain" required /></textarea>
+                                          <textarea type="text" class="form-control" id="informasi_lain" name="informasi_lain" required />{{ $data->info_lainya }}</textarea>
                                       </div>
                                   </div>
 
 
-                                  @endforeach
+                                  
                               </div>
                               <!-- /.card-body -->
                               <div class="card-footer">
-                                  <button type="submit" class="btn btn-info float-right ml-3"><i class="fa fa-save"> </i> Simpan</button>
+                                  <button type="submit" class="btn btn-info float-right ml-3"><i class="fa fa-save"></i> Simpan</button>
+                                    <button class="btn btn-danger"><a href="{{ route('pengaturan.index') }}" class="btn btn-danger float-right">Kembali</a></button>
 
                               </div>
                               <!-- /.card-footer -->

@@ -40,11 +40,11 @@
 
                                   <div class="form-group row">
                                       @foreach($pengaturan as $pengaturan)
-                                      <div class="col-sm-12"><center>
+                                      <!-- <div class="col-sm-12"><center>
                                           <label class="col-sm-5 col-form-label text-uppercase">File Header Banner</label>
                                             </center><br>
                                           <input type="file" class="form-control" name="file_banner" readonly>
-                                      </div>
+                                      </div> -->
                                   </div>
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Tanggal Pengumuman</label>
@@ -66,9 +66,9 @@
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">{{ $pengaturan->info_lainya }}</label>
+                                      <label class="col-sm-3 col-form-label">Informasi Lainya</label>
                                       <div class="col-sm-12">
-                                          <textarea type="text" class="form-control" name="informasi_lain" readonly /></textarea>
+                                          <textarea type="text" class="form-control" name="informasi_lain" readonly />{{ $pengaturan->info_lainya }}</textarea>
                                       </div>
                                   </div>
 
@@ -77,7 +77,7 @@
                               </div>
                               <!-- /.card-body -->
                               <div class="card-footer">
-                                  <button type="submit" class="btn btn-info float-right ml-3"><i class="fa fa-save"> </i> Simpan</button>
+                                  <a href="{{ route('pengaturan.edit', $pengaturan->id) }}" class="btn btn-info float-right ml-3">Edit</a>
 
                               </div>
                               <!-- /.card-footer -->
@@ -89,12 +89,12 @@
                           <h4><span class="fa fa-info-circle text-danger"></span> Petunjuk dan Bantuan</h4>
                           <ol>
                               <li>
-                                  Isi <b></b> selengkap dan sebenar mungkin.
+                                  Halaman ini nantinya akan ditampilkan di halaman kelulusan
                               </li>
                               <li>
                                   Gunakan <i>button</i>
-                                  <button class="btn btn-xs btn-info"><span class="fa fa-save"></span> Simpan </button>
-                                  untuk menambahkan <b></b>.
+                                  <button class="btn btn-xs btn-info"> Edit </button>
+                                  untuk mengedit isi <b></b>.
                               </li>
                           </ol>
                           <p>
