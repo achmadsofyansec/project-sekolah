@@ -32,42 +32,67 @@
                   {{ session('success') }}
               </div>
               @endif
-                <div class="card card-outline card-info">
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>
-                                    <th>Tgl Absensi</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Absensi</th>
-                                    <th>Penginput</th>
-                                    <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                  @forelse ($absensi as $item)
-                                      <tr>
-                                        <td>{{$loop->index + 1}}</td>
-                                        <td>{{$item->tgl_absensi}}</td>
-                                        <td>{{$item->nama}}</td>
-                                        <td>{{$item->keterangan}}</td>
-                                        <td>{{$item->created_by}}</td>
-                                        <td>
-                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                          action="{{ route('absensi.destroy',$item->id_absen) }}" method="POST">
-                                          <a href="{{ route('absensi.edit',$item->id_absen) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                                          @csrf
-                                          </form>
-                                        </td>
-                                      </tr>
-                                  @empty
-                                      
-                                  @endforelse
-                                </tbody>
-                            </table>
-                       </div>
-                   </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card card-outline card-info">
+                    <div class="card-header">
+                      <div class="card-title">
+                        Filter Absensi
+                      </div>
+                    </div>
+                      <div class="card-body"> 
+                          <div class="form-group">
+                            <label >Kelas</label>
+                            <select onchange="filter_absensi()" name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control">
+                              <option value="">-- Semua Kelas -- </option>
+                              @forelse ($kelas as $item)
+                            <option value="{{$item->kode_kelas}}">{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
+                            @empty
+                              @endforelse
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label >Jurusan</label>
+                            <select onchange="filter_absensi()" name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control">
+                            <option value="">-- Semua Jurusan -- </option>
+                              @forelse ($jurusan as $item)
+                            <option value="{{$item->kode_jurusan}}">{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
+                            @empty
+                              @endforelse
+                            </select>
+                          </div>
+                      </div>
+                    
+                  </div>
                 </div>
+                <div class="col-md-8">
+                  <div class="card card-outline card-info">
+                    <div class="card-header">
+                      <div class="card-title">
+                        Data Absensi Hari Ini
+                      </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                             <table class="table" >
+                                 <thead>
+                                     <th>No</th>
+                                     <th>Tanggal</th>
+                                     <th>Nama Siswa</th>
+                                     <th>Kelas</th>
+                                     <th>Jurusan</th>
+                                     <th>Absensi</th>
+                                 </thead>
+                                 <tbody id="content-absensi">
+                                   
+                                 </tbody>
+                             </table>
+                        </div>
+                    </div>
+                 </div>
+                </div>
+              </div>
+                
             </div>
         </div>
     </div>

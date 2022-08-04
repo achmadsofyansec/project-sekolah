@@ -2,27 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Absensi;
-use App\Models\data_siswa;
-use App\Models\jurusan;
-use App\Models\Kelas;
-use App\Models\tahun_ajaran;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AbsensiController extends Controller
+class PrestasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-            $kelas = Kelas::latest()->get();
-            $jurusan = jurusan::latest()->get();
-            return view('absensi.absen.index',compact(['kelas','jurusan']));
+        //
     }
 
     /**

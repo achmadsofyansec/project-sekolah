@@ -37,7 +37,7 @@ class JadwalController extends Controller
     {
         //
         $mapel = MataPelajaran::latest()->get();
-        $guru = data_guru::latest()->get();
+        $guru = data_guru::where('data_gurus.jabatan','=','Guru Mapel')->get();
         $tahun_ajaran = tahun_ajaran::latest()->get();
         $kelas = Kelas::latest()->get();
         return view('pembelajaran.jadwal.create',compact(['mapel','guru','tahun_ajaran','kelas']));

@@ -26,6 +26,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('public/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -367,6 +369,7 @@
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
 $(document).ready( function () {
     $('#dataTable').DataTable({
@@ -374,7 +377,33 @@ $(document).ready( function () {
         scrollCollapse: true,
         paging: false,
     });
+    var select = $('select').select2({
+      theme:'classic'
+    });    
 } );
+function filter_absensi(){
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    var x = document.getElementById("filter_absensi_kelas").value;
+    var y = document.getElementById("filter_absensi_jurusan").value;
+    $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequest.filter_absensi') }}",
+             data:{kelas:x, jurusan:y},
+             success:function(data){
+               if(data != ""){
+                document.getElementById("content-absensi").innerHTML = data;
+               }else{
+                document.getElementById("content-absensi").innerHTML = '<tr><td colspan="6" class="text-center text-mute">Tidak Ada Data</td></tr>';
+               }
+              
+             }
+          });
+  }
+  filter_absensi()
     </script>
 </body>
 </html>

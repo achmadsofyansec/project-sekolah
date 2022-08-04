@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
@@ -69,6 +70,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
         //Pindah / Naik Kelas
         Route::get('/pindah_kelas',[PageController::class,'view_pindah'])->name('pindah_kelas');
-        
+
+        //AjaxRequest
+        Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
     });
 });
