@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Laporan Arsip')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'Rak')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -32,6 +32,24 @@
                   {{ session('success') }}
               </div>
               @endif
+                <div class="card card-outline card-info">
+                   <div class="card-header">
+                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                <thead>
+                                    <th>No</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                       </div>
+                   </div>
+                </div>
             </div>
         </div>
     </div>
