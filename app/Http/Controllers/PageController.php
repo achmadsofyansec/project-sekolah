@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absensi;
 use App\Models\data_guru;
 use App\Models\data_siswa;
 use App\Models\Kelas;
@@ -15,11 +16,16 @@ class PageController extends Controller
     
     //VIEW Pages
     public function index(){
-        $siswa = data_siswa::latest()->get();
+        $siswa = data_siswa::where([['status_siswa','=','Aktif']])->get();
         $guru = data_guru::latest()->get();
         $kelas = Kelas::latest()->get();
         $mapel = MataPelajaran::latest()->get();
-        return view('dashboard',compact(['siswa','guru','kelas','mapel']));
+        $masuk = Absensi::join("data_siswas","data_siswas.id","=",'absensis.kode_siswa')->where([['keterangan','=','Masuk'],['tgl_absensi','>=',date('Y-m-d').' 00:00:00'],['tgl_absensi','<=',date('Y-m-d',strtotime('+1 day')).' 00:00:00']])->get();
+        $izin = Absensi::join("data_siswas","data_siswas.id","=",'absensis.kode_siswa')->where([['keterangan','=','Izin'],['tgl_absensi','>=',date('Y-m-d').' 00:00:00'],['tgl_absensi','<=',date('Y-m-d',strtotime('+1 day')).' 00:00:00']])->get();
+        $tanpa_keterangan = Absensi::join("data_siswas","data_siswas.id","=",'absensis.kode_siswa')->where([['keterangan','=','Tanpa Keterangan'],['tgl_absensi','>=',date('Y-m-d').' 00:00:00'],['tgl_absensi','<=',date('Y-m-d',strtotime('+1 day')).' 00:00:00']])->get();
+        $sakit = Absensi::join("data_siswas","data_siswas.id","=",'absensis.kode_siswa')->where([['keterangan','=','Sakit'],['tgl_absensi','>=',date('Y-m-d').' 00:00:00'],['tgl_absensi','<=',date('Y-m-d',strtotime('+1 day')).' 00:00:00']])->get();
+        $belum_absen = $siswa->count() - $masuk->count() - $izin->count() - $tanpa_keterangan->count() - $sakit->count();
+        return view('dashboard',compact(['siswa','guru','kelas','mapel','masuk','izin','tanpa_keterangan','sakit','belum_absen']));
     }
     
     public function view_lap_absensi(){

@@ -68,7 +68,7 @@
             <!-- MAP & BOX PANE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i> ABSENSI</h3>
+                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i> ABSENSI SISWA HARI INI</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
@@ -81,9 +81,8 @@
                 <div class="d-md-flex">
                   <div class="p-1 flex-fill" style="overflow: hidden">
                     <!-- Map will be created here -->
-                    <div id="world-map-markers" style="height: 325px; overflow: hidden">
-                      <div class="map"></div>
-                    </div>
+                    <canvas id="absen-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
+                    </canvas>
                   </div>
                 </div><!-- /.d-md-flex -->
               </div>
@@ -98,7 +97,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">MASUK</span>
-                <span class="info-box-number">0</span>
+              <span class="info-box-number">{{$masuk->count()}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -109,7 +108,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">IZIN</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{$izin->count()}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -120,7 +119,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">TANPA KETERANGAN</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{$tanpa_keterangan->count()}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -129,7 +128,7 @@
               <span class="info-box-icon"><i class="fas fa-clinic-medical"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">SAKIT</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{$sakit->count()}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -141,4 +140,37 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+<script>
+  $(document).ready(function(){
+    var donutChartCanvas = $('#absen-chart').get(0).getContext('2d')
+var donutData        = {
+  labels: [
+      'Masuk',
+      'Izin',
+      'Tanpa Keterangan',
+      'Sakit',
+      'Belum Absen'
+  ],
+  datasets: [
+    {
+      data: [{{$masuk->count()}},{{$izin->count()}},{{$tanpa_keterangan->count()}},{{$sakit->count()}},{{$belum_absen}}],
+      backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8','#007bff'],
+    }
+  ]
+}
+var donutOptions     = {
+  maintainAspectRatio : false,
+  responsive : true,
+}
+//Create pie or douhnut chart
+// You can switch between pie and douhnut using the method below.
+new Chart(donutChartCanvas, {
+  type: 'doughnut',
+  data: donutData,
+  options: donutOptions
+});
+  });
+</script>
 @endsection

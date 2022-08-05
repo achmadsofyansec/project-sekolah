@@ -234,7 +234,7 @@
                                         <div class="tab-pane" id="data_belajar" style="position: relative;">
                                             <div class="form-group">
                                                 <label>Kelas</label>
-                                                <select name="kelas" id="kelas" class="form-control" required>
+                                                <select name="kelas" id="kelas" class="form-control" style="width:100%;" required>
                                                     <option value="">-- Pilih Kelas --</option>
                                                     @forelse ($kelas as $item)
                                                         <option value="{{$item->kode_kelas}}" >{{$item->nama_kelas}}</option>
@@ -245,7 +245,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Tahun Ajaran</label>
-                                                <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                                <select name="tahun_ajaran" id="tahun_ajaran" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Tahun Ajaran --</option>
                                                     @forelse ($tahun_ajaran as $item)
                                                         <option value="{{$item->kode_tahun_ajaran}}" >{{$item->tahun_ajaran}} ( Semester {{$item->semester}}) </option>
@@ -255,7 +255,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Jurusan</label>
-                                                <select name="jurusan" id="jurusan" class="form-control" required>
+                                                <select name="jurusan" id="jurusan" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Jurusan --</option>
                                                     @forelse ($jurusan as $item)
                                                         <option value="{{$item->kode_jurusan}}" >{{$item->nama_jurusan}}</option>
@@ -295,7 +295,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_ayah" id="status_pendidikan_ayah" class="form-control" required>
+                                                    <select name="status_pendidikan_ayah" id="status_pendidikan_ayah" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -313,7 +313,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_ayah" id="domisili_ayah" class="form-control" required>
+                                                    <select name="domisili_ayah" id="domisili_ayah" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -329,7 +329,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ayah" id="status_tmp_ayah" class="form-control" required>
+                                                    <select name="status_tmp_ayah" id="status_tmp_ayah" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>
@@ -366,7 +366,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_ibu" id="status_pendidikan_ibu" class="form-control" required>
+                                                    <select name="status_pendidikan_ibu" style="width:100%;" id="status_pendidikan_ibu" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -384,7 +384,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_ibu" id="domisili_ibu" class="form-control" required>
+                                                    <select name="domisili_ibu" id="domisili_ibu" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -400,7 +400,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ibu" id="status_tmp_ibu" class="form-control" required>
+                                                    <select name="status_tmp_ibu" id="status_tmp_ibu" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>
@@ -437,7 +437,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_wali" id="status_pendidikan_wali" class="form-control" required>
+                                                    <select name="status_pendidikan_wali" style="width:100%;" id="status_pendidikan_wali" class="form-control" required>
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         <option value="SD">SD Sederajat</option>
                                                         <option value="SMP">SMP Sederajat</option>
@@ -455,7 +455,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_wali" id="domisili_wali" class="form-control" required>
+                                                    <select name="domisili_wali" id="domisili_wali" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Domisili--</option>
                                                         <option value="Dalam Negeri">Luar Negeri</option>
                                                         <option value="Luar Negeri">Dalam Negeri</option>
@@ -471,7 +471,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_wali" id="status_tmp_wali" class="form-control" required>
+                                                    <select name="status_tmp_wali" id="status_tmp_wali" style="width:100%;" class="form-control" required>
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri">Milik Sendiri</option>
                                                         <option value="Kontrak">Kontrak</option>

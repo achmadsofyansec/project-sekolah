@@ -40,7 +40,11 @@
                         Filter Absensi
                       </div>
                     </div>
-                      <div class="card-body"> 
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label >Tanggal</label>
+                          <input type="date" value="<?= date('Y-m-d') ?>" name="filter_absensi_tanggal" id="filter_absensi_tanggal" class="form-control" onchange="filter_absensi()">
+                        </div>
                           <div class="form-group">
                             <label >Kelas</label>
                             <select onchange="filter_absensi()" name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control">
@@ -61,6 +65,7 @@
                               @endforelse
                             </select>
                           </div>
+                          
                       </div>
                     
                   </div>

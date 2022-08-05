@@ -379,8 +379,9 @@ $(document).ready( function () {
     });
     var select = $('select').select2({
       theme:'classic'
-    });    
+    });
 } );
+//Filter Absensi
 function filter_absensi(){
     $.ajaxSetup({
           headers: {
@@ -389,10 +390,11 @@ function filter_absensi(){
       });
     var x = document.getElementById("filter_absensi_kelas").value;
     var y = document.getElementById("filter_absensi_jurusan").value;
+    var z = document.getElementById("filter_absensi_tanggal").value;
     $.ajax({
              type:'POST',
              url:"{{ route('ajaxRequest.filter_absensi') }}",
-             data:{kelas:x, jurusan:y},
+             data:{kelas:x, jurusan:y,tanggal:z},
              success:function(data){
                if(data != ""){
                 document.getElementById("content-absensi").innerHTML = data;
@@ -404,6 +406,9 @@ function filter_absensi(){
           });
   }
   filter_absensi()
+
+  
     </script>
+@yield('content-script')
 </body>
 </html>

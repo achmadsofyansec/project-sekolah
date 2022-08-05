@@ -33,6 +33,9 @@
               </div>
               @endif
                 <div class="card card-outline card-info">
+                  <div class="card-header">
+                    <a type="button" href="{{ route('perizinan.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
@@ -41,7 +44,7 @@
                                   <th>Tanggal</th>
                                   <th>Nama Siswa</th>
                                   <th>Absensi</th>
-                                  <th>Penginput</th>
+                                  <th>Alasan</th>
                                   <th>Aksi</th>
                                 </thead>
                                 <tbody>
@@ -51,7 +54,7 @@
                                     <td>{{$item->tgl_absensi}}</td>
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->keterangan}}</td>
-                                    <td>{{$item->created_by}}</td>
+                                    <td>{{$item->alasan}}</td>
                                     <td>
                                       <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                       action="{{ route('perizinan.destroy',$item->id_absen) }}" method="POST">
