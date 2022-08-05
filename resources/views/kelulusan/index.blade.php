@@ -23,15 +23,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="">INFO KELULUSAN TAHUN</a>
+              @foreach($kelulusan as $lulus)
+              <a class="navbar-brand" href="">INFO KELULUSAN TAHUN {{ $lulus->tahun }}</a>               
             </div>
         </div>
     </nav>
     
     <div class="container">
-        <h2>Pengumuman Kelulusan 2022</h2>
+        <h2>Pengumuman Kelulusan {{ $lulus->tahun }}</h2>
     <!-- countdown -->
-    
+    @endforeach  
     <div id="clock" class="lead" style="font-weight:bold;color:red;"></div>
     
     <div id="xpengumuman">

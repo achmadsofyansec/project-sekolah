@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengaturan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,11 +14,10 @@ class KelulusanController extends Controller
     {
         // $kelulusan = DB::table('kelulusan')->select(['kelulusan.*'])->get();
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $kelulusan = DB::table('pengaturans')->select(['pengaturans.*'])->get();
+        // $kelulusan = DB::table('pengaturans')->select(['pengaturans.*'])->get();
+        $kelulusan = Pengaturan::latest()->get();
         return view('kelulusan.index', compact(['siswa', 'kelulusan']));
 
-        // $kelulusan = Pengaturan::latest()->get();
-        // return view('kelulusan.index',compact('kelulusan'));
     }
  
     // public function cari(Request $request)

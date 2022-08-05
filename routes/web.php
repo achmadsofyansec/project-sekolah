@@ -28,7 +28,7 @@ Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
 Route::resource('pengaturan',PengaturanController::class);
 Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
 Route::get('/kelulusan',[KelulusanController::class,'index']);
-Route::get('/kelulusan/cari',[KelulusanController::class,'cari']);
+
 
 // Route::get('/kelulusan', function () {
 //     return view('kelulusan.index');
