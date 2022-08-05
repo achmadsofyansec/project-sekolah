@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sumber extends Model
 {
-    protected $table='mst_sumber_buku';
+    use HasFactory;
+
+    protected $fillable = [
+    	'id_sumber',
+		'nama_sumber'
+    ];
 }

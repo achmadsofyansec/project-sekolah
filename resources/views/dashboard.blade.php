@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('page', 'Dashboard')
 @section('content-app')
-  <!-- Content Wrapper. Contains page content -->
+   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header animated bounceIn">
@@ -31,7 +31,7 @@
                               <span class="info-box-icon bg-navy elevation-1"><i class="fad fa-books-medical"></i></span>
                               <div class="info-box-content">
                                 <span class="info-box-text text-navy" ><b>DATA BUKU</b></span>
-                                <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">0</span>
+                                <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e"></span>
                               </div>
                             </div></a>
                           </div>
@@ -123,7 +123,7 @@
 
   <div class="modal fade in" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="<?php echo url('/'); ?>app/agenda_save" method="post" accept-charset="utf-8">
+    <form action="<?php echo url('/'); ?>/app/agenda_save" method="post" accept-charset="utf-8">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -147,7 +147,7 @@
 
 <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="<?php echo url('/'); ?>app/agenda_hapus" method="post" accept-charset="utf-8">
+    <form action="<?php echo url('/'); ?>/app/agenda_hapus" method="post" accept-charset="utf-8">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -177,7 +177,7 @@
       right: 'prevYear,nextYear',
     },
 
-    events: "<?php echo url('/'); ?>home/get_calendar",
+    events: "<?php echo url('/'); ?>/home/get_calendar",
 
     dayClick: function(date, jsEvent, view) {
 
@@ -241,6 +241,24 @@
         }
       }
     },
+    series: [{
+      name: 'Kategori',
+      colorByPoint: true,
+      data: [{
+        name: 'Baca Buku',
+        y: 
+      }, {
+        name: 'Baca dan Pinjam',
+        y: 
+      }, {
+        name: 'Kembali Buku',
+        y: 
+      }, {
+        name: 'Pinjam Buku',
+        y:
+      }]
+    }]
   });
+</script>
 </script>
 @endsection

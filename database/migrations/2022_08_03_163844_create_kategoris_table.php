@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSumbersTable extends Migration
+class CreateKategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sumbers', function (Blueprint $table) {
+        Schema::create('kategoris', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_sumber');
-            $table->string('nama_sumber');
+            $table->integer('id_kategori');
+            $table->string('nama_kategori');
             $table->timestamps();
         });
-    }
-
+}
     /**
      * Reverse the migrations.
      *
@@ -28,6 +27,6 @@ class CreateSumbersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sumber');
+        Schema::dropIfExists('kategoris');
     }
 }
