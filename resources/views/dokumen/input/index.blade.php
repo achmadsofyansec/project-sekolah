@@ -41,6 +41,7 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Jenis Pelanggaran</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>

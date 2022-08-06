@@ -161,6 +161,12 @@
                   <p>Map</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/urut') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Data Urut</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

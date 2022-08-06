@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Lemari')
+@section('page', 'Map')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -41,13 +41,13 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
-                                    <th>Lemari Penyimpanan</th>
+                                    <th>No Urut Penyimpanan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($lemari as $lemari)
-                                    <th>1</th>
-                                    <th>{{ $lemari->lemari }}</th>
+                                  @foreach ($urut as $urut) 
+                                    <th>No</th>
+                                    <th>{{ $urut->map }}</th>
                                     <th>Aksi</th>
                                   @endforeach
                                 </tbody>

@@ -41,10 +41,15 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Rak Penyimpanan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @foreach ($rak as $rak)
+                                  <th>1</th>
+                                  <th>{{ $rak->rak }}</th>
+                                  <th>Aksi</th>
+                                  @endforeach
                                 </tbody>
                             </table>
                        </div>

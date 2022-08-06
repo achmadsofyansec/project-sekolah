@@ -41,10 +41,15 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Map Penyimpanan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @foreach ($map as $map) 
+                                    <th>No</th>
+                                    <th>{{ $map->map }}</th>
+                                    <th>Aksi</th>
+                                  @endforeach
                                 </tbody>
                             </table>
                        </div>

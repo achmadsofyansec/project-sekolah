@@ -41,10 +41,15 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Jenis Dokumen</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @foreach ($dokumen as $dokumen)
+                                  <td>{{$loop->index + 1}}</td>
+                                  <td>{{ $dokumen->jenis_dokumen }}</td>
+                                  <td><a href="{{ route('jenis_dokumen.edit' , $dokumen->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
+                                  @endforeach
                                 </tbody>
                             </table>
                        </div>
