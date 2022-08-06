@@ -16,7 +16,6 @@ class CreateBarangSitaansTable extends Migration
         Schema::create('barang_sitaans', function (Blueprint $table) {
             $table->id();
             $table->string('id_siswa');
-            $table->string('id_kelas');
             $table->string('keterangan_sita');
             $table->string('tanggal_sita');
             $table->string('tahun_ajaran');

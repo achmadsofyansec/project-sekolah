@@ -34,17 +34,38 @@
                   @endif
                     <div class="card card-outline card-navy">
                        <div class="card-header">
-                       <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                       <a type="button" href="{{route('kehadiran.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">
                                 <table id="dataTable" class="table">
                                     <thead>
                                         <th>No</th>
+                                        <th>Tanggal</th>
+                                        <th>Nama Siswa</th>
+                                        <th>Absensi</th>
+                                        <th>Alasan</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
-    
+                                      @forelse ($absensi as $item)
+                                      <tr>
+                                        <td>{{$loop->index + 1}}</td>
+                                        <td>{{$item->tgl_absensi}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->keterangan}}</td>
+                                        <td>{{$item->alasan}}</td>
+                                        <td>
+                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                          action="{{ route('kehadiran.destroy',$item->id_absen) }}" method="POST">
+                                          <a href="{{ route('kehadiran.edit',$item->id_absen) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                          @csrf
+                                          </form>
+                                        </td>
+                                      </tr>
+                                  @empty
+                                      
+                                  @endforelse
                                     </tbody>
                                 </table>
                            </div>

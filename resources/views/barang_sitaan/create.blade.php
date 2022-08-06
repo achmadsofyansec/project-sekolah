@@ -6,7 +6,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+<<<<<<< HEAD
             <h1 class="m-0"><i class="fas fa-chalkboard nav-icon text-info"></i> @yield('page')</h1>
+=======
+            <h1 class="m-0"><i class="fas fa-boxes nav-icon text-success"></i> @yield('page')</h1>
+>>>>>>> 762e93380017794b3546960d4be76553cec35e14
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -54,6 +58,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label>Siswa</label>
                                     <input type="text" name="siswa" id="siswa" class="form-control">
                                 </div>
@@ -65,6 +70,25 @@
                                   <label>Tanggal Penyitaan</label>
                                   <input type="date" name="tanggal_sita" id="tanggal_sita" class="form-control" required>
                               </div>
+=======
+                                    <label>Tanggal Sita</label>
+                                    <input type="date" name="tgl_sita" id="tgl_sita" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Siswa</label>
+                                    <select name="kode_siswa" id="kode_siswa" class="form-control" required>
+                                        <option value="">-- Pilih Siswa --</option>
+                                        @forelse ($siswa as $item)
+                                        <option value="{{$item->id_siswa}}"> {{$item->kode_kelas}} - ( {{$item->nisn}} ) {{$item->nama}} - {{$item->kode_jurusan}}  </option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Barang Sitaan </label>
+                                    <textarea name="barang_sitaan" id="barang_sitaan" cols="30" rows="8" placeholder="Keterangan" class="form-control" required></textarea>
+                                </div>
+>>>>>>> 762e93380017794b3546960d4be76553cec35e14
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>

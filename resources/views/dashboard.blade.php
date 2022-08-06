@@ -27,7 +27,7 @@
             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-paste"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text-danger" ><b>Point Pelanggaran</b></span>
-              <font  style="text-shadow: 2px 2px 4px #827e7e">0</font>
+              <font  style="text-shadow: 2px 2px 4px #827e7e">{{$poin->count()}}</font>
             </div>
           </div></a>
         </div>
@@ -37,7 +37,7 @@
             <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-exclamation-triangle"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text-primary" ><b>Sanksi</b></span>
-              <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+              <font style="text-shadow: 2px 2px 4px #827e7e">{{$sanksi->count()}}</font>
             </div>
           </div></a>
         </div>
@@ -47,7 +47,7 @@
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-minus"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text-success" ><b>Pelanggaran</b></span>
-              <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+              <font style="text-shadow: 2px 2px 4px #827e7e">{{$pelanggaran->count()}}</font>
             </div>
           </div></a>
         </div>
@@ -57,7 +57,7 @@
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-box-open"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text-info" ><b>Barang Sitaan</b></span>
-              <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+              <font style="text-shadow: 2px 2px 4px #827e7e">{{$barang_sita->count()}}</font>
             </div>
           </div></a>
         </div>
