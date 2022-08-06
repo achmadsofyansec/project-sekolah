@@ -49,7 +49,10 @@ class PerizinanController extends Controller
             'keterangan_izin' => ['required'],
         ]);
         if($validation){
-            $data = Absensi::where([['kode_siswa','=',$request->kode_siswa],['tgl_absensi','>=',$request->tgl_izin.' 00:00:00']])->get(['absensis.*','absensis.id as id_absen'])->first();
+            $date1 = new DateTime($request->tgl_izin);
+            $date1 = $date1->modify('+1 day');
+            $date1 = $date1->format('Y-m-d');
+            $data = Absensi::where([['kode_siswa','=',$request->kode_siswa],['tgl_absensi','>=',$request->tgl_izin.' 00:00:00'],['tgl_absensi','<=',$date1.' 00:00:00']])->get(['absensis.*','absensis.id as id_absen'])->first();
             $datas = "";
             if($data != null){
             $datas = Absensi::findOrFail($data->id_absen);
