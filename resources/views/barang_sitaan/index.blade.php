@@ -34,7 +34,7 @@
                   @endif
                     <div class="card card-outline card-navy">
                        <div class="card-header">
-                       <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                       <a type="button" href="{{route('barang_sitaan.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">

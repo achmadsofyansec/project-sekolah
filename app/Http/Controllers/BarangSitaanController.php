@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang_sitaan;
+use App\Models\data_siswa;
 use Illuminate\Http\Request;
 
 class BarangSitaanController extends Controller
@@ -27,6 +28,8 @@ class BarangSitaanController extends Controller
     public function create()
     {
         //
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')->where([['data_siswas.status_siswa','=','Aktif']])->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        return view('barang_sitaan.create',compact('siswa'));
     }
 
     /**
@@ -38,6 +41,7 @@ class BarangSitaanController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -60,6 +64,9 @@ class BarangSitaanController extends Controller
     public function edit($id)
     {
         //
+        $data = barang_sitaan::findOrFail($id);
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')->where([['data_siswas.status_siswa','=','Aktif']])->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        return view('barang_sitaan.create',compact(['data','siswa']));
     }
 
     /**

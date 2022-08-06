@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BarangSitaanController;
+use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\PoinPelanggaranController;
 use App\Http\Controllers\SanksiController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +30,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //masterData
         Route::resource('point_pelanggaran',PoinPelanggaranController::class);
         Route::resource('sanksi',SanksiController::class);
-        Route::get('/pelanggaran',[PageController::class,'view_pelanggaran'])->name('pelanggaran');
-        Route::get('/kehadiran',[PageController::class,'view_kehadiran'])->name('kehadiran');
+        Route::resource('pelanggaran',PelanggaranController::class);
+        Route::resource('kehadiran',KehadiranController::class);
         Route::resource('barang_sitaan',BarangSitaanController::class);
         Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
         //LAIN LAIN
