@@ -9,7 +9,7 @@ class Sekolah extends Model
 {
     use HasFactory;
 
-    protected $table = 'mst_sekolah';
+    protected $table = 'sekolah';
 
     protected $fillable = [
         'kode_sekolah',

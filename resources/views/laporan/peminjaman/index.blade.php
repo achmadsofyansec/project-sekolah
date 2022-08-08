@@ -27,6 +27,16 @@
         <!-- /.row -->
         <div class="row">
           <div class=" col-md-12">
+            @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+                  @endif
+                  @if(session('success'))
+                  <div class="alert alert-primary">
+                      {{ session('success') }}
+                  </div>
+                  @endif
             <div class="card card-navy card-outline">
               <div class="card-header col-md-12">
                 <a><i class="fa fa-file-search text-navy"> </i> Cari Data Peminjaman</a>
@@ -39,7 +49,9 @@
                           <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                             <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                           </div>
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                        
+                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($peminjaman as $peminjaman){{$peminjaman->tgl_awal}}@endforeach" required>
+                        
                         </div>
                       </div>
                     </div>
@@ -49,7 +61,7 @@
                         <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                           <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($peminjaman as $peminjaman){{$peminjaman->tgl_akhir}}@endforeach" required>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -93,6 +105,7 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach ($peminjaman as $peminjaman)
                 <tr>
                   <td></td>
                   <td></td>
@@ -104,6 +117,7 @@
                   <td></td>
 
                 </tr>
+                @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -130,7 +144,7 @@
       $('#cari-siswa').typeahead({
         source: function(query, result) {
           $.ajax({
-            url: "<?php echo url('/'); ?>pelanggaran_siswa/ajax_siswa",
+            url: "<?php echo url('/'); ?>/pelanggaran_siswa/ajax_siswa",
             data: 'query=' + query,
             dataType: "json",
             type: "POST",

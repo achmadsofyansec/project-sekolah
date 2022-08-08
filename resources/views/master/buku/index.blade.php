@@ -40,7 +40,7 @@
             <div class="card card-info card-outline">
               <div class="card-header">
                 <div class="btn-group btn-group-sm">
-               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>/master/buku/tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
+               <a class="btn btn-info btn-sm" href="{{route('buku.create')}}"><i class="fa fa-plus"> </i> Tambah Data</a>
                <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalImport"><i class="fas fa-file-excel"> </i> Import Excel</a>
                <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>/master/buku/export" target="_blank"><i class="fa fa-download"> </i> Download Data Buku</a>
            </div>
@@ -62,11 +62,25 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($buku as $buku)
+                      <?php $i = 1 ?>
                                 <tr class="text-sm">
                                       <div class="btn-group btn-group-xs">
-                                    </div>
-                                    </td>
+                                        <td><?php echo $i++ ?></td>
+                                        <td>{{$buku->kode_buku}}</td>
+                                        <td>{{$buku->judul_buku}}</td>
+                                        <td>{{$buku->pengarang}}</td>
+                                        <td>{{$buku->penerbit}}</td>
+                                        <td>{{$buku->lokasi}}</td>
+                                        <td>{{$buku->jumlah_buku}}</td>
+                                        <td>{{$buku->stok}}</td><td style="text-align:center;width:150px;">
+                                            <div class="btn-group btn-group-sm">
+                                            <a class="btn bg-navy btn-xs" href="{{route('buku.edit',$buku->id)}}"><i class="fa fa-edit"> </i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
+                                        </div>
+                                        </td>
                                 </tr>
+                    @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -133,7 +147,7 @@
 <script>
     $(".detail-buku").click(function() {
         var id_buku = $(this).attr("data-id_buku");
-        $.get("<?php echo url('/'); ?>master/ajax_detail_buku", {
+        $.get("<?php echo url('/'); ?>/master/ajax_detail_buku", {
             id_buku: id_buku
         }, function(data) {
             $(".tempat_buku").html(data);

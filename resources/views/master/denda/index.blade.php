@@ -50,14 +50,14 @@
                   <tbody>
                    
                                     <tr>
-                                        <!-- <td>no</td>
-                                        <td>nama_siswa</td>
-                                        <td>kode_buku</td>
-                                        <td>judul_buku</td>
                                         <td></td>
-                                        <td>
+                                        <td></td>
+                                        <td style="text-align:center;width:150px;">
+                                            <div class="btn-group btn-group-sm">
+                                            <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
                                         </div>
-                                        </td> -->
+                                        </td>
                                     </tr>
                   </tbody>
                 </table>

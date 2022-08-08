@@ -14,6 +14,8 @@ class Pengunjung_perpus extends Model
 		'nis',
 		'id_kelas',
 		'keperluan',
-		'tanggal'
+		'tanggal',
+		'tgl_awal',
+		'tgl_akhir'
     ];
 }

@@ -40,7 +40,7 @@
                           <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                             <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                           </div>
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach" required>
                         </div>
                       </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                           <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_akhir}}@endforeach" required>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -84,10 +84,10 @@
                   <div class="card-header border-transparent">
                     <center>
                         <h4 class="m-0 text-dark mt-3" style="text-shadow: 2px 2px 4px #17a2b8;">
-              <img src="<?php echo 'http://'.$_SERVER['SERVER_NAME'].'/asis/asispanel/upload/'.$sekolah->logo; ?>" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
-               <br><?php echo $nama_sekolah ?></h4>
+              <img src=">" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
+               <br></h4>
                       <h4 style="margin:0;">Laporan Pengunjung Perpus </h4>
-                      <p style="margin:0;">Periode : <?php echo $tgl_awal . ' s/d ' . $tgl_akhir; ?></p>
+                      <p style="margin:0;">Periode : @foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach 's/d' @foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach</p>
                     </center>
                   </div>
                   <!-- /.card-header -->
@@ -107,13 +107,13 @@
                           <?php
                                     $no = 1;
                                     $now = strtotime(date("Y-m-d"));
-                                    foreach ($laporan_pengunjung as $item) { ?>
+                                    foreach ($pengunjung as $item) { ?>
                                 <tr>
                                     <td><?php echo $no; ?></td>
-                                    <td><?php echo $item['nama_siswa']; ?></td>
-                                    <td><?php echo $item['nama_kelas']; ?></td>
-                                    <td><?php echo $item['keperluan']; ?></td>
-                                    <td><?php echo date("d-m-Y H:i:s", strtotime($item['tanggal'])); ?></td>
+                                    <td>{{$item->nama_siswa}}</td>
+                                    <td>{{$item->nama_kelas}}</td>
+                                    <td>{{$item->keperlian}}</td>
+                                    <td>{{$item->tanggal}}</td>
                                 </tr>
                                 <?php $no++;
                                     } ?>

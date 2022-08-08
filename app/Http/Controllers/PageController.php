@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use PDO;
 use App\Models\Sekolah;
 use App\Models\Buku;
-use App\Models\Peminjaman;
-use App\Models\Pengunjung;
+use App\Models\Peminjaman_buku;
+use App\Models\Pengunjung_perpus;
 use App\Models\Siswa;
 
 class PageController extends Controller
@@ -19,36 +19,13 @@ class PageController extends Controller
         return view('dashboard');
     }
 
-    public function buku()
-    {
-        return view('master.buku.index');
-    }
-
-    public function kategori()
-    {
-        return view('master.kategori.index');
-    }
-
-    public function sumber()
-    {
-        return view('master.sumber.index');
-    }
 
     public function siswa()
     {
-        return view('siswa.index');
+        //$siswa = Siswa::latest()->get();
+        return view('siswa.index',/*compact('siswa')*/);
     }
 
-    public function tambah_buku()
-    {
-        return view('master.buku.tambah');
-    }
-
-    //export bermasalah
-    public function export()
-    {
-        return view('master.buku.export');
-    }
 
     public function denda()
     {
@@ -62,32 +39,25 @@ class PageController extends Controller
 
     public function laporan_peminjaman()
     {
-        return view('laporan.peminjaman.index');
+        $peminjaman = Peminjaman_buku::latest()->get();
+        return view('laporan.peminjaman.index',compact('peminjaman'));
     }
 
     public function laporan_buku()
     {
-        return view('laporan.buku.index');
+        $buku = Buku::latest()->get();
+        return view('laporan.buku.index',compact('buku'));
     }
 
     public function laporan_pengunjung()
     {
-        return view('laporan.pengunjung.index');
+        $pengunjung = Pengunjung_perpus::latest()->get();
+        return view('laporan.pengunjung.index',compact('pengunjung'));
     }
 
     public function password()
     {
         return view('app.password');
-    }
-
-    public function kategori_tambah()
-    {
-        return view('master.kategori.kategori_tambah');
-    }
-
-    public function sumber_tambah()
-    {
-        return view('master.sumber.sumber_tambah');
     }
 
     public function siswa_detail()
@@ -99,12 +69,6 @@ class PageController extends Controller
     {
         return view('transaksi.peminjaman.index');
     }
-
-    public function data_denda()
-    {
-        return view('master.denda.index');
-    }
-
 
 
 

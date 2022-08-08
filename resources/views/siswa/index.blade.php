@@ -59,18 +59,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr style="text-align:center;">
-                      <td class="text-sm" >1</td>
-                      <td class="text-sm" >00989237</td>
-                      <td class="text-sm" >Sofyan Hadi</td>
-                      <td class="text-sm" >Laki Laki</td>
-                      <td class="text-sm" >03 Juni 2005</td>
-                      <td class="text-sm" >TKJ</td>
-                      <td class="text-sm" >2016</td>
-                      <td style="text-align:center;">
-                        <a class="btn bg-navy btn-xs" href="<?php echo url('/').'/siswa/siswa_detail/'; ?>"><i class="fa fa-search"> </i> Detail</a>
-                      </td>
-                    </tr> -->
+                   
                   </tbody>
                 </table>
               </div>

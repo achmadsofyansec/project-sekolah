@@ -28,9 +28,19 @@
         <!-- /.row -->
         <div class="row">
           <div class="animated fadeInUp col-12">
+             @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+                  @endif
+                  @if(session('success'))
+                  <div class="alert alert-primary">
+                      {{ session('success') }}
+                  </div>
+                  @endif
             <div class="card card-info card-outline">
               <div class="card-header">
-               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>/master/kategori/kategori_tambah"><i class="fa fa-plus"> </i> Tambah Data</a>
+               <a class="btn btn-info btn-sm" href="{{route('kategori.create')}}"><i class="fa fa-plus"> </i> Tambah Data</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
@@ -43,14 +53,18 @@
                     </tr>
                   </thead>
                   <tbody> 
+                    @foreach ($kategori as $kategori)
                                     <tr>
-                                       <!--  <td style="text-align:center;width:150px;">
+                                        <td>{{$kategori->id}}</td>
+                                        <td>{{$kategori->nama_kategori}}</td>
+                                        <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
-                                            <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
-                                        </div> -->
+                                            <a class="btn bg-navy btn-xs" href="{{route('kategori.edit',$kategori->id)}}"><i class="fa fa-edit"> </i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{route('kategori.destroy',$kategori->id)}}" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
+                                        </div>
                                         </td>
                                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

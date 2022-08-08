@@ -27,6 +27,16 @@
         <!-- /.row -->
         <div class="row">
           <div class=" col-md-12">
+            @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+                  @endif
+                  @if(session('success'))
+                  <div class="alert alert-primary">
+                      {{ session('success') }}
+                  </div>
+                  @endif
             <div class="card card-info card-outline">
               <div class="card-header col-md-12">
               </div>
@@ -53,16 +63,19 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach ($buku as $buku)
+                          <?php $i = 1 ?>
                                 <tr>
-                                    <!-- <td>1</td>
-                                    <td>991729</td>
-                                    <td>uwau</td>
-                                    <td>Khoirul</td>
-                                    <td>cv hawari</td>
-                                    <td>lawang</td>
-                                    <td>20</td>
-                                    -->
+                                    <td><?php echo $i++ ?></td>
+                                    <td>{{$buku->kode_buku}}</td>
+                                    <td>{{$buku->judul_buku}}</td>
+                                    <td>{{$buku->penerbit}}</td>
+                                    <td>{{$buku->pengarang}}</td>
+                                    <td>{{$buku -> lokasi}}</td>
+                                    <td>{{$buku->jumlah_buku}}</td>
+                                   
                                 </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
