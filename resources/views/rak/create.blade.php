@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Rak</label>
-                                    <input type="text" name="rak" id="rak" class="form-control" required>
+                                    <input type="text" name="nama_rak" id="nama_rak" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

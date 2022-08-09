@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipRak;
 use Illuminate\Http\Request;
 
 class RakController extends Controller
@@ -16,7 +16,7 @@ class RakController extends Controller
     public function index()
     {
         //
-        $rak = Dokumen::latest()->get();
+        $rak = ArsipRak::latest()->get();
         return view('rak.index',compact('rak'));
         
     }
@@ -40,11 +40,11 @@ class RakController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'rak' => ['required']
+            'nama_rak' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'rak' => $request->rak
+            $create = ArsipRak::create([
+                'nama_rak' => $request->nama_rak
             ]);
             if($create){
                 return redirect()
@@ -87,7 +87,7 @@ class RakController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipRak::findOrFail($id);
         return view('rak.edit',compact('data'));
 
     }
@@ -102,12 +102,12 @@ class RakController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'rak' => ['required']
+            'nama_rak' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipRak::findOrFail($id);
             $update->update([
-                'rak' => $request->rak
+                'nama_rak' => $request->nama_rak
             ]);
             if($update){
                 return redirect()
@@ -133,6 +133,20 @@ class RakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipRak::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('rak.index')
+            ->with([
+                'success' => 'Data Rak Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

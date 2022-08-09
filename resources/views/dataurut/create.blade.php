@@ -54,8 +54,8 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Jenis Dokumen</label>
-                                    <input type="text" name="urut" id="urut" class="form-control" required>
+                                    <label>Data Urut</label>
+                                    <input type="text" name="nama_urut" id="nama_urut" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

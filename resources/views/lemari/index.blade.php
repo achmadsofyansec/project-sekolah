@@ -45,11 +45,25 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($lemari as $lemari)
-                                    <th>1</th>
-                                    <th>{{ $lemari->lemari }}</th>
-                                    <td><a href="{{ route('lemari.edit' , $lemari->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                                  @endforeach
+                                  @forelse ($lemari as $lemari)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$lemari->nama_lemari}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('lemari.destroy',$lemari->id) }}" method="POST">
+                                        <a href="{{ route('lemari.edit',$lemari->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Box</label>
-                                    <input type="text" name="box" id="box" class="form-control" required>
+                                    <input type="text" name="nama_box" id="nama_box" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipBox;
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -16,7 +16,7 @@ class BoxController extends Controller
     public function index()
     {
         //
-        $box = Dokumen::latest()->get();
+        $box = ArsipBox::latest()->get();
         return view('box.index',compact('box'));
         
     }
@@ -40,11 +40,11 @@ class BoxController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'box' => ['required']
+            'nama_box' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'box' => $request->box
+            $create = ArsipBox::create([
+                'nama_box' => $request->nama_box
             ]);
             if($create){
                 return redirect()
@@ -87,7 +87,7 @@ class BoxController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipBox::findOrFail($id);
         return view('box.edit',compact('data'));
 
 
@@ -103,12 +103,12 @@ class BoxController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'box' => ['required']
+            'nama_box' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipBox::findOrFail($id);
             $update->update([
-                'box' => $request->box
+                'nama_box' => $request->nama_box
             ]);
             if($update){
                 return redirect()
@@ -134,6 +134,20 @@ class BoxController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipBox::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('box.index')
+            ->with([
+                'success' => 'Data Lemari Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

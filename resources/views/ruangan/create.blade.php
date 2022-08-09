@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Ruangan</label>
-                                    <input type="text" name="ruangan" id="ruangan" class="form-control" required>
+                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

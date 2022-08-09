@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipRuangan;
 use Illuminate\Http\Request;
 
 class RuanganController extends Controller
@@ -16,7 +16,7 @@ class RuanganController extends Controller
     public function index()
     {
         //
-        $ruangan = Dokumen::latest()->get();
+        $ruangan = ArsipRuangan::latest()->get();
         return view('ruangan.index',compact('ruangan'));
         
     }
@@ -40,11 +40,11 @@ class RuanganController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'ruangan' => ['required']
+            'nama_ruangan' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'ruangan' => $request->ruangan
+            $create = ArsipRuangan::create([
+                'nama_ruangan' => $request->nama_ruangan
             ]);
             if($create){
                 return redirect()
@@ -87,7 +87,7 @@ class RuanganController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipRuangan::findOrFail($id);
         return view('ruangan.edit',compact('data'));
 
     }
@@ -103,12 +103,12 @@ class RuanganController extends Controller
     {
         
         $validate = $this->validate($request,[
-            'ruangan' => ['required']
+            'nama_ruangan' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipRuangan::findOrFail($id);
             $update->update([
-                'ruangan' => $request->ruangan
+                'nama_ruangan' => $request->nama_ruangan
             ]);
             if($update){
                 return redirect()
@@ -134,6 +134,20 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipRuangan::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('ruangan.index')
+            ->with([
+                'success' => 'Data Ruangan Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Lemari</label>
-                                    <input type="text" name="lemari" id="lemari" class="form-control" required>
+                                    <input type="text" name="nama_lemari" id="nama_lemari" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipMap;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
@@ -16,7 +16,7 @@ class MapController extends Controller
     public function index()
     {
         //
-        $map = Dokumen::latest()->get();
+        $map = ArsipMap::latest()->get();
         return view('map.index',compact('map'));
         
     }
@@ -40,11 +40,11 @@ class MapController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'map' => ['required']
+            'nama_map' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'map' => $request->map
+            $create = ArsipMap::create([
+                'nama_map' => $request->nama_map
             ]);
             if($create){
                 return redirect()
@@ -87,7 +87,7 @@ class MapController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipMap::findOrFail($id);
         return view('map.edit',compact('data'));
 
     }
@@ -102,12 +102,12 @@ class MapController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'map' => ['required']
+            'nama_map' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipMap::findOrFail($id);
             $update->update([
-                'map' => $request->map
+                'nama_map' => $request->nama_map
             ]);
             if($update){
                 return redirect()
@@ -134,6 +134,20 @@ class MapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipMap::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('map.index')
+            ->with([
+                'success' => 'Data Map Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

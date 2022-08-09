@@ -45,11 +45,25 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($dokumen as $dokumen)
-                                  <td>{{$loop->index + 1}}</td>
-                                  <td>{{ $dokumen->jenis_dokumen }}</td>
-                                  <td><a href="{{ route('jenis_dokumen.edit' , $dokumen->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                                  @endforeach
+                                   @forelse ($dokumen as $dokumen)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$dokumen->nama_jenis_dokumen}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('jenis_dokumen.destroy',$dokumen->id) }}" method="POST">
+                                        <a href="{{ route('jenis_dokumen.edit',$dokumen->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

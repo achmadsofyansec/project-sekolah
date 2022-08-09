@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Map</label>
-                                    <input type="text" name="map" id="map" class="form-control" required>
+                                    <input type="text" name="nama_map" id="nama_map" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

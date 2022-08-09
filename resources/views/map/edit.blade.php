@@ -56,7 +56,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Map</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="map" name="map" value="{{ $data->map }}" required />
+                                        <input type="text" class="form-control" id="nama_map" name="nama_map" value="{{ $data->nama_map }}" required />
                                     </div>
                                 </div>
                             <div class="card-footer">

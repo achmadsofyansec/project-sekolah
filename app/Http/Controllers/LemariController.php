@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipLemari;
 use Illuminate\Http\Request;
 
 class LemariController extends Controller
@@ -16,7 +16,7 @@ class LemariController extends Controller
     public function index()
     {
         //
-        $lemari = Dokumen::latest()->get();
+        $lemari = ArsipLemari::latest()->get();
         return view('lemari.index',compact('lemari'));
         
     }
@@ -41,11 +41,11 @@ class LemariController extends Controller
     public function store(Request $request)
     {
        $credential = $this->validate($request,[
-            'lemari' => ['required']
+            'nama_lemari' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'lemari' => $request->lemari
+            $create = ArsipLemari::create([
+                'nama_lemari' => $request->nama_lemari
             ]);
             if($create){
                 return redirect()
@@ -89,7 +89,7 @@ class LemariController extends Controller
     public function edit($id)
     {
 
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipLemari::findOrFail($id);
         return view('lemari.edit',compact('data'));
 
     }
@@ -104,12 +104,12 @@ class LemariController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'lemari' => ['required']
+            'nama_lemari' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipLemari::findOrFail($id);
             $update->update([
-                'lemari' => $request->lemari
+                'nama_lemari' => $request->nama_lemari
             ]);
             if($update){
                 return redirect()
@@ -135,6 +135,20 @@ class LemariController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipLemari::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('lemari.index')
+            ->with([
+                'success' => 'Data Lemari Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

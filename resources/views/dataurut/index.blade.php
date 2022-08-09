@@ -45,11 +45,25 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($urut as $urut) 
-                                    <th>No</th>
-                                    <th>{{ $urut->urut }}</th>
-                                    <td><a href="{{ route('urut.edit' , $urut->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                                  @endforeach
+                                  @forelse ($urut as $urut)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$urut->nama_urut}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('urut.destroy',$urut->id) }}" method="POST">
+                                        <a href="{{ route('urut.edit',$urut->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

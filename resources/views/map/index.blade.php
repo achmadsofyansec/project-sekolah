@@ -45,11 +45,25 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($map as $map) 
-                                    <th>No</th>
-                                    <th>{{ $map->map }}</th>
-                                    <td><a href="{{ route('map.edit' , $map->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                                  @endforeach
+                                  @forelse ($map as $map)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$map->nama_map}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('map.destroy',$map->id) }}" method="POST">
+                                        <a href="{{ route('map.edit',$map->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

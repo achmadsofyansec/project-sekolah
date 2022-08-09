@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Dokumen;
-use App\Models\JenisDokumen;
+use App\Models\ArsipJenisDokumen;
 use Illuminate\Http\Request;
 
 class JenisDokumenController extends Controller
@@ -17,7 +17,7 @@ class JenisDokumenController extends Controller
     public function index()
     {
         //
-        $dokumen = Dokumen::latest()->get();
+        $dokumen = ArsipJenisDokumen::latest()->get();
         return view('dokumen.jenis.index',compact('dokumen'));
         
     }
@@ -41,11 +41,11 @@ class JenisDokumenController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'jenis_dokumen' => ['required']
+            'nama_jenis_dokumen' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'jenis_dokumen' => $request->jenis_dokumen
+            $create = ArsipJenisDokumen::create([
+                'nama_jenis_dokumen' => $request->nama_jenis_dokumen
             ]);
             if($create){
                 return redirect()
@@ -89,7 +89,7 @@ class JenisDokumenController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipJenisDokumen::findOrFail($id);
         return view('dokumen.jenis.edit',compact('data'));
 
     }
@@ -105,12 +105,12 @@ class JenisDokumenController extends Controller
     {
         
         $validate = $this->validate($request,[
-            'jenis_dokumen' => ['required']
+            'nama_jenis_dokumen' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipJenisDokumen::findOrFail($id);
             $update->update([
-                'jenis_dokumen' => $request->jenis_dokumen
+                'nama_jenis_dokumen' => $request->nama_jenis_dokumen
             ]);
             if($update){
                 return redirect()
@@ -136,6 +136,20 @@ class JenisDokumenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipJenisDokumen::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('jenis_dokumen.index')
+            ->with([
+                'success' => 'Jenis Dokumen Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

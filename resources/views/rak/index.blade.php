@@ -45,11 +45,25 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @foreach ($rak as $rak)
-                                  <th>1</th>
-                                  <th>{{ $rak->rak }}</th>
-                                  <td><a href="{{ route('rak.edit' , $rak->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                                  @endforeach
+                                 @forelse ($rak as $rak)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$rak->nama_rak}}</td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('rak.destroy',$rak->id) }}" method="POST">
+                                        <a href="{{ route('rak.edit',$rak->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

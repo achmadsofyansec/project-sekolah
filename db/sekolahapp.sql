@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2022 at 12:03 PM
+-- Generation Time: Aug 09, 2022 at 08:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,146 @@ SET time_zone = "+00:00";
 --
 -- Database: `sekolahapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_boxes`
+--
+
+CREATE TABLE `arsip_boxes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_box` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_boxes`
+--
+
+INSERT INTO `arsip_boxes` (`id`, `nama_box`, `created_at`, `updated_at`) VALUES
+(2, 'NgoboxNgobox', '2022-08-09 11:00:19', '2022-08-09 11:00:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_data_uruts`
+--
+
+CREATE TABLE `arsip_data_uruts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_urut` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_data_uruts`
+--
+
+INSERT INTO `arsip_data_uruts` (`id`, `nama_urut`, `created_at`, `updated_at`) VALUES
+(1, '100', '2022-08-09 11:13:29', '2022-08-09 11:13:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_jenis_dokumens`
+--
+
+CREATE TABLE `arsip_jenis_dokumens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_jenis_dokumen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_jenis_dokumens`
+--
+
+INSERT INTO `arsip_jenis_dokumens` (`id`, `nama_jenis_dokumen`, `created_at`, `updated_at`) VALUES
+(1, '1001 Kode Nuklir Jepang', '2022-08-09 11:23:31', '2022-08-09 11:23:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_lemaris`
+--
+
+CREATE TABLE `arsip_lemaris` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_lemari` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_lemaris`
+--
+
+INSERT INTO `arsip_lemaris` (`id`, `nama_lemari`, `created_at`, `updated_at`) VALUES
+(1, 'Lemari Palsu', '2022-08-09 11:15:21', '2022-08-09 11:15:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_maps`
+--
+
+CREATE TABLE `arsip_maps` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_map` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_maps`
+--
+
+INSERT INTO `arsip_maps` (`id`, `nama_map`, `created_at`, `updated_at`) VALUES
+(1, 'Mapan Bersamamu Amiin', '2022-08-09 11:05:44', '2022-08-09 11:06:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_raks`
+--
+
+CREATE TABLE `arsip_raks` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_rak` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_raks`
+--
+
+INSERT INTO `arsip_raks` (`id`, `nama_rak`, `created_at`, `updated_at`) VALUES
+(1, 'Rak Aqua', '2022-08-09 10:53:08', '2022-08-09 10:53:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arsip_ruangans`
+--
+
+CREATE TABLE `arsip_ruangans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_ruangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip_ruangans`
+--
+
+INSERT INTO `arsip_ruangans` (`id`, `nama_ruangan`, `created_at`, `updated_at`) VALUES
+(1, 'Ruangan penjara', '2022-08-09 11:15:02', '2022-08-09 11:15:02');
 
 -- --------------------------------------------------------
 
@@ -208,6 +348,26 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jenis_dokumens`
+--
+
+CREATE TABLE `jenis_dokumens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_jenis_dokumen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jenis_dokumens`
+--
+
+INSERT INTO `jenis_dokumens` (`id`, `nama_jenis_dokumen`, `created_at`, `updated_at`) VALUES
+(1, '1001 Kode Nuklir Jepang', '2022-08-09 11:14:36', '2022-08-09 11:14:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jurusans`
 --
 
@@ -345,6 +505,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(2, '2022_08_06_025442_create_dokumens_table', 1),
+(3, '2022_08_09_043407_create_tamus_table', 1),
+(4, '2022_08_09_163910_create_jenis_dokumens_table', 1),
+(5, '2022_08_09_170248_create_arsip_ruangans_table', 1),
+(6, '2022_08_09_170623_create_arsip_lemaris_table', 1),
+(7, '2022_08_09_171554_create_arsip_raks_table', 1),
+(8, '2022_08_09_171957_create_arsip_boxes_table', 1),
+(9, '2022_08_09_172902_create_arsip_maps_table', 1),
+(10, '2022_08_09_173719_create_arsip_data_uruts_table', 1),
 (21, '2014_10_12_000000_create_users_table', 1),
 (22, '2014_10_12_100000_create_password_resets_table', 1),
 (23, '2019_08_19_000000_create_failed_jobs_table', 1),
@@ -372,7 +542,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (77, '2022_07_30_023905_kelulusan', 13),
 (78, '2022_08_02_135111_pengaturan_kelulusan', 13),
 (79, '2022_08_06_025442_create_dokumens_table', 14),
-(80, '2022_08_09_043407_create_tamus_table', 15);
+(80, '2022_08_09_043407_create_tamus_table', 15),
+(81, '2022_08_09_181907_create_arsip_jenis_dokumens_table', 16);
 
 -- --------------------------------------------------------
 
@@ -553,7 +724,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('jXzwKCxpD2TcwYQbysca9OjzTVciw62TEPa0xmn5', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic1lab3YyVjdDQXFLUEZjMVZpUzRMa1ZlanFmZUJHVkY2eER5U2htVyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vbG9jYWxob3N0L2Fyc2lwL2plbmlzX2Rva3VtZW4vY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1660029518);
+('jXzwKCxpD2TcwYQbysca9OjzTVciw62TEPa0xmn5', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic1lab3YyVjdDQXFLUEZjMVZpUzRMa1ZlanFmZUJHVkY2eER5U2htVyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vbG9jYWxob3N0L2Fyc2lwL2plbmlzX2Rva3VtZW4vY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1660029518),
+('wmZac0WTSlY0uySVBZwxXQV7M7dhCjNB2HDRA922', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.47', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUnl5d243TExEYk1MWmRrbHVRZ1VjZXVIbkNlV3pGTVZGOUc2Z3MxcSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vbG9jYWxob3N0L2Fyc2lwL2plbmlzX2Rva3VtZW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1660069491);
 
 -- --------------------------------------------------------
 
@@ -649,6 +821,48 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `id
 --
 
 --
+-- Indexes for table `arsip_boxes`
+--
+ALTER TABLE `arsip_boxes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_data_uruts`
+--
+ALTER TABLE `arsip_data_uruts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_jenis_dokumens`
+--
+ALTER TABLE `arsip_jenis_dokumens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_lemaris`
+--
+ALTER TABLE `arsip_lemaris`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_maps`
+--
+ALTER TABLE `arsip_maps`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_raks`
+--
+ALTER TABLE `arsip_raks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `arsip_ruangans`
+--
+ALTER TABLE `arsip_ruangans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cek_kelulusans`
 --
 ALTER TABLE `cek_kelulusans`
@@ -667,100 +881,21 @@ ALTER TABLE `data_ortus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_siswas`
---
-ALTER TABLE `data_siswas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `dokumens`
 --
 ALTER TABLE `dokumens`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ekstrakulikulers`
+-- Indexes for table `jenis_dokumens`
 --
-ALTER TABLE `ekstrakulikulers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `jurusans`
---
-ALTER TABLE `jurusans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kecamatan`
---
-ALTER TABLE `kecamatan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kelas`
---
-ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kelompok_pelajarans`
---
-ALTER TABLE `kelompok_pelajarans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kelulusan`
---
-ALTER TABLE `kelulusan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kelurahan`
---
-ALTER TABLE `kelurahan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mata_pelajarans`
---
-ALTER TABLE `mata_pelajarans`
+ALTER TABLE `jenis_dokumens`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `notifs`
---
-ALTER TABLE `notifs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `pengaturan`
---
-ALTER TABLE `pengaturan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pengaturans`
---
-ALTER TABLE `pengaturans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -772,83 +907,56 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `predikats`
---
-ALTER TABLE `predikats`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sekolahs`
---
-ALTER TABLE `sekolahs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sessions`
---
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sessions_user_id_index` (`user_id`),
-  ADD KEY `sessions_last_activity_index` (`last_activity`);
-
---
--- Indexes for table `tahun_ajarans`
---
-ALTER TABLE `tahun_ajarans`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tamus`
 --
 ALTER TABLE `tamus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `uploads`
---
-ALTER TABLE `uploads`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `cek_kelulusans`
+-- AUTO_INCREMENT for table `arsip_boxes`
 --
-ALTER TABLE `cek_kelulusans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `arsip_boxes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `data_gurus`
+-- AUTO_INCREMENT for table `arsip_data_uruts`
 --
-ALTER TABLE `data_gurus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `arsip_data_uruts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `data_ortus`
+-- AUTO_INCREMENT for table `arsip_jenis_dokumens`
 --
-ALTER TABLE `data_ortus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `arsip_jenis_dokumens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `data_siswas`
+-- AUTO_INCREMENT for table `arsip_lemaris`
 --
-ALTER TABLE `data_siswas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `arsip_lemaris`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `arsip_maps`
+--
+ALTER TABLE `arsip_maps`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `arsip_raks`
+--
+ALTER TABLE `arsip_raks`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `arsip_ruangans`
+--
+ALTER TABLE `arsip_ruangans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dokumens`
@@ -857,82 +965,16 @@ ALTER TABLE `dokumens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `ekstrakulikulers`
+-- AUTO_INCREMENT for table `jenis_dokumens`
 --
-ALTER TABLE `ekstrakulikulers`
+ALTER TABLE `jenis_dokumens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `jurusans`
---
-ALTER TABLE `jurusans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `kecamatan`
---
-ALTER TABLE `kecamatan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `kelas`
---
-ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `kelompok_pelajarans`
---
-ALTER TABLE `kelompok_pelajarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `kelulusan`
---
-ALTER TABLE `kelulusan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kelurahan`
---
-ALTER TABLE `kelurahan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `mata_pelajarans`
---
-ALTER TABLE `mata_pelajarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
---
--- AUTO_INCREMENT for table `notifs`
---
-ALTER TABLE `notifs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `pengaturan`
---
-ALTER TABLE `pengaturan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pengaturans`
---
-ALTER TABLE `pengaturans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -941,46 +983,10 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `predikats`
---
-ALTER TABLE `predikats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `sekolahs`
---
-ALTER TABLE `sekolahs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tahun_ajarans`
---
-ALTER TABLE `tahun_ajarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tamus`
 --
 ALTER TABLE `tamus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `uploads`
---
-ALTER TABLE `uploads`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

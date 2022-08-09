@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Dokumen;
+use App\Models\ArsipDataUrut;
 use Illuminate\Http\Request;
 
 class UrutController extends Controller
@@ -16,7 +16,7 @@ class UrutController extends Controller
     public function index()
     {
         //
-        $urut = Dokumen::latest()->get();
+        $urut = ArsipDataUrut::latest()->get();
         return view('dataurut.index',compact('urut'));
         
     }
@@ -40,11 +40,11 @@ class UrutController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'urut' => ['required']
+            'nama_urut' => ['required']
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'urut' => $request->urut
+            $create = ArsipDataUrut::create([
+                'nama_urut' => $request->nama_urut
             ]);
             if($create){
                 return redirect()
@@ -87,7 +87,7 @@ class UrutController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
+        $data = ArsipDataUrut::findOrFail($id);
         return view('dataurut.edit',compact('data'));
 
     }
@@ -102,12 +102,12 @@ class UrutController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'urut' => ['required']
+            'nama_urut' => ['required']
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = ArsipDataUrut::findOrFail($id);
             $update->update([
-                'urut' => $request->urut
+                'nama_urut' => $request->nama_urut
             ]);
             if($update){
                 return redirect()
@@ -133,6 +133,20 @@ class UrutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ArsipDataUrut::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('urut.index')
+            ->with([
+                'success' => 'Data Ruangan Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

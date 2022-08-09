@@ -56,7 +56,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Data Urut</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="urut" name="urut" value="{{ $data->urut }}" required />
+                                        <input type="text" class="form-control" id="nama_urut" name="nama_urut" value="{{ $data->nama_urut }}" required />
                                     </div>
                                 </div>
                             <div class="card-footer">
