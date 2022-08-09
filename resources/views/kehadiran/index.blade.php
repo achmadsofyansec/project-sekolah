@@ -43,6 +43,8 @@
                                         <th>No</th>
                                         <th>Tanggal</th>
                                         <th>Nama Siswa</th>
+                                        <th>Kelas</th>
+                                        <th>Jurusan</th>
                                         <th>Absensi</th>
                                         <th>Alasan</th>
                                         <th>Aksi</th>
@@ -53,6 +55,8 @@
                                         <td>{{$loop->index + 1}}</td>
                                         <td>{{$item->tgl_absensi}}</td>
                                         <td>{{$item->nama}}</td>
+                                        <td>{{$item->kode_kelas}}</td>
+                                        <td>{{$item->kode_jurusan}}</td>
                                         <td>{{$item->keterangan}}</td>
                                         <td>{{$item->alasan}}</td>
                                         <td>

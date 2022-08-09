@@ -49,6 +49,37 @@ class PelanggaranController extends Controller
     public function store(Request $request)
     {
         //
+        $validation = $this->validate($request,[
+            'tgl_pelanggaran' => ['required'],
+            'siswa' => ['required'],
+            'pelanggaran' => ['required'],
+        ]);
+        if($validation){
+            $data_poin = point_pelanggaran::findOrFail($request->pelanggaran);
+            if($data_poin){
+                $create = pelanggaran::create([
+                    'id_siswa'  => $request->siswa,
+                    'id_poin_pelanggaran' => $request->pelanggaran,
+                    'tanggal_pelanggaran' => $request->tgl_pelanggaran,
+                    'poin_minus' => $data_poin->poin,
+                    'created_by' => '-'
+                ]);
+                if($create){
+                    return redirect()
+                    ->route('pelanggaran.index')
+                    ->with([
+                        'success' => 'Pelanggaran Has Been Created successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
+            }
+            
+        }
     }
 
     /**

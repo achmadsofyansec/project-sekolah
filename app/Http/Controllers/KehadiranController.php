@@ -17,7 +17,9 @@ class KehadiranController extends Controller
     public function index()
     {
         //
-        $absensi = absensi::join("data_siswas","absensis.kode_siswa","=",'data_siswas.id')->where([['data_siswas.status_siswa','=','Aktif'],['absensis.keterangan','!=','Masuk']])->get(["data_siswas.*","absensis.*","absensis.id as id_absen"]);
+        $absensi = absensi::join("data_siswas","absensis.kode_siswa","=",'data_siswas.id')
+        ->join("aktivitas_belajars","data_siswas.nik","=",'aktivitas_belajars.kode_siswa')
+        ->where([['data_siswas.status_siswa','=','Aktif'],['absensis.keterangan','!=','Masuk']])->get(["data_siswas.*","absensis.*","absensis.id as id_absen",'aktivitas_belajars.*']);
         return view('kehadiran.index',compact('absensi'));
     }
 

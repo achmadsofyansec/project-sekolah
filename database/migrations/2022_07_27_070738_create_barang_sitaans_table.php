@@ -18,7 +18,6 @@ class CreateBarangSitaansTable extends Migration
             $table->string('id_siswa');
             $table->string('keterangan_sita');
             $table->string('tanggal_sita');
-            $table->string('tahun_ajaran');
             $table->string('created_by');
             $table->timestamps();
         });

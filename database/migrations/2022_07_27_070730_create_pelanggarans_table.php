@@ -17,10 +17,8 @@ class CreatePelanggaransTable extends Migration
             $table->id();
             $table->string('id_poin_pelanggaran');
             $table->string('id_siswa');
-            $table->string('id_kelas');
             $table->string('tanggal_pelanggaran');
             $table->string('poin_minus');
-            $table->string('tahun_ajaran');
             $table->string('created_by');
             $table->timestamps();
         });

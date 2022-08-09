@@ -44,12 +44,32 @@
                                         <th>Tanggal</th>
                                         <th>Nama Siswa</th>
                                         <th>Kelas</th>
+                                        <th>Jurusan</th>
                                         <th>Barang Sitaan</th>
-                                        <th>Di Input Oleh</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
-    
+                                        @forelse ($barang_sita as $item)
+                                            <tr>
+                                            <td>{{$loop->index + 1}}</td>
+                                            <td>{{$item->tanggal_sita}}</td>
+                                            <td>{{$item->nama}}</td>
+                                            <td>{{$item->kode_kelas}}</td>
+                                            <td>{{$item->kode_jurusan}}</td>
+                                            <td>{{$item->keterangan_sita}}</td>
+                                            <td>
+                                              <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                              action="{{ route('barang_sitaan.destroy',$item->id_barang_sitaan) }}" method="POST">
+                                              <a href="{{ route('barang_sitaan.edit',$item->id_barang_sitaan) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                              @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                              </form>
+                                            </td>
+                                            </tr>
+                                        @empty
+                                            
+                                        @endforelse
                                     </tbody>
                                 </table>
                            </div>

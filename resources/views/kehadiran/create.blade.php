@@ -72,7 +72,6 @@
                                     <label>Kehadiran / Izin</label>
                                     <select name="kehadiran" id="kehadiran" class="form-control" required>
                                         <option value="">-- Pilih Izin --</option>
-                                        <option value="Masuk">Masuk</option>
                                         <option value="Izin">Izin</option>
                                         <option value="Tanpa Keterangan">Tanpa Keterangan</option>
                                         <option value="Sakit">Sakit</option>
