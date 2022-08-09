@@ -25,9 +25,6 @@ class PageController extends Controller
     public function view_rak(){
         return view('rak.index');
     }
-    public function view_rak(){
-        return view('rak.index');
-    }
     public function dokumen_edit(){
         return view('dokumen.edit');
     }
