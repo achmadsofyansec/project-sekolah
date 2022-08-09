@@ -13,27 +13,6 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
-    public function view_jenis(){
-        return view('dokumen.jenis.index');
-    }
-    public function view_ruangan(){
-        return view('ruangan.index');
-    }
-    public function view_lemari(){
-        return view('lemari.index');
-    }
-    public function view_rak(){
-        return view('rak.index');
-    }
-    public function view_rak(){
-        return view('rak.index');
-    }
-    public function dokumen_edit(){
-        return view('dokumen.edit');
-    }
-    public function view_map(){
-        return view('map.index');
-    }
     public function view_input_dokumen(){
         return view('dokumen.input.index');
     }

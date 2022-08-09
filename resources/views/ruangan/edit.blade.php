@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Jenis Dokumen')
+@section('page', 'Ruangan')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Jenis Dokumen</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Jenis Dokumen Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. Ubah Isi <b>Ruangan</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Ruangan Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -50,18 +50,18 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('jenis_dokumen.update', $data->id)}}" method="POST">
+                        <form action="{{route('ruangan.update', $data->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Jenis Dokumen</label>
+                                <label class="col-sm-3 col-form-label">Ruangan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jenis_dokumen" name="jenis_dokumen" value="{{ $data->jenis_dokumen }}" required />
+                                        <input type="text" class="form-control" id="ruangan" name="ruangan" value="{{ $data->ruangan }}" required />
                                     </div>
                                 </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('jenis_dokumen.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('ruangan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

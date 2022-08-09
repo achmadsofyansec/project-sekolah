@@ -34,7 +34,7 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                    <a type="button" href="{{ route('ruangan.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -48,7 +48,7 @@
                                   @foreach ($ruangan as $ruangan)
                                   <td>1</td>
                                   <td>{{ $ruangan->ruangan }}</td>
-                                  <td></td>
+                                  <td><a href="{{ route('ruangan.edit' , $ruangan->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
                                   @endforeach
                                 </tbody>
                             </table>

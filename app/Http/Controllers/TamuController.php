@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Dokumen;
 use Illuminate\Http\Request;
+use App\Models\Tamu;
 
-class BoxController extends Controller
+class TamuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class BoxController extends Controller
      */
     public function index()
     {
-        //
-        $box = Dokumen::latest()->get();
-        return view('box.index',compact('box'));
-        
+        $tamu = Tamu::latest()->get();
+        return view('datatamu.index',compact('tamu'));
     }
 
     /**
@@ -28,7 +25,7 @@ class BoxController extends Controller
      */
     public function create()
     {
-        return view('box.create');
+        return view('datatamu.create');
     }
 
     /**
@@ -40,17 +37,25 @@ class BoxController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'box' => ['required']
+            'nama' => ['required'],
+            'asal' => ['required'],
+            'alamat' => ['required'],
+            'keperluan' => ['required'],
+            'telepon' => ['required'],
         ]);
         if($credential){
-            $create = Dokumen::create([
-                'box' => $request->box
+            $create = Tamu::create([
+                'nama' => $request->nama,
+                'asal' => $request->asal,
+                'alamat' => $request->alamat,
+                'keperluan' => $request->keperluan,
+                'telepon' => $request->telepon,
             ]);
             if($create){
                 return redirect()
-                ->route('box.index')
+                ->route('datatamu.index')
                 ->with([
-                    'success' => 'Data Box Has Been Added successfully'
+                    'success' => 'Data Tamu Has Been Added successfully'
                 ]);
             }else{
                 return redirect()
@@ -87,10 +92,8 @@ class BoxController extends Controller
      */
     public function edit($id)
     {
-        $data = Dokumen::findOrFail($id);
-        return view('box.edit',compact('data'));
-
-
+        $data = Tamu::findOrFail($id);
+        return view('datatamu.edit',compact('data'));
     }
 
     /**
@@ -103,18 +106,26 @@ class BoxController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'box' => ['required']
+            'nama' => ['required'],
+            'asal' => ['required'],
+            'alamat' => ['required'],
+            'keperluan' => ['required'],
+            'telepon' => ['required'],
         ]);
         if($validate){
-            $update = Dokumen::findOrFail($id);
+            $update = Tamu::findOrFail($id);
             $update->update([
-                'box' => $request->box
+                'nama' => $request->nama,
+                'asal' => $request->asal,
+                'alamat' => $request->alamat,
+                'keperluan' => $request->keperluan,
+                'telepon' => $request->telepon,
             ]);
             if($update){
                 return redirect()
-                ->route('box.index')
+                ->route('datatamu.index')
                 ->with([
-                    'success' => 'Data Box Has Been Update successfully'
+                    'success' => 'Data Tamu Has Been Update successfully'
                 ]);
             }else{
                 return redirect()
@@ -134,6 +145,20 @@ class BoxController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Tamu::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('datatamu.index')
+            ->with([
+                'success' => 'Data Tamu Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

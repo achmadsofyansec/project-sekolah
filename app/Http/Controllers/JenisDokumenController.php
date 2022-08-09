@@ -29,7 +29,7 @@ class JenisDokumenController extends Controller
      */
     public function create()
     {
-        //
+        return view('dokumen.jenis.create');
     }
 
     /**
@@ -40,7 +40,34 @@ class JenisDokumenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'jenis_dokumen' => ['required']
+        ]);
+        if($credential){
+            $create = Dokumen::create([
+                'jenis_dokumen' => $request->jenis_dokumen
+            ]);
+            if($create){
+                return redirect()
+                ->route('jenis_dokumen.index')
+                ->with([
+                    'success' => 'Dokumen Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
+
     }
 
     /**
@@ -87,7 +114,7 @@ class JenisDokumenController extends Controller
             ]);
             if($update){
                 return redirect()
-                ->route('dokumen.jenis.index')
+                ->route('jenis_dokumen.index')
                 ->with([
                     'success' => 'Jenis Dokumen Has Been Update successfully'
                 ]);
