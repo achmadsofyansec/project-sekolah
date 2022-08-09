@@ -34,7 +34,7 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                    <a type="button" href="{{ route('lemari.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -48,7 +48,7 @@
                                   @foreach ($lemari as $lemari)
                                     <th>1</th>
                                     <th>{{ $lemari->lemari }}</th>
-                                    <th>Aksi</th>
+                                    <td><a href="{{ route('lemari.edit' , $lemari->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
                                   @endforeach
                                 </tbody>
                             </table>

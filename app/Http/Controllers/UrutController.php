@@ -28,7 +28,7 @@ class UrutController extends Controller
      */
     public function create()
     {
-        //
+        return view('dataurut.create');
     }
 
     /**
@@ -39,7 +39,33 @@ class UrutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'urut' => ['required']
+        ]);
+        if($credential){
+            $create = Dokumen::create([
+                'urut' => $request->urut
+            ]);
+            if($create){
+                return redirect()
+                ->route('urut.index')
+                ->with([
+                    'success' => 'Data Urut Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -61,9 +87,8 @@ class UrutController extends Controller
      */
     public function edit($id)
     {
-        // //
-        // $data = Pengaturan::findOrFail($id);
-        // return view('pengaturan.edit',compact('data'));
+        $data = Dokumen::findOrFail($id);
+        return view('dataurut.edit',compact('data'));
 
     }
 
@@ -76,36 +101,29 @@ class UrutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // $validate = $this->validate($request,[
-        //     'tanggal_pengumuman' => ['required'],
-        //     'tahun' => ['required'],
-        //     'informasi_kelulusan' => ['required'],
-        //     'informasi_lain' => ['required'],
-        // ]);
-        // if($validate){
-        //     $update = Pengaturan::findOrFail($id);
-        //     $update->update([
-        //         'pengumuman' => $request->tanggal_penguman,
-        //         'tahun' => $request->tahun,
-        //         'info_kelulusan' => $request->informasi_kelulusan,
-        //         'info_lainya' => $request->informasi_lain,
-        //     ]);
-        //     if($update){
-        //         return redirect()
-        //         ->route('pengaturan.index')
-        //         ->with([
-        //             'success' => 'Pengaturan Has Been Update successfully'
-        //         ]);
-        //     }else{
-        //         return redirect()
-        //         ->back()
-        //         ->with([
-        //             'error' => 'Some problem has occurred, please try again'
-        //         ]);
-        //     }
-        // }
-    }
+        $validate = $this->validate($request,[
+            'urut' => ['required']
+        ]);
+        if($validate){
+            $update = Dokumen::findOrFail($id);
+            $update->update([
+                'urut' => $request->urut
+            ]);
+            if($update){
+                return redirect()
+                ->route('urut.index')
+                ->with([
+                    'success' => 'Jenis Data Urut Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }  
+    }  
 
     /**
      * Remove the specified resource from storage.

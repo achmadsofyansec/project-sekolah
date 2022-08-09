@@ -34,7 +34,7 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                    <a type="button" href="{{ route('map.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -48,7 +48,7 @@
                                   @foreach ($map as $map) 
                                     <th>No</th>
                                     <th>{{ $map->map }}</th>
-                                    <th>Aksi</th>
+                                    <td><a href="{{ route('map.edit' , $map->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
                                   @endforeach
                                 </tbody>
                             </table>

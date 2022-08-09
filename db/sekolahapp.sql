@@ -1,179 +1,512 @@
-/*
-SQLyog Community v13.1.7 (64 bit)
-MySQL - 10.5.9-MariaDB : Database - sekolahapp
-*********************************************************************
-*/
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 09, 2022 at 12:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
-/*!40101 SET NAMES utf8 */;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-/*!40101 SET SQL_MODE=''*/;
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-/*Table structure for table `failed_jobs` */
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-DROP TABLE IF EXISTS `failed_jobs`;
+--
+-- Database: `sekolahapp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cek_kelulusans`
+--
+
+CREATE TABLE `cek_kelulusans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_gurus`
+--
+
+CREATE TABLE `data_gurus` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `niptk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nuptk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jns_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_lhr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelurahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jabatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_guru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_guru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_ortus`
+--
+
+CREATE TABLE `data_ortus` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_lahir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_lhr_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pendidikan_terakhir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pekerjaan_terakhir_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domisili_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_tlp_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `penghasilan_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat_ortu` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_tinggal_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jns_ortu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_siswas`
+--
+
+CREATE TABLE `data_siswas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nisn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_lhr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jns_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `anak` int(11) NOT NULL,
+  `jml_saudara` int(11) NOT NULL,
+  `hobi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cita_cita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biaya_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kebutuhan_disabilitas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kebutuhan_khusus` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_tinggal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jarak_tinggal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `waktu_tempuh` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `antar_jemput` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `data_siswas`
+--
+
+INSERT INTO `data_siswas` (`id`, `nik`, `nama`, `nisn`, `kip`, `tmp_lahir`, `tgl_lhr`, `jns_kelamin`, `agama`, `anak`, `jml_saudara`, `hobi`, `cita_cita`, `no_hp`, `email`, `biaya_sekolah`, `kebutuhan_disabilitas`, `kebutuhan_khusus`, `alamat`, `tmp_tinggal`, `jarak_tinggal`, `waktu_tempuh`, `antar_jemput`, `foto_siswa`, `status_siswa`, `created_at`, `updated_at`) VALUES
+(7, '41141411311', 'Achmad Sofyan', '414111415', 'ya', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dokumens`
+--
+
+CREATE TABLE `dokumens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ruangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lemari` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rak` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `box` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `map` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urut` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_dokumen` datetime NOT NULL,
+  `jenis_dokumen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomor_dokumen` int(11) NOT NULL,
+  `nama_dokumen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_ajaran` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dokumens`
+--
+
+INSERT INTO `dokumens` (`id`, `ruangan`, `lemari`, `rak`, `box`, `map`, `urut`, `tanggal_dokumen`, `jenis_dokumen`, `nomor_dokumen`, `nama_dokumen`, `deskripsi`, `file`, `tahun_ajaran`, `created_at`, `updated_at`) VALUES
+(1, 'R0100', 'Rak Soeharto asu', '100', 'blogoblog', 'Mapan Bersamamu', '10000', '2022-08-06 05:27:03', 'Dalang pembunuan Munir', 1, 'Dokumen Rahasia Negara', 'Dokumen Rahasia', '', '0000-00-00', NULL, '2022-08-08 20:43:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ekstrakulikulers`
+--
+
+CREATE TABLE `ekstrakulikulers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wajib_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ekstrakulikulers`
+--
+
+INSERT INTO `ekstrakulikulers` (`id`, `kode_ekstra`, `nama_ekstra`, `desc_ekstra`, `status_ekstra`, `wajib_ekstra`, `created_at`, `updated_at`) VALUES
+(1, 'EK-001', 'Kesenian Tari', 'Ekstra Tari Untuk Kesenian Tari', 'Aktif', 'Tidak Wajib', '2022-07-26 19:15:33', '2022-07-26 19:21:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `failed_jobs` */
+-- --------------------------------------------------------
 
-/*Table structure for table `kecamatan` */
+--
+-- Table structure for table `jurusans`
+--
 
-DROP TABLE IF EXISTS `kecamatan`;
+CREATE TABLE `jurusans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_jurusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_jurusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_jurusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kecamatan`
+--
 
 CREATE TABLE `kecamatan` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `kode_kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ket_kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `kecamatan` */
+--
+-- Dumping data for table `kecamatan`
+--
 
-insert  into `kecamatan`(`id`,`kode_kecamatan`,`nama_kecamatan`,`ket_kecamatan`,`created_at`,`updated_at`) values 
-(1,'350706','AmpelGading','AmpelGading','2022-07-19 11:14:57',NULL);
+INSERT INTO `kecamatan` (`id`, `kode_kecamatan`, `nama_kecamatan`, `ket_kecamatan`, `created_at`, `updated_at`) VALUES
+(1, '350706', 'AmpelGading', 'AmpelGading', '2022-07-19 04:14:57', NULL);
 
-/*Table structure for table `kelurahan` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `kelurahan`;
+--
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelompok_pelajarans`
+--
+
+CREATE TABLE `kelompok_pelajarans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelulusan`
+--
+
+CREATE TABLE `kelulusan` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_ujian` int(11) NOT NULL,
+  `bind` int(11) NOT NULL,
+  `mat` int(11) NOT NULL,
+  `bing` int(11) NOT NULL,
+  `kejuruhan` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelurahan`
+--
 
 CREATE TABLE `kelurahan` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `kode_kelurahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kode_kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_kelurahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `kelurahan` */
+--
+-- Dumping data for table `kelurahan`
+--
 
-insert  into `kelurahan`(`id`,`kode_kelurahan`,`kode_kecamatan`,`nama_kelurahan`,`created_at`,`updated_at`) values 
-(1,'350706001','350706','Argoyuwono',NULL,NULL);
+INSERT INTO `kelurahan` (`id`, `kode_kelurahan`, `kode_kecamatan`, `nama_kelurahan`, `created_at`, `updated_at`) VALUES
+(1, '350706001', '350706', 'Argoyuwono', NULL, NULL);
 
-/*Table structure for table `migrations` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `migrations`;
+--
+-- Table structure for table `mata_pelajarans`
+--
+
+CREATE TABLE `mata_pelajarans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_kelompok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
 
 CREATE TABLE `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `migrations` */
+--
+-- Dumping data for table `migrations`
+--
 
-insert  into `migrations`(`id`,`migration`,`batch`) values 
-(21,'2014_10_12_000000_create_users_table',1),
-(22,'2014_10_12_100000_create_password_resets_table',1),
-(23,'2019_08_19_000000_create_failed_jobs_table',1),
-(24,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(25,'2022_07_14_015617_create_roles_table',2),
-(26,'2022_07_15_064050_sekolah',2),
-(28,'2022_07_15_133155_create_notifs_table',3),
-(30,'2022_07_18_033038_create_uploads_table',4),
-(31,'2022_07_18_040111_create_sekolahs_table',5),
-(32,'2022_07_19_023748_kelurahan',6),
-(33,'2022_07_19_023804_kecamatan',6),
-(34,'2022_07_20_030417_create_sessions_table',7);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(21, '2014_10_12_000000_create_users_table', 1),
+(22, '2014_10_12_100000_create_password_resets_table', 1),
+(23, '2019_08_19_000000_create_failed_jobs_table', 1),
+(24, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(25, '2022_07_14_015617_create_roles_table', 2),
+(26, '2022_07_15_064050_sekolah', 2),
+(28, '2022_07_15_133155_create_notifs_table', 3),
+(30, '2022_07_18_033038_create_uploads_table', 4),
+(31, '2022_07_18_040111_create_sekolahs_table', 5),
+(32, '2022_07_19_023748_kelurahan', 6),
+(33, '2022_07_19_023804_kecamatan', 6),
+(34, '2022_07_20_030417_create_sessions_table', 7),
+(51, '2022_07_23_054446_create_kelas_table', 8),
+(52, '2022_07_23_054739_create_jurusans_table', 8),
+(53, '2022_07_23_055106_create_tahun_ajarans_table', 8),
+(54, '2022_07_23_055330_create_kelompok_pelajarans_table', 8),
+(65, '2022_07_23_055445_create_mata_pelajarans_table', 9),
+(70, '2022_07_23_061916_create_data_siswas_table', 10),
+(71, '2022_07_23_061930_create_data_gurus_table', 10),
+(72, '2022_07_23_061955_create_data_ortus_table', 10),
+(73, '2022_07_27_014724_create_ekstrakulikulers_table', 11),
+(74, '2022_07_27_063906_create_predikats_table', 12),
+(75, '2022_07_26_124447_create_cek_kelulusans_table', 13),
+(76, '2022_07_26_140212_create_pengaturans_table', 13),
+(77, '2022_07_30_023905_kelulusan', 13),
+(78, '2022_08_02_135111_pengaturan_kelulusan', 13),
+(79, '2022_08_06_025442_create_dokumens_table', 14),
+(80, '2022_08_09_043407_create_tamus_table', 15);
 
-/*Table structure for table `notifs` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `notifs`;
+--
+-- Table structure for table `notifs`
+--
 
 CREATE TABLE `notifs` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `nama_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isi_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `notifs` */
+--
+-- Dumping data for table `notifs`
+--
 
-insert  into `notifs`(`id`,`nama_pengumuman`,`isi_pengumuman`,`file_pengumuman`,`status_pengumuman`,`created_at`,`updated_at`) values 
-(10,'Pengumuman Test','Ini Adalah Tes Untuk Pengumuman','WhatsApp Image 2022-07-16 at 10.56.19.jpeg','0','2022-07-19 05:06:53','2022-07-19 05:06:53');
+INSERT INTO `notifs` (`id`, `nama_pengumuman`, `isi_pengumuman`, `file_pengumuman`, `status_pengumuman`, `created_at`, `updated_at`) VALUES
+(10, 'Pengumuman Test', 'Ini Adalah Tes Untuk Pengumuman', 'WhatsApp Image 2022-07-16 at 10.56.19.jpeg', '0', '2022-07-18 22:06:53', '2022-07-18 22:06:53');
 
-/*Table structure for table `password_resets` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `password_resets`;
+--
+-- Table structure for table `password_resets`
+--
 
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `password_resets` */
+-- --------------------------------------------------------
 
-/*Table structure for table `personal_access_tokens` */
+--
+-- Table structure for table `pengaturan`
+--
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
+CREATE TABLE `pengaturan` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengumuman` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tahun` int(11) NOT NULL,
+  `info_kelulusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `info_lainya` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengaturans`
+--
+
+CREATE TABLE `pengaturans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengumuman` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tahun` int(11) NOT NULL,
+  `info_kelulusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `info_lainya` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `personal_access_tokens` */
+-- --------------------------------------------------------
 
-/*Table structure for table `roles` */
+--
+-- Table structure for table `predikats`
+--
 
-DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `predikats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `dari` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sampai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `grade` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
 
 CREATE TABLE `roles` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `roles_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles_access` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `roles` */
+--
+-- Dumping data for table `roles`
+--
 
-insert  into `roles`(`id`,`roles_name`,`roles_access`,`id_roles`,`created_at`,`updated_at`) values 
-(1,'Administrator','admin','0',NULL,NULL);
+INSERT INTO `roles` (`id`, `roles_name`, `roles_access`, `id_roles`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'admin', '0', NULL, NULL);
 
-/*Table structure for table `sekolahs` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `sekolahs`;
+--
+-- Table structure for table `sekolahs`
+--
 
 CREATE TABLE `sekolahs` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `kode_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nsm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `npsn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -190,62 +523,109 @@ CREATE TABLE `sekolahs` (
   `website` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `sekolahs` */
+--
+-- Dumping data for table `sekolahs`
+--
 
-insert  into `sekolahs`(`id`,`kode_sekolah`,`nsm`,`npsn`,`akreditasi`,`nama_sekolah`,`alamat_sekolah`,`longtitude`,`latitude`,`kode_kecamatan`,`kode_kelurahan`,`kode_pos`,`nomor_hp`,`email`,`website`,`logo_sekolah`,`created_at`,`updated_at`) values 
-(2,'00000','0000','2115251','A','SIPINTAR','JL.Sipintar','0.0','0.0','350706','350706001','65124','089524610353','sipintar@gmail.com','-','-',NULL,NULL);
+INSERT INTO `sekolahs` (`id`, `kode_sekolah`, `nsm`, `npsn`, `akreditasi`, `nama_sekolah`, `alamat_sekolah`, `longtitude`, `latitude`, `kode_kecamatan`, `kode_kelurahan`, `kode_pos`, `nomor_hp`, `email`, `website`, `logo_sekolah`, `created_at`, `updated_at`) VALUES
+(2, '00000', '0000', '2115251', 'A', 'SIPINTAR', 'JL.Sipintar', '0.0', '0.0', '350706', '350706001', '65124', '089524610353', 'sipintar@gmail.com', '-', '-', NULL, NULL);
 
-/*Table structure for table `sessions` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `sessions`;
+--
+-- Table structure for table `sessions`
+--
 
 CREATE TABLE `sessions` (
   `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_user_id_index` (`user_id`),
-  KEY `sessions_last_activity_index` (`last_activity`)
+  `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `sessions` */
+--
+-- Dumping data for table `sessions`
+--
 
-insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('xAbgFUAbEkTUKdY6bEuAtyZzvmG2iJwNulTFE8lK',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWkdyeHNnbTU3VXVoM205WTF3MU9vTjJtbU1YUmdFMHRuZmVOMFZCMSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1658287565);
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('jXzwKCxpD2TcwYQbysca9OjzTVciw62TEPa0xmn5', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic1lab3YyVjdDQXFLUEZjMVZpUzRMa1ZlanFmZUJHVkY2eER5U2htVyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vbG9jYWxob3N0L2Fyc2lwL2plbmlzX2Rva3VtZW4vY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1660029518);
 
-/*Table structure for table `uploads` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `uploads`;
+--
+-- Table structure for table `tahun_ajarans`
+--
+
+CREATE TABLE `tahun_ajarans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kode_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semester` int(11) NOT NULL,
+  `status_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tamus`
+--
+
+CREATE TABLE `tamus` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `asal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keperluan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telepon` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tamus`
+--
+
+INSERT INTO `tamus` (`id`, `nama`, `asal`, `alamat`, `keperluan`, `telepon`, `created_at`, `updated_at`) VALUES
+(1, 'Achmad Sofyan Hadi tes', 'Malang Timur', 'Malang', 'Mencari Dalang Pembunuhan Munir', 1314141, NULL, '2022-08-08 23:57:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uploads`
+--
 
 CREATE TABLE `uploads` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `uploads` */
+--
+-- Dumping data for table `uploads`
+--
 
-insert  into `uploads`(`id`,`name`,`path`,`created_at`,`updated_at`) values 
-(3,'WhatsApp Image 2022-07-16 at 10.56.18.jpeg','C:\\xampp\\htdocs\\sekolahApp\\public\\public/uploads/WhatsApp Image 2022-07-16 at 10.56.18.jpeg','2022-07-19 04:52:41','2022-07-19 04:52:41'),
-(4,'WhatsApp Image 2022-07-16 at 10.56.17.jpeg','C:\\xampp\\htdocs\\sekolahApp\\public\\uploads/WhatsApp Image 2022-07-16 at 10.56.17.jpeg','2022-07-19 04:53:27','2022-07-19 04:53:27'),
-(5,'WhatsApp Image 2022-07-16 at 10.56.19.jpeg','C:\\xampp\\htdocs\\sekolahApp\\public\\uploads/WhatsApp Image 2022-07-16 at 10.56.19.jpeg','2022-07-19 05:06:53','2022-07-19 05:06:53');
+INSERT INTO `uploads` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
+(3, 'WhatsApp Image 2022-07-16 at 10.56.18.jpeg', 'C:\\xampp\\htdocs\\sekolahApp\\public\\public/uploads/WhatsApp Image 2022-07-16 at 10.56.18.jpeg', '2022-07-18 21:52:41', '2022-07-18 21:52:41'),
+(4, 'WhatsApp Image 2022-07-16 at 10.56.17.jpeg', 'C:\\xampp\\htdocs\\sekolahApp\\public\\uploads/WhatsApp Image 2022-07-16 at 10.56.17.jpeg', '2022-07-18 21:53:27', '2022-07-18 21:53:27'),
+(5, 'WhatsApp Image 2022-07-16 at 10.56.19.jpeg', 'C:\\xampp\\htdocs\\sekolahApp\\public\\uploads/WhatsApp Image 2022-07-16 at 10.56.19.jpeg', '2022-07-18 22:06:53', '2022-07-18 22:06:53');
 
-/*Table structure for table `users` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
+--
+-- Table structure for table `users`
+--
 
 CREATE TABLE `users` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -253,18 +633,356 @@ CREATE TABLE `users` (
   `id_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `users` */
+--
+-- Dumping data for table `users`
+--
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`id_role`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'CHOIRUL','admin@sipinter.com',NULL,'$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa','1',NULL,NULL,'2022-07-18 04:37:56'),
-(5,'Administrator','admin@gmail.com',NULL,'$2y$10$iHKGKSXkXhPhQOqFp71F/u34lxryrJv/MmK2B3l0Wu4NAr6QKfAqa','1',NULL,'2022-07-19 03:16:53','2022-07-19 03:16:53');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `id_role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@sipinter.com', NULL, '$2y$10$J5QhqMQTJpdcYAL9zgetsOzi3N0j5n0uxu2hNY6uYX/GGXDRvYoMa', '1', NULL, NULL, '2022-07-26 21:25:34'),
+(5, 'Administrator', 'admin@gmail.com', NULL, '$2y$10$iHKGKSXkXhPhQOqFp71F/u34lxryrJv/MmK2B3l0Wu4NAr6QKfAqa', '1', NULL, '2022-07-18 20:16:53', '2022-07-18 20:16:53');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cek_kelulusans`
+--
+ALTER TABLE `cek_kelulusans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_gurus`
+--
+ALTER TABLE `data_gurus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_ortus`
+--
+ALTER TABLE `data_ortus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_siswas`
+--
+ALTER TABLE `data_siswas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dokumens`
+--
+ALTER TABLE `dokumens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ekstrakulikulers`
+--
+ALTER TABLE `ekstrakulikulers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jurusans`
+--
+ALTER TABLE `jurusans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelompok_pelajarans`
+--
+ALTER TABLE `kelompok_pelajarans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelulusan`
+--
+ALTER TABLE `kelulusan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelurahan`
+--
+ALTER TABLE `kelurahan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mata_pelajarans`
+--
+ALTER TABLE `mata_pelajarans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifs`
+--
+ALTER TABLE `notifs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `pengaturan`
+--
+ALTER TABLE `pengaturan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengaturans`
+--
+ALTER TABLE `pengaturans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `predikats`
+--
+ALTER TABLE `predikats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sekolahs`
+--
+ALTER TABLE `sekolahs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `tahun_ajarans`
+--
+ALTER TABLE `tahun_ajarans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tamus`
+--
+ALTER TABLE `tamus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uploads`
+--
+ALTER TABLE `uploads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cek_kelulusans`
+--
+ALTER TABLE `cek_kelulusans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `data_gurus`
+--
+ALTER TABLE `data_gurus`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `data_ortus`
+--
+ALTER TABLE `data_ortus`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `data_siswas`
+--
+ALTER TABLE `data_siswas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `dokumens`
+--
+ALTER TABLE `dokumens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ekstrakulikulers`
+--
+ALTER TABLE `ekstrakulikulers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jurusans`
+--
+ALTER TABLE `jurusans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `kelompok_pelajarans`
+--
+ALTER TABLE `kelompok_pelajarans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `kelulusan`
+--
+ALTER TABLE `kelulusan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kelurahan`
+--
+ALTER TABLE `kelurahan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mata_pelajarans`
+--
+ALTER TABLE `mata_pelajarans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT for table `notifs`
+--
+ALTER TABLE `notifs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `pengaturan`
+--
+ALTER TABLE `pengaturan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengaturans`
+--
+ALTER TABLE `pengaturans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `predikats`
+--
+ALTER TABLE `predikats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sekolahs`
+--
+ALTER TABLE `sekolahs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tahun_ajarans`
+--
+ALTER TABLE `tahun_ajarans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tamus`
+--
+ALTER TABLE `tamus`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uploads`
+--
+ALTER TABLE `uploads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

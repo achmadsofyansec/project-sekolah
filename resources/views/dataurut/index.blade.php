@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Map')
+@section('page', 'Data Urut')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,7 +34,7 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                    <a type="button" href="{{ route('urut.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -47,8 +47,8 @@
                                 <tbody>
                                   @foreach ($urut as $urut) 
                                     <th>No</th>
-                                    <th>{{ $urut->map }}</th>
-                                    <th>Aksi</th>
+                                    <th>{{ $urut->urut }}</th>
+                                    <td><a href="{{ route('urut.edit' , $urut->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
                                   @endforeach
                                 </tbody>
                             </table>

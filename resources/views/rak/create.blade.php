@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('page', 'Jenis Dokumen')
+@section('page', 'Tambah Rak')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><i class="fas fa-building nav-icon text-primary"></i> @yield('page')</h1>
+            <h1 class="m-0"><i class="fas fa-chalkboard nav-icon text-info"></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Jenis Dokumen</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Jenis Dokumen Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. isi <b>Identitas Rak</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Rak Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -50,18 +50,17 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('jenis_dokumen.update', $data->id)}}" method="POST">
+                        <form action="{{route('rak.store')}}" method="POST">
                             @csrf
-                            @method('PUT')
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Jenis Dokumen</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jenis_dokumen" name="jenis_dokumen" value="{{ $data->jenis_dokumen }}" required />
-                                    </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Rak</label>
+                                    <input type="text" name="rak" id="rak" class="form-control" required>
                                 </div>
+                            </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('jenis_dokumen.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('rak.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

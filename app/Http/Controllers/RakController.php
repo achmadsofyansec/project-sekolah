@@ -28,7 +28,7 @@ class RakController extends Controller
      */
     public function create()
     {
-        //
+        return view('rak.create');
     }
 
     /**
@@ -39,7 +39,33 @@ class RakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'rak' => ['required']
+        ]);
+        if($credential){
+            $create = Dokumen::create([
+                'rak' => $request->rak
+            ]);
+            if($create){
+                return redirect()
+                ->route('rak.index')
+                ->with([
+                    'success' => 'Data Rak Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -61,9 +87,8 @@ class RakController extends Controller
      */
     public function edit($id)
     {
-        // //
-        // $data = Pengaturan::findOrFail($id);
-        // return view('pengaturan.edit',compact('data'));
+        $data = Dokumen::findOrFail($id);
+        return view('rak.edit',compact('data'));
 
     }
 
@@ -76,35 +101,28 @@ class RakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // $validate = $this->validate($request,[
-        //     'tanggal_pengumuman' => ['required'],
-        //     'tahun' => ['required'],
-        //     'informasi_kelulusan' => ['required'],
-        //     'informasi_lain' => ['required'],
-        // ]);
-        // if($validate){
-        //     $update = Pengaturan::findOrFail($id);
-        //     $update->update([
-        //         'pengumuman' => $request->tanggal_penguman,
-        //         'tahun' => $request->tahun,
-        //         'info_kelulusan' => $request->informasi_kelulusan,
-        //         'info_lainya' => $request->informasi_lain,
-        //     ]);
-        //     if($update){
-        //         return redirect()
-        //         ->route('pengaturan.index')
-        //         ->with([
-        //             'success' => 'Pengaturan Has Been Update successfully'
-        //         ]);
-        //     }else{
-        //         return redirect()
-        //         ->back()
-        //         ->with([
-        //             'error' => 'Some problem has occurred, please try again'
-        //         ]);
-        //     }
-        // }
+        $validate = $this->validate($request,[
+            'rak' => ['required']
+        ]);
+        if($validate){
+            $update = Dokumen::findOrFail($id);
+            $update->update([
+                'rak' => $request->rak
+            ]);
+            if($update){
+                return redirect()
+                ->route('rak.index')
+                ->with([
+                    'success' => 'Data Rak Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

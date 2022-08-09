@@ -185,6 +185,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/datatamu') ?>" class="nav-link">
+              <i class="nav-icon  fas fa-user text-primary"></i>
+              <p>
+               Data Tamu
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Lainnya</li>
           <li class="nav-item">
             <a href="<?php echo url('/manual_book') ?>" class="nav-link">
