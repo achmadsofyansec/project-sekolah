@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kecamatan;
-use App\Models\kelurahan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
