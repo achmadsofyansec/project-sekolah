@@ -108,7 +108,7 @@
           </div>
 
           <div class="col-12 col-sm-6 col-md-3">
-            <a href="../asiscbt" target="_blank" style="color:black;">
+            <a href="../alumni" target="_blank" style="color:black;">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-laptop"></i></span>
               <div class="info-box-content">
