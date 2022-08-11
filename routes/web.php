@@ -14,6 +14,7 @@ use App\Http\Controllers\BoxController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\UrutController;
 use App\Http\Controllers\TamuController;
+use App\Http\Controllers\DokumenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('map',MapController::class);
         Route::resource('urut',UrutController::class);
         Route::resource('datatamu',TamuController::class);
-        Route::get('/input_dokumen',[PageController::class,'view_input_dokumen'])->name('input_dokumen');
+        Route::resource('input_dokumen',DokumenController::class);
         Route::get('/laporan',[PageController::class,'view_laporan'])->name('laporan');
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
         
