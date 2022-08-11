@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\URL;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ class kategoriController extends Controller
      */
     public function create()
     {
+        $kategori = Kategori::latest()->get();
          return view('master.kategori.create');
     }
 
@@ -37,16 +39,13 @@ class kategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $credential = $this->validate($request,[
-            'tipe' => ['required'],
-            'id_kategori' => ['required'],
-            'nama_kategori' => ['required']
+        //
+        $validate = $this->validate($request,[
+            'nama_kategori' => ['required'],
         ]);
-        if($credential){
+        if($validate){
             $create = Kategori::create([
-                'tipe' => $request->tipe,
-                'id_kategori' => $request->id_kategori,
-                'nama_kategori' => $request->nama_kategori
+                'nama_kategori' => $request->nama_kategori,
             ]);
             if($create){
                 return redirect()
@@ -61,12 +60,6 @@ class kategoriController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
-        }else{
-            return redirect()
-            ->back()
-            ->with([
-                'error' => 'Some problem has occurred, please try again'
-            ]);
         }
     }
     /**
@@ -87,10 +80,13 @@ class kategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+ 
     {
         $data = Kategori::findOrFail($id);
         return view('master.kategori.edit',compact('data'));
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -101,24 +97,20 @@ class kategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $credential = $this->validate($request,[
-            'id_kategori' => ['required'],
-            'nama_kategori' => ['required'],
-            'status_kelompok' => ['required'],
+        
+        $validate = $this->validate($request,[
+            'nama_kategori' => ['required']
         ]);
-        if($credential){
-            $create = Kategori::findOrFail($id);
-            $create->update([
-                'id_kategori' => $request->id_kategori,
-                'nama_kategori' => $request->nama_kategori,
-                'status_kelompok' => $request->status_kelompok,
+        if($validate){
+            $update = ArsipJenisDokumen::findOrFail($id);
+            $update->update([
+                'nama_kategori' => $request->nama_kategori
             ]);
-            if($create){
+            if($update){
                 return redirect()
-                ->route('kelompok_mapel.index')
+                ->route('master.kategori.index')
                 ->with([
-                    'success' => 'Kelompok Has Been Updated successfully'
+                    'success' => 'Kategori Has Been Update successfully'
                 ]);
             }else{
                 return redirect()
@@ -127,14 +119,9 @@ class kategoriController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
-        }else{
-            return redirect()
-            ->back()
-            ->with([
-                'error' => 'Some problem has occurred, please try again'
-            ]);
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -144,13 +131,14 @@ class kategoriController extends Controller
      */
     public function destroy($id)
     {
-    $data = Kategori::findOrFail($id);
+        //
+        $data = Kategori::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()
-            ->route('master.kategori.index')
+            ->route('kategori.index')
             ->with([
-                'success' => 'kategori Has Been Deleted successfully'
+                'success' => 'Kategori Has Been Deleted successfully'
             ]);
         }else{
             return redirect()

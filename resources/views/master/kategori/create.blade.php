@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-                          @if(session('error'))
+              @if(session('error'))
               <div class="alert alert-danger">
                   {{ session('error') }}
               </div>
@@ -56,8 +56,6 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Kategori Buku</label>
                     <div class="col-sm-12">
-                        <input type="hidden" name="tipe" id="tipe">
-                        <input type="hidden" name="id_kategori" id="id_kategori">
                         <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" required>
                     </div>
                   </div>

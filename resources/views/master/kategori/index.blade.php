@@ -53,18 +53,24 @@
                     </tr>
                   </thead>
                   <tbody> 
-                    @foreach ($kategori as $kategori)
+                    @forelse ($kategori as $kategori)
                                     <tr>
-                                        <td>{{$kategori->id}}</td>
+                                        <td>{{$loop->index + 1}}</td>
                                         <td>{{$kategori->nama_kategori}}</td>
                                         <td style="text-align:center;width:150px;">
-                                            <div class="btn-group btn-group-sm">
-                                            <a class="btn bg-navy btn-xs" href="{{route('kategori.edit',$kategori->id)}}"><i class="fa fa-edit"> </i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="{{route('kategori.destroy',$kategori->id)}}" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
-                                        </div>
+                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                          action="{{ route('kategori.destroy',$kategori->id) }}" method="POST">
+                                          <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i> Edit</a>
+                                          @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Hapus</button>
+                                          </form>
                                         </td>
+                                    @empty
+                                    <tr>
+                                      <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
                                     </tr>
-                    @endforeach
+                    @endforelse
                   </tbody>
                 </table>
               </div>

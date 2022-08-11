@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Kategori')
+@section('page', 'Tambah Kategori')
 @section('content-app')
 
   <!-- Content Wrapper. Contains page content -->
@@ -9,6 +9,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
+              @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
             <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -34,34 +44,32 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('kategori.update')}}" method="post">
-
+              <form class="form-horizontal" role="form" action="{{route('kategori.update')}}" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="alert alert-danger" >
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="fa fa-remove"></i>
                   </button>
                   <span style="text-align: left;"></span>
                 </div>
-
                 <div class="card-body">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Kategori Buku</label>
                     <div class="col-sm-12">
-                        <input type="hidden" name="tipe" value="">
-                        <input type="hidden" name="id_kategori" value="">
-                        <input type="text" class="form-control" name="nama_kategori" value="" required>
+                        <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="{{$data->nama_kategori}}" required>
                     </div>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                   <div class="btn-group btn-group-sm">
-                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>master/kategori"><i class="fa fa-undo"> </i> Kembali</a>
+                    <a class="btn btn-danger float-right" href="{{route('kategori.index')}}"><i class="fa fa-undo"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
+              </form>
                   
                 </div>
                 </div>
                 </div>
-              </form>
             </div>
         </div>
         <div class="animated fadeInRight col-md-4">
