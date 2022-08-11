@@ -62,11 +62,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($buku as $buku)
-                      <?php $i = 1 ?>
+                    @forelse ($buku as $buku)
                                 <tr class="text-sm">
                                       <div class="btn-group btn-group-xs">
-                                        <td><?php echo $i++ ?></td>
+                                        <td>{{$loop->index + 1}}</td>
                                         <td>{{$buku->kode_buku}}</td>
                                         <td>{{$buku->judul_buku}}</td>
                                         <td>{{$buku->pengarang}}</td>
@@ -75,12 +74,19 @@
                                         <td>{{$buku->jumlah_buku}}</td>
                                         <td>{{$buku->stok}}</td><td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
+                                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                            action="{{ route('buku.destroy',$buku->id) }}" method="POST">
                                             <a class="btn bg-navy btn-xs" href="{{route('buku.edit',$buku->id)}}"><i class="fa fa-edit"> </i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
+                                            <button type="submit" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i> Hapus </a></button>
+                                          </form>
                                         </div>
                                         </td>
-                                </tr>
-                    @endforeach
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                          <td colspan="8" class="text-center text-mute">Tidak Ada Data</td>
+                                        </tr>
+                    @endforelse
                 </table>
               </div>
               <!-- /.card-body -->

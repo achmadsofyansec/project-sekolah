@@ -16,6 +16,7 @@ class kategoriController extends Controller
     {
         $kategori = Kategori::latest()->get();
         return view('master.kategori.index',compact('kategori'));
+        //
     }
 
     /**
@@ -25,7 +26,7 @@ class kategoriController extends Controller
      */
     public function create()
     {
-         return view('master.kategori.kategori_tambah');
+         return view('master.kategori.create');
     }
 
     /**
@@ -36,21 +37,22 @@ class kategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $credential = $this->validate($request,[
+            'tipe' => ['required'],
             'id_kategori' => ['required'],
-            'nama_kategori' => ['required'],
+            'nama_kategori' => ['required']
         ]);
         if($credential){
             $create = Kategori::create([
+                'tipe' => $request->tipe,
                 'id_kategori' => $request->id_kategori,
-                'nama_kategori' => $request->nama_kategori,
+                'nama_kategori' => $request->nama_kategori
             ]);
             if($create){
                 return redirect()
-                ->route('master.kategori.index')
+                ->route('kategori.index')
                 ->with([
-                    'success' => 'kategori Has Been Added successfully'
+                    'success' => 'Kategori Has Been Added successfully'
                 ]);
             }else{
                 return redirect()

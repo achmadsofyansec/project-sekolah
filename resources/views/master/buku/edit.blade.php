@@ -35,7 +35,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="<?php echo url('{{buku.update,$data->id}}'); ?>/master/buku_save" method="post" enctype="multipart/form-data">
+              <form class="form-horizontal" role="form" action="<?php echo url('/'); ?>/master/buku_save" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -61,7 +61,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Kode Buku</label>
-                                        <input type="text" class="form-control" name="kode_buku" value="{{$data->kode_buku}} " required>
+                                        <input type="text" class="form-control" name="kode_buku" value=" " required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -123,7 +123,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Jumlah Buku</label>
-                                        <input type="number" class="form-control" name="jumlah_buku" value="" required>
+                                        <input type="number" class="form-control" name="jumlah_buku" value=" " required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -186,7 +186,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                     <div class="btn-group btn-group-sm">
-                    <a class="btn btn-danger float-right" href="<?php echo url('{{buku.index}}'); ?>"><i class="fa fa-undo"> </i> Kembali</a>
+                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>/master/buku"><i class="fa fa-undo"> </i> Kembali</a>
                     <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
                   
                     </div>

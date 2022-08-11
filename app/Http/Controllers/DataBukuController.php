@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Buku;
 
 class DataBukuController extends Controller
@@ -25,7 +28,9 @@ class DataBukuController extends Controller
      */
     public function create()
     {
-        return view('master.buku.tambah');
+        $kategori = DB::table('kategoris')->select(['Kategoris.*'])->get();
+        $sumber = DB::table('sumbers')->select(['Sumbers.*'])->get();
+        return view('master.buku.tambah',compact(['sumber','kategori']));
         
     }
 
@@ -211,14 +216,15 @@ class DataBukuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+        {
+        //
         $data = Buku::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()
-            ->route('master.buku.index')
+            ->route('buku.index')
             ->with([
-                'success' => 'Kelompok Has Been Deleted successfully'
+                'success' => 'Buku Has Been Deleted successfully'
             ]);
         }else{
             return redirect()
@@ -226,6 +232,7 @@ class DataBukuController extends Controller
             ->with([
                 'error' => 'Some problem has occurred, please try again'
             ]);
+        }
     }
-}
+
 }

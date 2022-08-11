@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Kategori extends Model
 {
     use HasFactory;
-    protected $table = "kateoris";
+    protected $primaryKey = "id";
     protected $fillable = [
     	'id_kategori',
-		'nama_kategori'
+		'nama_kategori',
     ];
 }

@@ -34,7 +34,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="<?php echo url('/'); ?>/master/kategori_save" method="post">
+              <form class="form-horizontal" role="form" action="{{route('kategori.update')}}" method="post">
 
                 <div class="alert alert-danger" >
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">

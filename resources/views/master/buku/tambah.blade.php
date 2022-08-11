@@ -35,10 +35,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="<?php echo url('/'); ?>/master/buku_save" method="post" enctype="multipart/form-data">
+              <form class="form-horizontal" role="form" action="{{route('buku.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
-
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <i class="icon icon-remove"></i>
@@ -130,7 +128,13 @@
                                     <div class="form-group">
                                         <label>Sumber</label>
                                         <select class="form-control" name="id_sumber" required>
-                                           
+                                        <option value="">Pilih Kategori</option>
+                                          @forelse ($sumber as $item)
+                                        <option value="{{$item->id_sumber}}">{{$item->nama_sumber}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                        </select>
                                         </select>
                                     </div>
                                 </div>
@@ -138,7 +142,12 @@
                                     <div class="form-group">
                                         <label>Kategori</label>
                                         <select class="form-control" name="id_kategori" required>
-                                            
+                                        <option value="">Pilih Kategori</option>
+                                          @forelse ($kategori as $item)
+                                        <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
+                                          @empty
+                                              
+                                          @endforelse
                                         </select>
                                     </div>
                                 </div>

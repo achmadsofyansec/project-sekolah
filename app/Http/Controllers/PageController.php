@@ -16,7 +16,10 @@ class PageController extends Controller
     
     //VIEW Pages
     public function index(Request $request){
-        return view('dashboard');
+    $buku = Buku::latest()->get();
+    $pinjaman = Peminjaman_buku::latest()->get();
+    $pengunjung = Pengunjung_perpus::latest()->get();
+        return view('dashboard',compact('buku','pinjaman','pengunjung'));
     }
 
 
