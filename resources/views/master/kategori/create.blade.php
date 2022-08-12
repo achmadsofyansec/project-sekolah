@@ -9,16 +9,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
-              @if(session('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
-              </div>
-              @endif
-              @if(session('success'))
-              <div class="alert alert-primary">
-                  {{ session('success') }}
-              </div>
-              @endif
             <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -38,6 +28,7 @@
         <div class="row">
         <!-- /.row -->
         <div class="animated fadeInLeft col-md-8">
+                        
             <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-ballot"></i> Input @yield('page')</h3>
@@ -46,12 +37,16 @@
               <!-- form start -->
               <form class="form-horizontal" role="form" action="{{route('kategori.store')}}" method="POST">
                 @csrf
-                <div class="alert alert-danger" >
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="fa fa-remove"></i>
-                  </button>
-                  <span style="text-align: left;"></span>
-                </div>
+                @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
                 <div class="card-body">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Kategori Buku</label>

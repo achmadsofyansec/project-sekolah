@@ -14,8 +14,9 @@ class SumberController extends Controller
      */
     public function index()
     {
-           $sumber = Sumber::latest()->get();
-        return view('master.sumber.index',compact ('sumber'));    }
+        $sumber = Sumber::latest()->get();
+        return view('master.sumber.index',compact ('sumber'));    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +25,8 @@ class SumberController extends Controller
      */
     public function create()
     {
-        return view('master.sumber.sumber_tambah');
+        $sumber = Sumber::latest()->get();
+         return view('master.sumber.create',compact('sumber'));
     }
 
     /**
@@ -35,21 +37,18 @@ class SumberController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $credential = $this->validate($request,[
-            'id_sumber' => ['required'],
-            'nama_sumber' => ['required'],
+            'nama_sumber' => ['required']
         ]);
         if($credential){
             $create = Sumber::create([
-                'id_sumber' => $request->id_sumber,
-                'nama_sumber' => $request->nama_sumber,
+                'nama_sumber' => $request->nama_sumber
             ]);
             if($create){
                 return redirect()
-                ->route('master.sumber.index')
+                ->route('sumber.index')
                 ->with([
-                    'success' => 'Sumber Has Been Added successfully'
+                    'success' => 'sumber Has Been Added successfully'
                 ]);
             }else{
                 return redirect()
@@ -65,6 +64,7 @@ class SumberController extends Controller
                 'error' => 'Some problem has occurred, please try again'
             ]);
         }
+
     }
     /**
      * Display the specified resource.
@@ -85,8 +85,8 @@ class SumberController extends Controller
      */
     public function edit($id)
     {
-        $data = Sumber::findOrFail($id);
-        return view('master.sumber.edit',compact('data'));
+        $sumber = Sumber::findOrFail($id);
+        return view('master.sumber.edit',compact('sumber'));
     }
 
     /**
@@ -98,24 +98,20 @@ class SumberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $credential = $this->validate($request,[
-            'id_sumber' => ['required'],
-            'nama_sumber' => ['required'],
-            'status_kelompok' => ['required'],
+        
+        $validate = $this->validate($request,[
+            'nama_sumber' => ['required']
         ]);
-        if($credential){
-            $create = Sumber::findOrFail($id);
-            $create->update([
-                'id_sumber' => $request->id_sumber,
-                'nama_sumber' => $request->nama_sumber,
-                'status_kelompok' => $request->status_kelompok,
+        if($validate){
+            $update = Sumber::findOrFail($id);
+            $update->update([
+                'nama_sumber' => $request->nama_sumber
             ]);
-            if($create){
+            if($update){
                 return redirect()
-                ->route('kelompok_mapel.index')
+                ->route('sumber.index')
                 ->with([
-                    'success' => 'Kelompok Has Been Updated successfully'
+                    'success' => 'sumber Has Been Update successfully'
                 ]);
             }else{
                 return redirect()
@@ -124,12 +120,6 @@ class SumberController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
-        }else{
-            return redirect()
-            ->back()
-            ->with([
-                'error' => 'Some problem has occurred, please try again'
-            ]);
         }
     }
 
@@ -141,11 +131,12 @@ class SumberController extends Controller
      */
     public function destroy($id)
     {
-    $data = Sumber::findOrFail($id);
+        //
+        $data = Sumber::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()
-            ->route('master.sumber.index')
+            ->route('sumber.index')
             ->with([
                 'success' => 'Sumber Has Been Deleted successfully'
             ]);
@@ -157,5 +148,4 @@ class SumberController extends Controller
             ]);
         }
     }
-    
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\URL;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -39,19 +38,18 @@ class kategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validate = $this->validate($request,[
-            'nama_kategori' => ['required'],
+        $credential = $this->validate($request,[
+            'nama_kategori' => ['required']
         ]);
-        if($validate){
+        if($credential){
             $create = Kategori::create([
-                'nama_kategori' => $request->nama_kategori,
+                'nama_kategori' => $request->nama_kategori
             ]);
             if($create){
                 return redirect()
                 ->route('kategori.index')
                 ->with([
-                    'success' => 'Kategori Has Been Added successfully'
+                    'success' => 'kategori Has Been Added successfully'
                 ]);
             }else{
                 return redirect()
@@ -60,7 +58,14 @@ class kategoriController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
         }
+
     }
     /**
      * Display the specified resource.
@@ -82,8 +87,8 @@ class kategoriController extends Controller
     public function edit($id)
  
     {
-        $data = Kategori::findOrFail($id);
-        return view('master.kategori.edit',compact('data'));
+        $kategori = Kategori::findOrFail($id);
+        return view('master.kategori.edit',compact('kategori'));
 
     }
 
@@ -96,19 +101,19 @@ class kategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+        {
         
         $validate = $this->validate($request,[
             'nama_kategori' => ['required']
         ]);
         if($validate){
-            $update = ArsipJenisDokumen::findOrFail($id);
+            $update = Kategori::findOrFail($id);
             $update->update([
                 'nama_kategori' => $request->nama_kategori
             ]);
             if($update){
                 return redirect()
-                ->route('master.kategori.index')
+                ->route('kategori.index')
                 ->with([
                     'success' => 'Kategori Has Been Update successfully'
                 ]);

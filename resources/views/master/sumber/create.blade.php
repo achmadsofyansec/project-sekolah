@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Sumber')
+@section('page', 'Tambah Sumber')
 @section('content-app')
 
   <!-- Content Wrapper. Contains page content -->
@@ -28,44 +28,42 @@
         <div class="row">
         <!-- /.row -->
         <div class="animated fadeInLeft col-md-8">
+                        
             <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-ballot"></i> Input @yield('page')</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('sumber.store')}}" method="post">
-
-               @if(session('error'))
-                  <div class="alert alert-danger">
-                      {{ session('error') }}
-                  </div>
-                  @endif
-                  @if(session('success'))
-                  <div class="alert alert-primary">
-                      {{ session('success') }}
-                  </div>
-                  @endif
-
+              <form class="form-horizontal" role="form" action="{{route('sumber.store')}}" method="POST">
+                @csrf
+                @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
                 <div class="card-body">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Sumber Buku</label>
                     <div class="col-sm-12">
-                        <input type="hidden" name="tipe" value="">
-                        <input type="hidden" name="id_sumber" value="">
-                        <input type="text" class="form-control" name="nama_sumber" value="" required>
+                        <input type="text" class="form-control" name="nama_sumber" id="nama_sumber" required>
                     </div>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                   <div class="btn-group btn-group-sm">
-                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>/master/sumber"><i class="fa fa-undo"> </i> Kembali</a>
+                    <a class="btn btn-danger float-right" href="{{route('sumber.index')}}"><i class="fa fa-undo"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
+              </form>
                   
                 </div>
                 </div>
                 </div>
-              </form>
             </div>
         </div>
         <div class="animated fadeInRight col-md-4">
@@ -78,7 +76,7 @@
                 <li>
                     Gunakan <i>button</i>
                     <button class="btn btn-xs btn-info"><span class="fa fa-save"></span> Simpan </button>
-                    untuk menambahkan <b>@yield('page')</b>.
+                    untuk menambahkan <b></b>.
                 </li>
               </ol>
                 <p>
@@ -92,5 +90,6 @@
     </section>
     <!-- /.content -->
   </div>
+
 
 @endsection

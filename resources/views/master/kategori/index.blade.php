@@ -60,7 +60,7 @@
                                         <td style="text-align:center;width:150px;">
                                           <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                           action="{{ route('kategori.destroy',$kategori->id) }}" method="POST">
-                                          <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i> Edit</a>
+                                          <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn bg-navy btn-xs"><i class="fas fa-edit"></i> Edit</a>
                                           @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Hapus</button>
@@ -70,6 +70,7 @@
                                     <tr>
                                       <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
                                     </tr>
+                                  </tr>
                     @endforelse
                   </tbody>
                 </table>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
-@section('page', 'Tambah Kategori')
+@section('page', 'Edit Kategori')
 @section('content-app')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -44,20 +43,14 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('kategori.update')}}" method="POST">
+              <form class="form-horizontal" role="form" action="{{route('kategori.update',$kategori->id)}}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="alert alert-danger" >
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="fa fa-remove"></i>
-                  </button>
-                  <span style="text-align: left;"></span>
-                </div>
                 <div class="card-body">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Kategori Buku</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="{{$data->nama_kategori}}" required>
+                        <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="{{$kategori->nama_kategori}}" required>
                     </div>
                   </div>
                 <!-- /.card-body -->

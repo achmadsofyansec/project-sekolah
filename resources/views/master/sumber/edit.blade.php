@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('page', 'Edit Sumber')
 @section('content-app')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -9,6 +8,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6 mt-2">
+              @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
             <h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px gray;"><i class="nav-icon fas fa-th"></i></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -34,38 +43,26 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('sumber.store')}}" method="post">
-
-               @if(session('error'))
-                  <div class="alert alert-danger">
-                      {{ session('error') }}
-                  </div>
-                  @endif
-                  @if(session('success'))
-                  <div class="alert alert-primary">
-                      {{ session('success') }}
-                  </div>
-                  @endif
-
+              <form class="form-horizontal" role="form" action="{{route('sumber.update',$sumber->id)}}" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="card-body">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Sumber Buku</label>
+                    <label class="col-sm-3 col-form-label">Kategori Buku</label>
                     <div class="col-sm-12">
-                        <input type="hidden" name="tipe" value="">
-                        <input type="hidden" name="id_sumber" value="">
-                        <input type="text" class="form-control" name="nama_sumber" value="" required>
+                        <input type="text" class="form-control" name="nama_sumber" id="nama_sumber" value="{{$sumber->nama_sumber}}" required>
                     </div>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-right">
                   <div class="btn-group btn-group-sm">
-                    <a class="btn btn-danger float-right" href="<?php echo url('/'); ?>/master/sumber"><i class="fa fa-undo"> </i> Kembali</a>
+                    <a class="btn btn-danger float-right" href="{{route('kategori.index')}}"><i class="fa fa-undo"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
+              </form>
                   
                 </div>
                 </div>
                 </div>
-              </form>
             </div>
         </div>
         <div class="animated fadeInRight col-md-4">
@@ -73,12 +70,12 @@
               <h4><span class="fa fa-info-circle text-danger"></span> Petunjuk dan Bantuan</h4>
               <ol>
                 <li>
-                    Isi <b>@yield('page')</b> selengkap dan sebenar mungkin.
+                    Isi <b></b> selengkap dan sebenar mungkin.
                 </li>
                 <li>
                     Gunakan <i>button</i>
                     <button class="btn btn-xs btn-info"><span class="fa fa-save"></span> Simpan </button>
-                    untuk menambahkan <b>@yield('page')</b>.
+                    untuk menambahkan <b></b>.
                 </li>
               </ol>
                 <p>
@@ -92,5 +89,6 @@
     </section>
     <!-- /.content -->
   </div>
+
 
 @endsection
