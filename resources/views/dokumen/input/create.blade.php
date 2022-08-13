@@ -50,7 +50,7 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('jenis_dokumen.store')}}" method="POST">
+                        <form action="{{route('input_dokumen.store')}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -99,16 +99,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label>File</label>
-                                    <input type="file" name="file" id="file" class="form-control" accept="file/*">
+                                    <input type="file" name="file" id="file" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Tahun Ajaran</label>
-                                    <input type="text" name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                    <input type="date" name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('jenis_dokumen.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('input_dokumen.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

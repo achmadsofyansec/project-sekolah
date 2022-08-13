@@ -24,7 +24,7 @@ class DokumenController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+      * @return \Illuminate\Http\Response
      */
     public function create()
     {   
@@ -40,25 +40,65 @@ class DokumenController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            // 'ruangan' => ['required'],
-            // 'lemari' => ['required'],
-            // 'rak' => ['required'],
-            // 'box' => ['required'],
-            // 'map' => ['required'],
-            // 'urut' => ['required'],
-            // 'tanggal_dokumen' => ['required'],
-            // 'jenis_dokumen' => ['required'],
-            // 'nomor_dokumen' => ['required'],
-            // 'nama_dokumen' => ['required'],
-            // 'deskripsi' => ['required'],
+            'ruangan' => ['required'],
+            'lemari' => ['required'],
+            'rak' => ['required'],
+            'box' => ['required'],
+            'map' => ['required'],
+            'urut' => ['required'],
+            'tanggal_dokumen' => ['required'],
+            'jenis_dokumen' => ['required'],
+            'nomor_dokumen' => ['required'],
+            'nama_dokumen' => ['required'],
+            'deskripsi' => ['required'],
+            'tahun_ajaran' => ['required'],
+
         ]);
+
         if($credential){
-            $create = ArsipJenisDokumen::create([
-                'nama_jenis_dokumen' => $request->nama_jenis_dokumen
-            ]);
+            $data = [];
+            $file = $request->file('file');
+            if($file != null){
+                $name = $request->file('file')->getClientOriginalName();
+                $file->move('../assets/upload',$name);
+                $data = [
+                'ruangan' => $request->ruangan,
+                'lemari' => $request->lemari,
+                'rak' => $request->rak,
+                'box' => $request->box,
+                'map' => $request->map,
+                'urut' => $request->urut,
+                'tanggal_dokumen' => $request->tanggal_dokumen,
+                'jenis_dokumen' => $request->jenis_dokumen,
+                'nomor_dokumen' => $request->nomor_dokumen,
+                'nama_dokumen' => $request->nama_dokumen,
+                'deskripsi' => $request->deskripsi,
+                'file' => $name,
+                'tahun_ajaran' => $request->tahun_ajaran,
+                ];
+            } else {
+                $data = [
+                'ruangan' => $request->ruangan,
+                'lemari' => $request->lemari,
+                'rak' => $request->rak,
+                'box' => $request->box,
+                'map' => $request->map,
+                'urut' => $request->urut,
+                'tanggal_dokumen' => $request->tanggal_dokumen,
+                'jenis_dokumen' => $request->jenis_dokumen,
+                'nomor_dokumen' => $request->nomor_dokumen,
+                'nama_dokumen' => $request->nama_dokumen,
+                'deskripsi' => $request->deskripsi,
+                'tahun_ajaran' => $request->tahun_ajaran,
+                'file' => '-',
+
+                ];
+            }
+            $create = Dokumen::create($data);
+
             if($create){
                 return redirect()
-                ->route('jenis_dokumen.index')
+                ->route('input_dokumen.index')
                 ->with([
                     'success' => 'Dokumen Has Been Added successfully'
                 ]);
@@ -69,7 +109,7 @@ class DokumenController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
-        }else{
+        } else {
             return redirect()
             ->back()
             ->with([
