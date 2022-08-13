@@ -32,9 +32,8 @@ class CreateBukusTable extends Migration
             $table->string('lokasi');
             $table->text('deskripsi_buku');
             $table->string('foto_buku');
-            $table->integer('id_sumber');
-            $table->integer('id_kategori');
-            $table->integer('stok');
+            $table->string('id_sumber');
+            $table->string('id_kategori');
             $table->timestamps();
         });
     }

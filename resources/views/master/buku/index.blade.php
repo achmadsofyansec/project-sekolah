@@ -72,11 +72,14 @@
                                         <td>{{$buku->penerbit}}</td>
                                         <td>{{$buku->lokasi}}</td>
                                         <td>{{$buku->jumlah_buku}}</td>
-                                        <td>{{$buku->stok}}</td><td style="text-align:center;width:150px;">
+                                        <td>{{$buku->jumlah_buku}}</td>
+                                        <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
                                             <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                             action="{{ route('buku.destroy',$buku->id) }}" method="POST">
                                             <a class="btn bg-navy btn-xs" href="{{route('buku.edit',$buku->id)}}"><i class="fa fa-edit"> </i> Edit</a>
+                                            @csrf
+                                            @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i> Hapus </a></button>
                                           </form>
                                         </div>

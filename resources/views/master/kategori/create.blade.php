@@ -49,10 +49,8 @@
               @endif
                 <div class="card-body">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Kategori Buku</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" required>
-                    </div>
+                      <label>Nama Kategori</label>
+                      <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" required>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-right">

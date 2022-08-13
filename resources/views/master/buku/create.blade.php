@@ -44,27 +44,27 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('buku.update',$buku->id)}}" method="POST" enctype="multipart/form-data">
+              <form class="form-horizontal" role="form" action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+
                 <div class="card-body">
                               <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Kode Buku</label>
-                                        <input type="text" class="form-control" name="kode_buku" value="{{$buku->kode_buku}}" required>
+                                        <input type="text" class="form-control" name="kode_buku" id="kode_buku" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Judul Buku</label>
-                                        <input type="text" class="form-control" name="judul_buku" value="{{$buku->judul_buku}}" required>
+                                        <input type="text" class="form-control" name="judul_buku" id="judul_buku" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Pengarang</label>
-                                        <input type="text" class="form-control" name="pengarang" value="{{$buku->pengarang}}" required>
+                                        <input type="text" class="form-control" name="pengarang" id=" pengarang" required>
                                     </div>
                                 </div>
                             </div>
@@ -72,60 +72,58 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Penerbit</label>
-                                        <input type="text" class="form-control" name="penerbit" value="{{$buku->penerbit}}" required>
+                                        <input type="text" class="form-control" name="penerbit" id="penerbit" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tahun Terbit</label>
-                                        <input type="number" class="form-control" name="tahun_terbit" value= "{{$buku->tahun_terbit}}" required>
+                                        <input type="number" class="form-control" name="tahun_terbit" id= "tahun_terbit" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tempat Terbit</label>
-                                        <input type="text" class="form-control" name="tempat_terbit" value="{{$buku->tempat_terbit}}" required>
+                                        <input type="text" class="form-control" name="tempat_terbit" id="tempat_terbit" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Total Halaman</label>
-                                        <input type="text" class="form-control" name="total_halaman" value="{{$buku->total_halaman}}" required>
+                                        <input type="text" class="form-control" name="total_halaman" id="total_halaman" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tinggi Buku</label>
-                                        <input type="text" class="form-control" name="tinggi_buku" value="{{$buku->tinggi_buku}}" required>
+                                        <input type="text" class="form-control" name="tinggi_buku" id="tinggi_buku" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>DDC Buku</label>
-                                        <input type="text" class="form-control" name="ddc" value="{{$buku->ddc}}" required>
+                                        <input type="text" class="form-control" name="ddc" id="ddc" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>ISBN Buku</label>
-                                        <input type="text" class="form-control" name="isbn" value="{{$buku->isbn}}" required>
+                                        <input type="text" class="form-control" name="isbn" id="isbn" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Jumlah Buku</label>
-                                        <input type="number" class="form-control" name="jumlah_buku" value="{{$buku->jumlah_buku}}" required>
+                                        <input type="number" class="form-control" name="jumlah_buku" id="jumlah_buku" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Sumber</label>
-                                        <select class="form-control" name="id_sumber" required>
-                                        <option value="">Pilih Sumber</option>
+                                        <select class="form-control" name="id_sumber" id="id_sumber" required>
+                                        <option id="">Pilih Kategori</option>
                                           @forelse ($sumber as $item)
-                                        <option value="{{$item->id}}" @if ($buku->id_sumber == $item->nama_sumber)
-                                          {{'selected'}}
-                                        @endif>{{$item->nama_sumber}}</option>
+                                        <option id="{{$item->id}}">{{$item->nama_sumber}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -136,12 +134,10 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Kategori</label>
-                                        <select class="form-control" name="id_kategori" value="id_kategori" required>
-                                        <option value="">Pilih Kategori</option>
+                                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                                        <option id="">Pilih Kategori</option>
                                           @forelse ($kategori as $item)
-                                        <option value="{{$item->id}}" @if ($buku->id_kategori == $item->nama_kategori)
-                                          {{'selected'}}
-                                        @endif>{{$item->nama_kategori}}</option>
+                                        <option id="{{$item->id}}">{{$item->nama_kategori}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -153,13 +149,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tanggal Masuk</label>
-                                        <input type="date" class="form-control tgl" name="tanggal_masuk" value="{{$buku->tanggal_masuk}}" placeholder="dd-mm-yyyy" required>
+                                        <input type="date" class="form-control tgl" name="tanggal_masuk" id="tanggal_masuk" placeholder="dd-mm-yyyy" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>No Inventaris</label>
-                                        <input type="text" class="form-control" name="no_inventaris" value="{{$buku->no_inventaris}}" required>
+                                        <input type="text" class="form-control" name="no_inventaris" id="no_inventaris" required>
                                     </div>
                                 </div>
                             </div>
@@ -167,13 +163,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Lokasi</label>
-                                        <input type="text" class="form-control" name="lokasi" value="{{$buku->lokasi}} " required>
+                                        <input type="text" class="form-control" name="lokasi" id="lokasi " required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Deskripsi</label>
-                                        <textarea style="height:150px;" class="form-control" name="deskripsi_buku" required> {{$buku->deskripsi_buku}}</textarea>
+                                        <textarea style="height:150px;" class="form-control" name="deskripsi_buku" id="deskripsi_buku" required> </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -183,7 +179,7 @@
                                         <label>Foto Buku</label>
                                         <input type="file" name="foto_buku">
                                         <p class="help-block">Format File Harus .jpg atau .png</p> 
-                                            <img src="{{$buku->foto_buku}}" style="width:100px;height:100px;">
+                                            <img src="" style="width:100px;height:100px;">
                                     </div>
                                 </div>
                             </div>
