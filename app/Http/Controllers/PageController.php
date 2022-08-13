@@ -13,6 +13,24 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
+    public function view_alumni(){
+        return view('alumni.index');
+    }
+    public function view_lowongan(){
+        return view('lowongan.index');
+    }
+    public function view_konfirmasi(){
+        return view('konfirmasi.index');
+    }
+    public function view_pengumuman(){
+        return view('pengumuman.index');
+    }
+    public function view_laporan(){
+        return view('laporan.index');
+    }
+    public function view_manual(){
+        return view('manual.index');
+    }
     public function logout(Request $request){
         Auth::logout();
      
@@ -21,6 +39,6 @@ class PageController extends Controller
         $request->session()->regenerateToken();
      
         return redirect('../sekolahApp/');
-       }
+    }
     
 }
