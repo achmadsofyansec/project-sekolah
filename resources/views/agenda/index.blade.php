@@ -34,16 +34,38 @@
                   @endif
                     <div class="card card-outline card-navy">
                        <div class="card-header">
-                       <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                       <a type="button" href="{{route('agenda.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">
                                 <table id="dataTable" class="table">
                                     <thead>
                                         <th>No</th>
+                                        <th>Agenda</th>
+                                        <th>Tanggal Mulai</th>
+                                        <th>Tanggal Selesai</th>
+                                        <th>Aksi</th>
                                     </thead>
                                     <tbody>
-    
+                                      @forelse ($agenda as $item)
+                                          <tr>
+                                          <td>{{$loop->index + 1}}</td>
+                                          <td>{{$item->nama_agenda}}</td>
+                                          <td>{{$item->tgl_mulai_agenda}}</td>
+                                          <td>{{$item->tgl_selesai_agenda}}</td>
+                                          <td>
+                                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                            action="{{ route('agenda.destroy',$item->id) }}" method="POST">
+                                            <a href="{{ route('agenda.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                            </form>
+                                          </td>
+                                          </tr>
+                                      @empty
+                                          
+                                      @endforelse
                                     </tbody>
                                 </table>
                            </div>

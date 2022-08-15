@@ -13,9 +13,6 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
-    public function view_tamu(){
-        return view('tamu.data_tamu.index');
-    }
     public function view_portal(){
         return view('tamu.portal_tamu.index');
     }

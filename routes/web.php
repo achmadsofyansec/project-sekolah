@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\TamuController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +29,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //Dashboard
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
-        Route::get('/tamu',[PageController::class,'view_tamu'])->name('tamu');
-        Route::get('/agenda',[PageController::class,'view_agenda'])->name('agenda');
+        Route::resource('tamu',TamuController::class);
+        Route::resource('agenda',AgendaController::class);
         Route::get('/manual_book',[PageController::class,'view_book'])->name('book');
     });
 });
