@@ -50,61 +50,124 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('input_dokumen.update', $data->id)}}" method="POST">
+                        <form action="{{route('input_dokumen.update', $dokumen->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                                 <div class="card-body">
                                         <div class="form-group">
                                             <label>Ruangan</label>
-                                            <input type="text" name="ruangan" id="ruangan" class="form-control" required>
+                                            <select class="form-control" id="nama_ruangan" name="nama_ruangan">
+                                            <option value="">Pilih Ruangan</option>
+                                          @forelse ($ruangan as $ruangan)
+                                        <option value="{{$ruangan->nama_ruangan}}" @if ($dokumen->ruangan == $ruangan->nama_ruangan)
+                                          {{'selected'}}
+                                        @endif>{{$ruangan->nama_ruangan}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Lemari</label>
-                                            <input type="text" name="lemari" id="lemari" class="form-control" required>
+                                            <select class="form-control" id="nama_lemari" name="nama_lemari">
+                                           <option value="">Pilih Lemari</option>
+                                          @forelse ($lemari as $lemari)
+                                        <option value="{{$lemari->nama_lemari}}" @if ($dokumen->lemari == $lemari->nama_lemari)
+                                          {{'selected'}}
+                                        @endif>{{$lemari->nama_lemari}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Rak</label>
-                                            <input type="text" name="rak" id="rak" class="form-control" required>
+                                            <select class="form-control" id="nama_rak" name="nama_rak">
+                                            <option value="">Pilih Rak</option>
+                                          @forelse ($rak as $rak)
+                                        <option value="{{$rak->nama_rak}}" @if ($dokumen->rak == $rak->nama_rak)
+                                          {{'selected'}}
+                                        @endif>{{$rak->nama_rak}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Box</label>
-                                            <input type="text" name="box" id="box" class="form-control" required>
+                                            <select class="form-control" id="nama_box" name="nama_box">
+                                            <option value="">Pilih Box</option>
+                                          @forelse ($box as $box)
+                                        <option value="{{$box->nama_box}}" @if ($dokumen->box == $box->nama_box)
+                                          {{'selected'}}
+                                        @endif>{{$box->nama_box}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Map</label>
-                                            <input type="text" name="map" id="map" class="form-control" required>
+                                            <select class="form-control" id="nama_map" name="nama_map">
+                                            <option value="">Pilih Map</option>
+                                          @forelse ($map as $map)
+                                        <option value="{{$map->nama_map}}" @if ($dokumen->map == $map->nama_map)
+                                          {{'selected'}}
+                                        @endif>{{$map->nama_map}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                          </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Urut</label>
-                                            <input type="text" name="urut" id="urut" class="form-control" required>
+                                            <select class="form-control" id="nama_urut" name="nama_urut">
+                                            <option value="">Pilih Urut</option>
+                                          @forelse ($urut as $urut)
+                                        <option value="{{$urut->nama_urut}}" @if ($dokumen->urut == $urut->nama_urut)
+                                          {{'selected'}}
+                                        @endif>{{$urut->nama_urut}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
-                                        <div class="form-group">
+                                         <div class="form-group">
                                             <label>Tanggal Dokumen</label>
-                                            <input type="date" class="form-control" name="tanggal_dokumen" id="tanggal_dokumen" required>
-                                         </div>
+                                            <input type="date" name="tanggal_dokumen" id="tanggal_dokumen" class="form-control" value="{{ $dokumen->tanggal_dokumen }}" required>
+                                        </div>
                                          <div class="form-group">
                                             <label>Jenis Dokumen</label>
-                                            <input type="text" name="jenis_dokumen" id="jenis_dokumen" class="form-control" required>
+                                            <select class="form-control" id="nama_jenis_dokumen" name="nama_jenis_dokumen">
+                                            <option value="">Pilih Jenis Dokumen</option>
+                                          @forelse ($jenis_dokumen as $jenis_dokumen)
+                                        <option value="{{$urut->nama_jenis_dokumen}}" @if ($dokumen->urut == $jenis_dokumen->jenis_dokumen)
+                                          {{'selected'}}
+                                        @endif>{{$jenis_dokumen->nama_jenis_dokumen}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                      </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Nomor Dokumen</label>
-                                            <input type="text" name="nomor_dokumen" id="nomor_dokumen" class="form-control" required>
+                                            <input type="text" name="nomor_dokumen" id="nomor_dokumen" class="form-control" value="{{ $dokumen->nomor_dokumen }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Dokumen</label>
-                                            <input type="text" name="nama_dokumen" id="nama_dokumen" class="form-control" required>
+                                            <input type="text" name="nama_dokumen" id="nama_dokumen" class="form-control" value="{{ $dokumen->nama_dokumen }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Deskripsi</label>
-                                            <input type="text" name="deskripsi" id="deskripsi" class="form-control" required>
+                                            <input type="text" name="deskripsi" id="deskripsi" class="form-control" value="{{ $dokumen->deskripsi }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>File</label>
-                                            <input type="file" name="file" id="file" class="form-control" accept="file/*">
+                                            <input type="file" name="file" id="file" class="form-control" value="{{ $dokumen->file }}" accept="file/*">
                                         </div>
                                         <div class="form-group">
                                             <label>Tahun Ajaran</label>
-                                            <input type="text" name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                            <input type="date" name="tahun_ajaran" id="tahun_ajaran" class="form-control" value="{{ $dokumen->tahun_ajaran }}" required>
                                         </div>
                                     
                                 </div>

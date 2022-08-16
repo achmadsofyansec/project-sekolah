@@ -61,7 +61,7 @@
                                       <td>{{ $dokumen->tanggal_dokumen }}</td>
                                       <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="" method="POST">
+                                        action="{{ route('input_dokumen.destroy',$dokumen->id) }}" method="POST">
                                         <a href="{{ route('input_dokumen.edit',$dokumen->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         @csrf
                                           @method('DELETE')

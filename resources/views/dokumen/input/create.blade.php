@@ -55,27 +55,69 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Ruangan</label>
-                                    <input type="text" name="ruangan" id="ruangan" class="form-control" required>
+                                    <select class="form-control" id="nama_ruangan" name="nama_ruangan">
+                                            <option value="">Pilih Ruangan</option>
+                                        @forelse ($ruangan as $ruangan)
+                                        <option value="{{$ruangan->nama_ruangan}}">{{$ruangan->nama_ruangan}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Lemari</label>
-                                    <input type="text" name="lemari" id="lemari" class="form-control" required>
+                                    <select class="form-control" id="nama_lemari" name="nama_lemari">
+                                        <option value="">Pilih Lemari</option>
+                                        @forelse ($lemari as $lemari)
+                                            <option value="{{ $lemari->nama_lemari }}">{{ $lemari->nama_lemari }}</option>
+                                            @empty
+                                            
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Rak</label>
-                                    <input type="text" name="rak" id="rak" class="form-control" required>
+                                    <select class="form-control" id="nama_rak" name="nama_rak">
+                                        <option value="">Pilih Rak</option>
+                                        @forelse ($rak as $rak)
+                                        <option value="{{$rak->nama_rak}}">{{$rak->nama_rak}}</option>
+                                          @empty
+                                              
+                                          @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Box</label>
-                                    <input type="text" name="box" id="box" class="form-control" required>
+                                    <select class="form-control" id="nama_box" name="nama_box">
+                                        <option value="">Pilih Box</option>
+                                        @forelse ($box as $box)
+                                            <option value="{{ $box->nama_box }}">{{ $box->nama_box }}</option>
+                                            @empty
+
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Map</label>
-                                    <input type="text" name="map" id="map" class="form-control" required>
+                                    <select class="form-control" id="nama_map" name="nama_map">
+                                        <option value="">Pilih Map</option>
+                                        @forelse ($map as $map)
+                                            <option value="{{ $map->nama_map }}">{{ $map->nama_map }}</option>
+                                            @empty
+
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Urut</label>
-                                    <input type="text" name="urut" id="urut" class="form-control" required>
+                                    <select class="form-control" id="nama_urut" name="nama_urut">
+                                        <option value="">Pilih Urutan</option>
+                                        @forelse ($urut as $urut)
+                                            <option value="{{ $urut->nama_urut }}">{{ $urut->nama_urut }}</option>
+                                            @empty
+
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Dokumen</label>
@@ -83,7 +125,13 @@
                                  </div>
                                  <div class="form-group">
                                     <label>Jenis Dokumen</label>
-                                    <input type="text" name="jenis_dokumen" id="jenis_dokumen" class="form-control" required>
+                                    <select class="form-control" id="nama_jenis_dokumen" name="nama_jenis_dokumen">
+                                        @forelse ($jenis_dokumen as $jenis_dokumen)
+                                            <option value="{{ $jenis_dokumen->nama_jenis_dokumen }}">{{ $jenis_dokumen->nama_jenis_dokumen }}</option>
+                                            @empty
+
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Nomor Dokumen</label>
@@ -103,7 +151,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Tahun Ajaran</label>
-                                    <input type="date" name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                    <select class="form-control" id="rak" name="rak">
+                                        <option value="">Pilih Tahun Ajaran</option>
+                                            <option>2021/2022</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="card-footer">
