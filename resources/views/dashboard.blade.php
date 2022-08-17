@@ -17,7 +17,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-graduation-cap"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-success" ><b>AKADEMIK</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
               </div>
             </div></a>
           </div>
@@ -28,7 +28,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-address-card"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-warning" ><b>KESISWAAN</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -108,11 +108,11 @@
           </div>
 
           <div class="col-12 col-sm-6 col-md-3">
-            <a href="../asiscbt" target="_blank" style="color:black;">
+            <a href="../alumni" target="_blank" style="color:black;">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-laptop"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text text-info" ><b>PAYMENT GATEWAY</b></span>
+                <span class="info-box-text text-info" ><b>ALUMNI</b></span>
                 <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
               </div>
             </div></a>

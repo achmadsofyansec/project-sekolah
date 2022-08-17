@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\SyncController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
             Route::resource('user',UsersController::class);
             Route::resource('pengumuman',PengumumanController::class);
             Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
-            Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
+            Route::get('/singkronisasi',[SyncController::class,'index']);
         });
     });
 });

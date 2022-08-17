@@ -21,8 +21,5 @@ class PageController extends Controller
     public function view_pemeliharaan(){
         return view('pemeliharaan.index');
     }
-    public function view_singkronisasi(){
-        return view('singkronisasi.index');
-    }
     
 }

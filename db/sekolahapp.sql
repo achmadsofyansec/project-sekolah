@@ -12,6 +12,25 @@ MySQL - 10.6.5-MariaDB : Database - sekolahapp
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `absensis` */
+
+DROP TABLE IF EXISTS `absensis`;
+
+CREATE TABLE `absensis` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tgl_absensi` datetime NOT NULL,
+  `kode_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_absen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alasan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `absensis` */
+
 /*Table structure for table `aktivitas_belajars` */
 
 DROP TABLE IF EXISTS `aktivitas_belajars`;
@@ -28,6 +47,54 @@ CREATE TABLE `aktivitas_belajars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `aktivitas_belajars` */
+
+/*Table structure for table `anggota_ekstras` */
+
+DROP TABLE IF EXISTS `anggota_ekstras`;
+
+CREATE TABLE `anggota_ekstras` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tanggal_daftar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_ekstra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `anggota_ekstras` */
+
+/*Table structure for table `banners` */
+
+DROP TABLE IF EXISTS `banners`;
+
+CREATE TABLE `banners` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `banners` */
+
+/*Table structure for table `barang_sitaans` */
+
+DROP TABLE IF EXISTS `barang_sitaans`;
+
+CREATE TABLE `barang_sitaans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan_sita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_sita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `barang_sitaans` */
 
 /*Table structure for table `data_gurus` */
 
@@ -139,9 +206,12 @@ CREATE TABLE `ekstrakulikulers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `ekstrakulikulers` */
+
+insert  into `ekstrakulikulers`(`id`,`kode_ekstra`,`nama_ekstra`,`desc_ekstra`,`status_ekstra`,`wajib_ekstra`,`created_at`,`updated_at`) values 
+(1,'EK-001','Kesenian Tari','Tari','Aktif','Tidak Wajib','2022-08-17 03:09:25','2022-08-17 03:09:25');
 
 /*Table structure for table `failed_jobs` */
 
@@ -191,13 +261,9 @@ CREATE TABLE `jurusans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `jurusans` */
-
-insert  into `jurusans`(`id`,`kode_jurusan`,`nama_jurusan`,`status_jurusan`,`created_at`,`updated_at`) values 
-(5,'RPL','Rekayasa Perangkat Lunak','Aktif','2022-07-30 04:53:14','2022-07-30 04:53:14'),
-(6,'METRO','Mekatronika','Aktif','2022-07-30 04:53:22','2022-07-30 04:53:22');
 
 /*Table structure for table `kecamatan` */
 
@@ -230,14 +296,9 @@ CREATE TABLE `kelas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelas` */
-
-insert  into `kelas`(`id`,`kode_kelas`,`nama_kelas`,`status_kelas`,`created_at`,`updated_at`) values 
-(7,'X','SEPULUH','Aktif','2022-07-30 04:52:48','2022-07-30 04:52:48'),
-(8,'XI','SEBELAS','Aktif','2022-07-30 04:52:56','2022-07-30 04:52:56'),
-(9,'XII','DUA BELAS','Aktif','2022-07-30 04:53:03','2022-07-30 04:53:03');
 
 /*Table structure for table `kelompok_pelajarans` */
 
@@ -251,14 +312,9 @@ CREATE TABLE `kelompok_pelajarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kelompok_pelajarans` */
-
-insert  into `kelompok_pelajarans`(`id`,`kode_kelompok`,`nama_kelompok`,`status_kelompok`,`created_at`,`updated_at`) values 
-(9,'K-1','Kelompok A (Umum)','Aktif','2022-07-30 04:52:11','2022-07-30 04:52:11'),
-(10,'K-2','Kelompok B (Jurusan)','Aktif','2022-07-30 04:52:20','2022-07-30 04:52:20'),
-(11,'K-3','Kelompok C (Peminatan)','Aktif','2022-07-30 04:52:29','2022-07-30 04:52:29');
 
 /*Table structure for table `kelurahan` */
 
@@ -292,13 +348,9 @@ CREATE TABLE `mata_pelajarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `mata_pelajarans` */
-
-insert  into `mata_pelajarans`(`id`,`kode_kelompok`,`kode_mapel`,`nama_mapel`,`status_mapel`,`created_at`,`updated_at`) values 
-(1,'K-1','BIG','Bahasa Inggris','Aktif','2022-07-30 04:53:46','2022-07-30 04:53:46'),
-(2,'K-1','BIND','Bahasa Indonesia','Aktif','2022-07-30 04:53:56','2022-07-30 04:53:56');
 
 /*Table structure for table `migrations` */
 
@@ -309,7 +361,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -326,18 +378,25 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (32,'2022_07_19_023748_kelurahan',6),
 (33,'2022_07_19_023804_kecamatan',6),
 (34,'2022_07_20_030417_create_sessions_table',7),
-(51,'2022_07_23_054446_create_kelas_table',8),
-(52,'2022_07_23_054739_create_jurusans_table',8),
-(53,'2022_07_23_055106_create_tahun_ajarans_table',8),
-(54,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
-(65,'2022_07_23_055445_create_mata_pelajarans_table',9),
-(84,'2022_07_23_061916_create_data_siswas_table',10),
-(85,'2022_07_23_061930_create_data_gurus_table',10),
-(86,'2022_07_23_061955_create_data_ortus_table',10),
-(87,'2022_07_27_014724_create_ekstrakulikulers_table',10),
-(88,'2022_07_27_063906_create_predikats_table',10),
-(89,'2022_07_30_034501_create_jadwals_table',10),
-(90,'2022_07_30_060249_create_aktivitas_belajars_table',10);
+(93,'2022_07_23_054446_create_kelas_table',8),
+(94,'2022_07_23_054739_create_jurusans_table',8),
+(95,'2022_07_23_055106_create_tahun_ajarans_table',8),
+(96,'2022_07_23_055330_create_kelompok_pelajarans_table',8),
+(97,'2022_07_23_055445_create_mata_pelajarans_table',8),
+(98,'2022_07_23_061916_create_data_siswas_table',8),
+(99,'2022_07_23_061930_create_data_gurus_table',8),
+(100,'2022_07_23_061955_create_data_ortus_table',8),
+(101,'2022_07_27_014724_create_ekstrakulikulers_table',8),
+(102,'2022_07_27_063906_create_predikats_table',8),
+(103,'2022_07_30_034501_create_jadwals_table',8),
+(104,'2022_07_30_060249_create_aktivitas_belajars_table',8),
+(105,'2022_08_01_060418_create_absensis_table',8),
+(106,'2022_08_04_021754_create_prestasis_table',8),
+(107,'2022_08_12_150656_create_siswa_daftars_table',9),
+(108,'2022_08_13_054331_create_slideshows_table',9),
+(109,'2022_08_13_061500_create_banners_table',9),
+(110,'2022_08_13_075051_create_ppdb_pengaturans_table',9),
+(111,'2022_08_17_015734_create_anggota_ekstras_table',10);
 
 /*Table structure for table `notifs` */
 
@@ -372,6 +431,26 @@ CREATE TABLE `password_resets` (
 
 /*Data for the table `password_resets` */
 
+/*Table structure for table `pelanggarans` */
+
+DROP TABLE IF EXISTS `pelanggarans`;
+
+CREATE TABLE `pelanggarans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_poin_pelanggaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_pelanggaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poin_minus` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `pelanggarans` */
+
 /*Table structure for table `personal_access_tokens` */
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
@@ -393,6 +472,39 @@ CREATE TABLE `personal_access_tokens` (
 
 /*Data for the table `personal_access_tokens` */
 
+/*Table structure for table `point_pelanggarans` */
+
+DROP TABLE IF EXISTS `point_pelanggarans`;
+
+CREATE TABLE `point_pelanggarans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kode_poin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_poin_pelanggaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poin` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `point_pelanggarans` */
+
+/*Table structure for table `ppdb_pengaturans` */
+
+DROP TABLE IF EXISTS `ppdb_pengaturans`;
+
+CREATE TABLE `ppdb_pengaturans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `header` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prosedur` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tentang` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `ppdb_pengaturans` */
+
 /*Table structure for table `predikats` */
 
 DROP TABLE IF EXISTS `predikats`;
@@ -409,6 +521,25 @@ CREATE TABLE `predikats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `predikats` */
+
+/*Table structure for table `prestasis` */
+
+DROP TABLE IF EXISTS `prestasis`;
+
+CREATE TABLE `prestasis` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tahun_prestasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lomba` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidang_lomba` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `penyelenggara` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tingkat_lomba` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `peringkat_diraih` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `prestasis` */
 
 /*Table structure for table `roles` */
 
@@ -428,6 +559,23 @@ CREATE TABLE `roles` (
 
 insert  into `roles`(`id`,`roles_name`,`roles_access`,`id_roles`,`created_at`,`updated_at`) values 
 (1,'Administrator','admin','0',NULL,NULL);
+
+/*Table structure for table `sanksi_pelanggarans` */
+
+DROP TABLE IF EXISTS `sanksi_pelanggarans`;
+
+CREATE TABLE `sanksi_pelanggarans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kode_sanksi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dari_poin` int(11) NOT NULL,
+  `sampai_poin` int(11) NOT NULL,
+  `sanksi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `sanksi_pelanggarans` */
 
 /*Table structure for table `sekolahs` */
 
@@ -458,7 +606,7 @@ CREATE TABLE `sekolahs` (
 /*Data for the table `sekolahs` */
 
 insert  into `sekolahs`(`id`,`kode_sekolah`,`nsm`,`npsn`,`akreditasi`,`nama_sekolah`,`alamat_sekolah`,`longtitude`,`latitude`,`kode_kecamatan`,`kode_kelurahan`,`kode_pos`,`nomor_hp`,`email`,`website`,`logo_sekolah`,`created_at`,`updated_at`) values 
-(2,'00000','0000','2115251','A','SIPINTAR','JL.Sipintar','0.0','0.0','350706','350706001','65124','089524610353','sipintar@gmail.com','-','jamanu_logos.png',NULL,NULL);
+(2,'00000','0000','2115251','A','SIPINTAR','JL.Sipintar','0.0','0.0','350706','350706001','65124','089524610353','sipintar@gmail.com','-','jamanu.png',NULL,NULL);
 
 /*Table structure for table `sessions` */
 
@@ -479,7 +627,64 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('Op2GqqIQFtZPoO9yDaNKlPKq3rsJh8FpuVWbgajQ',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYzFJd1ZVUzlnQTdpdkxxUHpKNlc0RjhENzJicWxXVFJnanBmNFl5YyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0L3Nla29sYWhBcHAvc2Vrb2xhaCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1659163211);
+('EYEuer1M5owu3QIfxrgWSqfMFkdt5LGEtnlN0vtW',NULL,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmlMWVVrYWRhNjd4c0hZN3F3bWpJY0ZlSE9DYktlM1BLQWR6c21aQSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyNzoiaHR0cDovL2xvY2FsaG9zdC9zZWtvbGFoQXBwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1660705164),
+('mpAslm2mDNOpxIGSZs0EJQQpsJiEmg1wCoXgod70',NULL,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiNzJsamJETHdPR1R1WUlSRHNjeDlhcmdiMnNtRkwwRXd1YTBvTmt2ViI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1660705166),
+('rBAtbKx4YDLA0TBpkz2gGkm0AlUcsaA3XUMBlDAS',NULL,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSThQTEhhNnVjaWRKS0FnUkZtMU1JVXpmSGZWTGZKcGxFUGxHcVhTVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyNzoiaHR0cDovL2xvY2FsaG9zdC9zZWtvbGFoQXBwIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3QvYWx1bW5pL2FsdW1uaSI7fX0=',1660706505),
+('zOMmIgK9hsVdhCWrQYEtU1LQVGRLfezpPjjVdBIj',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNmxYc3ozNkFsS04yV3RCa2NadG04Vk45TDV1U1NtUGVTYU1oelpMaSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrL3BpbmRhaF9rZWxhcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1660373061);
+
+/*Table structure for table `siswa_daftars` */
+
+DROP TABLE IF EXISTS `siswa_daftars`;
+
+CREATE TABLE `siswa_daftars` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `no_ujian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nisn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nl_tpa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nl_tpd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_lhr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jns_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `anak` int(11) NOT NULL,
+  `jml_saudara` int(11) NOT NULL,
+  `hobi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cita_cita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biaya_sekolah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kebutuhan_disabilitas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kebutuhan_khusus` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tmp_tinggal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jarak_tinggal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `waktu_tempuh` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `antar_jemput` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `siswa_daftars` */
+
+/*Table structure for table `slideshows` */
+
+DROP TABLE IF EXISTS `slideshows`;
+
+CREATE TABLE `slideshows` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `slideshows` */
 
 /*Table structure for table `tahun_ajarans` */
 
@@ -494,13 +699,9 @@ CREATE TABLE `tahun_ajarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `tahun_ajarans` */
-
-insert  into `tahun_ajarans`(`id`,`kode_tahun_ajaran`,`tahun_ajaran`,`semester`,`status_tahun_ajaran`,`created_at`,`updated_at`) values 
-(3,'TH_002','2012/2013',1,'Aktif','2022-07-30 02:48:53','2022-07-30 02:54:33'),
-(4,'TH_001','2012/2013',2,'Nonaktif','2022-07-30 02:51:56','2022-07-30 02:54:33');
 
 /*Table structure for table `uploads` */
 
