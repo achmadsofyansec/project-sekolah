@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\AnggotaEkstraController;
 use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
@@ -69,7 +70,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
 
         //Ekstrakulikuler
         Route::resource('ekstrakulikuler',EkstrakulikulerController::class);
-        
+        Route::resource('anggota_ekstra',AnggotaEkstraController::class);
         //Pindah / Naik Kelas
         Route::get('/pindah_kelas',[PageController::class,'view_pindah'])->name('pindah_kelas');
 
