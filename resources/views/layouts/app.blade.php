@@ -161,7 +161,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book text-primary"></i>
+              <i class="nav-icon fas fa-book text-danger"></i>
               <p>
                Pembelajaran
                 <i class="fas fa-angle-left right"></i>
@@ -201,6 +201,29 @@
                 <a href="<?php echo url('/predikat') ?>" class="nav-link">
                   <i class="fas fas fa-clipboard nav-icon text-danger"></i>
                   <p>Nilai / Predikat</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher text-success"></i>
+              <p>
+                Mutasi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/mutasi_guru') ?>" class="nav-link">
+                  <i class="fas fas fa-users nav-icon text-success"></i>
+                  <p>Mutasi Guru</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/mutasi_siswa') ?>" class="nav-link">
+                  <i class="fas fa-graduation-cap nav-icon text-danger"></i>
+                  <p>Mutasi Siswa</p>
                 </a>
               </li>
             </ul>

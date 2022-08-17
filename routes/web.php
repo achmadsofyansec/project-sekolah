@@ -41,6 +41,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('jurusan',JurusanController::class);
         Route::resource('tahun_ajaran',TahunAjaranController::class);
 
+        Route::get('/mutasi_guru',[PageController::class,'view_mutasi_guru'])->name('mutasi_guru');
+        Route::get('/mutasi_siswa',[PageController::class,'view_mutasi_siswa'])->name('mutasi_siswa');
         //Pembelajaran
         Route::resource('mapel',MapelController::class);
         Route::resource('kelompok_mapel',KelompokMapelController::class);

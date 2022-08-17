@@ -28,6 +28,13 @@ class PageController extends Controller
         return view('dashboard',compact(['siswa','guru','kelas','mapel','masuk','izin','tanpa_keterangan','sakit','belum_absen']));
     }
     
+    public function view_mutasi_guru(){
+        return view('mutasi.guru.index');
+    }
+    public function view_mutasi_siswa(){
+        return view('mutasi.siswa.index');
+    }
+
     public function view_lap_absensi(){
         return view('laporan.absensi.index');
     }

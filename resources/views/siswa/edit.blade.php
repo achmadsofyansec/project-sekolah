@@ -261,7 +261,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Transportasi Ke Sekolah</label>
-                                                            <select name="transportasi" id="transportasi" class="form-control">
+                                                            <select name="transportasi" id="transportasi"  class="form-control">
                                                                 <option value="">--Pilih Transportasi--</option>
                                                                 <option value="Diantar" @if ($data->antar_jemput == "Diantar")
                                                                     {{'selected'}}
@@ -281,7 +281,7 @@
                                         <div class="tab-pane" id="data_belajar" style="position: relative;">
                                             <div class="form-group">
                                                 <label>Kelas</label>
-                                                <select name="kelas" id="kelas" class="form-control" required>
+                                                <select name="kelas" id="kelas" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Kelas --</option>
                                                     @forelse ($kelas as $item)
                                                         <option value="{{$item->kode_kelas}}" @if ($item->kode_kelas == $aktivitas->kode_kelas)
@@ -294,7 +294,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Tahun Ajaran</label>
-                                                <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+                                                <select name="tahun_ajaran" id="tahun_ajaran" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Tahun Ajaran --</option>
                                                     @forelse ($tahun_ajaran as $item)
                                                         <option value="{{$item->kode_tahun_ajaran}}"@if ($item->kode_tahun_ajaran == $aktivitas->kode_tahun_ajaran)
@@ -305,7 +305,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Jurusan</label>
-                                                <select name="jurusan" id="jurusan" class="form-control" required>
+                                                <select name="jurusan" id="jurusan" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Jurusan --</option>
                                                     @forelse ($jurusan as $item)
                                                         <option value="{{$item->kode_jurusan}}" @if ($item->kode_jurusan == $aktivitas->kode_jurusan)
@@ -356,7 +356,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_ayah" id="status_pendidikan_ayah" class="form-control">
+                                                    <select name="status_pendidikan_ayah" style="width:100%;" id="status_pendidikan_ayah" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         
                                                         <option value="SD" @if ($data_ayah != null && $data_ayah->pendidikan_terakhir_ortu == 'SD')
@@ -387,7 +387,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_ayah" id="domisili_ayah" class="form-control">
+                                                    <select name="domisili_ayah" style="width:100%;" id="domisili_ayah" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
                                                         
                                                         <option value="Dalam Negeri" @if ($data_ayah != null && $data_ayah->domisili_ortu == 'Dalam Negeri')
@@ -410,7 +410,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ayah" id="status_tmp_ayah" class="form-control">
+                                                    <select name="status_tmp_ayah" style="width:100%;" id="status_tmp_ayah" class="form-control">
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri" @if ($data_ayah != null && $data_ayah->tmp_tinggal_ortu == 'Milik Sendiri')
                                                             {{'selected'}}
@@ -461,7 +461,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_ibu" id="status_pendidikan_ibu" class="form-control">
+                                                    <select name="status_pendidikan_ibu" style="width:100%;" id="status_pendidikan_ibu" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         
                                                         <option value="SD" @if ($data_ibu != null && $data_ibu->pendidikan_terakhir_ortu == 'SD')
@@ -492,7 +492,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_ibu" id="domisili_ibu" class="form-control">
+                                                    <select name="domisili_ibu" style="width:100%;" id="domisili_ibu" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
                                                         
                                                         <option value="Dalam Negeri" @if ($data_ibu != null && $data_ibu->domisili_ortu == 'Dalam Negeri')
@@ -515,7 +515,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_ibu" id="status_tmp_ibu" class="form-control">
+                                                    <select name="status_tmp_ibu" style="width:100%;" id="status_tmp_ibu" class="form-control">
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri" @if ($data_ibu != null && $data_ibu->tmp_tinggal_ortu == 'Milik Sendiri')
                                                             {{'selected'}}
@@ -566,7 +566,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <select name="status_pendidikan_wali" id="status_pendidikan_wali" class="form-control">
+                                                    <select name="status_pendidikan_wali" style="width:100%;" id="status_pendidikan_wali" class="form-control">
                                                         <option value="">--Pilih Pendidikan--</option>
                                                         
                                                         <option value="SD" @if ($data_wali != null && $data_wali->pendidikan_terakhir_ortu == 'SD')
@@ -597,7 +597,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Domisili</label>
-                                                    <select name="domisili_wali" id="domisili_wali" class="form-control">
+                                                    <select name="domisili_wali" style="width:100%;" id="domisili_wali" class="form-control">
                                                         <option value="">--Pilih Domisili--</option>
                                                         
                                                         <option value="Dalam Negeri" @if ($data_wali != null && $data_wali->domisili_ortu == 'Dalam Negeri')
@@ -620,7 +620,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status Tempat Tinggal</label>
-                                                    <select name="status_tmp_wali" id="status_tmp_wali" class="form-control">
+                                                    <select name="status_tmp_wali" style="width:100%;" id="status_tmp_wali" class="form-control">
                                                         <option value="">--Pilih Status--</option>
                                                         <option value="Milik Sendiri" @if ($data_wali != null && $data_wali->tmp_tinggal_ortu == 'Milik Sendiri')
                                                             {{'selected'}}
