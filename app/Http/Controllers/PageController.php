@@ -31,6 +31,9 @@ class PageController extends Controller
     public function view_manual(){
         return view('manual.index');
     }
+    public function login(){
+        return redirect('../sekolahApp/');
+       }
     public function logout(Request $request){
         Auth::logout();
      
