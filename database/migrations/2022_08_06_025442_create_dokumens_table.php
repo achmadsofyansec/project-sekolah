@@ -23,7 +23,7 @@ class CreateDokumensTable extends Migration
             $table->string('urut');
             $table->dateTime('tanggal_dokumen');
             $table->string('jenis_dokumen');
-            $table->integer('nomor_dokumen');
+            $table->string('nomor_dokumen');
             $table->string('nama_dokumen');
             $table->text('deskripsi');
             $table->string('file');

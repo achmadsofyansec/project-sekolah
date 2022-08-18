@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArsipBoxesTable extends Migration
+class CreateArsipBoxsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateArsipBoxesTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_boxes', function (Blueprint $table) {
+        Schema::create('arsip_boxs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_box');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateArsipBoxesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arsip_boxes');
+        Schema::dropIfExists('arsip_boxs');
     }
 }

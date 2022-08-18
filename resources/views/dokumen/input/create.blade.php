@@ -151,10 +151,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Tahun Ajaran</label>
-                                    <select class="form-control" id="rak" name="rak">
-                                        <option value="">Pilih Tahun Ajaran</option>
-                                            <option>2021/2022</option>
-                                    </select>
+                                    <input type="date" name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
                                 </div>
                             </div>
                             <div class="card-footer">

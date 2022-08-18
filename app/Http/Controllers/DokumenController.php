@@ -11,6 +11,7 @@ use App\Models\ArsipBox;
 use App\Models\ArsipMap;
 use App\Models\ArsipDataUrut;
 use App\Models\ArsipJenisDokumen;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -79,14 +80,14 @@ class DokumenController extends Controller
                 $name = $request->file('file')->getClientOriginalName();
                 $file->move('../assets/upload',$name);
                 $data = [
-                'nama_ruangan' => $request->nama_ruangan,
-                'nama_lemari' => $request->nama_lemari,
-                'nama_rak' => $request->nama_rak,
+                'ruangan' => $request->nama_ruangan,
+                'lemari' => $request->nama_lemari,
+                'rak' => $request->nama_rak,
                 'box' => $request->nama_box,
                 'map' => $request->nama_map,
                 'urut' => $request->nama_urut,
                 'tanggal_dokumen' => $request->tanggal_dokumen,
-                'nama_jenis_dokumen' => $request->nama_jenis_dokumen,
+                'jenis_dokumen' => $request->nama_jenis_dokumen,
                 'nomor_dokumen' => $request->nomor_dokumen,
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
@@ -95,14 +96,14 @@ class DokumenController extends Controller
                 ];
             } else {
                 $data = [
-                'nama_ruangan' => $request->nama_ruangan,
-                'nama_lemari' => $request->nama_lemari,
-                'nama_rak' => $request->nama_rak,
-                'nama_box' => $request->nama_box,
-                'nama_map' => $request->nama_map,
-                'nama_urut' => $request->nama_urut,
+                'ruangan' => $request->nama_ruangan,
+                'lemari' => $request->nama_lemari,
+                'rak' => $request->nama_rak,
+                'box' => $request->nama_box,
+                'map' => $request->nama_map,
+                'urut' => $request->nama_urut,
                 'tanggal_dokumen' => $request->tanggal_dokumen,
-                'nama_jenis_dokumen' => $request->nama_jenis_dokumen,
+                'jenis_dokumen' => $request->nama_jenis_dokumen,
                 'nomor_dokumen' => $request->nomor_dokumen,
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
@@ -157,6 +158,8 @@ class DokumenController extends Controller
     {   
 
         $dokumen = Dokumen::findOrFail($id);
+        $tgl = new DateTime($dokumen->tanggal_dokumen);
+        $tgl = $tgl->format("Y-m-d");
         $ruangan = ArsipRuangan::latest()->get();
         $lemari = ArsipLemari::latest()->get();
         $rak = ArsipRak::latest()->get();
@@ -164,7 +167,8 @@ class DokumenController extends Controller
         $map = ArsipMap::latest()->get();
         $jenis_dokumen = ArsipJenisDokumen::latest()->get();
         $urut = ArsipDataUrut::latest()->get();
-        return view('dokumen.input.edit',compact(['dokumen', 'ruangan', 'lemari', 'rak', 'box', 'map', 'jenis_dokumen', 'urut']));
+
+        return view('dokumen.input.edit',compact(['dokumen', 'ruangan', 'lemari', 'rak', 'box', 'map', 'jenis_dokumen', 'urut','tgl']));
 
     }
 
@@ -200,38 +204,40 @@ class DokumenController extends Controller
                 $name = $request->file('file')->getClientOriginalName();
                 $file->move('../assets/upload',$name);
                 $data = [
-                'nama_ruangan' => $request->nama_ruangan,
-                'nama_lemari' => $request->nama_lemari,
-                'nama_rak' => $request->nama_rak,
+                'ruangan' => $request->nama_ruangan,
+                'lemari' => $request->nama_lemari,
+                'rak' => $request->nama_rak,
                 'box' => $request->nama_box,
                 'map' => $request->nama_map,
                 'urut' => $request->nama_urut,
                 'tanggal_dokumen' => $request->tanggal_dokumen,
-                'nama_jenis_dokumen' => $request->nama_jenis_dokumen,
+                'jenis_dokumen' => $request->nama_jenis_dokumen,
                 'nomor_dokumen' => $request->nomor_dokumen,
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
                 'file' => $name,
                 'tahun_ajaran' => $request->tahun_ajaran,
+
                 ];
             } else {
                 $data = [
-                'nama_ruangan' => $request->nama_ruangan,
-                'nama_lemari' => $request->nama_lemari,
-                'nama_rak' => $request->nama_rak,
-                'nama_box' => $request->nama_box,
-                'nama_map' => $request->nama_map,
-                'nama_urut' => $request->nama_urut,
+                'ruangan' => $request->nama_ruangan,
+                'lemari' => $request->nama_lemari,
+                'rak' => $request->nama_rak,
+                'box' => $request->nama_box,
+                'map' => $request->nama_map,
+                'urut' => $request->nama_urut,
                 'tanggal_dokumen' => $request->tanggal_dokumen,
-                'nama_jenis_dokumen' => $request->nama_jenis_dokumen,
+                'jenis_dokumen' => $request->nama_jenis_dokumen,
                 'nomor_dokumen' => $request->nomor_dokumen,
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
-                'tahun_ajaran' => $request->tahun_ajaran,
                 'file' => '-',
-
+                'tahun_ajaran' => $request->tahun_ajaran,
                 ];
             }
+
+
             $update = Dokumen::findOrFail($id);
             $update->update($data);
             if($update){
