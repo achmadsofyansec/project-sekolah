@@ -10,6 +10,8 @@ use App\Models\Buku;
 use App\Models\Peminjaman_buku;
 use App\Models\Pengunjung_perpus;
 use App\Models\Siswa;
+use App\Models\Denda;
+
 
 class PageController extends Controller
 {
@@ -32,8 +34,9 @@ class PageController extends Controller
 
     public function denda()
     {
-        return view('pengaturan.denda.index');
+        return view('pengaturan.denda');
     }
+
 
     public function pengembalian()
     {
@@ -66,11 +69,6 @@ class PageController extends Controller
     public function siswa_detail()
     {
         return view('siswa.siswa_detail');
-    }
-
-    public function peminjaman()
-    {
-        return view('transaksi.peminjaman.index');
     }
 
 

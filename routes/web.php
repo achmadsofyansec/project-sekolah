@@ -10,6 +10,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SumberController;
+use App\Http\Controllers\PeminjamanBukuController;
+use App\Http\Controllers\PeminjamanBukuDtsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,10 +33,11 @@ Route::post('/signout',[PageController::class,'logout']);
 Route::resource('buku',DataBukuController::class);
 Route::resource('kategori',KategoriController::class);
 Route::resource('sumber',SumberController::class);
+Route::resource('peminjaman_buku',PeminjamanBukuController::class);
 
 
-Route::get('/pengaturan/denda/',[PageController::class,'denda']);
-Route::get('/transaksi/peminjaman/',[PageController::class,'peminjaman']);
+Route::get('/pengaturan/denda',[PageController::class,'denda']);
+Route::get('/pengaturan/denda_save',[PageController::class,'denda']);
 Route::get('/transaksi/pengembalian/',[PageController::class,'pengembalian']);
 Route::get('/siswa/siswa',[PageController::class,'siswa']);
 Route::get('/laporan/buku',[PageController::class,'buku']);

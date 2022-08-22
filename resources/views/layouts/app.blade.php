@@ -166,7 +166,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/'); ?>/transaksi/peminjaman" class="nav-link">
+                <a href="<?php echo url('peminjaman_buku') ?>" class="nav-link">
                   <i class="fad fa-person-carry nav-icon text-navy"></i>
                   <p>Peminjaman</p>
                 </a>
