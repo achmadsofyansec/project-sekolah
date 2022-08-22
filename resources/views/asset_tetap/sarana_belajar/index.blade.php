@@ -40,7 +40,10 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>Sarana Pembelajaran</th>                                   
+                                    <th>Deskripsi</th>
+                                    <th>Fungsi</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
                               <tbody>

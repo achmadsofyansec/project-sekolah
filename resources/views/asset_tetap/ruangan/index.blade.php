@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Ruangan')
+@section('page', 'Sarana Belajar')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,8 +40,16 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>Gedung</th>                                   
+                                    <th>Jenis Ruangan</th>
+                                    <th>Nama</th>
+                                    <th>Kodisi</th>
+                                    <th>Tahun Dibangun</th>
+                                    <th>Panjang (m)</th>
+                                    <th>Lebar (m)</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
+
                                 </thead>
                               <tbody>
                                 </tbody>  

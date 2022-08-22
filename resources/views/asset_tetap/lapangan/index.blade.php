@@ -40,7 +40,13 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>No</th>
+                                    <th>Nama</th>                                   
+                                    <th>Unit</th>
+                                    <th>Kondisi</th>
+                                    <th>Panjang (m)</th>
+                                    <th>Lebar (m)</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
                               <tbody>

@@ -40,10 +40,44 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>No</th>
+                                    <th>Nama Gedung</th>                     
+                                    <th>Nama Lahan</th>
+                                    <th>Jumlah Lantai</th>
+                                    <th>Kepemilikan</th>
+                                    <th>Kondisi Kerusakan</th>
+                                    <th>Kategori Kondisi</th>
+                                    <th>Tahun Dibangun</th>
+                                    <th>Luas Gedung</th>
                                     <th>Aksi</th>
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($gedung as $gedung)
+                                    <td>1</td>
+                                    <td>{{ $gedung->nama_gedung }}</td>
+                                    <td>{{ $gedung->nama_lahan }}</td>    
+                                    <td>{{ $gedung->jml_lantai }}</td>
+                                    <td>{{ $gedung->kepemilikan }}</td>
+                                    <td>{{ $gedung->kondisi_kerusakan }}</td>
+                                    <td>{{ $gedung->kategori_kondisi }}</td>
+                                    <td>{{ $gedung->tahun_dibangun }}</td>
+                                    <td>{{ $gedung->luas_gedung }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="" method="POST">
+                                        <a href="" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>
