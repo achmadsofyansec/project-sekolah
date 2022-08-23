@@ -54,7 +54,9 @@
                             @csrf
                             @method('PUT')
                                 <div class="card-body">
-                                        <div class="form-group">
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                      <div class="form-group">
                                             <label>Ruangan</label>
                                             <select class="form-control" id="nama_ruangan" name="nama_ruangan">
                                             <option value="">{{ $dokumen->ruangan }}</option>
@@ -67,10 +69,12 @@
                                           @endforelse
                                       </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Lemari</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="form-group">
+                                        <label>Lemari</label>
                                             <select class="form-control" id="nama_lemari" name="nama_lemari">
-                                           <option value="">{{ $dokumen->lemari }}</option>
+                                          <option value="">{{ $dokumen->lemari }}</option>
                                           @forelse ($lemari as $lemari)
                                         <option value="{{$lemari->nama_lemari}}" @if ($dokumen->lemari == $lemari->nama_lemari)
                                           {{'selected'}}
@@ -79,34 +83,42 @@
                                               
                                           @endforelse
                                       </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Rak</label>
-                                            <select class="form-control" id="nama_rak" name="nama_rak">
-                                            <option value="">{{ $dokumen->rak }}</option>
-                                          @forelse ($rak as $rak)
-                                        <option value="{{$rak->nama_rak}}" @if ($dokumen->rak == $rak->nama_rak)
-                                          {{'selected'}}
-                                        @endif>{{$rak->nama_rak}}</option>
-                                          @empty
-                                              
-                                          @endforelse
-                                      </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Box</label>
-                                            <select class="form-control" id="nama_box" name="nama_box">
-                                            <option value="">{{ $dokumen->box }}</option>
-                                          @forelse ($box as $box)
-                                        <option value="{{$box->nama_box}}" @if ($dokumen->box == $box->nama_box)
-                                          {{'selected'}}
-                                        @endif>{{$box->nama_box}}</option>
-                                          @empty
-                                              
-                                          @endforelse
-                                      </select>
-                                        </div>
-                                        <div class="form-group">
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="form-group">
+                                        <label>Rak</label>
+                                        <select class="form-control" id="nama_rak" name="nama_rak">
+                                        <option value="">{{ $dokumen->rak }}</option>
+                                      @forelse ($rak as $rak)
+                                    <option value="{{$rak->nama_rak}}" @if ($dokumen->rak == $rak->nama_rak)
+                                      {{'selected'}}
+                                    @endif>{{$rak->nama_rak}}</option>
+                                      @empty
+                                          
+                                      @endforelse
+                                  </select>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="form-group">
+                                        <label>Box</label>
+                                        <select class="form-control" id="nama_box" name="nama_box">
+                                        <option value="">{{ $dokumen->box }}</option>
+                                      @forelse ($box as $box)
+                                    <option value="{{$box->nama_box}}" @if ($dokumen->box == $box->nama_box)
+                                      {{'selected'}}
+                                    @endif>{{$box->nama_box}}</option>
+                                      @empty
+                                          
+                                      @endforelse
+                                  </select>
+                                    </div>
+                                    </div>
+                                  </div>
+                                      <div class="row">
+                                        <div class="col-md-4">
+                                          <div class="form-group">
                                             <label>Map</label>
                                             <select class="form-control" id="nama_map" name="nama_map">
                                             <option value="">{{ $dokumen->map }}</option>
@@ -119,7 +131,9 @@
                                           @endforelse
                                           </select>
                                         </div>
-                                        <div class="form-group">
+                                        </div>
+                                        <div class="col-md-4">
+                                          <div class="form-group">
                                             <label>Urut</label>
                                             <select class="form-control" id="nama_urut" name="nama_urut">
                                             <option value="">{{ $dokumen->urut }}</option>
@@ -132,11 +146,9 @@
                                           @endforelse
                                       </select>
                                         </div>
-                                         <div class="form-group">
-                                            <label>Tanggal Dokumen</label>
-                                            <input type="date" name="tanggal_dokumen" id="tanggal_dokumen" class="form-control" value="{{$tgl}}" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="col-md-4">
+                                          <div class="form-group">
                                             <label>Jenis Dokumen</label>
                                             <select class="form-control" id="nama_jenis_dokumen" name="nama_jenis_dokumen">
                                             <option value="">{{ $dokumen->jenis_dokumen }}</option>
@@ -149,6 +161,17 @@
                                           @endforelse
                                       </select>
                                         </div>
+                                        </div>
+                                      </div>
+                                        
+
+                                       
+                                       
+                                         <div class="form-group">
+                                            <label>Tanggal Dokumen</label>
+                                            <input type="date" name="tanggal_dokumen" id="tanggal_dokumen" class="form-control" value="{{$tgl}}" required>
+                                        </div>
+                                        
                                          
                                         <div class="form-group">
                                             <label>Nomor Dokumen</label>
@@ -173,10 +196,6 @@
                                                 </div>
                                             </div>
                                             
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tahun Ajaran</label>
-                                            <input type="date" name="tahun_ajaran" id="tahun_ajaran" class="form-control" value="{{ $dokumen->tahun_ajaran }}" required>
                                         </div>
                                     
                                 </div>

@@ -44,7 +44,6 @@
                                     <th>Jenis Dokumen</th>
                                     <th>Lokasi</th>
                                     <th>Nomor Dok</th>
-                                    <th>Tahun Ajaran</th>
                                     <th>Tanggal Dokumen</th>
                                     <th>Tanggal Upload</th>
                                     <th>Aksi</th>
@@ -56,9 +55,8 @@
                                       <td>{{ $dokumen->jenis_dokumen }}</td>
                                       <td>{{ $dokumen->ruangan }}/{{ $dokumen->lemari }}/{{ $dokumen->rak }}/{{ $dokumen->box }}/{{ $dokumen->urut }}</td>
                                       <td>{{ $dokumen->nomor_dokumen }}</td>
-                                      <td>{{ $dokumen->tahun_ajaran }}</td>
                                       <td>{{ $dokumen->tanggal_dokumen }}</td>
-                                      <td>{{ $dokumen->tanggal_dokumen }}</td>
+                                      <td>{{ $dokumen->created_at }}</td>
                                       <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('input_dokumen.destroy',$dokumen->id) }}" method="POST">

@@ -42,7 +42,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('box',BoxController::class);
         Route::resource('map',MapController::class);
         Route::resource('urut',UrutController::class);
-        Route::resource('datatamu',TamuController::class);
         Route::resource('input_dokumen',DokumenController::class);
         Route::get('/laporan',[PageController::class,'view_laporan'])->name('laporan');
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');

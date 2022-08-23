@@ -27,7 +27,6 @@ class CreateDokumensTable extends Migration
             $table->string('nama_dokumen');
             $table->text('deskripsi');
             $table->string('file');
-            $table->date('tahun_ajaran');
             $table->timestamps();
         });
     }

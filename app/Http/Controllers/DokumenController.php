@@ -69,7 +69,6 @@ class DokumenController extends Controller
             'nomor_dokumen' => ['required'],
             'nama_dokumen' => ['required'],
             'deskripsi' => ['required'],
-            'tahun_ajaran' => ['required'],
 
         ]);
 
@@ -78,7 +77,7 @@ class DokumenController extends Controller
             $file = $request->file('file');
             if($file != null){
                 $name = $request->file('file')->getClientOriginalName();
-                $file->move('../assets/upload',$name);
+                $file->move('../assets/uploads',$name);
                 $data = [
                 'ruangan' => $request->nama_ruangan,
                 'lemari' => $request->nama_lemari,
@@ -92,7 +91,6 @@ class DokumenController extends Controller
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
                 'file' => $name,
-                'tahun_ajaran' => $request->tahun_ajaran,
                 ];
             } else {
                 $data = [
@@ -107,7 +105,6 @@ class DokumenController extends Controller
                 'nomor_dokumen' => $request->nomor_dokumen,
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
-                'tahun_ajaran' => $request->tahun_ajaran,
                 'file' => '-',
 
                 ];
@@ -194,7 +191,6 @@ class DokumenController extends Controller
             'nomor_dokumen' => ['required'],
             'nama_dokumen' => ['required'],
             'deskripsi' => ['required'],
-            'tahun_ajaran' => ['required'],
 
         ]);
         if($validate){
@@ -202,7 +198,7 @@ class DokumenController extends Controller
             $file = $request->file('file');
             if($file != null){
                 $name = $request->file('file')->getClientOriginalName();
-                $file->move('../assets/upload',$name);
+                $file->move('../assets/uploads',$name);
                 $data = [
                 'ruangan' => $request->nama_ruangan,
                 'lemari' => $request->nama_lemari,
@@ -216,7 +212,6 @@ class DokumenController extends Controller
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
                 'file' => $name,
-                'tahun_ajaran' => $request->tahun_ajaran,
 
                 ];
             } else {
@@ -233,7 +228,6 @@ class DokumenController extends Controller
                 'nama_dokumen' => $request->nama_dokumen,
                 'deskripsi' => $request->deskripsi,
                 'file' => '-',
-                'tahun_ajaran' => $request->tahun_ajaran,
                 ];
             }
 
