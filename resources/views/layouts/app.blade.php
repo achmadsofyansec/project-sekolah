@@ -418,34 +418,7 @@ $(document).ready( function () {
     var select = $('select').select2({
       theme:'classic'
     });
-} );
-//Filter Absensi
-function filter_absensi(){
-    $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
-    var x = document.getElementById("filter_absensi_kelas").value;
-    var y = document.getElementById("filter_absensi_jurusan").value;
-    var z = document.getElementById("filter_absensi_tanggal").value;
-    $.ajax({
-             type:'POST',
-             url:"{{ route('ajaxRequest.filter_absensi') }}",
-             data:{kelas:x, jurusan:y,tanggal:z},
-             success:function(data){
-               if(data != ""){
-                document.getElementById("content-absensi").innerHTML = data;
-               }else{
-                document.getElementById("content-absensi").innerHTML = '<tr><td colspan="6" class="text-center text-mute">Tidak Ada Data</td></tr>';
-               }
-              
-             }
-          });
-  }
-  filter_absensi()
-
-  
+} );  
     </script>
 @yield('content-script')
 </body>

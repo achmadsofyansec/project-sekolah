@@ -43,7 +43,7 @@
                       <div class="card-body">
                           <div class="form-group">
                             <label >Kelas</label>
-                            <select name="filter_ekstra_anggota_kelas" id="filter_ekstra_anggota_kelas" class="form-control">
+                            <select name="filter_ekstra_anggota_kelas" onchange="filter_anggota_ekstra()" id="filter_ekstra_anggota_kelas" class="form-control">
                               <option value="">-- Semua Kelas -- </option>
                               @forelse ($kelas as $item)
                             <option value="{{$item->kode_kelas}}">{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
@@ -53,7 +53,7 @@
                           </div>
                           <div class="form-group">
                             <label >Jurusan</label>
-                            <select name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control">
+                            <select name="filter_ekstra_anggota_jurusan" onchange="filter_anggota_ekstra()" id="filter_ekstra_anggota_jurusan" class="form-control">
                             <option value="">-- Semua Jurusan -- </option>
                               @forelse ($jurusan as $item)
                             <option value="{{$item->kode_jurusan}}">{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
@@ -63,8 +63,8 @@
                           </div>
                           <div class="form-group">
                             <label >Ekstrakulikuler</label>
-                            <select name="filter_ekstra_anggota_ekstra" id="filter_ekstra_anggota_ekstra" class="form-control">
-                              <option value="">-- Semua Kelas -- </option>
+                            <select name="filter_ekstra_anggota_ekstra" onchange="filter_anggota_ekstra()" id="filter_ekstra_anggota_ekstra" class="form-control">
+                              <option value="">-- Semua EkstraKuliKuler -- </option>
                               @forelse ($ekstra as $item)
                             <option value="{{$item->kode_ekstra}}">{{$item->kode_ekstra}} ( {{$item->nama_ekstra}} ) </option>
                             @empty
@@ -91,9 +91,10 @@
                                  <thead>
                                      <th>No</th>
                                      <th>Tanggal Daftar</th>
-                                     <th>Nama Siswa</th>
+                                     <th>Nama</th>
                                      <th>Kelas</th>
                                      <th>Jurusan</th>
+                                     <th>EkstraKuliKuler</th>
                                  </thead>
                                  <tbody id="content-ekstra">
                                    
@@ -110,4 +111,33 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+<script>
+  //Filter Absensi
+function filter_anggota_ekstra(){
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    var x = document.getElementById("filter_ekstra_anggota_kelas").value;
+    var y = document.getElementById("filter_ekstra_anggota_jurusan").value;
+    var z = document.getElementById("filter_ekstra_anggota_ekstra").value;
+    $.ajax({
+             type:'POST', 
+             url:"{{ route('filter_anggota_ekstra') }}",
+             data:{kelas:x, jurusan:y,ekstra:z},
+             success:function(data){
+               if(data != ""){
+                document.getElementById("content-ekstra").innerHTML = data;
+               }else{
+                document.getElementById("content-ekstra").innerHTML = '<tr><td colspan="6" class="text-center text-mute">Tidak Ada Data</td></tr>';
+               }
+             }
+          });
+  }
+  filter_anggota_ekstra()
+</script>
+    
 @endsection
