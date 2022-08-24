@@ -63,7 +63,7 @@
               <span class="info-box-icon bg-navy elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-navy" ><b>ARSIP</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -96,7 +96,7 @@
           </div>
 
           <div class="col-12 col-sm-6 col-md-3">
-            <a href="../asiscbt" target="_blank" style="color:black;">
+            <a href="../ujian" target="_blank" style="color:black;">
             <div class="info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-laptop"></i></span>
               <div class="info-box-content">
@@ -124,7 +124,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-success" ><b>BUKU TAMU</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -141,7 +141,7 @@
             <!-- /.info-box -->
           </div>
           <div class="col-12 col-sm-6 col-md-3">
-            <a href="../asiscbt" target="_blank" style="color:black;">
+            <a href="../integrasi" target="_blank" style="color:black;">
             <div class="info-box">
               <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-laptop"></i></span>
               <div class="info-box-content">
