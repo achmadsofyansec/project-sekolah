@@ -18,7 +18,6 @@ class CreatePeminjamanBukusTable extends Migration
             $table->integer('no_peminjaman');
             $table->integer('id_siswa');
             $table->String('id_kelas');
-            $table->integer('id_buku');
             $table->timestamps();
         });
     }

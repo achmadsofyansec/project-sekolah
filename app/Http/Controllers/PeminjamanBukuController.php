@@ -19,13 +19,9 @@ class PeminjamanBukuController extends Controller
      */
     public function index()
     {
-        $peminjaman = Peminjaman_buku::join('data_siswas','peminjaman_bukus.id_siswa','=','data_siswas.id_log')
-                        ->join('kelas','peminjaman_bukus.id_kelas','=','kelas.id')
-                        ->join('bukus','peminjaman_bukus.id_buku','=','bukus.kode_buku')
-                        ->get(['peminjaman_bukus.*','siswas.*','kelas.*','bukus.*','peminjaman_bukus.id as id_pinjam']);
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
         $kelas = DB::table('kelas')->select(['kelas.*'])->get();
-        return view('transaksi.peminjaman.index',compact('peminjaman','siswa','kelas'));
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+        return view('transaksi.peminjaman.index',compact('kelas','siswa'));
     }
 
 
@@ -37,6 +33,7 @@ class PeminjamanBukuController extends Controller
     public function create()
     {
         //
+        return view('transaksi.peminjaman.index',compact('siswa','kelas'));
     }
 
     /**
@@ -45,7 +42,7 @@ class PeminjamanBukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }

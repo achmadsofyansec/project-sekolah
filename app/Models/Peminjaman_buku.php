@@ -13,6 +13,5 @@ class Peminjaman_buku extends Model
     	'no_peminjaman',
     	'id_siswa',
     	'id_kelas',
-    	'id_buku',
     ];
 }
