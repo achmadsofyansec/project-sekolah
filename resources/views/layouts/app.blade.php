@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AKADEMIK | @yield('page')</title>
+  <title>KEUANGAN | @yield('page')</title>
   <link rel="shortcut icon" href="{{asset('public/dist/img/AdminLTELogo.png')}}" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -31,7 +31,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-orange navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -79,11 +79,11 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-orange elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AKADEMIK</span>
+      <span class="brand-text font-weight-light">KEUANGAN</span>
     </a>
 
     <!-- Sidebar -->
@@ -114,6 +114,182 @@
                 Dashboard
               </p>
             </a>
+          </li>
+          <li class="nav-header">Data Master</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-orange"></i>
+              <p>
+                Data Master
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/metode_bayar') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Metode Pembayaran</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale text-primary"></i>
+              <p>
+                POS Pembayaran
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/pos_terima') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>POS Penerimaan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/pos_keluar') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-danger"></i>
+                  <p>Pos Pengeluaran</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Data Pembayaran</li>
+          <li class="nav-item">
+            <a href="<?php echo url('/pembayaran_siswa') ?>" class="nav-link">
+              <i class="nav-icon fas fa-donate text-success"></i>
+              <p>
+                Pembayaran Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/biaya_siswa') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice-dollar text-danger"></i>
+              <p>
+                Biaya Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/tabungan') ?>" class="nav-link">
+              <i class="nav-icon fas fa-book text-warning"></i>
+              <p>
+                Tabungan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-funnel-dollar text-primary"></i>
+              <p>
+                Lain Lain
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/terima_lain') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Penerimaan Lain </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/keluar_lain') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-danger"></i>
+                  <p>Pengeluaran Lain</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Laporan / Rekap</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy text-primary"></i>
+              <p>
+                Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/laporan_harian') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Harian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/laporan_bulanan') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-danger"></i>
+                  <p>Bulanan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/laporan_tahunan') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-danger"></i>
+                  <p>Tahunan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-alt text-warning"></i>
+              <p>
+                Rekaptulasi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/rekap') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Rekap</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/rekap_pertrx') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-success"></i>
+                  <p>Per Transaksi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/tunggakan') ?>" class="nav-link">
+              <i class="nav-icon fas fa-paste text-danger"></i>
+              <p>
+                Tunggakan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/riwayat_pembayaran') ?>" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list text-navy"></i>
+              <p>
+                Riwayat Pembayaran
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Lain Lain</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-weixin text-success"></i>
+              <p>
+                Gateway
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/wa_gateway') ?>" class="nav-link">
+                  <i class="fab fa-whatsapp nav-icon text-success"></i>
+                  <p>WhatsApp Gateway</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -176,5 +352,6 @@ $(document).ready( function () {
     });
 } );
     </script>
+    @yield('content-script')
 </body>
 </html>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Dashboard')
+@section('page', 'WhatsApp Gateway')
 @section('content-app')
 <div class="content-wrapper">
 <div class="content-header">
@@ -18,7 +18,7 @@
       </div><!-- /.container-fluid -->
     </div>
 <div class="content">
-  <div class="container-fluid"></div>
+  
 </div>
 </div>
 @endsection
