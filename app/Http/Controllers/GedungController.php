@@ -26,7 +26,7 @@ class GedungController extends Controller
      */
     public function create()
     {
-        //
+        return view('asset_tetap.gedung.create');
     }
 
     /**
@@ -37,7 +37,47 @@ class GedungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'nama_gedung' => ['required'],
+            // 'nama_lahan' => ['required'],
+            // 'jml_lantai' => ['required'],
+            // 'kepemilikan' => ['required'],
+            // 'kondisi_kerusakan' => ['required'],
+            // 'kategori_kondisi' => ['required'],
+            // 'tahun_dibangun' => ['required'],
+            // 'luas_gedung' => ['required'],
+        ]);
+        if($credential){
+            $create = SarprasGedung::create([
+                'nama_gedung' => $request->nama_gedung,
+                // 'nama_lahan' => $request->nama_lahan,
+                // 'jml_lantai' => $request->jml_lantai,
+                // 'kepemilikan' => $request->kepemilikan,
+                // 'kondisi_kerusakan' => $request->kondisi_kerusakan,
+                // 'kategori_kondisi' => $request->kategori_kondisi,
+                // 'tahun_dibangun' => $request->tahun_dibangun,
+                // 'luas_gedung' => $request->luas_gedung,
+            ]);
+            if($create){
+                return redirect()
+                ->route('gedung.index')
+                ->with([
+                    'success' => 'Data Gedung Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -59,7 +99,8 @@ class GedungController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SarprasGedung::findOrFail($id);
+        return view('asset_tetap.gedung.edit',compact('data'));
     }
 
     /**
@@ -71,7 +112,43 @@ class GedungController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'nama_gedung' => ['required'],
+            'nama_lahan' => ['required'],
+            'jml_lantai' => ['required'],
+            'kepemilikan' => ['required'],
+            'kondisi_kerusakan' => ['required'],
+            'kategori_kondisi' => ['required'],
+            'tahun_dibangun' => ['required'],
+            'luas_gedung' => ['required'], 
+        ]);
+        if($validate){
+            $update = SarprasGedung::findOrFail($id);
+            $update->update([
+                
+                'nama_gedung' => $request->nama_gedung,
+                'nama_lahan' => $request->nama_lahan,
+                'jml_lantai' => $request->jml_lantai,
+                'kepemilikan' => $request->kepemilikan,
+                'kondisi_kerusakan' => $request->kondisi_kerusakan,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'tahun_dibangun' => $request->tahun_dibangun,
+                'luas_gedung' => $request->luas_gedung,
+            ]);
+            if($update){
+                return redirect()
+                ->route('gedung.index')
+                ->with([
+                    'success' => 'Gedung Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -82,6 +159,20 @@ class GedungController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasGedung::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('gedung.index')
+            ->with([
+                'success' => 'Data Gedung Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

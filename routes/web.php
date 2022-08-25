@@ -28,7 +28,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         //Data Asset
         Route::get('/umum',[PageController::class,'view_umum'])->name('umum');
-        Route::get('/gedung',[GedungController::class,'index']);
+        Route::resource('gedung', GedungController::class);
         Route::get('/ruangan',[PageController::class,'view_ruangan'])->name('ruangan');
         Route::get('/lapangan',[PageController::class,'view_lapangan'])->name('lapangan');
         Route::get('/sarana_belajar',[PageController::class,'view_sarana_belajar'])->name('sarana_belajar');

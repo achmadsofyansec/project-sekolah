@@ -34,7 +34,7 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('gedung.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -64,8 +64,8 @@
                                     <td>{{ $gedung->luas_gedung }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="" method="POST">
-                                        <a href="" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        action="{{ route('gedung.destroy',$gedung->id) }}" method="POST">
+                                        <a href="{{ route('gedung.edit',$gedung->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         @csrf
                                           @method('DELETE')
                                           <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
