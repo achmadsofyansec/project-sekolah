@@ -28,24 +28,17 @@ class PageController extends Controller
     public function view_rekap_pertrx(){
         return view('rekaptulasi.per_trx.index');
     }
-    public function view_pos_penerimaan(){
-        return view('pos.penerimaan.index');
-    }
     public function view_terima_lain(){
         return view('lain_lain.penerimaan.index');
     }
     public function view_keluar_lain(){
         return view('lain_lain.pengeluaran.index');
     }
-    public function view_pos_pembayaran(){
-        return view('pos.pengeluaran.index');
-    }
+  
     public function view_pembayaran_siswa(){
         return view('pembayaran_siswa.index');
     }
-    public function view_metode_pembayaran(){
-        return view('master.metode_pembayaran.index');
-    }
+    
     public function view_laporan_tahunan(){
         return view('laporan.tahunan.index');
     }

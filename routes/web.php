@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PosPenerimaanController;
+use App\Http\Controllers\PosPengeluaranController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
@@ -27,9 +30,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         //Master
-        Route::get('/metode_bayar',[PageController::class,'view_metode_pembayaran'])->name('metode_pembayaran');
-        Route::get('/pos_terima',[PageController::class,'view_pos_penerimaan'])->name('pos_terima');
-        Route::get('/pos_keluar',[PageController::class,'view_pos_pembayaran'])->name('pos_keluar');
+        Route::resource('metode_bayar',MethodeController::class);
+        Route::resource('pos_terima',PosPenerimaanController::class);
+        Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
         Route::get('/pembayaran_siswa',[PageController::class,'view_pembayaran_siswa'])->name('pembayaran_siswa');
         Route::get('/biaya_siswa',[PageController::class,'view_biaya_siswa'])->name('biaya_siswa');

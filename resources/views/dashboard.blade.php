@@ -18,7 +18,9 @@
       </div><!-- /.container-fluid -->
     </div>
 <div class="content">
-  <div class="container-fluid"></div>
+  <div class="container-fluid">
+    
+  </div>
 </div>
 </div>
 @endsection
