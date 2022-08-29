@@ -35,6 +35,14 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/aset_lain',[PageController::class,'view_aset_lain'])->name('aset_lain');
         Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
         Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');
+        Route::get('/kebutuhan_tambahan',[PageController::class,'view_kebutuhan_tambahan'])->name('kebutuhan_tambahan');
+        Route::get('/laboratorium',[PageController::class,'view_laboratorium'])->name('laboratorium');
+        Route::get('/lahan',[PageController::class,'view_lahan'])->name('lahan');
+        Route::get('/mebel',[PageController::class,'view_mebel'])->name('mebel');
+        Route::get('/olahraga_seni',[PageController::class,'view_olahraga_seni'])->name('olahraga_seni');
+        Route::get('/penerangan_internet',[PageController::class,'view_penerangan_internet'])->name('penerangan_internet');
+        Route::get('/sanitasi',[PageController::class,'view_sanitasi'])->name('sanitasi');
+        Route::get('/sarana_administrasi',[PageController::class,'view_sarana_administrasi'])->name('sarana_administrasi');
         //Peminjaman
         Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
         Route::get('/pengembalian',[PageController::class,'view_pengembalian'])->name('pengembalian');

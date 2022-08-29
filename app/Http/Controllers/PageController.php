@@ -38,6 +38,30 @@ class PageController extends Controller
     public function view_kategori_aset_tt(){
         return view('asset_tidak_tetap.kategori_asset.index');
     }
+    public function view_kebutuhan_tambahan(){
+        return view('asset_tetap.kebutuhan_tambahan.index');
+    }
+    public function view_laboratorium(){
+        return view('asset_tetap.laboratorium.index');
+    }
+    public function view_lahan(){
+        return view('asset_tetap.lahan.index');
+    }
+    public function view_mebel(){
+        return view('asset_tetap.mebel.index');
+    }
+    public function view_olahraga_seni(){
+        return view('asset_tetap.olahraga_seni.index');
+    }
+    public function view_penerangan_internet(){
+        return view('asset_tetap.penerangan_internet.index');
+    }
+    public function view_sanitasi(){
+        return view('asset_tetap.sanitasi.index');
+    }
+    public function view_sarana_administrasi(){
+        return view('asset_tetap.sarana_administrasi.index');
+    }
     public function view_peminjaman(){
         return view('peminjaman.index');
     }

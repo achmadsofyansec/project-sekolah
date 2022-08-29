@@ -138,6 +138,54 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?php echo url('/kebutuhan_tambahan') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Kebutuhan Tambahan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/laboratorium') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Laboratorium</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/lahan') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Lahan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/mebel') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Mebel</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/olahraga_seni') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Olahraga & Seni</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/penerangan_internet') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Penerangan & Internet</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/sanitasi') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Sanitasi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/sarana_administrasi') ?>" class="nav-link">
+                  <i class="fas fa-angle-right nav-icon text-primary"></i>
+                  <p>Sarana Administrasi</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="<?php echo url('/ruangan') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-primary"></i>
                   <p>Ruangan</p>
