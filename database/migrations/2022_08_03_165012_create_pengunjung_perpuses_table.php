@@ -15,7 +15,7 @@ class CreatePengunjungPerpusesTable extends Migration
     {
         Schema::create('pengunjung_perpuses', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_pengunjung');
+            $table->string('id_pengunjung');
             $table->string('nis');
             $table->integer('id_kelas');
             $table->string('keperluan');

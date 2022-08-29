@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PeminjamanBukuDts extends Migration
+class CreatePeminjamanBukuDtsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class PeminjamanBukuDts extends Migration
     {
         Schema::create('peminjaman_buku_dts', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_peminjaman_dt');
-            $table->integer('id_peminjaman');
-            $table->integer('id_buku');
+            $table->string('id_peminjaman_dt');
+            $table->string('id_peminjaman');
+            $table->string('id_buku');
             $table->integer('jumlah');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');

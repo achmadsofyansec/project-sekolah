@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sumber extends Model
 {
     use HasFactory;
-    protected $table = "sumbers";
-
-    protected $primaryKey = "id";
 
     protected $fillable = [
     	'id_sumber',

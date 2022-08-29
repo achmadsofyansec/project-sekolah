@@ -44,9 +44,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" role="form" action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
+              <form class="form-horizontal" role="form" action="{{route('buku.store')}}" method="POST"  enctype="multipart/form-data">
                 @csrf
-
                 <div class="card-body">
                               <div class="row">
                                 <div class="col-md-12">

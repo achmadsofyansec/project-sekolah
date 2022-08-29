@@ -26,20 +26,17 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-7">
-                @forelse ($siswa as $item)
-                <form action="{{route('peminjaman_buku.show',$item->id)}}">
-                  @empty
-                  @endforelse
+                <form action="{{route('peminjaman_buku.create')}}" method="GET">
                   <table class="table table-bordered tble-hover table-striped table-sm">
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;"><b>Cari Siswa</b></td>
                         <td>
                           <div class="input-group">
-                            <select class="form-control select2" name="nisn" id="nisn" required>
+                            <select class="form-control select2" name="cari" required>
                                         <option id="">NIS Siswa</option>
                                         
-                                      @forelse ($siswa as $item)
+                                        @forelse ($siswa as $item)
                                         <option id="{{$item->id}}">{{$item->nisn}}</option>
                                           @empty
                                               
@@ -77,15 +74,15 @@
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
-                        <td><input class="form-control nisn" name="nisn" value="{{$item->nisn}}" type="text"  readonly></td>
+                        <td><input class="form-control nisn" name="nisn"  type="text"  readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
-                        <td><input class="form-control nama" name="nama" id="nama" value="{{$item->nama}}" type="text" readonly></td>
+                        <td><input class="form-control nama" name="nama" id="nama"  type="text" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Kelas</td>
-                        <td><input class="form-control nama_kelas" name="nama_kelas" value="@foreach ($kelas as $item){{$item->nama_kelas}}@endforeach" id="nama_kelas" type="text" readonly></td>
+                        <td><input class="form-control nama_kelas" name="nama_kelas" id="nama_kelas" type="text" readonly></td>
                       </tr>
                   </table>
                 </div>

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Peminjaman_buku;
-use App\Models\Buku;
-use App\Models\Siswa;
-use Illuminate\Http\Request;
 
 class PeminjamanBukuController extends Controller
 {
@@ -19,22 +17,29 @@ class PeminjamanBukuController extends Controller
      */
     public function index()
     {
-        $kelas = DB::table('kelas')->select(['kelas.*'])->get();
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        return view('transaksi.peminjaman.index',compact('kelas','siswa'));
+        return view('transaksi.peminjaman.index',compact ('siswa'));
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-        return view('transaksi.peminjaman.index',compact('siswa','kelas'));
+        $cari = $request->cari;
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+
+ 
+        $search = DB::table('data_siswas')
+        ->where('nisn','like',"%".$cari."%")
+        ->paginate();
+ 
+        return view('transaksi.peminjaman.show',['search' => $search],['siswa' => $siswa]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,7 +47,7 @@ class PeminjamanBukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
     }
@@ -50,21 +55,23 @@ class PeminjamanBukuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Peminjaman_buku  $peminjaman_buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Peminjaman_buku $peminjaman_buku)
+    public function show($id)
     {
+        $siswa = Siswa::findOrFail($id); 
+        return view('transaksi.peminjaman.show',compact('siswa'));
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Peminjaman_buku  $peminjaman_buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peminjaman_buku $peminjaman_buku)
+    public function edit($id)
     {
         //
     }
@@ -73,10 +80,10 @@ class PeminjamanBukuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Peminjaman_buku  $peminjaman_buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peminjaman_buku $peminjaman_buku)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -84,10 +91,10 @@ class PeminjamanBukuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Peminjaman_buku  $peminjaman_buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peminjaman_buku $peminjaman_buku)
+    public function destroy($id)
     {
         //
     }

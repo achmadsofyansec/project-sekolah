@@ -63,6 +63,7 @@
                   </thead>
                   <tbody>
                     @forelse ($buku as $buku)
+                      @method('PUT')
                                 <tr class="text-sm">
                                       <div class="btn-group btn-group-xs">
                                         <td>{{$loop->index + 1}}</td>
