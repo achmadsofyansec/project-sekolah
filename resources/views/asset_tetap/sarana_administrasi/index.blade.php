@@ -18,7 +18,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
-    <section class="content">
+    <section class="content">`
       <div class="container-fluid">
         <div class="row-mb-2">
             <div class="col-md-12 mt-1">
