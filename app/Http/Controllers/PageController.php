@@ -31,6 +31,19 @@ class PageController extends Controller
         return view('siswa.index',/*compact('siswa')*/);
     }
 
+        public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+
+ 
+        $search = DB::table('data_siswas')
+        ->where('nisn','like',"%".$cari."%")
+        ->paginate();
+ 
+        return view('transaksi.peminjaman.cari',['search' => $search],['siswa' => $siswa]);
+    }
+
 
     public function denda()
     {

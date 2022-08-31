@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Peminjaman_buku_dts;
 use App\Models\Peminjaman_buku;
-use App\Models\Bukus;
-use App\Models\Siswas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeminjamanBukuDtsController extends Controller
 {
@@ -17,7 +18,8 @@ class PeminjamanBukuDtsController extends Controller
      */
     public function index()
     {
-        //
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+        return view('transaksi.pengembalian.index',compact ('siswa'));
     }
 
 
@@ -26,9 +28,19 @@ class PeminjamanBukuDtsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+     public function create(Request $request)
     {
-        //
+        $cari = $request->cari;
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+
+ 
+        $search = DB::table('data_siswas')
+        ->where('nisn','like',"%".$cari."%")
+        ->paginate();
+
+        
+ 
+        return view('transaksi.pengembalian.create',['search' => $search],['siswa' => $siswa]);
     }
 
     /**

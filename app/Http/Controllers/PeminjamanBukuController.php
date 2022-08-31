@@ -36,8 +36,10 @@ class PeminjamanBukuController extends Controller
         $search = DB::table('data_siswas')
         ->where('nisn','like',"%".$cari."%")
         ->paginate();
+
+        
  
-        return view('transaksi.peminjaman.show',['search' => $search],['siswa' => $siswa]);
+        return view('transaksi.peminjaman.cari',['search' => $search],['siswa' => $siswa]);
     }
 
 

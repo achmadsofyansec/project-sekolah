@@ -71,15 +71,15 @@
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
-                        <td><input class="form-control nis" name="nis" type="text" value="nis" readonly></td>
+                        <td><input class="form-control nis" name="nis" type="text" value="@foreach($search as $item){{$item->nisn}}@endforeach" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
-                        <td><input class="form-control nama_siswa" name="nama_siswa" type="text" value="nama_siswa" readonly></td>
+                        <td><input class="form-control nama_siswa" name="nama_siswa" type="text" value="@foreach($search as $item){{$item->nama}}@endforeach" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Kelas</td>
-                        <td><input class="form-control nama_kelas" name="nama_kelas" type="text" value="nama_kelas" readonly></td>
+                        <td><input class="form-control nama_kelas" name="nama_kelas" type="text" value="@foreach($search as $item){{$item->nisn}}@endforeach" readonly></td>
                       </tr>
                   </table>
                 </div>

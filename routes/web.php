@@ -34,11 +34,12 @@ Route::resource('buku',DataBukuController::class);
 Route::resource('kategori',KategoriController::class);
 Route::resource('sumber',SumberController::class);
 Route::resource('peminjaman_buku',PeminjamanBukuController::class);
+Route::resource('peminjaman_buku_dts',PeminjamanBukuDtsController::class);
 
 
 Route::get('/pengaturan/denda',[PageController::class,'denda']);
+Route::get('pinjam',[PeminjamanBukuController::class,'search']);
 Route::get('/pengaturan/denda_save',[PageController::class,'denda']);
-Route::get('/transaksi/pengembalian/',[PageController::class,'pengembalian']);
 Route::get('/siswa/siswa',[PageController::class,'siswa']);
 Route::get('/laporan/buku',[PageController::class,'buku']);
 Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
