@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Tambah Gedung')
+@section('page', 'Kebutuahan Tambahan')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,7 +40,7 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. isi <b>Identitas Gedung</b> Dengan Baik dan Benar.</p>
+                          <p>1. isi <b>Identitas Kebutuhan Tambahan</b> Dengan Baik dan Benar.</p>
                           <p>2. Simpan Data Dokumen Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
@@ -50,45 +50,41 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('gedung.store')}}" method="POST">
+                        <form action="{{route('kebutuhan_tambahan.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Nama Gedung</label>
-                                    <input type="text" name="nama_gedung" id="nama_gedung" class="form-control" required>
+                                    <label>Tahun Pengajuan</label>
+                                    <input type="text" name="tahun_pengajuan" id="tahun_pengajuan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Lahan</label>
-                                    <input type="text" name="nama_lahan" id="nama_lahan" class="form-control" required>
+                                    <label>Jenis</label>
+                                    <input type="text" name="jenis" id="jenis" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Jumlah Lantai</label>
-                                    <input type="text" name="jml_lantai" id="jml_lantai" class="form-control" required>
+                                    <label>Jumlah</label>
+                                    <input type="text" name="jumlah" id="jumlah" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kepemilikan</label>
-                                    <input type="text" name="kepemilikan" id="kepemilikan" class="form-control" required>
+                                    <label>Sifat</label>
+                                    <input type="text" name="sifat" id="sifat" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kondisi Kerusakan</label>
-                                    <input type="text" name="kondisi_kerusakan" id="kondisi_kerusakan" class="form-control" required>
+                                    <label>Rangking</label>
+                                    <input type="text" name="rangking" id="rangking" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kategori Kerusakan</label>
+                                    <label>Kategori Kondisi</label>
                                     <input type="text" name="kategori_kondisi" id="kategori_kondisi" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Tahun Dibangun</label>
-                                    <input type="text" name="tahun_dibangun" id="t_dibangun" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Luas Gedung</label>
-                                    <input type="text" name="luas_gedung" id="luas_gedung" class="form-control" required>
+                               <div class="form-group">
+                                    <label>File</label>
+                                    <input type="file" name="foto" id="foto" class="form-control" required>
                                 </div>
                             </div>  
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('gedung.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('kebutuhan_tambahan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

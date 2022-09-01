@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GedungController;
+use App\Http\Controllers\KebutuhanTambahanController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/aset_lain',[PageController::class,'view_aset_lain'])->name('aset_lain');
         Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
         Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');
-        Route::get('/kebutuhan_tambahan',[PageController::class,'view_kebutuhan_tambahan'])->name('kebutuhan_tambahan');
+        Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
         Route::get('/laboratorium',[PageController::class,'view_laboratorium'])->name('laboratorium');
         Route::get('/lahan',[PageController::class,'view_lahan'])->name('lahan');
         Route::get('/mebel',[PageController::class,'view_mebel'])->name('mebel');

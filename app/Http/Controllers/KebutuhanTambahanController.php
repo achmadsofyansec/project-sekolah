@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SarprasKebutuhanTambahan;
 
 class KebutuhanTambahanController extends Controller
 {
@@ -13,7 +14,8 @@ class KebutuhanTambahanController extends Controller
      */
     public function index()
     {
-        //
+        $kebutuhan = SarprasKebutuhanTambahan::latest()->get();
+        return view('asset_tetap.kebutuhan_tambahan.index',compact('kebutuhan'));
     }
 
     /**
@@ -23,7 +25,7 @@ class KebutuhanTambahanController extends Controller
      */
     public function create()
     {
-        //
+        return view('asset_tetap.kebutuhan_tambahan.create');
     }
 
     /**
@@ -34,7 +36,64 @@ class KebutuhanTambahanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'tahun_pengajuan' => ['required'],
+            'jenis' => ['required'],
+            'jumlah' => ['required'],
+            'sifat' => ['required'],
+            'rangking' => ['required'],
+            'kategori_kondisi' => ['required'],
+        ]);
+
+        if($credential){
+            $data = [];
+            $foto = $request->file('foto');
+            if($foto != null){
+                $name = $request->file('foto')->getClientOriginalName();
+                $foto->move('../assets/upload',$name);
+                $data = [
+                'tahun_pengajuan' => $request->tahun_pengajuan,
+                'jenis' => $request->jenis,
+                'jumlah' => $request->jumlah,
+                'sifat' => $request->sifat,
+                'rangking' => $request->rangking,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'foto' => $name,
+                ];
+            } else {
+                $data = [
+                'tahun_pengajuan' => $request->tahun_pengajuan,
+                'jenis' => $request->jenis,
+                'jumlah' => $request->jumlah,
+                'sifat' => $request->sifat,
+                'rangking' => $request->rangking,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'foto' => '-',
+
+                ];
+            }
+            $create = SarprasKebutuhanTambahan::create($data);
+
+            if($create){
+                return redirect()
+                ->route('kebutuhan_tambahan.index')
+                ->with([
+                    'success' => 'Kebutuhan Tambahan Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        } else {
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -56,7 +115,8 @@ class KebutuhanTambahanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SarprasKebutuhanTambahan::findOrFail($id);
+        return view('asset_tetap.kebutuhan_tambahan.edit',compact('data'));
     }
 
     /**
@@ -68,7 +128,57 @@ class KebutuhanTambahanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'tahun_pengajuan' => ['required'],
+            'jenis' => ['required'],
+            'jumlah' => ['required'],
+            'sifat' => ['required'],
+            'rangking' => ['required'],
+            'kategori_kondisi' => ['required'],
+        ]);
+        if($validate){
+            $data = [];
+            $foto = $request->file('foto');
+            if($foto != null){
+                $name = $request->file('foto')->getClientOriginalName();
+                $foto->move('../assets/upload',$name);
+                $data = [
+                'tahun_pengajuan' => $request->tahun_pengajuan,
+                'jenis' => $request->jenis,
+                'jumlah' => $request->jumlah,
+                'sifat' => $request->sifat,
+                'rangking' => $request->rangking,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'foto' => $name,
+                ];
+            } else {
+                $data = [
+                'tahun_pengajuan' => $request->tahun_pengajuan,
+                'jenis' => $request->jenis,
+                'jumlah' => $request->jumlah,
+                'sifat' => $request->sifat,
+                'rangking' => $request->rangking,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'foto' => '-',
+
+                ];
+            }
+            $update = SarprasKebutuhanTambahan::findOrFail($id);
+            $update->update($data);
+            if($update){
+                return redirect()
+                ->route('kebutuhan_tambahan.index')
+                ->with([
+                    'success' => 'Kebutuhan Tambahan Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

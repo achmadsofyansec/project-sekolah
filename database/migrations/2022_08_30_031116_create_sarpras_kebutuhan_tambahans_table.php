@@ -15,6 +15,13 @@ class CreateSarprasKebutuhanTambahansTable extends Migration
     {
         Schema::create('sarpras_kebutuhan_tambahans', function (Blueprint $table) {
             $table->id();
+            $table->integer('tahun_pengajuan');
+            $table->string('jenis');
+            $table->integer('jumlah');
+            $table->string('sifat');
+            $table->string('rangking');
+            $table->string('kategori_kondisi');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -29,3 +36,4 @@ class CreateSarprasKebutuhanTambahansTable extends Migration
         Schema::dropIfExists('sarpras_kebutuhan_tambahans');
     }
 }
+        
