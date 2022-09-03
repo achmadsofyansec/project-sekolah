@@ -74,11 +74,11 @@
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
-                        <td><input class="form-control nisn" name="nisn"  type="text"  readonly></td>
+                        <td><input class="form-control nisn" name="nisn" type="text"  readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
-                        <td><input class="form-control nama" name="nama" id="nama"  type="text" readonly></td>
+                        <td><input class="form-control nama" name="nama" id="nama" type="text" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Kelas</td>
@@ -110,17 +110,31 @@
                       <tr>
                         <td style="width:150px;">Kode Buku</td>
                         <td>
-                        <input class="form-control id_buku_real" name="id_buku_real" id="id_buku_real" type="hidden" required>
-                          <input class="form-control id_buku" name="id_buku" id="id_buku" type="text" placeholder="Silahkan Input Kode Buku" required>
+                          <table class="table table-bordered tble-hover table-striped table-sm">
+                            <tbody>
+                              <tr>
+                                  <div class="input-group">
+                                    <select class="form-control select2" onchange="filter_buku()" name="kode_buku" id="kode_buku" required>
+                                          <option id="">Kode Buku</option>
+                                          @forelse ($buku as $item)
+                                          <option name="{{$item->id}}" id="{{$item->id}}">{{$item->kode_buku}}</option>
+                                          @empty
+
+                                          @endforelse
+                                    </select>
+                                  </div>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Judul Buku</td>
-                        <td><input class="form-control judul_buku" name="judul_buku" id="kode_buku" type="text" readonly></td>
+                        <td><input class="form-control judul_buku" name="judul_buku" id="judul_buku" type="text" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Stok</td>
-                        <td><input class="form-control stok" name="stok" id="stok" type="text" readonly></td>
+                        <td><input class="form-control stok" name="stok_buku" id="stok_buku" type="text" readonly></td>
                       </tr>
 
                     </tbody>
@@ -197,51 +211,46 @@
     <!-- /.row -->
   </section>
 </div>
-
+@endsection
+@section('content-script')
 <script>
-  $(".id_buku").change(function() {
-    var id_buku = $(".id_buku").val();
-    $.getJSON("<?php echo url('/'); ?>transaksi/ajax_combo_buku", {
-      id_buku: id_buku
-    }, function(data) {
-      $(".judul_buku").val(data[0].judul_buku);
-      $(".stok").val(data[0].jumlah_buku);
-    });
-  });
-</script>
+  //Filter Absensi
+function filter_buku(){
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    var x = document.getElementById("kode_buku").value;
+    $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequest.filter_buku') }}",
+             data:{kode_buku:x},
+             success:function(data){
+              const ray = data[0];
+              $('#judul_buku').val(ray.judul_buku)
+              $('#stok_buku').val(ray.jumlah_buku)
+             }
+          });
+  }
 
-
-<script>
-  $(document).ready(function() {
-    var barcode = "";
-    $(document).keydown(function(e) {
-
-      var code = (e.keyCode ? e.keyCode : e.which);
-      if (code == 13) // Enter key hit
-      {
-        var id_buku = $(".id_buku").val();
-        $.getJSON("<?php echo url('/'); ?>transaksi/ajax_combo_buku", {
-          id_buku: id_buku
-        }, function(data) {
-          $(".judul_buku").val(data[0].judul_buku);
-            $(".stok").val(data[0].jumlah_buku);
-            $(".id_buku_real").val(data[0].id_buku);
-        });
-      } else if (code == 9) // Tab key hit
-      {
-        var id_buku = $(".id_buku").val();
-        $.getJSON("<?php echo url('/'); ?>transaksi/ajax_combo_buku", {
-          id_buku: id_buku
-        }, function(data) {
-          $(".judul_buku").val(data[0].judul_buku);
-            $(".stok").val(data[0].jumlah_buku);
-            $(".id_buku_real").val(data[0].id_buku);
-        });
-      } else {
-        barcode = barcode + String.fromCharCode(code);
-      }
-    });
-
-  });
+  function filter_siswa(){
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    var x = document.getElementById("kode_buku").value;
+    $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequest.filter_buku') }}",
+             data:{kode_buku:x},
+             success:function(data){
+              const ray = data[0];
+              $('#judul_buku').val(ray.judul_buku)
+              $('#stok_buku').val(ray.jumlah_buku)
+             }
+          });
+  }
 </script>
 @endsection

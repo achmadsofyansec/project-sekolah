@@ -12,6 +12,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SumberController;
 use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\PeminjamanBukuDtsController;
+use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,5 +49,6 @@ Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
 Route::get('/app/password',[PageController::class,'password']);
 Route::get('/master/data_denda',[MasterController::class,'data_denda']);
 Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
+Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
 
 

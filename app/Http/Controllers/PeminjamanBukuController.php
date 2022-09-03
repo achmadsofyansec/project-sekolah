@@ -18,7 +18,8 @@ class PeminjamanBukuController extends Controller
     public function index()
     {
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        return view('transaksi.peminjaman.index',compact ('siswa'));
+        $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
+        return view('transaksi.peminjaman.index',compact (['siswa','buku']));
         //
     }
 
@@ -29,19 +30,13 @@ class PeminjamanBukuController extends Controller
      */
     public function create(Request $request)
     {
-        $cari = $request->cari;
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-
- 
-        $search = DB::table('data_siswas')
-        ->where('nisn','like',"%".$cari."%")
-        ->paginate();
+        $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
 
         
  
-        return view('transaksi.peminjaman.cari',['search' => $search],['siswa' => $siswa]);
+        return view('transaksi.peminjaman.cari',compact(['cari','siswa','buku' ]));
     }
-
 
     /**
      * Store a newly created resource in storage.

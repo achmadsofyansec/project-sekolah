@@ -24,6 +24,8 @@ class PageController extends Controller
         return view('dashboard',compact('buku','pinjaman','pengunjung'));
     }
 
+    
+
 
     public function siswa()
     {

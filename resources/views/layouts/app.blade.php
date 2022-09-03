@@ -26,6 +26,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('public/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -311,6 +313,7 @@
 <script src="{{asset('public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{asset('public/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -371,6 +374,10 @@ $(document).ready( function () {
         paging: false,
     });
 } );
+$(document).ready(function() {
+    $('select').select2();
+});
     </script>
+@yield('content-script')
 </body>
 </html>
