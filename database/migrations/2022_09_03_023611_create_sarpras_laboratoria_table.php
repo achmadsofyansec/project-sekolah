@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSarprasLaboraturiaTable extends Migration
+class CreateSarprasLaboratoriaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSarprasLaboraturiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_laboraturia', function (Blueprint $table) {
+        Schema::create('sarpras_laboratoria', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateSarprasLaboraturiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sarpras_laboraturia');
+        Schema::dropIfExists('sarpras_laboratoria');
     }
 }

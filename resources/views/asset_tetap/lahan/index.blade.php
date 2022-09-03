@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Gedung')
+@section('page', 'Lahan')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Data Gedung')
+@section('page', 'Edit Olahraga & Seni')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Gedung</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Gedung Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. Ubah Isi <b>Olahraga dan Seni</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Olahraga dan Seni Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 

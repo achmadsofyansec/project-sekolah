@@ -8,6 +8,8 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\KebutuhanTambahanController;
+use App\Http\Controllers\LaboratoriumController;
+use App\Http\Controllers\OlahragaSeniControllerController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -37,10 +39,10 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
         Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
-        Route::get('/laboratorium',[PageController::class,'view_laboratorium'])->name('laboratorium');
+        Route::resource('/laboratorium', LaboratoriumController::class);
         Route::get('/lahan',[PageController::class,'view_lahan'])->name('lahan');
         Route::get('/mebel',[PageController::class,'view_mebel'])->name('mebel');
-        Route::get('/olahraga_seni',[PageController::class,'view_olahraga_seni'])->name('olahraga_seni');
+        Route::resource('/olahraga_seni', OlahragaSeniController::class);
         Route::get('/penerangan_internet',[PageController::class,'view_penerangan_internet'])->name('penerangan_internet');
         Route::get('/sanitasi',[PageController::class,'view_sanitasi'])->name('sanitasi');
         Route::get('/sarana_administrasi',[PageController::class,'view_sarana_administrasi'])->name('sarana_administrasi');

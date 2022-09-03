@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SarprasLaboraturium;
 use Illuminate\Http\Request;
 
 class LaboratoriumController extends Controller
@@ -13,7 +14,8 @@ class LaboratoriumController extends Controller
      */
     public function index()
     {
-        //
+        $laboratorium = SarprasLaboraturium::latest()->get();
+        return view('asset_tetap.laboratorium.index',compact('laboratorium'));
     }
 
     /**
