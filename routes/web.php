@@ -9,7 +9,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\KebutuhanTambahanController;
 use App\Http\Controllers\LaboratoriumController;
-use App\Http\Controllers\OlahragaSeniControllerController;
+use App\Http\Controllers\OlahragaSeniController;
 
 use Illuminate\Support\Facades\Route;
 
