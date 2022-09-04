@@ -15,7 +15,7 @@ class CreateSarprasPeneranganInternetsTable extends Migration
     {
         Schema::create('sarpras_penerangan_internets', function (Blueprint $table) {
             $table->id();
-            $table->integer('unit');
+            $table->string('unit');
             $table->string('sumber');
             $table->integer('jml_baik');
             $table->integer('jml_rusak_ringan');

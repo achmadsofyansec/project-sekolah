@@ -15,6 +15,11 @@ class CreateSarprasMebelsTable extends Migration
     {
         Schema::create('sarpras_mebels', function (Blueprint $table) {
             $table->id();
+            $table->string('unit');
+            $table->integer('jml_baik');
+            $table->integer('jml_rusak_ringan');
+            $table->integer('jml_rusak_berat');
+            $table->string('foto');
             $table->timestamps();
         });
     }
