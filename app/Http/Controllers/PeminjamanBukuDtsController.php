@@ -19,7 +19,8 @@ class PeminjamanBukuDtsController extends Controller
     public function index()
     {
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        return view('transaksi.pengembalian.index',compact ('siswa'));
+        $pengembalian = DB::table('peminjaman_buku_dts')->select(['peminjaman_buku_dts.*'])->get();
+        return view('transaksi.pengembalian.index',compact ('siswa','pengembalian'));
     }
 
 
@@ -29,18 +30,8 @@ class PeminjamanBukuDtsController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function create(Request $request)
-    {
-        $cari = $request->cari;
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-
- 
-        $search = DB::table('data_siswas')
-        ->where('nisn','like',"%".$cari."%")
-        ->paginate();
-
-        
- 
-        return view('transaksi.pengembalian.create',['search' => $search],['siswa' => $siswa]);
+     {
+            //
     }
 
     /**

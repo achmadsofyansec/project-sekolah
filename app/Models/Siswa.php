@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
-    protected $table = 'siswas';
+    protected $table = 'data_siswas';
 
-    protected $fillable = [
-    	'id_log',
+
     ];
 }

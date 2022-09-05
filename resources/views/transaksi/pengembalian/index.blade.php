@@ -26,30 +26,32 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-8">
-                <form action="{{route('peminjaman_buku_dts.create')}}" method="GET">
                   <table class="table table-bordered tble-hover table-striped table-sm">
                     <tbody>
                       <tr>
-                        <td style="width:150px;vertical-align:middle;"><b>Cari Siswa</b></td>
+                        <td style="width:150px;">NIS Siswa</td>
                         <td>
-                          <div class="input-group">
-                            <select class="form-control select2" name="cari" required>
-                                        <option id="">NIS Siswa</option>
-                                        @forelse ($siswa as $item)
-                                        <option id="{{$item->id}}">{{$item->nisn}}</option>
+                          <table class="table table-bordered tble-hover table-striped table-sm">
+                            <tbody>
+                              <tr>
+                                  <div class="input-group">
+                                    <select class="form-control select2" onchange="filter_siswa()" name="nisn" id="nisn" required>
+                                          <option >NIS Siswa</option>
+
+                                          @forelse ($siswa as $item)
+                                          <option name="{{$item->nisn}}" id="{{$item->nisn}}">{{$item->nisn}}</option>
                                           @empty
-                                              
+
                                           @endforelse
-                            </select>
-                            <span class="input-group-btn">
-                              <button class="btn bg-navy" type="submit">Cari</button>
-                            </span>
-                          </div>
+                                    </select>
+                                  </div>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                </form>
               </div>
               <div class="col-md-4">
                 <table class="table table-bordered">
@@ -71,15 +73,15 @@
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
-                        <td><input class="form-control nis" name="nis" type="text" value="nis" readonly></td>
+                        <td><input class="form-control nis" name="nis" type="text" id="nis" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
-                        <td><input class="form-control nama_siswa" name="nama_siswa" type="text" value="nama_siswa" readonly></td>
+                        <td><input class="form-control nama_siswa" name="nama" type="text" id="nama" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Kelas</td>
-                        <td><input class="form-control nama_kelas" name="nama_kelas" type="text" value="nama_kelas" readonly></td>
+                        <td><input class="form-control nama_kelas" name="nama_kelas" type="text" id="nama_kelas" readonly></td>
                       </tr>
                   </table>
                 </div>
@@ -105,11 +107,11 @@
                   </thead>
                   <tbody>
                     <?php
-                    if (!empty($nis)) {
+                    if (!empty('#nisn' != null)) {
                       $no = 1;
                       $id_peminjaman = "";
                       $now = strtotime(date("Y-m-d"));
-                      foreach ($pengembalian_dt->result_array() as $data) {
+                      foreach ($pengembalian as $item) {
                         $id_peminjaman = $data['id_peminjaman'];
 
                         $your_date = strtotime($data['tanggal_kembali']);
@@ -152,4 +154,27 @@
     <!-- /.row -->
   </section>
 </div>
+@endsection
+@section('content-script')
+<script>
+  function filter_siswa(){
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    var x = document.getElementById("nisn").value;
+    $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequestNisn.filter_siswa') }}",
+             data:{nisn:x},
+             success:function(data){
+              const ray = data[0];
+              $('#nis').val(ray.nisn)
+              $('#nama').val(ray.nama)
+              $('#nama_kelas').val(ray.nisn)
+             }
+          });
+  }
+</script>
 @endsection

@@ -120,7 +120,7 @@
                                     <div class="form-group">
                                         <label>Sumber</label>
                                         <select class="form-control" name="id_sumber" id="id_sumber" required>
-                                        <option id="">Pilih Kategori</option>
+                                        <option id="">Pilih Sumber</option>
                                           @forelse ($sumber as $item)
                                         <option id="{{$item->id}}">{{$item->nama_sumber}}</option>
                                           @empty

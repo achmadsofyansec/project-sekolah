@@ -49,6 +49,6 @@ Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
 Route::get('/app/password',[PageController::class,'password']);
 Route::get('/master/data_denda',[MasterController::class,'data_denda']);
 Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
+
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
-
-
+Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');

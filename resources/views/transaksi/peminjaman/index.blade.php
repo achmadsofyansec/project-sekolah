@@ -26,31 +26,32 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-7">
-                <form action="{{route('peminjaman_buku.create')}}" method="GET">
                   <table class="table table-bordered tble-hover table-striped table-sm">
                     <tbody>
                       <tr>
-                        <td style="width:150px;vertical-align:middle;"><b>Cari Siswa</b></td>
+                        <td style="width:150px;">NIS Siswa</td>
                         <td>
-                          <div class="input-group">
-                            <select class="form-control select2" name="cari" required>
-                                        <option id="">NIS Siswa</option>
-                                        
-                                        @forelse ($siswa as $item)
-                                        <option id="{{$item->id}}">{{$item->nisn}}</option>
+                          <table class="table table-bordered tble-hover table-striped table-sm">
+                            <tbody>
+                              <tr>
+                                  <div class="input-group">
+                                    <select class="form-control select2" onchange="filter_siswa()" name="nisn" id="nisn" required>
+                                          <option >NIS Siswa</option>
+
+                                          @forelse ($siswa as $item)
+                                          <option name="{{$item->nisn}}" id="{{$item->nisn}}">{{$item->nisn}}</option>
                                           @empty
-                                              
+
                                           @endforelse
-                            </select>
-                            <span class="input-group-btn">
-                              <button class="btn bg-navy" type="submit">Cari</button>
-                            </span>
-                          </div>
+                                    </select>
+                                  </div>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                </form>
               </div>
               <div class="col-md-5">
                 <table class="table table-bordered table-hover table-striped table-sm">
@@ -74,7 +75,7 @@
                     <tbody>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
-                        <td><input class="form-control nisn" name="nisn" type="text"  readonly></td>
+                        <td><input class="form-control nisn" name="nis" id="nis" type="text"  readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
@@ -105,7 +106,7 @@
                 </div>
                 </div>
                 <div class="col-md-12">
-                  <table class="table table-bordered table-hover table-striped table-sm">
+                  <table class="table table-bordered tble-hover table-striped table-sm">
                     <tbody>
                       <tr>
                         <td style="width:150px;">Kode Buku</td>
@@ -139,8 +140,8 @@
 
                     </tbody>
                   </table>
-                </div>
-                <?php if (!empty($nis)) { ?>
+              </div>
+                <?php if (!empty('#nisn' != null)) { ?>
                   <div class="col-md-12 text-center">
                     <button class="btn bg-navy" name="tambah"><i class="fa fa-plus"> </i> Tambah Buku</button>
                   </div>
@@ -240,15 +241,16 @@ function filter_buku(){
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
       });
-    var x = document.getElementById("kode_buku").value;
+    var x = document.getElementById("nisn").value;
     $.ajax({
              type:'POST',
-             url:"{{ route('ajaxRequest.filter_buku') }}",
-             data:{kode_buku:x},
+             url:"{{ route('ajaxRequestNisn.filter_siswa') }}",
+             data:{nisn:x},
              success:function(data){
               const ray = data[0];
-              $('#judul_buku').val(ray.judul_buku)
-              $('#stok_buku').val(ray.jumlah_buku)
+              $('#nis').val(ray.nisn)
+              $('#nama').val(ray.nama)
+              $('#nama_kelas').val(ray.nisn)
              }
           });
   }
