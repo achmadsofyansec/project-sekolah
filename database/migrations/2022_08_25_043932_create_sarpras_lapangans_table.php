@@ -15,6 +15,11 @@ class CreateSarprasLapangansTable extends Migration
     {
         Schema::create('sarpras_lapangans', function (Blueprint $table) {
             $table->id();
+            $table->string('unit');
+            $table->string('kondisi');
+            $table->integer('panjang');
+            $table->integer('lebar');
+            $table->string('foto');
             $table->timestamps();
         });
     }

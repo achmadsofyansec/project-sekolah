@@ -15,6 +15,10 @@ class CreateSarprasSaranaBelajarsTable extends Migration
     {
         Schema::create('sarpras_sarana_belajars', function (Blueprint $table) {
             $table->id();
+            $table->string('sarana_pembelajaran');
+            $table->text('deskripsi');
+            $table->string('fungsi');
+            $table->string('foto');
             $table->timestamps();
         });
     }

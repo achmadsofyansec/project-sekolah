@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SarprasLapangan extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'unit',
+        'kondisi',
+        'panjang',
+        'lebar',
+        'foto',
+    ];
 }

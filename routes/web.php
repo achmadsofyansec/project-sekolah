@@ -11,8 +11,10 @@ use App\Http\Controllers\KebutuhanTambahanController;
 use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\OlahragaSeniController;
 use App\Http\Controllers\MebelController;
+use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PeneranganInternetController;
 use App\Http\Controllers\SaranaAdministrasiController;
+use App\Http\Controllers\SaranaBelajarController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -37,8 +39,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/umum',[PageController::class,'view_umum'])->name('umum');
         Route::resource('gedung', GedungController::class);
         Route::get('/ruangan',[PageController::class,'view_ruangan'])->name('ruangan');
-        Route::get('/lapangan',[PageController::class,'view_lapangan'])->name('lapangan');
-        Route::get('/sarana_belajar',[PageController::class,'view_sarana_belajar'])->name('sarana_belajar');
+        Route::resource('/lapangan', LapanganController::class);
+        Route::resource('/sarana_belajar', SaranaBelajarController::class);
         Route::get('/aset_lain',[PageController::class,'view_aset_lain'])->name('aset_lain');
         Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
         Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');

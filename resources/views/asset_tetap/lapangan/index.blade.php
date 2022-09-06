@@ -34,14 +34,13 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('lapangan.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>
-                                    <th>Nama</th>                                   
+                                    <th>No</th>                                   
                                     <th>Unit</th>
                                     <th>Kondisi</th>
                                     <th>Panjang (m)</th>
@@ -49,7 +48,31 @@
                                     <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($lapangan as $lapangan)
+                                    <td>1</td>
+                                    <td>{{ $lapangan->unit }}</td>
+                                    <td>{{ $lapangan->kondisi }}</td>    
+                                    <td>{{ $lapangan->kondisi }}</td>
+                                    <td>{{ $lapangan->panjang }}</td>
+                                    <td>{{ $lapangan->lebar }}</td>
+                                    <td>{{ $lapangan->foto }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('lapangan.destroy',$lapangan->id) }}" method="POST">
+                                        <a href="{{ route('lapangan.edit',$lapangan->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>
