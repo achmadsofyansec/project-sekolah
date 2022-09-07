@@ -15,13 +15,14 @@ use App\Models\Denda;
 
 class PageController extends Controller
 {
-    
+
     //VIEW Pages
-    public function index(Request $request){
-    $buku = Buku::latest()->get();
-    $pinjaman = Peminjaman_buku::latest()->get();
-    $pengunjung = Pengunjung_perpus::latest()->get();
-        return view('dashboard',compact('buku','pinjaman','pengunjung'));
+    public function index(Request $request)
+    {
+        $buku = Buku::latest()->get();
+        $pinjaman = Peminjaman_buku::latest()->get();
+        $pengunjung = Pengunjung_perpus::latest()->get();
+        return view('dashboard', compact('buku', 'pinjaman', 'pengunjung'));
     }
 
 
@@ -39,19 +40,19 @@ class PageController extends Controller
     public function laporan_peminjaman()
     {
         $peminjaman = Peminjaman_buku::latest()->get();
-        return view('laporan.peminjaman.index',compact('peminjaman'));
+        return view('laporan.peminjaman.index', compact('peminjaman'));
     }
 
     public function laporan_buku()
     {
         $buku = Buku::latest()->get();
-        return view('laporan.buku.index',compact('buku'));
+        return view('laporan.buku.index', compact('buku'));
     }
 
     public function laporan_pengunjung()
     {
         $pengunjung = Pengunjung_perpus::latest()->get();
-        return view('laporan.pengunjung.index',compact('pengunjung'));
+        return view('laporan.pengunjung.index', compact('pengunjung'));
     }
 
     public function password()
@@ -66,14 +67,20 @@ class PageController extends Controller
 
 
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
-     
+
         $request->session()->invalidate();
-     
+
         $request->session()->regenerateToken();
-     
+
         return redirect('../sekolahApp/');
-       }
-    
+    }
+
+    public function siswa()
+    {
+        $siswa = Siswa::latest()->get();
+        return view('siswa.index', compact('siswa'));
+    }
 }

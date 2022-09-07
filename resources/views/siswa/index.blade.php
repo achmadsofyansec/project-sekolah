@@ -59,7 +59,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                   
+                   @foreach ($siswa as $siswas)
+                     <tr class="text-sm">
+                      <td>{{$loop->index+1}}</td>
+                      <td>{{$siswas->nisn}}</td>
+                      <td>{{$siswas->nama}}</td>
+                      <td>{{$siswas->jns_kelamin}}</td>
+                      <td>{{$siswas->tgl_lhr}}</td>
+                      <td>XII RPL C</td>
+                      <td>2021</td>
+                      <td>{{}}</td>
+                     </tr>
+                   @endforeach
                   </tbody>
                 </table>
               </div>
