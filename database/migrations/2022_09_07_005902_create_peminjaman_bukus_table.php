@@ -15,9 +15,12 @@ class CreatePeminjamanBukusTable extends Migration
     {
         Schema::create('peminjaman_bukus', function (Blueprint $table) {
             $table->id();
-            $table->string('no_peminjaman');
             $table->string('id_siswa');
-            $table->String('id_kelas');
+            $table->String('id_buku');
+            $table->integer('jumlah_pinjam');
+            $table->integer('durasi');
+
+
             $table->timestamps();
         });
     }

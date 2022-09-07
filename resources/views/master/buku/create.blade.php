@@ -122,7 +122,7 @@
                                         <select class="form-control" name="id_sumber" id="id_sumber" required>
                                         <option id="">Pilih Sumber</option>
                                           @forelse ($sumber as $item)
-                                        <option id="{{$item->id}}">{{$item->nama_sumber}}</option>
+                                        <option id="{{$item->nama_sumber}}">{{$item->nama_sumber}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -135,7 +135,7 @@
                                         <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option id="">Pilih Kategori</option>
                                           @forelse ($kategori as $item)
-                                        <option id="{{$item->id}}">{{$item->nama_kategori}}</option>
+                                        <option id="{{$item->nama_kategori}}">{{$item->nama_kategori}}</option>
                                           @empty
                                               
                                           @endforelse

@@ -19,7 +19,11 @@ class PeminjamanBukuController extends Controller
     {
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
         $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
-        return view('transaksi.peminjaman.index',compact (['siswa','buku']));
+        $peminjaman = Peminjaman_buku::latest()->get();
+        $data = DB::table('data_bukus')
+                    ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
+                    ->get();
+        return view('transaksi.peminjaman.index',compact (['siswa','buku','data']));
         //
     }
 
@@ -30,12 +34,7 @@ class PeminjamanBukuController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
-
-        
- 
-        return view('transaksi.peminjaman.cari',compact(['cari','siswa','buku' ]));
+        //
     }
 
     /**
@@ -46,7 +45,40 @@ class PeminjamanBukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $credential = $this->validate($request,[
+            'nis' => ['required'],
+            'kode_buku' => ['required'],
+            'jumlah_pinjam' => ['required'],
+            'durasi' => ['required']
+        ]);
+        if($credential){
+            $create = Peminjaman_buku::create([
+                'id_siswa' => $request->nis,
+                'id_buku' => $request->kode_buku,
+                'jumlah_pinjam' => $request->jumlah_pinjam,
+                'durasi' => $request->durasi
+            ]);
+            if($create){
+                return redirect()
+                ->route('peminjaman_buku.index')
+                ->with([
+                    'success' => 'Pinjam Buku Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
+
     }
 
     /**
@@ -57,8 +89,6 @@ class PeminjamanBukuController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::findOrFail($id); 
-        return view('transaksi.peminjaman.show',compact('siswa'));
         //
     }
 
@@ -94,5 +124,20 @@ class PeminjamanBukuController extends Controller
     public function destroy($id)
     {
         //
+        $data = Peminjaman_buku::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('peminjaman_buku.index')
+            ->with([
+                'success' => 'Transaksi Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

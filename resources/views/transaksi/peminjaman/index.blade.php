@@ -22,6 +22,17 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-success">
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                    @if(session('success'))
+                    <div class="alert alert-primary">
+                        {{ session('success') }}
+                    </div>
+                    @endif
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
@@ -66,9 +77,8 @@
               </div>
 
               <div class="col-md-12">
-                <form role="form" action="<?php echo url('/'); ?>transaksi/tambah_pinjam_buku" method="post">
-                <input type="hidden" name="id_kelas" id="id_kelas">
-                <input type="hidden" name="id_siswa" id="id_siswa">
+                <form role="form" action="{{route('peminjaman_buku.store')}}" method="post" enctype="multipart/form-data">
+                  @csrf
                 <div class="row">
                 <div class="col-md-7">
                   <table class="table table-bordered table-hover table-striped table-sm">
@@ -92,11 +102,11 @@
                     <tbody>
                       <tr>
                         <td style="vertical-align:middle;">Tanggungan</td>
-                        <td><input class="form-control tanggungan" name="tanggungan" id="tanggungan" type="text" value="" readonly></td>
+                        <td><input class="form-control tanggungan" name="tanggungan" id="tanggungan" type="text" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Jumlah Pinjam</td>
-                        <td><input class="form-control jumlah" name="jumlah" id="jumlah" type="number" required value="1"></td>
+                        <td><input class="form-control jumlah_pinjam" name="jumlah_pinjam" id="jumlah_pinjam" type="number" required value="1"></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Durasi Pinjam (hari)</td>
@@ -141,7 +151,7 @@
                     </tbody>
                   </table>
               </div>
-                <?php if (!empty('#nisn' != null)) { ?>
+                <?php if (!empty($siswa)) { ?>
                   <div class="col-md-12 text-center">
                     <button class="btn bg-navy" name="tambah"><i class="fa fa-plus"> </i> Tambah Buku</button>
                   </div>
@@ -169,36 +179,38 @@
                   </thead>
                   <tbody>
                     <?php
-                      if (!empty($nis)) {
-                      $no = 1;
-                      $id_peminjaman = "";
-                      foreach ($peminjaman_dt->result_array() as $data) {
-                      $id_peminjaman = $data['id_peminjaman'];
-                    ?>
+                      if (!empty('#nisn' != null)) {
+                  ?>
+                      @forelse ($data as $item) 
                         <tr>
-                          <td><?php echo $no; ?></td>
-                          <td><?php echo $data['kode_buku']; ?></td>
-                          <td><?php echo $data['judul_buku']; ?></td>
-                          <td><?php echo $data['jumlah']; ?></td>
-                          <td><?php echo date("d-m-Y", strtotime($data['tanggal_pinjam'])); ?></td>
-                          <td><?php echo date("d-m-Y", strtotime($data['tanggal_kembali'])); ?></td>
+                          <td>{{$loop->index + 1}}</td>
+                          <td>{{$item->id_buku}}</td>
+                          <td>{{$item->judul_buku}}</td>
+                          <td>{{$item->jumlah_pinjam}}</td>
+                          <td>{{$item->created_at}}</td>
+                          <td>{{$item->created_at}}</td>
                           <td class="text-center">
-                            <a class="btn btn-danger btn-xs" href="<?php echo url('/') . 'transaksi/peminjaman_hapus/' . $data['id_peminjaman_dt'] . '/' . $nis; ?>" onclick="return confirm('Yakin ingin hapus data ?');"><i class="fa fa-trash"> </i></a>
-
+                            <form action="{{route('peminjaman_buku.destroy',$item->id)}}">
+                            <button class="btn btn-danger btn-xs" type="submit" ><i class="fa fa-trash"> </i></button>
+                          </form>
                           </td>
+                        @empty
+                        <tr>
+                        <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
                         </tr>
-                    <?php   }
-                                                                                                        } ?>
+                        </tr>
+                        @endforelse
+                    <?php   } ?>
                   </tbody>
                 </table>
 
                 <?php
-                  if (!empty($nis)) {
-                  $hitung = count($peminjaman_dt->result_array());
-                  if ($hitung > 0) { ?>
-                    <div class="text-center"> <a class="btn btn-primary btn-lg" href="<?php echo url('/') . 'transaksi/peminjaman_simpan/' . $id_peminjaman; ?>" onclick="return confirm('Yakin ingin simpan data ?');"> <i class="fa fa-save"> </i> Simpan Transaksi</a> </div>
+                  if (!empty('#nisn' != null)) {
+                  // $hitung = count($peminjaman_dt->result_array());
+                  // if ($hitung > 0) { ?>
+                    <div class="text-center"> <a class="btn btn-primary btn-lg" href="" onclick="return confirm('Yakin ingin simpan data ?');"> <i class="fa fa-save"> </i> Simpan Transaksi</a> </div>
                 <?php }
-                                                                                                        } ?>
+                                                                                                        // } ?>
               </div>
 
             </div>
