@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('page', 'Edit Laboratorium')
+@section('page', 'Tambah Aset Lain')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><i class="fas fa-building nav-icon text-primary"></i> @yield('page')</h1>
+            <h1 class="m-0"><i class="fas fa-chalkboard nav-icon text-info"></i> @yield('page')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Laboratorium</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Laboratorium Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. isi <b>Identitas Aset Lain</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Aset Lain Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -50,41 +50,25 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('laboratorium.update', $data->id)}}" method="POST">
+                        <form action="{{route('aset_lain.store')}}" enctype="multipart/form-data" method="POST">
                             @csrf
-                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Unit</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="unit" name="unit" value="{{ $data->unit }}" required />
-                                    </div>
+                                    <label>Unit</label>
+                                    <input type="text" name="unit" id="unit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Baik</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_baik" name="jml_baik" value="{{ $data->jml_baik }}" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Rusak Ringan</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_ringan" name="jml_rusak_ringan" value="{{ $data->jml_rusak_ringan }}" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Rusak Berat</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_berat" name="jml_rusak_berat" value="{{ $data->jml_rusak_berat }}" required />
-                                    </div>
+                                    <label>Fungsi</label>
+                                    <input type="text" name="fungsi" id="fungsi" class="form-control" required>
                                 </div>
                                  <div class="form-group">
                                     <label>Foto</label>
                                     <input type="file" name="foto" id="foto" class="form-control" required>
                                 </div>
-                                <div class="card-footer">
+                            </div>  
+                            <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('laboratorium.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('aset_lain.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

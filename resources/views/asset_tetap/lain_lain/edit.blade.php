@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Laboratorium')
+@section('page', 'Edit Aset Lain')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Laboratorium</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Laboratorium Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. Ubah Isi <b>Aset Lain</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Aset Lain Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -50,7 +50,7 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('laboratorium.update', $data->id)}}" method="POST">
+                        <form action="{{route('aset_lain.update', $data->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -61,21 +61,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Baik</label>
+                                  <label class="col-sm-3 col-form-label">Fungsi</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_baik" name="jml_baik" value="{{ $data->jml_baik }}" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Rusak Ringan</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_ringan" name="jml_rusak_ringan" value="{{ $data->jml_rusak_ringan }}" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Rusak Berat</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_berat" name="jml_rusak_berat" value="{{ $data->jml_rusak_berat }}" required />
+                                        <input type="text" class="form-control" id="fungsi" name="fungsi" value="{{ $data->fungsi }}" required />
                                     </div>
                                 </div>
                                  <div class="form-group">
@@ -84,7 +72,7 @@
                                 </div>
                                 <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('laboratorium.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('aset_lain.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

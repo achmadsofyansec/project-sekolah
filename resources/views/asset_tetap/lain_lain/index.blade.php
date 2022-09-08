@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Lain Lain')
+@section('page', 'Aset Lain')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,20 +34,40 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('aset_lain.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>
-                                    <th>Nama</th>
+                                    <th>No</th>                     
                                     <th>Unit</th>
                                     <th>Fungsi</th>
-                                    <th>Foto</th>                                   
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($lain as $lain)
+                                    <td>1</td>
+                                    <td>{{ $lain->unit }}</td>    
+                                    <td>{{ $lain->fungsi }}</td>
+                                    <td>{{ $lain->foto }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('aset_lain.destroy',$lain->id) }}" method="POST">
+                                        <a href="{{ route('aset_lain.edit',$lain->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>

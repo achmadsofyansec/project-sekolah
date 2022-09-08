@@ -50,18 +50,18 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($laboratorium as $labor)
+                                  @forelse ($laboratorium as $laboratorium)
                                     <td>1</td>
-                                    <td>{{ $labor->nama }}</td>
-                                    <td>{{ $labor->unit }}</td>    
-                                    <td>{{ $labor->jml_baik }}</td>
-                                    <td>{{ $labor->jml_ringan }}</td>
-                                    <td>{{ $labor->jml_berat }}</td>
-                                    <td>{{ $labor->foto }}</td>
+                                    <td>{{ $laboratorium->nama }}</td>
+                                    <td>{{ $laboratorium->unit }}</td>    
+                                    <td>{{ $laboratorium->jml_baik }}</td>
+                                    <td>{{ $laboratorium->jml_rusak_ringan }}</td>
+                                    <td>{{ $laboratorium->jml_rusak_berat }}</td>
+                                    <td>{{ $laboratorium->foto }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="{{ route('labor.destroy',$labor->id) }}" method="POST">
-                                        <a href="{{ route('labor.edit',$labor->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        action="{{ route('laboratorium.destroy',$laboratorium->id) }}" method="POST">
+                                        <a href="{{ route('laboratorium.edit',$laboratorium->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         @csrf
                                           @method('DELETE')
                                           <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>

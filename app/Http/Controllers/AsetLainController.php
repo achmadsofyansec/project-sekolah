@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SarprasLaboratorium;
 use Illuminate\Http\Request;
+use App\Models\SarprasAsetLain;
 
-class LaboratoriumController extends Controller
+class AsetLainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class LaboratoriumController extends Controller
      */
     public function index()
     {
-        $laboratorium = SarprasLaboratorium::latest()->get();
-        return view('asset_tetap.laboratorium.index',compact('laboratorium'));
+        $lain = SarprasAsetLain::latest()->get();
+        return view('asset_tetap.lain_lain.index',compact('lain'));
     }
 
     /**
@@ -25,7 +25,7 @@ class LaboratoriumController extends Controller
      */
     public function create()
     {
-        return view('asset_tetap.laboratorium.create');
+        return view('asset_tetap.lain_lain.create');
     }
 
     /**
@@ -38,9 +38,7 @@ class LaboratoriumController extends Controller
     {
         $credential = $this->validate($request,[
             'unit' => ['required'],
-            'jml_baik' => ['required'],
-            'jml_rusak_ringan' => ['required'],
-            'jml_rusak_berat' => ['required'],
+            'fungsi' => ['required'],
         ]);
 
         if($credential){
@@ -51,28 +49,24 @@ class LaboratoriumController extends Controller
                 $foto->move('../assets/upload',$name);
                 $data = [
                 'unit' => $request->unit,
-                'jml_baik' => $request->jml_baik,
-                'jml_rusak_ringan' => $request->jml_rusak_ringan,
-                'jml_rusak_berat' => $request->jml_rusak_berat,
+                'fungsi' => $request->fungsi,
                 'foto' => $name,
                 ];
             } else {
                 $data = [
                 'unit' => $request->unit,
-                'jml_baik' => $request->jml_baik,
-                'jml_rusak_ringan' => $request->jml_rusak_ringan,
-                'jml_rusak_berat' => $request->jml_rusak_berat,
+                'fungsi' => $request->fungsi,
                 'foto' => '-',
 
                 ];
             }
-            $create = SarprasLaboratorium::create($data);
+            $create = SarprasAsetLain::create($data);
 
             if($create){
                 return redirect()
-                ->route('laboratorium.index')
+                ->route('aset_lain.index')
                 ->with([
-                    'success' => 'Data Laboratorium Has Been Added successfully'
+                    'success' => 'Data Aset Lain Has Been Added successfully'
                 ]);
             }else{
                 return redirect()
@@ -109,8 +103,8 @@ class LaboratoriumController extends Controller
      */
     public function edit($id)
     {
-        $data = SarprasLaboratorium::findOrFail($id);
-        return view('asset_tetap.laboratorium.edit',compact('data'));
+        $data = SarprasAsetLain::findOrFail($id);
+        return view('asset_tetap.lain_lain.edit',compact('data'));
     }
 
     /**
@@ -124,9 +118,7 @@ class LaboratoriumController extends Controller
     {
         $validate = $this->validate($request,[
             'unit' => ['required'],
-            'jml_baik' => ['required'],
-            'jml_rusak_ringan' => ['required'],
-            'jml_rusak_berat' => ['required'],
+            'fungsi' => ['required'],
         ]);
         if($validate){
             $data = [];
@@ -136,29 +128,25 @@ class LaboratoriumController extends Controller
                 $foto->move('../assets/upload',$name);
                 $data = [
                 'unit' => $request->unit,
-                'jml_baik' => $request->jml_baik,
-                'jml_rusak_ringan' => $request->jml_rusak_ringan,
-                'jml_rusak_berat' => $request->jml_rusak_berat,
+                'fungsi' => $request->fungsi,
                 'foto' => $name,
                 ];
             } else {
                 $data = [
                 'unit' => $request->unit,
-                'jml_baik' => $request->jml_baik,
-                'jml_rusak_ringan' => $request->jml_rusak_ringan,
-                'jml_rusak_berat' => $request->jml_rusak_berat,
+                'fungsi' => $request->fungsi,
                 'foto' => '-',
                 ];
             }
 
 
-            $update = SarprasLaboratorium::findOrFail($id);
+            $update = SarprasAsetLain::findOrFail($id);
             $update->update($data);
             if($update){
                 return redirect()
-                ->route('laboratorium.index')
+                ->route('aset_lain.index')
                 ->with([
-                    'success' => 'Data Laboratorium Has Been Update successfully'
+                    'success' => 'Data Aset Lain Has Been Update successfully'
                 ]);
             }else{
                 return redirect()
@@ -178,13 +166,13 @@ class LaboratoriumController extends Controller
      */
     public function destroy($id)
     {
-        $data = SarprasLaboratorium::findOrFail($id);
+        $data = SarprasAsetLain::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()
-            ->route('laboratorium.index')
+            ->route('aset_lain.index')
             ->with([
-                'success' => 'Data Laboratorium Has Been Deleted successfully'
+                'success' => 'Data Aset Lain Has Been Deleted successfully'
             ]);
         }else{
             return redirect()
@@ -195,3 +183,4 @@ class LaboratoriumController extends Controller
         }
     }
 }
+ 

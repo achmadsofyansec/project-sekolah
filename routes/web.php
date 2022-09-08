@@ -15,6 +15,7 @@ use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PeneranganInternetController;
 use App\Http\Controllers\SaranaAdministrasiController;
 use App\Http\Controllers\SaranaBelajarController;
+use App\Http\Controllers\AsetLainController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -41,7 +42,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/ruangan',[PageController::class,'view_ruangan'])->name('ruangan');
         Route::resource('/lapangan', LapanganController::class);
         Route::resource('/sarana_belajar', SaranaBelajarController::class);
-        Route::get('/aset_lain',[PageController::class,'view_aset_lain'])->name('aset_lain');
+        Route::resource('/aset_lain', AsetLainController::class);
         Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
         Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
@@ -52,14 +53,17 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/penerangan_internet', PeneranganInternetController::class);
         Route::get('/sanitasi',[PageController::class,'view_sanitasi'])->name('sanitasi');
         Route::resource('/sarana_administrasi', SaranaAdministrasiController::class);
+
         //Peminjaman
         Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
         Route::get('/pengembalian',[PageController::class,'view_pengembalian'])->name('pengembalian');
         Route::get('/denda',[PageController::class,'view_denda'])->name('denda');
+        
         //Laporan
         Route::get('/laporan_aset',[PageController::class,'view_laporan_aset'])->name('laporan_aset');
         Route::get('/laporan_peminjaman',[PageController::class,'view_laporan_peminjaman'])->name('laporan_peminjaman');
         Route::get('/laporan_pengembalian',[PageController::class,'view_laporan_pengembalian'])->name('laporan_pengembalian');
+        
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
     });

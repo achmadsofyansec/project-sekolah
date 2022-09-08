@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSarprasLaboratoriaTable extends Migration
+class CreateSarprasAsetLainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSarprasLaboratoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_laboratoria', function (Blueprint $table) {
+        Schema::create('sarpras_aset_lains', function (Blueprint $table) {
             $table->id();
             $table->string('unit');
-            $table->integer('jml_baik');
-            $table->integer('jml_rusak_ringan');
-            $table->integer('jml_rusak_berat');
+            $table->string('fungsi');
             $table->string('foto');
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ class CreateSarprasLaboratoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sarpras_laboratoria');
+        Schema::dropIfExists('sarpras_aset_lains');
     }
 }
