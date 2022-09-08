@@ -106,37 +106,25 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                    if (!empty('#nisn' != null)) {
-                      $no = 1;
-                      $id_peminjaman = "";
-                      $now = strtotime(date("Y-m-d"));
-                      foreach ($pengembalian as $item) {
-                        $id_peminjaman = $data['id_peminjaman'];
-
-                        $your_date = strtotime($data['tanggal_kembali']);
-                                    $datediff = $now - $your_date;
-                                    $telat = round($datediff / (60 * 60 * 24));
-                        ?>
+                    
+                        @forelse ($data as $item)
                     <tr>
-                      <td>0</td>
-                      <td>kode_buku</td>
-                      <td>judul_buku</td>
-                      <td>0</td>
-                      <td><0</td>
-                      <td><?php if ($data['telat'] > 0) echo $data['telat'];
-                                            else echo '0'; ?> hari</td>
-                      <td><?php echo number_format($data['denda']); ?></td>
+                      <td>{{$loop->index+1}}</td>
+                      <td>{{$item->kode_buku}}</td>
+                      <td>{{$item->judul_buku}}</td>
+                      <td>{{$item->created_at}}</td>
+                      <td>{{$item->created_at}}</td>
+                      <td>Telat</td>
+                      <td>denda</td>
                       <td class="text-center">
-                      <?php if($data['status_pinjam_dt'] == 1) { ?>
-                        Selesai
-                      <?php } else { ?>
-                      <a class="btn btn-primary btn-xs" href="<?php echo url('/') . 'transaksi/pengembalian_simpan/' . $data['id_peminjaman_dt'] . '/' . $nis.'/'.$telat_in; ?>" onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</a></td>
+                      <a class="btn btn-primary btn-xs" href="" onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</a></td>
 
-                      <?php } ?>
+                      @empty
+                        <tr>
+                        <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
+                        </tr>
                     </tr>
-                    <?php   }
-                    } ?>
+                    @endforelse
                   </tbody>
                 </table>
 

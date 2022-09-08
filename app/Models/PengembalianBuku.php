@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peminjaman_buku_dts extends Model
+class PengembalianBuku extends Model
 {
     use HasFactory;
 }

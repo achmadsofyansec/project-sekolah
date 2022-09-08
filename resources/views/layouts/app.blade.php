@@ -176,7 +176,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('peminjaman_buku_dts'); ?>" class="nav-link">
+                <a href="<?php echo url('pengembalian'); ?>" class="nav-link">
                   <i class="fad fa-people-carry nav-icon text-navy"></i>
                   <p>Pengembalian</p>
                 </a>

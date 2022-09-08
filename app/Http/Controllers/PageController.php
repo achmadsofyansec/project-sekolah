@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use PDO;
 use App\Models\Sekolah;
@@ -25,6 +26,15 @@ class PageController extends Controller
         return view('dashboard', compact('buku', 'pinjaman', 'pengunjung'));
     }
 
+ public function transaksi()
+    {
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+        $data = DB::table('data_bukus')
+                    ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
+                    ->get();
+        return view('transaksi.index',compact (['siswa','data']));
+        //
+    }
 
     public function denda()
     {

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peminjaman_buku_dts;
-use App\Models\Peminjaman_buku;
-use Illuminate\Http\Request;
+use App\Models\PengembalianBuku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 
-class PeminjamanBukuDtsController extends Controller
+class PengembalianBukuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +18,22 @@ class PeminjamanBukuDtsController extends Controller
     public function index()
     {
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $pengembalian = DB::table('peminjaman_buku_dts')->select(['peminjaman_buku_dts.*'])->get();
-        return view('transaksi.pengembalian.index',compact ('siswa','pengembalian'));
+        $data = DB::table('data_bukus')
+                    ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
+                    ->get();
+        return view('transaksi.pengembalian.index',compact (['siswa','data']));
+        //
+        
     }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function create(Request $request)
-     {
-            //
+    public function create()
+    {
+        //
     }
 
     /**
@@ -48,10 +50,10 @@ class PeminjamanBukuDtsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Peminjaman_buku_dts  $peminjaman_buku_dts
+     * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function show(Peminjaman_buku_dts $peminjaman_buku_dts)
+    public function show(PengembalianBuku $pengembalianBuku)
     {
         //
     }
@@ -59,10 +61,10 @@ class PeminjamanBukuDtsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Peminjaman_buku_dts  $peminjaman_buku_dts
+     * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peminjaman_buku_dts $peminjaman_buku_dts)
+    public function edit(PengembalianBuku $pengembalianBuku)
     {
         //
     }
@@ -71,10 +73,10 @@ class PeminjamanBukuDtsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Peminjaman_buku_dts  $peminjaman_buku_dts
+     * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peminjaman_buku_dts $peminjaman_buku_dts)
+    public function update(Request $request, PengembalianBuku $pengembalianBuku)
     {
         //
     }
@@ -82,10 +84,10 @@ class PeminjamanBukuDtsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Peminjaman_buku_dts  $peminjaman_buku_dts
+     * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peminjaman_buku_dts $peminjaman_buku_dts)
+    public function destroy(PengembalianBuku $pengembalianBuku)
     {
         //
     }

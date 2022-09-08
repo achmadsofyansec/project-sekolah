@@ -12,6 +12,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SumberController;
 use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\PeminjamanBukuDtsController;
+use App\Http\Controllers\PengembalianBukuController;
 use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,26 +30,34 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 
 Route::get('/',[PageController::class,'index'])->name('dashboard');
-
 Route::post('/signout',[PageController::class,'logout']);
+
+//transaksi
 Route::resource('buku',DataBukuController::class);
 Route::resource('kategori',KategoriController::class);
 Route::resource('sumber',SumberController::class);
 Route::resource('peminjaman_buku',PeminjamanBukuController::class);
-Route::resource('peminjaman_buku_dts',PeminjamanBukuDtsController::class);
+Route::resource('pengembalian',PengembalianBukuController::class);
+Route::get('/transaksi',[PageController::class,'transaksi']);
 
-
-Route::get('/pengaturan/denda',[PageController::class,'denda']);
-Route::get('pinjam',[PeminjamanBukuController::class,'search']);
-Route::get('/pengaturan/denda_save',[PageController::class,'denda']);
+//siswa
 Route::get('/siswa/siswa',[PageController::class,'siswa']);
+Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
+
+//denda
+Route::get('/pengaturan/denda_save',[PageController::class,'denda']);
+Route::get('/master/data_denda',[MasterController::class,'data_denda']);
+Route::get('/pengaturan/denda',[PageController::class,'denda']);
+
+//laporan
 Route::get('/laporan/buku',[PageController::class,'buku']);
 Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
 Route::get('/laporan/buku',[PageController::class,'laporan_buku']);
 Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
-Route::get('/app/password',[PageController::class,'password']);
-Route::get('/master/data_denda',[MasterController::class,'data_denda']);
-Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
 
+//ganti pass
+Route::get('/app/password',[PageController::class,'password']);
+
+//ajax
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
 Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');

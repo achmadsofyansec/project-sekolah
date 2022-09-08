@@ -69,7 +69,7 @@
                   <tbody>
                     <tr>
                       <td style="vertical-align:middle;text-align:center;">
-                        <a class="btn bg-navy" href="<?php echo url('/'); ?>transaksi/daftar_peminjaman"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
+                        <a class="btn bg-navy" href="{{ url('transaksi')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
                       </td>
                     </tr>
                   </tbody>
@@ -185,12 +185,14 @@
                         <tr>
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->id_buku}}</td>
-                          <td>{{$item->judul_buku}}</td>
+                          <td>{{$item->id_siswa}}</td>
                           <td>{{$item->jumlah_pinjam}}</td>
                           <td>{{$item->created_at}}</td>
                           <td>{{$item->created_at}}</td>
                           <td class="text-center">
-                            <form action="{{route('peminjaman_buku.destroy',$item->id)}}">
+                            <form action="{{route('peminjaman_buku.destroy',$item->id)}}" method="POST">
+                              @method('DELETE')
+                              @csrf
                             <button class="btn btn-danger btn-xs" type="submit" ><i class="fa fa-trash"> </i></button>
                           </form>
                           </td>
