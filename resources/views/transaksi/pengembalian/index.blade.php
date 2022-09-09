@@ -58,7 +58,7 @@
                   <tbody>
                     <tr>
                       <td style="vertical-align:middle;text-align:center;">
-                        <a class="btn bg-navy" href="<?php echo url('/'); ?>/transaksi/daftar_peminjaman"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
+                        <a class="btn bg-navy" href="{{ url('transaksi')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
                       </td>
                     </tr>
                   </tbody>

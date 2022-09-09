@@ -29,7 +29,7 @@
           <div class="animated fadeInUp col-12">
             <div class="card card-info card-outline">
               <div class="card-header">
-               <a class="btn btn-info btn-sm" href="{{url('transaksi')}}"><i class="fa fa-plus"> </i> Transaksi Peminjaman Buku</a>
+               <a class="btn btn-info btn-sm" href="{{ url('transaksi')}}"><i class="fa fa-plus"> </i> Transaksi Peminjaman Buku</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
