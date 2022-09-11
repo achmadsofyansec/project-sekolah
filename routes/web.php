@@ -16,6 +16,8 @@ use App\Http\Controllers\PeneranganInternetController;
 use App\Http\Controllers\SaranaAdministrasiController;
 use App\Http\Controllers\SaranaBelajarController;
 use App\Http\Controllers\AsetLainController;
+use App\Http\Controllers\DataAsetTTController;
+use App\Http\Controllers\KategoriController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -37,14 +39,13 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         //Data Asset
-        Route::get('/umum',[PageController::class,'view_umum'])->name('umum');
         Route::resource('gedung', GedungController::class);
         Route::get('/ruangan',[PageController::class,'view_ruangan'])->name('ruangan');
         Route::resource('/lapangan', LapanganController::class);
         Route::resource('/sarana_belajar', SaranaBelajarController::class);
         Route::resource('/aset_lain', AsetLainController::class);
-        Route::get('/aset_tt',[PageController::class,'view_aset_tt'])->name('aset_tidak_tetap');
-        Route::get('/kategori_aset_tt',[PageController::class,'view_kategori_aset_tt'])->name('kategori_aset_tt');
+        Route::resource('/aset_tt', DataAsetTTController::class);
+        Route::resource('/kategori_aset_tt', KategoriController::class);
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
         Route::resource('/laboratorium', LaboratoriumController::class);
         Route::get('/lahan',[PageController::class,'view_lahan'])->name('lahan');

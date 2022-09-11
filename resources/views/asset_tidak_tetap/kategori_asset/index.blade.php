@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Kategori Asset Tidak Tetap')
+@section('page', ' Kategori Asset')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,16 +34,36 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('kategori_aset_tt.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>No</th>                     
+                                    <th>Nama Kategori</th>
                                     <th>Aksi</th>
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($kategori as $kategori)
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{ $kategori->kategori }}</td>    
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('kategori_aset_tt.destroy',$kategori->id) }}" method="POST">
+                                        <a href="{{ route('kategori_aset_tt.edit',$kategori->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>

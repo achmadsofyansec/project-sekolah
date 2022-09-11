@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Asset Tidak Tetap')
+@section('page', 'Asset')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,16 +34,46 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('aset_tt.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
+                                    <th>No</th>                     
+                                    <th>Unit</th>
+                                    <th>Kategori</th>
+                                    <th>Jumlah Baik</th>
+                                    <th>Jumlah Rusak Ringan</th>
+                                    <th>Jumlah Rusak Berat</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($dataAset as $dataAset)
+                                    <td>1</td>
+                                    <td>{{ $dataAset->unit }}</td>
+                                    <td>{{ $dataAset->kategori }}</td>    
+                                    <td>{{ $dataAset->jml_baik }}</td>
+                                    <td>{{ $dataAset->jml_rusak_ringan }}</td>
+                                    <td>{{ $dataAset->jml_rusak_berat }}</td>
+                                    <td>{{ $dataAset->foto }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('aset_tt.destroy',$dataAset->id) }}" method="POST">
+                                        <a href="{{ route('aset_tt.edit',$dataAset->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>

@@ -126,12 +126,6 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/umum') ?>" class="nav-link">
-                  <i class="fas fa-angle-right nav-icon text-primary"></i>
-                  <p>Umum</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="<?php echo url('/gedung') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-primary"></i>
                   <p>Gedung</p>

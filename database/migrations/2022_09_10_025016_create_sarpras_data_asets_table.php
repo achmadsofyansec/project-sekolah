@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSarprasRuangansTable extends Migration
+class CreateSarprasDataAsetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateSarprasRuangansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_ruangans', function (Blueprint $table) {
+        Schema::create('sarpras_data_asets', function (Blueprint $table) {
             $table->id();
-            $table->string('gedung');
-            $table->string('jns_ruangan');
-            $table->string('nama');
-            $table->string('kondisi');
-            $table->integer('tahun_dibangun');
-            $table->integer('panjang');
-            $table->integer('lebar');
+            $table->string('unit');
+            $table->string('kategori');
+            $table->integer('jml_baik');
+            $table->integer('jml_rusak_ringan');
+            $table->integer('jml_rusak_berat');
             $table->string('foto');
             $table->timestamps();
         });
@@ -34,6 +32,6 @@ class CreateSarprasRuangansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sarpras_ruangans');
+        Schema::dropIfExists('sarpras_data_asets');
     }
 }
