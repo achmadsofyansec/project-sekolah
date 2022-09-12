@@ -11,7 +11,7 @@ use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SumberController;
 use App\Http\Controllers\PeminjamanBukuController;
-use App\Http\Controllers\PeminjamanBukuDtsController;
+use App\Http\Controllers\PeminjamanBukuDtController;
 use App\Http\Controllers\PengembalianBukuController;
 use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +38,7 @@ Route::resource('kategori',KategoriController::class);
 Route::resource('sumber',SumberController::class);
 Route::resource('peminjaman_buku',PeminjamanBukuController::class);
 Route::resource('pengembalian',PengembalianBukuController::class);
-Route::get('/transaksi',[PageController::class,'transaksi']);
+Route::resource('data_peminjaman',PeminjamanBukuDtController::class);
 
 //siswa
 Route::get('/siswa/siswa',[PageController::class,'siswa']);

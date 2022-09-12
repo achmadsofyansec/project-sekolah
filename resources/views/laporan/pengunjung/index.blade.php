@@ -104,19 +104,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <?php
-                                    $no = 1;
-                                    $now = strtotime(date("Y-m-d"));
-                                    foreach ($pengunjung as $item) { ?>
+                                    @forelse ($pengunjung as $item)
                                 <tr>
-                                    <td><?php echo $no; ?></td>
+                                    <td>{{$loop->index +1}}</td>
                                     <td>{{$item->nama_siswa}}</td>
                                     <td>{{$item->nama_kelas}}</td>
                                     <td>{{$item->keperlian}}</td>
                                     <td>{{$item->tanggal}}</td>
+                                    @empty
+                                    <tr>
+                                      <td colspan="5">tidak ada data</td>
+                                    </tr>
                                 </tr>
-                                <?php $no++;
-                                    } ?>
+                                @endforelse
                         </tbody>
                       </table>
                     </div>

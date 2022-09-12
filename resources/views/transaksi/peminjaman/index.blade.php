@@ -69,7 +69,7 @@
                   <tbody>
                     <tr>
                       <td style="vertical-align:middle;text-align:center;">
-                        <a class="btn bg-navy" href="{{ url('transaksi')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
+                        <a class="btn bg-navy" href="{{ route('data_peminjaman.index')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
                       </td>
                     </tr>
                   </tbody>
@@ -79,10 +79,12 @@
               <div class="col-md-12">
                 <form role="form" action="{{route('peminjaman_buku.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
+                  <?php $i = 1 ?>
                 <div class="row">
                 <div class="col-md-7">
                   <table class="table table-bordered table-hover table-striped table-sm">
                     <tbody>
+                      <input type="hidden" name="status" id="status" value="<?php echo $i; ?>" readonly>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
                         <td><input class="form-control nisn" name="nis" id="nis" type="text"  readonly></td>
@@ -151,11 +153,9 @@
                     </tbody>
                   </table>
               </div>
-                <?php if (!empty($siswa)) { ?>
                   <div class="col-md-12 text-center">
                     <button class="btn bg-navy" name="tambah"><i class="fa fa-plus"> </i> Tambah Buku</button>
                   </div>
-                <?php } ?>
               </form>
               </div>
 
@@ -178,14 +178,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                      if (!empty('#nisn' != null)) {
-                  ?>
                       @forelse ($data as $item) 
                         <tr>
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->id_buku}}</td>
-                          <td>{{$item->id_siswa}}</td>
+                          <td>{{$item->judul_buku}}</td>
                           <td>{{$item->jumlah_pinjam}}</td>
                           <td>{{$item->created_at}}</td>
                           <td>{{$item->created_at}}</td>
@@ -198,22 +195,12 @@
                           </td>
                         @empty
                         <tr>
-                        <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
+                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
                         </tr>
                         </tr>
                         @endforelse
-                    <?php   } ?>
                   </tbody>
                 </table>
-
-                <?php
-                  if (!empty('#nisn' != null)) {
-                  // $hitung = count($peminjaman_dt->result_array());
-                  // if ($hitung > 0) { ?>
-                    <div class="text-center"> <a class="btn btn-primary btn-lg" href="" onclick="return confirm('Yakin ingin simpan data ?');"> <i class="fa fa-save"> </i> Simpan Transaksi</a> </div>
-                <?php }
-                                                                                                        // } ?>
-              </div>
 
             </div>
 

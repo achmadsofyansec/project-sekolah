@@ -26,15 +26,7 @@ class PageController extends Controller
         return view('dashboard', compact('buku', 'pinjaman', 'pengunjung'));
     }
 
- public function transaksi()
-    {
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $data = DB::table('data_bukus')
-                    ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
-                    ->get();
-        return view('transaksi.index',compact (['siswa','data']));
-        //
-    }
+ 
 
     public function denda()
     {

@@ -13,6 +13,7 @@ class Peminjaman_buku extends Model
     protected $fillable = [
     	'id_siswa',
     	'id_buku',
+    	'status',
     	'jumlah_pinjam',
     	'durasi',
     ];

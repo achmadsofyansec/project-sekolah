@@ -31,6 +31,7 @@ class AjaxController extends Controller
         }
         $siswa = DB::table('data_siswas')->where([$nisn])->get(['data_siswas.*']);
 
+
         $data = "";
         $no = 1;
 

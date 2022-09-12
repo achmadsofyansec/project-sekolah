@@ -61,7 +61,7 @@
                         <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                           <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($peminjaman as $peminjaman){{$peminjaman->tgl_akhir}}@endforeach" required>
+                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -105,19 +105,11 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($peminjaman as $peminjaman)
+                          @forelse ($peminjaman as $peminjaman)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                   <td></td>
-                  <td></td>
-
+                  @empty
                 </tr>
-                @endforeach
+                @endforelse
                         </tbody>
                       </table>
                     </div>
@@ -140,22 +132,6 @@
   </div>
   <!-- /.content-wrapper -->
   <script>
-    $(document).ready(function() {
-      $('#cari-siswa').typeahead({
-        source: function(query, result) {
-          $.ajax({
-            url: "<?php echo url('/'); ?>/pelanggaran_siswa/ajax_siswa",
-            data: 'query=' + query,
-            dataType: "json",
-            type: "POST",
-            success: function(data) {
-              result($.map(data, function(item) {
-                return item;
-              }));
-            }
-          });
-        }
-      });
-    });
+
   </script>
 @endsection

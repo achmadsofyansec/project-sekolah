@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PengembalianBuku;
+use App\Models\Peminjaman_buku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
@@ -44,7 +45,7 @@ class PengembalianBukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -64,10 +65,12 @@ class PengembalianBukuController extends Controller
      * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengembalianBuku $pengembalianBuku)
+    public function edit($id, Request $request)
     {
         //
+
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -76,7 +79,7 @@ class PengembalianBukuController extends Controller
      * @param  \App\Models\PengembalianBuku  $pengembalianBuku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengembalianBuku $pengembalianBuku)
+    public function update(Request $request, $id)
     {
         //
     }

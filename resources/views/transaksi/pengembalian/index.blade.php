@@ -22,6 +22,16 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-success">
+          @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                    @if(session('success'))
+                    <div class="alert alert-primary">
+                        {{ session('success') }}
+                    </div>
+                    @endif
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
@@ -58,16 +68,14 @@
                   <tbody>
                     <tr>
                       <td style="vertical-align:middle;text-align:center;">
-                        <a class="btn bg-navy" href="{{ url('transaksi')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
+                        <a class="btn bg-navy" href="{{ route('data_peminjaman.index')}}"><i class="fa fa-list-alt"> </i> Daftar Transaksi Peminjaman </a>
+                        @csrf
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="col-md-8"> 
-              <form action="<?php echo url('/'); ?>transaksi/tambah_kembali_buku" method="post">
-                <input type="hidden" name="id_kelas" value="id Kelas">
-                <input type="hidden" name="id_siswa" value="id_siswa">
                 <div class="col-md-12">
                   <table class="table table-bordered">
                     <tbody>
@@ -85,7 +93,6 @@
                       </tr>
                   </table>
                 </div>
-              </form>
               </div>
               <div class="col-md-12">
                 <br>
@@ -100,7 +107,7 @@
                       <th>Judul Buku</th>
                       <th>Tgl Pinjam</th>
                       <th>Tgl Kembali</th>
-                      <th>Telat</th>
+                      <th>Status</th>
                       <th>Denda</th>
                       <th class="text-center">Status</th>
                     </tr>
@@ -114,21 +121,29 @@
                       <td>{{$item->judul_buku}}</td>
                       <td>{{$item->created_at}}</td>
                       <td>{{$item->created_at}}</td>
-                      <td>Telat</td>
+                      <td><?php if($item->status == 1){
+                        echo "Belum Dikembalikan";
+                      }else{
+                        echo "Telah Dikembalikan";
+                      } ?></td>
                       <td>denda</td>
                       <td class="text-center">
-                      <a class="btn btn-primary btn-xs" href="" onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</a></td>
-
+                    <form action="{{route('peminjaman_buku.update',$item->id)}}" method="POST">
+                      @csrf
+                      @method('PUT')
+                      <?php $i = 0; ?>
+                        <input type="hidden" name="status" id="status" value="<?php echo $i; ?>">
+                          <button  class="btn btn-primary btn-xs"  onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</i></button></td>
+                    </form>
                       @empty
                         <tr>
-                        <td colspan="3" class="text-center text-mute">Tidak Ada Data</td>
+                        <td colspan="8" class="text-center text-mute">Tidak Ada Data</td>
                         </tr>
                     </tr>
                     @endforelse
                   </tbody>
                 </table>
 
-             
               </div>
 
             </div>
