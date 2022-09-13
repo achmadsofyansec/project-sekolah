@@ -16,7 +16,7 @@ class CreateSarprasRuangansTable extends Migration
         Schema::create('sarpras_ruangans', function (Blueprint $table) {
             $table->id();
             $table->string('gedung');
-            $table->string('jns_ruangan');
+            $table->string('jenis_ruangan');
             $table->string('nama');
             $table->string('kondisi');
             $table->integer('tahun_dibangun');

@@ -18,6 +18,8 @@ use App\Http\Controllers\SaranaBelajarController;
 use App\Http\Controllers\AsetLainController;
 use App\Http\Controllers\DataAsetTTController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RuanganController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -40,7 +42,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         //Data Asset
         Route::resource('gedung', GedungController::class);
-        Route::get('/ruangan',[PageController::class,'view_ruangan'])->name('ruangan');
+        Route::resource('/ruangan', RuanganController::class);
         Route::resource('/lapangan', LapanganController::class);
         Route::resource('/sarana_belajar', SaranaBelajarController::class);
         Route::resource('/aset_lain', AsetLainController::class);

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Sarana Belajar')
+@section('page', 'Asset')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,24 +34,50 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('ruangan.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>Gedung</th>                                   
+                                    <th>No</th>                     
+                                    <th>Gedung</th>
                                     <th>Jenis Ruangan</th>
                                     <th>Nama</th>
-                                    <th>Kodisi</th>
+                                    <th>Kondisi</th>
                                     <th>Tahun Dibangun</th>
-                                    <th>Panjang (m)</th>
-                                    <th>Lebar (m)</th>
+                                    <th>Panjang</th>
+                                    <th>Lebar</th>
                                     <th>Foto</th>
                                     <th>Aksi</th>
-
                                 </thead>
-                              <tbody>
+                                <tbody>
+                                  @forelse ($ruangan as $ruangan)
+                                    <td>1</td>
+                                    <td>{{ $ruangan->gedung }}</td>
+                                    <td>{{ $ruangan->jenis_ruangan }}</td>    
+                                    <td>{{ $ruangan->nama }}</td>
+                                    <td>{{ $ruangan->kondisi }}</td>
+                                    <td>{{ $ruangan->tahun_dibangun }}</td>
+                                    <td>{{ $ruangan->panjang }}</td>
+                                    <td>{{ $ruangan->lebar }}</td>
+                                    <td>{{ $ruangan->foto }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('ruangan.destroy',$ruangan->id) }}" method="POST">
+                                        <a href="{{ route('ruangan.edit',$ruangan->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  <td>
+                                    @endforelse
                                 </tbody>  
                             </table>
                        </div>

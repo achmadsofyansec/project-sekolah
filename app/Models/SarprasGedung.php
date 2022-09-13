@@ -15,7 +15,7 @@ class SarprasGedung extends Model
         'jml_lantai',
         'kepemilikan',
         'kondisi_kerusakan',
-        'kategori_kondissi',
+        'kategori_kondisi',
         'tahun_dibangun',
         'luas_gedung',
     ];

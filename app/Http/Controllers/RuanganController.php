@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SarprasRuangan;
+use App\Models\SarprasGedung;
 
 class RuanganController extends Controller
 {
@@ -13,7 +15,8 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        //
+        $ruangan = SarprasRuangan::latest()->get();
+        return view('asset_tetap.ruangan.index',compact('ruangan'));
     }
 
     /**
@@ -23,7 +26,11 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        
+        $ruangan = SarprasRuangan::latest()->get();
+        $gedung = SarprasGedung::latest()->get();
+
+        return view('asset_tetap.ruangan.create',compact(['gedung', 'ruangan']));
     }
 
     /**
@@ -34,7 +41,67 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'gedung' => ['required'],
+            'jenis_ruangan' => ['required'],
+            'nama' => ['required'],
+            'kondisi' => ['required'],
+            'tahun_dibangun' => ['required'],
+            'panjang' => ['required'],
+            'lebar' => ['required'],
+        ]);
+
+        if($credential){
+            $data = [];
+            $foto = $request->file('foto');
+            if($foto != null){
+                $name = $request->file('foto')->getClientOriginalName();
+                $foto->move('../assets/upload',$name);
+                $data = [
+                'gedung' => $request->gedung,
+                'jenis_ruangan' => $request->jenis_ruangan,
+                'nama' => $request->nama,
+                'kondisi' => $request->kondisi,
+                'tahun_dibangun' => $request->tahun_dibangun,
+                'panjang' => $request->panjang,
+                'lebar' => $request->lebar,
+                'foto' => $name,
+                ];
+            } else {
+                $data = [
+                'gedung' => $request->gedung,
+                'jenis_ruangan' => $request->jenis_ruangan,
+                'nama' => $request->nama,
+                'kondisi' => $request->kondisi,
+                'tahun_dibangun' => $tahun_dibangun,
+                'panjang' => $request->panjang,
+                'lebar' => $request->lebar,
+                'foto' => '-',
+
+                ];
+            }
+            $create = SarprasRuangan::create($data);
+
+            if($create){
+                return redirect()
+                ->route('ruangan.index')
+                ->with([
+                    'success' => 'Data Ruangan Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        } else {
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -56,7 +123,11 @@ class RuanganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SarprasRuangan::findOrFail($id);
+        $gedung = SarprasGedung::latest()->get();
+
+        return view('asset_tetap.ruangan.edit',compact(['data', 'gedung']));
+
     }
 
     /**
@@ -68,7 +139,66 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $credential = $this->validate($request,[
+            'gedung' => ['required'],
+            'jenis_ruangan' => ['required'],
+            'nama' => ['required'],
+            'kondisi' => ['required'],
+            'tahun_dibangun' => ['required'],
+            'panjang' => ['required'],
+            'lebar' => ['required'],
+        ]);
+
+        if($credential){
+            $data = [];
+            $foto = $request->file('foto');
+            if($foto != null){
+                $name = $request->file('foto')->getClientOriginalName();
+                $foto->move('../assets/upload',$name);
+                $data = [
+                'gedung' => $request->gedung,
+                'jenis_ruangan' => $request->jenis_ruangan,
+                'nama' => $request->nama,
+                'kondisi' => $request->kondisi,
+                'tahun_dibangun' => $request->tahun_dibangun,
+                'panjang' => $request->panjang,
+                'lebar' => $request->lebar,
+                'foto' => $name,
+                ];
+            } else {
+                $data = [
+                'gedung' => $request->gedung,
+                'jenis_ruangan' => $request->jenis_ruangan,
+                'nama' => $request->nama,
+                'kondisi' => $request->kondisi,
+                'tahun_dibangun' => $request->tahun_dibangun,
+                'panjang' => $request->panjang,
+                'lebar' => $request->lebar,
+                'foto' => '-',
+                ];
+            }
+            $create = SarprasRuangan::create($data);
+
+            if($create){
+                return redirect()
+                ->route('ruangan.index')
+                ->with([
+                    'success' => 'Data Ruangan Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        } else {
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -79,6 +209,20 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasRuangan::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('ruangan.index')
+            ->with([
+                'success' => 'Data Ruangan Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

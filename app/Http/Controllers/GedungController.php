@@ -39,24 +39,24 @@ class GedungController extends Controller
     {
         $credential = $this->validate($request,[
             'nama_gedung' => ['required'],
-            // 'nama_lahan' => ['required'],
-            // 'jml_lantai' => ['required'],
-            // 'kepemilikan' => ['required'],
-            // 'kondisi_kerusakan' => ['required'],
-            // 'kategori_kondisi' => ['required'],
-            // 'tahun_dibangun' => ['required'],
-            // 'luas_gedung' => ['required'],
+            'nama_lahan' => ['required'],
+            'jml_lantai' => ['required'],
+            'kepemilikan' => ['required'],
+            'kondisi_kerusakan' => ['required'],
+            'kategori_kondisi' => ['required'],
+            'tahun_dibangun' => ['required'],
+            'luas_gedung' => ['required'],
         ]);
         if($credential){
             $create = SarprasGedung::create([
                 'nama_gedung' => $request->nama_gedung,
-                // 'nama_lahan' => $request->nama_lahan,
-                // 'jml_lantai' => $request->jml_lantai,
-                // 'kepemilikan' => $request->kepemilikan,
-                // 'kondisi_kerusakan' => $request->kondisi_kerusakan,
-                // 'kategori_kondisi' => $request->kategori_kondisi,
-                // 'tahun_dibangun' => $request->tahun_dibangun,
-                // 'luas_gedung' => $request->luas_gedung,
+                'nama_lahan' => $request->nama_lahan,
+                'jml_lantai' => $request->jml_lantai,
+                'kepemilikan' => $request->kepemilikan,
+                'kondisi_kerusakan' => $request->kondisi_kerusakan,
+                'kategori_kondisi' => $request->kategori_kondisi,
+                'tahun_dibangun' => $request->tahun_dibangun,
+                'luas_gedung' => $request->luas_gedung,
             ]);
             if($create){
                 return redirect()
