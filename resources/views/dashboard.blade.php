@@ -19,7 +19,48 @@
     </div>
 <div class="content">
   <div class="container-fluid">
-    
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <a href="<?php echo url('/pos_terima') ?>"style="color:black;">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-donate"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text text-danger" ><b>Pos Penerimaan</b></span>
+          <font  style="text-shadow: 2px 2px 4px #827e7e">{{$pos_terima->count()}}</font>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <a href="<?php echo url('/pos_keluar') ?>" style="color:black;">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-funnel-dollar"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text text-primary" ><b>Pos Pengeluaran</b></span>
+            <font style="text-shadow: 2px 2px 4px #827e7e">{{$pos_keluar->count()}}</font>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <a href="#"style="color:black;">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cash-register"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text text-success" ><b>Pemasukan</b></span>
+            <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <a href="#" style="color:black;">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-info elevation-1"><i class="fas fa-luggage-cart"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text text-info" ><b>Pengeluaran</b></span>
+            <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+          </div>
+        </div></a>
+      </div>
+    </div>
   </div>
 </div>
 </div>

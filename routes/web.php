@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengumumanController;
@@ -35,7 +36,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
         Route::get('/pembayaran_siswa',[PageController::class,'view_pembayaran_siswa'])->name('pembayaran_siswa');
-        Route::get('/biaya_siswa',[PageController::class,'view_biaya_siswa'])->name('biaya_siswa');
+        Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::get('/tabungan',[PageController::class,'view_tabungan'])->name('tabungan');
         Route::get('/terima_lain',[PageController::class,'view_terima_lain'])->name('terima_lain');
         Route::get('/keluar_lain',[PageController::class,'view_keluar_lain'])->name('keluar_lain');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pos_penerimaan;
+use App\Models\pos_pengeluaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
@@ -10,8 +12,11 @@ class PageController extends Controller
 {
     
     //VIEW Pages
-    public function index(Request $request){
-        return view('dashboard');
+    public function index(){
+        $pos_terima = pos_penerimaan::latest()->get();
+        $pos_keluar = pos_pengeluaran::latest()->get();
+
+        return view('dashboard',compact(['pos_terima','pos_keluar']));
     }
     public function view_tunggakan(){
         return view('tunggakan.index');
@@ -47,9 +52,6 @@ class PageController extends Controller
     }
     public function view_laporan_harian(){
         return view('laporan.harian.index');
-    }
-    public function view_biaya_siswa(){
-        return view('biaya_siswa.index');
     }
     public function view_wa_gateway(){
         return view('gateway.wa.index');

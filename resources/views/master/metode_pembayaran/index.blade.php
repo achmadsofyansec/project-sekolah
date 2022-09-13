@@ -40,7 +40,6 @@
                   <table id="dataTable" class="table table-border">
                     <thead>
                       <th>No</th>
-                      <th>Kode</th>
                       <th>Nama</th>
                       <th>Desc</th>
                       <th>Aksi</th>
@@ -49,7 +48,6 @@
                       @forelse ($data as $item)
                           <tr>
                           <td>{{$loop->index + 1}}</td>
-                          <td>{{$item->kode_methode}}</td>
                           <td>{{$item->nama_methode}}</td>
                           <td>{{$item->desc_methode}}</td>
                           <td>
