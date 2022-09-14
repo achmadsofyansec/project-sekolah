@@ -47,7 +47,7 @@
                         </div>
                           <div class="form-group">
                             <label >Kelas</label>
-                            <select onchange="filter_absensi()" name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control">
+                            <select onchange="filter_absensi()" name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control" style="width: 100%;">
                               <option value="">-- Semua Kelas -- </option>
                               @forelse ($kelas as $item)
                             <option value="{{$item->kode_kelas}}">{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
@@ -57,7 +57,7 @@
                           </div>
                           <div class="form-group">
                             <label >Jurusan</label>
-                            <select onchange="filter_absensi()" name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control">
+                            <select onchange="filter_absensi()" name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control" style="width: 100%;">
                             <option value="">-- Semua Jurusan -- </option>
                               @forelse ($jurusan as $item)
                             <option value="{{$item->kode_jurusan}}">{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
@@ -74,7 +74,7 @@
                   <div class="card card-outline card-info">
                     <div class="card-header">
                       <div class="card-title">
-                        Data Absensi Hari Ini
+                        Data Absensi
                       </div>
                     </div>
                     <div class="card-body">
@@ -82,7 +82,6 @@
                              <table class="table" >
                                  <thead>
                                      <th>No</th>
-                                     <th>Tanggal</th>
                                      <th>Nama</th>
                                      <th>Kelas</th>
                                      <th>Jurusan</th>

@@ -27,32 +27,21 @@ class AjaxController extends Controller
         }
         $tanggal = $tanggals->format('Y-m-d');
         $tanggal1 = $tanggals->modify('+1 day')->format('Y-m-d');
-        $absensi = Absensi::join("data_siswas","data_siswas.id","=",'absensis.kode_siswa')
-            ->join("aktivitas_belajars","aktivitas_belajars.kode_siswa","=",'data_siswas.nik')
-            ->where([['data_siswas.status_siswa','=','Aktif'],['absensis.tgl_absensi','>=', $tanggal.' 00:00:00'],['absensis.tgl_absensi','<=', $tanggal.' 23:59:59'],$kelas,$jurusan])
-            ->get(["data_siswas.*","absensis.*","absensis.id as id_absen",'aktivitas_belajars.*']);
+        $data_siswas = data_siswa::join("aktivitas_belajars","aktivitas_belajars.kode_siswa","=",'data_siswas.nik')
+                    ->where([['data_siswas.status_siswa','=','Aktif'],$kelas,$jurusan])
+                    ->get(["data_siswas.*",'aktivitas_belajars.*',"data_siswas.id as id_siswas"]);
             $data = "";
             $no = 1;
-       foreach($absensi as $item){
+       foreach($data_siswas as $item){
+        $absensi = Absensi::where([['absensis.tgl_absensi','>=', $tanggal.' 00:00:00'],['absensis.tgl_absensi','<=', $tanggal.' 23:59:59'],['absensis.kode_siswa','=', $item->id_siswas]])
+        ->value('jenis_absen');
+        $absen = !empty($absensi) ? $absensi : "Belum Absen";
             $data .= '<tr>
             <td>'.$no++.'</td>
-            <td>'.$item->tgl_absensi.'</td>
             <td>'.$item->nama.'</td>
             <td>'.$item->kode_kelas.'</td>
-            <td>'.$item->kode_jurusan.'</td>';
-            if($item->keterangan == "Masuk"){
-                $data .= '<td><span class="badge badge-success">'.$item->keterangan.'</span> </td>';
-            }
-            if($item->keterangan == "Tanpa Keterangan"){
-                $data .= '<td><span class="badge badge-danger">'.$item->keterangan.'</span> </td>';
-            }
-            if($item->keterangan == "Izin"){
-                $data .= '<td><span class="badge badge-warning">'.$item->keterangan.'</span> </td>';
-            }
-            if($item->keterangan == "Sakit"){
-                $data .= '<td><span class="badge badge-info">'.$item->keterangan.'</span> </td>';
-            }
-           
+            <td>'.$item->kode_jurusan.'</td>
+            <td>'.$absen.'</td>';
        }
         return response()->json($data);
     }
