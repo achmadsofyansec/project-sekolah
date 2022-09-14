@@ -68,6 +68,14 @@
                                       @endforelse
                                   </select>
                               </div>
+                              <div class="form-group">
+                                <label>Tipe Biaya</label>
+                                <select name="tipe_biaya" id="tipe_biaya" class="form-control">
+                                    <option value=""> -- Pilih Tipe --</option>
+                                    <option value="BULANAN">BULANAN</option>
+                                    <option value="NONBULANAN">NON BULANAN</option>
+                                </select>
+                            </div>
                               <div class="form-check">
                                   <input type="checkbox" name="kartu_spp" id="kartu_spp" class="form-check-input">
                                   <label for="kartu_spp">Pembayaran Adalah Bagian Dari Kartu SPP</label>

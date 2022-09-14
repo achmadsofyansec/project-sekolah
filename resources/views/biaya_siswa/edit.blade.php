@@ -50,30 +50,49 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('biaya_siswa.store')}}" method="POST">
+                        <form action="{{route('biaya_siswa.update',$data->id)}}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                               <div class="form-group">
                                   <label>Nama </label>
-                                  <input type="text" class="form-control" name="nama_biaya" id="nama_biaya" required>
+                              <input type="text" value="{{$data->nama_biaya}}" class="form-control" name="nama_biaya" id="nama_biaya" required>
                               </div>
                               <div class="form-group">
                                   <label>Pos Penerimaan</label>
                                   <select name="pos_biaya" id="pos_biaya" class="form-control">
                                       <option value=""> -- Pilih Pos --</option>
                                       @forelse ($pos as $item)
-                                  <option value="{{$item->kode_pos}}">{{$item->nama_pos}}</option>
+                                  <option value="{{$item->kode_pos}}" @if ($data->pos_biaya == $item->kode_pos)
+                                    {{'selected'}}
+                                  @endif>{{$item->nama_pos}}</option>
                                       @empty
                                           
                                       @endforelse
                                   </select>
                               </div>
+                              <div class="form-group">
+                                <label>Tipe Biaya</label>
+                                <select name="tipe_biaya" id="tipe_biaya" class="form-control">
+                                    <option value=""> -- Pilih Tipe --</option>
+                                    <option value="BULANAN" @if ($data->tipe_biaya == "BULANAN")
+                                      {{'selected'}}
+                                    @endif>BULANAN</option>
+                                    <option value="NONBULANAN" @if ($data->tipe_biaya == "NONBULANAN")
+                                      {{'selected'}}
+                                    @endif>NON BULANAN</option>
+                                </select>
+                            </div>
                               <div class="form-check">
-                                  <input type="checkbox" name="kartu_spp" id="kartu_spp" class="form-check-input">
+                                  <input type="checkbox" name="kartu_spp" id="kartu_spp" class="form-check-input" @if ($data->kartu_spp == '1')
+                                  {{'checked'}}
+                                @endif>
                                   <label for="kartu_spp">Pembayaran Adalah Bagian Dari Kartu SPP</label>
                               </div>
                               <div class="form-check">
-                                <input type="checkbox" name="penunggakan" id="penunggakan" class="form-check-input">
+                                <input type="checkbox" name="penunggakan" id="penunggakan" class="form-check-input" @if ($data->penunggakan == '1')
+                                {{'checked'}}
+                              @endif>
                                 <label for="penunggakan">Biaya Dianggap Menunggak Jika Belum Dibayar</label>
                               </div>
                             </div>

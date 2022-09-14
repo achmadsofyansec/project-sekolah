@@ -15,7 +15,8 @@ class BiayaSiswaController extends Controller
      */
     public function index()
     {
-        $data = biaya_siswa::latest()->get();
+        $data = biaya_siswa::join("pos_penerimaans","biaya_siswas.pos_biaya","=","pos_penerimaans.kode_pos")
+        ->get(["biaya_siswas.*","pos_penerimaans.*","biaya_siswas.id as id_biaya"]);
         return view('biaya_siswa.index',compact('data'));
     }
 
@@ -41,9 +42,31 @@ class BiayaSiswaController extends Controller
         $validate = $this->validate($request,[
             'nama_biaya' => ['required'],
             'pos_biaya' => ['required'],
+            'tipe_biaya' => ['required'],
         ]);
         if($validate){
-            
+            $kartu_spp = !empty($request->kartu_spp) ? 1 : 0;
+            $penunggakan = !empty($request->penunggakan) ? 1 : 0;
+            $create = biaya_siswa::create([
+                'nama_biaya' => $request->nama_biaya,
+                'pos_biaya' => $request->pos_biaya,
+                'tipe_biaya' => $request->tipe_biaya,
+                'kartu_spp' => $kartu_spp,
+                'penunggakan' => $penunggakan,
+            ]);
+            if($create){
+                return redirect()
+                ->route('biaya_siswa.index')
+                ->with([
+                    'success' => 'Biaya Siswa Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
         }
     }
 
@@ -84,6 +107,36 @@ class BiayaSiswaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validate = $this->validate($request,[
+            'nama_biaya' => ['required'],
+            'pos_biaya' => ['required'],
+            'tipe_biaya' => ['required'],
+        ]);
+        if($validate){
+            $kartu_spp = !empty($request->kartu_spp) ? 1 : 0;
+            $penunggakan = !empty($request->penunggakan) ? 1 : 0;
+            $update = biaya_siswa::findOrFail($id);
+            $update->update([
+                'nama_biaya' => $request->nama_biaya,
+                'pos_biaya' => $request->pos_biaya,
+                'tipe_biaya' => $request->tipe_biaya,
+                'kartu_spp' => $kartu_spp,
+                'penunggakan' => $penunggakan,
+            ]);
+            if($update){
+                return redirect()
+                ->route('biaya_siswa.index')
+                ->with([
+                    'success' => 'Biaya Siswa Has Been Updated successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

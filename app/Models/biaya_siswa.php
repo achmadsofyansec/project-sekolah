@@ -11,6 +11,7 @@ class biaya_siswa extends Model
     protected $fillable = [
         'nama_biaya',
         'pos_biaya',
+        'tipe_biaya',
         'kartu_spp',
         'penunggakan'
     ];
