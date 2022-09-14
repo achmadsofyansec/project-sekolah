@@ -4,11 +4,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PenerimaanLainController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PosPenerimaanController;
 use App\Http\Controllers\PosPengeluaranController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\TabunganController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,9 +40,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
         // Pembayaran
         Route::get('/pembayaran_siswa',[PageController::class,'view_pembayaran_siswa'])->name('pembayaran_siswa');
         Route::resource('biaya_siswa',BiayaSiswaController::class);
-        Route::get('/tabungan',[PageController::class,'view_tabungan'])->name('tabungan');
-        Route::get('/terima_lain',[PageController::class,'view_terima_lain'])->name('terima_lain');
-        Route::get('/keluar_lain',[PageController::class,'view_keluar_lain'])->name('keluar_lain');
+        Route::resource('tabungan',TabunganController::class);
+        Route::resource('terima_lain',PenerimaanLainController::class);
+        Route::resource('keluar_lain',PengeluaranController::class);
         //Laporan
         Route::get('/laporan_harian',[PageController::class,'view_laporan_harian'])->name('laporan_harian');
         Route::get('/laporan_bulanan',[PageController::class,'view_laporan_bulanan'])->name('laporan_bulanan');

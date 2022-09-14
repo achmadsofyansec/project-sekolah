@@ -21,9 +21,6 @@ class PageController extends Controller
     public function view_tunggakan(){
         return view('tunggakan.index');
     }
-    public function view_tabungan(){
-        return view('tabungan.index');
-    }
     public function view_riwayat_bayar(){
         return view('riwayat_pembayaran.index');
     }
@@ -32,12 +29,6 @@ class PageController extends Controller
     }
     public function view_rekap_pertrx(){
         return view('rekaptulasi.per_trx.index');
-    }
-    public function view_terima_lain(){
-        return view('lain_lain.penerimaan.index');
-    }
-    public function view_keluar_lain(){
-        return view('lain_lain.pengeluaran.index');
     }
   
     public function view_pembayaran_siswa(){
