@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_penerimaan_lain;
 use Illuminate\Http\Request;
 
 class PenerimaanLainController extends Controller
@@ -13,7 +14,8 @@ class PenerimaanLainController extends Controller
      */
     public function index()
     {
-        return view('lain_lain.penerimaan.index');
+        $data = keuangan_penerimaan_lain::latest()->get();
+        return view('lain_lain.penerimaan.index',compact(['data']));
     }
 
     /**
@@ -23,7 +25,7 @@ class PenerimaanLainController extends Controller
      */
     public function create()
     {
-        //
+        return view('lain_lain.penerimaan.create');
     }
 
     /**
@@ -57,6 +59,10 @@ class PenerimaanLainController extends Controller
     public function edit($id)
     {
         //
+        $data = keuangan_penerimaan_lain::findOrFail($id);
+        if($data){
+            return view('lain_lain.penerimaan.edit');
+        }
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_pengeluaran;
 use Illuminate\Http\Request;
 
 class PengeluaranController extends Controller
@@ -13,7 +14,8 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        return view('lain_lain.pengeluaran.index');
+        $data = keuangan_pengeluaran::latest()->get();
+        return view('lain_lain.pengeluaran.index',compact(['data']));
     }
 
     /**

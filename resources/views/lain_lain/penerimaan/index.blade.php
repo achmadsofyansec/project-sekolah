@@ -31,18 +31,44 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="card card-success card-outline">
+            <div class="card card-primary card-outline">
               <div class="card-header">
-              <a type="button" href="" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
+              <a type="button" href="{{route('terima_lain.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="dataTable" class="table table-border">
                     <thead>
                       <th>No</th>
+                      <th>Tanggal</th>
+                      <th>Dari</th>
+                      <th>Methode</th>
+                      <th>Keterangan</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
+                      @forelse ($data as $item)
+                          <tr>
+                          <td>{{$loop->index + 1}}</td>
+                          <td>{{$item->tgl_penerimaan}}</td>
+                          <td>{{$item->penerimaan_dari}}</td>
+                          <td>{{$item->methode_bayar}}</td>
+                          <td>{{$item->desc_penerimaan}}</td>
+                          <td>
+                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                            action="{{ route('terima_lain.destroy',$item->id) }}" method="POST">
+                                            <a href="{{ route('terima_lain.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                            </form>
+                          </td>
+                          </tr>
+                      @empty
+                          <tr>
+                            <td class="text-muted text-center" colspan="6">Tidak Ada Data</td>
+                          </tr>
+                      @endforelse
                     </tbody>
                   </table>
                 </div>

@@ -31,23 +31,37 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="card card-success card-outline">
-              <div class="card-header">
-              <a type="button" href="" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                  <div class="card-body">
+                  </div>
+                </div>
               </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="dataTable" class="table table-border">
-                    <thead>
-                      <th>No</th>
-                      <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
+              <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                  <div class="card-tools">
+                    <a type="button" href="" class="btn btn-primary"><i class="fas fa-plus"></i> Setoran</a>
+                    <a type="button" href="" class="btn btn-primary"><i class="fas fa-minus"></i> Penarikan</a>
+                  </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table table-border">
+                        <thead>
+                          <th>No</th>
+                          <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
     </div>

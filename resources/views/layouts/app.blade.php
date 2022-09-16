@@ -199,7 +199,7 @@
               <li class="nav-item">
                 <a href="<?php echo url('/keluar_lain') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-danger"></i>
-                  <p>Pengeluaran Lain</p>
+                  <p>Pengeluaran</p>
                 </a>
               </li>
             </ul>
