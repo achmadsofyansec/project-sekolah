@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Edit Penerimaan Lain')
+@section('page', 'Penerimaan Lain')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">

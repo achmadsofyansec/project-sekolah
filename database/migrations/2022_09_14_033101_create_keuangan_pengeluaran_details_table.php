@@ -15,6 +15,7 @@ class CreateKeuanganPengeluaranDetailsTable extends Migration
     {
         Schema::create('keuangan_pengeluaran_details', function (Blueprint $table) {
             $table->id();
+            $table->string("kode_pengeluaran");
             $table->string("pos_sumber");
             $table->string("pos_keluar");
             $table->string("detail_keterangan");

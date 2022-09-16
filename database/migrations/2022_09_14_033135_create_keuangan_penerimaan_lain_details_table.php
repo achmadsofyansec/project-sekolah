@@ -15,6 +15,7 @@ class CreateKeuanganPenerimaanLainDetailsTable extends Migration
     {
         Schema::create('keuangan_penerimaan_lain_details', function (Blueprint $table) {
             $table->id();
+            $table->string("kode_penerimaan");
             $table->string("pos_terima");
             $table->string("detail_keterangan");
             $table->string("detail_jumlah");
