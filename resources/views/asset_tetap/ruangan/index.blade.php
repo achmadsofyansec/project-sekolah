@@ -53,7 +53,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($ruangan as $ruangan)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $ruangan->gedung }}</td>
                                     <td>{{ $ruangan->jenis_ruangan }}</td>    
                                     <td>{{ $ruangan->nama }}</td>

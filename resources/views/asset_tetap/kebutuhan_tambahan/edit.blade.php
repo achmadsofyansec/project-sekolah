@@ -63,25 +63,25 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jenis</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nama_lahan" name="nama_lahan" value="{{ $data->nama_lahan }}" required />
+                                        <input type="text" class="form-control" id="jenis" name="jenis" value="{{ $data->jenis }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Jumlah Lantai</label>
+                                  <label class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_lantai" name="jml_lantai" value="{{ $data->jml_lantai }}" required />
+                                        <input type="text" class="form-control" id="jumlah" name="jumlah" value="{{ $data->jumlah }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Kepemilikan</label>
+                                  <label class="col-sm-3 col-form-label">Sifat</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kepemilikan" name="kepemilikan" value="{{ $data->kepemilikan }}" required />
+                                        <input type="text" class="form-control" id="sifat" name="sifat" value="{{ $data->sifat }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Kondisi Kerusakan</label>
+                                  <label class="col-sm-3 col-form-label">Rangking</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kondisi_kerusakan" name="kondisi_kerusakan" value="{{ $data->kondisi_kerusakan }}" required />
+                                        <input type="text" class="form-control" id="rangking" name="rangking" value="{{ $data->rangking }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -91,21 +91,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Tahun Dibangun</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="tahun_dibangun" name="tahun_dibangun" value="{{ $data->tahun_dibangun }}" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-sm-3 col-form-label">Luas Gedung</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="luas_gedung" name="luas_gedung" value="{{ $data->luas_gedung }}" required />
-                                    </div>
-                                </div>
+                                            <label>Gambar</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>{{$data->foto}}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="file" name="foto" id="foto" class="form-control" value="{{ $data->foto }}" accept="file/*">        
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
                               </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('gedung.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('kebutuhan_tambahan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

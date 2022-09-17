@@ -49,7 +49,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($belajar as $belajar)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $belajar->sarana_pembelajaran }}</td>    
                                     <td>{{ $belajar->deskripsi }}</td>
                                     <td>{{ $belajar->fungsi }}</td>

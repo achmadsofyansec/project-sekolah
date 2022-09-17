@@ -51,7 +51,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($laboratorium as $laboratorium)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $laboratorium->nama }}</td>
                                     <td>{{ $laboratorium->unit }}</td>    
                                     <td>{{ $laboratorium->jml_baik }}</td>

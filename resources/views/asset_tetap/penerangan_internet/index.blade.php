@@ -51,7 +51,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($internet as $internet)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $internet->unit }}</td>
                                     <td>{{ $internet->sumber }}</td>    
                                     <td>{{ $internet->jml_baik }}</td>

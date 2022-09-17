@@ -53,7 +53,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($gedung as $gedung)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $gedung->nama_gedung }}</td>
                                     <td>{{ $gedung->nama_lahan }}</td>    
                                     <td>{{ $gedung->jml_lantai }}</td>

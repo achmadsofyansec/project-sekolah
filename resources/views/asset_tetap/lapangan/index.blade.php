@@ -50,7 +50,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($lapangan as $lapangan)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $lapangan->unit }}</td>
                                     <td>{{ $lapangan->kondisi }}</td>    
                                     <td>{{ $lapangan->kondisi }}</td>

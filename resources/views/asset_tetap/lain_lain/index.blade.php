@@ -48,7 +48,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($lain as $lain)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $lain->unit }}</td>    
                                     <td>{{ $lain->fungsi }}</td>
                                     <td>{{ $lain->foto }}</td>

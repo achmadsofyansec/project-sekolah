@@ -50,7 +50,7 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('kebutuhan_tambahan.store')}}" method="POST">
+                        <form action="{{route('kebutuhan_tambahan.store')}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -78,7 +78,7 @@
                                     <input type="text" name="kategori_kondisi" id="kategori_kondisi" class="form-control" required>
                                 </div>
                                <div class="form-group">
-                                    <label>File</label>
+                                    <label>Foto</label>
                                     <input type="file" name="foto" id="foto" class="form-control" required>
                                 </div>
                             </div>  

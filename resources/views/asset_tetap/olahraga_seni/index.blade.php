@@ -50,7 +50,7 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($olahraga as $olahraga)
-                                    <td>1</td>
+                                    <td>{{$loop->index + 1}}</td>
                                     <td>{{ $olahraga->unit }}</td>    
                                     <td>{{ $olahraga->jml_baik }}</td>
                                     <td>{{ $olahraga->jml_rusak_ringan }}</td>
