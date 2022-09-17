@@ -85,6 +85,7 @@
                   <table class="table table-bordered table-hover table-striped table-sm">
                     <tbody>
                       <input type="hidden" name="status" id="status" value="<?php echo $i; ?>" readonly>
+                      <input type="hidden" name="tanggal_pinjam" id="tanggal_pinjam" value="<?php echo date("Y-m-d"); ?>">
                       <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Pinjam Buku"; ?>" readonly>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
@@ -185,8 +186,12 @@
                           <td>{{$item->id_buku}}</td>
                           <td>{{$item->judul_buku}}</td>
                           <td>{{$item->jumlah_pinjam}}</td>
-                          <td>{{$item->created_at}}</td>
-                          <td>{{$item->created_at}}</td>
+                          <td>{{$item->tanggal_pinjam}}</td>
+                          <td>
+                          <?php $tujuh_hari = mktime(0,0,0, date('n'), date('j') + $item->durasi, date('Y'));
+                          $kembali = date('Y-m-d', $tujuh_hari);
+                          echo $kembali;
+                           ?></td>
                           <td class="text-center">
                             <form action="{{route('peminjaman_buku.destroy',$item->id)}}" method="POST">
                               @method('DELETE')

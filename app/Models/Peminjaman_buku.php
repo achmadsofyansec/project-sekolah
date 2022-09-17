@@ -16,5 +16,7 @@ class Peminjaman_buku extends Model
     	'status',
     	'jumlah_pinjam',
     	'durasi',
+    	'tanggal_pinjam',
+    	'status'
     ];
 }

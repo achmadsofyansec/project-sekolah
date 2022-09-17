@@ -18,10 +18,9 @@ class CreatePeminjamanBukusTable extends Migration
             $table->string('id_siswa');
             $table->String('id_buku');
             $table->integer('jumlah_pinjam');
+            $table->date('tanggal_pinjam');
             $table->integer('durasi');
             $table->string('status');
-
-
             $table->timestamps();
         });
     }

@@ -54,6 +54,7 @@ class PeminjamanBukuController extends Controller
             'jumlah_pinjam' => ['required'],
             'status' => ['required'],
             'durasi' => ['required'],
+            'tanggal_pinjam' => ['required'],
             'keperluan' => ['required'],
             'nama_kelas' => ['required']
         ]);
@@ -69,6 +70,7 @@ class PeminjamanBukuController extends Controller
                 'id_buku' => $request->kode_buku,
                 'jumlah_pinjam' => $request->jumlah_pinjam,
                 'status' => $request->status,
+                'tanggal_pinjam' => $request->tanggal_pinjam,
                 'durasi' => $request->durasi
             ]);
             if($create){

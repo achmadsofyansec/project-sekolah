@@ -113,20 +113,44 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
                         @forelse ($data as $item)
                     <tr>
                       <td>{{$loop->index+1}}</td>
                       <td>{{$item->kode_buku}}</td>
                       <td>{{$item->judul_buku}}</td>
-                      <td>{{$item->created_at}}</td>
-                      <td>{{$item->created_at}}</td>
+                      <td>{{$item->tanggal_pinjam}}</td>
+                      <td>
+                        <?php $tanggal_kembali = mktime(0,0,0, date('n'), date('j') + $item->durasi, date('Y'));
+                          $kembali = date('Y-m-d', $tanggal_kembali);
+                          echo $kembali;
+                           ?>
+                      </td>
                       <td><?php if($item->status == 1){
                         echo "Belum Dikembalikan";
                       }else{
                         echo "Telah Dikembalikan";
                       } ?></td>
-                      <td>denda</td>
+                      @forelse ($denda as $item1)
+                      <td>
+                        <?php 
+                          $denda = $item1->tarif_denda;
+                          $tgl_sekarang = date("Y-m-d");
+                          $tgl_kembali = $kembali;
+                          $sel1 = explode('-',$tgl_kembali);
+                          $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
+                          $sel2 = explode('-',$tgl_sekarang);
+                          $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
+                          $selisih = strtotime($sel1_pecah) - strtotime($sel2_pecah);
+                          $selisih = $selisih/86400;
+                          if($selisih > 0){
+                            echo "Tidak Ada";
+                          }else{
+                          echo $selisih*$denda;
+                        }
+                         ?>
+                        </td>
+                        @empty
+                        @endforelse
                       <td class="text-center">
                     <form action="{{route('peminjaman_buku.update',$item->id)}}" method="POST">
                       @csrf
