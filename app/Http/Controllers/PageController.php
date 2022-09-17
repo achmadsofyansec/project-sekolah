@@ -22,8 +22,8 @@ class PageController extends Controller
         $pos_keluar = pos_pengeluaran::latest()->get();
         $biaya_siswa = biaya_siswa::latest()->get();
         $methode = methode_pembayaran::latest()->get();
-        $penerimaan_lain = keuangan_penerimaan_lain_detail::latest()->get();
-        $pengeluaran = keuangan_pengeluaran_detail::latest()->get();
+        $penerimaan_lain = keuangan_penerimaan_lain_detail::latest()->where([['created_at','>=',date('Y-m-d')." 00:00:00"],['created_at','<',date('Y-m-d')." 23:59:59"]])->get();
+        $pengeluaran = keuangan_pengeluaran_detail::latest()->where([['created_at','>=',date('Y-m-d')." 00:00:00"],['created_at','<',date('Y-m-d')." 23:59:59"]])->get();
         return view('dashboard',compact(['pos_terima','pos_keluar','biaya_siswa','methode','penerimaan_lain','pengeluaran']));
     }
     public function view_tunggakan(){
