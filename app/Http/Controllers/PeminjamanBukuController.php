@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Peminjaman_buku;
+use App\Models\Pengunjung_perpus;
 
 class PeminjamanBukuController extends Controller
 {
@@ -48,12 +49,21 @@ class PeminjamanBukuController extends Controller
     {
          $credential = $this->validate($request,[
             'nis' => ['required'],
+            'nama' =>['required'],
             'kode_buku' => ['required'],
             'jumlah_pinjam' => ['required'],
             'status' => ['required'],
-            'durasi' => ['required']
+            'durasi' => ['required'],
+            'keperluan' => ['required'],
+            'nama_kelas' => ['required']
         ]);
         if($credential){
+            $create1 = Pengunjung_perpus::create([
+                'nis' => $request->nis,
+                'nama_siswa' => $request->nama,
+                'kelas' => $request->nis,
+                'keperluan' => $request->keperluan
+            ]);
             $create = Peminjaman_buku::create([
                 'id_siswa' => $request->nis,
                 'id_buku' => $request->kode_buku,
@@ -115,6 +125,21 @@ class PeminjamanBukuController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $credential = $this->validate($request,[
+            'nis' => ['required'],
+            'nama' =>['required'],
+            'keperluan' => ['required'],
+            'nama_kelas' => ['required']
+        ]);
+        if($credential){
+            $create = Pengunjung_perpus::create([
+                'nis' => $request->nis,
+                'nama_siswa' => $request->nama,
+                'kelas' => $request->nama_kelas,
+                'keperluan' => $request->keperluan
+            ]);
+        }
+
          $validate = $this->validate($request,[
             'status' => ['required']
         ]);

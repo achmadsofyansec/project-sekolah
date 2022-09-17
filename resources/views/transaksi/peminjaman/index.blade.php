@@ -85,6 +85,7 @@
                   <table class="table table-bordered table-hover table-striped table-sm">
                     <tbody>
                       <input type="hidden" name="status" id="status" value="<?php echo $i; ?>" readonly>
+                      <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Pinjam Buku"; ?>" readonly>
                       <tr>
                         <td style="width:150px;vertical-align:middle;">NIS</td>
                         <td><input class="form-control nisn" name="nis" id="nis" type="text"  readonly></td>

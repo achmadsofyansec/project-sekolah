@@ -133,6 +133,7 @@
                       @method('PUT')
                       <?php $i = 0; ?>
                         <input type="hidden" name="status" id="status" value="<?php echo $i; ?>">
+                        <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Kembali Buku"; ?>">
                           <button  class="btn btn-primary btn-xs"  onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</i></button></td>
                     </form>
                       @empty

@@ -29,7 +29,7 @@
           <div class="animated fadeInUp col-12">
             <div class="card card-info card-outline">
               <div class="card-header">
-               <a class="btn btn-info btn-sm" href="<?php echo url('/'); ?>/transaksi/peminjaman"><i class="fa fa-plus"> </i> Transaksi Denda</a>
+               <a class="btn btn-info btn-sm" href="{{route('denda.create')}}"><i class="fa fa-plus"> </i> Transaksi Denda</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
@@ -48,8 +48,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                   
+                    @forelse ($denda as $item)
                                     <tr>
+                                        <td>{{$loop->index +1}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td style="text-align:center;width:150px;">
@@ -58,7 +64,12 @@
                                             <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
                                         </div>
                                         </td>
+                                        @empty
+                                    <tr>
+                                      <td colspan="9">tidak ada data</td>
                                     </tr>
+                                </tr>
+                      @endforelse
                   </tbody>
                 </table>
               </div>

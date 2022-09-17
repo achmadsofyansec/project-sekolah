@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pengunjung_perpus extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+		'nis',
+		'nama_siswa',
+		'kelas',
+		'keperluan',
+    ];
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Denda;
+use App\Models\Pengunjung_perpus;
 use Illuminate\Http\Request;
 
-class DendaController extends Controller
+class PengunjungPerpusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class DendaController extends Controller
      */
     public function index()
     {
-        $denda = Denda::latest()->get();
-        return view('master.denda.index',compact('denda'));
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class DendaController extends Controller
      */
     public function create()
     {
-        return view('master.denda.tambah_denda');
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class DendaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Denda  $denda
+     * @param  \App\Models\Pengunjung_perpus  $pengunjung_perpus
      * @return \Illuminate\Http\Response
      */
-    public function show(Denda $denda)
+    public function show(Pengunjung_perpus $pengunjung_perpus)
     {
         //
     }
@@ -53,10 +52,10 @@ class DendaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Denda  $denda
+     * @param  \App\Models\Pengunjung_perpus  $pengunjung_perpus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Denda $denda)
+    public function edit(Pengunjung_perpus $pengunjung_perpus)
     {
         //
     }
@@ -65,10 +64,10 @@ class DendaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Denda  $denda
+     * @param  \App\Models\Pengunjung_perpus  $pengunjung_perpus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Denda $denda)
+    public function update(Request $request, Pengunjung_perpus $pengunjung_perpus)
     {
         //
     }
@@ -76,10 +75,10 @@ class DendaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Denda  $denda
+     * @param  \App\Models\Pengunjung_perpus  $pengunjung_perpus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Denda $denda)
+    public function destroy(Pengunjung_perpus $pengunjung_perpus)
     {
         //
     }

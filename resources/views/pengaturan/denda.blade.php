@@ -21,18 +21,14 @@
       <div class="row">
 			<div class="col-md-12">
                 <div class="card">
-                    <form role="form" action="<?php echo url(''); ?>" method="post">
-
-
-					      
+                  @forelse ($denda as $item)
+                    <form role="form" action="{{url('denda_save')}}" method="post">
 					      <div class="alert alert-success" >
 					        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="fa fa-remove"></i>
 					        </button>
 					        <span style="text-align: left;"></span>
 					      </div>
-					      
-
                         <div class="card-body">
 
                             <div class="row">
@@ -48,9 +44,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     </form>
+                    @empty
+                    @endforelse
                 </div>
                 <!-- /.box -->
             </div>

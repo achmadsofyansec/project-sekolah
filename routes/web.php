@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\DendaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
@@ -39,14 +40,14 @@ Route::resource('sumber',SumberController::class);
 Route::resource('peminjaman_buku',PeminjamanBukuController::class);
 Route::resource('pengembalian',PengembalianBukuController::class);
 Route::resource('data_peminjaman',PeminjamanBukuDtController::class);
+Route::resource('denda',DendaController::class);
 
 //siswa
 Route::get('/siswa/siswa',[PageController::class,'siswa']);
 Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
 
 //denda
-Route::get('/pengaturan/denda_save',[PageController::class,'denda']);
-Route::get('/master/data_denda',[MasterController::class,'data_denda']);
+Route::get('/pengaturan/denda_save',[PageController::class,'denda_save']);
 Route::get('/pengaturan/denda',[PageController::class,'denda']);
 
 //laporan

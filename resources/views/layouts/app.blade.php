@@ -184,7 +184,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/'); ?>/master/data_denda" class="nav-link">
+                <a href="<?php echo url('denda'); ?>" class="nav-link">
                    <i class="fad fa-person-sign nav-icon text-navy"></i>
                   <p>Daftar Denda</p>
                 </a>
@@ -243,7 +243,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo url('/'); ?>/pengaturan/denda" class="nav-link">
+            <a href="<?php echo url('pengaturan/denda'); ?>" class="nav-link">
               <i class="nav-icon fas fa-money-check text-navy"></i>
               <p>
                 Pengaturan Denda

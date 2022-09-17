@@ -40,7 +40,7 @@
                           <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                             <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                           </div>
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach" required>
+                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                         </div>
                       </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
                           <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_akhir}}@endforeach" required>
+                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -87,7 +87,7 @@
               <img src=">" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
                <br></h4>
                       <h4 style="margin:0;">Laporan Pengunjung Perpus </h4>
-                      <p style="margin:0;">Periode : @foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach 's/d' @foreach ($pengunjung as $pengunjung){{$pengunjung->tgl_awal}}@endforeach</p>
+                      <p style="margin:0;">Periode : </p>
                     </center>
                   </div>
                   <!-- /.card-header -->
@@ -108,9 +108,9 @@
                                 <tr>
                                     <td>{{$loop->index +1}}</td>
                                     <td>{{$item->nama_siswa}}</td>
-                                    <td>{{$item->nama_kelas}}</td>
-                                    <td>{{$item->keperlian}}</td>
-                                    <td>{{$item->tanggal}}</td>
+                                    <td>{{$item->kelas}}</td>
+                                    <td>{{$item->keperluan}}</td>
+                                    <td>{{$item->created_at}}</td>
                                     @empty
                                     <tr>
                                       <td colspan="5">tidak ada data</td>

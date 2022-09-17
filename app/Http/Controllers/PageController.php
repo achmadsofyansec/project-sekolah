@@ -26,14 +26,6 @@ class PageController extends Controller
         return view('dashboard', compact('buku', 'pinjaman', 'pengunjung'));
     }
 
- 
-
-    public function denda()
-    {
-        return view('pengaturan.denda');
-    }
-
-
     public function pengembalian()
     {
         return view('transaksi.pengembalian.index');
@@ -43,6 +35,19 @@ class PageController extends Controller
     {
         $peminjaman = Peminjaman_buku::latest()->get();
         return view('laporan.peminjaman.index', compact('peminjaman'));
+    }
+
+
+    public function denda()
+    {
+        $denda = Denda::latest()->get();
+        return view('pengaturan.denda', compact('denda'));
+    }
+
+    public function denda_save()
+    {
+        $denda = Denda::latest()->get();
+        return view('pengaturan.denda', compact('denda'));
     }
 
     public function laporan_buku()

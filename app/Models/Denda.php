@@ -9,7 +9,6 @@ class Denda extends Model
 {
     use HasFactory;
     protected $fillable = [
-    	'id_denda',
 		'tarif_denda'
     ];
 }
