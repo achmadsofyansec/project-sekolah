@@ -13,13 +13,16 @@ class CreatePosPenerimaansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pos_penerimaans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_pos');
-            $table->string('nama_pos');
-            $table->string('desc_pos');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('pos_penerimaans')){
+            Schema::create('pos_penerimaans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_pos');
+                $table->string('nama_pos');
+                $table->string('desc_pos');
+                $table->timestamps();
+            }); 
+        }
+        
     }
 
     /**

@@ -13,13 +13,16 @@ class CreateMethodePembayaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('methode_pembayarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_methode');
-            $table->string('nama_methode');
-            $table->string('desc_methode');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('methode_pembayarans')){
+            Schema::create('methode_pembayarans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_methode');
+                $table->string('nama_methode');
+                $table->string('desc_methode');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

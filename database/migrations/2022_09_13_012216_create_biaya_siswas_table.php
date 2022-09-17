@@ -13,15 +13,18 @@ class CreateBiayaSiswasTable extends Migration
      */
     public function up()
     {
-        Schema::create('biaya_siswas', function (Blueprint $table) {
-            $table->id();
-            $table->string("nama_biaya");
-            $table->string("pos_biaya");
-            $table->string("tipe_biaya");
-            $table->string("kartu_spp");
-            $table->string("penunggakan");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('biaya_siswas')){
+            Schema::create('biaya_siswas', function (Blueprint $table) {
+                $table->id();
+                $table->string("nama_biaya");
+                $table->string("pos_biaya");
+                $table->string("tipe_biaya");
+                $table->string("kartu_spp");
+                $table->string("penunggakan");
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

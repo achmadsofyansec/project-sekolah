@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\biaya_siswa;
+use App\Models\keuangan_penerimaan_lain;
+use App\Models\keuangan_penerimaan_lain_detail;
+use App\Models\keuangan_pengeluaran_detail;
+use App\Models\methode_pembayaran;
 use App\Models\pos_penerimaan;
 use App\Models\pos_pengeluaran;
 use Illuminate\Http\Request;
@@ -15,8 +20,11 @@ class PageController extends Controller
     public function index(){
         $pos_terima = pos_penerimaan::latest()->get();
         $pos_keluar = pos_pengeluaran::latest()->get();
-
-        return view('dashboard',compact(['pos_terima','pos_keluar']));
+        $biaya_siswa = biaya_siswa::latest()->get();
+        $methode = methode_pembayaran::latest()->get();
+        $penerimaan_lain = keuangan_penerimaan_lain_detail::latest()->get();
+        $pengeluaran = keuangan_pengeluaran_detail::latest()->get();
+        return view('dashboard',compact(['pos_terima','pos_keluar','biaya_siswa','methode','penerimaan_lain','pengeluaran']));
     }
     public function view_tunggakan(){
         return view('tunggakan.index');

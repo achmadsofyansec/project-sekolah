@@ -13,13 +13,16 @@ class CreateKeuanganPengeluaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('keuangan_pengeluarans', function (Blueprint $table) {
-            $table->id();
-            $table->string("tgl_pengeluaran");
-            $table->string("methode_bayar");
-            $table->string("desc_pengeluaran");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('keuangan_pengeluarans')){
+            Schema::create('keuangan_pengeluarans', function (Blueprint $table) {
+                $table->id();
+                $table->string("tgl_pengeluaran");
+                $table->string("methode_bayar");
+                $table->string("desc_pengeluaran");
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

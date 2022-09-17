@@ -13,14 +13,17 @@ class CreateKeuanganPenerimaanLainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('keuangan_penerimaan_lains', function (Blueprint $table) {
-            $table->id();
-            $table->string("tgl_penerimaan");
-            $table->string("penerimaan_dari");
-            $table->string("methode_bayar");
-            $table->string("desc_penerimaan");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('keuangan_penerimaan_lains')){
+            Schema::create('keuangan_penerimaan_lains', function (Blueprint $table) {
+                $table->id();
+                $table->string("tgl_penerimaan");
+                $table->string("penerimaan_dari");
+                $table->string("methode_bayar");
+                $table->string("desc_penerimaan");
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

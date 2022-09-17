@@ -13,14 +13,17 @@ class CreateKeuanganPenerimaanLainDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('keuangan_penerimaan_lain_details', function (Blueprint $table) {
-            $table->id();
-            $table->string("kode_penerimaan");
-            $table->string("pos_terima");
-            $table->string("detail_keterangan");
-            $table->string("detail_jumlah");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('keuangan_penerimaan_lain_details')){
+            Schema::create('keuangan_penerimaan_lain_details', function (Blueprint $table) {
+                $table->id();
+                $table->string("kode_penerimaan");
+                $table->string("pos_terima");
+                $table->string("detail_keterangan");
+                $table->string("detail_jumlah");
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

@@ -13,13 +13,16 @@ class CreatePosPengeluaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('pos_pengeluarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_pos');
-            $table->string('nama_pos');
-            $table->string('desc_pos');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('pos_pengeluarans')){
+            Schema::create('pos_pengeluarans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_pos');
+                $table->string('nama_pos');
+                $table->string('desc_pos');
+                $table->timestamps();
+            }); 
+        }
+       
     }
 
     /**

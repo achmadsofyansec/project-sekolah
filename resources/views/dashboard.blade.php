@@ -45,8 +45,8 @@
         <div class="info-box shadow-lg">
           <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cash-register"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text text-success" ><b>Pemasukan</b></span>
-            <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+            <span class="info-box-text text-success" ><b>Biaya Siswa</b></span>
+            <font style="text-shadow: 2px 2px 4px #827e7e">{{$biaya_siswa->count()}}</font>
           </div>
         </div></a>
       </div>
@@ -55,13 +55,62 @@
         <div class="info-box shadow-lg">
           <span class="info-box-icon bg-info elevation-1"><i class="fas fa-luggage-cart"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text text-info" ><b>Pengeluaran</b></span>
-            <font style="text-shadow: 2px 2px 4px #827e7e">0</font>
+            <span class="info-box-text text-info" ><b>Methode Bayar</b></span>
+            <font style="text-shadow: 2px 2px 4px #827e7e">{{$methode->count()}}</font>
           </div>
         </div></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Data Transaksi <?= date('d-M-Y') ?> </h3>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
 </div>
+@endsection
+@section('content-script')
+<script>
+  $(document).ready(function(){
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = {
+  labels: [
+      'Penerimaan Lain',
+      'Tabungan',
+      'Pembayaran Siswa',
+      'Pengeluaran'
+  ],
+  datasets: [
+    {
+      label: "Data Transaksi",
+      data: [{{ $penerimaan_lain->sum('detail_jumlah')}},0,0,{{$pengeluaran->sum('detail_jumlah')}}],
+      backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8'],
+      }
+    ]
+  }
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
+    }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    })
+  });
+</script>
+
 @endsection
