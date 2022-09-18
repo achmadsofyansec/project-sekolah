@@ -19,6 +19,9 @@ use App\Http\Controllers\AsetLainController;
 use App\Http\Controllers\DataAsetTTController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\AjaxController;
 
 
 
@@ -58,8 +61,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/sarana_administrasi', SaranaAdministrasiController::class);
 
         //Peminjaman
-        Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
-        Route::get('/pengembalian',[PageController::class,'view_pengembalian'])->name('pengembalian');
+        Route::resource('/peminjaman', PeminjamanController::class);
+        Route::resource('/pengembalian', PengembalianController::class);
         Route::get('/denda',[PageController::class,'view_denda'])->name('denda');
         
         //Laporan
@@ -69,6 +72,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
+
+        // Ajax
+        Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
     });
 });
 
