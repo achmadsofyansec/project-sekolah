@@ -11,7 +11,7 @@
         @csrf
         <div class="modal-body">
             <div class="card-body">
-                <input type="hidden" name="kode_penerimaan" id="kode_penerimaan" value="{{$data->id}}" readonly>
+                <input type="hidden" name="kode_penerimaan" id="kode_penerimaan" value="{{$data->id_terima}}" readonly>
                 <div class="form-group">
                   <label>Pos Terima</label>
                   <select name="pos_terima" id="pos_terima" class="form-control" required>

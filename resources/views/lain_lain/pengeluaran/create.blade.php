@@ -13,7 +13,7 @@
           <div class="card-body">
               <div class="form-group">
                 <label>Tanggal Pengeluaran</label>
-                <input type="date" name="tgl_penerimaan" value="<?= date('Y-m-d') ?>" id="tgl_penerimaan" class="form-control" required>
+                <input type="date" name="tgl_pengeluaran" value="<?= date('Y-m-d') ?>" id="tgl_pengeluaran" class="form-control" required>
               </div>
               <div class="form-group">
                 <label>Methode Pembayaran</label>
@@ -26,17 +26,13 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Penerimaan Dari</label>
-                <input type="text" name="penerimaan_dari" id="penerimaan_dari" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Deskripsi Penerimaan</label>
-                <textarea name="desc_penerimaan" id="desc_penerimaan" cols="30" rows="8" class="form-control" required></textarea>
+                <label>Deskripsi Pengeluaran</label>
+                <textarea name="desc_pengeluaran" id="desc_pengeluaran" cols="30" rows="8" class="form-control" required></textarea>
               </div>
           </div>
       </div>
       <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Continue</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>         
       </form>

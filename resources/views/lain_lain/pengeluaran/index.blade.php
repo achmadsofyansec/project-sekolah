@@ -33,7 +33,7 @@
             @endif
             <div class="card card-primary card-outline">
               <div class="card-header">
-              <a type="button" href="" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+              <a type="button" href="" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-pengeluaran"><i class="fas fa-plus"></i> Tambah</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -50,12 +50,12 @@
                           <tr>
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->tgl_pengeluaran}}</td>
-                          <td>{{$item->methode_bayar}}</td>
+                          <td>{{$item->nama_methode}}</td>
                           <td>{{$item->desc_pengeluaran}}</td>
                           <td>
                             <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                            action="{{ route('keluar_lain.destroy',$item->id) }}" method="POST">
-                                            <a href="{{ route('keluar_lain.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                            action="{{ route('keluar_lain.destroy',$item->id_keluar) }}" method="POST">
+                                            <a href="{{ route('keluar_lain.edit',$item->id_keluar) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
@@ -75,6 +75,7 @@
           </div>
         </div>
     </div>
+    @include('lain_lain.pengeluaran.create')
 </div>
 </div>
 @endsection
