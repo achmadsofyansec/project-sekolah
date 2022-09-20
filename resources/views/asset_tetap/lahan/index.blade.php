@@ -34,38 +34,33 @@
               @endif
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
-                   <a type="button" href="{{ route('gedung.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                   <a type="button" href="{{ route('lahan.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>
-                                    <th>Nama Gedung</th>                     
+                                    <th>No</th>                                   
                                     <th>Nama Lahan</th>
-                                    <th>Jumlah Lantai</th>
-                                    <th>Kepemilikan</th>
-                                    <th>Kondisi Kerusakan</th>
-                                    <th>Kategori Kondisi</th>
-                                    <th>Tahun Dibangun</th>
-                                    <th>Luas Gedung</th>
+                                    <th>Alamat</th>
+                                    <th>Luas (m)</th>
+                                    <th>Luas Digunakan (m)</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($gedung as $gedung)
+                                  @forelse ($lahan as $lahan)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $gedung->nama_gedung }}</td>
-                                    <td>{{ $gedung->nama_lahan }}</td>    
-                                    <td>{{ $gedung->jml_lantai }}</td>
-                                    <td>{{ $gedung->kepemilikan }}</td>
-                                    <td>{{ $gedung->kondisi_kerusakan }}</td>
-                                    <td>{{ $gedung->kategori_kondisi }}</td>
-                                    <td>{{ $gedung->tahun_dibangun }}</td>
-                                    <td>{{ $gedung->luas_gedung }}</td>
+                                    <td>{{ $lahan->nama_lahan }}</td>
+                                    <td>{{ $lahan->alamat }}</td>    
+                                    <td>{{ $lahan->luas }}</td>
+                                    <td>{{ $lahan->luas_digunakan }}</td>
+                                    <td>{{ $lahan->status }}</td>
+                                   
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="{{ route('gedung.destroy',$gedung->id) }}" method="POST">
-                                        <a href="{{ route('gedung.edit',$gedung->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        action="{{ route('lahan.destroy',$lahan->id) }}" method="POST">
+                                        <a href="{{ route('lahan.edit',$lahan->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         @csrf
                                           @method('DELETE')
                                           <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
@@ -79,6 +74,62 @@
                                   <td>
                                     @endforelse
                                 </tbody>  
+                            </table>
+                       </div>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                <thead>
+                                    <th>No</th>                                   
+                                    <th>Kepemilikan</th>
+                                    <th>Bersertifikat (m)</th>
+                                    <th>Belum Bersertifikat (m)</th>
+                                    <th>Total</th>
+                                </thead>
+                                <tbody>
+                                  @forelse ($data_kepemilikan as $data)
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{ $data->kepemilikan }}</td>    
+                                    <td>{{ $data->bersertifikat }}</td>
+                                    <td>{{ $data->belum_bersertifikat }}</td>
+                                    <td>{{ $data->total }}</td>
+                                </tbody>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                    @endforelse
+                                </tbody>  
+                            </table>
+                       </div>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                  <thead>
+                                    <th>No</th>                                   
+                                    <th>Status</th>
+                                    <th>Penggunaan</th>
+                                    <th>Bersertifikat (m)</th>
+                                    <th>Belum Bersertifikat (m)</th>
+                                    <th>Total</th>
+                                </thead>
+                                <tbody>
+                                  @forelse ($data_pengguna as $data)
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{ $data->status }}</td>
+                                    <td>{{ $data->penggunaan }}</td>    
+                                    <td>{{ $data->penggunaan_bersertifikat }}</td>
+                                    <td>{{ $data->penggunaan_belum_bersertifikat }}</td>
+                                    <td>{{ $data->penggunaan_total }}</td>
+                                </tbody>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                    @endforelse
+                                </tbody> 
                             </table>
                        </div>
                    </div>

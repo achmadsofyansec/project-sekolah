@@ -41,15 +41,16 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>                                   
-                                    <th>Unit</th>
-                                    <th>Kondisi</th>
-                                    <th>Panjang (m)</th>
-                                    <th>Lebar (m)</th>
-                                    <th>Foto</th>
+                                    <th>Nama Lahan</th>
+                                    <th>Alamat</th>
+                                    <th>Luas Lahan</th>
+                                    <th>Luas Digunakan</th>
+                                    <th>Luas Belum Digunakan</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($lapangan as $lapangan)
+                                  @forelse ($lahan as $lahan)
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{ $lapangan->unit }}</td>
                                     <td>{{ $lapangan->kondisi }}</td>    

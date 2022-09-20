@@ -22,6 +22,7 @@ use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\LahanController;
 
 
 
@@ -53,7 +54,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/kategori_aset_tt', KategoriController::class);
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
         Route::resource('/laboratorium', LaboratoriumController::class);
-        Route::get('/lahan',[PageController::class,'view_lahan'])->name('lahan');
+        Route::resource('/lahan', LahanController::class);
         Route::resource('/mebel', MebelController::class);
         Route::resource('/olahraga_seni', OlahragaSeniController::class);
         Route::resource('/penerangan_internet', PeneranganInternetController::class);
