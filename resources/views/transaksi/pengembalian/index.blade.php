@@ -109,7 +109,7 @@
                       <th>Tgl Kembali</th>
                       <th>Status</th>
                       <th>Denda</th>
-                      <th class="text-center">Status</th>
+                      <th class="text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,19 +133,19 @@
                       @forelse ($denda as $item1)
                       <td>
                         <?php 
-                          $denda = $item1->tarif_denda;
+                          $dendabuku = $item1->tarif_denda;
                           $tgl_sekarang = date("Y-m-d");
                           $tgl_kembali = $kembali;
                           $sel1 = explode('-',$tgl_kembali);
                           $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
                           $sel2 = explode('-',$tgl_sekarang);
                           $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
-                          $selisih = strtotime($sel1_pecah) - strtotime($sel2_pecah);
+                          $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
                           $selisih = $selisih/86400;
-                          if($selisih > 0){
+                          if($selisih < 0){
                             echo "Tidak Ada";
                           }else{
-                          echo $selisih*$denda;
+                          echo $selisih." hari (Rp.". $dendabuku*$selisih.")";
                         }
                          ?>
                         </td>
@@ -158,8 +158,12 @@
                       <?php $i = 0; ?>
                         <input type="hidden" name="status" id="status" value="<?php echo $i; ?>">
                         <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Kembali Buku"; ?>">
+                        <?php if($item->status == 1){ ?>
                           <button  class="btn btn-primary btn-xs"  onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</i></button></td>
+                        <?php }else{ ?>
                     </form>
+                    <button class="btn btn-success btn-xs"><i class="fa fa-edit" readonly> </i>Dikembalikan</i></button></td>
+                        <?php } ?>
                       @empty
                         <tr>
                         <td colspan="8" class="text-center text-mute">Tidak Ada Data</td>
@@ -201,6 +205,9 @@
               $('#nis').val(ray.nisn)
               $('#nama').val(ray.nama)
               $('#nama_kelas').val(ray.nisn)
+              $('#nama_siswa').val(ray.nama)
+              $('#nis_siswa').val(ray.nisn)
+              $('#kelas').val(ray.nisn)
              }
           });
   }
