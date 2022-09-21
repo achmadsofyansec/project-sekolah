@@ -34,16 +34,24 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
+                     <div class="card-tools">
+                     <a type="button" href="{{route('pindah_kelas.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah Pengajuan</a>
+                     </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Nis</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Tahun Ajaran</th>
+                                    <th>Status</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
                                 </tbody>
                             </table>
                        </div>

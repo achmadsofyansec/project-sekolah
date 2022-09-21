@@ -60,9 +60,6 @@ class PageController extends Controller
         return view('nilai.input_nilai.ujian.index');
     }
     
-    public function view_pindah(){
-        return view('pindah_kelas.index');
-    }
     public function logout(Request $request){
         Auth::logout();
      

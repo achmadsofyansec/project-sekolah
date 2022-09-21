@@ -12,6 +12,7 @@ use App\Http\Controllers\KelompokMapelController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PerizinanController;
+use App\Http\Controllers\PindahKelasController;
 use App\Http\Controllers\PredikatController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
@@ -67,13 +68,11 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/input_prestasi',[PageController::class,'view_input_prestasi'])->name('input_prestasi');
         Route::get('/input_rapor',[PageController::class,'view_input_rapor'])->name('input_rapor');
         Route::get('/input_ujian',[PageController::class,'view_input_ujian'])->name('input_ujian');
-
         //Ekstrakulikuler
         Route::resource('ekstrakulikuler',EkstrakulikulerController::class);
         Route::resource('anggota_ekstra',AnggotaEkstraController::class);
         //Pindah / Naik Kelas
-        Route::get('/pindah_kelas',[PageController::class,'view_pindah'])->name('pindah_kelas');
-
+        Route::resource('pindah_kelas',PindahKelasController::class);
         //AjaxRequest
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');
