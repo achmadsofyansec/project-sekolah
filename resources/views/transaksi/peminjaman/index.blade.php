@@ -79,12 +79,13 @@
               <div class="col-md-12">
                 <form role="form" action="{{route('peminjaman_buku.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
-                  <?php $i = 1 ?>
+                  <?php
+                  ?>
                 <div class="row">
                 <div class="col-md-7">
                   <table class="table table-bordered table-hover table-striped table-sm">
                     <tbody>
-                      <input type="hidden" name="status" id="status" value="<?php echo $i; ?>" readonly>
+                      <input type="hidden" name="status" id="status" value="<?php echo 1; ?>" readonly>
                       <input type="hidden" name="tanggal_pinjam" id="tanggal_pinjam" value="<?php echo date("Y-m-d"); ?>">
                       <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Pinjam Buku"; ?>" readonly>
                       <tr>

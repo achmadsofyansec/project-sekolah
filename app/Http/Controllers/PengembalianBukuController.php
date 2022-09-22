@@ -45,11 +45,10 @@ class PengembalianBukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        
+        //
     }
-
     /**
      * Display the specified resource.
      *
@@ -70,7 +69,6 @@ class PengembalianBukuController extends Controller
     public function edit($id, Request $request)
     {
         //
-
     }
     
 
@@ -83,7 +81,37 @@ class PengembalianBukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $validate = $this->validate($request,[
+            'status' => ['required'],
+            'nis' => ['required'],
+            'nama' =>['required'],
+            'keperluan' => ['required'],
+        ]);
+        if($validate){
+            $update = peminjaman_buku::findOrFail($id);
+            $create = Pengunjung_perpus::create([
+                'nis' => $request->nis,
+                'nama_siswa' => $request->nama,
+                'kelas' => $request->nis,
+                'keperluan' => $request->keperluan
+            ]);
+            $update->update([
+                'status' => $request->status
+            ]);
+            if($update){
+                return redirect()
+                ->route('pengembalian.store')
+                ->with([
+                    'success' => 'Terima Kasih Sudah Mengembalikan'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

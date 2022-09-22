@@ -127,43 +127,8 @@ class PeminjamanBukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $credential = $this->validate($request,[
-            'nis' => ['required'],
-            'nama' =>['required'],
-            'keperluan' => ['required'],
-            'nama_kelas' => ['required']
-        ]);
-        if($credential){
-            $create1 = Pengunjung_perpus::create([
-                'nis' => $request->nis,
-                'nama_siswa' => $request->nama,
-                'kelas' => $request->nis,
-                'keperluan' => $request->keperluan
-            ]);
-         $validate = $this->validate($request,[
-            'status' => ['required'],
-        ]);
-        if($validate){
-            $update = peminjaman_buku::findOrFail($id);
-            $update->update([
-                'status' => $request->status
-            ]);
-            if($update){
-                return redirect()
-                ->route('pengembalian.index')
-                ->with([
-                    'success' => 'Terima Kasih Sudah Mengembalikan'
-                ]);
-            }else{
-                return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Some problem has occurred, please try again'
-                ]);
-            }
-        }
+        //
     }
-}
 
     /**
      * Remove the specified resource from storage.
