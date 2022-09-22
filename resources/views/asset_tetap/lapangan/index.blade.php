@@ -52,7 +52,7 @@
                                 <tbody>
                                   @forelse ($lahan as $lahan)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $lapangan->unit }}</td>
+                                    <td>{{ $lahan->unit }}</td>
                                     <td>{{ $lapangan->kondisi }}</td>    
                                     <td>{{ $lapangan->kondisi }}</td>
                                     <td>{{ $lapangan->panjang }}</td>

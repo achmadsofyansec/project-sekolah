@@ -23,17 +23,7 @@ class LahanController extends Controller
     
         // $lahan = SarprasLahan::latest()->get();
         $lahan = DB::table('sarpras_lahans')->select(['sarpras_lahans.*'])->get();
-        $kepemilikan = DB::table('sarpras_kepemilikan_lahans')->select(['sarpras_kepemilikan_lahans.*'])->get();
-        $pengguna = DB::table('sarpras_penggunaan_lahans')->select(['sarpras_penggunaan_lahans.*'])->get();
-        // $kepemilikan = SarprasKepemilikanLahan::latest()->get();
-        $pemggunaan = SarprasPenggunaanLahan::latest()->get();
-        $data_kepemilikan = DB::table('sarpras_lahans')
-                    ->join('sarpras_kepemilikan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_kepemilikan_lahans.nama_lahan')
-                    ->get();
-        $data_pengguna = DB::table('sarpras_lahans')
-                    ->join('sarpras_penggunaan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_penggunaan_lahans.nama_lahan')
-                    ->get();            
-        return view('asset_tetap.lahan.index',compact (['lahan', 'data_kepemilikan', 'data_pengguna']));
+        return view('asset_tetap.lahan.index',compact ('lahan'));
     }
 
     /**
@@ -41,6 +31,11 @@ class LahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function create()
+    {
+        return view('asset_tetap.lahan.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -61,7 +56,19 @@ class LahanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = SarprasLahan::findOrFail($id);
+        $lahan = DB::table('sarpras_lahans')->select(['sarpras_lahans.*'])->get();
+        $kepemilikan = DB::table('sarpras_kepemilikan_lahans')->select(['sarpras_kepemilikan_lahans.*'])->get();
+        $pengguna = DB::table('sarpras_penggunaan_lahans')->select(['sarpras_penggunaan_lahans.*'])->get();
+        // $kepemilikan = SarprasKepemilikanLahan::latest()->get();
+        $pemggunaan = SarprasPenggunaanLahan::latest()->get();
+        $data_kepemilikan = DB::table('sarpras_lahans')
+                    ->join('sarpras_kepemilikan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_kepemilikan_lahans.nama_lahan')
+                    ->get();
+        $data_pengguna = DB::table('sarpras_lahans')
+                    ->join('sarpras_penggunaan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_penggunaan_lahans.nama_lahan')
+                    ->get();            
+        return view('asset_tetap.lahan.tampil',compact (['lahan', 'data_kepemilikan', 'data_pengguna']));
     }
 
     /**
@@ -72,7 +79,19 @@ class LahanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SarprasLahan::findOrFail($id);
+        $lahan = DB::table('sarpras_lahans')->select(['sarpras_lahans.*'])->get();
+        $kepemilikan = DB::table('sarpras_kepemilikan_lahans')->select(['sarpras_kepemilikan_lahans.*'])->get();
+        $pengguna = DB::table('sarpras_penggunaan_lahans')->select(['sarpras_penggunaan_lahans.*'])->get();
+        // $kepemilikan = SarprasKepemilikanLahan::latest()->get();
+        $pemggunaan = SarprasPenggunaanLahan::latest()->get();
+        $data_kepemilikan = DB::table('sarpras_lahans')
+                    ->join('sarpras_kepemilikan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_kepemilikan_lahans.nama_lahan')
+                    ->get();
+        $data_pengguna = DB::table('sarpras_lahans')
+                    ->join('sarpras_penggunaan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_penggunaan_lahans.nama_lahan')
+                    ->get();            
+        return view('asset_tetap.lahan.edit',compact (['lahan', 'data_kepemilikan', 'data_pengguna', 'data']));
     }
 
     /**
