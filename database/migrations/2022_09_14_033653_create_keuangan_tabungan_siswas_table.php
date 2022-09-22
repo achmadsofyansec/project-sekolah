@@ -17,12 +17,10 @@ class CreateKeuanganTabunganSiswasTable extends Migration
             Schema::create('keuangan_tabungan_siswas', function (Blueprint $table) {
                 $table->id();
                 $table->string("kode_tabungan");
-                $table->string("tgl_transaksi");
-                $table->string("methode_bayar");
-                $table->string("petugas_input");
-                $table->string("keterangan");
-                $table->string("type_trx");
-                $table->string("jml_trx");
+                $table->string("kode_siswa");
+                $table->string('saldo_tabungan');
+                $table->string('status_tabungan');
+                $table->string('desc_tabungan');
                 $table->timestamps();
             });
         }

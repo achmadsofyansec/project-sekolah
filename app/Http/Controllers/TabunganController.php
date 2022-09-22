@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_siswa;
+use App\Models\keuangan_tabungan_siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TabunganController extends Controller
 {
@@ -13,7 +16,18 @@ class TabunganController extends Controller
      */
     public function index()
     {
-        return view('tabungan.index');
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
+        ->where([['data_siswas.status_siswa','=','Aktif']])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*']);
+        $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
+                                        ->where([['data_siswas.status_siswa','=','Aktif']])
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*'
+                                            ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
+                                            ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan']);
+        return view('tabungan.index',compact(['siswa','data']));
     }
 
     /**
@@ -35,6 +49,36 @@ class TabunganController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $this->validate($request,[
+            'kode_siswa' => ['required'],
+            'status_tabungan' => ['required'],
+            'desc_tabungan' => ['required'],
+        ]);
+        if($validate){
+            $qode = Str::random(6);
+            $length = keuangan_tabungan_siswa::latest()->get()->count();
+            $kode = 'TS_'.$qode.$length;
+            $create= keuangan_tabungan_siswa::create([
+                'kode_tabungan' => $kode,
+                'kode_siswa' => $request->kode_siswa,
+                'saldo_tabungan' => '0',
+                'status_tabungan' => $request->status_tabungan,
+                'desc_tabungan' => $request->desc_tabungan,
+            ]);
+            if($create){
+                return redirect()
+                ->route('tabungan.index')
+                ->with([
+                    'success' => 'Tabungan Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

@@ -32,40 +32,34 @@
             </div>
             @endif
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-3">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
-                    <div class="card-tools">
-                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-tabungan"><i class="fas fa-plus"></i> Tambah</a>
+                    <div class="card-title">
+                      Data Siswa
                     </div>
+                  </div>
+                  <div class="card-body">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                  <div class="card-tools">
+                    <a type="button" href="" class="btn btn-primary"><i class="fas fa-plus"></i> Setoran</a>
+                    <a type="button" href="" class="btn btn-primary"><i class="fas fa-minus"></i> Penarikan</a>
+                  </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table id="dataTable" class="table table-border">
                         <thead>
                           <th>No</th>
-                          <th>NISN</th>
-                          <th>Nama Siswa</th>
-                          <th>Kelas / Jurusan</th>
-                          <th>Saldo</th>
-                          <th>Status</th>
                           <th>Aksi</th>
                         </thead>
                         <tbody>
-                          @forelse ($data as $item)
-                              <tr>
-                              <td>{{$loop->index + 1}}</td>
-                              <td>{{$item->nisn}}</td>
-                              <td>{{$item->nama}}</td>
-                              <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                              <td>{{$item->saldo_tabungan}}</td>
-                              <td>{{$item->status_tabungan}}</td>
-                              </tr>
-                          @empty
-                              <tr>
-                                <td class="text-muted text-center" colspan="7">Tidak Ada Data</td>
-                              </tr>
-                          @endforelse
                         </tbody>
                       </table>
                     </div>
@@ -73,10 +67,10 @@
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
     </div>
-    @include('tabungan.create')
 </div>
 </div>
 @endsection

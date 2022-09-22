@@ -17,7 +17,7 @@
               </div>
               <div class="form-group">
                 <label>Methode Pembayaran</label>
-                <select name="methode_bayar" id="methode_bayar" class="form-control" required>
+                <select name="methode_bayar" id="methode_bayar" class="form-control" style="width: 100%;" required>
                   <option value=""> -- Pilih Methode Pembayaran --</option>
                   @forelse ($metode_bayar as $item)
                 <option value="{{$item->kode_methode}}">{{$item->nama_methode}}</option>
