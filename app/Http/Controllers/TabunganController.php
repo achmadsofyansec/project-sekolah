@@ -18,7 +18,6 @@ class TabunganController extends Controller
     {
         $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
         ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['data_siswas.status_siswa','=','Aktif']])
         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*']);
         $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
                                         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
@@ -55,28 +54,37 @@ class TabunganController extends Controller
             'desc_tabungan' => ['required'],
         ]);
         if($validate){
-            $qode = Str::random(6);
-            $length = keuangan_tabungan_siswa::latest()->get()->count();
-            $kode = 'TS_'.$qode.$length;
-            $create= keuangan_tabungan_siswa::create([
-                'kode_tabungan' => $kode,
-                'kode_siswa' => $request->kode_siswa,
-                'saldo_tabungan' => '0',
-                'status_tabungan' => $request->status_tabungan,
-                'desc_tabungan' => $request->desc_tabungan,
-            ]);
-            if($create){
-                return redirect()
-                ->route('tabungan.index')
-                ->with([
-                    'success' => 'Tabungan Has Been Added successfully'
+            $cek = keuangan_tabungan_siswa::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
+            if(!$cek){
+                $qode = Str::random(6);
+                $length = keuangan_tabungan_siswa::latest()->get()->count();
+                $kode = 'TS_'.$qode.$length;
+                $create= keuangan_tabungan_siswa::create([
+                    'kode_tabungan' => $kode,
+                    'kode_siswa' => $request->kode_siswa,
+                    'saldo_tabungan' => '0',
+                    'status_tabungan' => $request->status_tabungan,
+                    'desc_tabungan' => $request->desc_tabungan,
                 ]);
+                if($create){
+                    return redirect()
+                    ->route('tabungan.index')
+                    ->with([
+                        'success' => 'Tabungan Has Been Added successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
             }else{
                 return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Some problem has occurred, please try again'
-                ]);
+                    ->route('tabungan.index')
+                    ->with([
+                        'success' => 'Tabungan Has Been Already Added'
+                    ]);
             }
         }
     }
@@ -101,6 +109,15 @@ class TabunganController extends Controller
     public function edit($id)
     {
         //
+        $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
+        ->where([['keuangan_tabungan_siswas.id','=',$id]])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*'
+            ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
+            ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan'])->first();
+        return view('tabungan.edit',compact(['data']));
+        
     }
 
     /**
@@ -113,6 +130,30 @@ class TabunganController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validate = $this->validate($request,[
+            'status_tabungan' => ['required'],
+            'desc_tabungan' => ['required']
+        ]);
+        if($validate){
+            $update = keuangan_tabungan_siswa::findOrFail($id);
+            $update->update([
+                'status_tabungan' => $request->status_tabungan,
+                'desc_tabungan' => $request->desc_tabungan
+            ]);
+            if($update){
+                return redirect()
+                ->route('tabungan.index')
+                ->with([
+                    'success' => 'Tabungan Has Been Updated successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -124,5 +165,20 @@ class TabunganController extends Controller
     public function destroy($id)
     {
         //
+        $data = keuangan_tabungan_siswa::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('tabungan.index')
+            ->with([
+                'success' => 'Tabungan Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

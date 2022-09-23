@@ -52,19 +52,28 @@
                           <th>Aksi</th>
                         </thead>
                         <tbody>
+                          
                           @forelse ($data as $item)
                               <tr>
                               <td>{{$loop->index + 1}}</td>
                               <td>{{$item->nisn}}</td>
                               <td>{{$item->nama}}</td>
                               <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                              <td>{{$item->saldo_tabungan}}</td>
-                              <td>{{$item->status_tabungan}}</td>
+                              <td>Rp.{{number_format($item->saldo_tabungan)}}</td>
+                              <td>@if ($item->status_tabungan == '1')
+                                 <span class="btn btn-success">Aktif</span>
+                              @else
+                              <span class="btn btn-danger">NonAktif</span>
+                              @endif</td>
+                              <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                action="{{ route('tabungan.destroy',$item->id) }}" method="POST">
+                                <a href="{{ route('tabungan.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                </form></td>
                               </tr>
                           @empty
-                              <tr>
-                                <td class="text-muted text-center" colspan="7">Tidak Ada Data</td>
-                              </tr>
                           @endforelse
                         </tbody>
                       </table>

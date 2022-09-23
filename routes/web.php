@@ -14,6 +14,7 @@ use App\Http\Controllers\PosPengeluaranController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TabunganController;
+use App\Http\Controllers\TabunganDetailController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/pembayaran_siswa',[PageController::class,'view_pembayaran_siswa'])->name('pembayaran_siswa');
         Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::resource('tabungan',TabunganController::class);
+        Route::resource('tabungan_detail',TabunganDetailController::class);
         
         Route::resource('terima_lain',PenerimaanLainController::class);
         Route::resource('detail_terima_lain',PenerimaanLainDetailController::class);

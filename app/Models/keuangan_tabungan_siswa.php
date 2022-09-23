@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class keuangan_tabungan_siswa extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_tabungan',
+        'kode_siswa',
+        'saldo_tabungan',
+        'status_tabungan',
+        'desc_tabungan'
+    ];
 }
