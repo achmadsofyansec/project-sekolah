@@ -31,9 +31,7 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 
 
-Route::post('/signout',[PageController::class,'logout']);
-Route::group(['middleware'=>['prevent-back']],function(){
-    Route::group(['middleware'=>['auth']],function(){
+        
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         Route::resource('jenis_dokumen', JenisDokumenController::class);
         Route::resource('ruangan', RuanganController::class);
@@ -47,8 +45,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
         
 
-    });
-});
 
 
 
