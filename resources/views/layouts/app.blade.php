@@ -33,7 +33,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-light" style="background-color: #001f3f">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -101,6 +101,7 @@
           <img src="{{asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
           <span class="badge badge-info right ">Administrator</span>
           <form action="<?php echo url('/signout') ?>" method="post">
           @csrf
@@ -118,7 +119,7 @@
             <a href="<?php echo url('/'); ?>" class="nav-link active bg-navy">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                DAHSBOARD
+                DASHBOARD
               </p>
             </a>
           </li>

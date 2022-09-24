@@ -16,14 +16,16 @@ class PeminjamanBukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $nisn = ['data_siswas.nisn','=',$request->nisn];
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
         $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
         $peminjaman = Peminjaman_buku::latest()->get();
         $data = DB::table('data_bukus')
                     ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
                     ->where('status','LIKE', "1" )
+                    ->where('id_siswa','LIKE', $nisn)
                     ->get();
         return view('transaksi.peminjaman.index',compact (['siswa','buku','data']));
         //

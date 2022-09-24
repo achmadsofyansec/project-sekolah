@@ -53,7 +53,7 @@
                       <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" required>
                   </div>
                 <!-- /.card-body -->
-                <div class="card-footer text-right">
+                <div class= text-right">
                   <div class="btn-group btn-group-sm">
                     <a class="btn btn-danger float-right" href="{{route('kategori.index')}}"><i class="fa fa-undo"> </i> Kembali</a>
                   <button type="submit" class="btn btn-info float-right"><i class="fa fa-save"> </i> Simpan</button>
