@@ -13,14 +13,17 @@ class CreateAktivitasBelajarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aktivitas_belajars', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_siswa');
-            $table->string('kode_kelas');
-            $table->string('kode_tahun_ajaran');
-            $table->string('kode_jurusan');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('aktivitas_belajars')){
+            Schema::create('aktivitas_belajars', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_siswa');
+                $table->string('kode_kelas');
+                $table->string('kode_tahun_ajaran');
+                $table->string('kode_jurusan');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

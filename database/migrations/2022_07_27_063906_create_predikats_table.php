@@ -13,14 +13,17 @@ class CreatePredikatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('predikats', function (Blueprint $table) {
-            $table->id();
-            $table->string('dari');
-            $table->string('sampai');
-            $table->string('grade');
-            $table->string('keterangan');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('kelas')){
+            Schema::create('predikats', function (Blueprint $table) {
+                $table->id();
+                $table->string('dari');
+                $table->string('sampai');
+                $table->string('grade');
+                $table->string('keterangan');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

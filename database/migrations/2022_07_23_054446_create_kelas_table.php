@@ -13,13 +13,15 @@ class CreateKelasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kelas', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kelas');
-            $table->string('nama_kelas');
-            $table->string('status_kelas');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('kelas')){
+            Schema::create('kelas', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_kelas');
+                $table->string('nama_kelas');
+                $table->string('status_kelas');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

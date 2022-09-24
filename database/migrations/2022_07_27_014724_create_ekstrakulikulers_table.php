@@ -13,15 +13,18 @@ class CreateEkstrakulikulersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ekstrakulikulers', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_ekstra');
-            $table->string('nama_ekstra');
-            $table->string('desc_ekstra');
-            $table->string('status_ekstra');
-            $table->string('wajib_ekstra');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ekstrakulikulers')){
+            Schema::create('ekstrakulikulers', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_ekstra');
+                $table->string('nama_ekstra');
+                $table->string('desc_ekstra');
+                $table->string('status_ekstra');
+                $table->string('wajib_ekstra');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

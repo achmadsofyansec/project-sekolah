@@ -13,14 +13,17 @@ class CreateTahunAjaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('tahun_ajarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_tahun_ajaran');
-            $table->string('tahun_ajaran');
-            $table->integer('semester');
-            $table->string('status_tahun_ajaran');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('tahun_ajarans')){
+            Schema::create('tahun_ajarans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_tahun_ajaran');
+                $table->string('tahun_ajaran');
+                $table->integer('semester');
+                $table->string('status_tahun_ajaran');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

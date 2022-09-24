@@ -13,13 +13,16 @@ class CreateKelompokPelajaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('kelompok_pelajarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kelompok');
-            $table->string('nama_kelompok');
-            $table->string('status_kelompok');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('kelompok_pelajarans')){
+            Schema::create('kelompok_pelajarans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_kelompok');
+                $table->string('nama_kelompok');
+                $table->string('status_kelompok');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

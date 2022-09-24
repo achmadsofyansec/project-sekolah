@@ -13,13 +13,16 @@ class CreateAnggotaEkstrasTable extends Migration
      */
     public function up()
     {
-        Schema::create('anggota_ekstras', function (Blueprint $table) {
-            $table->id();
-            $table->string('tanggal_daftar');
-            $table->string('kode_siswa');
-            $table->string('kode_ekstra');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('anggota_ekstras')){
+            Schema::create('anggota_ekstras', function (Blueprint $table) {
+                $table->id();
+                $table->string('tanggal_daftar');
+                $table->string('kode_siswa');
+                $table->string('kode_ekstra');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

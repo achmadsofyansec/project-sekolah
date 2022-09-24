@@ -13,15 +13,18 @@ class CreateJadwalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwals', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_jadwal');
-            $table->string('kode_guru');
-            $table->string('kode_mapel');
-            $table->string('kode_kelas');
-            $table->string('kode_tahun_ajaran');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('jadwals')){
+            Schema::create('jadwals', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_jadwal');
+                $table->string('kode_guru');
+                $table->string('kode_mapel');
+                $table->string('kode_kelas');
+                $table->string('kode_tahun_ajaran');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

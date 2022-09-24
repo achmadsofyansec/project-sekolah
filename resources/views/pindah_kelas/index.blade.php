@@ -43,7 +43,7 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
-                                    <th>Nis</th>
+                                    <th>NISN</th>
                                     <th>Nama</th>
                                     <th>Kelas</th>
                                     <th>Tahun Ajaran</th>
@@ -52,6 +52,40 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
+                                  @forelse ($data as $item)
+                                      <tr>
+                                        <td>{{$loop->index + 1}}</td>
+                                        <td>{{$item->nisn}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->nama_kelas}}</td>
+                                        <td>{{$item->tahun_ajaran}}</td>
+                                        <td><?php
+                                          switch($item->status_pindah){
+                                              case '0':
+                                                  echo "Belum Disetujui";
+                                                  break;
+                                              case '1':
+                                                  echo "Disetujui";
+                                                  break;
+                                              case '2':
+                                                  echo "Ditolak";
+                                                  break;
+                                          }
+                                        ?></td>
+                                        <td>{{$item->ket_pindah}}</td>
+                                        <td>
+                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                          action="{{ route('pindah_kelas.destroy',$item->id_pindah) }}" method="POST">
+                                          <a href="{{ route('pindah_kelas.edit',$item->id_pindah) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                          @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                          </form>
+                                        </td>
+                                      </tr>
+                                  @empty
+                                      
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>

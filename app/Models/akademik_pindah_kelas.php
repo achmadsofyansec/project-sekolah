@@ -9,9 +9,12 @@ class akademik_pindah_kelas extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'tgl_pengajuan',
+        'tgl_disetujui',
         'kode_siswa',
+        'kode_kelas_siswa',
+        'kode_kelas_tujuan',
         'status_pindah',
-        'keterangan',
-        'created_by'
+        'ket_pindah',
     ];
 }

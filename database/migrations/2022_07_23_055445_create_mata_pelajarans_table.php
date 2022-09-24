@@ -13,14 +13,17 @@ class CreateMataPelajaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('mata_pelajarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kelompok');
-            $table->string('kode_mapel');
-            $table->string('nama_mapel');
-            $table->string('status_mapel');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('mata_pelajarans')){
+            Schema::create('mata_pelajarans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_kelompok');
+                $table->string('kode_mapel');
+                $table->string('nama_mapel');
+                $table->string('status_mapel');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

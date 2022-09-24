@@ -13,16 +13,19 @@ class CreateAbsensisTable extends Migration
      */
     public function up()
     {
-        Schema::create('absensis', function (Blueprint $table) {
-            $table->id();
-            $table->dateTime('tgl_absensi');
-            $table->string('kode_siswa');
-            $table->string('jenis_absen');
-            $table->string('keterangan');
-            $table->string('alasan');
-            $table->string('created_by');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('absensis')){
+            Schema::create('absensis', function (Blueprint $table) {
+                $table->id();
+                $table->dateTime('tgl_absensi');
+                $table->string('kode_siswa');
+                $table->string('jenis_absen');
+                $table->string('keterangan');
+                $table->string('alasan');
+                $table->string('created_by');
+                $table->timestamps();
+            }); 
+        }
+        
     }
 
     /**

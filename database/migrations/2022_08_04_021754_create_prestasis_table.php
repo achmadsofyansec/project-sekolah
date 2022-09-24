@@ -13,16 +13,19 @@ class CreatePrestasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('prestasis', function (Blueprint $table) {
-            $table->id();
-            $table->string('tahun_prestasi');
-            $table->string('nama_lomba');
-            $table->string('bidang_lomba');
-            $table->string('penyelenggara');
-            $table->string('tingkat_lomba');
-            $table->string('peringkat_diraih');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('prestasis')){
+            Schema::create('prestasis', function (Blueprint $table) {
+                $table->id();
+                $table->string('tahun_prestasi');
+                $table->string('nama_lomba');
+                $table->string('bidang_lomba');
+                $table->string('penyelenggara');
+                $table->string('tingkat_lomba');
+                $table->string('peringkat_diraih');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**
