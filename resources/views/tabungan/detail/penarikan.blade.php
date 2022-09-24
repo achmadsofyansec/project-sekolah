@@ -11,6 +11,8 @@
         @csrf
         <div class="modal-body">
             <div class="card-body">
+              <input type="hidden" name="kode_tabungan" id="kode_tabungan" value="{{$data->id_tabungan}}" class="form-control">
+              <input type="hidden" name="type" id="type" value="1" class="form-control">
               <div class="form-group">
                 <label>Saldo</label>
               <input type="text" name="saldo_awal" id="saldo_awal" class="form-control" value="{{$data->saldo_tabungan}}" readonly>

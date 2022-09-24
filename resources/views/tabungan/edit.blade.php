@@ -101,6 +101,17 @@
                           <th>Keterangan</th>
                         </thead>
                         <tbody>
+                          @forelse ($detail as $item)
+                              <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>Rp.{{number_format($item->nominal_detail)}}</td>
+                                <td>Rp.{{number_format($item->saldo_awal_detail)}}</td>
+                                <td>Rp.{{number_format($item->saldo_akhir_detail)}}</td>
+                                <td>{{$item->keterangan_detail}}</td>
+                              </tr>
+                          @empty
+                              
+                          @endforelse
                         </tbody>
                       </table>
                     </div>

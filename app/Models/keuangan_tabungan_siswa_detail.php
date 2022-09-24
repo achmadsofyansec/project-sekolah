@@ -13,7 +13,7 @@ class keuangan_tabungan_siswa_detail extends Model
         'kode_tabungan',
         'nominal_detail',
         'saldo_awal_detail',
-        'saldo_akhir',
+        'saldo_akhir_detail',
         'type_detail',
         'keterangan_detail'
     ];

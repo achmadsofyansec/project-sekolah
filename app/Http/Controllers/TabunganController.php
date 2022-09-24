@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\data_siswa;
 use App\Models\keuangan_tabungan_siswa;
+use App\Models\keuangan_tabungan_siswa_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -116,7 +117,8 @@ class TabunganController extends Controller
         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*'
             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan'])->first();
-        return view('tabungan.edit',compact(['data']));
+        $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->get();
+        return view('tabungan.edit',compact(['data','detail']));
         
     }
 
