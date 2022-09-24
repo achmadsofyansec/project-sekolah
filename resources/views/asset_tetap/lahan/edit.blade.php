@@ -88,6 +88,114 @@
                                         </select>
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Kelurahan</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $data->kelurahan }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Kabupaten</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="kabupaten" name="kabupaten" value="{{ $data->kabupaten }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Provinsi</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="{{ $data->provinsi }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Kode Pos</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="kode_pos" name="kode_pos" value="{{ $data->kode_pos }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Kategori Geografis</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="kategori_geografis" name="kategori_geografis" value="{{ $data->luas_digunakan }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Wilayah</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="wilayah" name="wilayah" value="{{ $data->wilayah }}" required />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak Provinsi</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_provinsi" name="jarak_provinsi" value="{{ $data->jarak_provinsi }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak Kabupaten</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_kabupaten" name="jarak_kabupaten" value="{{ $data->jarak_kabupaten }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak Kecamatan</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_kecamatan" name="jarak_kecamatan" value="{{ $data->jarak_kecamatan }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak Kemenag</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_kemenag" name="jarak_kemenag" value="{{ $data->jarak_kemenag }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak RA</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_ra" name="jarak_ra" value="{{ $data->jarak_ra }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak MI</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_mi" name="jarak_mi" value="{{ $data->jarak_mi }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak MTS</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_mts" name="jarak_mts" value="{{ $data->jarak_mts }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak SMP</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_smp" name="jarak_smp" value="{{ $data->jarak_smp }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak SD</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_sd" name="jarak_sd" value="{{ $data->jarak_sd }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak SMP</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_smp" name="jarak_kemenag" value="{{ $data->jarak_kemenag }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak Pontren</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_pontren" name="jarak_pontren" value="{{ $data->jarak_pontren }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak PTKI</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_ptki" name="jarak_ptki" value="{{ $data->jarak_ptki }}" required />
+                                    </div>
+                                </div>
                                 <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{route('laboratorium.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
