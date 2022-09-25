@@ -22,10 +22,10 @@ class CreateSarprasSanitasisTable extends Migration
             $table->string('tipe_toilet');
             $table->string('pembalut_cadangan');
             $table->integer('cuci_tangan');
-            $table->integer('jumlah_cuci_tangan');
+            // $table->integer('jumlah_cuci_tangan');
             $table->integer('jumlah_cuci_tangan_kb');
             $table->integer('jumlah_cuci_tangan_kr');
-            $table->integer('jumlah_sabun_cuci_tangan');
+            $table->string('jumlah_sabun_cuci_tangan');
             $table->string('pembuangan_limbah');
             $table->string('waktu_pembuagan_limbah');
             $table->string('selokan_air');

@@ -46,7 +46,6 @@
                                     <th>Luas (m)</th>
                                     <th>Luas Digunakan (m)</th>
                                     <th>Status</th>
-                                    <th>Aksi</th>
                                 </thead>
                                 <tbody>
                                   @forelse ($lahan as $lahan)
@@ -91,6 +90,35 @@
                                       </tr>
                                     @endforelse
                                 </tbody>  
+                            </table>
+                       </div>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                  <thead>
+                                    <th>No</th>                                   
+                                    <th>Status</th>
+                                    <th>Penggunaan</th>
+                                    <th>Bersertifikat (m)</th>
+                                    <th>Belum Bersertifikat (m)</th>
+                                    <th>Total</th>
+                                </thead>
+                                <tbody>
+                                  @forelse ($data_pengguna as $data)
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{ $data->status }}</td>
+                                    <td>{{ $data->penggunaan }}</td>    
+                                    <td>{{ $data->penggunaan_bersertifikat }}</td>
+                                    <td>{{ $data->penggunaan_belum_bersertifikat }}</td>
+                                    <td>{{ $data->penggunaan_total }}</td>
+                                </tbody>
+                                  @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                    @endforelse
+                                </tbody> 
                             </table>
                        </div>
                    </div>

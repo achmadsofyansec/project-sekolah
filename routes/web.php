@@ -23,6 +23,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\LahanController;
+use App\Http\Controllers\SanitasiController;
 
 
 
@@ -58,7 +59,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/mebel', MebelController::class);
         Route::resource('/olahraga_seni', OlahragaSeniController::class);
         Route::resource('/penerangan_internet', PeneranganInternetController::class);
-        Route::get('/sanitasi',[PageController::class,'view_sanitasi'])->name('sanitasi');
+        Route::resource('/sanitasi', SanitasiController::class);
         Route::resource('/sarana_administrasi', SaranaAdministrasiController::class);
 
         //Peminjaman
