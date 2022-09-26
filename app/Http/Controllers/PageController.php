@@ -41,24 +41,7 @@ class PageController extends Controller
     public function view_lap_nilai(){
         return view('laporan.nilai.index');
     }
-    public function view_input_capaian(){
-        return view('nilai.input_nilai.capaian.index');
-    }
-    public function view_input_ekstra(){
-        return view('nilai.input_nilai.ekstrakulikuler.index');
-    }
-    public function view_input_harian(){
-        return view('nilai.input_nilai.harian.index');
-    }
-    public function view_input_prestasi(){
-        return view('nilai.input_nilai.prestasi.index');
-    }
-    public function view_input_rapor(){
-        return view('nilai.input_nilai.rapor.index');
-    }
-    public function view_input_ujian(){
-        return view('nilai.input_nilai.ujian.index');
-    }
+    
     
     public function logout(Request $request){
         Auth::logout();

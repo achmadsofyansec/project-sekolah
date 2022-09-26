@@ -76,7 +76,7 @@
                                         <td>
                                           <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                           action="{{ route('pindah_kelas.destroy',$item->id_pindah) }}" method="POST">
-                                          <a href="{{ route('pindah_kelas.edit',$item->id_pindah) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                          <!--<a href="{{ route('pindah_kelas.edit',$item->id_pindah) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>-->
                                           @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>

@@ -50,20 +50,21 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('pindah_kelas.store')}}" method="POST">
+                        <form action="{{route('pindah_kelas.update',$id)}}" method="POST">
                             @csrf
-                            <div class="card-body">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Tanggal Pengajuan</label>
-                                        <input type="date" name="tgl_pengajuan" id="tgl_pengajuan" class="form-control" required>
+                                    <input type="date" name="tgl_pengajuan" id="tgl_pengajuan" value="{{$data->tgl_pengajuan}}" class="form-control" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label>Siswa</label>
-                                        <select name="kode_siswa" id="kode_siswa" class="form-control" required>
+                                        <select name="kode_siswa" id="kode_siswa" class="form-control">
                                             <option value=""> -- Pilih Siswa -- </option>
                                             @forelse ($siswa as $item)
-                                        <option value="{{$item->id_siswa}}">{{$item->nama }} { {{$item->kode_kelas}} {{$item->kode_jurusan}} Tahun Ajaran {{$item->tahun_ajaran}} }</option>
+                                        <option value="{{$item->id_siswa}}" @if ($item->id_siswa == $data->kode_siswa)
+                                            {{'selected'}}
+                                        @endif>{{$item->nama }} { {{$item->kode_kelas}} {{$item->kode_jurusan}} Tahun Ajaran {{$item->tahun_ajaran}} }</option>
                                             @empty
                                                 
                                             @endforelse
@@ -74,7 +75,9 @@
                                         <select name="kelas_tujuan" id="kelas_tujuan" class="form-control" required>
                                             <option value="">-- Pilih Kelas Tujuan -- </option>
                                             @forelse ($kelas as $item)
-                                        <option value="{{$item->id}}">{{$item->nama_kelas}} ({{$item->kode_kelas}}) </option>
+                                          <option value="{{$item->id}}" @if ($item->id == $data->kode_kelas_tujuan)
+                                              {{'selected'}}
+                                          @endif>{{$item->nama_kelas}} ({{$item->kode_kelas}}) </option>
                                             @empty
                                                 
                                             @endforelse
@@ -82,10 +85,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Keterangan</label>
-                                        <textarea name="ket_pindah" id="ket_pindah" cols="30" rows="10" class="form-control" required></textarea>
+                                        <textarea name="ket_pindah" id="ket_pindah" cols="30" rows="10" class="form-control" required>{{$data->ket_pindah}}</textarea>
                                     </div>
                                 </div>
-                            </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{route('pindah_kelas.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
@@ -94,7 +96,6 @@
                     </div>
                 </div>  
               </div>
-                
             </div>
         </div>
     </div>

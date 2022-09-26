@@ -119,6 +119,14 @@ class PindahKelasController extends Controller
     public function edit($id)
     {
         //
+        $data = akademik_pindah_kelas::findOrFail($id);
+        $id = $id;
+        $kelas = Kelas::latest()->get();
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                            ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
+        ->where([['data_siswas.status_siswa','=','Aktif']])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*']);
+        return view('pindah_kelas.edit',compact(['kelas','siswa','data','id']));
     }
 
     /**
@@ -131,6 +139,7 @@ class PindahKelasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**

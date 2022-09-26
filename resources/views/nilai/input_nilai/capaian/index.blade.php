@@ -34,6 +34,9 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
+                    <div class="card-tools">
+                      <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-input-capaian"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -52,6 +55,7 @@
             </div>
         </div>
     </div>
+    @include('nilai.input_nilai.capaian.create')
     </section>
     <!-- /.content -->
   </div>

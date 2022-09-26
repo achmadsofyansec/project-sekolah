@@ -34,16 +34,42 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
+                    <div class="card-tools">
+                      <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-input-harian"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Tanggal Input</th>
+                                    <th>Kelas</th>
+                                    <th>Jurusan</th>
+                                    <th>Tahun Ajaran</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($data as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->tgl_input}}</td>
+                                      <td>{{$item->nama_kelas}}  ({{$item->kode_kelas}})</td>
+                                      <td>{{$item->nama_jurusan}} ({{$item->kode_jurusan}})</td>
+                                      <td>{{$item->tahun_ajaran}}</td>
+                                      <td><td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('akademik_nilai.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('akademik_nilai.edit',$item->id_nilai) }}" class="btn btn-warning"><i class="fas fa-box-open"></i>Action</a>
+                                        @csrf
+                                        </form>
+                                      </td></td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td class="text-muted text-center" colspan="6">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>
@@ -52,6 +78,7 @@
             </div>
         </div>
     </div>
+    @include('nilai.input_nilai.harian.create')
     </section>
     <!-- /.content -->
   </div>

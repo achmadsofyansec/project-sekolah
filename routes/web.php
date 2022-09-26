@@ -10,6 +10,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelompokMapelController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PindahKelasController;
@@ -62,12 +63,14 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/lap_nilai',[PageController::class,'view_lap_nilai'])->name('laporan_nilai');
 
         //inputnilai
-        Route::get('/input_capaian',[PageController::class,'view_input_capaian'])->name('input_capaian');
-        Route::get('/input_ekstra',[PageController::class,'view_input_ekstra'])->name('input_ekstra');
-        Route::get('/input_harian',[PageController::class,'view_input_harian'])->name('input_harian');
-        Route::get('/input_prestasi',[PageController::class,'view_input_prestasi'])->name('input_prestasi');
-        Route::get('/input_rapor',[PageController::class,'view_input_rapor'])->name('input_rapor');
-        Route::get('/input_ujian',[PageController::class,'view_input_ujian'])->name('input_ujian');
+        Route::get('/input_capaian',[NilaiController::class,'view_input_capaian'])->name('input_capaian');
+        Route::get('/input_ekstra',[NilaiController::class,'view_input_ekstra'])->name('input_ekstra');
+        Route::get('/input_harian',[NilaiController::class,'view_input_harian'])->name('input_harian');
+        Route::get('/input_prestasi',[NilaiController::class,'view_input_prestasi'])->name('input_prestasi');
+        Route::get('/input_rapor',[NilaiController::class,'view_input_rapor'])->name('input_rapor');
+        Route::get('/input_ujian',[NilaiController::class,'view_input_ujian'])->name('input_ujian');
+        Route::resource('input_nilai',NilaiController::class);
+        
         //Ekstrakulikuler
         Route::resource('ekstrakulikuler',EkstrakulikulerController::class);
         Route::resource('anggota_ekstra',AnggotaEkstraController::class);

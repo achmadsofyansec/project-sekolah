@@ -34,7 +34,9 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <a type="button" href="{{ route('siswa.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
+                    <div class="card-tools">
+                      <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-input-prestasi"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -53,6 +55,7 @@
             </div>
         </div>
     </div>
+    @include('nilai.input_nilai.prestasi.create')
     </section>
     <!-- /.content -->
   </div>
