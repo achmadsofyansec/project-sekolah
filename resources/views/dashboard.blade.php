@@ -17,7 +17,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-graduation-cap"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-success" ><b>AKADEMIK</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta</font>
               </div>
             </div></a>
           </div>
@@ -28,7 +28,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-address-card"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-warning" ><b>KESISWAAN</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta</font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -40,7 +40,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-money-check-alt"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-danger" ><b>KEUANGAN</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0<Versi class="2 1"></Versi></font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta<Versi class="2 1"></Versi></font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -63,7 +63,7 @@
               <span class="info-box-icon bg-navy elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-navy" ><b>ARSIP</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta</font>
               </div>
             </div></a>
             <!-- /.info-box -->
@@ -135,7 +135,7 @@
               <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-cube"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-gray" ><b>SARPRAS</b></span>
-                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.0.0</font>
+                <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta</font>
               </div>
             </div></a>
             <!-- /.info-box -->
