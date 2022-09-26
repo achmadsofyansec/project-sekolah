@@ -31,9 +31,8 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="card card-success card-outline">
+            <div class="card card-primary card-outline">
               <div class="card-header">
-              <a type="button" href="" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">

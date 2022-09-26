@@ -99,6 +99,7 @@
                           <th>Saldo Awal</th>
                           <th>Saldo Akhir</th>
                           <th>Keterangan</th>
+                          <th><span><span class="badge badge-success">IN</span>/<span class="badge badge-danger">OUT</span></span></th>
                         </thead>
                         <tbody>
                           @forelse ($detail as $item)
@@ -108,6 +109,11 @@
                                 <td>Rp.{{number_format($item->saldo_awal_detail)}}</td>
                                 <td>Rp.{{number_format($item->saldo_akhir_detail)}}</td>
                                 <td>{{$item->keterangan_detail}}</td>
+                                <td>@if ($item->type_detail == '0')
+                                  <span class="badge badge-success">IN</span>
+                                @else
+                                <span class="badge badge-danger">OUT</span>
+                                @endif</td>
                               </tr>
                           @empty
                               
