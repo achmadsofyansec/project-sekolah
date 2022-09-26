@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArsipBoxsTable extends Migration
+class CreateArsipBoxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,7 +29,7 @@ class CreateArsipBoxsTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('arsip_boxs');
+    {   
+        Schema::dropIfExists('arsip_boxes');
     }
 }
