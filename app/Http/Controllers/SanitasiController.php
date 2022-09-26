@@ -112,7 +112,7 @@ class SanitasiController extends Controller
                 'pembalut_cadangan' => $request->pembalut_cadangan,
                 'cuci_tangan' => $request->cuci_tangan,
                 'jumlah_cuci_tangan_kb' => $request->jumlah_cuci_tangan_kb,
-                'jumlah_cuci_tangan_kr' => $request->sjumlah_cuci_tangan_kr,
+                'jumlah_cuci_tangan_kr' => $request->jumlah_cuci_tangan_kr,
                 'jumlah_sabun_cuci_tangan' => $request->jumlah_sabun_cuci_tangan,
                 'pembuangan_limbah' => $request->pembuangan_limbah,
                 'waktu_pembuagan_limbah' => $request->waktu_pembuagan_limbah,
@@ -133,7 +133,7 @@ class SanitasiController extends Controller
                 'jumlah_jamban_rusak_pr' => $request->jumlah_jamban_rusak_pr,
                 'jumlah_jamban_rusak_br' => $request->jumlah_jamban_rusak_br,
             ]);
-            $update = DB::table('sarpras_sanitasis')->where('sarpras_sanitasis.id','=',$id)->update($data);
+            $update = DB::table('sarpras_sanitasis')->where('sarpras_sanitasis.id','=',$id);
             if($update){
                 return redirect()
                 ->route('sanitasi.index')

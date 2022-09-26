@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Nama Lahan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="lahan" name="lahan" value="{{ $data->nama_lahan }}" required />
+                                        <input type="text" class="form-control" id="nama_lahan" name="nama_lahan" value="{{ $data->nama_lahan }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,17 +81,32 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Status</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control" id="status" name="Status">
-                                          <option>{{ $data->status }}</option>
-                                          <option>opt 1</option>
-                                          <option>opt 2</option>
-                                        </select>
+                                        <select class="form-control" id="status_lahan" name="status_lahan" placeholder="{{ $data->status_lahan }}">
+                                        <option @if ($data->status_lahan == "LAHAN UTAMA")
+                                            {{'selected'}}
+                                        @endif>LAHAN UTAMA</option>
+                                        <option @if ($data->status_lahan == "LAHAN TAMBAHAN")
+                                          {{'selected'}}
+                                            @endif>LAHAN TAMBAHAN</option>
+                                            <option @if ($data->status_lahan == "LAHAN TIDAK DIGUNAKAN")
+                                              {{'selected'}}
+                                          @endif>LAHAN TIDAK DIGUNAKAN</option>
+                                          <option @if ($data->status_lahan == "LAINNYA")
+                                            {{'selected'}}
+                                        @endif>LAINNYA</option>
+                                      </select>
                                     </div>
                                 </div>
                                  <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Kelurahan</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $data->kelurahan }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Kecamatan</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $data->kecamatan }}" required />
                                     </div>
                                 </div>
                                  <div class="form-group">
@@ -181,7 +196,13 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jarak SMP</label>
                                     <div class="col-sm-12">
-                                        <input type="number" class="form-control" id="jarak_smp" name="jarak_kemenag" value="{{ $data->jarak_kemenag }}" required />
+                                        <input type="number" class="form-control" id="jarak_smp" name="jarak_smp" value="{{ $data->jarak_smp }}" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-sm-3 col-form-label">Jarak SMA</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jarak_sma" name="jarak_sma" value="{{ $data->jarak_sma }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -198,7 +219,7 @@
                                 </div>
                                 <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('laboratorium.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                                <a href="{{route('lahan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
                             </div>
                         </form>
                     </div>

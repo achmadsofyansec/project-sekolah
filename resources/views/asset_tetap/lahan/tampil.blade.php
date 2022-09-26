@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Lahan')
+@section('page', 'Informasi Lahan')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -35,36 +35,6 @@
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
                    <a href="{{route('lahan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
-                   </div>
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>                                   
-                                    <th>Nama Lahan</th>
-                                    <th>Alamat</th>
-                                    <th>Luas (m)</th>
-                                    <th>Luas Digunakan (m)</th>
-                                    <th>Status</th>
-                                </thead>
-                                <tbody>
-                                  @forelse ($lahan as $lahan)
-                                    <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $lahan->nama_lahan }}</td>
-                                    <td>{{ $lahan->alamat }}</td>    
-                                    <td>{{ $lahan->luas }}</td>
-                                    <td>{{ $lahan->luas_digunakan }}</td>
-                                    <td>{{ $lahan->status }}</td>
-                                      </tr>
-                                  @empty
-                                      <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
-                                      </tr>
-                                  <td>
-                                    @endforelse
-                                </tbody>  
-                            </table>
-                       </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -122,37 +92,44 @@
                             </table>
                        </div>
                    </div>
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                  <thead>
-                                    <th>No</th>                                   
-                                    <th>Status</th>
-                                    <th>Penggunaan</th>
-                                    <th>Bersertifikat (m)</th>
-                                    <th>Belum Bersertifikat (m)</th>
-                                    <th>Total</th>
-                                </thead>
-                                <tbody>
-                                  @forelse ($data_pengguna as $data)
-                                    <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $data->status }}</td>
-                                    <td>{{ $data->penggunaan }}</td>    
-                                    <td>{{ $data->penggunaan_bersertifikat }}</td>
-                                    <td>{{ $data->penggunaan_belum_bersertifikat }}</td>
-                                    <td>{{ $data->penggunaan_total }}</td>
-                                </tbody>
-                                  @empty
-                                      <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
-                                      </tr>
-                                    @endforelse
-                                </tbody> 
-                            </table>
-                       </div>
-                   </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+                <div class="col-6 mt-1">
+                    <div class="card card-info card-outline">
+                        <div class="card-header">
+                          <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Detail Lahan</h1>
+                        </div>
+                        <div class="card-body">
+                        @foreach ($lahan as $data)
+                          <p>Nama Lahan : {{ $data->nama_lahan }}</p>
+                          <p>Alamat : {{ $data->alamat }}</p>
+                          <p>Luas : {{ $data->luas }}</p>
+                          <p>Luas yang digunakan : {{ $data->luas_digunakan }}</p>
+                          <p>Status Lahan : {{ $data->status_lahan }}</p>
+                          <p>Kelurahan : {{ $data->kelurahan }}</p>
+                          <p>Kecamatan : {{ $data->kecamatan }}</p>
+                          <p>Kabupaten : {{ $data->kabupaten }}</p>
+                          <p>Provinsi : {{ $data->provinsi }}</p>
+                          <p>Kode POS : {{ $data->kode_pos }}</p>
+                          <p>Kondisi Geografis : {{ $data->kategori_geografis }}</p>
+                          <p>Wilayah : {{ $data->wilayah }}</p>
+                          <p>Jarak Ke Provinsi : {{ $data->jarak_provinsi }}</p>
+                          <p>Jarak Ke Kabupaten : {{ $data->jarak_kabupaten }}</p>
+                          <p>Jarak Ke Kecamatan : {{ $data->jarak_kecamatan }}</p>
+                          <p>Jarak Ke Kemenag : {{ $data->jarak_kemenag }}</p>
+                          <p>Jarak Ke RA : {{ $data->jarak_ra }}</p>
+                          <p>Jarak Ke MI : {{ $data->jarak_mi }}</p>
+                          <p>Jarak Ke MTS : {{ $data->jarak_mts }}</p>
+                          <p>Jarak Ke SD : {{ $data->jarak_sd }}</p>
+                          <p>Jarak Ke SMP : {{ $data->jarak_smp }}</p>
+                          <p>Jarak Ke SMA : {{ $data->jarak_sma }}</p>
+                          <p>Jarak Ke Pontren : {{ $data->jarak_pontren }}</p>
+                          <p>Jarak Ke PTKI : {{ $data->jarak_ptki }}</p>
+                         @endforeach
+                      </div>
+                </div>  
         </div>
     </div>
     </section>

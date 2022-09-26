@@ -45,7 +45,79 @@ class LahanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'nama_lahan' => ['required'],
+            'alamat' => ['required'],
+            'luas' => ['required'],
+            'luas_digunakan' => ['required'],
+            'status_lahan' => ['required'], 
+            'kelurahan' => ['required'],
+            'kecamatan' => ['required'],
+            'kabupaten' => ['required'],
+            'provinsi' => ['required'],
+            'kode_pos' => ['required'],
+            'kategori_geografis' => ['required'],
+            'wilayah' => ['required'],
+            'jarak_provinsi' => ['required'],
+            'jarak_kabupaten' => ['required'],
+            'jarak_kecamatan' => ['required'],
+            'jarak_kemenag' => ['required'],
+            'jarak_ra' => ['required'],
+            'jarak_mi' => ['required'],
+            'jarak_mts' => ['required'],
+            'jarak_sd' => ['required'],
+            'jarak_smp' => ['required'],
+            'jarak_sma' => ['required'],
+            'jarak_pontren' => ['required'],
+            'jarak_ptki' => ['required'],
+        ]);
+        if($credential){
+            $create = SarprasLahan::create([
+                'nama_lahan' => $request->nama_lahan, 
+                'alamat' => $request->alamat,
+                'luas' => $request->luas,
+                'luas_digunakan' => $request->luas_digunakan,
+                'status_lahan' =>  $request->status_lahan,
+                'kelurahan' => $request->kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kecamatan,
+                'provinsi' => $request->provinsi,
+                'kode_pos' => $request->kode_pos,
+                'kategori_geografis' => $request->kategori_geografis,
+                'wilayah' => $request->wilayah,
+                'jarak_provinsi' => $request->jarak_provinsi,
+                'jarak_kabupaten' => $request->jarak_kabupaten,
+                'jarak_kecamatan' => $request->jarak_kecamatan,
+                'jarak_kemenag' => $request->jarak_kemenag,
+                'jarak_ra' => $request->jarak_ra,
+                'jarak_mi' => $request->jarak_mi,
+                'jarak_mts' => $request->jarak_mts,
+                'jarak_sd' => $request->jarak_sd,
+                'jarak_smp' => $request->jarak_smp,
+                'jarak_sma' => $request->jarak_sma,
+                'jarak_pontren' => $request->jarak_pontren,
+                'jarak_ptki' => $request->jarak_ptki,
+            ]);
+            if($create){
+                return redirect()
+                ->route('lahan.index')
+                ->with([
+                    'success' => 'Data Lahan Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -103,7 +175,74 @@ class LahanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'nama_lahan' => ['required'],
+            'alamat' => ['required'],
+            'luas' => ['required'],
+            'luas_digunakan' => ['required'],
+            'status_lahan' => ['required'], 
+            'kelurahan' => ['required'],
+            'kecamatan' => ['required'],
+            'kabupaten' => ['required'],
+            'provinsi' => ['required'],
+            'kode_pos' => ['required'],
+            'kategori_geografis' => ['required'],
+            'wilayah' => ['required'],
+            'jarak_provinsi' => ['required'],
+            'jarak_kabupaten' => ['required'],
+            'jarak_kecamatan' => ['required'],
+            'jarak_kemenag' => ['required'],
+            'jarak_ra' => ['required'],
+            'jarak_mi' => ['required'],
+            'jarak_mts' => ['required'],
+            'jarak_sd' => ['required'],
+            'jarak_smp' => ['required'],
+            'jarak_sma' => ['required'],
+            'jarak_pontren' => ['required'],
+            'jarak_ptki' => ['required'],
+        ]);
+        if($validate){
+            $update = SarprasLahan::findOrFail($id);
+            $update->update([
+                'nama_lahan' => $request->nama_lahan, 
+                'alamat' => $request->alamat,
+                'luas' => $request->luas,
+                'luas_digunakan' => $request->luas_digunakan,
+                'status_lahan' =>  $request->status_lahan,
+                'kelurahan' => $request->kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kecamatan,
+                'provinsi' => $request->provinsi,
+                'kode_pos' => $request->kode_pos,
+                'kategori_geografis' => $request->kategori_geografis,
+                'wilayah' => $request->wilayah,
+                'jarak_provinsi' => $request->jarak_provinsi,
+                'jarak_kabupaten' => $request->jarak_kabupaten,
+                'jarak_kecamatan' => $request->jarak_kecamatan,
+                'jarak_kemenag' => $request->jarak_kemenag,
+                'jarak_ra' => $request->jarak_ra,
+                'jarak_mi' => $request->jarak_mi,
+                'jarak_mts' => $request->jarak_mts,
+                'jarak_sd' => $request->jarak_sd,
+                'jarak_smp' => $request->jarak_smp,
+                'jarak_sma' => $request->jarak_sma,
+                'jarak_pontren' => $request->jarak_pontren,
+                'jarak_ptki' => $request->jarak_ptki,
+            ]);
+            if($update){
+                return redirect()
+                ->route('lahan.index')
+                ->with([
+                    'success' => 'Data Lahan Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -114,6 +253,20 @@ class LahanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasLahan::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('lahan.index')
+            ->with([
+                'success' => 'Data Lahan Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

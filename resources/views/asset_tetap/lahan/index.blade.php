@@ -56,7 +56,7 @@
                                     <td>{{ $lahan->alamat }}</td>    
                                     <td>{{ $lahan->luas }}</td>
                                     <td>{{ $lahan->luas_digunakan }}</td>
-                                    <td>{{ $lahan->status }}</td>
+                                    <td>{{ $lahan->status_lahan }}</td>
                                    
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
@@ -83,6 +83,7 @@
             </div>
         </div>
     </div>
+
     </section>
     <!-- /.content -->
   </div>

@@ -296,8 +296,22 @@
                   </select>
                 </div>
                 <div class="form-group">    
+                  <label>Anggaran untuk pengagankatan sampah</label>
+                  <select name="anggaran_pemeliharaan" id="anggaran_pemeliharaan" value="{{ $data->anggaran_pemeliharaan }}" class="form-control">
+                    <option @if ($data->anggaran_pemeliharaan == " ")
+                        {{'selected'}}
+                    @endif> </option>
+                    <option @if ($data->anggaran_pemeliharaan == "Ada")
+                      {{'selected'}}
+                        @endif>Ada</option>
+                        <option @if ($data->anggaran_pemeliharaan == "Tidak Ada")
+                          {{'selected'}}
+                      @endif>TIdak Ada</option>
+                  </select>
+                </div>
+                <div class="form-group">    
                   <label>Ada kegiatan rutin yang melibatkan siswa untuk memelihara dan merawat fasilitas sanitasi dari madrasah?</label>
-                  <select name="kegiatan_rutin" id="kegiatan_rutin" class="form-control">
+                  <select name="kegiatan_rutin" id="kegiatan_rutin" value="{{ $data->kegiatan_rutin }}" class="form-control">
                     <option @if ($data->kegiatan_rutin == " ")
                         {{'selected'}}
                     @endif> </option>
@@ -311,7 +325,7 @@
                 </div>
                 <div class="form-group">    
                   <label>Ada kemitraan dengan pihak luar untuk sanitasi madrasah?</label>
-                  <select name="kemitraan_sekolah" id="kemitraan_sekolah" class="form-control">
+                  <select name="kemitraan_sekolah" id="kemitraan_sekolah" value="{{ $data->kemitraan_sekolah }}" class="form-control">
                     <option @if ($data->kemitraan_sekolah == " ")
                         {{'selected'}}
                     @endif> </option>
@@ -334,7 +348,7 @@
                 </div>
                 <div class="form-group">    
                   <label>Apakah jamban yang ada dipisahkan antara laki dan perempuan?</label>
-                  <select name="pemisahan_jamban" id="pemisahan_jamban" class="form-control">
+                  <select name="pemisahan_jamban" id="pemisahan_jamban" value="{{ $data->pemisahan_jamban }}" class="form-control">
                     <option @if ($data->pemisahan_jamban == " ")
                         {{'selected'}}
                     @endif> </option>
@@ -350,19 +364,19 @@
                   <div class="col-md-4">
                     <label>Jumlah jamban baik Laki-laki</label>
                     <div class="form-group">
-                      <input type="number" value="" name="jumlah_jamban_baik_lk" id="jumlah_jamban_baik_lk" class="form-control" placeholder="0" required>
+                      <input type="number" value="{{ $data->jumlah_jamban_baik_lk }}" name="jumlah_jamban_baik_lk" id="jumlah_jamban_baik_lk" class="form-control" placeholder="0" required>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Jumlah jamban baik Perempuan</label>
-                      <input type="text" value="" name="jumlah_jamban_baik_pr" id="jumlah_jamban_baik_pr" class="form-control" placeholder="0">
+                      <input type="text" value="{{ $data->jumlah_jamban_baik_pr }}" name="jumlah_jamban_baik_pr" id="jumlah_jamban_baik_pr" class="form-control" placeholder="0">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Jumlah jamban baik bersama</label>
-                      <input type="text" value="" name="jumlah_jamban_baik_br" id="jumlah_jamban_baik_br" class="form-control" placeholder="0">
+                      <input type="text" value="{{ $data->jumlah_jamban_baik_br }}" name="jumlah_jamban_baik_br" id="jumlah_jamban_baik_br" class="form-control" placeholder="0">
                     </div>
                   </div>
                 </div>
@@ -370,19 +384,19 @@
                   <div class="col-md-4">
                     <label>Jumlah jamban Rusak Laki-laki</label>
                     <div class="form-group">
-                      <input type="number" value="" name="jumlah_jamban_rusak_lk" id="jumlah_jamban_rusak_lk" class="form-control" placeholder="0" required>
+                      <input type="number" value="{{ $data->jumlah_jamban_rusak_lk }}" name="jumlah_jamban_rusak_lk" id="jumlah_jamban_rusak_lk" class="form-control" placeholder="0" required>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Jumlah jamban Rusak Perempuan</label>
-                      <input type="text" value="" name="jumlah_jamban_rusak_pr" id="jumlah_jamban_rusak_lk" class="form-control" placeholder="0">
+                      <input type="text" value="{{ $data->jumlah_jamban_rusak_pr }}" name="jumlah_jamban_rusak_pr" id="jumlah_jamban_rusak_lk" class="form-control" placeholder="0">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Jumlah jamban Rusak bersama</label>
-                      <input type="text" value="" name="jumlah_jamban_rusak_br" id="jumlah_jamban_rusak_br" class="form-control" placeholder="0">
+                      <input type="text" value="{{ $data->jumlah_jamban_rusak_br }}" name="jumlah_jamban_rusak_br" id="jumlah_jamban_rusak_br" class="form-control" placeholder="0">
                     </div>
                   </div>
                 </div>                
