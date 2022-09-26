@@ -13,11 +13,14 @@ class CreateArsipRuangansTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_ruangans', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_ruangan');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_ruangans')){
+            Schema::create('arsip_ruangans', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_ruangan');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

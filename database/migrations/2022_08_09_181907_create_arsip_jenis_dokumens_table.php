@@ -13,11 +13,14 @@ class CreateArsipJenisDokumensTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_jenis_dokumens', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_jenis_dokumen');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_jenis_dokumens')){
+            Schema::create('arsip_jenis_dokumens', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_jenis_dokumen');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

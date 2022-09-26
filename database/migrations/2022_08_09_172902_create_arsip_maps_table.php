@@ -13,11 +13,14 @@ class CreateArsipMapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_maps', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_map');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_maps')){
+            Schema::create('arsip_maps', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_map');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

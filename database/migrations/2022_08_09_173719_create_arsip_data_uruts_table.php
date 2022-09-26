@@ -13,11 +13,14 @@ class CreateArsipDataUrutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_data_uruts', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_urut');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_data_uruts')){
+            Schema::create('arsip_data_uruts', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_urut');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

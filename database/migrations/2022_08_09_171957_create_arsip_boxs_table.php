@@ -13,11 +13,14 @@ class CreateArsipBoxsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_boxs', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_box');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_boxs')){
+            Schema::create('arsip_boxs', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_box');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

@@ -13,11 +13,14 @@ class CreateArsipRaksTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_raks', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_rak');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_raks')){
+            Schema::create('arsip_raks', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_rak');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

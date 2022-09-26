@@ -13,22 +13,25 @@ class CreateDokumensTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumens', function (Blueprint $table) {
-            $table->id();
-            $table->string('ruangan');
-            $table->string('lemari');
-            $table->string('rak');
-            $table->string('box');
-            $table->string('map');
-            $table->string('urut');
-            $table->dateTime('tanggal_dokumen');
-            $table->string('jenis_dokumen');
-            $table->string('nomor_dokumen');
-            $table->string('nama_dokumen');
-            $table->text('deskripsi');
-            $table->string('file');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('dokumens')){
+            Schema::create('dokumens', function (Blueprint $table) {
+                $table->id();
+                $table->string('ruangan');
+                $table->string('lemari');
+                $table->string('rak');
+                $table->string('box');
+                $table->string('map');
+                $table->string('urut');
+                $table->dateTime('tanggal_dokumen');
+                $table->string('jenis_dokumen');
+                $table->string('nomor_dokumen');
+                $table->string('nama_dokumen');
+                $table->text('deskripsi');
+                $table->string('file');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

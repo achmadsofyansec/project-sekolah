@@ -13,11 +13,14 @@ class CreateArsipLemarisTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsip_lemaris', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_lemari');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('arsip_lemaris')){
+            Schema::create('arsip_lemaris', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_lemari');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

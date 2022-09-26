@@ -13,11 +13,14 @@ class CreateJenisDokumensTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_dokumens', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_jenis_dokumen');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('jenis_dokumens')){
+            Schema::create('jenis_dokumens', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_jenis_dokumen');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**
