@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('login',[PageController::class,'login'])->name('login');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');

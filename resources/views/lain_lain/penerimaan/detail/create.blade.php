@@ -14,7 +14,7 @@
                 <input type="hidden" name="kode_penerimaan" id="kode_penerimaan" value="{{$data->id_terima}}" readonly>
                 <div class="form-group">
                   <label>Pos Terima</label>
-                  <select name="pos_terima" id="pos_terima" class="form-control" required>
+                  <select name="pos_terima" id="pos_terima" class="form-control" style="width: 100%;" required>
                         <option value=""> -- Pilih Pos Penerimaan -- </option>
                         @forelse ($pos_terima as $item)
                             <option value="{{$item->kode_pos}}">{{$item->nama_pos}}</option>

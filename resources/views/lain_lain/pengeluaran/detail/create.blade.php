@@ -14,7 +14,7 @@
             <input type="hidden" name="kode_pengeluaran" id="kode_pengeluaran" class="form-control" value="{{$data->id_keluar}}">
                 <div class="form-group">
                   <label>Pos Sumber Dana</label>
-                  <select name="pos_sumber" id="pos_sumber" class="form-control" required>
+                  <select name="pos_sumber" id="pos_sumber" class="form-control" style="width: 100%;" required>
                         <option value=""> -- Pilih Pos Sumber -- </option>
                         @forelse ($pos_sumber as $item)
                             <option value="{{$item->kode_pos}}">{{$item->nama_pos}}</option>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label>Pos Pengeluaran</label>
-                    <select name="pos_keluar" id="pos_keluar" class="form-control" required>
+                    <select name="pos_keluar" id="pos_keluar" class="form-control" style="width: 100%;" required>
                           <option value=""> -- Pilih Pos Pengeluaran -- </option>
                           @forelse ($pos_keluar as $item)
                               <option value="{{$item->kode_pos}}">{{$item->nama_pos}}</option>

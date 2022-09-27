@@ -65,6 +65,9 @@ class PageController extends Controller
         $request->session()->regenerateToken();
      
         return redirect('../sekolahApp/');
+    }
+    public function login(Request $request){
+        return redirect('../sekolahApp/');
        }
     
 }
