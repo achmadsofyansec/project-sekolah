@@ -57,7 +57,13 @@
                                     <td>{{ $internet->jml_baik }}</td>
                                     <td>{{ $internet->jml_rusak_ringan }}</td>
                                     <td>{{ $internet->jml_rusak_berat }}</td>
-                                    <td>{{ $internet->foto }}</td>
+                                    <td>
+                                      @if ($internet->foto != null)
+                                      <img src="{{asset('public/uploads/'.$internet->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('penerangan_internet.destroy',$internet->id) }}" method="POST">

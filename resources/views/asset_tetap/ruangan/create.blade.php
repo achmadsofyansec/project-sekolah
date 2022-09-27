@@ -41,7 +41,8 @@
                         </div>
                         <div class="card-body">
                           <p>1. isi <b>Identitas Ruangan</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Ruangan Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>2. Pastikan Sudah Menambah Nama Gedung Dahulu di <b>Data Gedung agar data dapat disimpan</b></p>
+                          <p>3. Simpan Data Ruangan Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -55,7 +56,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Gedung</label>
-                                    <select class="form-control" id="gedung" name="gedung">
+                                    <select class="form-control" id="nama_gedung" name="nama_gedung">
                                         <option value="">Nama Gedung</option>
                                         @forelse ($gedung as $gedung)
                                         <option value="{{$gedung->nama_gedung}}">{{$gedung->nama_gedung}}</option>

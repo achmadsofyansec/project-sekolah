@@ -50,7 +50,7 @@ class KebutuhanTambahanController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'tahun_pengajuan' => $request->tahun_pengajuan,
                 'jenis' => $request->jenis,
@@ -127,6 +127,7 @@ class KebutuhanTambahanController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $validate = $this->validate($request,[
             'tahun_pengajuan' => ['required'],
             'jenis' => ['required'],
@@ -137,10 +138,10 @@ class KebutuhanTambahanController extends Controller
         ]);
         if($validate){
             $data = [];
-            $file = $request->file('file');
-            if($file != null){
-                $name = $request->file('file')->getClientOriginalName();
-                $file->move('../assets/upload',$name);
+            $foto = $request->file('foto');
+            if($foto != null){
+                $name = $request->file('foto')->getClientOriginalName();
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'tahun_pengajuan' => $request->tahun_pengajuan,
                 'jenis' => $request->jenis,

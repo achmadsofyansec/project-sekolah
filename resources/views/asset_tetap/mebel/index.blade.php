@@ -55,7 +55,13 @@
                                     <td>{{ $mebel->jml_baik }}</td>
                                     <td>{{ $mebel->jml_rusak_ringan }}</td>
                                     <td>{{ $mebel->jml_rusak_berat }}</td>
-                                    <td>{{ $mebel->foto }}</td>
+                                    <td>
+                                      @if ($mebel->foto != null)
+                                      <img src="{{asset('public/uploads/'.$mebel->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('mebel.destroy',$mebel->id) }}" method="POST">

@@ -60,7 +60,13 @@
                                       <td>{{ $kebutuhan->sifat }}</td>
                                       <td>{{ $kebutuhan->rangking }}</td>
                                       <td>{{ $kebutuhan->kategori_kondisi }}</td>
-                                      <td>{{ $kebutuhan->foto }}</td>
+                                      <td>
+                                      @if ($kebutuhan->foto != null)
+                                      <img src="{{asset('public/uploads/'.$kebutuhan->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                       <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('kebutuhan_tambahan.destroy',$kebutuhan->id) }}" method="POST">

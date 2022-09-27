@@ -40,8 +40,7 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>
-                                    <th>Nama</th>                     
+                                    <th>No</th>                     
                                     <th>Unit</th>
                                     <th>Jumlah Baik</th>
                                     <th>Jumlah Rusak Ringan</th>
@@ -52,12 +51,17 @@
                                 <tbody>
                                   @forelse ($laboratorium as $laboratorium)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $laboratorium->nama }}</td>
                                     <td>{{ $laboratorium->unit }}</td>    
                                     <td>{{ $laboratorium->jml_baik }}</td>
                                     <td>{{ $laboratorium->jml_rusak_ringan }}</td>
                                     <td>{{ $laboratorium->jml_rusak_berat }}</td>
-                                    <td>{{ $laboratorium->foto }}</td>
+                                    <td>
+                                      @if ($laboratorium->foto != null)
+                                      <img src="{{asset('public/uploads/'.$laboratorium->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('laboratorium.destroy',$laboratorium->id) }}" method="POST">

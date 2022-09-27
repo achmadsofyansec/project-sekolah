@@ -48,7 +48,7 @@ class LapanganController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'kondisi' => $request->kondisi,
@@ -133,7 +133,7 @@ class LapanganController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'kondisi' => $request->kondisi,

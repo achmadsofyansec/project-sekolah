@@ -47,7 +47,7 @@ class SaranaBelajarController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
@@ -106,7 +106,7 @@ class SaranaBelajarController extends Controller
     public function edit($id)
     {
         $data = SarprasSaranaBelajar::findOrFail($id);
-        return view('asset_sarana_belaar.edit',compact('data'));
+        return view('asset_tetap.sarana_belajar.edit',compact('data'));
     }
 
     /**
@@ -128,7 +128,7 @@ class SaranaBelajarController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
@@ -145,7 +145,7 @@ class SaranaBelajarController extends Controller
             }
 
 
-            $update = SarprasLapangan::findOrFail($id);
+            $update = SarprasSaranaBelajar::findOrFail($id);
             $update->update($data);
             if($update){
                 return redirect()

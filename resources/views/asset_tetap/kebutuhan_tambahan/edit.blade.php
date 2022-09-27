@@ -50,14 +50,14 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('kebutuhan_tambahan.update', $data->id)}}" method="POST">
+                        <form action="{{route('kebutuhan_tambahan.update', $data->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Tahun Pengajuan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="tahun_pengajuan" name="nama_gedung" value="{{ $data->tahun_pengajuan }}" required />
+                                        <input type="text" class="form-control" id="tahun_pengajuan" name="tahun_pengajuan" value="{{ $data->tahun_pengajuan }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -90,18 +90,19 @@
                                         <input type="text" class="form-control" id="kategori_kondisi" name="kategori_kondisi" value="{{ $data->kategori_kondisi }}" required />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                            <label>Gambar</label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <p>{{$data->foto}}</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input type="file" name="foto" id="foto" class="form-control" value="{{ $data->foto }}" accept="file/*">        
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
+                                <div class="row">
+                                <div class="col-md-4">
+                                  @if ($data->foto != null)
+                                <img src="{{asset('public/uploads/'.$data->foto)}}" alt="Image" class="img" width="100" height="100">
+                                <p>{{$data->foto}}</p>
+                                  @endif
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="form-grup">
+                                    <label>Foto</label>
+                                    <input type="file" name="foto" id="foto" class="form-control">
+                                </div>
+                                </div>
                               </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>

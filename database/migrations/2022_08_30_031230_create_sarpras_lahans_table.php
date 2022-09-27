@@ -19,7 +19,7 @@ class CreateSarprasLahansTable extends Migration
             $table->text('alamat');
             $table->integer('luas');
             $table->integer('luas_digunakan');
-            $table->string('status');
+            $table->string('status_lahan');
             $table->string('kelurahan');
             $table->string('kecamatan');
             $table->string('kabupaten');

@@ -50,7 +50,7 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('mebel.update', $data->id)}}" method="POST">
+                        <form action="{{route('mebel.update', $data->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -78,10 +78,20 @@
                                         <input type="text" class="form-control" id="jml_rusak_berat" name="jml_rusak_berat" value="{{ $data->jml_rusak_berat }}" required />
                                     </div>
                                 </div>
-                                 <div class="form-group">
-                                    <label>Foto</label>
-                                    <input type="file" name="foto" id="foto" class="form-control" required>
+                                 <div class="row">
+                                <div class="col-md-4">
+                                  @if ($data->foto != null)
+                                <img src="{{asset('public/uploads/'.$data->foto)}}" alt="Image" class="img" width="100" height="100">
+                                <p>{{$data->foto}}</p>
+                                  @endif
                                 </div>
+                                <div class="col-md-8">
+                                  <div class="form-grup">
+                                    <label>Foto</label>
+                                    <input type="file" name="foto" id="foto" class="form-control">
+                                </div>
+                                </div>
+                              </div>
                                 <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{route('mebel.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>

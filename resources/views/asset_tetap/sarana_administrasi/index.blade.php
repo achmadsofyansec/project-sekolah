@@ -55,7 +55,13 @@
                                     <td>{{ $administrasi->jml_baik }}</td>
                                     <td>{{ $administrasi->jml_rusak_ringan }}</td>
                                     <td>{{ $administrasi->jml_rusak_berat }}</td>
-                                    <td>{{ $administrasi->foto }}</td>
+                                    <td>
+                                      @if ($administrasi->foto != null)
+                                      <img src="{{asset('public/uploads/'.$administrasi->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('sarana_administrasi.destroy',$administrasi->id) }}" method="POST">

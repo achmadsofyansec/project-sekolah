@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Asset')
+@section('page', 'Ruangan')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -54,14 +54,20 @@
                                 <tbody>
                                   @forelse ($ruangan as $ruangan)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $ruangan->gedung }}</td>
+                                    <td>{{ $ruangan->nama_gedung }}</td>
                                     <td>{{ $ruangan->jenis_ruangan }}</td>    
                                     <td>{{ $ruangan->nama }}</td>
                                     <td>{{ $ruangan->kondisi }}</td>
                                     <td>{{ $ruangan->tahun_dibangun }}</td>
                                     <td>{{ $ruangan->panjang }}</td>
                                     <td>{{ $ruangan->lebar }}</td>
-                                    <td>{{ $ruangan->foto }}</td>
+                                    <td>
+                                      @if ($ruangan->foto != null)
+                                      <img src="{{asset('public/uploads/'.$ruangan->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('ruangan.destroy',$ruangan->id) }}" method="POST">

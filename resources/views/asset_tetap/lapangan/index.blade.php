@@ -40,24 +40,28 @@
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
-                                    <th>No</th>                                   
-                                    <th>Nama Lahan</th>
-                                    <th>Alamat</th>
-                                    <th>Luas Lahan</th>
-                                    <th>Luas Digunakan</th>
-                                    <th>Luas Belum Digunakan</th>
-                                    <th>Status</th>
+                                    <th>No</th>                     
+                                    <th>Unit</th>
+                                    <th>Jumlah Baik</th>
+                                    <th>Jumlah Rusak Ringan</th>
+                                    <th>Jumlah Rusak Berat</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($lahan as $lahan)
+                                  @forelse ($lapangan as $lapangan)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $lahan->unit }}</td>
-                                    <td>{{ $lapangan->kondisi }}</td>    
+                                    <td>{{ $lapangan->unit }}</td>    
                                     <td>{{ $lapangan->kondisi }}</td>
                                     <td>{{ $lapangan->panjang }}</td>
                                     <td>{{ $lapangan->lebar }}</td>
-                                    <td>{{ $lapangan->foto }}</td>
+                                    <td>
+                                      @if ($lapangan->foto != null)
+                                      <img src="{{asset('public/uploads/'.$lapangan->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('lapangan.destroy',$lapangan->id) }}" method="POST">

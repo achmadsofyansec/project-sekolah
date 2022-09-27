@@ -51,7 +51,13 @@
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{ $lain->unit }}</td>    
                                     <td>{{ $lain->fungsi }}</td>
-                                    <td>{{ $lain->foto }}</td>
+                                    <td>
+                                      @if ($lain->foto != null)
+                                      <img src="{{asset('public/uploads/'.$lain->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('aset_lain.destroy',$lain->id) }}" method="POST">

@@ -53,7 +53,13 @@
                                     <td>{{ $belajar->sarana_pembelajaran }}</td>    
                                     <td>{{ $belajar->deskripsi }}</td>
                                     <td>{{ $belajar->fungsi }}</td>
-                                    <td>{{ $belajar->foto }}</td>
+                                    <td>
+                                      @if ($belajar->foto != null)
+                                      <img src="{{asset('public/uploads/'.$belajar->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('sarana_belajar.destroy',$belajar->id) }}" method="POST">

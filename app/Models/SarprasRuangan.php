@@ -9,7 +9,7 @@ class SarprasRuangan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'gedung',
+        'nama_gedung',
         'jenis_ruangan',
         'nama',
         'kondisi',

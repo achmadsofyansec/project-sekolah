@@ -56,7 +56,7 @@ class RuanganController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'gedung' => $request->gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
@@ -138,9 +138,9 @@ class RuanganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $credential = $this->validate($request,[
-            'gedung' => ['required'],
+    {     
+        $validate = $this->validate($request,[
+            'nama_gedung' => ['required'],
             'jenis_ruangan' => ['required'],
             'nama' => ['required'],
             'kondisi' => ['required'],
@@ -148,15 +148,14 @@ class RuanganController extends Controller
             'panjang' => ['required'],
             'lebar' => ['required'],
         ]);
-
-        if($credential){
+        if($validate){
             $data = [];
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
-                'gedung' => $request->gedung,
+                'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
                 'nama' => $request->nama,
                 'kondisi' => $request->kondisi,
@@ -167,7 +166,7 @@ class RuanganController extends Controller
                 ];
             } else {
                 $data = [
-                'gedung' => $request->gedung,
+                'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
                 'nama' => $request->nama,
                 'kondisi' => $request->kondisi,
@@ -177,13 +176,15 @@ class RuanganController extends Controller
                 'foto' => '-',
                 ];
             }
-            $create = SarprasRuangan::create($data);
 
-            if($create){
+
+            $update = SarprasRuangan::findOrFail($id);
+            $update->update($data);
+            if($update){
                 return redirect()
                 ->route('ruangan.index')
                 ->with([
-                    'success' => 'Data Ruangan Has Been Added successfully'
+                    'success' => 'Data Ruangan & Internet Has Been Update successfully'
                 ]);
             }else{
                 return redirect()
@@ -192,12 +193,6 @@ class RuanganController extends Controller
                     'error' => 'Some problem has occurred, please try again'
                 ]);
             }
-        } else {
-            return redirect()
-            ->back()
-            ->with([
-                'error' => 'Some problem has occurred, please try again'
-            ]);
         }
     }
 

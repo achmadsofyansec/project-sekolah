@@ -48,7 +48,7 @@ class LaboratoriumController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'jml_baik' => $request->jml_baik,
@@ -133,7 +133,7 @@ class LaboratoriumController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'jml_baik' => $request->jml_baik,

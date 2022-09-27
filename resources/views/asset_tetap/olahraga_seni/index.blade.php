@@ -55,7 +55,13 @@
                                     <td>{{ $olahraga->jml_baik }}</td>
                                     <td>{{ $olahraga->jml_rusak_ringan }}</td>
                                     <td>{{ $olahraga->jml_rusak_berat }}</td>
-                                    <td>{{ $olahraga->foto }}</td>
+                                    <td>
+                                      @if ($olahraga->foto != null)
+                                      <img src="{{asset('public/uploads/'.$olahraga->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('olahraga_seni.destroy',$olahraga->id) }}" method="POST">

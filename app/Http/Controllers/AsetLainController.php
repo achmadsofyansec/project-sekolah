@@ -46,7 +46,7 @@ class AsetLainController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'fungsi' => $request->fungsi,
@@ -125,7 +125,7 @@ class AsetLainController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move(public_path('uploads'),$name);
                 $data = [
                 'unit' => $request->unit,
                 'fungsi' => $request->fungsi,

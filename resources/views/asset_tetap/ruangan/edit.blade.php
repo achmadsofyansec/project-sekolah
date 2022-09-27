@@ -50,18 +50,18 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{route('ruangan.update', $data->id)}}" method="POST">
+                        <form action="{{route('ruangan.update', $data->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                             <label>Gedung</label>
-                                            <select class="form-control" id="gedung" name="gedung">
-                                            <option value="">{{ $data->gedung }}</option>
+                                            <select class="form-control" id="nama_gedung" name="nama_gedung">
+                                            <option value="">{{ $data->nama_gedung }}</option>
                                           @forelse ($gedung as $gedung)
-                                        <option value="{{$gedung->gedung}}" @if ($data->gedung == $gedung->gedung)
+                                        <option value="{{$gedung->nama_gedung}}" @if ($data->nama_gedung == $gedung->nama_gedung)
                                           {{'selected'}}
-                                        @endif>{{$gedung->gedung}}</option>
+                                        @endif>{{$gedung->nama_gedung}}</option>
                                           @empty
                                               
                                           @endforelse
@@ -103,10 +103,20 @@
                                         <input type="text" class="form-control" id="lebar" name="lebar" value="{{ $data->lebar }}" required />
                                     </div>
                                 </div>
-                                 <div class="form-group">
-                                    <label>Foto</label>
-                                    <input type="file" name="foto" id="foto" class="form-control" required>
+                                <div class="row">
+                                <div class="col-md-4">
+                                  @if ($data->foto != null)
+                                <img src="{{asset('public/uploads/'.$data->foto)}}" alt="Image" class="img" width="100" height="100">
+                                <p>{{$data->foto}}</p>
+                                  @endif
                                 </div>
+                                <div class="col-md-8">
+                                  <div class="form-grup">
+                                    <label>Foto</label>
+                                    <input type="file" name="foto" id="foto" class="form-control">
+                                </div>
+                                </div>
+                              </div>
                                 <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{route('ruangan.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
