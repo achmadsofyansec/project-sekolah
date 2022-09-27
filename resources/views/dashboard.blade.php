@@ -62,8 +62,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-5">
-        <div class="card card-success">
+      <div class="col-md-12">
+        <div class="card card-orange">
           <div class="card-header">
             <h3 class="card-title">Data Transaksi <?= date('d-M-Y') ?> </h3>
           </div>
