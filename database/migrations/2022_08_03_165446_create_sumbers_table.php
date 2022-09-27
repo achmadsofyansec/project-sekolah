@@ -13,7 +13,7 @@ class CreateSumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sumbers', function (Blueprint $table) {
+        Schema::create('perpustakaan_sumbers', function (Blueprint $table) {
             $table->id();
             $table->string('nama_sumber');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateSumbersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sumbers');
+        Schema::dropIfExists('perpustakaan_sumbers');
     }
 }

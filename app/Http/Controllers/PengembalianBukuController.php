@@ -20,9 +20,9 @@ class PengembalianBukuController extends Controller
     {
 
             $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-            $denda = DB::table('dendas')->select(['dendas.*'])->get();
-            $data = DB::table('data_bukus')
-                        ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
+            $denda = DB::table('perpustakaan_dendas')->select(['perpustakaan_dendas.*'])->get();
+            $data = DB::table('perpustakaan_data_bukus')
+                        ->join('perpustakaan_peminjaman_bukus', 'perpustakaan_peminjaman_bukus.id_buku', '=', 'perpustakaan_data_bukus.kode_buku')
                         ->get();
             return view('transaksi.pengembalian.index',compact (['siswa','denda','data']));
         //

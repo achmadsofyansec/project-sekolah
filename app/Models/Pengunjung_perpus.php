@@ -9,6 +9,7 @@ class Pengunjung_perpus extends Model
 {
     use HasFactory;
 
+	protected $table = "perpustakaan_pengunjung_perpuses";   
     protected $fillable = [
 		'nis',
 		'nama_siswa',

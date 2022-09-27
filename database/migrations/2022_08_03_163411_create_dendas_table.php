@@ -13,7 +13,7 @@ class CreateDendasTable extends Migration
      */
     public function up()
     {
-        Schema::create('dendas', function (Blueprint $table) {
+        Schema::create('perpustakaan_dendas', function (Blueprint $table) {
             $table->id();
             $table->string('tarif_denda');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateDendasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dendas');
+        Schema::dropIfExists('perpustakaan_dendas');
     }
 }

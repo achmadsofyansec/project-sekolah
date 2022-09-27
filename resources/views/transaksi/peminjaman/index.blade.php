@@ -249,7 +249,7 @@ function filter_buku(){
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
       });
-      var x = document.getElementById("nisn").value;
+    var x = document.getElementById("nisn").value;
     $.ajax({
              type:'POST',
              url:"{{ route('ajaxRequestNisn.filter_siswa') }}",
@@ -259,7 +259,6 @@ function filter_buku(){
               $('#nis').val(ray.nisn)
               $('#nama').val(ray.nama)
               $('#nama_kelas').val(ray.nisn)
-              $('#showdata').html('response')
              }
           });
   }

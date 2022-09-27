@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sumber extends Model
 {
     use HasFactory;
-
+    protected $table = "perpustakaan_sumbers";
     protected $fillable = [
     	'id_sumber',
 		'nama_sumber'

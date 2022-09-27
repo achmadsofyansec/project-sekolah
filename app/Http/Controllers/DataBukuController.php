@@ -28,8 +28,8 @@ class DataBukuController extends Controller
      */
     public function create()
     {
-        $kategori = DB::table('kategoris')->select(['Kategoris.*'])->get();
-        $sumber = DB::table('sumbers')->select(['Sumbers.*'])->get();
+        $kategori = DB::table('perpustakaan_kategoris')->select(['perpustakaan_Kategoris.*'])->get();
+        $sumber = DB::table('perpustakaan_sumbers')->select(['perpustakaan_Sumbers.*'])->get();
         return view('master.buku.create',compact(['sumber','kategori']));
         
     }
@@ -125,8 +125,8 @@ class DataBukuController extends Controller
      */
     public function edit($id)
     {
-        $kategori = DB::table('kategoris')->select(['Kategoris.*'])->get();
-        $sumber = DB::table('sumbers')->select(['Sumbers.*'])->get();
+        $kategori = DB::table('perpustakaan_kategoris')->select(['perpustakaan_Kategoris.*'])->get();
+        $sumber = DB::table('perpustakaan_sumbers')->select(['perpustakaan_Sumbers.*'])->get();
         $buku = Buku::findOrFail($id);
         return view('master.buku.edit',compact('buku','sumber','kategori'));
         

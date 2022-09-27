@@ -13,7 +13,7 @@ class CreatePengembalianBukusTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengembalian_bukus', function (Blueprint $table) {
+        Schema::create('perpustakaan_pengembalian_bukus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreatePengembalianBukusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengembalian_bukus');
+        Schema::dropIfExists('perpustakaan_pengembalian_bukus');
     }
 }

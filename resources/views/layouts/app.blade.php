@@ -101,7 +101,7 @@
           <img src="{{asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
+          <a href="#" class="d-block"></a>
           <span class="badge badge-info right ">Administrator</span>
           <form action="<?php echo url('/signout') ?>" method="post">
           @csrf

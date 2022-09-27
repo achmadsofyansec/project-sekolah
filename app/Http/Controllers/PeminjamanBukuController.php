@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Peminjaman_buku;
 use App\Models\Pengunjung_perpus;
+use App\Models\Buku;
 
 class PeminjamanBukuController extends Controller
 {
@@ -18,15 +19,15 @@ class PeminjamanBukuController extends Controller
      */
     public function index(Request $request)
     {
-        $nisn = ['data_siswas.nisn','=',$request->nisn];
+        $nis = '#nis';
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $buku = DB::table('data_bukus')->select(['data_bukus.*'])->get();
+        $buku = DB::table('perpustakaan_data_bukus')->select(['perpustakaan_data_bukus.*'])->get();
         $peminjaman = Peminjaman_buku::latest()->get();
-        $data = DB::table('data_bukus')
-                    ->join('peminjaman_bukus', 'peminjaman_bukus.id_buku', '=', 'data_bukus.kode_buku')
-                    ->where('status','LIKE', "1" )
-                    ->where('id_siswa','LIKE', $nisn)
+        $data = DB::table('perpustakaan_data_bukus')
+                    ->join('perpustakaan_peminjaman_bukus', 'perpustakaan_peminjaman_bukus.id_buku', '=', 'perpustakaan_data_bukus.kode_buku')
+                    ->where('id_siswa','LIKE',$nis)
                     ->get();
+
         return view('transaksi.peminjaman.index',compact (['siswa','buku','data']));
         //
     }

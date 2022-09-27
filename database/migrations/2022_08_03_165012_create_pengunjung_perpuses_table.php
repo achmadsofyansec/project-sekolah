@@ -13,7 +13,7 @@ class CreatePengunjungPerpusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengunjung_perpuses', function (Blueprint $table) {
+        Schema::create('perpustakaan_pengunjung_perpuses', function (Blueprint $table) {
             $table->id();
             $table->string('nis');
             $table->string('nama_siswa');
@@ -30,6 +30,6 @@ class CreatePengunjungPerpusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengunjung_perpuses');
+        Schema::dropIfExists('perpustakaan_pengunjung_perpuses');
     }
 }

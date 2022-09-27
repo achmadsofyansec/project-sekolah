@@ -13,7 +13,7 @@ class CreatePeminjamanBukusTable extends Migration
      */
     public function up()
     {
-        Schema::create('peminjaman_bukus', function (Blueprint $table) {
+        Schema::create('perpustakaan_peminjaman_bukus', function (Blueprint $table) {
             $table->id();
             $table->string('id_siswa');
             $table->String('id_buku');
@@ -32,6 +32,6 @@ class CreatePeminjamanBukusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peminjaman_bukus');
+        Schema::dropIfExists('perpustakaan_peminjaman_bukus');
     }
 }

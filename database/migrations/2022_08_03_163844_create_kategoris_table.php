@@ -13,7 +13,7 @@ class CreateKategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoris', function (Blueprint $table) {
+        Schema::create('perpustakaan_kategoris', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kategori');
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateKategorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoris');
+        Schema::dropIfExists('perpustakaan_kategoris');
     }
 }
