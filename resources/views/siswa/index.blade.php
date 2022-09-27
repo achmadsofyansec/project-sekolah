@@ -36,7 +36,7 @@
                    <div class="card-header">
                    <a type="button" href="{{ route('siswa.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
                    <a type="button" href="#" class="btn btn-primary"><i class="fas fa-file-import"></i>Import</a>
-                   <a type="button" href="#" class="btn btn-info"><i class="	fas fa-file-export"></i>Export</a>
+                   <a type="button" href="{{ route('export_siswa') }}" class="btn btn-info"><i class="	fas fa-file-export"></i>Export</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">

@@ -4,6 +4,7 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AnggotaEkstraController;
 use App\Http\Controllers\EkstrakulikulerController;
+use App\Http\Controllers\ExportImport;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JurusanController;
@@ -81,5 +82,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //AjaxRequest
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');
+        //Export
+        Route::get('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
     });
 });
