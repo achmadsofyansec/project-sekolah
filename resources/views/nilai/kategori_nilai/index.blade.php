@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Harian')
+@section('page', 'Nilai / Predikat')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -33,43 +33,38 @@
               </div>
               @endif
                 <div class="card card-outline card-info">
-                   <div class="card-header">
-                    <div class="card-tools">
-                      <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-input-harian"><i class="fas fa-plus"></i> Tambah</a>
+                    <div class="card-header">
+                        <div class="card-tools">
+                        <a href="{{route('kategori_nilai.create')}}" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+                        </div>
                     </div>
-                   </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
-                                    <th>Tanggal Input</th>
-                                    <th>Kelas</th>
-                                    <th>Jurusan</th>
-                                    <th>Tahun Ajaran</th>
+                                    <th>Nama Kategori</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($data as $item)
-                                      <tr>
-                                      <td>{{$loop->index + 1}}</td>
-                                      <td>{{$item->tgl_input}}</td>
-                                      <td>{{$item->nama_kelas}}  ({{$item->kode_kelas}})</td>
-                                      <td>{{$item->nama_jurusan}} ({{$item->kode_jurusan}})</td>
-                                      <td>{{$item->tahun_ajaran}}</td>
-                                      <td>
+                                    @forelse ($data as $item)
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{$item->kategori_nilai}}</td>
+                                    <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="{{ route('input_nilai.destroy',$item->id_nilai) }}" method="POST">
-                                        <a href="{{ route('input_nilai.edit',$item->id_nilai) }}" class="btn btn-warning"><i class="fas fa-box-open"></i>Action</a>
+                                        action="{{ route('kategori_nilai.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('kategori_nilai.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
                                         </form>
                                       </td>
-                                      </tr>
-                                  @empty
-                                      <tr>
-                                        <td class="text-muted text-center" colspan="6">Tidak Ada Data</td>
-                                      </tr>
-                                  @endforelse
+                                    </tr>
+                                    @empty
+                                        <tr>
+                                            <td class="text-muted text-center" colspan="3">Tidak Ada Data</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                        </div>
@@ -78,7 +73,6 @@
             </div>
         </div>
     </div>
-    @include('nilai.input_nilai.harian.create')
     </section>
     <!-- /.content -->
   </div>

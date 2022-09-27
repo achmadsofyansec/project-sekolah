@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
               <label>Kelas</label>
-              <select name="kode_kelas" id="kode_kelas" class="form-control" required>
+              <select name="kode_kelas" id="kode_kelas" class="form-control" style="width: 100%;" required>
                   <option value=""> -- Pilih Kelas</option>
                   @forelse ($kelas as $item)
               <option value="{{$item->kode_kelas}}"> ({{$item->kode_kelas}}) {{$item->nama_kelas}} </option>
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <label>Jurusan</label>
-              <select name="jurusan" id="jurusan" class="form-control" required>
+              <select name="jurusan" id="jurusan" class="form-control" style="width: 100%;" required>
                   <option value=""> -- Pilih Jurusan --</option>
                   @forelse ($jurusan as $item)
               <option value="{{$item->kode_jurusan}}"> ({{$item->kode_jurusan}}) {{$item->nama_jurusan}} </option>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
               <label>Tahun Ajaran</label>
-              <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" required>
+              <select name="tahun_ajaran" id="tahun_ajaran" class="form-control" style="width: 100%;" required>
                   <option value=""> -- Pilih Tahun Ajaran --</option>
                   @forelse ($tahun_ajaran as $item)
                   <option value="{{$item->kode_tahun_ajaran}}" @if ($item->status_tahun_ajaran == 'Aktif')
@@ -50,6 +50,10 @@
                       
                   @endforelse
               </select>
+            </div>
+            <div class="form-group">
+              <label>Keterangan Input</label>
+              <textarea name="desc_input" id="desc_input" cols="30" rows="10" class="form-control"></textarea>
             </div>
         </div>
         </div>

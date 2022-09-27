@@ -203,6 +203,12 @@
                   <p>Nilai / Predikat</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/kategori_nilai') ?>" class="nav-link">
+                  <i class="fas fas fa-clipboard nav-icon text-navy"></i>
+                  <p>Kategori</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

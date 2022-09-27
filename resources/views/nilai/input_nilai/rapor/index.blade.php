@@ -57,13 +57,13 @@
                                   <td>{{$item->nama_kelas}}  ({{$item->kode_kelas}})</td>
                                   <td>{{$item->nama_jurusan}} ({{$item->kode_jurusan}})</td>
                                   <td>{{$item->tahun_ajaran}}</td>
-                                  <td><td>
+                                  <td>
                                     <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                    action="{{ route('akademik_nilai.destroy',$item->id) }}" method="POST">
-                                    <a href="{{ route('akademik_nilai.edit',$item->id_nilai) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                    action="{{ route('input_nilai.destroy',$item->id_nilai) }}" method="POST">
+                                    <a href="{{ route('input_nilai.edit',$item->id_nilai) }}" class="btn btn-warning"><i class="fas fa-box-open"></i>Action</a>
                                     @csrf
                                     </form>
-                                  </td></td>
+                                  </td>
                                   </tr>
                               @empty
                                   <tr>

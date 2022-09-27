@@ -7,6 +7,7 @@ use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KategoriNilaiController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelompokMapelController;
 use App\Http\Controllers\MapelController;
@@ -70,6 +71,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/input_rapor',[NilaiController::class,'view_input_rapor'])->name('input_rapor');
         Route::get('/input_ujian',[NilaiController::class,'view_input_ujian'])->name('input_ujian');
         Route::resource('input_nilai',NilaiController::class);
+        Route::resource('kategori_nilai',KategoriNilaiController::class);
         
         //Ekstrakulikuler
         Route::resource('ekstrakulikuler',EkstrakulikulerController::class);

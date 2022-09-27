@@ -13,7 +13,7 @@ class akademik_nilai extends Model
         'tgl_input',
         'kode_kelas',
         'kode_jurusan',
-        'kode_mapel',
+        'kode_tahun_ajaran',
         'type_nilai',
         'status_input',
         'desc_input',

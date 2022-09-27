@@ -41,10 +41,34 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>Jenis Laporan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Harian</td>
+                                    <td>
+                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>Bulanan</td>
+                                    <td>
+                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>Tahunan</td>
+                                    <td>
+                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
+                                    </td>
+                                  </tr>
                                 </tbody>
                             </table>
                        </div>

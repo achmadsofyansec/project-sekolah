@@ -7,7 +7,7 @@ use App\Models\akademik_nilai;
 use App\Models\jurusan;
 use App\Models\Kelas;
 use App\Models\tahun_ajaran;
-
+use Illuminate\Support\Str;
 class NilaiController extends Controller
 {
     public function view_input_capaian(){
@@ -39,7 +39,7 @@ class NilaiController extends Controller
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['type_nilai','=','rapor']])->get();
+        ->where([['type_nilai','=','rapor']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
         return view('nilai.input_nilai.rapor.index',compact(['data','kelas','jurusan','tahun_ajaran']));
     }
     public function view_input_ujian(){
@@ -49,7 +49,7 @@ class NilaiController extends Controller
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['type_nilai','=','ujian']])->get();
+        ->where([['type_nilai','=','ujian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
         return view('nilai.input_nilai.ujian.index',compact(['data','kelas','jurusan','tahun_ajaran']));
     }
     /**
@@ -89,9 +89,51 @@ class NilaiController extends Controller
             'tahun_ajaran' => ['required']
         ]);
         if($validate){
-            
-            $create = akademik_nilai::create([
-
+            $cek = akademik_nilai::where([['type_nilai','=',$request->type_nilai]
+            ,['kode_kelas','=',$request->kode_kelas]
+            ,['kode_jurusan','=',$request->jurusan]
+            ,['kode_tahun_ajaran','=',$request->tahun_ajaran]
+            ,['tgl_input','=',$request->tgl_input]
+            ])->get()->count();
+            if($cek < 1){
+                $qode = Str::random(6);
+                $data = akademik_nilai::latest()->get()->count();
+                $kode_nilai = "AN_".$qode.$data;
+                $create = akademik_nilai::create([
+                    'kode_nilai' => $kode_nilai,
+                    'tgl_input' => $request->tgl_input,
+                    'kode_kelas' => $request->kode_kelas,
+                    'kode_jurusan' => $request->jurusan,
+                    'kode_tahun_ajaran' => $request->tahun_ajaran,
+                    'type_nilai' => $request->type_nilai,
+                    'status_input' => '0',
+                    'desc_input' => $request->desc_input
+                ]);
+                if($create){
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'success' => "Mata Pelajaran Has Been Added successfully"
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
+            }else{
+                return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some Problem has occurred,You Already input in Same Data !'
+                    ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
             ]);
         }
         //
@@ -117,6 +159,21 @@ class NilaiController extends Controller
     public function edit($id)
     {
         //
+        $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
+        ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+        ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
+        ->where([['akademik_nilais.id','=',$id]])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*'])->first();
+        switch($data->type_nilai){
+            case 'harian':
+                return view('nilai.input_nilai.harian.edit',compact(['data']));    
+            break;
+            case 'ujian':
+                return view('nilai.input_nilai.ujian.edit',compact(['data']));    
+            break;
+            case 'rapor':
+                return view('nilai.input_nilai.rapor.edit',compact(['data']));    
+            break;
+        }
     }
 
     /**
@@ -129,6 +186,52 @@ class NilaiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validate = $this->validate($request,[
+            'desc_input' => ['required'],
+        ]);
+        if($validate){
+            $update = akademik_nilai::findOrFail($id);
+            $update->update([
+                'desc_input' => $request->desc_input
+            ]);
+            if($update){
+                switch($update->type_nilai){
+                    case 'harian':
+                        return redirect()
+                        ->route('input_harian')
+                        ->with([
+                            'success' => 'Nilai Harian Has Been Updated successfully'
+                        ]);
+                    break;
+                    case 'ujian':
+                        return redirect()
+                        ->route('input_ujian')
+                        ->with([
+                            'success' => 'Nilai Ujian Has Been Updated successfully'
+                        ]);   
+                    break;
+                    case 'rapor':
+                        return redirect()
+                        ->route('input_rapor')
+                        ->with([
+                            'success' => 'Nilai Rapor Has Been Updated successfully'
+                        ]);   
+                    break;
+                }
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
     }
 
     /**
@@ -139,6 +242,17 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = akademik_nilai::findOrFail($id);
+        switch($data->type_nilai){
+            case 'harian':
+                return view('nilai.input_nilai.harian.index');    
+            break;
+            case 'ujian':
+                return view('nilai.input_nilai.ujian.index');    
+            break;
+            case 'rapor':
+                return view('nilai.input_nilai.rapor.index');    
+            break;
+        }
     }
 }
