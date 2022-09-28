@@ -16,7 +16,7 @@
                     <select name="kode_siswa" id="kode_siswa" class="form-control" style="width: 100%;" required>
                         <option value="">--- Pilih Siswa ---</option>
                         @forelse ($siswa as $item)
-                    <option value="{{$item->id_siswa}}">{{$item->nama}} - {{$item->kode_kelas}} {{$item->kode_jurusan}} - {{$item->tahun_ajaran}}</option>
+                    <option value="{{$item->id_siswa}}">{{$item->nama}} - {{$item->kode_kelas}} {{$item->kode_jurusan}}</option>
                         @empty
                         @endforelse
                     </select>

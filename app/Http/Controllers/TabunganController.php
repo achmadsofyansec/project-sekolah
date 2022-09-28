@@ -18,13 +18,11 @@ class TabunganController extends Controller
     public function index()
     {
         $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
-        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*']);
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
         $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
                                         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-                                        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
                                         ->where([['data_siswas.status_siswa','=','Aktif']])
-                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*'
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
                                             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
                                             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan']);
         return view('tabungan.index',compact(['siswa','data']));
@@ -112,9 +110,8 @@ class TabunganController extends Controller
         //
         $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
         ->where([['keuangan_tabungan_siswas.id','=',$id]])
-        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*'
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan'])->first();
         $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->get();
