@@ -226,8 +226,6 @@ class SiswaController extends Controller
                                         ,'kelas','aktivitas','tahun_ajaran','jurusan']));
         
     }
-
-   
     public function update(Request $request, $id)
     {
         //
