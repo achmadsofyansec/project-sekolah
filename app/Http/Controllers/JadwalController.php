@@ -164,5 +164,20 @@ class JadwalController extends Controller
     public function destroy($id)
     {
         //
+        $data = Jadwal::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('jadwal.index')
+            ->with([
+                'success' => 'Jadwal Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

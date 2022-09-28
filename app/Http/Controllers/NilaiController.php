@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\akademik_nilai;
 use App\Models\jurusan;
 use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use App\Models\tahun_ajaran;
 use Illuminate\Support\Str;
 class NilaiController extends Controller
@@ -163,15 +164,16 @@ class NilaiController extends Controller
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
         ->where([['akademik_nilais.id','=',$id]])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*'])->first();
+        $mapel = MataPelajaran::latest()->get();
         switch($data->type_nilai){
             case 'harian':
                 return view('nilai.input_nilai.harian.edit',compact(['data']));    
             break;
             case 'ujian':
-                return view('nilai.input_nilai.ujian.edit',compact(['data']));    
+                return view('nilai.input_nilai.ujian.edit',compact(['data','mapel']));    
             break;
             case 'rapor':
-                return view('nilai.input_nilai.rapor.edit',compact(['data']));    
+                return view('nilai.input_nilai.rapor.edit',compact(['data','mapel']));    
             break;
         }
     }

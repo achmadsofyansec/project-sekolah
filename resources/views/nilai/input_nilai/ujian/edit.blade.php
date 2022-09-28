@@ -34,7 +34,7 @@
               </div>
               @endif
               <div class="row">
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <div class="card card-info card-outline">
                         <div class="card-header">
                             <div class="card-title">
@@ -73,10 +73,33 @@
                     </form>
                     </div>
                 </div>  
-                <div class="col-md-8 mt-1">
-                    <div class="card card-outline card-info">
-                       
+                <div class="col-md-9 mt-1">
+                  <div class="card card-info card-outline card-outline-tabs">
+                    <div class="card-header p-0 border-bottom-0">
+                      <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                        @forelse ($mapel as $item)
+                          <li class="nav-item">
+                          <a class="nav-link @if ($loop->index == 0)
+                              {{'active'}}
+                          @endif " id="custom-tabs-four-{{$item->kode_mapel}}-tab" data-toggle="pill" href="#custom-tabs-four-{{$item->kode_mapel}}" role="tab" aria-controls="custom-tabs-four-{{$item->kode_mapel}}" aria-selected="false">{{$item->nama_mapel}}</a>
+                          </li>
+                        @empty
+                        @endforelse
+                      </ul>
                     </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="custom-tabs-four-tabContent">
+                        @forelse ($mapel as $item)
+                          <div class="tab-pane fade show @if ($loop->index == 0)
+                            {{'active'}}
+                        @endif" id="custom-tabs-four-{{$item->kode_mapel}}" role="tabpanel" aria-labelledby="custom-tabs-four-{{$item->kode_mapel}}-tab">
+
+                         </div>
+                        @empty
+                        @endforelse
+                      </div>
+                    </div>
+                </div> 
                 </div>  
               </div>
                 
