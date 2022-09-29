@@ -85,11 +85,11 @@
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Nama Siswa</td>
-                        <td><input class="form-control nama_siswa" name="nama" type="text" id="nama" readonly></td>
+                        <td><input class="form-control nama" name="nama" type="text" id="nama" readonly></td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">Kelas</td>
-                        <td><input class="form-control nama_kelas" name="nama_kelas" type="text" id="nama_kelas" readonly></td>
+                        <td><input class="form-control kelas" name="nama_kelas" type="text" id="nama_kelas" readonly></td>
                       </tr>
                   </table>
                 </div>
@@ -156,6 +156,7 @@
                       @csrf
                       @method('PUT')
                         <input type="hidden" name="status" id="status" value="<?php echo 0; ?>">
+                        <input class="form-control nis" name="nis" type="hidden" id="nis">
                         <input type="hidden" name="keperluan" id="keperluan" value="<?php echo "Kembali Buku"; ?>">
                           <button  class="btn btn-primary btn-xs"  onclick="return confirm('Yakin ingin mengembalikan buku ini ?');"><i class="fa fa-edit"> </i> Kembali</i></button></td>
                     </form>
@@ -197,9 +198,9 @@
              data:{nisn:x},
              success:function(data){
               const ray = data[0];
-              $('#nis').val(ray.nisn)
-              $('#nama').val(ray.nama)
-              $('#nama_kelas').val(ray.nisn)
+              $('.nis').val(ray.nisn)
+              $('.nama').val(ray.nama)
+              $('.kelas').val(ray.nisn)
              }
           });
   }

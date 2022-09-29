@@ -180,7 +180,7 @@
                       <th class="text-center">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="table">
                       @forelse ($data as $item) 
                         <tr>
                           <td>{{$loop->index + 1}}</td>
@@ -223,6 +223,8 @@
 @endsection
 @section('content-script')
 <script>
+  let x = $("#nisn").val()
+
   //Filter Absensi
 function filter_buku(){
     $.ajaxSetup({
@@ -261,6 +263,15 @@ function filter_buku(){
               $('#nama_kelas').val(ray.nisn)
              }
           });
+           $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequestNisn.filter_siswa') }}",
+             data:{nis:x},
+             success:function(data){
+              console.log(data);
+             }
+          });
   }
+
 </script>
 @endsection

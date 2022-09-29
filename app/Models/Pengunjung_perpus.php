@@ -12,8 +12,6 @@ class Pengunjung_perpus extends Model
 	protected $table = "perpustakaan_pengunjung_perpuses";   
     protected $fillable = [
 		'nis',
-		'nama_siswa',
-		'kelas',
 		'keperluan',
     ];
 }

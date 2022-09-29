@@ -21,8 +21,9 @@
       <div class="row">
 			<div class="col-md-12">
                 <div class="card">
-                  @forelse ($denda as $item)
-                    <form role="form" action="{{url('denda_save')}}" method="post">
+                  @foreach ($denda as $item)
+                    <form role="form" action="{{route('denda.update',$item->id)}}" method="post">
+                  @endforeach
 					      <div class="alert alert-success" >
 					        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="fa fa-remove"></i>
@@ -37,7 +38,7 @@
                                         <span class="input-group-append">
                                         <button type="button" class="btn bg-info btn-flat"><i class="fas fa-dollar-sign"> </i> Tarif Denda Telat Per Hari</button>
                                       </span>
-                                      <input type="number" class="form-control" name="denda" value="" required>
+                                      <input type="number" class="form-control" name="denda" value="@foreach ($denda as $item) {{$item->tarif_denda}} @endforeach" required>
                                       <span class="input-group-append">
                                         <button type="submit" class="btn bg-navy btn-flat"><i class="fa fa-save"> </i> Simpan Tarif Denda</button>
                                       </span>
@@ -46,8 +47,6 @@
                             </div>
                         </div>
                     </form>
-                    @empty
-                    @endforelse
                 </div>
                 <!-- /.box -->
             </div>

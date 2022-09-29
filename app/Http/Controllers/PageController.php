@@ -58,7 +58,9 @@ class PageController extends Controller
 
     public function laporan_pengunjung()
     {
-        $pengunjung = Pengunjung_perpus::latest()->get();
+        $pengunjung = DB::table('perpustakaan_pengunjung_perpuses')
+                            ->join('data_siswas','data_siswas.nisn','=','perpustakaan_pengunjung_perpuses.nis')
+                            ->get();
         return view('laporan.pengunjung.index', compact('pengunjung'));
     }
 

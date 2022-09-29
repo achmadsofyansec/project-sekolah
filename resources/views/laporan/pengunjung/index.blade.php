@@ -56,7 +56,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Keperluan</label>
-                                        <select class="form-control select2" type="text" name="keperluan">
+                                        <select class="form-control select2" type="text" name="keperluan" id="keperluan">
                                             <option value="all">[ SEMUA KEPERLUAN ]</option>
                                             <option value="Baca Buku">Baca Buku</option>
                                             <option value="Baca dan Pinjam">Baca dan Pinjam</option>
@@ -107,8 +107,8 @@
                                     @forelse ($pengunjung as $item)
                                 <tr>
                                     <td>{{$loop->index +1}}</td>
-                                    <td>{{$item->nama_siswa}}</td>
-                                    <td>{{$item->kelas}}</td>
+                                    <td>{{$item->nama}}</td>
+                                    <td>{{$item->nisn}}</td>
                                     <td>{{$item->keperluan}}</td>
                                     <td>{{$item->created_at}}</td>
                                     @empty
@@ -140,22 +140,6 @@
   </div>
   <!-- /.content-wrapper -->
   <script>
-    $(document).ready(function() {
-      $('#cari-siswa').typeahead({
-        source: function(query, result) {
-          $.ajax({
-            url: "<?php echo url('/'); ?>/pelanggaran_siswa/ajax_siswa",
-            data: 'query=' + query,
-            dataType: "json",
-            type: "POST",
-            success: function(data) {
-              result($.map(data, function(item) {
-                return item;
-              }));
-            }
-          });
-        }
-      });
-    });
+
   </script>
   @endsection

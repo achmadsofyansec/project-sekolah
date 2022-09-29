@@ -19,13 +19,12 @@ class PeminjamanBukuController extends Controller
      */
     public function index(Request $request)
     {
-        $nis = '#nis';
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
         $buku = DB::table('perpustakaan_data_bukus')->select(['perpustakaan_data_bukus.*'])->get();
         $peminjaman = Peminjaman_buku::latest()->get();
         $data = DB::table('perpustakaan_data_bukus')
                     ->join('perpustakaan_peminjaman_bukus', 'perpustakaan_peminjaman_bukus.id_buku', '=', 'perpustakaan_data_bukus.kode_buku')
-                    ->where('id_siswa','LIKE',$nis)
+                    ->where('status','LIKE', '1')
                     ->get();
 
         return view('transaksi.peminjaman.index',compact (['siswa','buku','data']));

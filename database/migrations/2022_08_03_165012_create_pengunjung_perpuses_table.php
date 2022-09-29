@@ -16,8 +16,6 @@ class CreatePengunjungPerpusesTable extends Migration
         Schema::create('perpustakaan_pengunjung_perpuses', function (Blueprint $table) {
             $table->id();
             $table->string('nis');
-            $table->string('nama_siswa');
-            $table->string('kelas');
             $table->string('keperluan');
             $table->timestamps();
         });
