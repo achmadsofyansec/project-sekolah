@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Exports;
+namespace DummyNamespace;
 
-use App\Models\data_guru;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class GuruExport implements FromCollection
+class DummyClass implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -13,6 +12,5 @@ class GuruExport implements FromCollection
     public function collection()
     {
         //
-        return data_guru::latest()->get();
     }
 }

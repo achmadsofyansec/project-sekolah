@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 Route::get('/back',[PageController::class,'back'])->name('back');
 Route::post('/signout',[PageController::class,'logout'])->name('signout');
+Route::get('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         
@@ -82,7 +83,5 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //AjaxRequest
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');
-        //Export
-        Route::get('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
     });
 });

@@ -13,5 +13,6 @@ class aktivitas_belajar extends Model
         'kode_kelas',
         'kode_tahun_ajaran',
         'kode_jurusan',
+        'status_aktivitas',
     ];
 }

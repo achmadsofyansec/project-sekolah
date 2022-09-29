@@ -20,6 +20,7 @@ class CreateAktivitasBelajarsTable extends Migration
                 $table->string('kode_kelas');
                 $table->string('kode_tahun_ajaran');
                 $table->string('kode_jurusan');
+                $table->string('status_aktivitas');
                 $table->timestamps();
             });
         }

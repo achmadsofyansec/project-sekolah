@@ -185,6 +185,7 @@ class SiswaController extends Controller
                     'kode_kelas' => $request->kelas,
                     'kode_tahun_ajaran' => $request->tahun_ajaran,
                     'kode_jurusan' => $request->jurusan,
+                    'status_aktivitas' => '1',
                 ];
                 $create_activity = aktivitas_belajar::create($data_aktivitas);
             }
@@ -392,6 +393,7 @@ class SiswaController extends Controller
                 'kode_kelas' => $request->kelas,
                 'kode_tahun_ajaran' => $request->tahun_ajaran,
                 'kode_jurusan' => $request->jurusan,
+                'status_aktivitas' => '1',
             ];
             $update_activity = aktivitas_belajar::where([['kode_siswa','=',$request->nik]])->get()->first();
             if($update_activity != null){
