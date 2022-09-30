@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\SarprasPeminjaman;
-use App\Models\SarpraskategoriAset;
+use App\Models\SarprasDataAset;
 
 class PeminjamanController extends Controller
 {
@@ -20,8 +20,8 @@ class PeminjamanController extends Controller
     {
         $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
         $peminjaman = SarprasPeminjaman::latest()->get();
-        $kategori = SarprasKategoriAset::latest()->get();
-        return view('peminjaman.index',compact (['siswa','peminjaman', 'kategori']));
+        $unit = SarprasDataAset::latest()->get();
+        return view('peminjaman.index',compact (['siswa','peminjaman', 'unit']));
         //
     }
 
@@ -32,7 +32,10 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('peminjaman.create');
+        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
+        $peminjaman = SarprasPeminjaman::latest()->get();
+        $unit = SarprasDataAset::latest()->get();
+        return view('peminjaman.create',compact (['siswa','peminjaman', 'unit']));
     }
 
     /**
@@ -44,15 +47,15 @@ class PeminjamanController extends Controller
     public function store(Request $request)
     {
         $credential = $this->validate($request,[
-            'id_siswa' => ['required'],
-            'kategori' => ['required'],
+            'nama' => ['required'],
+            'unit' => ['required'],
             'jumlah' => ['required'],
-            'status' => ['required']
+            'status' => ['required'],
         ]);
         if($credential){
             $create = SarprasPeminjaman::create([
-                'id_siswa' => $request->id_siswa,
-                'kategori' => $request->kategori,
+                'nama' => $request->nama,
+                'unit' => $request->unit,
                 'jumlah' => $request->jumlah,
                 'status' => $request->status,
             ]);

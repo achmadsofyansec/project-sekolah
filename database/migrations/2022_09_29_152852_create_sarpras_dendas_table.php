@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSarprasPengembaliansTable extends Migration
+class CreateSarprasDendasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSarprasPengembaliansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_pengembalians', function (Blueprint $table) {
+        Schema::create('sarpras_dendas', function (Blueprint $table) {
             $table->id();
-            $table->string('penerima');
-            $table->date('tanggal_kembali');
+            $table->integer('denda');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSarprasPengembaliansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sarpras_pengembalians');
+        Schema::dropIfExists('sarpras_dendas');
     }
 }

@@ -9,9 +9,10 @@ class SarprasPeminjaman extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_siswa',
-        'kategori',
+        'nama',
+        'unit',
         'jumlah',
         'status',
+        'tanggal_kembali',
     ];
 }

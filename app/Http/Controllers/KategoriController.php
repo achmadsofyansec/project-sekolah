@@ -85,7 +85,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $data = SarprasKategoriAset::findOrFail($id);
-        return view('kategori_aset_tt.edit',compact('data'));
+        return view('asset_tidak_tetap.kategori_asset.edit',compact('data'));
     }
 
     /**

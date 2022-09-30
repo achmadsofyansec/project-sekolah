@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SarprasPengembalian;
-use App\Models\SarprasPeminjaman;
-use Illuminate\Support\Facades\DB;
+use App\Models\SarprasDenda;
 
-class PengembalianController extends Controller
+class DendaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $data = DB::table('sarpras_peminjamen')->join('sarpras_pengembalians', 'sarpras_pengembalians.id', '=', 'sarpras_peminjamen.id')->get();
-        return view('pengembalian.index',compact('data'));
+        $denda = SarprasDenda::latest()->get();
+        return view('denda.index', compact('denda'));
     }
 
     /**

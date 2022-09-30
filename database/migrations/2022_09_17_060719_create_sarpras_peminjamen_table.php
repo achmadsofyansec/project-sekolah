@@ -15,9 +15,10 @@ class CreateSarprasPeminjamenTable extends Migration
     {
         Schema::create('sarpras_peminjamen', function (Blueprint $table) {
             $table->id();
-            $table->string('id_siswa');
-            $table->string('kategori');
+            $table->string('nama');
+            $table->string('unit');
             $table->integer('jumlah');
+            $table->date('tanggal_kembali');
             $table->string('status');
             $table->timestamps();
         });
