@@ -27,20 +27,8 @@ class PageController extends Controller
         $belum_absen = $siswa->count() - $masuk->count() - $izin->count() - $tanpa_keterangan->count() - $sakit->count();
         return view('dashboard',compact(['siswa','guru','kelas','mapel','masuk','izin','tanpa_keterangan','sakit','belum_absen']));
     }
-    
-    public function view_mutasi_guru(){
-        return view('mutasi.guru.index');
-    }
-    public function view_mutasi_siswa(){
-        return view('mutasi.siswa.index');
-    }
 
-    public function view_lap_absensi(){
-        return view('laporan.absensi.index');
-    }
-    public function view_lap_nilai(){
-        return view('laporan.nilai.index');
-    }
+   
     
     
     public function logout(Request $request){

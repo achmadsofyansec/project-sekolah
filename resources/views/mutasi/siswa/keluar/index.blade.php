@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Prestasi')
+@section('page', 'Mutasi Masuk Siswa')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -34,9 +34,6 @@
               @endif
                 <div class="card card-outline card-info">
                    <div class="card-header">
-                    <div class="card-tools">
-                      <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-input-prestasi"><i class="fas fa-plus"></i> Tambah</a>
-                    </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -44,12 +41,10 @@
                                 <thead>
                                     <th>No</th>
                                     <th>NISN</th>
-                                    <th>Nama</th>
-                                    <th>Lomba</th>
-                                    <th>Tahun</th>
-                                    <th>Penyelenggara</th>
+                                    <th>Nama Lengkap</th>
                                     <th>Tingkat</th>
-                                    <th>Peringkat Yang Diraih</th>
+                                    <th>Alasan</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
@@ -62,7 +57,6 @@
             </div>
         </div>
     </div>
-    @include('nilai.input_nilai.prestasi.create')
     </section>
     <!-- /.content -->
   </div>

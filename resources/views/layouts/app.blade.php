@@ -221,16 +221,46 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo url('/mutasi_guru') ?>" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fas fas fa-users nav-icon text-success"></i>
                   <p>Mutasi Guru</p>
+                  <i class="fas fa-angle-left right"></i>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?php echo url('/mutasi_masuk_guru') ?>" class="nav-link">
+                      <i class="fas fa-arrow-down nav-icon text-success"></i>
+                      <p>Masuk</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo url('/mutasi_keluar_guru') ?>" class="nav-link">
+                      <i class="fas fa-arrow-up nav-icon text-danger"></i>
+                      <p>Keluar</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a href="<?php echo url('/mutasi_siswa') ?>" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fas fa-graduation-cap nav-icon text-danger"></i>
                   <p>Mutasi Siswa</p>
+                  <i class="fas fa-angle-left right"></i>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?php echo url('/mutasi_masuk_siswa') ?>" class="nav-link">
+                      <i class="fas fa-arrow-down nav-icon text-success"></i>
+                      <p>Masuk</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo url('/mutasi_keluar_siswa') ?>" class="nav-link">
+                      <i class="fas fa-arrow-up nav-icon text-danger"></i>
+                      <p>Keluar</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>

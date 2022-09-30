@@ -60,7 +60,7 @@
                                     <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" name="foto_guru" id="foto_guru" class="form-control">
+                                    <input type="file" accept="image/png, image/jpeg" name="foto_guru" id="foto_guru" class="form-control">
                                 </div>
                             </div>
                             <div class="card-footer">

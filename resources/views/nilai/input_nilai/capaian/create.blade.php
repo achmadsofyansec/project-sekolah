@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="{{route('input_nilai.store')}}" method="POST">
+      <form action="" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">

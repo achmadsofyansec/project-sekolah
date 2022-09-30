@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Mutasi Guru')
+@section('page', 'Mutasi Masuk Siswa')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,6 +40,12 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>NISN</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Tingkat</th>
+                                    <th>Alasan</th>
+                                    <th>Asal</th>
+                                    <th>Status Pengajuan</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>

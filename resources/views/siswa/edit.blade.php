@@ -71,7 +71,7 @@
                                     
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" name="foto_siswa" id="foto_siswa" class="form-control">
+                                        <input type="file" accept="image/png, image/jpeg" name="foto_siswa" id="foto_siswa" class="form-control">
                                     </div>
                                 </div>
                                 <div class="card-footer">

@@ -11,8 +11,14 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KategoriNilaiController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelompokMapelController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\MutasiGuruController;
+use App\Http\Controllers\MutasiSiswaController;
+use App\Http\Controllers\NilaiCapaianController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\NilaiEkstraController;
+use App\Http\Controllers\NilaiPrestasiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PindahKelasController;
@@ -47,8 +53,10 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('jurusan',JurusanController::class);
         Route::resource('tahun_ajaran',TahunAjaranController::class);
 
-        Route::get('/mutasi_guru',[PageController::class,'view_mutasi_guru'])->name('mutasi_guru');
-        Route::get('/mutasi_siswa',[PageController::class,'view_mutasi_siswa'])->name('mutasi_siswa');
+        Route::get('/mutasi_masuk_guru',[MutasiGuruController::class,'view_mutasi_masuk_guru'])->name('mutasi_masuk_guru');
+        Route::get('/mutasi_keluar_guru',[MutasiGuruController::class,'view_mutasi_keluar_guru'])->name('mutasi_keluar_guru');
+        Route::get('/mutasi_masuk_siswa',[MutasiSiswaController::class,'view_mutasi_masuk_siswa'])->name('mutasi_masuk_siswa');
+        Route::get('/mutasi_keluar_siswa',[MutasiSiswaController::class,'view_mutasi_keluar_siswa'])->name('mutasi_keluar_siswa');
         //Pembelajaran
         Route::resource('mapel',MapelController::class);
         Route::resource('kelompok_mapel',KelompokMapelController::class);
@@ -62,14 +70,14 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('perizinan',PerizinanController::class);
 
         //Laporan
-        Route::get('/lap_absensi',[PageController::class,'view_lap_absensi'])->name('laporan_absensi');
-        Route::get('/lap_nilai',[PageController::class,'view_lap_nilai'])->name('laporan_nilai');
+        Route::get('/lap_absensi',[LaporanController::class,'view_lap_absensi'])->name('laporan_absensi');
+        Route::get('/lap_nilai',[LaporanController::class,'view_lap_nilai'])->name('laporan_nilai');
 
         //inputnilai
-        Route::get('/input_capaian',[NilaiController::class,'view_input_capaian'])->name('input_capaian');
-        Route::get('/input_ekstra',[NilaiController::class,'view_input_ekstra'])->name('input_ekstra');
+        Route::resource('input_capaian',NilaiCapaianController::class);
+        Route::resource('input_ekstra',NilaiEkstraController::class);
         Route::get('/input_harian',[NilaiController::class,'view_input_harian'])->name('input_harian');
-        Route::get('/input_prestasi',[NilaiController::class,'view_input_prestasi'])->name('input_prestasi');
+        Route::resource('input_prestasi',NilaiPrestasiController::class);
         Route::get('/input_rapor',[NilaiController::class,'view_input_rapor'])->name('input_rapor');
         Route::get('/input_ujian',[NilaiController::class,'view_input_ujian'])->name('input_ujian');
         Route::resource('input_nilai',NilaiController::class);

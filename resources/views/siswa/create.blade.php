@@ -61,7 +61,7 @@
                                         <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" name="foto_siswa" id="foto_siswa" class="form-control" accept="image/*">
+                                        <input type="file" accept="image/png, image/jpeg" name="foto_siswa" id="foto_siswa" class="form-control" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -244,7 +244,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tahun Ajaran</label>
+                                                <label>Tahun Masuk</label>
                                                 <select name="tahun_ajaran" id="tahun_ajaran" style="width:100%;" class="form-control" required>
                                                     <option value="">-- Pilih Tahun Ajaran --</option>
                                                     @forelse ($tahun_ajaran as $item)

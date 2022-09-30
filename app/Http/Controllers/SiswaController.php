@@ -20,7 +20,9 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = data_siswa::latest()->get();
-        return view('siswa.index',compact('siswa'));
+        $kelas = Kelas::latest()->get();
+        $jurusan = jurusan::latest()->get();
+        return view('siswa.index',compact(['siswa','kelas','jurusan']));
     }
 
     /**
