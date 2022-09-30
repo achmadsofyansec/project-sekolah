@@ -11,14 +11,7 @@ use App\Models\tahun_ajaran;
 use Illuminate\Support\Str;
 class NilaiController extends Controller
 {
-    public function view_input_capaian(){
-        $data = akademik_nilai::where([['type_nilai','=','capaian']])->get();
-        return view('nilai.input_nilai.capaian.index',compact(['data']));
-    }
-    public function view_input_ekstra(){
-        $data = akademik_nilai::where([['type_nilai','=','ekstra']])->get();
-        return view('nilai.input_nilai.ekstrakulikuler.index',compact(['data']));
-    }
+    
     public function view_input_harian(){
         $kelas = Kelas::where([['status_kelas','=','Aktif']])->get();
         $jurusan = jurusan::where([['status_jurusan','=','Aktif']])->get();
@@ -28,10 +21,6 @@ class NilaiController extends Controller
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
         ->where([['type_nilai','=','harian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
         return view('nilai.input_nilai.harian.index',compact(['data','kelas','jurusan','tahun_ajaran']));
-    }
-    public function view_input_prestasi(){
-        $data = akademik_nilai::where([['type_nilai','=','prestasi']])->get();
-        return view('nilai.input_nilai.prestasi.index',compact(['data']));
     }
     public function view_input_rapor(){
         $kelas = Kelas::where([['status_kelas','=','Aktif']])->get();
