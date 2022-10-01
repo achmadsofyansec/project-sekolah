@@ -62,3 +62,4 @@ Route::get('/app/password',[PageController::class,'password']);
 //ajax
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
 Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
+Route::post('ajaxRequestTable', [AjaxController::class, 'filter_table'])->name('ajaxRequestTable.filter_table');

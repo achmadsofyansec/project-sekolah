@@ -19,15 +19,16 @@ class PeminjamanBukuController extends Controller
      */
     public function index(Request $request)
     {
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $buku = DB::table('perpustakaan_data_bukus')->select(['perpustakaan_data_bukus.*'])->get();
-        $peminjaman = Peminjaman_buku::latest()->get();
-        $data = DB::table('perpustakaan_data_bukus')
-                    ->join('perpustakaan_peminjaman_bukus', 'perpustakaan_peminjaman_bukus.id_buku', '=', 'perpustakaan_data_bukus.kode_buku')
-                    ->where('status','LIKE', '1')
-                    ->get();
+        $siswa = DB::table('data_siswas')->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $data = DB::table('perpustakaan_peminjaman_bukus')
+        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_bukus.id_siswa')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where('status','LIKE','1')
+        ->get(['data_siswas.*','perpustakaan_peminjaman_bukus.id_siswa as id_peminjaman','perpustakaan_peminjaman_bukus.*','aktivitas_belajars.*']);
+        
 
-        return view('transaksi.peminjaman.index',compact (['siswa','buku','data']));
+        return view('transaksi.peminjaman.index',compact (['siswa','data']));
         //
     }
 
@@ -38,7 +39,7 @@ class PeminjamanBukuController extends Controller
      */
     public function create(Request $request)
     {
-        //
+            //
     }
 
     /**
@@ -117,7 +118,17 @@ class PeminjamanBukuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('perpustakaan_peminjaman_buku_dts')
+        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where('perpustakaan_peminjaman_buku_dts.id_siswa','=', $id)
+        ->get(['data_siswas.*','perpustakaan_peminjaman_buku_dts.id_siswa as id_peminjaman','perpustakaan_peminjaman_buku_dts.*','aktivitas_belajars.*'])->first();
+        $buku = DB::table('perpustakaan_data_bukus')->get();
+        $denda = DB::table('perpustakaan_dendas')->get();
+        $pinjam = DB::table('perpustakaan_peminjaman_buku_dts')->where('id_siswa','=',$id)->get();
+
+
+        return view('transaksi.peminjaman.edit',compact('data','denda','pinjam','buku'));
     }
 
     /**
