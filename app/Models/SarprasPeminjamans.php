@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SarprasPeminjaman extends Model
+class SarprasPeminjamans extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
+        'kode_peminjaman',
+        'kode_siswa',
+        'tgl_peminjaman',
+        'status_peminjaman',
+        'desc_peminjaman',
         'unit',
-        'jumlah',
-        'status',
-        'tanggal_kembali',
     ];
 }

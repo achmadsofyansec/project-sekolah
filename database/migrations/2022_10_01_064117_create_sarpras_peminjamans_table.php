@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSarprasPeminjamenTable extends Migration
+class CreateSarprasPeminjamansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSarprasPeminjamenTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_peminjamen', function (Blueprint $table) {
+        Schema::create('sarpras_peminjamans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('unit');
-            $table->integer('jumlah');
-            $table->date('tanggal_kembali');
-            $table->string('status');
+            $table->string('kode_peminjaman');
+            $table->string('kode_siswa');
+            $table->string('tgl_peminjaman');
+            $table->string('status_peminjaman');
+            $table->text('desc_peminjaman');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSarprasPeminjamenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sarpras_peminjamen');
+        Schema::dropIfExists('sarpras_peminjamans');
     }
 }

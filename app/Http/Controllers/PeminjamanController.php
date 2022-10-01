@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\SarprasPeminjaman;
 use App\Models\SarprasDataAset;
+use App\Models\data_siswa;
+use App\Models\SarprasPeminjamans;
+use Illuminate\Support\Str;
 
 class PeminjamanController extends Controller
 {
@@ -18,11 +20,16 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $peminjaman = SarprasPeminjaman::latest()->get();
-        $unit = SarprasDataAset::latest()->get();
-        return view('peminjaman.index',compact (['siswa','peminjaman', 'unit']));
-        //
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $kategori = SarprasDataAset::latest()->get();
+        $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->where([['data_siswas.status_siswa','=','Aktif']])
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+                                            ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
+                                            ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman']);
+        return view('peminjaman.index',compact(['data','siswa', 'kategori']));
     }
 
     /**
@@ -32,10 +39,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-        $peminjaman = SarprasPeminjaman::latest()->get();
-        $unit = SarprasDataAset::latest()->get();
-        return view('peminjaman.create',compact (['siswa','peminjaman', 'unit']));
+        
     }
 
     /**
@@ -46,38 +50,47 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $credential = $this->validate($request,[
-            'nama' => ['required'],
+        $validate = $this->validate($request,[
+            'kode_siswa' => ['required'],
+            'status_peminjaman' => ['required'],
             'unit' => ['required'],
-            'jumlah' => ['required'],
-            'status' => ['required'],
+            'desc_peminjaman' => ['required'],
+            'tgl_peminjaman' => ['required'],
         ]);
-        if($credential){
-            $create = SarprasPeminjaman::create([
-                'nama' => $request->nama,
-                'unit' => $request->unit,
-                'jumlah' => $request->jumlah,
-                'status' => $request->status,
-            ]);
-            if($create){
-                return redirect()
-                ->route('peminjaman.index')
-                ->with([
-                    'success' => 'Data Peminjaman Has Been Added successfully'
+        if($validate){
+            $cek = SarprasPeminjamans::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
+            if(!$cek){
+                $qode = Str::random(6);
+                $length = SarprasPeminjamans::latest()->get()->count();
+                $kode = 'PMJ_'.$qode.$length;
+                $create= SarprasPeminjamans::create([
+                    'kode_peminjaman' => $kode,
+                    'kode_siswa' => $request->kode_siswa,
+                    'status_peminjaman' => $request->status_peminjaman,
+                    'desc_peminjaman' => $request->desc_peminjaman,
+                    'tgl_peminjaman' => $request->tgl_peminjaman,
+                    'unit' => $request->unit,
                 ]);
+                if($create){
+                    return redirect()
+                    ->route('peminjaman.index')
+                    ->with([
+                        'success' => 'Peminjman Has Been Added successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
             }else{
                 return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Some problem has occurred, please try again'
-                ]);
+                    ->route('peminjman.index')
+                    ->with([
+                        'success' => 'Peminjaman Has Been Already Added'
+                    ]);
             }
-        }else{
-            return redirect()
-            ->back()
-            ->with([
-                'error' => 'Some problem has occurred, please try again'
-            ]);
         }
     }
 
@@ -100,7 +113,14 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
+        // ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        // ->where([['sarpras_peminjamans.id','=',$id]])
+        // ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+        //     ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
+        //     ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_tabungan'])->first();
+        // $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->get();
+        // return view('tabungan.edit',compact(['data','detail']));
     }
 
     /**
@@ -123,6 +143,20 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasPeminjamans::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('peminjaman.index')
+            ->with([
+                'success' => 'peminjaman Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }
