@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\akademik_nilai_ekstra;
 use Illuminate\Http\Request;
+use App\Models\data_siswa;
 
 class NilaiEkstraController extends Controller
 {
@@ -13,7 +15,14 @@ class NilaiEkstraController extends Controller
      */
     public function index()
     {
-        return view('nilai.input_nilai.ekstrakulikuler.index');
+
+        $data = akademik_nilai_ekstra::join('data_siswas','akademik_nilai_ekstras.kode_siswa','=','data_siswas.id')
+            ->get(['akademik_nilai_ekstras.id as id_ekstras','akademik_nilai_ekstras.*','data_siswas.*']);
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+            ->join("tahun_ajarans","aktivitas_belajars.kode_tahun_ajaran",'=','tahun_ajarans.kode_tahun_ajaran')
+            ->where([['data_siswas.status_siswa','=','Aktif']])
+            ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','tahun_ajarans.*']);
+        return view('nilai.input_nilai.ekstrakulikuler.index',compact(['data','siswa']));
     }
 
     /**

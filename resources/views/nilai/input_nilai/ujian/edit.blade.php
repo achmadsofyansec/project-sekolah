@@ -96,6 +96,7 @@
 
                          </div>
                         @empty
+                        <center><p>Silahkan Input Terlebih Dahulu Kelompok Mata Pelajaran,Mata Pelajaran Dan Jadwal </p></center>
                         @endforelse
                       </div>
                     </div>

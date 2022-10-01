@@ -43,10 +43,16 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>
+                                    <th>NISN</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Extrakulikuler</th>
+                                    <th>Nilai Ekstrakulikuler</th>
+                                    <th>Kegiatan Ekstrakulikuler</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  
                                 </tbody>
                             </table>
                        </div>

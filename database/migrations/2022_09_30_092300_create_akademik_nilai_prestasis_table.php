@@ -16,6 +16,14 @@ class CreateAkademikNilaiPrestasisTable extends Migration
         if(!Schema::hasTable('akadmik_nilai_prestasis')){
             Schema::create('akademik_nilai_prestasis', function (Blueprint $table) {
                 $table->id();
+                $table->string('kode_siswa');
+                $table->string('nama_lomba');
+                $table->string('nama_penyelenggara');
+                $table->string('tahun_lomba');
+                $table->string('tingkat_lomba');
+                $table->string('peringkat_lomba');
+                $table->string('keterangan_lomba');
+
                 $table->timestamps();
             });
         }

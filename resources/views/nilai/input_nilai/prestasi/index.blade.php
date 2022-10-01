@@ -53,7 +53,29 @@
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-
+                                  @forelse ($data as $item)
+                                      <tr>
+                                        <td>{{$loop->index + 1}}</td>
+                                        <td>{{$item->nisn}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->nama_lomba}}</td>
+                                        <td>{{$item->tahun_lomba}}</td>
+                                        <td>{{$item->nama_penyelenggara}}</td>
+                                        <td>{{$item->tingkat_lomba}}</td>
+                                        <td>{{$item->peringkat_lomba}}</td>
+                                        <td>
+                                          <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                          action="{{ route('input_prestasi.destroy',$item->id_prestasi) }}" method="POST">
+                                          <a href="{{ route('input_prestasi.edit',$item->id_prestasi) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                          @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                          </form>
+                                        </td>
+                                      </tr>
+                                  @empty
+                                      
+                                  @endforelse
                                 </tbody>
                             </table>
                        </div>
