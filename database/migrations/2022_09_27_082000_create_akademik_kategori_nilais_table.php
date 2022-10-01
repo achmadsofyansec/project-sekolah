@@ -13,11 +13,14 @@ class CreateAkademikKategoriNilaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('akademik_kategori_nilais', function (Blueprint $table) {
-            $table->id();
-            $table->string('kategori_nilai');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('akademik_kategori_nilais')){
+            Schema::create('akademik_kategori_nilais', function (Blueprint $table) {
+                $table->id();
+                $table->string('kategori_nilai');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

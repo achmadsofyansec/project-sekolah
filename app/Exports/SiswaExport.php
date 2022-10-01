@@ -13,6 +13,9 @@ class SiswaExport implements FromCollection{
     public function collection()
     {
         //
-        return data_siswa::latest()->get();
+        return data_siswa::join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa')
+                        ->join('kelas','aktivitas_belajars.kode_kelas','=','kelas.kode_kelas')
+                        ->join('jurusans','aktivitas_belajars.kode_jurusan','=','jurusans.kode_jurusan')
+                        ->get();
     }
 }

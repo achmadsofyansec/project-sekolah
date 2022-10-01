@@ -23,7 +23,6 @@ class CreateAkademikNilaiPrestasisTable extends Migration
                 $table->string('tingkat_lomba');
                 $table->string('peringkat_lomba');
                 $table->string('keterangan_lomba');
-
                 $table->timestamps();
             });
         }
