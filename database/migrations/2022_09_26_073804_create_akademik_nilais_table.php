@@ -22,6 +22,8 @@ class CreateAkademikNilaisTable extends Migration
                 $table->string('kode_jurusan');
                 $table->string('kode_tahun_ajaran');
                 $table->string('type_nilai');
+                $table->string('kode_mapel');
+                $table->string('kode_kategori');
                 $table->string('status_input');
                 $table->text('desc_input');
                 $table->timestamps();

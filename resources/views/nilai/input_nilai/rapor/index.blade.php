@@ -47,6 +47,7 @@
                                 <th>Kelas</th>
                                 <th>Jurusan</th>
                                 <th>Tahun Ajaran</th>
+                                <th>Mapel</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
@@ -57,6 +58,7 @@
                                   <td>{{$item->nama_kelas}}  ({{$item->kode_kelas}})</td>
                                   <td>{{$item->nama_jurusan}} ({{$item->kode_jurusan}})</td>
                                   <td>{{$item->tahun_ajaran}}</td>
+                                  <td>{{$item->nama_mapel}} ({{$item->kategori_nilai}})</td>
                                   <td>
                                     <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                     action="{{ route('input_nilai.destroy',$item->id_nilai) }}" method="POST">

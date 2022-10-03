@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\akademik_nilai_details;
 use App\Models\anggota_ekstra;
 use App\Models\data_siswa;
 use DateTime;
@@ -78,5 +79,35 @@ class AjaxController extends Controller
             <td>'.$item->nama_ekstra.'</td>';
         }
         return response()->json($data);
+    }
+    public function input_nilai(Request $request){
+        $result = "";
+        $cek = akademik_nilai_details::where([['kode_siswa','=',$request->kode_siswa]
+                                            ,['kode_nilai','=',$request->kode_nilai]])->get();
+        if($cek->count() < 1){
+            $create = akademik_nilai_details::create([
+                'kode_siswa' => $request->kode_siswa,
+                'kode_nilai' => $request->kode_nilai,
+                'nilai' => $request->nilai,
+            ]);
+            if($create){
+               $result = 'OK';
+            }else{
+               $result = 'Error';
+            }
+        }else{
+            $cek = akademik_nilai_details::where([['kode_siswa','=',$request->kode_siswa]
+                                            ,['kode_nilai','=',$request->kode_nilai]])->get()->first();
+            $update = akademik_nilai_details::findOrFail($cek->id);
+            $update->update([
+                'nilai' => $request->nilai,
+            ]);
+            if($update){
+                $result = 'OK';
+            }else{
+               $result = 'Error';
+            }
+        }
+        return response()->json($result);
     }
 }

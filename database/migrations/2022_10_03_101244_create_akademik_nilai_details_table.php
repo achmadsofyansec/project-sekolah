@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAkademikNilaiRaporsTable extends Migration
+class CreateAkademikNilaiDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateAkademikNilaiRaporsTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('akademik_nilai_rapors')){
-            Schema::create('akademik_nilai_rapors', function (Blueprint $table) {
+        if(!Schema::hasTable('akademik_nilai_details')){
+            Schema::create('akademik_nilai_details', function (Blueprint $table) {
                 $table->id();
                 $table->string('kode_siswa');
-                $table->string('kode_mapel');
-                $table->string('kode_kelas');
-                $table->string('kode_kategori_nilai');
                 $table->string('kode_nilai');
+                $table->string('nilai');
                 $table->timestamps();
             });
         }
@@ -34,6 +32,6 @@ class CreateAkademikNilaiRaporsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('akademik_nilai_rapors');
+        Schema::dropIfExists('akademik_nilai_details');
     }
 }

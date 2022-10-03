@@ -49,6 +49,26 @@
                   </select>
                 </div>
                 <div class="form-group">
+                  <label>Mata Pelajaran</label>
+                  <select name="kode_mapel" id="kode_mapel" class="form-control" style="width: 100%;" required>
+                    <option value=""> -- Pilih Mata Pelajaran --</option>
+                      @forelse ($mapel as $item)
+                  <option value="{{$item->kode_mapel}}">{{$item->nama_mapel}}</option>
+                      @empty
+                      @endforelse
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Kategori Nilai</label>
+                  <select name="kode_kategori" id="kode_kategori" class="form-control" style="width: 100%;" required>
+                    <option value=""> -- Pilih Kategori Nilai --</option>
+                      @forelse ($kategori as $item)
+                  <option value="{{$item->id}}">{{$item->kategori_nilai}}</option>
+                      @empty
+                      @endforelse
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Keterangan Input</label>
                   <textarea name="desc_input" id="desc_input" cols="30" rows="10" class="form-control" required></textarea>
                 </div>

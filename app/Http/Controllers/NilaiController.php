@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\akademik_kategori_nilai;
 use Illuminate\Http\Request;
 use App\Models\akademik_nilai;
+use App\Models\akademik_nilai_details;
+use App\Models\akademik_nilai_rapor;
+use App\Models\data_siswa;
 use App\Models\jurusan;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
@@ -16,31 +20,43 @@ class NilaiController extends Controller
         $kelas = Kelas::where([['status_kelas','=','Aktif']])->get();
         $jurusan = jurusan::where([['status_jurusan','=','Aktif']])->get();
         $tahun_ajaran = tahun_ajaran::latest()->get();
+        $mapel = MataPelajaran::latest()->get();
+        $kategori = akademik_kategori_nilai::latest()->get();
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+        ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
+        ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['type_nilai','=','harian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
-        return view('nilai.input_nilai.harian.index',compact(['data','kelas','jurusan','tahun_ajaran']));
+        ->where([['type_nilai','=','harian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*']);
+        return view('nilai.input_nilai.harian.index',compact(['data','kelas','jurusan','tahun_ajaran','mapel','kategori']));
     }
     public function view_input_rapor(){
         $kelas = Kelas::where([['status_kelas','=','Aktif']])->get();
         $jurusan = jurusan::where([['status_jurusan','=','Aktif']])->get();
         $tahun_ajaran = tahun_ajaran::latest()->get();
+        $mapel = MataPelajaran::latest()->get();
+        $kategori = akademik_kategori_nilai::latest()->get();
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+        ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
+        ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['type_nilai','=','rapor']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
-        return view('nilai.input_nilai.rapor.index',compact(['data','kelas','jurusan','tahun_ajaran']));
+        ->where([['type_nilai','=','rapor']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*']);
+        return view('nilai.input_nilai.rapor.index',compact(['data','kelas','jurusan','tahun_ajaran','mapel','kategori']));
     }
     public function view_input_ujian(){
         $kelas = Kelas::where([['status_kelas','=','Aktif']])->get();
         $jurusan = jurusan::where([['status_jurusan','=','Aktif']])->get();
         $tahun_ajaran = tahun_ajaran::latest()->get();
+        $mapel = MataPelajaran::latest()->get();
+        $kategori = akademik_kategori_nilai::latest()->get();
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+        ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
+        ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['type_nilai','=','ujian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*']);
-        return view('nilai.input_nilai.ujian.index',compact(['data','kelas','jurusan','tahun_ajaran']));
+        ->where([['type_nilai','=','ujian']])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*']);
+        return view('nilai.input_nilai.ujian.index',compact(['data','kelas','jurusan','tahun_ajaran','mapel','kategori']));
     }
     /**
      * Display a listing of the resource.
@@ -75,6 +91,8 @@ class NilaiController extends Controller
             'type_nilai' => ['required'],
             'tgl_input' => ['required'],
             'kode_kelas' => ['required'],
+            'kode_mapel' => ['required'],
+            'kode_kategori' => ['required'],
             'jurusan' => ['required'],
             'tahun_ajaran' => ['required']
         ]);
@@ -84,6 +102,8 @@ class NilaiController extends Controller
             ,['kode_jurusan','=',$request->jurusan]
             ,['kode_tahun_ajaran','=',$request->tahun_ajaran]
             ,['tgl_input','=',$request->tgl_input]
+            ,['kode_mapel','=',$request->kode_mapel]
+            ,['kode_kategori','=',$request->kode_kategori]
             ])->get()->count();
             if($cek < 1){
                 $qode = Str::random(6);
@@ -95,6 +115,8 @@ class NilaiController extends Controller
                     'kode_kelas' => $request->kode_kelas,
                     'kode_jurusan' => $request->jurusan,
                     'kode_tahun_ajaran' => $request->tahun_ajaran,
+                    'kode_mapel' => $request->kode_mapel,
+                    'kode_kategori' => $request->kode_kategori,
                     'type_nilai' => $request->type_nilai,
                     'status_input' => '0',
                     'desc_input' => $request->desc_input
@@ -151,18 +173,26 @@ class NilaiController extends Controller
         //
         $data = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
         ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+        ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
+        ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
         ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-        ->where([['akademik_nilais.id','=',$id]])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*'])->first();
+        ->where([['akademik_nilais.id','=',$id]])->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*'])->first();
         $mapel = MataPelajaran::latest()->get();
+        $kategori = akademik_kategori_nilai::latest()->get();
+        $data_nilai = data_siswa::join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa') 
+                                ->where([['kode_kelas','=',$data->kode_kelas],['kode_jurusan','=',$data->kode_jurusan],['status_siswa','=','Aktif']])
+                                ->get(['data_siswas.id as id_siswa','data_siswas.*','aktivitas_belajars.*']);
+        $detail = akademik_nilai_details::where([['akademik_nilai_details.kode_nilai','=',$id]])
+                                ->get();
         switch($data->type_nilai){
             case 'harian':
-                return view('nilai.input_nilai.harian.edit',compact(['data']));    
+                return view('nilai.input_nilai.harian.edit',compact(['data','mapel','kategori','data_nilai','detail']));    
             break;
             case 'ujian':
-                return view('nilai.input_nilai.ujian.edit',compact(['data','mapel']));    
+                return view('nilai.input_nilai.ujian.edit',compact(['data','mapel','kategori','data_nilai','detail']));    
             break;
             case 'rapor':
-                return view('nilai.input_nilai.rapor.edit',compact(['data','mapel']));    
+                return view('nilai.input_nilai.rapor.edit',compact(['data','mapel','kategori','data_nilai','detail']));    
             break;
         }
     }

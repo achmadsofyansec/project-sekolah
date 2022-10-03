@@ -14,6 +14,8 @@ class akademik_nilai extends Model
         'kode_kelas',
         'kode_jurusan',
         'kode_tahun_ajaran',
+        'kode_mapel',
+        'kode_kategori',
         'type_nilai',
         'status_input',
         'desc_input',

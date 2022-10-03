@@ -91,5 +91,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //AjaxRequest
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');
+        Route::post('input_nilai_detail', [AjaxController::class, 'input_nilai'])->name('ajaxRequest.input_nilai_detail');
     });
 });

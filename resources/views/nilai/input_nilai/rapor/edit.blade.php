@@ -62,6 +62,14 @@
                                 <input type="text" name="kode_tahun_ajaran" id="kode_tahun_ajaran" class="form-control" value="{{$data->tahun_ajaran}}" readonly>
                             </div>
                             <div class="form-group">
+                              <label>Mata Pelajaran</label>
+                              <input type="text" name="nama_mapel" id="nama_mapel" class="form-control" value="{{$data->nama_mapel}}" readonly>
+                            </div>
+                            <div class="form-group">
+                              <label>Kategori Nilai</label>
+                              <input type="text" name="kategori_nilai" id="kategori_nilai" class="form-control" value="{{$data->kategori_nilai}}" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label>Keterangan Input</label>
                                 <textarea name="desc_input" id="desc_input" cols="30" rows="10" class="form-control">{{$data->desc_input}}</textarea>
                             </div>
@@ -75,29 +83,44 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                       <div class="card card-info card-outline card-outline-tabs">
-                        <div class="card-header p-0 border-bottom-0">
-                          <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-                            @forelse ($mapel as $item)
-                              <li class="nav-item">
-                              <a class="nav-link @if ($loop->index == 0)
-                                  {{'active'}}
-                              @endif " id="custom-tabs-four-{{$item->kode_mapel}}-tab" data-toggle="pill" href="#custom-tabs-four-{{$item->kode_mapel}}" role="tab" aria-controls="custom-tabs-four-{{$item->kode_mapel}}" aria-selected="false">{{$item->nama_mapel}}</a>
-                              </li>
-                            @empty
-                            @endforelse
-                          </ul>
+                        <div class="card-header">
+                          Data Nilai
                         </div>
                         <div class="card-body">
                           <div class="tab-content" id="custom-tabs-four-tabContent">
-                            @forelse ($mapel as $item)
-                              <div class="tab-pane fade show @if ($loop->index == 0)
-                                {{'active'}}
-                            @endif" id="custom-tabs-four-{{$item->kode_mapel}}" role="tabpanel" aria-labelledby="custom-tabs-four-{{$item->kode_mapel}}-tab">
-                              
-                             </div>
-                            @empty
-                            <center><p>Silahkan Input Terlebih Dahulu Kelompok Mata Pelajaran,Mata Pelajaran Dan Jadwal </p></center>
-                            @endforelse
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>No</th>
+                                    <th style="width: 20%;">NISN</th>
+                                    <th style="width: 40%;">Nama</th>
+                                    <th>Nilai</th>
+                                  </thead>
+                                  <tbody>
+                                    @forelse ($data_nilai as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->nisn}}</td>
+                                      <td>{{$item->nama}}</td>
+                                      <td>@forelse ($detail as $r)
+                                            @if ($r->kode_siswa == $item->id_siswa)
+                                      <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai"  value="{{$r->nilai}}" class="form-control">
+                                            @else
+                                            <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                            @endif
+                                          @empty
+                                          <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                          @endforelse
+                                    </td>
+                                      </tr>
+                                    @empty
+                                        <tr>
+                                          <td class="text-muted text-center" colspan="4">Tidak Ada Data</td>
+                                        </tr>
+                                    @endforelse
+                                  </tbody>
+                                </table>
+                              </div>
                           </div>
                         </div>
                     </div> 
@@ -110,4 +133,12 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+    <script>
+      document.getElementById("detail_nilai").addEventListener("change", function(){
+        console.log(this.idsiswa)
+      });
+
+    </script>
 @endsection
