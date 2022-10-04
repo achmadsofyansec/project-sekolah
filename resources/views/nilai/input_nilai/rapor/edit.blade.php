@@ -98,19 +98,33 @@
                                   </thead>
                                   <tbody>
                                     @forelse ($data_nilai as $item)
+                                    @php
+                                        $s = 0;
+                                        $val = 0;
+                                    @endphp
                                       <tr>
                                       <td>{{$loop->index + 1}}</td>
                                       <td>{{$item->nisn}}</td>
                                       <td>{{$item->nama}}</td>
                                       <td>@forelse ($detail as $r)
-                                            @if ($r->kode_siswa == $item->id_siswa)
-                                      <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai"  value="{{$r->nilai}}" class="form-control">
-                                            @else
-                                            <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                            @if ($item->id_siswa ==  $r->kode_siswa)
+                                              @php
+                                                  $s = 1;
+                                                  $val = $r->nilai;
+                                              @endphp
+                                              @break
                                             @endif
                                           @empty
-                                          <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori_nilai}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                          @php
+                                              $s = 1;
+                                              $val = 0;
+                                          @endphp
                                           @endforelse
+                                          @if ($s > 0)
+                                          <input type="number"  name="detail_nilai" id="detail_nilai" onchange="input_nilai({{$data->id_nilai}},{{$item->id_siswa}},this.value)"  value="{{$val}}" class="form-control">
+                                          @else
+                                          <input type="number" name="detail_nilai" id="detail_nilai" onchange="input_nilai({{$data->id_nilai}},{{$item->id_siswa}},this.value)" value="0" class="form-control">
+                                          @endif
                                     </td>
                                       </tr>
                                     @empty
@@ -136,9 +150,21 @@
 @endsection
 @section('content-script')
     <script>
-      document.getElementById("detail_nilai").addEventListener("change", function(){
-        console.log(this.idsiswa)
+      function input_nilai(y,x,a){
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
       });
+      $.ajax({
+             type:'POST',
+             url:"{{ route('ajaxRequest.input_nilai_detail') }}",
+             data:{kode_siswa:x, kode_nilai:y,nilai:a},
+             success:function(data){
+               console.log(data)
+             }
+          });
+      }
 
     </script>
 @endsection

@@ -338,7 +338,7 @@
                   <p>Prestasi</p>
                 </a>
               </li>
-              <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a href="<?php echo url('/input_ekstra') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-success"></i>
                   <p>Ekstrakulikuler</p>
@@ -350,6 +350,7 @@
                   <p>Capaian Hasil Belajar</p>
                 </a>
               </li>
+            -->
               <li class="nav-item">
                 <a href="<?php echo url('/input_rapor') ?>" class="nav-link">
                   <i class="fas fa-angle-right nav-icon text-success"></i>

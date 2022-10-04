@@ -64,6 +64,8 @@
                                         action="{{ route('input_nilai.destroy',$item->id_nilai) }}" method="POST">
                                         <a href="{{ route('input_nilai.edit',$item->id_nilai) }}" class="btn btn-warning"><i class="fas fa-box-open"></i>Action</a>
                                         @csrf
+                                        @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         </form>
                                       </td>
                                       </tr>

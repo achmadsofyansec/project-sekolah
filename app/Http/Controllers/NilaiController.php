@@ -264,16 +264,20 @@ class NilaiController extends Controller
     public function destroy($id)
     {
         $data = akademik_nilai::findOrFail($id);
-        switch($data->type_nilai){
-            case 'harian':
-                return view('nilai.input_nilai.harian.index');    
-            break;
-            case 'ujian':
-                return view('nilai.input_nilai.ujian.index');    
-            break;
-            case 'rapor':
-                return view('nilai.input_nilai.rapor.index');    
-            break;
+        $data1 = akademik_nilai_details::where([['kode_nilai','=',$id]])->delete();
+        $data->delete();
+        if($data){
+            return redirect()
+            ->back()
+            ->with([
+                'success' => 'Delete Data Successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
         }
     }
 }

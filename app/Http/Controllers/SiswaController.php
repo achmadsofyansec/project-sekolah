@@ -424,8 +424,8 @@ class SiswaController extends Controller
     {
         //
         $data = data_siswa::findOrFail($id);
-        $data_aktivitas = DB::table('aktivitas_belajars')->where([['kode_siswa','=',$data->nik]])->delete();
-        $data_ortu = DB::table('data_ortus')->where([['id_siswa','=',$data->nik]])->delete();
+        $data_aktivitas = aktivitas_belajar::where([['kode_siswa','=',$data->nik]])->delete();
+        $data_ortu = data_ortu::where([['id_siswa','=',$data->nik]])->delete();
         $data->delete();
         if($data){
             return redirect()

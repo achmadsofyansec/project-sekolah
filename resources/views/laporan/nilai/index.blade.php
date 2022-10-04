@@ -69,7 +69,7 @@
                                       <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
                                     </td>
                                   </tr>
-                                  <tr>
+                                 <!-- <tr>
                                     <td>4</td>
                                     <td>Nilai Ekstrakulikuler</td>
                                     <td>
@@ -85,8 +85,8 @@
                                       <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td>3</td>
+                                  <tr>-->
+                                    <td>4</td>
                                     <td>Nilai Rapor</td>
                                     <td>
                                       <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>

@@ -74,8 +74,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/lap_nilai',[LaporanController::class,'view_lap_nilai'])->name('laporan_nilai');
 
         //inputnilai
-        Route::resource('input_capaian',NilaiCapaianController::class);
-        Route::resource('input_ekstra',NilaiEkstraController::class);
+        //Route::resource('input_capaian',NilaiCapaianController::class);
+        //Route::resource('input_ekstra',NilaiEkstraController::class);
         Route::get('/input_harian',[NilaiController::class,'view_input_harian'])->name('input_harian');
         Route::resource('input_prestasi',NilaiPrestasiController::class);
         Route::get('/input_rapor',[NilaiController::class,'view_input_rapor'])->name('input_rapor');

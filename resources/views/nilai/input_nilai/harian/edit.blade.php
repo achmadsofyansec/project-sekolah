@@ -98,19 +98,33 @@
                                 </thead>
                                 <tbody>
                                   @forelse ($data_nilai as $item)
+                                  @php
+                                      $s = 0;
+                                      $val = 0;
+                                  @endphp
                                     <tr>
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{$item->nisn}}</td>
                                     <td>{{$item->nama}}</td>
                                     <td>@forelse ($detail as $r)
-                                          @if ($r->kode_siswa == $item->id_siswa && $r->kode_kategori_nilai == $data->id_kategori)
-                                          <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori}}" name="detail_nilai" id="detail_nilai"  value="{{$r->nilai}}" class="form-control">
-                                          @else
-                                          <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                          @if ($item->id_siswa ==  $r->kode_siswa)
+                                            @php
+                                                $s = 1;
+                                                $val = $r->nilai;
+                                            @endphp
+                                            @break
                                           @endif
                                         @empty
-                                        <input type="number" data-idsiswa="{{$item->id_siswa}}" data-idnilai="{{$data->id_nilai}}" data-idkategori="{{$data->id_kategori}}" name="detail_nilai" id="detail_nilai" value="0" class="form-control">
+                                        @php
+                                            $s = 1;
+                                            $val = 0;
+                                        @endphp
                                         @endforelse
+                                        @if ($s > 0)
+                                        <input type="number"  name="detail_nilai" id="detail_nilai" onchange="input_nilai({{$data->id_nilai}},{{$item->id_siswa}},this.value)"  value="{{$val}}" class="form-control">
+                                        @else
+                                        <input type="number" name="detail_nilai" id="detail_nilai" onchange="input_nilai({{$data->id_nilai}},{{$item->id_siswa}},this.value)" value="0" class="form-control">
+                                        @endif
                                   </td>
                                     </tr>
                                   @empty
@@ -134,27 +148,22 @@
   </div>
 @endsection
 @section('content-script')
-    <script>
-      $(document).ready(function(){
-        $("#detail_nilai").change(function(){
-          var x = $(this).data('idsiswa')
-          var y = $(this).data('idnilai')
-          var a = $(this).val()
-          $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
+<script>
+  function input_nilai(y,x,a){
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+  $.ajax({
+         type:'POST',
+         url:"{{ route('ajaxRequest.input_nilai_detail') }}",
+         data:{kode_siswa:x, kode_nilai:y,nilai:a},
+         success:function(data){
+           console.log(data)
+         }
       });
-          $.ajax({
-             type:'POST',
-             url:"{{ route('ajaxRequest.input_nilai_detail') }}",
-             data:{kode_siswa:x, kode_nilai:y,nilai:a},
-             success:function(data){
-               console.log(data)
-             }
-          });
-        });
-      });
+  }
 
-    </script>
+</script>
 @endsection
