@@ -149,6 +149,7 @@ class PengeluaranController extends Controller
     {
         //
         $data = keuangan_pengeluaran::findOrFail($id);
+        $data1 =keuangan_pengeluaran_detail::where([['kode_pengeluaran','=',$id]])->delete();
         $data->delete();
         if($data){
             return redirect()

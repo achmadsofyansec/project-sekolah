@@ -19,11 +19,11 @@
               </div>
               <div class="form-group">
                 <label>Nominal</label>
-                <input type="number" name="nominal_tarik" id="nominal_tarik" class="form-control">
+                <input type="number" name="nominal_tarik" id="nominal_tarik" class="form-control" required>
               </div>
               <div class="form-group">
                 <label>Keterangan</label>
-                <textarea name="keterangan_tarik" id="keterangan_tarik" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="keterangan_tarik" id="keterangan_tarik" cols="30" rows="10" class="form-control" required></textarea>
               </div>
             </div>
         </div>

@@ -22,6 +22,7 @@ class TabunganController extends Controller
         $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
                                         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
                                         ->where([['data_siswas.status_siswa','=','Aktif']])
+                                        ->orderBy('keuangan_tabungan_siswas.id', 'DESC')
                                         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
                                             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
                                             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan']);
@@ -114,7 +115,7 @@ class TabunganController extends Controller
         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan'])->first();
-        $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->get();
+        $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->orderBy('id', 'DESC')->get();
         return view('tabungan.edit',compact(['data','detail']));
         
     }
@@ -165,6 +166,7 @@ class TabunganController extends Controller
     {
         //
         $data = keuangan_tabungan_siswa::findOrFail($id);
+        $data1 = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->delete();
         $data->delete();
         if($data){
             return redirect()

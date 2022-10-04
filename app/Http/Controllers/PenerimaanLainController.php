@@ -150,7 +150,7 @@ class PenerimaanLainController extends Controller
     public function destroy($id)
     {
         $data = keuangan_penerimaan_lain::findOrFail($id);
-
+        $data1 = keuangan_penerimaan_lain_detail::where([['kode_penerimaan','=',$id]])->delete();
         $data->delete();
         if($data){
             return redirect()

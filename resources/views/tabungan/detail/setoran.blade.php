@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                       <label>Keterangan</label>
-                      <textarea name="keterangan_setor" id="keterangan_setor" cols="30" rows="10" class="form-control"></textarea>
+                      <textarea name="keterangan_setor" id="keterangan_setor" cols="30" rows="10" class="form-control" required></textarea>
                     </div>
                   </div>
         </div>
