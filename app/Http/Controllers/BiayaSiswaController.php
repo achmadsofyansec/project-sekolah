@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\biaya_siswa;
 use App\Models\pos_penerimaan;
+use App\Models\tahun_ajaran;
 use Illuminate\Http\Request;
 
 class BiayaSiswaController extends Controller
@@ -15,8 +16,9 @@ class BiayaSiswaController extends Controller
      */
     public function index()
     {
-        $data = biaya_siswa::join("pos_penerimaans","biaya_siswas.pos_biaya","=","pos_penerimaans.kode_pos")
-        ->get(["biaya_siswas.*","pos_penerimaans.*","biaya_siswas.id as id_biaya"]);
+        $data = biaya_siswa::join("pos_penerimaans","biaya_siswas.pos_biaya","=","pos_penerimaans.id")
+        ->join("tahun_ajarans","biaya_siswas.tahun_ajaran_biaya","=","tahun_ajarans.id")
+        ->get(["biaya_siswas.*","pos_penerimaans.*","biaya_siswas.id as id_biaya","tahun_ajarans.*"]);
         return view('biaya_siswa.index',compact('data'));
     }
 
@@ -28,7 +30,8 @@ class BiayaSiswaController extends Controller
     public function create()
     {
         $pos = pos_penerimaan::latest()->get();
-        return view('biaya_siswa.create',compact('pos'));
+        $tahun_ajaran = tahun_ajaran::latest()->get();
+        return view('biaya_siswa.create',compact(['pos','tahun_ajaran']));
     }
 
     /**
@@ -43,6 +46,7 @@ class BiayaSiswaController extends Controller
             'nama_biaya' => ['required'],
             'pos_biaya' => ['required'],
             'tipe_biaya' => ['required'],
+            'tahun_ajaran_biaya' => ['required'],
         ]);
         if($validate){
             $kartu_spp = !empty($request->kartu_spp) ? 1 : 0;
@@ -51,6 +55,7 @@ class BiayaSiswaController extends Controller
                 'nama_biaya' => $request->nama_biaya,
                 'pos_biaya' => $request->pos_biaya,
                 'tipe_biaya' => $request->tipe_biaya,
+                'tahun_ajaran_biaya' => $request->tahun_ajaran_biaya,
                 'kartu_spp' => $kartu_spp,
                 'penunggakan' => $penunggakan,
             ]);
@@ -92,8 +97,9 @@ class BiayaSiswaController extends Controller
     {
         $data = biaya_siswa::findOrFail($id);
         $pos = pos_penerimaan::latest()->get();
+        $tahun_ajaran = tahun_ajaran::latest()->get();
         if($data){
-            return view('biaya_siswa.edit',compact(['data','pos']));
+            return view('biaya_siswa.edit',compact(['data','pos','tahun_ajaran']));
         }
     }
 
@@ -111,6 +117,7 @@ class BiayaSiswaController extends Controller
             'nama_biaya' => ['required'],
             'pos_biaya' => ['required'],
             'tipe_biaya' => ['required'],
+            'tahun_ajaran_biaya' => ['required'],
         ]);
         if($validate){
             $kartu_spp = !empty($request->kartu_spp) ? 1 : 0;
@@ -120,6 +127,7 @@ class BiayaSiswaController extends Controller
                 'nama_biaya' => $request->nama_biaya,
                 'pos_biaya' => $request->pos_biaya,
                 'tipe_biaya' => $request->tipe_biaya,
+                'tahun_ajaran_biaya' => $request->tahun_ajaran_biaya,
                 'kartu_spp' => $kartu_spp,
                 'penunggakan' => $penunggakan,
             ]);

@@ -43,7 +43,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('pos_terima',PosPenerimaanController::class);
         Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
-        Route::resource('pembayaran_siswa',PembayaranSiswaController::class);
+        Route::get('pembayaran_siswa',[PembayaranSiswaController::class,'index'])->name('pembayaran_siswa');
         Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::resource('tabungan',TabunganController::class);
         Route::resource('tabungan_detail',TabunganDetailController::class);

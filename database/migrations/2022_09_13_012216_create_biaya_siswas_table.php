@@ -19,6 +19,7 @@ class CreateBiayaSiswasTable extends Migration
                 $table->string("nama_biaya");
                 $table->string("pos_biaya");
                 $table->string("tipe_biaya");
+                $table->string("tahun_ajaran_biaya");
                 $table->string("kartu_spp");
                 $table->string("penunggakan");
                 $table->timestamps();

@@ -13,17 +13,20 @@ class CreateKeuanganTabunganSiswaDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('keuangan_tabungan_siswa_details', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_detail');
-            $table->string('kode_tabungan');
-            $table->string('nominal_detail');
-            $table->string('saldo_awal_detail');
-            $table->string('saldo_akhir_detail');
-            $table->string('type_detail');
-            $table->text('keterangan_detail');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('keuangan_tabungan_siswa_details')){
+            Schema::create('keuangan_tabungan_siswa_details', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_detail');
+                $table->string('kode_tabungan');
+                $table->string('nominal_detail');
+                $table->string('saldo_awal_detail');
+                $table->string('saldo_akhir_detail');
+                $table->string('type_detail');
+                $table->text('keterangan_detail');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

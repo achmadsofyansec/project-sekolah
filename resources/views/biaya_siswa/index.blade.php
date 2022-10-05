@@ -43,6 +43,7 @@
                       <th>Nama</th>
                       <th>Pos Penerimaan</th>
                       <th>Tipe</th>
+                      <th>Tahun Ajaran</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -52,6 +53,7 @@
                           <td>{{$item->nama_biaya}}</td>
                           <td>{{$item->nama_pos}}</td>
                           <td>{{$item->tipe_biaya}}</td>
+                          <td>{{$item->tahun_ajaran}}</td>
                           <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
                             action="{{ route('biaya_siswa.destroy',$item->id_biaya) }}" method="POST">
                             <a href="{{ route('biaya_siswa.edit',$item->id_biaya) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>

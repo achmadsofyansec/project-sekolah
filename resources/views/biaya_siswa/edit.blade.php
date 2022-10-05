@@ -63,14 +63,26 @@
                                   <select name="pos_biaya" id="pos_biaya" class="form-control">
                                       <option value=""> -- Pilih Pos --</option>
                                       @forelse ($pos as $item)
-                                  <option value="{{$item->kode_pos}}" @if ($data->pos_biaya == $item->kode_pos)
+                                  <option value="{{$item->id}}" @if ($data->pos_biaya == $item->id)
                                     {{'selected'}}
                                   @endif>{{$item->nama_pos}}</option>
-                                      @empty
-                                          
+                                      @empty                                          
                                       @endforelse
                                   </select>
                               </div>
+                              <div class="form-group">
+                                <label>Tahun Ajaran</label>
+                                <select name="tahun_ajaran_biaya" id="tahun_ajaran_biaya" class="form-control">
+                                    <option value=""> -- Pilih Tahun Ajaran --</option>
+                                    @forelse ($tahun_ajaran as $item)
+                                <option value="{{$item->id}}" @if ($data->tahun_ajaran_biaya == $item->id)
+                                  {{'selected'}}
+                                @endif>{{$item->tahun_ajaran}}</option>
+                                    @empty
+                                        
+                                    @endforelse
+                                </select>
+                            </div>
                               <div class="form-group">
                                 <label>Tipe Biaya</label>
                                 <select name="tipe_biaya" id="tipe_biaya" class="form-control">

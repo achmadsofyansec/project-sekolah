@@ -12,6 +12,7 @@ class biaya_siswa extends Model
         'nama_biaya',
         'pos_biaya',
         'tipe_biaya',
+        'tahun_ajaran_biaya',
         'kartu_spp',
         'penunggakan'
     ];
