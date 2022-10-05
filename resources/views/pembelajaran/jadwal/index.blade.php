@@ -54,7 +54,7 @@
                                           <td>{{$item->nama_mapel }}</td>
                                           <td>{{$item->nama }}</td>
                                           <td>{{$item->nama_kelas }}</td>
-                                          <td>{{$item->tahun_ajaran }} ( Semester {{$item->semester}} ) </td>
+                                          <td>{{$item->tahun_ajaran }}</td>
                                             <td>
                                               <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                               action="{{ route('jadwal.destroy',$item->jadwalid) }}" method="POST">

@@ -74,18 +74,6 @@
                                     
                                 </div>
                                 <div class="form-group">
-                                    <label>Semester</label>
-                                    <select name="semester_tahun_ajaran" id="semester_status_ajaran" class="form-control">
-                                        <option value="">--Pilih Semester --</option>
-                                        <option value="1" @if ($data->semester == '1')
-                                            {{'selected'}}
-                                        @endif>1</option>
-                                        <option value="2" @if ($data->semester == '2')
-                                            {{'selected'}}
-                                        @endif>2</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Status Kelas</label>
                                     <select name="status_tahun_ajaran" id="status_status_ajaran" class="form-control">
                                         <option value="">--Pilih Semester--</option>

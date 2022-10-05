@@ -43,7 +43,7 @@
                       @forelse ($tahun_ajaran as $item)
                       <option value="{{$item->kode_tahun_ajaran}}" @if ($item->status_tahun_ajaran == 'Aktif')
                           {{'selected'}}
-                      @endif> ({{$item->status_tahun_ajaran}}) {{$item->tahun_ajaran}} Semester {{$item->semester}} </option>
+                      @endif> ({{$item->status_tahun_ajaran}}) {{$item->tahun_ajaran}}</option>
                       @empty
                       @endforelse
                   </select>

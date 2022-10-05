@@ -246,9 +246,9 @@
                                             <div class="form-group">
                                                 <label>Tahun Masuk</label>
                                                 <select name="tahun_ajaran" id="tahun_ajaran" style="width:100%;" class="form-control" required>
-                                                    <option value="">-- Pilih Tahun Ajaran --</option>
+                                                    <option value="">-- Pilih Tahun Masuk --</option>
                                                     @forelse ($tahun_ajaran as $item)
-                                                        <option value="{{$item->kode_tahun_ajaran}}" >{{$item->tahun_ajaran}} ( Semester {{$item->semester}}) </option>
+                                                        <option value="{{$item->kode_tahun_ajaran}}" >{{$item->tahun_ajaran}}</option>
                                                     @empty
                                                     @endforelse
                                                 </select>

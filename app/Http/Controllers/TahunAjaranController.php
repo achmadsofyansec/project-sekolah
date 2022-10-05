@@ -44,14 +44,12 @@ class TahunAjaranController extends Controller
             'kode_tahun_ajaran' => ['required'],
             'tahun_ajaran_awal' => ['required'],
             'tahun_ajaran_akhir' => ['required'],
-            'semester_tahun_ajaran' => ['required'],
             'status_tahun_ajaran' => ['required'],
         ]);
         if($validate){
             $create = tahun_ajaran::create([
                 'kode_tahun_ajaran' => $request->kode_tahun_ajaran,
                 'tahun_ajaran' => $request->tahun_ajaran_awal.'/'.$request->tahun_ajaran_akhir,
-                'semester' => $request->semester_tahun_ajaran,
                 'status_tahun_ajaran' => $request->status_tahun_ajaran,
             ]);
             if($create){
@@ -119,7 +117,6 @@ class TahunAjaranController extends Controller
             'kode_tahun_ajaran' => ['required'],
             'tahun_ajaran_awal' => ['required'],
             'tahun_ajaran_akhir' => ['required'],
-            'semester_tahun_ajaran' => ['required'],
             'status_tahun_ajaran' => ['required'],
         ]);
         if($validate){
@@ -127,7 +124,6 @@ class TahunAjaranController extends Controller
             $update->update([
                 'kode_tahun_ajaran' => $request->kode_tahun_ajaran,
                 'tahun_ajaran' => $request->tahun_ajaran_awal.'/'.$request->tahun_ajaran_akhir,
-                'semester' => $request->semester_tahun_ajaran,
                 'status_tahun_ajaran' => $request->status_tahun_ajaran,
             ]);
             if($request->status_tahun_ajaran == "Aktif"){

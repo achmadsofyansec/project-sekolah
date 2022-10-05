@@ -73,14 +73,6 @@
                                     
                                 </div>
                                 <div class="form-group">
-                                    <label>Semester</label>
-                                    <select name="semester_tahun_ajaran" id="semester_tahun_ajaran" class="form-control" required>
-                                        <option value="">--Pilih Semester--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Status Kelas</label>
                                     <select name="status_tahun_ajaran" id="status_tahun_ajaran" class="form-control" required>
                                         <option value="">--Pilih Status Tahun Ajaran --</option>

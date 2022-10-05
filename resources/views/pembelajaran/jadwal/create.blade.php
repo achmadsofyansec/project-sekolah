@@ -95,7 +95,7 @@
                                     <select name="kode_tahun_ajaran" id="kode_tahun_ajaran" class="form-control" required>
                                         <option value="">-- Pilih Tahun Ajaran --</option>
                                         @forelse ($tahun_ajaran as $item)
-                                            <option value="{{$item->kode_tahun_ajaran}}">{{$item->tahun_ajaran}} ( Semester {{$item->semester}} )</option>
+                                            <option value="{{$item->kode_tahun_ajaran}}">{{$item->tahun_ajaran}}</option>
                                         @empty
                                             
                                         @endforelse

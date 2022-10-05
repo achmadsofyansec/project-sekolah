@@ -43,7 +43,6 @@
                                     <th>No</th>
                                     <th>Kode</th>
                                     <th>Tahun Ajaran</th>
-                                    <th>Semester</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
@@ -53,7 +52,6 @@
                                       <td>{{$loop->index + 1}}</td>
                                       <td>{{$item->kode_tahun_ajaran}}</td>
                                       <td>{{$item->tahun_ajaran}}</td>
-                                      <td>{{$item->semester}}</td>
                                       <td>{{$item->status_tahun_ajaran}}</td>
                                       <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
