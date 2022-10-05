@@ -15,8 +15,10 @@ class CreateSarprasPengembaliansTable extends Migration
     {
         Schema::create('sarpras_pengembalians', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
             $table->string('penerima');
-            $table->date('tanggal_kembali');
+            $table->date('tgl_kembali');
+            $table->string('desc_kembali');
             $table->timestamps();
         });
     }

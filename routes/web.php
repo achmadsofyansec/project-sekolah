@@ -75,8 +75,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
 
-        // Ajax
-        Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
     });
 });
 

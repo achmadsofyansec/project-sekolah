@@ -1,104 +1,55 @@
-@extends('layouts.app')
-@section('page', 'Tambah Peminjam')
-@section('content-app')
-  <div class="content-wrapper">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0"><i class="fas fa-chalkboard nav-icon text-info"></i> @yield('page')</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= url('/')?>">Home</a></li>
-              <li class="breadcrumb-item active">@yield('page')</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row-mb-2">
-            
-            <div class="col-md-12 mt-1">
-              @if(session('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
+<div class="modal fade" id="modal-tambah-peminjaman">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tambah Pengembalian</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <form action="{{route('pengembalian.store')}}" method="POST">
+      @csrf
+      <div class="modal-body">
+          <div class="card-body">
+              <div class="form-group">
+                  <label>Data Siswa</label>
+                  <select name="kode_siswa" id="kode_siswa" class="form-control" style="width: 100%;" required>
+                      <option value="">--- Pilih Peminjam ---</option>
+                      @forelse ($pengembalian as $item)
+                  <option value="{{$item->id_siswa}}">{{$item->nama}} - {{$item->kode_kelas}} {{$item->kode_jurusan}}</option>
+                      @empty
+                      @endforelse
+                  </select>
               </div>
-              @endif
-              @if(session('success'))
-              <div class="alert alert-primary">
-                  {{ session('success') }}
-              </div>
-              @endif
-              <div class="row">
-                <div class="col-md-4 mt-1">
-                    <div class="card card-info card-outline">
-                        <div class="card-header">
-                          <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
-                        </div>
-                        <div class="card-body">
-                          <p>1. isi <b>Peminjaman</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Peminjaman Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
-                        </div>
-                        <div class="card-footer">
-                          Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
-                        </div>
-                      </div>
-                </div>  
-                <div class="col-md-8 mt-1">
-                    <div class="card card-outline card-info">
-                        <form action="{{route('peminjaman.store')}}" enctype="multipart/form-data" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>Nama Peminjam</label>
-                                    <select class="form-control" id="nama" name="nama">
-                                        <option value="">Nama Peminjam</option>
-                                        @forelse ($siswa as $siswa)
-                                        <option value="{{$siswa->nama}}">{{$siswa->nama}}</option>
-                                          @empty
-                                              
-                                          @endforelse
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Unit</label>
-                                    <select class="form-control" id="unit" name="unit">
-                                        <option value="">Pilih Unit</option>
-                                        @forelse ($unit as $unit)
-                                        <option value="{{$unit->unit}}">{{$unit->unit}}</option>
-                                          @empty
-                                              
-                                          @endforelse
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Jumlah</label>
-                                    <input type="number" name="jumlah" id="jumlah" class="form-control" required>
-                                </div>
-                                 <div class="form-group">
-                                    <input type="hidden" name="status" id="status" class="form-control" value="DIPINJAM" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="tanggal_kembali" id="tanggal_kembali" class="form-control" value="DIPINJAM" required>
-                                </div>
-                            </div>  
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="{{route('peminjaman.index')}}" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>  
-              </div>
-                
+              <div class="form-group">
+                <label>Data Unit</label>
+                <input type="text" name="unit" id="unit" readonly value=" ">
             </div>
-        </div>
+              <div class="form-group">
+                <label>Status Peminjaman</label>
+                <select name="status_peminjaman" id="status_peminjaman" class="form-control" style="width: 100%;" required>
+                    <option value="0">Dipinjam</option>
+                    <option value="1">Dikembalikan</option>
+                    <option value="2">Hilang</option>
+                </select>
+            </div>
+              <div class="form-group">
+                  <label>Tanggal Peminjaman</label>
+                  <input type="date" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" cols="30" rows="10"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Deskripsi Peminjaman</label>
+                <textarea name="desc_peminjaman" id="desc_peminjaman" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>         
+      </form>
     </div>
-    </section>
-    <!-- /.content -->
+    <!-- /.modal-content -->
   </div>
-@endsection
+  <!-- /.modal-dialog -->
+</div>

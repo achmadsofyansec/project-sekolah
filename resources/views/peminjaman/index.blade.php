@@ -44,9 +44,9 @@
                       <table id="dataTable" class="table table-border">
                         <thead>
                           <th>No</th>
-                          <th>NISN</th>
                           <th>Nama Siswa</th>
                           <th>Kelas / Jurusan</th>
+                          <th>Barang yang dipinjam</th>
                           <th>Status</th>
                           <th>Aksi</th>
                         </thead>
@@ -54,9 +54,9 @@
                           @forelse ($data as $item)
                               <tr>
                                 <td>{{$loop->index + 1}}</td>
-                                <td>{{$item->nisn}}</td>
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
+                                <td>{{$item->unit}}</td>
                                 <td>@if ($item->status_peminjaman == '0')
                                   <span class="btn btn-warning">Dipinjam</span>
                                @elseif($item->status_peminjaman == '1')

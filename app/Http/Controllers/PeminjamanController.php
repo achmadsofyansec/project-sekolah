@@ -113,14 +113,14 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        // $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
-        // ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        // ->where([['sarpras_peminjamans.id','=',$id]])
-        // ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
-        //     ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
-        //     ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_tabungan'])->first();
-        // $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->get();
-        // return view('tabungan.edit',compact(['data','detail']));
+        $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where([['sarpras_peminjamans.id','=',$id]])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+            ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
+            ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman'])->first();
+        $kategori = SarprasDataAset::latest()->get();
+        return view('peminjaman.edit',compact(['data', 'kategori']));
     }
 
     /**
@@ -132,7 +132,35 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'desc_peminjaman' => ['required'],
+            'tgl_peminjaman' => ['required'],
+            'unit' => ['required'],
+            'status_peminjaman' => ['required'],
+        ]);
+        
+        if($validate){
+            $update = SarprasPeminjamans::findOrFail($id);
+            $update->update([
+                'desc_peminjaman' => $request->desc_peminjaman,
+                'tgl_peminjaman' => $request->tgl_peminjaman,
+                'unit' => $request->unit,
+                'status_peminjaman' => $request->status_peminjaman,
+            ]);
+            if($update){
+                return redirect()
+                ->route('peminjaman.index')
+                ->with([
+                    'success' => 'Peminjaman Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

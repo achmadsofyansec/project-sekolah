@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SarprasPengembalian;
-use App\Models\SarprasPeminjaman;
+use App\Models\SarprasPeminjamans;
+use App\Models\SarprasDataAset;
+use App\Models\data_siswa;
 use Illuminate\Support\Facades\DB;
 
 class PengembalianController extends Controller
@@ -16,8 +18,18 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $data = DB::table('sarpras_peminjamen')->join('sarpras_pengembalians', 'sarpras_pengembalians.id', '=', 'sarpras_peminjamen.id')->get();
-        return view('pengembalian.index',compact('data'));
+        $pengembalian = SarprasPengembalian::join('data_siswas', 'data_siswas.id', '=', 'sarpras_peminjamans.kode_siswa')
+                                                    ->join('sarpras_peminjamans', 'sarpras_pengembalians.kode_siswa', '=', 'sarpras_peminjamans.kode_siswa')->get();
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $kategori = SarprasDataAset::latest()->get();
+        $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->where([['data_siswas.status_siswa','=','Aktif']])
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+                                            ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
+                                            ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman']);
+        return view('pengembalian.index',compact(['data','siswa', 'kategori', 'pengembalian']));
     }
 
     /**
@@ -27,7 +39,7 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

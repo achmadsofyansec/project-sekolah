@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('page', 'Data Pengembalian')
+@section('page', 'Pengembalian')
 @section('content-app')
-  <div class="content-wrapper">
-    <div class="content-header">
+<div class="content-wrapper">
+<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -17,67 +17,52 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+<div class="content">
+    <div class="container-fluid">
         <div class="row-mb-2">
-            <div class="col-md-12 mt-1">
-              @if(session('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
-              </div>
-              @endif
-              @if(session('success'))
-              <div class="alert alert-primary">
-                  {{ session('success') }}
-              </div>
-              @endif
-              <div class="card card-outline card-secondary">
-                   <div class="card-header">
-                   <a type="button" href="{{ route('pengembalian.create')}}" class="btn btn-succes"><i class="fas fa-plus"></i> Pengembalian</a>
-                   </div>
-                   <div class="card-body">      
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>
-                                    <th>Nama Peminjam</th>                     
-                                    <th>Unit</th>
-                                    <th>Jumlah</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                     @forelse ($data as $data)
-                                    <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $data->nama }}</td>    
-                                    <td>{{ $data->unit }}</td>
-                                    <td>{{ $data->jumlah }}</td>
-                                    <td>{{ $data->status }}</td>
-                                    <td>
-                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                        action="{{ route('pengembalian.destroy',$data->id) }}" method="POST">
-                                        <a href="{{ route('pengembalian.edit',$data->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                                        @csrf
-                                          @method('DELETE')
-                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-                                        </form>
-                                      </td>
-                                      </tr>
-                                  @empty
-                                      <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
-                                      </tr>
-                                  <td>
-                                    @endforelse
-                                </tbody>  
-                            </table>
-                       </div>
-                   </div>
-                </div>
+          <div class="col-md-12 mt-1">
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
             </div>
+            @endif
+            @if(session('success'))
+            <div class="alert alert-primary">
+                {{ session('success') }}
+            </div>
+            @endif
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                    <div class="card-tools">
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-peminjaman"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table table-border">
+                        <thead>
+                          <th>No</th>
+                          <th>Nama Siswa</th>
+                          <th>Kelas / Jurusan</th>
+                          <th>Barang yang dipinjam</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                                                  
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-    </section>
-    <!-- /.content -->
-  </div>
+    @include('pengembalian.create')
+</div>
+</div>
 @endsection
