@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PembayaranSiswaController;
 use App\Http\Controllers\PenerimaanLainController;
 use App\Http\Controllers\PenerimaanLainDetailController;
 use App\Http\Controllers\PengeluaranController;
@@ -42,7 +43,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('pos_terima',PosPenerimaanController::class);
         Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
-        Route::get('/pembayaran_siswa',[PageController::class,'view_pembayaran_siswa'])->name('pembayaran_siswa');
+        Route::resource('pembayaran_siswa',PembayaranSiswaController::class);
         Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::resource('tabungan',TabunganController::class);
         Route::resource('tabungan_detail',TabunganDetailController::class);

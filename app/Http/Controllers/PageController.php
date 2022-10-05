@@ -38,10 +38,6 @@ class PageController extends Controller
     public function view_rekap_pertrx(){
         return view('rekaptulasi.per_trx.index');
     }
-  
-    public function view_pembayaran_siswa(){
-        return view('pembayaran_siswa.index');
-    }
     
     public function view_laporan_tahunan(){
         return view('laporan.tahunan.index');
