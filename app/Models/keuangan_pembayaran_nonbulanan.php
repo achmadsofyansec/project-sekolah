@@ -14,6 +14,7 @@ class keuangan_pembayaran_nonbulanan extends Model
         'kode_jenis_pembayaran',
         'kode_biaya_siswa',
         'tagihan_pembayaran',
+        'status_pembayaran',
         'nominal_pembayaran',
         'tgl_bayar',
     ];

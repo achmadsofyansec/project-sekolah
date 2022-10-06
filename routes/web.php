@@ -44,6 +44,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
         Route::get('pembayaran_siswa',[PembayaranSiswaController::class,'index'])->name('pembayaran_siswa');
+        Route::post('create_non_bulanan',[PembayaranSiswaController::class,'create_non_bulanan'])->name('create_non_bulanan');
         Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::resource('tabungan',TabunganController::class);
         Route::resource('tabungan_detail',TabunganDetailController::class);

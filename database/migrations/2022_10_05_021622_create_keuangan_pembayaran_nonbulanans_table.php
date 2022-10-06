@@ -18,11 +18,13 @@ class CreateKeuanganPembayaranNonbulanansTable extends Migration
                 $table->id();
                 $table->string('kode_siswa');
                 $table->string('kode_kelas');
-                $table->string('kode_jenis_pembayaran');
+                $table->string('kode_jenis_pembayaran')->nullable();
                 $table->string('kode_biaya_siswa');
                 $table->string('tagihan_pembayaran');
                 $table->string('nominal_pembayaran');
                 $table->string('tgl_bayar');
+                $table->string('status_pembayaran');
+                $table->string('ket_pembayaran')->nullable();
                 $table->timestamps();
             });
         }

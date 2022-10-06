@@ -43,7 +43,11 @@
                       @forelse ($tahun_ajaran as $item)
                   <option value="{{$item->id}}" @if ($req->tahun_ajaran != null && $req->tahun_ajaran == $item->id)
                       {{'selected'}}
-                  @endif>{{$item->tahun_ajaran}}</option>
+                      @else
+                      @if ($item->status_tahun_ajaran == 'Aktif')
+                          {{'selected'}}
+                      @endif
+                  @endif>{{$item->tahun_ajaran}} ( {{$item->status_tahun_ajaran}} ) </option>
                       @empty
                       @endforelse
                   </select>
@@ -77,12 +81,19 @@
     </div>
     @if($data != null)
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card card-orange card-outline">
           <div class="card-header">
             Data Siswa
           </div>
           <div class="card-body">
+            <div class="form-group text-center">
+              @if ($data->foto_siswa != '-')
+                  <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">        
+              @else
+                  <h1>Tidak Ada Foto</h1>
+              @endif
+          </div>
             <div class="form-group">
               <label>NISN</label>
               <input type="text" name="nisn" id="nisn" class="form-control" value="{{$data->nisn}}" readonly>
@@ -102,7 +113,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
         <div class="row">
           <div class="col-md-12">
             <div class="card card-orange card-outline">
@@ -113,6 +124,17 @@
                 </div>
               </div>
               <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <th>No</th>
+                      <th>Tahun Ajaran</th>
+                      <th>Total Tagihan</th>
+                      <th>Total Pembayaran</th>
+                      <th>Aksi</th>
+                    </thead>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -131,12 +153,38 @@
                   <table class="table">
                     <thead>
                       <th>No</th>
-                      <th>Kelas / Tahun Ajaran </th>
-                      <th>Pembayaran</th>
+                      <th>Tahun Ajaran</th>
                       <th>Tagihan</th>
+                      <th>Bayar</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </thead>
+                    <tbody>
+                      @forelse ($data_non_bulanan as $item)
+                          <tr>
+                          <td>{{$loop->index + 1}}</td>
+                          <td>{{$item->tahun_ajaran}}</td>
+                          <td> Rp.{{number_format($item->tagihan_pembayaran)}},-</td>
+                          <td> Rp.{{number_format($item->nominal_pembayaran)}},-</td>
+                          <td> @if ($item->status_pembayaran == '0')
+                            <span class="badge badge-danger"> {{'Belum Lunas'}}</span>
+                              @else
+                              {{'<span class="badge badge-danger">Lunas</span>'}}
+                          @endif</td>
+                          <td>
+                              @if ($item->status_pembayaran == '0')
+                              <a href="#" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
+                              <a href="#" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+                              @else
+                              <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                            @endif
+                            <a href="#" class="btn btn-dark"><i class="fas fa-print"></i></a>
+                          </td>
+                          </tr>
+                      @empty
+                          
+                      @endforelse
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -145,10 +193,15 @@
         </div>
       </div>
     </div>
-    @endif
-</div>
 @include('pembayaran_siswa.modal.bulanan')
 @include('pembayaran_siswa.modal.nonbulanan')
+    @endif
 </div>
 </div>
+</div>
+@endsection
+@section('content-script')
+    <script>
+      
+    </script>
 @endsection

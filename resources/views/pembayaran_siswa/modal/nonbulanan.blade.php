@@ -7,15 +7,30 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="#" method="POST">
+      <form action="{{route('create_non_bulanan')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">
+              <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}" required>
+              <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$data->id_kelas}}" required>
                 <div class="form-group">
                     <label>Biaya Siswa</label>
-                    <select name="kode_biaya_siswa" id="kode_biaya_siswa" class="form-control" style="width: 100%;">
+                    <select name="kode_biaya_siswa" id="kode_biaya_siswa" class="form-control" style="width: 100%;" required>
                         <option value="">-- Pilih Biaya Siswa --</option>
+                        @forelse ($nonbulanan as $item)
+                    <option value="{{$item->id_biaya}}">{{$item->nama_biaya}} ({{$item->tahun_ajaran}})</option>
+                        @empty
+                            
+                        @endforelse
                     </select>
+                </div>
+                <div class="form-group">
+                  <label>Tarif</label>
+                  <input type="number" name="tarif_biaya" id="tarif_biaya" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Keterangan</label>
+                  <textarea name="ket_biaya" id="ket_biaya" cols="30" rows="10" class="form-control"></textarea>
                 </div>
             </div>
         </div>
