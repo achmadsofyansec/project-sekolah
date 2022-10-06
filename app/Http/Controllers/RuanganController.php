@@ -40,9 +40,9 @@ class RuanganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $credential = $this->validate($request,[
-            'gedung' => ['required'],
+            'nama_gedung' => ['required'],
             'jenis_ruangan' => ['required'],
             'nama' => ['required'],
             'kondisi' => ['required'],
@@ -58,7 +58,7 @@ class RuanganController extends Controller
                 $name = $request->file('foto')->getClientOriginalName();
                 $foto->move(public_path('uploads'),$name);
                 $data = [
-                'gedung' => $request->gedung,
+                'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
                 'nama' => $request->nama,
                 'kondisi' => $request->kondisi,
@@ -69,11 +69,11 @@ class RuanganController extends Controller
                 ];
             } else {
                 $data = [
-                'gedung' => $request->gedung,
+                'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
                 'nama' => $request->nama,
                 'kondisi' => $request->kondisi,
-                'tahun_dibangun' => $tahun_dibangun,
+                'tahun_dibangun' => $request->tahun_dibangun,
                 'panjang' => $request->panjang,
                 'lebar' => $request->lebar,
                 'foto' => '-',
@@ -139,6 +139,7 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {     
+        
         $validate = $this->validate($request,[
             'nama_gedung' => ['required'],
             'jenis_ruangan' => ['required'],

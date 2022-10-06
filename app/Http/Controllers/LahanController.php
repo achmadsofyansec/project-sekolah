@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SarprasLahan;
+use App\Models\SarprasGedung;
 use App\Models\SarprasKepemilikanLahan;
 use App\Models\SarprasPenggunaanLahan;
 use Illuminate\Support\Facades\DB;
@@ -130,17 +131,14 @@ class LahanController extends Controller
     {
         $data = SarprasLahan::findOrFail($id);
         $lahan = DB::table('sarpras_lahans')->select(['sarpras_lahans.*'])->get();
-        $kepemilikan = DB::table('sarpras_kepemilikan_lahans')->select(['sarpras_kepemilikan_lahans.*'])->get();
-        $pengguna = DB::table('sarpras_penggunaan_lahans')->select(['sarpras_penggunaan_lahans.*'])->get();
-        // $kepemilikan = SarprasKepemilikanLahan::latest()->get();
-        $pemggunaan = SarprasPenggunaanLahan::latest()->get();
-        $data_kepemilikan = DB::table('sarpras_lahans')
-                    ->join('sarpras_kepemilikan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_kepemilikan_lahans.nama_lahan')
-                    ->get();
-        $data_pengguna = DB::table('sarpras_lahans')
-                    ->join('sarpras_penggunaan_lahans', 'sarpras_lahans.nama_lahan', '=', 'sarpras_penggunaan_lahans.nama_lahan')
+        $penggunaan = SarprasLahan::join('sarpras_gedungs', 'sarpras_lahans.nama_lahan', '=', 'sarpras_gedungs.nama_lahan')
+        ->join('sarpras_ruangans', 'sarpras_gedungs.nama_gedung', '=', 'sarpras_ruangans.nama_gedung')
+        ->get();
+        $kepemilikan = DB::table('sarpras_lahans')
+                    ->join('sarpras_gedungs', 'sarpras_lahans.nama_lahan', '=', 'sarpras_gedungs.nama_lahan')
+                    ->join('sarpras_ruangans', 'sarpras_gedungs.nama_gedung', '=', 'sarpras_ruangans.nama_gedung')
                     ->get();            
-        return view('asset_tetap.lahan.tampil',compact (['lahan', 'data_kepemilikan', 'data_pengguna']));
+        return view('asset_tetap.lahan.tampil',compact (['lahan', 'kepemilikan', 'penggunaan']));
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SarprasDataAset;
+use App\Models\SarprasGedung;
+use App\Models\SarprasPeminjamans;
+use App\Models\SarprasPengembalian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
@@ -10,8 +14,13 @@ class PageController extends Controller
 {
     
     //VIEW Pages
-    public function index(Request $request){
-        return view('dashboard');
+    public function index(){
+        $aset = SarprasGedung::latest()->get();
+        $peminjaman = SarprasPeminjamans::latest()->get();
+        $pengembalian = SarprasPengembalian::latest()->get();
+        $kategori = SarprasDataAset::latest()->get();
+        
+        return view('dashboard', compact(['aset', 'peminjaman', 'pengembalian', 'kategori']));
     }
     public function view_umum(){
         return view('asset_tetap.umum.index');

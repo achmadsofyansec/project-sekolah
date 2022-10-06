@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SarprasGedung;
+use App\Models\SarprasLahan;
 
 class GedungController extends Controller
 {
@@ -25,8 +26,9 @@ class GedungController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('asset_tetap.gedung.create');
+    {   
+        $lahan = SarprasLahan::latest()->get();
+        return view('asset_tetap.gedung.create', compact('lahan'));
     }
 
     /**
@@ -36,7 +38,7 @@ class GedungController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $credential = $this->validate($request,[
             'nama_gedung' => ['required'],
             'nama_lahan' => ['required'],
@@ -100,7 +102,8 @@ class GedungController extends Controller
     public function edit($id)
     {
         $data = SarprasGedung::findOrFail($id);
-        return view('asset_tetap.gedung.edit',compact('data'));
+        $lahan = SarprasLahan::latest()->get();
+        return view('asset_tetap.gedung.edit',compact(['data', 'lahan']));
     }
 
     /**

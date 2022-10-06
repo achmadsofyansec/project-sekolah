@@ -59,31 +59,53 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Lahan</label>
-                                    <input type="text" name="nama_lahan" id="nama_lahan" class="form-control" required>
+                                    <select class="form-control" name="nama_lahan" id="nama_lahan">
+                                      <option value="">- Pilih Lahan -</option>
+                                      @forelse ($lahan as $item)
+                                      <option value="{{$item->nama_lahan}}">{{$item->nama_lahan}}</option>
+                                        @empty
+                                            
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah Lantai</label>
-                                    <input type="text" name="jml_lantai" id="jml_lantai" class="form-control" required>
+                                    <input type="number" name="jml_lantai" id="jml_lantai" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Kepemilikan</label>
-                                    <input type="text" name="kepemilikan" id="kepemilikan" class="form-control" required>
+                                    <select name="kepemilikan" id="kepemilikan" class="form-control" style="width: 100%;" required>
+                                      <option value="">- kepemilikan Lahan -</option>
+                                      <option value="sekolah">Sekolah</option>
+                                      <option value="wakaf">Wakaf</option>
+                                      <option value="lainya">Lainya</option>
+                                  </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Kondisi Kerusakan</label>
-                                    <input type="text" name="kondisi_kerusakan" id="kondisi_kerusakan" class="form-control" required>
+                                    <select name="kondisi_kerusakan" id="kondisi_kerusakan" class="form-control" style="width: 100%;" required>
+                                      <option value="">- Kondisi Kerusakan -</option>
+                                      <option value="Bisa Digunakan">Bisa Digunakan</option>
+                                      <option value="Tidak Bisa Digunakan">Tidak Bisa Digunakan</option>
+                                      <option value="Rusak Parah">Rusak Parah</option>
+                                  </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori Kerusakan</label>
-                                    <input type="text" name="kategori_kondisi" id="kategori_kondisi" class="form-control" required>
+                                    <select name="kategori_kondisi" id="kategori_kondisi" class="form-control" style="width: 100%;" required>
+                                      <option value="">- Kategori Kerusakan -</option>
+                                      <option value="Baik">Baik</option>
+                                      <option value="Rusak Sedang">Rusak Sedang</option>
+                                      <option value="Rusak Parah">Rusak Parah</option>
+                                  </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Tahun Dibangun</label>
-                                    <input type="text" name="tahun_dibangun" id="tahun_dibangun" class="form-control" required>
+                                    <input type="number" name="tahun_dibangun" id="tahun_dibangun" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Luas Gedung</label>
-                                    <input type="text" name="luas_gedung" id="luas_gedung" class="form-control" required>
+                                    <label>Luas Gedung (m)</label>
+                                    <input type="number" name="luas_gedung" id="luas_gedung" class="form-control" required>
                                 </div>
                             </div>  
                             <div class="card-footer">

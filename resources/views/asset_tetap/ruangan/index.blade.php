@@ -57,7 +57,13 @@
                                     <td>{{ $ruangan->nama_gedung }}</td>
                                     <td>{{ $ruangan->jenis_ruangan }}</td>    
                                     <td>{{ $ruangan->nama }}</td>
-                                    <td>{{ $ruangan->kondisi }}</td>
+                                    <td>@if ($ruangan->kondisi == 'Baik')
+                                      <span class="btn btn-success">Baik</span>
+                                   @elseif($ruangan->kondisi == 'Rusak Ringan')
+                                   <span class="btn btn-warning">Rusak Ringan</span>
+                                   @else 
+                                   <span class="btn btn-danger">Rusak Parah</span>
+                                   @endif</td>
                                     <td>{{ $ruangan->tahun_dibangun }}</td>
                                     <td>{{ $ruangan->panjang }}</td>
                                     <td>{{ $ruangan->lebar }}</td>

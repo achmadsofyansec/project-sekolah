@@ -41,18 +41,20 @@
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>                                   
+                                    <th>Nama Gedung</th>
+                                    <th>Jumlah Lantai</th>
                                     <th>Kepemilikan</th>
-                                    <th>Bersertifikat (m)</th>
-                                    <th>Belum Bersertifikat (m)</th>
-                                    <th>Total</th>
+                                    <th>Tahun Dibangun</th>
+                                    <th>Luas Gedung</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($data_kepemilikan as $data)
+                                  @forelse ($kepemilikan as $data)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $data->kepemilikan }}</td>    
-                                    <td>{{ $data->bersertifikat }}</td>
-                                    <td>{{ $data->belum_bersertifikat }}</td>
-                                    <td>{{ $data->total }}</td>
+                                    <td>{{ $data->nama_gedung }}</td>    
+                                    <td>{{ $data->jml_lantai }}</td>    
+                                    <td>{{ $data->kepemilikan }}</td>
+                                    <td>{{ $data->tahun_dibangun }}</td>
+                                    <td>{{ $data->luas_gedung }}</td>
                                 </tbody>
                                   @empty
                                       <tr>
@@ -68,20 +70,20 @@
                             <table id="dataTable" class="table">
                                   <thead>
                                     <th>No</th>                                   
-                                    <th>Status</th>
-                                    <th>Penggunaan</th>
-                                    <th>Bersertifikat (m)</th>
-                                    <th>Belum Bersertifikat (m)</th>
-                                    <th>Total</th>
+                                    <th>Nama Gedung</th>
+                                    <th>Ruangan</th>
+                                    <th>Nama</th>
+                                    <th>Panjang</th>
+                                    <th>Lebar</th>
                                 </thead>
                                 <tbody>
-                                  @forelse ($data_pengguna as $data)
+                                  @forelse ($penggunaan as $data)
                                     <td>{{$loop->index + 1}}</td>
-                                    <td>{{ $data->status }}</td>
-                                    <td>{{ $data->penggunaan }}</td>    
-                                    <td>{{ $data->penggunaan_bersertifikat }}</td>
-                                    <td>{{ $data->penggunaan_belum_bersertifikat }}</td>
-                                    <td>{{ $data->penggunaan_total }}</td>
+                                    <td>{{ $data->nama_gedung }}</td>
+                                    <td>{{ $data->jenis_ruangan }}</td>    
+                                    <td>{{ $data->nama }}</td>
+                                    <td>{{ $data->panjang }}</td>
+                                    <td>{{ $data->lebar }}</td>
                                 </tbody>
                                   @empty
                                       <tr>

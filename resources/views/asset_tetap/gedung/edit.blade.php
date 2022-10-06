@@ -63,31 +63,56 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Nama Lahan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nama_lahan" name="nama_lahan" value="{{ $data->nama_lahan }}" required />
+                                      <select class="form-control" id="nama_lahan" name="nama_lahan">
+                                        <option value="">{{ $data->nama_lahan }}</option>
+                                      @forelse ($lahan as $item)
+                                    <option value="{{$item->nama_lahan}}" @if ($data->nama_lahan == $item->nama_lahan)
+                                      {{'selected'}}
+                                    @endif>{{$item->nama_lahan}}</option>
+                                      @empty
+                                          
+                                      @endforelse
+                                  </select>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jumlah Lantai</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_lantai" name="jml_lantai" value="{{ $data->jml_lantai }}" required />
+                                        <input type="number" class="form-control" id="jml_lantai" name="jml_lantai" value="{{ $data->jml_lantai }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Kepemilikan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kepemilikan" name="kepemilikan" value="{{ $data->kepemilikan }}" required />
+                                      <select name="kepemilikan" id="kepemilikan" class="form-control" style="width: 100%;" required>
+                                        <option value="">- {{ $data->kepemilikan }} -</option>
+                                        <option value="sekolah">Sekolah</option>
+                                        <option value="wakaf">Wakaf</option>
+                                        <option value="lainya">Lainya</option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Kondisi Kerusakan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kondisi_kerusakan" name="kondisi_kerusakan" value="{{ $data->kondisi_kerusakan }}" required />
+                                      <select name="kondisi_kerusakan" id="kondisi_kerusakan" class="form-control" style="width: 100%;" required>
+                                        <option value="">- {{ $data->kondisi_kerusakan }} -</option>
+                                        <option value="Bisa Digunakan">Bisa Digunakan</option>
+                                        <option value="Tidak Bisa Digunakan">Tidak Bisa Digunakan</option>
+                                        <option value="Rusak Parah">Rusak Parah</option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Kategori Kondisi</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kategori_kondisi" name="kategori_kondisi" value="{{ $data->kategori_kondisi }}" required />
+                                      <select name="kategori_kondisi" id="kategori_kondisi" class="form-control" style="width: 100%;" required>
+                                        <option value="">- {{ $data->kategori_kondisi }} -</option>
+                                        <option value="Baik">Baik</option>
+                                        <option value="Rusak Sedang">Rusak Sedang</option>
+                                        <option value="Rusak Parah">Rusak Parah</option>
+                                      </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

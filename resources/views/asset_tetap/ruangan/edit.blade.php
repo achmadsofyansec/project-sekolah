@@ -82,8 +82,12 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Kondisi</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="kondisi" name="kondisi" value="{{ $data->kondisi }}" required />
-                                    </div>
+                                      <select class="form-control" id="kondisi" name="kondisi">
+                                        <option value="">{{ $data->kondisi }}</option>
+                                        <option value="Baik">Baik</option>
+                                        <option value="Rusak Ringan">Rusak Ringan</option>
+                                        <option value="Rusak Parah">Rusak Parah</option>
+                                  </select>                                    </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Tahun Dibangun</label>

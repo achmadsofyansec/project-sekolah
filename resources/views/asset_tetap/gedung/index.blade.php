@@ -58,8 +58,20 @@
                                     <td>{{ $gedung->nama_lahan }}</td>    
                                     <td>{{ $gedung->jml_lantai }}</td>
                                     <td>{{ $gedung->kepemilikan }}</td>
-                                    <td>{{ $gedung->kondisi_kerusakan }}</td>
-                                    <td>{{ $gedung->kategori_kondisi }}</td>
+                                    <td>@if ($gedung->kondisi_kerusakan == 'Bisa Digunakan')
+                                      <span class="btn btn-success">Bisa Digunakan</span>
+                                   @elseif($gedung->kondisi_kerusakan == 'Tidak Bisa Digunakan')
+                                   <span class="btn btn-warning">Tidak Bisa Digunakan</span>
+                                   @else 
+                                   <span class="btn btn-danger">Rusak Parah</span>
+                                   @endif</td>
+                                   <td>@if ($gedung->kategori_kondisi == 'Baik')
+                                    <span class="btn btn-success">Baik</span>
+                                 @elseif($gedung->kategori_kondisi == 'Rusak Sedang')
+                                 <span class="btn btn-warning">Rusak Sedang</span>
+                                 @else 
+                                 <span class="btn btn-danger">Rusak Parah</span>
+                                 @endif</td>
                                     <td>{{ $gedung->tahun_dibangun }}</td>
                                     <td>{{ $gedung->luas_gedung }}</td>
                                     <td>
