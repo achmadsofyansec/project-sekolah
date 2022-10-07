@@ -33,7 +33,7 @@
             @endif
             <div class="row">
               <div class="col-md-3">
-                <div class="card card-primary card-outline">
+                <div class="card card-orange card-outline">
                   <div class="card-header">
                     <div class="card-title">
                       Data Siswa
@@ -43,6 +43,13 @@
                     @csrf
                     @method('PUT')
                     <div class="card-body">
+                      <div class="form-group text-center">
+                          @if ($data->foto_siswa != '-')
+                              <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">        
+                          @else
+                              <h1>Tidak Ada Foto</h1>
+                          @endif
+                      </div>
                         <div class="form-group">
                             <label>NISN</label>
                         <input type="text" name="nisn_siswa" id="nisn_siswa" value="{{$data->nisn}}" class="form-control" readonly>
@@ -83,7 +90,7 @@
                 </div>
               </div>
               <div class="col-md-9">
-                <div class="card card-primary card-outline">
+                <div class="card card-orange card-outline">
                   <div class="card-header">
                   <div class="card-tools">
                     <a type="button" href="#" class="btn btn-primary" id="btn_setoran" data-toggle="modal" data-target="#modal-tambah-setoran"><i class="fas fa-plus"></i> Setoran</a>

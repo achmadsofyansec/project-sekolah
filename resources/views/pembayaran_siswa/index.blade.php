@@ -93,7 +93,7 @@
               @else
                   <h1>Tidak Ada Foto</h1>
               @endif
-          </div>
+            </div>
             <div class="form-group">
               <label>NISN</label>
               <input type="text" name="nisn" id="nisn" class="form-control" value="{{$data->nisn}}" readonly>
@@ -133,6 +133,9 @@
                       <th>Total Pembayaran</th>
                       <th>Aksi</th>
                     </thead>
+                    <tbody>
+
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -154,6 +157,7 @@
                     <thead>
                       <th>No</th>
                       <th>Tahun Ajaran</th>
+                      <th>Nama Biaya</th>
                       <th>Tagihan</th>
                       <th>Bayar</th>
                       <th>Status</th>
@@ -164,16 +168,17 @@
                           <tr>
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->tahun_ajaran}}</td>
+                          <td>{{$item->nama_biaya}}</td>
                           <td> Rp.{{number_format($item->tagihan_pembayaran)}},-</td>
                           <td> Rp.{{number_format($item->nominal_pembayaran)}},-</td>
                           <td> @if ($item->status_pembayaran == '0')
                             <span class="badge badge-danger"> {{'Belum Lunas'}}</span>
                               @else
-                              {{'<span class="badge badge-danger">Lunas</span>'}}
+                              {{'<span class="badge badge-success">Lunas</span>'}}
                           @endif</td>
                           <td>
                               @if ($item->status_pembayaran == '0')
-                              <a href="#" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
+                              <a href="#" data-toggle="modal" data-target="#modal-bayar-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
                               <a href="#" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
                               @else
                               <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
@@ -181,6 +186,7 @@
                             <a href="#" class="btn btn-dark"><i class="fas fa-print"></i></a>
                           </td>
                           </tr>
+                          @include('pembayaran_siswa.modal.bayar_nonbulanan')
                       @empty
                           
                       @endforelse
@@ -202,6 +208,22 @@
 @endsection
 @section('content-script')
     <script>
-      
+      $('#terapkan_tarif_semua_bulan').click(function() {
+       var vals = $('#tarif_semua_bulan').val()
+       $('#tarif_bulan_juli').val(vals)
+       $('#tarif_bulan_agustus').val(vals)
+       $('#tarif_bulan_september').val(vals)
+
+       $('#tarif_bulan_oktober').val(vals)
+       $('#tarif_bulan_november').val(vals)
+       $('#tarif_bulan_desember').val(vals)
+       $('#tarif_bulan_januari').val(vals)
+       $('#tarif_bulan_februari').val(vals)
+       $('#tarif_bulan_maret').val(vals)
+
+       $('#tarif_bulan_april').val(vals)
+       $('#tarif_bulan_mei').val(vals)
+       $('#tarif_bulan_juni').val(vals)
+      });
     </script>
 @endsection

@@ -15,7 +15,7 @@
             <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$data->id_kelas}}" required>
                 <div class="form-group">
                     <label>Biaya Siswa</label>
-                    <select name="kode_biaya_siswa" id="kode_biaya_siswa" class="form-control" style="width: 100%;" required>
+                    <select name="kode_biaya_siswa" id="kode_biaya_siswa_bulanan" class="form-control" style="width: 100%;" required>
                       <option value="">-- Pilih Biaya Siswa --</option>
                       @forelse ($bulanan as $item)
                   <option value="{{$item->id_biaya}}">{{$item->nama_biaya}} ({{$item->tahun_ajaran}})</option>
@@ -27,7 +27,7 @@
                   <label>Terapkan Ke Semua Bulan</label>
                 <div class="row">
                   <div class="col-md-10">
-                      <input type="number" name="tarif_semua_bulan" id="tarif_semua_bulan" class="form-control">
+                      <input type="number" name="tarif_semua_bulan" id="tarif_semua_bulan" class="form-control" value="0">
                   </div>
                   <div class="col-md-2">
                       <input type="button" class="btn btn-success" name="terapkan_tarif_semua_bulan" id="terapkan_tarif_semua_bulan" value="Terapkan">

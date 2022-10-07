@@ -19,6 +19,7 @@ class TabunganController extends Controller
     {
         $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        
         $data = keuangan_tabungan_siswa::join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
                                         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
                                         ->where([['data_siswas.status_siswa','=','Aktif']])
@@ -115,8 +116,9 @@ class TabunganController extends Controller
         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
             ,'keuangan_tabungan_siswas.kode_tabungan as kode_tabungan'
             ,'keuangan_tabungan_siswas.*','keuangan_tabungan_siswas.id as id_tabungan'])->first();
+        $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
         $detail = keuangan_tabungan_siswa_detail::where([['kode_tabungan','=',$id]])->orderBy('id', 'DESC')->get();
-        return view('tabungan.edit',compact(['data','detail']));
+        return view('tabungan.edit',compact(['data','detail','img']));
         
     }
 
