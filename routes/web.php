@@ -41,7 +41,8 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 Route::get('/back',[PageController::class,'back'])->name('back');
 Route::post('/signout',[PageController::class,'logout'])->name('signout');
-Route::get('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
+Route::post('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
+Route::get('/export_guru',[ExportImport::class,'ExportGuru'])->name('export_guru');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         

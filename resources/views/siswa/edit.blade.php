@@ -37,7 +37,7 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                    <form action="{{ route('siswa.update',$data->id)}}" method="post">
+                    <form action="{{ route('siswa.update',$data->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -63,12 +63,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group text-center">
-                                        @if ($data->foto_siswa != '-')
-                                            <img src="{{$img}}" alt="Logo" id="view-img" class="img" width="200" height="200">        
-                                        @else
-                                            <h1>Tidak Ada Foto</h1>
-                                        @endif
-                                    
+                                            <img src="@if ($data->foto_siswa != '-')
+                                            {{$img}}
+                                            @else
+                                            {{asset('public/dist/img/AdminLTELogo.png')}}
+                                            @endif" alt="Logo" id="view-img" class="img" width="200" height="200">
                                     </div>
                                     <div class="form-group">
                                         <input type="file" accept="image/png, image/jpeg" name="foto_siswa" id="foto_siswa" class="form-control">

@@ -124,9 +124,6 @@ class SiswaController extends Controller
                 ];
             }
             $create = data_siswa::create($data);
-
-
-            
             if($request->nik_ayah != null){
                 $data_ayah = [
                     'nik' => $request->nik_ayah,
@@ -262,9 +259,9 @@ class SiswaController extends Controller
            $data_ayah = [];
            $data_wali = [];    
            $file = $request->file('foto_siswa');
-           if($file != null){
-               $name = $request->file('foto_siswa')->getClientOriginalName();
-               $file->move('../assets/uploads',$name);
+            if($file != null){
+                $name = $request->file('foto_siswa')->getClientOriginalName();
+                $file->move('../assets/uploads',$name);
                $data = [
                    'status_siswa' =>$request->status_siswa,
                    'nik' => $request->nik,

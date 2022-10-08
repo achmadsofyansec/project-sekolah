@@ -57,7 +57,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group text-center">
-                                    <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
+                                    <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" id="view-img" alt="Logo" class="img" width="200" height="200">
                                 </div>
                                 <div class="form-group">
                                     <input type="file" accept="image/png, image/jpeg" name="foto_guru" id="foto_guru" class="form-control">
@@ -199,4 +199,12 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+    <script>
+        $('#foto_guru').change( function(event) {
+            $("#view-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+        });
+
+    </script>
 @endsection

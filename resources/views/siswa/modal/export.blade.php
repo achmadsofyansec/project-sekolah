@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="#" method="POST">
+      <form action="{{route('export_siswa')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">

@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group text-center">
                                   @if ($data->foto_guru != '-')
-                                  <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">
+                                  <img src="{{$img}}" alt="Logo" id="view-img" class="img" width="200" height="200">
                                   @else
                                       <h1>Tidak Ada Foto</h1>
                                   @endif
@@ -240,4 +240,12 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+    <script>
+        $('#foto_guru').change( function(event) {
+            $("#view-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+        });
+
+    </script>
 @endsection

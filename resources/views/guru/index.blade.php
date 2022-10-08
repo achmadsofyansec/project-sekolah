@@ -36,7 +36,7 @@
                    <div class="card-header">
                    <a type="button" href="{{route('guru.create')}}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
                    <a type="button" href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-import-guru"><i class="fas fa-file-import"></i>Import</a>
-                   <a type="button" href="#" class="btn btn-info" data-toggle="modal" data-target="#modal-export-guru"><i class="	fas fa-file-export"></i>Export</a>
+                   <a type="button" href="{{route('export_guru')}}" class="btn btn-info"><i class="	fas fa-file-export"></i>Export</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
