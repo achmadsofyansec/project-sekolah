@@ -275,13 +275,17 @@ CREATE TABLE `biaya_siswas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `biaya_siswas` */
 
 insert  into `biaya_siswas`(`id`,`nama_biaya`,`pos_biaya`,`tipe_biaya`,`tahun_ajaran_biaya`,`kartu_spp`,`penunggakan`,`created_at`,`updated_at`) values 
 (1,'SPP','1','BULANAN','1','1','0','2022-10-08 02:47:58','2022-10-08 02:47:58'),
-(2,'Uang Gedung','2','NONBULANAN','1','1','0','2022-10-08 02:48:41','2022-10-08 02:48:41');
+(2,'Uang Gedung','2','NONBULANAN','1','1','0','2022-10-08 02:48:41','2022-10-08 02:48:41'),
+(3,'SPP','1','BULANAN','2','1','0','2022-10-08 07:31:14','2022-10-08 07:31:14'),
+(4,'SPP','1','BULANAN','4','1','0','2022-10-08 07:31:26','2022-10-08 07:31:26'),
+(5,'Uang Gedung','2','NONBULANAN','2','0','0','2022-10-08 07:31:42','2022-10-08 07:31:42'),
+(6,'Uang Gedung','2','NONBULANAN','4','0','0','2022-10-08 07:32:16','2022-10-08 07:32:16');
 
 /*Table structure for table `data_gurus` */
 
@@ -481,9 +485,6 @@ CREATE TABLE `jurusans` (
 /*Data for the table `jurusans` */
 
 insert  into `jurusans`(`id`,`kode_jurusan`,`nama_jurusan`,`status_jurusan`,`created_at`,`updated_at`) values 
-(1,'RPL','Rekayasa Perangkat Lunak','Aktif','2022-09-24 09:00:18','2022-10-01 14:57:10'),
-(2,'MEKATRONIKA','Mekatronika','Aktif','2022-10-01 14:57:32','2022-10-01 14:57:32'),
-(3,'TKJ','Teknik Komputer Jaringan','Aktif','2022-10-01 14:58:05','2022-10-01 14:58:05'),
 (5,'RPL','Rekayasa Perangkat Lunak','Aktif',NULL,NULL),
 (6,'TKJ','Teknik Komputer Jaringan','Aktif',NULL,NULL),
 (7,'MEKATRONIKA','Mekatronika','Aktif',NULL,NULL);
@@ -524,9 +525,6 @@ CREATE TABLE `kelas` (
 /*Data for the table `kelas` */
 
 insert  into `kelas`(`id`,`kode_kelas`,`nama_kelas`,`status_kelas`,`created_at`,`updated_at`) values 
-(1,'XI','Sebelas','Aktif','2022-09-24 08:59:51','2022-10-01 14:56:37'),
-(2,'X','Sepuluh','Aktif','2022-09-24 15:11:06','2022-10-01 14:56:23'),
-(3,'XII','Dua Belas','Aktif','2022-10-01 14:56:52','2022-10-01 14:56:52'),
 (4,'X','Sepuluh','Aktif',NULL,NULL),
 (5,'XI','Sebelas','Aktif',NULL,NULL),
 (6,'XII','Duabelas','Aktif',NULL,NULL);
@@ -565,6 +563,26 @@ CREATE TABLE `kelurahan` (
 
 insert  into `kelurahan`(`id`,`kode_kelurahan`,`kode_kecamatan`,`nama_kelurahan`,`created_at`,`updated_at`) values 
 (1,'350706001','350706','Argoyuwono',NULL,NULL);
+
+/*Table structure for table `keuangan_detail_nonbulanans` */
+
+DROP TABLE IF EXISTS `keuangan_detail_nonbulanans`;
+
+CREATE TABLE `keuangan_detail_nonbulanans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kode_non_bulanan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_input_detail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_pembayaran_detail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nominal_detail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `keuangan_detail_nonbulanans` */
+
+insert  into `keuangan_detail_nonbulanans`(`id`,`kode_non_bulanan`,`tgl_input_detail`,`jenis_pembayaran_detail`,`nominal_detail`,`created_at`,`updated_at`) values 
+(6,'7','2022-10-08','1','1000000','2022-10-08 08:21:43','2022-10-08 08:21:43');
 
 /*Table structure for table `keuangan_pembayaran_bulanans` */
 
@@ -607,12 +625,12 @@ CREATE TABLE `keuangan_pembayaran_nonbulanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_pembayaran_nonbulanans` */
 
 insert  into `keuangan_pembayaran_nonbulanans`(`id`,`kode_siswa`,`kode_kelas`,`kode_jenis_pembayaran`,`kode_biaya_siswa`,`tagihan_pembayaran`,`nominal_pembayaran`,`tgl_bayar`,`status_pembayaran`,`ket_pembayaran`,`created_at`,`updated_at`) values 
-(1,'5','3',NULL,'2','15000000','0','-','0',NULL,'2022-10-08 02:49:03','2022-10-08 02:49:03');
+(7,'6','4',NULL,'6','1500000','1000000','2022-10-08','0',NULL,'2022-10-08 08:21:33','2022-10-08 08:21:43');
 
 /*Table structure for table `keuangan_penerimaan_lain_details` */
 
@@ -774,8 +792,7 @@ CREATE TABLE `methode_pembayarans` (
 /*Data for the table `methode_pembayarans` */
 
 insert  into `methode_pembayarans`(`id`,`kode_methode`,`nama_methode`,`desc_methode`,`created_at`,`updated_at`) values 
-(1,'MTD_NXnza00','TUNAI','Tunai ygy','2022-09-17 06:16:11','2022-09-17 06:16:11'),
-(2,'MTD_z6RQW01','UTANG','NGUTANG','2022-09-17 08:03:26','2022-09-17 08:03:26');
+(1,'MTD_NXnza00','TUNAI','Tunai ygy','2022-09-17 06:16:11','2022-09-17 06:16:11');
 
 /*Table structure for table `migrations` */
 
@@ -786,7 +803,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=236 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -824,7 +841,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (231,'2022_09_30_092300_create_akademik_nilai_prestasis_table',3),
 (232,'2022_09_30_093926_create_akademik_nilai_ekstras_table',3),
 (233,'2022_10_03_101244_create_akademik_nilai_details_table',3),
-(234,'2022_09_26_073804_create_akademik_nilais_table',4);
+(234,'2022_09_26_073804_create_akademik_nilais_table',4),
+(235,'2022_10_08_073648_create_keuangan_detail_nonbulanans_table',5);
 
 /*Table structure for table `notifs` */
 
@@ -1370,7 +1388,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('e2PEuBTrFx6kpxNAZFAa4hgTFlOdyBpSDiQS8YYM',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN09oVjdUTk1FSUQyOHNGajJVZE1Zd0FCSXY1NEV2MmlKSmtadWE2cSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vbG9jYWxob3N0L2FrYWRlbWlrL3Npc3dhIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1665211950);
+('e2PEuBTrFx6kpxNAZFAa4hgTFlOdyBpSDiQS8YYM',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN09oVjdUTk1FSUQyOHNGajJVZE1Zd0FCSXY1NEV2MmlKSmtadWE2cSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjcwOiJodHRwOi8vbG9jYWxob3N0L2tldWFuZ2FuL3BlbWJheWFyYW5fc2lzd2E/a29kZV9zaXN3YT02JnRhaHVuX2FqYXJhbj00Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1665217380);
 
 /*Table structure for table `siswa_daftars` */
 
@@ -1434,7 +1452,6 @@ CREATE TABLE `tahun_ajarans` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `kode_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `semester` int(11) NOT NULL,
   `status_tahun_ajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1443,11 +1460,9 @@ CREATE TABLE `tahun_ajarans` (
 
 /*Data for the table `tahun_ajarans` */
 
-insert  into `tahun_ajarans`(`id`,`kode_tahun_ajaran`,`tahun_ajaran`,`semester`,`status_tahun_ajaran`,`created_at`,`updated_at`) values 
-(1,'EK-110','2019/2020',1,'Aktif','2022-09-24 08:59:18','2022-09-24 08:59:18'),
-(2,'EK-100','2019/2020',2,'Nonaktif',NULL,NULL),
-(3,'EK-101','2021/2022',1,'Nonaktif',NULL,NULL),
-(4,'EK-102','2021/2022',2,'Aktif',NULL,NULL);
+insert  into `tahun_ajarans`(`id`,`kode_tahun_ajaran`,`tahun_ajaran`,`status_tahun_ajaran`,`created_at`,`updated_at`) values 
+(2,'EK-100','2019/2020','Nonaktif',NULL,NULL),
+(4,'EK-101','2021/2022','Aktif',NULL,'2022-10-08 14:30:06');
 
 /*Table structure for table `uploads` */
 
