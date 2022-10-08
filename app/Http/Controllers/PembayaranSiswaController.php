@@ -37,7 +37,9 @@ class PembayaranSiswaController extends Controller
             ->join("jurusans","aktivitas_belajars.kode_jurusan",'=','jurusans.kode_jurusan')
             ->where([['data_siswas.id','=',$request->kode_siswa]])
             ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','kelas.*','kelas.id as id_kelas','jurusans.*'])->first();            
-            $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
+            if($data){
+                $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
+            }
             $data_non_bulanan = keuangan_pembayaran_nonbulanan::join('biaya_siswas','keuangan_pembayaran_nonbulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                             ->join('kelas','keuangan_pembayaran_nonbulanans.kode_kelas','=','kelas.id')
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')

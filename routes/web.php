@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\MethodeController;
+use App\Http\Controllers\NonBulananController;
+use App\Http\Controllers\NonBulananDetailController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PembayaranSiswaController;
 use App\Http\Controllers\PenerimaanLainController;
@@ -44,7 +46,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('pos_keluar',PosPengeluaranController::class);
         // Pembayaran
         Route::get('pembayaran_siswa',[PembayaranSiswaController::class,'index'])->name('pembayaran_siswa');
-        Route::post('create_non_bulanan',[PembayaranSiswaController::class,'create_non_bulanan'])->name('create_non_bulanan');
+        Route::resource('non_bulanan',NonBulananController::class);
+        Route::resource('bayar_non_bulanan',NonBulananDetailController::class);
         Route::resource('biaya_siswa',BiayaSiswaController::class);
         Route::resource('tabungan',TabunganController::class);
         Route::resource('tabungan_detail',TabunganDetailController::class);

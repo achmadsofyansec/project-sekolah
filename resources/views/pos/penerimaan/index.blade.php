@@ -50,13 +50,15 @@
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->nama_pos}}</td>
                           <td>{{$item->desc_pos }}</td>
-                          <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
-                            action="{{ route('pos_terima.destroy',$item->id) }}" method="POST">
-                            <a href="{{ route('pos_terima.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-                            </form></td>
+                          <td>
+                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                              action="{{ route('pos_terima.destroy',$item->id) }}" method="POST">
+                                <a href="{{ route('pos_terima.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                            </form>
+                          </td>
                           </tr>
                       @empty
                           <tr>

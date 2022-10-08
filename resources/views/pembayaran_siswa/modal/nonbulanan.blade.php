@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="{{route('create_non_bulanan')}}" method="POST">
+      <form action="{{route('non_bulanan.store')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">

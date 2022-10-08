@@ -52,7 +52,6 @@
                           <th>Aksi</th>
                         </thead>
                         <tbody>
-                          
                           @forelse ($data as $item)
                               <tr>
                               <td>{{$loop->index + 1}}</td>

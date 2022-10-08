@@ -7,15 +7,14 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="#" method="POST">
+      <form action="{{route('bayar_non_bulanan.store')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">
-              <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}" required>
-              <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$data->id_kelas}}" required>
+              <input type="hidden" name="kode_non_bulanan" id="kode_kelas" value="{{$item->id_nonbulanan}}" required>
               <div class="form-group">
                 <label>Tanggal Bayar</label>
-                <input type="date" name="tgl_bayar" id="tgl_bayar" value="<?= date('Y-m-d') ?>" class="form-control" required>
+                <input type="date" name="tgl_input_detail" id="tgl_input_detail" value="<?= date('Y-m-d') ?>" class="form-control" required>
             </div>
               <div class="row">
                   <div class="col-md-6">
@@ -33,7 +32,7 @@
               </div>
                 <div class="form-group">
                     <label>Tipe Pembayaran</label>
-                    <select name="kode_jenis_pembayaran" id="kode_jenis_pembayaran" class="form-control" style="width: 100%;" required>
+                    <select name="jenis_pembayaran_detail" id="jenis_pembayaran_detail" class="form-control" style="width: 100%;" required>
                         <option value="">-- Pilih Jenis Pembayaran --</option>
                         @forelse ($jenis_bayar as $item)
                             <option value="{{$item->id}}">{{$item->nama_methode}}</option>
@@ -43,7 +42,7 @@
                   </div>
                 <div class="form-group">
                     <label>Bayar</label>
-                    <input type="number" name="nominal_bayar" id="nominal_bayar" class="form-control" required>
+                    <input type="number" name="nominal_detail" id="nominal_detail" class="form-control" required>
                 </div>
             </div>
         </div>

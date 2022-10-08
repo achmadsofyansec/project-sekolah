@@ -88,7 +88,7 @@
           </div>
           <div class="card-body">
             <div class="form-group text-center">
-              @if ($data->foto_siswa != '-')
+              @if ($img != '-')
                   <img src="{{$img}}" alt="Logo" class="img" width="200" height="200">        
               @else
                   <h1>Tidak Ada Foto</h1>
@@ -174,21 +174,25 @@
                           <td> @if ($item->status_pembayaran == '0')
                             <span class="badge badge-danger"> {{'Belum Lunas'}}</span>
                               @else
-                              {{'<span class="badge badge-success">Lunas</span>'}}
+                              <span class="badge badge-success">{{'Lunas'}}</span>
                           @endif</td>
                           <td>
                               @if ($item->status_pembayaran == '0')
                               <a href="#" data-toggle="modal" data-target="#modal-bayar-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
-                              <a href="#" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
                               @else
                               <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                             @endif
-                            <a href="#" class="btn btn-dark"><i class="fas fa-print"></i></a>
+                            <hr>
+                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                              action="{{ route('non_bulanan.destroy',$item->id_nonbulanan) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
                           </td>
                           </tr>
                           @include('pembayaran_siswa.modal.bayar_nonbulanan')
-                      @empty
-                          
+                      @empty 
                       @endforelse
                     </tbody>
                   </table>
