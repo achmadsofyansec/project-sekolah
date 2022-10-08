@@ -13,15 +13,17 @@ class CreateSarprasKepemilikanLahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_kepemilikan_lahans', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_lahan');
-            $table->string('kepemilikan');
-            $table->string('bersertifikat');
-            $table->integer('belum_bersertifikat');
-            $table->integer('total');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_kepemilikan_lahans')) {
+            Schema::create('sarpras_kepemilikan_lahans', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_lahan');
+                $table->string('kepemilikan');
+                $table->string('bersertifikat');
+                $table->integer('belum_bersertifikat');
+                $table->integer('total');
+                $table->timestamps();
+            });
+        }  
     }
 
     /**

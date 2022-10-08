@@ -13,15 +13,17 @@ class CreateSarprasPeminjamansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_peminjamans', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_peminjaman');
-            $table->string('kode_siswa');
-            $table->string('tgl_peminjaman');
-            $table->string('status_peminjaman');
-            $table->text('desc_peminjaman');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_peminjamans')) {
+            Schema::create('sarpras_peminjamans', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_peminjaman');
+                $table->string('kode_siswa');
+                $table->string('tgl_peminjaman');
+                $table->string('status_peminjaman');
+                $table->text('desc_peminjaman');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,13 +13,15 @@ class CreateSarprasAsetLainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_aset_lains', function (Blueprint $table) {
-            $table->id();
-            $table->string('unit');
-            $table->string('fungsi');
-            $table->string('foto');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_aset_lains')) {
+            Schema::create('sarpras_aset_lains', function (Blueprint $table) {
+                $table->id();
+                $table->string('unit');
+                $table->string('fungsi');
+                $table->string('foto');
+                $table->timestamps();
+            });
+        }   
     }
 
     /**

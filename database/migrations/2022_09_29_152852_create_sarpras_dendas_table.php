@@ -13,11 +13,13 @@ class CreateSarprasDendasTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_dendas', function (Blueprint $table) {
-            $table->id();
-            $table->integer('denda');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_dendas')) {
+            Schema::create('sarpras_dendas', function (Blueprint $table) {
+                $table->id();
+                $table->integer('denda');
+                $table->timestamps();
+            });
+        } 
     }
 
     /**

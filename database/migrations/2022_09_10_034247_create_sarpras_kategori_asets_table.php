@@ -13,11 +13,13 @@ class CreateSarprasKategoriAsetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_kategori_asets', function (Blueprint $table) {
-            $table->id();
-            $table->string('kategori');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_kategori_asets')) {
+            Schema::create('sarpras_kategori_asets', function (Blueprint $table) {
+                $table->id();
+                $table->string('kategori');
+                $table->timestamps();
+            });
+        }   
     }
 
     /**

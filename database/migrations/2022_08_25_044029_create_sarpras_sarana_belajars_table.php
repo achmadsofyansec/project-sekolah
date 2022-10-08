@@ -13,14 +13,16 @@ class CreateSarprasSaranaBelajarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_sarana_belajars', function (Blueprint $table) {
-            $table->id();
-            $table->string('sarana_pembelajaran');
-            $table->text('deskripsi');
-            $table->string('fungsi');
-            $table->string('foto');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_lapangans')) {
+            Schema::create('sarpras_lapangans', function (Blueprint $table) {
+                $table->id();
+                $table->string('sarana_pembelajaran');
+                $table->text('deskripsi');
+                $table->string('fungsi');
+                $table->string('foto');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,16 +13,18 @@ class CreateSarprasPenggunaanLahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_penggunaan_lahans', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_lahan');
-            $table->string('status');
-            $table->string('penggunaan');
-            $table->string('penggunaan_bersertifikat');
-            $table->string('penggunaan_belum_bersertifikat');
-            $table->string('penggunaan_total');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_penggunaan_lahans')) {
+            Schema::create('sarpras_penggunaan_lahans', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_lahan');
+                $table->string('status');
+                $table->string('penggunaan');
+                $table->string('penggunaan_bersertifikat');
+                $table->string('penggunaan_belum_bersertifikat');
+                $table->string('penggunaan_total');
+                $table->timestamps();
+            });
+        } 
     }
 
     /**

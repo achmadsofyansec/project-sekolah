@@ -13,15 +13,17 @@ class CreateSarprasLaboratoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_laboratoria', function (Blueprint $table) {
-            $table->id();
-            $table->string('unit');
-            $table->integer('jml_baik');
-            $table->integer('jml_rusak_ringan');
-            $table->integer('jml_rusak_berat');
-            $table->string('foto');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_laboratoria')) {
+            Schema::create('sarpras_laboratoria', function (Blueprint $table) {
+                $table->id();
+                $table->string('unit');
+                $table->integer('jml_baik');
+                $table->integer('jml_rusak_ringan');
+                $table->integer('jml_rusak_berat');
+                $table->string('foto');
+                $table->timestamps();
+            });
+        }   
     }
 
     /**

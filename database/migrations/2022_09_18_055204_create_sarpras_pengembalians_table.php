@@ -13,14 +13,16 @@ class CreateSarprasPengembaliansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_pengembalians', function (Blueprint $table) {
-            $table->id();
-            $table->string('status');
-            $table->string('penerima');
-            $table->date('tgl_kembali');
-            $table->string('desc_kembali');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ssarpras_pengembalians')) {
+            Schema::create('sarpras_pengembalians', function (Blueprint $table) {
+                $table->id();
+                $table->string('status');
+                $table->string('penerima');
+                $table->date('tgl_kembali');
+                $table->string('desc_kembali');
+                $table->timestamps();
+            });
+        }  
     }
 
     /**

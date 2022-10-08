@@ -13,16 +13,18 @@ class CreateSarprasDataAsetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sarpras_data_asets', function (Blueprint $table) {
-            $table->id();
-            $table->string('unit');
-            $table->string('kategori');
-            $table->integer('jml_baik');
-            $table->integer('jml_rusak_ringan');
-            $table->integer('jml_rusak_berat');
-            $table->string('foto');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sarpras_data_asets')) {
+            Schema::create('sarpras_data_asets', function (Blueprint $table) {
+                $table->id();
+                $table->string('unit');
+                $table->string('kategori');
+                $table->integer('jml_baik');
+                $table->integer('jml_rusak_ringan');
+                $table->integer('jml_rusak_berat');
+                $table->string('foto');
+                $table->timestamps();
+            });
+        }   
     }
 
     /**
