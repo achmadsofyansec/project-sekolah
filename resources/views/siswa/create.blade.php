@@ -58,10 +58,10 @@
                                         </select>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="img" width="200" height="200">
+                                        <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" id="view-img" class="img" width="200" height="200">
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" accept="image/png, image/jpeg" name="foto_siswa" id="foto_siswa" class="form-control" accept="image/*">
+                                        <input onchange="setImg(this.value)" type="file" accept="image/png, image/jpeg" name="foto_siswa" id="foto_siswa" class="form-control" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -495,4 +495,12 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+    <script>
+        $('#foto_siswa').change( function(event) {
+            $("#view-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+        });
+
+    </script>
 @endsection

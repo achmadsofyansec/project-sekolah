@@ -124,6 +124,9 @@ class SiswaController extends Controller
                 ];
             }
             $create = data_siswa::create($data);
+
+
+            
             if($request->nik_ayah != null){
                 $data_ayah = [
                     'nik' => $request->nik_ayah,

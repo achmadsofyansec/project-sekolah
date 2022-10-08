@@ -13,7 +13,7 @@ class CreateAkademikNilaiPrestasisTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('akadmik_nilai_prestasis')){
+        if(!Schema::hasTable('akademik_nilai_prestasis')){
             Schema::create('akademik_nilai_prestasis', function (Blueprint $table) {
                 $table->id();
                 $table->string('kode_siswa');
