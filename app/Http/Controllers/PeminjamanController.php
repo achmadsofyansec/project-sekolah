@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\SarprasDataAset;
 use App\Models\data_siswa;
+use App\Models\SarprasPeminjamanDetail;
 use App\Models\SarprasPeminjamans;
 use Illuminate\Support\Str;
 
@@ -120,7 +121,8 @@ class PeminjamanController extends Controller
             ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
             ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman'])->first();
         $kategori = SarprasDataAset::latest()->get();
-        return view('peminjaman.edit',compact(['data', 'kategori']));
+        $detail = SarprasPeminjamanDetail::join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman');
+        return view('peminjaman.edit',compact(['data', 'kategori', 'detail']));
     }
 
     /**

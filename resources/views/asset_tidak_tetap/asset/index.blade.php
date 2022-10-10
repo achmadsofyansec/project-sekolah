@@ -57,7 +57,13 @@
                                     <td>{{ $dataAset->jml_baik }}</td>
                                     <td>{{ $dataAset->jml_rusak_ringan }}</td>
                                     <td>{{ $dataAset->jml_rusak_berat }}</td>
-                                    <td>{{ $dataAset->foto }}</td>
+                                    <td>
+                                      @if ($dataAset->foto != null)
+                                      <img src="{{asset('public/uploads/'.$dataAset->foto)}}" alt="Image" class="img" width="100" height="100">
+                                      @else
+                                          <p>Tidak Ada Foto</p>
+                                      @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                         action="{{ route('aset_tt.destroy',$dataAset->id) }}" method="POST">
