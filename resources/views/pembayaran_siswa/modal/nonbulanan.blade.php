@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                   <label>Keterangan</label>
-                  <textarea name="ket_biaya" id="ket_biaya" cols="30" rows="10" class="form-control"></textarea>
+                  <textarea name="ket_biaya" id="ket_biaya" cols="30" rows="5" class="form-control"></textarea>
                 </div>
             </div>
         </div>

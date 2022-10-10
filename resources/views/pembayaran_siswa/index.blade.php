@@ -128,13 +128,35 @@
                   <table class="table">
                     <thead>
                       <th>No</th>
+                      <th>Nama Biaya</th>   
                       <th>Tahun Ajaran</th>
-                      <th>Total Tagihan</th>
-                      <th>Total Pembayaran</th>
+                      <th>Kelas</th>        
                       <th>Aksi</th>
                     </thead>
                     <tbody>
-
+                      @forelse ($data_bulanan as $item)
+                          <tr>
+                            <td>{{$loop->index + 1}}</td>
+                            <td>{{$item->nama_biaya}}</td>
+                            <td>{{$item->tahun_ajaran}}</td>
+                            <td>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </td>
+                            <td>
+                              @if ($item->status_pembayaran == '0')
+                              <form onsubmit="return confirm('Apakah Anda yakin ?')" action="{{ route('bulanan.destroy',$item->id_bulanan) }}" method="POST">
+                              <a href="#" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
+                              <a href="#" data-toggle="modal" data-target="#modal-view-bulanan<?= $item->id_bulanan ?>" class="btn btn-light"><i class="fas fa-eye"></i></a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                              @else
+                              <a href="#" data-toggle="modal" data-target="#modal-view-bulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                            @endif
+                          </td>
+                          </tr>
+                      @empty
+                          
+                      @endforelse
                     </tbody>
                   </table>
                 </div>
@@ -169,7 +191,7 @@
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$item->tahun_ajaran}}</td>
                           <td>{{$item->nama_biaya}}</td>
-                          <td> Rp.{{number_format($item->tagihan_pembayaran)}},-</td>
+                          <td> Rp.{{number_format($item->tagihan_pembayaran - $item->nominal_pembayaran) }},-</td>
                           <td> Rp.{{number_format($item->nominal_pembayaran)}},-</td>
                           <td> @if ($item->status_pembayaran == '0')
                             <span class="badge badge-danger"> {{'Belum Lunas'}}</span>
@@ -178,20 +200,18 @@
                           @endif</td>
                           <td>
                               @if ($item->status_pembayaran == '0')
+                              <form onsubmit="return confirm('Apakah Anda yakin ?')" action="{{ route('non_bulanan.destroy',$item->id_nonbulanan) }}" method="POST">
                               <a href="#" data-toggle="modal" data-target="#modal-bayar-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
-                              @else
-                              <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                            @endif
-                            <hr>
-                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                              action="{{ route('non_bulanan.destroy',$item->id_nonbulanan) }}" method="POST">
+                              <a href="#" data-toggle="modal" data-target="#modal-view-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-light"><i class="fas fa-eye"></i></a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
+                              @else
+                              <a href="#" data-toggle="modal" data-target="#modal-view-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                            @endif
                           </td>
                           </tr>
-                          @include('pembayaran_siswa.modal.bayar_nonbulanan')
                       @empty 
                       @endforelse
                     </tbody>
@@ -203,6 +223,12 @@
         </div>
       </div>
     </div>
+    @forelse ($data_non_bulanan as $item)
+      @include('pembayaran_siswa.modal.bayar_nonbulanan')
+      @include('pembayaran_siswa.modal.view_nonbulanan')
+    @empty
+        
+    @endforelse
 @include('pembayaran_siswa.modal.bulanan')
 @include('pembayaran_siswa.modal.nonbulanan')
     @endif

@@ -16,6 +16,7 @@ class keuangan_pembayaran_bulanan extends Model
         'bulan_pembayaran',
         'tagihan_pembayaran',
         'nominal_pembayaran',
+        'status_pembayaran',
         'tgl_bayar',
     ];
 }

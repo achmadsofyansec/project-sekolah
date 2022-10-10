@@ -7,12 +7,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="#" method="POST">
+      <form action="{{route('bulanan.store')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">
-            <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}" required>
-            <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$data->id_kelas}}" required>
+              <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}" required>
+              <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$data->id_kelas}}" required>
                 <div class="form-group">
                     <label>Biaya Siswa</label>
                     <select name="kode_biaya_siswa" id="kode_biaya_siswa_bulanan" class="form-control" style="width: 100%;" required>
