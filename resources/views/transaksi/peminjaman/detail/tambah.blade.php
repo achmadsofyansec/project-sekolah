@@ -24,10 +24,10 @@
                     @php
                         $tanggalnow = date('Y-m-d');
                     @endphp
-                    <input type="text" id="id_siswa" name="id_siswa" value="{{$data->id_peminjaman}}">
-                    <input type="text" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
-                    <input type="text" id="keperluan" name="keperluan" value="Pinjam Buku">
-                    <input type="text" id="status" name="status" value="1">
+                    <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_peminjaman}}">
+                    <input type="hidden" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
+                    <input type="hidden" id="keperluan" name="keperluan" value="Pinjam Buku">
+                    <input type="hidden" id="status" name="status" value="1">
                     <div class="form-group">
                       <label>Jumlah Buku</label>
                       <input type="number" name="jumlah" id="jumlah" class="form-control" required>

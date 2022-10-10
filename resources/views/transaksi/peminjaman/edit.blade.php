@@ -39,7 +39,7 @@
                       Data Siswa
                     </div>
                   </div>
-                  <form action="{{route('peminjaman_buku.update',$data->id_peminjaman)}}" method="POST">
+                  <form action="{{route('peminjaman_buku.update',$data->id_siswa)}}" method="POST" enctype="multipart">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -57,14 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label>Tanggungan</label>
-                        <input type="text" name="saldo_pinjaman" id="saldo_pinjaman" value="" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Status Buku</label>
-                            <select name="status_pinjaman" id="status_pinjaman" class="form-control" style="width: 100%;" required>
-                              <option value="1">Dipinjam</option>
-                              <option value="0">Dkembalikan</option>
-                            </select>
+                        <input type="text" name="saldo_pinjaman" id="saldo_pinjaman" value="{{$tanggungan->count()}}" class="form-control" readonly>
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Peminjaman</label>
@@ -83,7 +76,6 @@
                   <div class="card-header">
                   <div class="card-tools">
                     <a type="button" href="#" class="btn bg-navy btn-primary" id="btn_tambah" data-toggle="modal" data-target="#tambah-pinjaman"><i class="fas fa-plus"></i> Tambah</a>
-                    <a type="button" href="#" class="btn bg-navy btn-sm" id="btn_dit"data-toggle="modal" data-target="#edit-pinjaman"><i class="fas fa-minus"></i> Edit</a>
                   </div>
                   </div>
                   <div class="card-body">
@@ -95,7 +87,8 @@
                           <th>Jumlah Buku</th>
                           <th>Tanggal kembali</th>
                           <th>denda</th>
-                          <th><span><span class="badge badge-success">IN</span>/<span class="badge badge-danger">OUT</span></span></th>
+                          <th>status</th>
+                          <th>Aksi</th>
                         </thead>
                         <tbody>
                           @forelse ($pinjam as $item)
@@ -125,9 +118,17 @@
                                 }
                                  ?>
                                 </td>
+                                <td><?php if($item->status == 1){
+                                  echo "Belum" ."<br>". "Dikembalikan";
+                                }else{
+                                  echo "Telah Dikembalikan";
+                                } ?></td>
+                                <td>
+                          <a type="button" href="#" class="btn bg-primary btn-xs" id="btn_edit" data-toggle="modal" data-target="#edit-pinjaman"><i class="fas fa-edit"></i> Edit</a>
+                                </form>
+                              </td>
                                 @empty
                                 @endforelse
-                            <td></td>
                           </tr>
                           @empty
                               

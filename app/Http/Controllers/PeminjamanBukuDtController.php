@@ -101,9 +101,9 @@ class PeminjamanBukuDtController extends Controller
      * @param  \App\Models\PeminjamanBukuDt  $peminjamanBukuDt
      * @return \Illuminate\Http\Response
      */
-    public function edit(PeminjamanBukuDt $peminjamanBukuDt)
+    public function edit(PeminjamanBukuDt $peminjamanBukuDt, $id)
     {
-        //
+        return view('transaksi.detail.edit');
     }
 
     /**

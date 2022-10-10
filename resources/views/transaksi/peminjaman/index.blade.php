@@ -59,8 +59,8 @@
                               <td>{{$item->id_siswa}}</td>
                               <td>{{$item->nama}}</td>
                               <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                              <td></td>
-                              <td>@if ($item->status == '0')
+                              <td>{{$tanggungan->count()}}</td>
+                              <td>@if ($tanggungan->count() == 0)
                                  <span class="btn btn-success">Dikembalikan</span>
                               @else
                               <span class="btn btn-success">Dipinjam</span>
