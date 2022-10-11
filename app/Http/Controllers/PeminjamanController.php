@@ -40,7 +40,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        
+        return view('peminjaman.peminjaman_detail');
     }
 
     /**
@@ -54,9 +54,9 @@ class PeminjamanController extends Controller
         $validate = $this->validate($request,[
             'kode_siswa' => ['required'],
             'status_peminjaman' => ['required'],
-            'unit' => ['required'],
             'desc_peminjaman' => ['required'],
             'tgl_peminjaman' => ['required'],
+            'tgl_pengembalian' => ['required'],
         ]);
         if($validate){
             $cek = SarprasPeminjamans::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
@@ -70,7 +70,7 @@ class PeminjamanController extends Controller
                     'status_peminjaman' => $request->status_peminjaman,
                     'desc_peminjaman' => $request->desc_peminjaman,
                     'tgl_peminjaman' => $request->tgl_peminjaman,
-                    'unit' => $request->unit,
+                    'tgl_pengembalian' => $request->tgl_pengembalian,
                 ]);
                 if($create){
                     return redirect()
@@ -121,7 +121,7 @@ class PeminjamanController extends Controller
             ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
             ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman'])->first();
         $kategori = SarprasDataAset::latest()->get();
-        $detail = SarprasPeminjamanDetail::join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman');
+        $detail = SarprasPeminjamanDetail::join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman')->get();
         return view('peminjaman.edit',compact(['data', 'kategori', 'detail']));
     }
 
@@ -137,7 +137,7 @@ class PeminjamanController extends Controller
         $validate = $this->validate($request,[
             'desc_peminjaman' => ['required'],
             'tgl_peminjaman' => ['required'],
-            'unit' => ['required'],
+            'tgl_pengembalian' => ['required'],
             'status_peminjaman' => ['required'],
         ]);
         
@@ -146,7 +146,7 @@ class PeminjamanController extends Controller
             $update->update([
                 'desc_peminjaman' => $request->desc_peminjaman,
                 'tgl_peminjaman' => $request->tgl_peminjaman,
-                'unit' => $request->unit,
+                'tgl_pengembalian' => $request->tgl_pengembalian,
                 'status_peminjaman' => $request->status_peminjaman,
             ]);
             if($update){

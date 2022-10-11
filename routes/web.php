@@ -25,8 +25,7 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\SanitasiController;
 use App\Http\Controllers\DendaController;
-
-
+use App\Http\Controllers\PeminjamanDetail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +63,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
 
         //Peminjaman
         Route::resource('/peminjaman', PeminjamanController::class);
+        Route::resource('/peminjaman/detail', PeminjamanDetail::class);
         Route::resource('/pengembalian', PengembalianController::class);
         Route::resource('/denda', DendaController::class);
         

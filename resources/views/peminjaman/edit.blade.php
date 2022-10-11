@@ -36,38 +36,39 @@
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <div class="card-title">
-                      Data Siswa
+                      Data Peminjaman
                     </div>
                   </div>
                   <form action="{{route('peminjaman.update',$data->id_peminjaman)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
-                        <div class="form-group">
-                            <label>NISN</label>
-                        <input type="text" name="nisn_siswa" id="nisn_siswa" value="{{$data->nisn}}" class="form-control" readonly>
+                        <div class="forrm-grup">
+                          <label>Tanggal Peminjaman</label>
+                          <input type="datetime-local" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" value="{{ $data->tgl_peminjaman }}">
+                        </div>
+                        <p class="my-3" style="color: red;">Ganti Form Dibawah Saat Pengembalian Barang!</p>
+                        <div class="forrm-grup">
+                          <label>Tanggal Pengembalian</label>
+                          <input type="datetime-local" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="{{ $data->tgl_pengembalian }}">
                         </div>
                         <div class="form-group">
-                            <label>Nama</label>
-                        <input type="text" name="nama_siswa" id="nama_siswa" value="{{$data->nama}}" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Kelas / Jurusan</label>
-                        <input type="text" name="kelas_siswa" id="kelas_siswa" value="{{$data->kode_kelas}} / {{$data->kode_jurusan}}" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Status Peminjaman</label>
-                            <select name="status_peminjaman" id="status_peminjaman" class="form-control" style="width: 100%;" required>
-                                <option value="0" @if ($data->status_peminjaman == '0')
-                                    {{'selected'}}
-                                @endif >Dipinjam</option>
-                                <option value="1" @if ($data->status_peminjaman == '1')
-                                    {{'selected'}}
-                                @endif>Dikembalikan</option>
-                                <option value="2" @if ($data->status_peminjaman == '2')
+                          <label>Status Peminjaman</label>
+                          <select name="status_peminjaman" id="status_peminjaman" class="form-control" style="width: 100%;" required>
+                              <option value="0" @if ($data->status_peminjaman == '0')
                                   {{'selected'}}
-                              @endif>Hilang</option>
-                            </select>
+                              @endif >Dipinjam</option>
+                              <option value="1" @if ($data->status_peminjaman == '1')
+                                  {{'selected'}}
+                              @endif>Dikembalikan</option>
+                              <option value="2" @if ($data->status_peminjaman == '2')
+                                {{'selected'}}
+                            @endif>Hilang</option>
+                          </select>
+                      </div>
+                        <div class="forrm-grup">
+                          <label>Penerima</label>
+                          <input type="text" name="penerima" id="penerima" class="form-control" value="">
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Peminjaman</label>
@@ -84,9 +85,29 @@
               <div class="col-md-9">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
+                    <div class="card-title">
+                      Data Siswa
+                    </div>
+                  </div>
+                    <div class="card-body">
+                        <div class="forrm-grup">
+                          <label>Nama</label>
+                          <input type="text" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" value="{{ $data->nama }}" readonly>
+                        </div>
+                        <div class="forrm-grup">
+                          <label>Kelas</label>
+                          <input type="text" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="{{ $data->kode_kelas }}" readonly>
+                        </div>
+                        <div class="forrm-grup">
+                          <label>Jurusan</label>
+                          <input type="text" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="{{ $data->kode_jurusan }}" readonly>
+                        </div>
+                      </div>
+                    </div>
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
                   <div class="card-tools">
-                    <a type="button" href="#" class="btn btn-primary" id="btn_setoran" data-toggle="modal" data-target="#modal-tambah-setoran"><i class="fas fa-plus"></i> Setoran</a>
-                    <a type="button" href="#" class="btn btn-primary" id="btn_penarikan"data-toggle="modal" data-target="#modal-tambah-penarikan"><i class="fas fa-minus"></i> Penarikan</a>
+                    <a type="button" class="btn btn-primary" id="btn_setoran" data-toggle="modal" data-target="#modal-tambah-peminjaman-detail"><i class="fas fa-plus"></i> Tambah Barang</a>
                   </div>
                   </div>
                   <div class="card-body">
@@ -96,14 +117,15 @@
                           <th>No</th>
                           <th>Unit</th>
                           <th>Jumlah</th>
-                          <th><span><span class="badge badge-success">IN</span>/<span class="badge badge-danger">OUT</span></span></th>
+                          <th>Aksi</th>
                         </thead>
                         <tbody>
                           @forelse ($detail as $item)
                               <tr>
                                 <td>{{$loop->index +1 }}</td>
                                 <td>{{$item->unit}}</td>
-                                <td>{{$loop->jumlah}}</td>
+                                <td>{{$item->jumlah}}</td>
+                                <td>Tes</td>
                               </tr>
                                 
                           @empty
@@ -119,7 +141,7 @@
           </div>
         </div>
     </div>
-    
+    @include('peminjaman.peminjaman_detail')
 </div>
 </div>
 @endsection

@@ -12,8 +12,8 @@ class SarprasPeminjamans extends Model
         'kode_peminjaman',
         'kode_siswa',
         'tgl_peminjaman',
+        'tgl_pengembalian',
         'status_peminjaman',
         'desc_peminjaman',
-        'unit',
     ];
 }

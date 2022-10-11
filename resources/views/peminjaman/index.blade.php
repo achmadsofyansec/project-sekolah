@@ -46,7 +46,8 @@
                           <th>No</th>
                           <th>Nama Siswa</th>
                           <th>Kelas / Jurusan</th>
-                          <th>Barang yang dipinjam</th>
+                          <th>Waktu Peminjaman</th>
+                          <th>Waktu Pengembalian</th>
                           <th>Status</th>
                           <th>Aksi</th>
                         </thead>
@@ -56,7 +57,8 @@
                                 <td>{{$loop->index + 1}}</td>
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                                <td>{{$item->unit}}</td>
+                                <td>{{$item->tgl_peminjaman}}</td>
+                                <td>{{$item->tgl_pengembalian}}</td>
                                 <td>@if ($item->status_peminjaman == '0')
                                   <span class="btn btn-warning">Dipinjam</span>
                                @elseif($item->status_peminjaman == '1')

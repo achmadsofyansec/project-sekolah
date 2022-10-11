@@ -21,28 +21,17 @@
                       @endforelse
                   </select>
               </div>
+              
               <div class="form-group">
-                <label>Data Siswa</label>
-                <select name="unit" id="unit" class="form-control" style="width: 100%;" required>
-                    <option value="">--- Pilih Unit ---</option>
-                    @forelse ($kategori as $item)
-                <option value="{{$item->unit}}">{{$item->unit}}</option>
-                    @empty
-                    @endforelse
-                </select>
-            </div>
-              <div class="form-group">
-                <label>Status Peminjaman</label>
-                <select name="status_peminjaman" id="status_peminjaman" class="form-control" style="width: 100%;" required>
-                    <option value="0">Dipinjam</option>
-                    <option value="1">Dikembalikan</option>
-                    <option value="2">Hilang</option>
-                </select>
-            </div>
+                  <input type="hidden" name="status_peminjaman" id="status_peminjaman" class="form-control" value="0">
+              </div>
               <div class="form-group">
                   <label>Tanggal Peminjaman</label>
-                  <input type="date" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" cols="30" rows="10"></textarea>
+                  <input type="datetime-local" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control">
               </div>
+              <div class="form-group">
+                <input type="hidden" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="Belum Dikembalikan">
+            </div>
               <div class="form-group">
                 <label>Deskripsi Peminjaman</label>
                 <textarea name="desc_peminjaman" id="desc_peminjaman" class="form-control" cols="30" rows="10"></textarea>

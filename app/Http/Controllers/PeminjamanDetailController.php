@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SarprasKategoriAset;
-use App\Models\SarprasPeminjamanDetail;
 use Illuminate\Http\Request;
 
-class PeminjamanDetail extends Controller
+class PeminjamanDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,10 +23,7 @@ class PeminjamanDetail extends Controller
      */
     public function create()
     {
-        // $data = SarprasPeminjamanDetail::latest()->get();
-        $kategori = SarprasKategoriAset::latest()->get();
-        $data = SarprasPeminjamanDetail::join('sarpras_peminjamans.kode_peminjaman', '=', 'sarpras_peminjaman_details.kode_peminjaman')->get();
-        return view('peminjaman.peminjaman_detail', compact(['data', 'kategori']));
+        //
     }
 
     /**
