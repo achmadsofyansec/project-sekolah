@@ -32,6 +32,7 @@ class PembayaranSiswaController extends Controller
         $data_bulanan = "";
         $data_non_bulanan = "";
         $detail_non_bulanan = "";
+        $detail_bulanan = "";
         $req = $request;
         $img = "-";
         if($request->tahun_ajaran != null && $request->kode_siswa != null){
@@ -43,12 +44,17 @@ class PembayaranSiswaController extends Controller
             if($data){
                 $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
             }
-            $data_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+            $data_bulanan = keuangan_pembayaran_bulanan::groupBy('keuangan_pembayaran_bulanans.kode_biaya_siswa')
+                                                        ->join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                         ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
                                                         ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                         ->where([['kode_siswa','=',$request->kode_siswa],['tahun_ajarans.id','=',$request->tahun_ajaran]])
-                                                        ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*'])
-                                                        ->unique('keuangan_pembayaran_bulanans.kode_biaya_siswa');
+                                                        ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
+            $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+                                                        ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
+                                                        ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
+                                                        ->where([['kode_siswa','=',$request->kode_siswa],['tahun_ajarans.id','=',$request->tahun_ajaran]])
+                                                        ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
             $data_non_bulanan = keuangan_pembayaran_nonbulanan::join('biaya_siswas','keuangan_pembayaran_nonbulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                             ->join('kelas','keuangan_pembayaran_nonbulanans.kode_kelas','=','kelas.id')
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
@@ -69,6 +75,6 @@ class PembayaranSiswaController extends Controller
                                                             ->where([['tipe_biaya','=','BULANAN'],['tahun_ajarans.id','=',$request->tahun_ajaran]])
                                                             ->get(['biaya_siswas.id as id_biaya','biaya_siswas.*','pos_penerimaans.*','tahun_ajarans.*']);
         }
-        return view('pembayaran_siswa.index',compact(['tahun_ajaran','req','img','siswa','data','data_bulanan','data_non_bulanan','nonbulanan','bulanan','jenis_bayar','detail_non_bulanan']));
+        return view('pembayaran_siswa.index',compact(['detail_bulanan','tahun_ajaran','req','img','siswa','data','data_bulanan','data_non_bulanan','nonbulanan','bulanan','jenis_bayar','detail_non_bulanan']));
     }
 }

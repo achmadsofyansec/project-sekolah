@@ -269,5 +269,23 @@ class BulananController extends Controller
     public function destroy($id)
     {
         //
+        $data = keuangan_pembayaran_bulanan::findOrFail($id);
+        if($data){
+            $datas = keuangan_pembayaran_bulanan::where([['kode_biaya_siswa','=',$data->kode_biaya_siswa]])->delete();
+            if($datas){
+                return redirect()
+                ->back()
+                ->with([
+                    'success' => 'Biaya Bulanan Has Been Deleted successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+            
+        }
     }
 }

@@ -43,10 +43,6 @@
                       @forelse ($tahun_ajaran as $item)
                   <option value="{{$item->id}}" @if ($req->tahun_ajaran != null && $req->tahun_ajaran == $item->id)
                       {{'selected'}}
-                      @else
-                      @if ($item->status_tahun_ajaran == 'Aktif')
-                          {{'selected'}}
-                      @endif
                   @endif>{{$item->tahun_ajaran}} ( {{$item->status_tahun_ajaran}} ) </option>
                       @empty
                       @endforelse
@@ -130,18 +126,33 @@
                       <th>No</th>
                       <th>Nama Biaya</th>   
                       <th>Tahun Ajaran</th>
-                      <th>Kelas</th>        
+                      <th>Kelas</th>
+                      <th>Tagihan</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
                       @forelse ($data_bulanan as $item)
+                      @php
+                          $total_tagihan = 0;
+                          $total_bayar = 0;
+                      @endphp
+                      @forelse ($detail_bulanan as $c)
+                              @if ($c->kode_biaya_siswa == $item->kode_biaya_siswa)
+                                  @php
+                                      $total_tagihan += $c->tagihan_pembayaran;
+                                      $total_bayar += $c->nominal_pembayaran;
+                                  @endphp
+                                @endif
+                            @empty
+                            @endforelse
                           <tr>
                             <td>{{$loop->index + 1}}</td>
                             <td>{{$item->nama_biaya}}</td>
                             <td>{{$item->tahun_ajaran}}</td>
                             <td>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </td>
+                            <td>Rp.{{number_format($total_tagihan - $total_bayar  )}}.-</td>
                             <td>
-                              @if ($item->status_pembayaran == '0')
+                              
                               <form onsubmit="return confirm('Apakah Anda yakin ?')" action="{{ route('bulanan.destroy',$item->id_bulanan) }}" method="POST">
                               <a href="#" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
                               <a href="#" data-toggle="modal" data-target="#modal-view-bulanan<?= $item->id_bulanan ?>" class="btn btn-light"><i class="fas fa-eye"></i></a>
@@ -149,9 +160,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
-                              @else
-                              <a href="#" data-toggle="modal" data-target="#modal-view-bulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                            @endif
+                              
                           </td>
                           </tr>
                       @empty
@@ -227,7 +236,10 @@
       @include('pembayaran_siswa.modal.bayar_nonbulanan')
       @include('pembayaran_siswa.modal.view_nonbulanan')
     @empty
-        
+    @endforelse
+    @forelse ($detail_bulanan as $item)
+      @include('pembayaran_siswa.modal.view_bulanan')
+    @empty
     @endforelse
 @include('pembayaran_siswa.modal.bulanan')
 @include('pembayaran_siswa.modal.nonbulanan')
