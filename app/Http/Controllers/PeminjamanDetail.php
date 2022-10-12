@@ -15,7 +15,7 @@ class PeminjamanDetail extends Controller
      */
     public function index()
     {
-        //
+        return view('peminjaman.index');
     }
 
     /**
@@ -39,7 +39,37 @@ class PeminjamanDetail extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $this->validate($request,[
+            'kode_peminjaman' => ['required'],
+            'unit' => ['required'],
+            'jumlah' => ['required'],
+        ]);
+        if($credential){
+            $create = SarprasPeminjamanDetail::create([
+                'kode_peminjaman' => $request->kode_peminjaman,
+                'unit' => $request->unit,
+                'jumlah' => $request->jumlah,
+            ]);
+            if($create){
+                return redirect()
+                ->route('peminjaman.index')
+                ->with([
+                    'success' => 'Data Peminjaman Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     /**
@@ -84,6 +114,20 @@ class PeminjamanDetail extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasPeminjamanDetail::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('peminjaman.index')
+            ->with([
+                'success' => 'peminjaman Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

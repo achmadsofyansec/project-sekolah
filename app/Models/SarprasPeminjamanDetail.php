@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SarprasPeminjamanDetail extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'kode_peminjaman',
+        'unit',
+        'jumlah',
+    ];
 }

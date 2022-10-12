@@ -63,7 +63,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
 
         //Peminjaman
         Route::resource('/peminjaman', PeminjamanController::class);
-        Route::resource('/peminjaman/detail', PeminjamanDetail::class);
+        Route::resource('/peminjaman-detail', PeminjamanDetail::class);
         Route::resource('/pengembalian', PengembalianController::class);
         Route::resource('/denda', DendaController::class);
         

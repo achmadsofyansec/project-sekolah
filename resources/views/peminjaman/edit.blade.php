@@ -68,7 +68,7 @@
                       </div>
                         <div class="forrm-grup">
                           <label>Penerima</label>
-                          <input type="text" name="penerima" id="penerima" class="form-control" value="">
+                          <input type="text" name="penerima" id="penerima" class="form-control" value="{{ $data->penerima }}">
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Peminjaman</label>
@@ -125,7 +125,12 @@
                                 <td>{{$loop->index +1 }}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->jumlah}}</td>
-                                <td>Tes</td>
+                                <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                  action="{{ route('peminjaman-detail.destroy',$item->id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                  </form></td>
                               </tr>
                                 
                           @empty

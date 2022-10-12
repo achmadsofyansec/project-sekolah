@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <form action="{{route('peminjaman.store')}}" method="POST">
+      <form action="{{route('peminjaman-detail.store')}}" method="POST">
         @csrf
         <div class="modal-body">
             <div class="card-body">

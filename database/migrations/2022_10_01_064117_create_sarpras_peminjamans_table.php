@@ -18,9 +18,10 @@ class CreateSarprasPeminjamansTable extends Migration
                 $table->id();
                 $table->string('kode_peminjaman');
                 $table->string('kode_siswa');
-                $table->string('tgl_peminjaman');
+                $table->string('tgl_peminjaman');  
                 $table->string('tgl_pengembalian');
                 $table->string('status_peminjaman');
+                $table->string('penerima');
                 $table->text('desc_peminjaman');
                 $table->timestamps();
             });

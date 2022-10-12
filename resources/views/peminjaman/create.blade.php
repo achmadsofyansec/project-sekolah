@@ -31,6 +31,7 @@
               </div>
               <div class="form-group">
                 <input type="hidden" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="Belum Dikembalikan">
+                <input type="hidden" name="penerima" id="penerima" class="form-control" value="Belum Diterima">
             </div>
               <div class="form-group">
                 <label>Deskripsi Peminjaman</label>

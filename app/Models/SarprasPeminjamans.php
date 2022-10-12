@@ -15,5 +15,6 @@ class SarprasPeminjamans extends Model
         'tgl_pengembalian',
         'status_peminjaman',
         'desc_peminjaman',
+        'penerima',
     ];
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\SarprasDataAset;
 use App\Models\data_siswa;
+use App\Models\SarprasKategoriAset;
 use App\Models\SarprasPeminjamanDetail;
 use App\Models\SarprasPeminjamans;
 use Illuminate\Support\Str;
@@ -57,6 +58,7 @@ class PeminjamanController extends Controller
             'desc_peminjaman' => ['required'],
             'tgl_peminjaman' => ['required'],
             'tgl_pengembalian' => ['required'],
+            'penerima' => ['required'],
         ]);
         if($validate){
             $cek = SarprasPeminjamans::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
@@ -71,6 +73,7 @@ class PeminjamanController extends Controller
                     'desc_peminjaman' => $request->desc_peminjaman,
                     'tgl_peminjaman' => $request->tgl_peminjaman,
                     'tgl_pengembalian' => $request->tgl_pengembalian,
+                    'penerima' => $request->penerima,
                 ]);
                 if($create){
                     return redirect()
@@ -101,6 +104,58 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function createdetail()
+    {
+        // $data = SarprasPeminjamanDetail::latest()->get();
+        $kategori = SarprasKategoriAset::latest()->get();
+        $data = SarprasPeminjamanDetail::join('sarpras_peminjamans.kode_peminjaman', '=', 'sarpras_peminjaman_details.kode_peminjaman')->get();
+        return view('peminjaman.peminjaman_detail', compact(['data', 'kategori']));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeDetail(Request $request)
+    {
+        $credential = $this->validate($request,[
+            'kode_peminjaman' => ['required'],
+            'unit' => ['required'],
+            'jumlah' => ['required'],
+            'penerima' => ['required'],
+        ]);
+        if($credential){
+            $create = SarprasPeminjamanDetail::create([
+                'kode_peminjaman' => $request->kode_peminjaman,
+                'unit' => $request->unit,
+                'jumlah' => $request->jumlah,
+                'penerima' => $request->penerima,
+            ]);
+            if($create){
+                return redirect()
+                ->route('peminjaman.edit')
+                ->with([
+                    'success' => 'Data Peminjaman Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
+    }
+
     public function show($id)
     {
         //
@@ -139,6 +194,7 @@ class PeminjamanController extends Controller
             'tgl_peminjaman' => ['required'],
             'tgl_pengembalian' => ['required'],
             'status_peminjaman' => ['required'],
+            'penerima' => ['required'],
         ]);
         
         if($validate){
@@ -148,6 +204,7 @@ class PeminjamanController extends Controller
                 'tgl_peminjaman' => $request->tgl_peminjaman,
                 'tgl_pengembalian' => $request->tgl_pengembalian,
                 'status_peminjaman' => $request->status_peminjaman,
+                'penerima' => $request->penerima,
             ]);
             if($update){
                 return redirect()
