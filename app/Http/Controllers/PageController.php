@@ -39,15 +39,7 @@ class PageController extends Controller
         return view('rekaptulasi.per_trx.index');
     }
     
-    public function view_laporan_tahunan(){
-        return view('laporan.tahunan.index');
-    }
-    public function view_laporan_bulanan(){
-        return view('laporan.bulanan.index');
-    }
-    public function view_laporan_harian(){
-        return view('laporan.harian.index');
-    }
+    
     public function view_wa_gateway(){
         return view('gateway.wa.index');
     }

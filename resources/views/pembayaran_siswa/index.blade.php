@@ -65,8 +65,8 @@
               </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label>Tombol Cari</label>
-                    <input type="submit" value="Cari" class="btn btn-primary" style="width: 100%">
+                    <label>Search</label>
+                    <input type="submit" value="Search" class="btn btn-primary" style="width: 100%">
                   </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                             <td>
                               
                               <form onsubmit="return confirm('Apakah Anda yakin ?')" action="{{ route('bulanan.destroy',$item->id_bulanan) }}" method="POST">
-                              <a href="#" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
+                              <a href="{{route('bulanan.edit',$item->id_bulanan)}}" class="btn btn-primary"><i class="fas fa-cash-register"></i></a>
                               <a href="#" data-toggle="modal" data-target="#modal-view-bulanan<?= $item->id_bulanan ?>" class="btn btn-light"><i class="fas fa-eye"></i></a>
                                 @csrf
                                 @method('DELETE')

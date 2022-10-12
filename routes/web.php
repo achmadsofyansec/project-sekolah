@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\BulananController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\NonBulananController;
 use App\Http\Controllers\NonBulananDetailController;
@@ -62,9 +63,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
 
         //Laporan
-        Route::get('/laporan_harian',[PageController::class,'view_laporan_harian'])->name('laporan_harian');
-        Route::get('/laporan_bulanan',[PageController::class,'view_laporan_bulanan'])->name('laporan_bulanan');
-        Route::get('/laporan_tahunan',[PageController::class,'view_laporan_tahunan'])->name('laporan_tahunan');
+        Route::get('/laporan_harian',[LaporanController::class,'view_harian'])->name('laporan_harian');
+        Route::get('/laporan_bulanan',[LaporanController::class,'view_laporan_bulanan'])->name('laporan_bulanan');
+        Route::get('/laporan_tahunan',[LaporanController::class,'view_laporan_tahunan'])->name('laporan_tahunan');
         Route::get('/rekap',[PageController::class,'view_rekap'])->name('rekap');
         Route::get('/rekap_pertrx',[PageController::class,'view_rekap_pertrx'])->name('rekap_pertrx');
         Route::get('/tunggakan',[PageController::class,'view_tunggakan'])->name('tunggakan');

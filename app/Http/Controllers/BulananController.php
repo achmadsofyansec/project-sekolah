@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_siswa;
 use App\Models\keuangan_pembayaran_bulanan;
 use Illuminate\Http\Request;
 
@@ -234,7 +235,7 @@ class BulananController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -245,7 +246,26 @@ class BulananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bulanan = keuangan_pembayaran_bulanan::findOrFail($id);
+        $data = "";
+        $img = "";
+        $detail_bulanan = "";
+        if($bulanan){
+            $data = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+            ->join("kelas","aktivitas_belajars.kode_kelas",'=','kelas.kode_kelas')
+            ->join("jurusans","aktivitas_belajars.kode_jurusan",'=','jurusans.kode_jurusan')
+            ->where([['data_siswas.id','=',$bulanan->kode_siswa]])
+            ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*','kelas.*','kelas.id as id_kelas','jurusans.*'])->first();            
+            if($data){
+                $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
+            }
+            $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+                                                        ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
+                                                        ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
+                                                        ->where([['kode_siswa','=',$bulanan->kode_siswa],['kode_biaya_siswa','=',$bulanan->kode_biaya_siswa]])
+                                                        ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
+        }
+        return view('pembayaran_siswa.page.bayar_bulanan',compact(['data','img','detail_bulanan'])); 
     }
 
     /**
@@ -271,7 +291,7 @@ class BulananController extends Controller
         //
         $data = keuangan_pembayaran_bulanan::findOrFail($id);
         if($data){
-            $datas = keuangan_pembayaran_bulanan::where([['kode_biaya_siswa','=',$data->kode_biaya_siswa]])->delete();
+            $datas = keuangan_pembayaran_bulanan::where([['kode_biaya_siswa','=',$data->kode_biaya_siswa],['kode_siswa','=',$data->kode_siswa]])->delete();
             if($datas){
                 return redirect()
                 ->back()

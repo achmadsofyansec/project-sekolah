@@ -31,20 +31,30 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-              </div>
+            <div class="card card-orange card-outline">
               <div class="card-body">
-                <div class="table-responsive">
-                  <table id="dataTable" class="table table-border">
-                    <thead>
-                      <th>No</th>
-                      <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
+                <form action="{{route('laporan_harian')}}" method="GET">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Tgl Awal</label>
+                        <input type="date" name="filter_awal" id="filter_awal" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label>Tgl Akhir</label>
+                        <input type="date" name="filter_akhir" id="filter_akhir" class="form-control" required>
+                      </div>
+                    </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label>Search</label>
+                          <input type="submit" value="Search" class="btn btn-primary" style="width: 100%">
+                        </div>
+                      </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

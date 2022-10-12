@@ -259,6 +259,7 @@
               </li>
             </ul>
           </li>
+          <!--
           <li class="nav-item">
             <a href="<?php echo url('/tunggakan') ?>" class="nav-link">
               <i class="nav-icon fas fa-paste text-danger"></i>
@@ -267,6 +268,7 @@
               </p>
             </a>
           </li>
+        -->
           <li class="nav-item">
             <a href="<?php echo url('/riwayat_pembayaran') ?>" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list text-navy"></i>

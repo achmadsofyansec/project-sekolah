@@ -31,20 +31,27 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-              </div>
+            <div class="card card-orange card-outline">             
               <div class="card-body">
-                <div class="table-responsive">
-                  <table id="dataTable" class="table table-border">
-                    <thead>
-                      <th>No</th>
-                      <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
+                <form action="#" method="GET">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <input type="number" name="filter_awal" id="filter_awal" placeholder="YYYY" class="form-control"  min="1900">
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <input type="number" name="filter_awal" id="filter_akhir" placeholder="YYYY" class="form-control"  min="1900">
+                      </div>
+                    </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <input type="submit" value="Search" class="btn btn-primary" style="width: 100%">
+                        </div>
+                      </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -52,4 +59,6 @@
     </div>
 </div>
 </div>
+@endsection
+@section('content-script')
 @endsection
