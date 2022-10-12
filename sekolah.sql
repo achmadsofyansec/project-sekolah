@@ -579,7 +579,7 @@ CREATE TABLE `keuangan_detail_nonbulanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_detail_nonbulanans` */
 
@@ -587,7 +587,10 @@ insert  into `keuangan_detail_nonbulanans`(`id`,`kode_non_bulanan`,`tgl_input_de
 (15,'13','2022-10-10','1','500000','2022-10-10 02:36:45','2022-10-10 02:36:45'),
 (16,'13','2022-10-10','1','500000','2022-10-10 02:40:01','2022-10-10 02:40:01'),
 (17,'14','2022-10-10','1','120000','2022-10-10 02:47:07','2022-10-10 02:47:07'),
-(18,'14','2022-10-10','1','-120000','2022-10-10 02:48:55','2022-10-10 02:48:55');
+(18,'14','2022-10-10','1','-120000','2022-10-10 02:48:55','2022-10-10 02:48:55'),
+(19,'15','2022-10-12','1','150000','2022-10-12 00:46:56','2022-10-12 00:46:56'),
+(20,'14','2022-10-12','1','1200000','2022-10-12 01:06:07','2022-10-12 01:06:07'),
+(21,'14','2022-10-12','1','300000','2022-10-12 01:06:39','2022-10-12 01:06:39');
 
 /*Table structure for table `keuangan_pembayaran_bulanans` */
 
@@ -608,23 +611,11 @@ CREATE TABLE `keuangan_pembayaran_bulanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_pembayaran_bulanans` */
 
 insert  into `keuangan_pembayaran_bulanans`(`id`,`kode_siswa`,`kode_kelas`,`kode_jenis_pembayaran`,`kode_biaya_siswa`,`bulan_pembayaran`,`tagihan_pembayaran`,`nominal_pembayaran`,`tgl_bayar`,`status_pembayaran`,`ket_pembayaran`,`created_at`,`updated_at`) values 
-(10,'5','6',NULL,'4','Juli','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(11,'5','6',NULL,'4','Agustus','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(12,'5','6',NULL,'4','September','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(13,'5','6',NULL,'4','Oktober','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(14,'5','6',NULL,'4','November','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(15,'5','6',NULL,'4','Desember','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(16,'5','6',NULL,'4','Januari','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(17,'5','6',NULL,'4','Februari','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(18,'5','6',NULL,'4','Maret','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(19,'5','6',NULL,'4','April','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(20,'5','6',NULL,'4','Mei','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
-(21,'5','6',NULL,'4','Juni','10000','0','-','0',NULL,'2022-10-10 03:24:10','2022-10-10 03:24:10'),
 (22,'5','6',NULL,'3','Juli','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
 (23,'5','6',NULL,'3','Agustus','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
 (24,'5','6',NULL,'3','September','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
@@ -636,7 +627,19 @@ insert  into `keuangan_pembayaran_bulanans`(`id`,`kode_siswa`,`kode_kelas`,`kode
 (30,'5','6',NULL,'3','Maret','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
 (31,'5','6',NULL,'3','April','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
 (32,'5','6',NULL,'3','Mei','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
-(33,'5','6',NULL,'3','Juni','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26');
+(33,'5','6',NULL,'3','Juni','100000','0','-','0',NULL,'2022-10-10 04:06:26','2022-10-10 04:06:26'),
+(58,'5','6','1','4','Juli','150000','150000','2022-10-12','1',NULL,'2022-10-12 01:14:55','2022-10-12 02:59:28'),
+(59,'5','6','1','4','Agustus','150000','150000','2022-10-12','1',NULL,'2022-10-12 01:14:55','2022-10-12 03:00:00'),
+(60,'5','6',NULL,'4','September','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(61,'5','6',NULL,'4','Oktober','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(62,'5','6',NULL,'4','November','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(63,'5','6',NULL,'4','Desember','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(64,'5','6',NULL,'4','Januari','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(65,'5','6',NULL,'4','Februari','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(66,'5','6',NULL,'4','Maret','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(67,'5','6',NULL,'4','April','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(68,'5','6',NULL,'4','Mei','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55'),
+(69,'5','6',NULL,'4','Juni','150000','0','-','0',NULL,'2022-10-12 01:14:55','2022-10-12 01:14:55');
 
 /*Table structure for table `keuangan_pembayaran_nonbulanans` */
 
@@ -656,13 +659,14 @@ CREATE TABLE `keuangan_pembayaran_nonbulanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_pembayaran_nonbulanans` */
 
 insert  into `keuangan_pembayaran_nonbulanans`(`id`,`kode_siswa`,`kode_kelas`,`kode_jenis_pembayaran`,`kode_biaya_siswa`,`tagihan_pembayaran`,`nominal_pembayaran`,`tgl_bayar`,`status_pembayaran`,`ket_pembayaran`,`created_at`,`updated_at`) values 
 (13,'6','4',NULL,'6','1000000','1000000','2022-10-10','1',NULL,'2022-10-10 02:36:06','2022-10-10 02:40:01'),
-(14,'5','6',NULL,'6','1500000','0','2022-10-10','0',NULL,'2022-10-10 02:46:42','2022-10-10 02:48:55');
+(14,'5','6',NULL,'6','1500000','1500000','2022-10-12','1',NULL,'2022-10-10 02:46:42','2022-10-12 01:06:39'),
+(15,'5','6',NULL,'5','150000','150000','2022-10-12','1',NULL,'2022-10-12 00:46:36','2022-10-12 00:46:56');
 
 /*Table structure for table `keuangan_penerimaan_lain_details` */
 
@@ -677,12 +681,13 @@ CREATE TABLE `keuangan_penerimaan_lain_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_penerimaan_lain_details` */
 
 insert  into `keuangan_penerimaan_lain_details`(`id`,`kode_penerimaan`,`pos_terima`,`detail_keterangan`,`detail_jumlah`,`created_at`,`updated_at`) values 
-(3,'2','PP_HfhVJI0','SPP ngab','180000','2022-09-17 08:05:31','2022-09-17 08:05:31');
+(3,'2','PP_HfhVJI0','SPP ngab','180000','2022-09-17 08:05:31','2022-09-17 08:05:31'),
+(5,'3','PP_JZgNjZ2','-','10000000','2022-10-12 03:32:27','2022-10-12 03:32:27');
 
 /*Table structure for table `keuangan_penerimaan_lains` */
 
@@ -697,12 +702,13 @@ CREATE TABLE `keuangan_penerimaan_lains` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_penerimaan_lains` */
 
 insert  into `keuangan_penerimaan_lains`(`id`,`tgl_penerimaan`,`penerimaan_dari`,`methode_bayar`,`desc_penerimaan`,`created_at`,`updated_at`) values 
-(2,'2022-09-17','Bupati 1','MTD_z6RQW01','Santunan Santriwati','2022-09-17 06:21:29','2022-09-17 08:03:36');
+(2,'2022-09-17','Bupati 1','MTD_z6RQW01','Santunan Santriwati','2022-09-17 06:21:29','2022-09-17 08:03:36'),
+(3,'2022-10-12','Bupati','MTD_NXnza00','-','2022-10-12 03:32:09','2022-10-12 03:32:09');
 
 /*Table structure for table `keuangan_pengeluaran_details` */
 
@@ -718,9 +724,12 @@ CREATE TABLE `keuangan_pengeluaran_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_pengeluaran_details` */
+
+insert  into `keuangan_pengeluaran_details`(`id`,`kode_pengeluaran`,`pos_sumber`,`pos_keluar`,`detail_keterangan`,`detail_jumlah`,`created_at`,`updated_at`) values 
+(1,'1','PP_HfhVJI0','PP_EkXbk60','-','150000','2022-10-12 03:18:30','2022-10-12 03:18:30');
 
 /*Table structure for table `keuangan_pengeluarans` */
 
@@ -734,9 +743,12 @@ CREATE TABLE `keuangan_pengeluarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_pengeluarans` */
+
+insert  into `keuangan_pengeluarans`(`id`,`tgl_pengeluaran`,`methode_bayar`,`desc_pengeluaran`,`created_at`,`updated_at`) values 
+(1,'2022-10-12','MTD_NXnza00','-','2022-10-12 03:18:10','2022-10-12 03:18:10');
 
 /*Table structure for table `keuangan_tabungan_siswa_details` */
 
@@ -754,15 +766,12 @@ CREATE TABLE `keuangan_tabungan_siswa_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_tabungan_siswa_details` */
 
 insert  into `keuangan_tabungan_siswa_details`(`id`,`kode_detail`,`kode_tabungan`,`nominal_detail`,`saldo_awal_detail`,`saldo_akhir_detail`,`type_detail`,`keterangan_detail`,`created_at`,`updated_at`) values 
-(3,'TDS_PQmDeA0','1','10000','0','10000','0','-','2022-09-24 07:23:54','2022-09-24 07:23:54'),
-(4,'TDT_uTQAZ81','1','2000','10000','8000','1','-','2022-09-24 07:24:18','2022-09-24 07:24:18'),
-(5,'TDS_lRTIH52','1','1000000','8000','1008000','0','tester','2022-09-24 07:34:39','2022-09-24 07:34:39'),
-(6,'TDT_1uBB2g3','1','8000','1008000','1000000','1','noob','2022-09-24 07:34:56','2022-09-24 07:34:56');
+(7,'TDS_MngkDk0','2','150000','0','150000','0','-','2022-10-12 03:31:45','2022-10-12 03:31:45');
 
 /*Table structure for table `keuangan_tabungan_siswas` */
 
@@ -778,12 +787,12 @@ CREATE TABLE `keuangan_tabungan_siswas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `keuangan_tabungan_siswas` */
 
 insert  into `keuangan_tabungan_siswas`(`id`,`kode_tabungan`,`kode_siswa`,`saldo_tabungan`,`status_tabungan`,`desc_tabungan`,`created_at`,`updated_at`) values 
-(1,'TS_TYPRdW0','1','1000000','1','-','2022-09-24 02:08:34','2022-09-24 07:34:56');
+(2,'TS_JjEbxP0','5','150000','1','-','2022-10-12 03:28:23','2022-10-12 03:31:45');
 
 /*Table structure for table `mata_pelajarans` */
 
@@ -1421,7 +1430,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('7f6hba0TQrDLyZ9n2AX3ksJEIgC3ReDu87mQCSh9',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoidkV5SEYzRFVJT09XQW55N1BDNnBORFRpNjJCNld5eUIyODFuS0pMZSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjcwOiJodHRwOi8vbG9jYWxob3N0L2tldWFuZ2FuL3BlbWJheWFyYW5fc2lzd2E/a29kZV9zaXN3YT01JnRhaHVuX2FqYXJhbj00Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1665374815);
+('2pc5eP7W1NIlWPq7Uh3bXfCcCz9BZ5dg1HN9QZmd',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaTgyMWdSc0VvalZrWnZGeGk3N0c1MVBmYW1QY0ZCUDVsRHQzZE1oTyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vbG9jYWxob3N0L2tldWFuZ2FuIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1665545579);
 
 /*Table structure for table `siswa_daftars` */
 
