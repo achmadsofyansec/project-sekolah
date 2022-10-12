@@ -93,7 +93,7 @@
   datasets: [
     {
       label: "Data Transaksi",
-      data: [{{ $penerimaan_lain->sum('detail_jumlah')}},0,0,{{$pengeluaran->sum('detail_jumlah')}}],
+      data: [{{ $penerimaan_lain->sum('detail_jumlah')}},{{$tabungan}},{{$pembayaran_siswa}},{{$pengeluaran->sum('detail_jumlah')}}],
       backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8'],
       }
     ]
