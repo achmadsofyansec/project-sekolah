@@ -51,6 +51,13 @@
               <input type="text" name="jurusan_siswa" id="jurusan_siswa" class="form-control" value="{{$data->nama_jurusan}}" readonly>
             </div>
           </div>
+          <div class="card-footer">
+            <form action="{{route('pembayaran_siswa')}}" method="GET">
+                <input type="hidden" name="tahun_ajaran" id="tahun_ajaran" value="{{$data_bulanan->id_tahun_ajaran}}">
+                <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data_bulanan->kode_siswa}}">
+                <button type="submit" class="btn btn-danger">Back</button>
+            </form>
+          </div>
         </div>
       </div>
       <div class="col-md-9">
@@ -84,20 +91,23 @@
                                     </td>
                                       <td>
                                         @if ($c->status_pembayaran == '0')
-                                        <a href="#" class="btn-sm btn-success"><i class="fas fa-print"></i>Bayar</a>
+                                        <a href="#" data-toggle="modal" data-target="#modal-bulanan-<?= $c->id_bulanan?>" class="btn-sm btn-success"><i class="fas fa-cash-register"></i> Bayar</a>
                                           @else
                                           <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</a>
                                       @endif
                                       </td>
                                     </tr>
                             @empty
-                                
                             @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        @forelse ($detail_bulanan as $item)
+        @include('pembayaran_siswa.modal.bayar_bulanan')
+        @empty
+        @endforelse
       </div>
     </div>
     @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\data_siswa;
 use App\Models\keuangan_pembayaran_bulanan;
+use App\Models\methode_pembayaran;
 use Illuminate\Http\Request;
 
 class BulananController extends Controller
@@ -247,9 +248,11 @@ class BulananController extends Controller
     public function edit($id)
     {
         $bulanan = keuangan_pembayaran_bulanan::findOrFail($id);
+        $jenis_bayar = methode_pembayaran::latest()->get();
         $data = "";
         $img = "";
         $detail_bulanan = "";
+        $data_bulanan = "";
         if($bulanan){
             $data = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
             ->join("kelas","aktivitas_belajars.kode_kelas",'=','kelas.kode_kelas')
@@ -259,13 +262,19 @@ class BulananController extends Controller
             if($data){
                 $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
             }
+            $data_bulanan = keuangan_pembayaran_bulanan::groupBy('keuangan_pembayaran_bulanans.kode_biaya_siswa')
+            ->join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+            ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
+            ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
+            ->where([['keuangan_pembayaran_bulanans.id','=',$id]])
+            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*','tahun_ajarans.id as id_tahun_ajaran'])->first();
             $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                         ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
                                                         ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                         ->where([['kode_siswa','=',$bulanan->kode_siswa],['kode_biaya_siswa','=',$bulanan->kode_biaya_siswa]])
                                                         ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
         }
-        return view('pembayaran_siswa.page.bayar_bulanan',compact(['data','img','detail_bulanan'])); 
+        return view('pembayaran_siswa.page.bayar_bulanan',compact(['data','data_bulanan','img','detail_bulanan','jenis_bayar'])); 
     }
 
     /**
@@ -277,7 +286,41 @@ class BulananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'tgl_input_detail' => ['required'],
+            'jenis_pembayaran_detail' => ['required'],
+            'nominal_detail' => ['required'],
+        ]);
+        if($validate){
+            $update  = keuangan_pembayaran_bulanan::findOrFail($id);
+            if($request->nominal_detail >= $update->tagihan_pembayaran){
+                $update->update([
+                    'kode_jenis_pembayaran' => $request->jenis_pembayaran_detail,
+                    'nominal_pembayaran' => $request->nominal_detail,
+                    'tgl_bayar' => $request->tgl_input_detail,
+                    'status_pembayaran' => '1',
+                ]);
+                if($update){
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'success' => 'Data Bulanan Has Been Paid successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Data Bulanan Has Been Paid unsuccessfully, Money Not Enough'
+                ]);
+            }
+        }
     }
 
     /**
