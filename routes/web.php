@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\BulananController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MethodeController;
 use App\Http\Controllers\NonBulananController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\PengeluaranDetailController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PosPenerimaanController;
 use App\Http\Controllers\PosPengeluaranController;
+use App\Http\Controllers\RekaptulasiController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TabunganController;
@@ -66,10 +68,10 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/laporan_harian',[LaporanController::class,'view_harian'])->name('laporan_harian');
         Route::get('/laporan_bulanan',[LaporanController::class,'view_laporan_bulanan'])->name('laporan_bulanan');
         Route::get('/laporan_tahunan',[LaporanController::class,'view_laporan_tahunan'])->name('laporan_tahunan');
-        Route::get('/rekap',[PageController::class,'view_rekap'])->name('rekap');
-        Route::get('/rekap_pertrx',[PageController::class,'view_rekap_pertrx'])->name('rekap_pertrx');
+        Route::get('/rekap',[RekaptulasiController::class,'view_rekap'])->name('rekap');
+        Route::get('/rekap_pertrx',[RekaptulasiController::class,'view_rekap_pertrx'])->name('rekap_pertrx');
         Route::get('/tunggakan',[PageController::class,'view_tunggakan'])->name('tunggakan');
-        Route::get('/riwayat_pembayaran',[PageController::class,'view_riwayat_bayar'])->name('riwayat_bayar');
+        Route::get('/riwayat_pembayaran',[HistoryController::class,'view_riwayat_bayar'])->name('riwayat_bayar');
         //Gateway
         Route::get('/wa_gateway',[PageController::class,'view_wa_gateway'])->name('wa_gateway');
     });

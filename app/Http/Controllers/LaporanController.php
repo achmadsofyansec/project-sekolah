@@ -6,6 +6,8 @@ use App\Models\keuangan_detail_nonbulanan;
 use App\Models\keuangan_pembayaran_bulanan;
 use App\Models\keuangan_penerimaan_lain;
 use App\Models\keuangan_penerimaan_lain_detail;
+use App\Models\keuangan_pengeluaran;
+use App\Models\keuangan_pengeluaran_detail;
 use App\Models\keuangan_tabungan_siswa_detail;
 use Illuminate\Http\Request;
 
@@ -46,7 +48,12 @@ class LaporanController extends Controller
                                                                     ->join('methode_pembayarans','keuangan_penerimaan_lains.methode_bayar','=','methode_pembayarans.kode_methode')
                                                                     ->where([['keuangan_penerimaan_lains.tgl_penerimaan','>=',$request->filter_awal],['keuangan_penerimaan_lains.tgl_penerimaan','<=',$request->filter_akhir]])                                                        
                                                                     ->get(['keuangan_penerimaan_lain_details.id as id_penerimaan','keuangan_penerimaan_lain_details.*','keuangan_penerimaan_lains.*','methode_pembayarans.*']);
-                
+                $pengeluaran = keuangan_pengeluaran_detail::join('keuangan_pengeluarans','keuangan_pengeluaran_details.kode_pengeluaran','=','keuangan_pengeluarans.id')
+                                                          ->join('methode_pembayarans','keuangan_pengeluarans.methode_bayar','=','methode_pembayarans.kode_methode')
+                                                          ->join('pos_penerimaans','keuangan_pengeluaran_details.pos_sumber','=','pos_penerimaans.kode_pos')
+                                                          ->join('pos_pengeluarans','keuangan_pengeluaran_details.pos_keluar','=','pos_pengeluarans.kode_pos')
+                                                          ->where([['keuangan_pengeluarans.tgl_pengeluaran','>=',$request->filter_awal],['keuangan_pengeluarans.tgl_pengeluaran','<=',$request->filter_akhir]])
+                                                          ->get(['pos_penerimaans.nama_pos as sumber_dana','keuangan_pengeluaran_details.id as id_pengeluaran','keuangan_pengeluaran_details.*','keuangan_pengeluarans.*','methode_pembayarans.*','pos_penerimaans.*','pos_pengeluarans.*']);
             }
         return view('laporan.harian.index',compact(['req','bulanan','non_bulanan','tabungan','penerimaan_lain','pengeluaran']));
     }
@@ -83,6 +90,12 @@ class LaporanController extends Controller
                                                                     ->join('methode_pembayarans','keuangan_penerimaan_lains.methode_bayar','=','methode_pembayarans.kode_methode')
                                                                     ->where([['keuangan_penerimaan_lains.tgl_penerimaan','>=',$request->filter_awal."-01-01"],['keuangan_penerimaan_lains.tgl_penerimaan','<=',$request->filter_akhir."-12-".date('t')]])                                                        
                                                                     ->get(['keuangan_penerimaan_lain_details.id as id_penerimaan','keuangan_penerimaan_lain_details.*','keuangan_penerimaan_lains.*','methode_pembayarans.*']);
+                $pengeluaran = keuangan_pengeluaran_detail::join('keuangan_pengeluarans','keuangan_pengeluaran_details.kode_pengeluaran','=','keuangan_pengeluarans.id')
+                                                                    ->join('methode_pembayarans','keuangan_pengeluarans.methode_bayar','=','methode_pembayarans.kode_methode')
+                                                                    ->join('pos_penerimaans','keuangan_pengeluaran_details.pos_sumber','=','pos_penerimaans.kode_pos')
+                                                                    ->join('pos_pengeluarans','keuangan_pengeluaran_details.pos_keluar','=','pos_pengeluarans.kode_pos')
+                                                                    ->where([['keuangan_pengeluarans.tgl_pengeluaran','>=',$request->filter_awal."-01-01"],['keuangan_pengeluarans.tgl_pengeluaran','<=',$request->filter_akhir."-12-".date('t')]])
+                                                                    ->get(['pos_penerimaans.nama_pos as sumber_dana','keuangan_pengeluaran_details.id as id_pengeluaran','keuangan_pengeluaran_details.*','keuangan_pengeluarans.*','methode_pembayarans.*','pos_penerimaans.*','pos_pengeluarans.*']);
                 
             }
         return view('laporan.tahunan.index',compact(['req','bulanan','tabungan','non_bulanan','penerimaan_lain','pengeluaran']));
@@ -120,7 +133,12 @@ class LaporanController extends Controller
                                                                     ->join('methode_pembayarans','keuangan_penerimaan_lains.methode_bayar','=','methode_pembayarans.kode_methode')
                                                                     ->where([['keuangan_penerimaan_lains.tgl_penerimaan','>=',$request->filter_awal."-01"],['keuangan_penerimaan_lains.tgl_penerimaan','<=',$request->filter_akhir."-".date('t')]])                                                        
                                                                     ->get(['keuangan_penerimaan_lain_details.id as id_penerimaan','keuangan_penerimaan_lain_details.*','keuangan_penerimaan_lains.*','methode_pembayarans.*']);
-                
+                $pengeluaran = keuangan_pengeluaran_detail::join('keuangan_pengeluarans','keuangan_pengeluaran_details.kode_pengeluaran','=','keuangan_pengeluarans.id')
+                                                                    ->join('methode_pembayarans','keuangan_pengeluarans.methode_bayar','=','methode_pembayarans.kode_methode')
+                                                                    ->join('pos_penerimaans','keuangan_pengeluaran_details.pos_sumber','=','pos_penerimaans.kode_pos')
+                                                                    ->join('pos_pengeluarans','keuangan_pengeluaran_details.pos_keluar','=','pos_pengeluarans.kode_pos')
+                                                                    ->where([['keuangan_pengeluarans.tgl_pengeluaran','>=',$request->filter_awal."-01"],['keuangan_pengeluarans.tgl_pengeluaran','<=',$request->filter_akhir."-".date('t')]])
+                                                                    ->get(['pos_penerimaans.nama_pos as sumber_dana','keuangan_pengeluaran_details.id as id_pengeluaran','keuangan_pengeluaran_details.*','keuangan_pengeluarans.*','methode_pembayarans.*','pos_penerimaans.*','pos_pengeluarans.*']);
             }
         return view('laporan.bulanan.index',compact(['bulanan','non_bulanan','tabungan','penerimaan_lain','pengeluaran','req']));
     }

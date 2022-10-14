@@ -247,38 +247,36 @@
                            </div>
                          </div>
                          <div class="card-body">
-                           <div class="table-responsive">
-                             <table class="table">
-                               <thead>
-                                 <th>No</th>
-                                 <th>Tanggal</th>
-                                 <th>Pembayaran</th>
-                                 <th>Nama</th>
-                                 <th>Tagihan</th>
-                                 <th>Penerimaan</th>
-                                 <th>Ket</th>
-                               </thead>
-                               <tbody>
-                                 @forelse ($bulanan as $item)
-                                     <tr>
-                                       <td>{{$loop->index + 1}}</td>
-                                       <td>{{$item->tgl_bayar}}</td>
-                                       <td>{{$item->nama_biaya}}</td>
-                                       <td>{{$item->nama}}</td>
-                                       <td>Rp.{{number_format($item->tagihan_pembayaran)}}</td>
-                                       <td>Rp.{{number_format($item->nominal_pembayaran)}}</td>
-                                       <td><span class="badge badge-primary">{{$item->nama_methode}}</span>
-                                       </td>
-                                     </tr>
-                                 @empty
-                                     <tr>
-                                       <td class="text-muted text-center" colspan="100%">Tidak Ada Data</td>
-                                     </tr>
-                                 @endforelse
-                               </tbody>
-                             </table>
-                           </div>
-                         </div>
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Sumber</th>
+                                <th>Pembayaran</th>
+                                <th>Nominal</th>
+                                <th>Ket</th>
+                              </thead>
+                              <tbody>
+                                @forelse ($pengeluaran as $item)
+                                    <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>{{$item->tgl_pengeluaran}}</td>
+                                      <td>{{$item->sumber_dana}}</td>
+                                      <td>{{$item->nama_pos}}</td>
+                                      <td>Rp.{{number_format($item->detail_jumlah)}}</td>
+                                      <td>{{$item->detail_keterangan}}
+                                      </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                      <td class="text-muted text-center" colspan="100%">Tidak Ada Data</td>
+                                    </tr>
+                                @endforelse
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

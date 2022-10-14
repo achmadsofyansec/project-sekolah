@@ -70,7 +70,7 @@ class PembayaranSiswaController extends Controller
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                             ->where([['tipe_biaya','=','NONBULANAN'],['tahun_ajarans.id','=',$request->tahun_ajaran]])
                                                             ->get(['biaya_siswas.id as id_biaya','biaya_siswas.*','pos_penerimaans.*','tahun_ajarans.*']);
-                                                            $bulanan = biaya_siswa::join('pos_penerimaans','biaya_siswas.pos_biaya','=','pos_penerimaans.id')
+            $bulanan = biaya_siswa::join('pos_penerimaans','biaya_siswas.pos_biaya','=','pos_penerimaans.id')
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                             ->where([['tipe_biaya','=','BULANAN'],['tahun_ajarans.id','=',$request->tahun_ajaran]])
                                                             ->get(['biaya_siswas.id as id_biaya','biaya_siswas.*','pos_penerimaans.*','tahun_ajarans.*']);

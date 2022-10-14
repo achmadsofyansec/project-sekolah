@@ -36,15 +36,9 @@ class PageController extends Controller
     public function view_tunggakan(){
         return view('tunggakan.index');
     }
-    public function view_riwayat_bayar(){
-        return view('riwayat_pembayaran.index');
-    }
-    public function view_rekap(){
-        return view('rekaptulasi.rekap.index');
-    }
-    public function view_rekap_pertrx(){
-        return view('rekaptulasi.per_trx.index');
-    }
+  
+    
+    
     
     
     public function view_wa_gateway(){
