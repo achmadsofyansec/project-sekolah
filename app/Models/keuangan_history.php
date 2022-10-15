@@ -15,5 +15,6 @@ class keuangan_history extends Model
         'history_tagihan',
         'history_pembayaran',
         'kode_siswa',
+        'ket_history',
     ];
 }

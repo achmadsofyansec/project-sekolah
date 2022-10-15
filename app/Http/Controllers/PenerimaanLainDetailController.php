@@ -45,6 +45,7 @@ class PenerimaanLainDetailController extends Controller
             'desc_penerimaan' => ['required'],
         ]);
         if($validate){
+            $datas = keuangan_penerimaan_lain::findOrFail($request->kode_penerimaan);
             $create = keuangan_penerimaan_lain_detail::create([
                 'kode_penerimaan' => $request->kode_penerimaan,
                 'pos_terima' =>  $request->pos_terima,
@@ -60,6 +61,7 @@ class PenerimaanLainDetailController extends Controller
                     'history_tagihan' => '0',
                     'history_pembayaran' => $request->detail_jumlah,
                     'kode_siswa' => '-',
+                    'ket_history'=>"Penerimaan Dari : ".$datas->penerimaan_dari,
                 ]);
                 return redirect()
                 ->back()

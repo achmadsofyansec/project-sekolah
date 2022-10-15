@@ -309,6 +309,7 @@ class BulananController extends Controller
                         'history_tagihan' => $update->tagihan_pembayaran,
                         'history_pembayaran' => $request->nominal_detail,
                         'kode_siswa' => $request->kode_siswa,
+                        'ket_history'=>"Pembayaran Bulan: ".$update->bulan_pembayaran."",
                     ]);
                     return redirect()
                     ->back()

@@ -73,6 +73,7 @@ class NonBulananDetailController extends Controller
                     'history_tagihan' => $update->tagihan_pembayaran,
                     'history_pembayaran' => $request->nominal_detail,
                     'kode_siswa' => $update->kode_siswa,
+                    'ket_history'=>"-",
                 ]);
                 return redirect()
                 ->back()

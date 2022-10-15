@@ -22,6 +22,7 @@ class CreateKeuanganHistoriesTable extends Migration
                 $table->string('history_tagihan');
                 $table->string('history_pembayaran');
                 $table->string('kode_siswa');
+                $table->text('ket_history');
                 $table->timestamps();
             });
         }

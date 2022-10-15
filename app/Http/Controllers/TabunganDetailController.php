@@ -80,6 +80,7 @@ class TabunganDetailController extends Controller
                             'history_tagihan' => 'setoran',
                             'history_pembayaran' => $request->nominal_setor,
                             'kode_siswa' => $data_tabungan->kode_siswa,
+                            'ket_history'=> "Setoran",
                         ]);
                         return redirect()
                         ->back()
@@ -129,6 +130,7 @@ class TabunganDetailController extends Controller
                             'history_tagihan' => 'penarikan',
                             'history_pembayaran' => $request->nominal_tarik,
                             'kode_siswa' => $data_tabungan->kode_siswa,
+                            'ket_history'=> "Penarikan",
                         ]);
                         return redirect()
                         ->back()

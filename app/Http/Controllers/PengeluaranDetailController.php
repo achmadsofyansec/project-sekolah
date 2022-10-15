@@ -61,6 +61,7 @@ class PengeluaranDetailController extends Controller
                     'history_tagihan' => '0',
                     'history_pembayaran' => $request->detail_jumlah,
                     'kode_siswa' => '-',
+                    'ket_history'=>"-",
                 ]);
                 return redirect()
                 ->back()
