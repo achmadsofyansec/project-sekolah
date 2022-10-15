@@ -90,7 +90,7 @@ class PeminjamanController extends Controller
                 }
             }else{
                 return redirect()
-                    ->route('peminjman.index')
+                    ->route('peminjaman.index')
                     ->with([
                         'success' => 'Peminjaman Has Been Already Added'
                     ]);

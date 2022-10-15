@@ -14,6 +14,9 @@
                 <div class="form-grup">
                     <input type="text" name="kode_peminjaman" id="kode_peminjaman" value="{{ $data->kode_peminjaman }}">
                 </div>
+                <div class="form-grup">
+                  <input type="text" name="kode_siswa" id="kode_siswa" value="{{ $data->kode_siswa }}">
+              </div>
                 <div class="form-group">
                   <label>Unit</label>
                   <select name="unit" id="unit" class="form-control" style="width: 100%;" required>

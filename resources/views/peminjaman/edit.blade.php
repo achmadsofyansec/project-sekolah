@@ -92,7 +92,7 @@
                     <div class="card-body">
                         <div class="forrm-grup">
                           <label>Nama</label>
-                          <input type="text" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" value="{{ $data->nama }}" readonly>
+                          <input type="text"  class="form-control" value="{{ $data->nama }}" readonly>
                         </div>
                         <div class="forrm-grup">
                           <label>Kelas</label>
@@ -123,6 +123,8 @@
                           @forelse ($detail as $item)
                               <tr>
                                 <td>{{$loop->index +1 }}</td>
+                                <td>{{$item->kode_siswa}}</td>
+                                <td>{{$item->kode_peminjaman}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->jumlah}}</td>
                                 <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
