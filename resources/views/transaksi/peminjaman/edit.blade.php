@@ -39,7 +39,7 @@
                       Data Siswa
                     </div>
                   </div>
-                  <form action="{{route('peminjaman_buku.update',$data->id_siswa)}}" method="POST" enctype="multipart">
+                  <form action="{{route('peminjaman_buku.update',$data->id_peminjaman)}}" method="POST" enctype="multipart">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Peminjaman</label>
-                        <textarea name="desc_pinjaman" id="desc_pinjaman" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="desc_pinjam" id="desc_pinjam" class="form-control" cols="30" rows="10">{{$data->desc_pinjam}}</textarea>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -99,7 +99,7 @@
                             <td><?php $tujuh_hari = mktime(0,0,0, date('n'), date('j') + $item->durasi, date('Y'));
                               $kembali = date('Y-m-d', $tujuh_hari);
                               echo $kembali;?></td>
-                              @forelse ($denda as $item1)
+                                @forelse ($denda as $item1)
                               <td>
                                 <?php 
                                   $dendabuku = $item1->tarif_denda;
@@ -117,18 +117,21 @@
                                   echo $selisih." hari (Rp.". $dendabuku*$selisih.")";
                                 }
                                  ?>
+                                @empty
+                                @endforelse
                                 </td>
                                 <td><?php if($item->status == 1){
                                   echo "Belum" ."<br>". "Dikembalikan";
                                 }else{
                                   echo "Telah Dikembalikan";
                                 } ?></td>
-                                <td>
-                          <a type="button" href="#" class="btn bg-primary btn-xs" id="btn_edit" data-toggle="modal" data-target="#edit-pinjaman"><i class="fas fa-edit"></i> Edit</a>
-                                </form>
-                              </td>
-                                @empty
-                                @endforelse
+                                <td style="text-align: center">
+                                  <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                    action="{{ route('data_peminjaman.destroy',$item->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Hapus</button>
+                                    </form></td>
                           </tr>
                           @empty
                               

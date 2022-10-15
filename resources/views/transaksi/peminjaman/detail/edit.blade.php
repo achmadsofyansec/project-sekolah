@@ -14,9 +14,10 @@
                     <div class="form-group">
                     <label>Pilih Buku</label>
                         <select name="kode_buku" id="kode_buku" class="form-control" style="width: 100%;" required>
-                          <option value="#">--Pilih Buku--</option>
                           @forelse ($pinjam as $item)
                               <option value="{{$item->kode_buku}}">{{$item->kode_buku}}</option>
+                          <option value="#">--Pilih Buku--</option>
+
                             @empty
                             @endforelse
                         </select>
@@ -24,13 +25,13 @@
                     @php
                         $tanggalnow = date('Y-m-d');
                     @endphp
-                    <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_peminjaman}}">
-                    <input type="hidden" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
-                    <input type="hidden" id="keperluan" name="keperluan" value="Pinjam Buku">
-                    <input type="hidden" id="status" name="status" value="1">
+                    <input type="text" id="id_siswa" name="id_siswa" value="{{$data->id_peminjaman}}">
+                    <input type="text" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
+                    <input type="text" id="keperluan" name="keperluan" value="Pinjam Buku">
+                    <input type="text" id="status" name="status" value="1">
                     <div class="form-group">
                       <label>Jumlah Buku</label>
-                      <input type="number" name="jumlah" id="jumlah" class="form-control" required>
+                      <input type="number" name="jumlah" id="jumlah" class="form-control" value="" required>
                     </div>
                     <div class="form-group">
                       <label>Durasi (Hari)</label>

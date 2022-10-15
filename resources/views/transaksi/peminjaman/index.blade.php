@@ -36,7 +36,7 @@
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <div class="card-tools">
-                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-peminjaman"><i class="fas fa-plus"></i> Tambah</a>
+                      <a type="button" class="btn btn-primary text-white" data-toggle="modal" data-target="#modal-tambah-peminjaman"><i class="fas fa-plus"></i> Tambah</a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -47,7 +47,6 @@
                           <th>NISN</th>
                           <th>Nama Siswa</th>
                           <th>Kelas / Jurusan</th>
-                          <th>tanggungan</th>
                           <th>Status</th>
                           <th>Aksi</th>
                         </thead>
@@ -59,16 +58,15 @@
                               <td>{{$item->id_siswa}}</td>
                               <td>{{$item->nama}}</td>
                               <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                              <td>{{$tanggungan->count()}}</td>
-                              <td>@if ($tanggungan->count() == 0)
+                              <td>@if ($item->tanggungan == 0)
                                  <span class="btn btn-success">Dikembalikan</span>
                               @else
                               <span class="btn btn-success">Dipinjam</span>
                               @endif</td>
                               <td>
                               <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                action="{{ route('peminjaman_buku.destroy',$item->id_peminjaman) }}" method="POST">
-                                <a href="{{ route('peminjaman_buku.edit',$item->id_peminjaman)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                action="{{ route('peminjaman_buku.destroy',$item->id_siswa)}}" method="POST">
+                                <a href="{{ route('peminjaman_buku.edit',$item->id_siswa)}}" class="btn btn-warning text-white"><i class="fas fa-edit"></i> Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>

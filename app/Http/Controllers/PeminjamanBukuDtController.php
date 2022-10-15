@@ -103,7 +103,7 @@ class PeminjamanBukuDtController extends Controller
      */
     public function edit(PeminjamanBukuDt $peminjamanBukuDt, $id)
     {
-        return view('transaksi.detail.edit');
+        //
     }
 
     /**
@@ -124,8 +124,23 @@ class PeminjamanBukuDtController extends Controller
      * @param  \App\Models\PeminjamanBukuDt  $peminjamanBukuDt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PeminjamanBukuDt $peminjamanBukuDt)
+    public function destroy(PeminjamanBukuDt $peminjamanBukuDt, $id)
     {
         //
+        $data = PeminjamanBukuDt::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('peminjaman_buku.edit')
+            ->with([
+                'success' => 'Transaksi Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

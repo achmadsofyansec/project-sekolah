@@ -9,6 +9,7 @@
         </div>
       <form action="{{route('peminjaman_buku.store')}}" method="POST">
         @csrf
+        <input type="hidden" id="tanggungan" name="tanggungan" value="0">
         <div class="modal-body">
             <div class="card-body">
                 <div class="form-group">
@@ -19,13 +20,6 @@
                     <option value="{{$item->id_siswa}}">{{$item->nama}} - {{$item->kode_kelas}} {{$item->kode_jurusan}}</option>
                         @empty
                         @endforelse
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Status Pinjaman</label>
-                    <select name="status_pinjam" id="status_pinjam" class="form-control" style="width: 100%;" required>
-                        <option value="0">Dikembalikan</option>
-                        <option value="1">Dipinjam</option>
                     </select>
                 </div>
                 <div class="form-group">

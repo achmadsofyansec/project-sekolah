@@ -20,16 +20,15 @@ class PeminjamanBukuController extends Controller
      */
     public function index(Request $request)
     {
-        $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', '1')->get();
         $siswa = DB::table('data_siswas')->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        ->get(['data_siswas.*','data_siswas.nisn as id_siswa','aktivitas_belajars.*']);
         $data = DB::table('perpustakaan_peminjaman_bukus')
         ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_bukus.id_siswa')
         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        ->get(['data_siswas.*','perpustakaan_peminjaman_bukus.id_siswa as id_peminjaman','perpustakaan_peminjaman_bukus.*','aktivitas_belajars.*']);
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_peminjaman_bukus.*','perpustakaan_peminjaman_bukus.id as id_peminjaman','aktivitas_belajars.*']);
         
 
-        return view('transaksi.peminjaman.index',compact (['tanggungan','siswa','data']));
+        return view('transaksi.peminjaman.index',compact (['siswa','data']));
         //
     }
 
@@ -51,31 +50,16 @@ class PeminjamanBukuController extends Controller
      */
     public function store(Request $request)
     {
-         $credential = $this->validate($request,[
-            'nis' => ['required'],
-            'nama' =>['required'],
-            'kode_buku' => ['required'],
-            'jumlah_pinjam' => ['required'],
-            'status' => ['required'],
-            'durasi' => ['required'],
-            'tanggal_pinjam' => ['required'],
-            'keperluan' => ['required'],
-            'nama_kelas' => ['required']
+        $credential = $this->validate($request,[
+            'kode_siswa' => ['required'],
+            'tanggungan' => ['required'],
+            'desc_pinjam' => ['required'],
         ]);
         if($credential){
-            $create1 = Pengunjung_perpus::create([
-                'nis' => $request->nis,
-                'nama_siswa' => $request->nama,
-                'kelas' => $request->nis,
-                'keperluan' => $request->keperluan
-            ]);
             $create = Peminjaman_buku::create([
-                'id_siswa' => $request->nis,
-                'id_buku' => $request->kode_buku,
-                'jumlah_pinjam' => $request->jumlah_pinjam,
-                'status' => $request->status,
-                'tanggal_pinjam' => $request->tanggal_pinjam,
-                'durasi' => $request->durasi
+                'id_siswa' => $request->kode_siswa,
+                'tanggungan' => $request->tanggungan,
+                'desc_pinjam' => $request->desc_pinjam,
             ]);
             if($create){
                 return redirect()
@@ -119,19 +103,17 @@ class PeminjamanBukuController extends Controller
      */
     public function edit($id)
     {
-        $peminjaman = PeminjamanBukuDt::findOrFail($id);
-        $data = DB::table('perpustakaan_peminjaman_buku_dts')
-        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
-        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
-        ->where('perpustakaan_peminjaman_buku_dts.id_siswa','=', $id)
-        ->get(['data_siswas.*','perpustakaan_peminjaman_buku_dts.id_siswa as id_peminjaman','perpustakaan_peminjaman_buku_dts.*','aktivitas_belajars.*'])->first();
-        $buku = DB::table('perpustakaan_data_bukus')->get();
-        $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', '1')->get();
-        $denda = DB::table('perpustakaan_dendas')->get();
-        $pinjam = DB::table('perpustakaan_peminjaman_buku_dts')->where('id_siswa','=',$id)->get();
-
-
-        return view('transaksi.peminjaman.edit',compact('data','denda','tanggungan','pinjam','buku'));
+         //
+         $data = DB::table('perpustakaan_peminjaman_bukus')
+         ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_bukus.id_siswa')
+         ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+         ->where([['perpustakaan_peminjaman_bukus.id_siswa','=',$id]])
+         ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_peminjaman_bukus.id as id_peminjaman','perpustakaan_peminjaman_bukus.*','aktivitas_belajars.*'])->first();
+         $buku = DB::table('perpustakaan_data_bukus')->get();
+         $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', '1')->where('id_siswa','=',$id)->get();
+         $denda = DB::table('perpustakaan_dendas')->get();
+         $pinjam = DB::table('perpustakaan_peminjaman_buku_dts')->where('id_siswa','=',$id)->get();
+         return view('transaksi.peminjaman.edit',compact(['data','denda','tanggungan','pinjam','buku']));
     }
 
     /**
@@ -146,13 +128,17 @@ class PeminjamanBukuController extends Controller
         {
         
             $validate = $this->validate($request,[
-                'nis_siswa' => ['required'],
+                'nis_siswa' => ['required'],            
+                'tanggungan' => ['required'],
+                'desc_pinjam' => ['required'],
                 
             ]);
             if($validate){
                 $update = Peminjaman_buku::findOrFail($id);
                 $update->update([
                     'id_siswa' => $request->nis_siswa,
+                    'tanggungan' => $request->tanggungan,
+                    'desc_pinjam' => $request->desc_pinjam,
                 ]);
                 if($update){
                     return redirect()
