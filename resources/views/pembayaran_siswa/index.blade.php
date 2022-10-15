@@ -121,7 +121,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" id="TABLE_1">
                     <thead>
                       <th>No</th>
                       <th>Nama Biaya</th>   
@@ -184,7 +184,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" id="TABLES_2">
                     <thead>
                       <th>No</th>
                       <th>Tahun Ajaran</th>

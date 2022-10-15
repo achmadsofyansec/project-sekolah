@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_history;
 use App\Models\keuangan_tabungan_siswa;
 use App\Models\keuangan_tabungan_siswa_detail;
 use Illuminate\Http\Request;
@@ -54,6 +55,7 @@ class TabunganDetailController extends Controller
                     $data = keuangan_tabungan_siswa_detail::latest()->get()->count();
                     $kode = 'TDS_'.$qode.$data;
                     $saldo = keuangan_tabungan_siswa::where([['id','=',$request->kode_tabungan]])->value('saldo_tabungan');
+                    $data_tabungan = keuangan_tabungan_siswa::where([['id','=',$request->kode_tabungan]])->get()->first();
                     $saldo_akhir =(int) $saldo + $request->nominal_setor;
                     $new_saldo = $saldo_akhir;
                     $create = keuangan_tabungan_siswa_detail::create([
@@ -70,6 +72,15 @@ class TabunganDetailController extends Controller
                         'saldo_tabungan' => $new_saldo,
                     ]);
                     if($create){
+                        $tgl_history = date('Y-m-d');
+                        keuangan_history::create([
+                            'tgl_history' =>  $tgl_history,
+                            'histori_type_pembayaran' => 'tabungan',
+                            'kode_biaya' => '-',
+                            'history_tagihan' => 'setoran',
+                            'history_pembayaran' => $request->nominal_setor,
+                            'kode_siswa' => $data_tabungan->kode_siswa,
+                        ]);
                         return redirect()
                         ->back()
                         ->with([
@@ -93,6 +104,7 @@ class TabunganDetailController extends Controller
                     $data = keuangan_tabungan_siswa_detail::latest()->get()->count();
                     $kode = 'TDT_'.$qode.$data;
                     $saldo = keuangan_tabungan_siswa::where([['id','=',$request->kode_tabungan]])->value('saldo_tabungan');
+                    $data_tabungan = keuangan_tabungan_siswa::where([['id','=',$request->kode_tabungan]])->get()->first();
                     $saldo_akhir =(int) $saldo - $request->nominal_tarik;
                     $new_saldo = $saldo_akhir;
                     $create = keuangan_tabungan_siswa_detail::create([
@@ -109,6 +121,15 @@ class TabunganDetailController extends Controller
                         'saldo_tabungan' => $new_saldo,
                     ]);
                     if($create){
+                        $tgl_history = date('Y-m-d');
+                        keuangan_history::create([
+                            'tgl_history' =>  $tgl_history,
+                            'histori_type_pembayaran' => 'tabungan',
+                            'kode_biaya' => '-',
+                            'history_tagihan' => 'penarikan',
+                            'history_pembayaran' => $request->nominal_tarik,
+                            'kode_siswa' => $data_tabungan->kode_siswa,
+                        ]);
                         return redirect()
                         ->back()
                         ->with([

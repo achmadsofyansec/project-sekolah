@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_history;
 use App\Models\keuangan_pengeluaran;
 use App\Models\keuangan_pengeluaran_detail;
 use App\Models\methode_pembayaran;
@@ -55,6 +56,7 @@ class PengeluaranController extends Controller
                 'desc_pengeluaran' => $request->desc_pengeluaran
             ]);
             if($create){
+                
                 return redirect()
                 ->back()
                 ->with([

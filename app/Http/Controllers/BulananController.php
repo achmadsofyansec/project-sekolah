@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\data_siswa;
+use App\Models\keuangan_history;
 use App\Models\keuangan_pembayaran_bulanan;
 use App\Models\methode_pembayaran;
 use Illuminate\Http\Request;
@@ -267,7 +268,7 @@ class BulananController extends Controller
             ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
             ->where([['keuangan_pembayaran_bulanans.id','=',$id]])
-            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*','tahun_ajarans.id as id_tahun_ajaran'])->first();
+            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.id as id_biayas','biaya_siswas.*','kelas.*','tahun_ajarans.*','tahun_ajarans.id as id_tahun_ajaran'])->first();
             $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                         ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
                                                         ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
@@ -301,6 +302,14 @@ class BulananController extends Controller
                     'status_pembayaran' => '1',
                 ]);
                 if($update){
+                    keuangan_history::create([
+                        'tgl_history' =>  $request->tgl_input_detail,
+                        'histori_type_pembayaran' => 'bulanan',
+                        'kode_biaya' => $request->kode_biaya,
+                        'history_tagihan' => $update->tagihan_pembayaran,
+                        'history_pembayaran' => $request->nominal_detail,
+                        'kode_siswa' => $request->kode_siswa,
+                    ]);
                     return redirect()
                     ->back()
                     ->with([

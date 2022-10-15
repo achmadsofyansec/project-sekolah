@@ -236,6 +236,7 @@
               </li>
             </ul>
           </li>
+           <!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-file-alt text-warning"></i>
@@ -259,7 +260,7 @@
               </li>
             </ul>
           </li>
-          <!--
+         
           <li class="nav-item">
             <a href="<?php echo url('/tunggakan') ?>" class="nav-link">
               <i class="nav-icon fas fa-paste text-danger"></i>
@@ -351,9 +352,16 @@
 <script type="text/javascript">
 $(document).ready( function () {
     $('#dataTable').DataTable({
-      scrollY: '200px',
+        scrollY: '200px',
         scrollCollapse: true,
-        paging: false,
+        paging: true,
+        searching: false,
+    });
+    $("table[id^='TABLE']").DataTable( {
+        scrollCollapse: true,
+        searching: false,
+        paging: true,
+        autoWidth: false,
     });
     var select = $('select').select2({
       theme:'classic'

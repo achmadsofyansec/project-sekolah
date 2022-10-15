@@ -86,7 +86,7 @@
                         </div>
                         <div class="card-body">
                           <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="TABLES_1">
                               <thead>
                                 <th>No</th>
                                 <th>Tanggal</th>
@@ -127,7 +127,7 @@
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
-                             <table class="table">
+                             <table class="table" id="TABLES_2">
                                <thead>
                                  <th>No</th>
                                  <th>Tanggal</th>
@@ -168,7 +168,7 @@
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
-                             <table class="table">
+                             <table class="table" id="TABLES_3">
                                <thead>
                                  <th>No</th>
                                  <th>Tanggal</th>
@@ -211,7 +211,7 @@
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
-                             <table class="table">
+                             <table class="table" id="TABLES_3">
                                <thead>
                                  <th>No</th>
                                  <th>Tanggal</th>
@@ -250,7 +250,7 @@
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
-                             <table class="table">
+                             <table class="table" id="TABLES_3">
                                <thead>
                                  <th>No</th>
                                  <th>Tanggal</th>

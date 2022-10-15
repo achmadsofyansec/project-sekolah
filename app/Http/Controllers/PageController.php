@@ -38,9 +38,6 @@ class PageController extends Controller
     }
   
     
-    
-    
-    
     public function view_wa_gateway(){
         return view('gateway.wa.index');
     }

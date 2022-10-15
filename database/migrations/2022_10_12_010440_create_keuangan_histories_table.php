@@ -16,7 +16,12 @@ class CreateKeuanganHistoriesTable extends Migration
         if(!Schema::hasTable('keuangan_histories')){
             Schema::create('keuangan_histories', function (Blueprint $table) {
                 $table->id();
-                $table->string('histori_type_pembayaran');
+                $table->string('tgl_history');
+                $table->string('histori_type_pembayaran');                
+                $table->string('kode_biaya');
+                $table->string('history_tagihan');
+                $table->string('history_pembayaran');
+                $table->string('kode_siswa');
                 $table->timestamps();
             });
         }

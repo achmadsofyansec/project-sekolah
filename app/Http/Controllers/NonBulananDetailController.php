@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\keuangan_detail_nonbulanan;
+use App\Models\keuangan_history;
 use App\Models\keuangan_pembayaran_nonbulanan;
 use Illuminate\Http\Request;
 
@@ -64,6 +65,14 @@ class NonBulananDetailController extends Controller
                     'nominal_pembayaran' => $newbayar,
                     'tgl_bayar' => $request->tgl_input_detail,
                     'status_pembayaran' => $status,
+                ]);
+                keuangan_history::create([
+                    'tgl_history' =>  $request->tgl_input_detail,
+                    'histori_type_pembayaran' => 'nonbulanan',
+                    'kode_biaya' => $update->kode_biaya_siswa,
+                    'history_tagihan' => $update->tagihan_pembayaran,
+                    'history_pembayaran' => $request->nominal_detail,
+                    'kode_siswa' => $update->kode_siswa,
                 ]);
                 return redirect()
                 ->back()

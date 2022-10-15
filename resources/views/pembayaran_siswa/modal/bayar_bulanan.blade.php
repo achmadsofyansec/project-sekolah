@@ -14,6 +14,8 @@
                 @csrf
                 @method('PUT')
               <div class="card-body">
+                <input type="hidden" name="kode_biaya" id="kode_biaya" value="{{$data_bulanan->id_biayas}}">
+                <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}">
                 <div class="form-group">
                   <label>Tanggal Bayar</label>
                   <input type="date" name="tgl_input_detail" id="tgl_input_detail" value="<?= date('Y-m-d') ?>" class="form-control" required>

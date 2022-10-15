@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_history;
 use App\Models\keuangan_penerimaan_lain;
 use App\Models\keuangan_penerimaan_lain_detail;
 use Illuminate\Http\Request;
@@ -51,6 +52,15 @@ class PenerimaanLainDetailController extends Controller
                 'detail_keterangan' => $request->desc_penerimaan,
             ]);
             if($create){
+                $tgl_history = date('Y-m-d');
+                keuangan_history::create([
+                    'tgl_history' =>  $tgl_history,
+                    'histori_type_pembayaran' => 'penerimaan_lain',
+                    'kode_biaya' => $request->kode_penerimaan,
+                    'history_tagihan' => '0',
+                    'history_pembayaran' => $request->detail_jumlah,
+                    'kode_siswa' => '-',
+                ]);
                 return redirect()
                 ->back()
                 ->with([
