@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PengembalianBuku;
-use App\Models\Peminjaman_buku;
+use App\Models\PeminjamanBukuDt;
 use App\Models\Pengunjung_perpus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -19,15 +19,15 @@ class PengembalianBukuController extends Controller
      */
     public function index()
     {
-
-            $siswa = DB::table('data_siswas')->select(['data_siswas.*'])->get();
-            $denda = DB::table('perpustakaan_dendas')->select(['perpustakaan_dendas.*'])->get();
-            $data = DB::table('perpustakaan_data_bukus')
-                        ->join('perpustakaan_peminjaman_bukus', 'perpustakaan_peminjaman_bukus.id_buku', '=', 'perpustakaan_data_bukus.kode_buku')
-                        ->get();
-            return view('transaksi.pengembalian.index',compact (['siswa','denda','data']));
-        //
+        $siswa = DB::table('data_siswas')->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.nisn as id_siswa','aktivitas_belajars.*']);
+        $data = DB::table('perpustakaan_peminjaman_bukus')
+        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_bukus.id_siswa')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_peminjaman_bukus.*','perpustakaan_peminjaman_bukus.id as id_peminjaman','aktivitas_belajars.*']);
         
+
+        return view('transaksi.pengembalian.index',compact (['siswa','data']));
     }
 
     /**
@@ -69,7 +69,16 @@ class PengembalianBukuController extends Controller
      */
     public function edit($id, Request $request)
     {
-        //
+        $data = DB::table('perpustakaan_peminjaman_bukus')
+        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_bukus.id_siswa')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where([['perpustakaan_peminjaman_bukus.id_siswa','=',$id]])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_peminjaman_bukus.id as id_peminjaman','perpustakaan_peminjaman_bukus.*','aktivitas_belajars.*'])->first();
+        $buku = DB::table('perpustakaan_data_bukus')->get();
+        $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', '1')->where('id_siswa','=',$id)->get();
+        $denda = DB::table('perpustakaan_dendas')->get();
+        $pinjam = DB::table('perpustakaan_peminjaman_buku_dts')->where('id_siswa','=',$id)->get(['perpustakaan_peminjaman_buku_dts.*','perpustakaan_peminjaman_buku_dts.id as id_pinjam']);
+        return view('transaksi.pengembalian.edit',compact(['data','denda','tanggungan','pinjam','buku']));
     }
     
 
@@ -82,32 +91,36 @@ class PengembalianBukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $validate = $this->validate($request,[
-            'status' => ['required'],
-            'nis' => ['required'],
-            'keperluan' => ['required'],
-        ]);
-        if($validate){
-            $update = peminjaman_buku::findOrFail($id);
-            $create = Pengunjung_perpus::create([
-                'nis' => $request->nis,
-                'keperluan' => $request->keperluan
+        {
+        
+            $validate = $this->validate($request,[
+                'status' => ['required'],
+                'nis_siswa' => ['required'],
+                'keperluan' => ['required'],
+                
             ]);
-            $update->update([
-                'status' => $request->status
-            ]);
-            if($update){
-                return redirect()
-                ->route('pengembalian.store')
-                ->with([
-                    'success' => 'Terima Kasih Sudah Mengembalikan'
+            if($validate){
+                $update = PeminjamanBukuDt::findOrFail($id);
+                $update->update([
+                    'status' => $request->status,
                 ]);
-            }else{
-                return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Some problem has occurred, please try again'
+                $create = Pengunjung_perpus::create([
+                    'nis' => $request->nis_siswa,
+                    'keperluan' => $request->keperluan,
                 ]);
+                if($update){
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'success' => 'peminjaman Has Been Update successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
             }
         }
     }

@@ -128,7 +128,6 @@ class PeminjamanBukuController extends Controller
         {
         
             $validate = $this->validate($request,[
-                'nis_siswa' => ['required'],            
                 'tanggungan' => ['required'],
                 'desc_pinjam' => ['required'],
                 
@@ -136,7 +135,6 @@ class PeminjamanBukuController extends Controller
             if($validate){
                 $update = Peminjaman_buku::findOrFail($id);
                 $update->update([
-                    'id_siswa' => $request->nis_siswa,
                     'tanggungan' => $request->tanggungan,
                     'desc_pinjam' => $request->desc_pinjam,
                 ]);

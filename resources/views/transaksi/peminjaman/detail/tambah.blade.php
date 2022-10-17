@@ -24,7 +24,7 @@
                     @php
                         $tanggalnow = date('Y-m-d');
                     @endphp
-                    <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_peminjaman}}">
+                    <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_siswa}}">
                     <input type="hidden" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
                     <input type="hidden" id="keperluan" name="keperluan" value="Pinjam Buku">
                     <input type="hidden" id="status" name="status" value="1">

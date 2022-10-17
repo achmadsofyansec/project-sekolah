@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function laporan_peminjaman()
     {
-        $peminjaman = Peminjaman_buku::latest()->get();
+        $peminjaman = Pengunjung_perpus::latest()->where('keperluan','=','Pinjam Buku')->get();
         return view('laporan.peminjaman.index', compact('peminjaman'));
     }
 

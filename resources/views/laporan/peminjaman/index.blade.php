@@ -105,8 +105,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @forelse ($peminjaman as $peminjaman)
+                          @forelse ($peminjaman as $item)
                 <tr>
+                  <td>{{$loop->index +1}}</td>
+                  <td>{{$item->keperluan}}</td>
                   @empty
                 </tr>
                 @endforelse

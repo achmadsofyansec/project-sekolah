@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Peminjaman')
+@section('page', 'Pengembalian')
 @section('content-app')
 <div class="content-wrapper">
 <div class="content-header">
@@ -73,11 +73,6 @@
               </div>
               <div class="col-md-9">
                 <div class="card card-primary card-outline">
-                  <div class="card-header">
-                  <div class="card-tools">
-                    <a type="button" href="#" class="btn bg-navy btn-primary" id="btn_tambah" data-toggle="modal" data-target="#tambah-pinjaman"><i class="fas fa-plus"></i> Tambah</a>
-                  </div>
-                  </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table id="dataTable" class="table table-border">
@@ -125,12 +120,15 @@
                                 }else{
                                   echo "Telah Dikembalikan";
                                 } ?></td>
-                                <td style="text-align: center">
+                                <td>
                                   <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                    action="{{ route('data_peminjaman.destroy',$item->id)}}" method="POST">
+                                    action="{{ route('pengembalian.update',$item->id_pinjam)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Hapus</button>
+                                    @method('PUT')
+                                    <input type="hidden" name="nis_siswa" id="nis_siswa" value="{{$data->id_siswa}}" >
+                                    <input type="hidden" id="status" name="status" value="0">
+                                    <input type="hidden" id="keperluan" name="keperluan" value="Kembali Buku">
+                                    <button type="submit" class="btn btn-primary btn-xs">Kembali</button>
                                     </form></td>
                           </tr>
                           @empty
@@ -146,8 +144,6 @@
           </div>
         </div>
     </div>
-    @include('transaksi.peminjaman.detail.tambah')
-    @include('transaksi.peminjaman.detail.edit')
 </div>
 </div>
 @endsection

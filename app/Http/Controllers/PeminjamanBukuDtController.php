@@ -48,10 +48,6 @@ class PeminjamanBukuDtController extends Controller
             'kondisi' => ['required'],
         ]);
         if($credential){
-            $create1 = Pengunjung_perpus::create([
-                'nis' => $request->id_siswa,
-                'keperluan' => $request->keperluan
-            ]);
             $create = PeminjamanBukuDt::create([
                 'id_siswa' => $request->id_siswa,
                 'kode_buku' => $request->kode_buku,
@@ -61,6 +57,11 @@ class PeminjamanBukuDtController extends Controller
                 'durasi' => $request->durasi,
                 'desc_pinjam' => $request->desc_pinjam,
                 'kondisi' => $request->kondisi,
+            ]);
+            
+            $create1 = Pengunjung_perpus::create([
+                'nis' => $request->id_siswa,
+                'keperluan' => $request->keperluan
             ]);
             if($create){
                 return redirect()
@@ -131,7 +132,7 @@ class PeminjamanBukuDtController extends Controller
         $data->delete();
         if($data){
             return redirect()
-            ->route('peminjaman_buku.edit')
+            ->back()
             ->with([
                 'success' => 'Transaksi Has Been Deleted successfully'
             ]);
