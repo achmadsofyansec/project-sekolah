@@ -56,7 +56,6 @@ class PengeluaranController extends Controller
                 'desc_pengeluaran' => $request->desc_pengeluaran
             ]);
             if($create){
-                
                 return redirect()
                 ->back()
                 ->with([
