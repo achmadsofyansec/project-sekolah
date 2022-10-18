@@ -501,6 +501,5 @@
         $('#foto_siswa').change( function(event) {
             $("#view-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
         });
-
     </script>
 @endsection

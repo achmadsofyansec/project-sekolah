@@ -32,48 +32,31 @@
                   {{ session('success') }}
               </div>
               @endif
-                <div class="card card-outline card-info">
-                   <div class="card-header">
-                    
-                   </div>
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>
-                                    <th>Jenis Laporan</th>
-                                    <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Harian</td>
-                                    <td>
-                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>Bulanan</td>
-                                    <td>
-                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>Tahunan</td>
-                                    <td>
-                                      <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                      <a href="#" class="btn btn-info"><i class="fas fa-print"></i></a>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                            </table>
-                       </div>
-                   </div>
+              <div class="card card-info card-outline">
+                <div class="card-body">
+                  <form action="{{route('laporan_nilai')}}" method="GET">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                         
+                          <input type="date" name="filter_awal" value="@if($req->filter_awal != null){{$req->filter_awal}}@endif" id="filter_awal" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="form-group">
+                         
+                          <input type="date" name="filter_akhir" value="@if($req->filter_akhir != null){{$req->filter_akhir}}@endif" id="filter_akhir" class="form-control" required>
+                        </div>
+                      </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <input type="submit" value="Search" class="btn btn-primary" style="width: 100%">
+                          </div>
+                        </div>
+                    </div>
+                  </form>
                 </div>
+              </div>
             </div>
         </div>
     </div>

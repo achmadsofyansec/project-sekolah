@@ -40,34 +40,37 @@
                         Filter Absensi
                       </div>
                     </div>
+                  <form action="{{route('absensi.index')}}" method="GET">
                       <div class="card-body">
                         <div class="form-group">
                           <label >Tanggal</label>
-                          <input type="date" value="<?= date('Y-m-d') ?>" name="filter_absensi_tanggal" id="filter_absensi_tanggal" class="form-control" onchange="filter_absensi()">
+                          <input type="date" value="@if($req->filter_absensi_tanggal != null){{$req->filter_absensi_tanggal}}@endif" name="filter_absensi_tanggal" id="filter_absensi_tanggal" class="form-control">
                         </div>
                           <div class="form-group">
                             <label >Kelas</label>
-                            <select onchange="filter_absensi()" name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control" style="width: 100%;">
+                            <select name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control" style="width: 100%;">
                               <option value="">-- Semua Kelas -- </option>
                               @forelse ($kelas as $item)
-                            <option value="{{$item->kode_kelas}}">{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
+                            <option value="{{$item->kode_kelas}}" @if($req->filter_absensi_kelas != null && $req->filter_absensi_kelas == $item->kode_kelas){{'selected'}} @endif>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
                             @empty
                               @endforelse
                             </select>
                           </div>
                           <div class="form-group">
                             <label >Jurusan</label>
-                            <select onchange="filter_absensi()" name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control" style="width: 100%;">
+                            <select name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control" style="width: 100%;">
                             <option value="">-- Semua Jurusan -- </option>
                               @forelse ($jurusan as $item)
-                            <option value="{{$item->kode_jurusan}}">{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
+                            <option value="{{$item->kode_jurusan}}" @if($req->filter_absensi_jurusan != null && $req->filter_absensi_jurusan == $item->kode_jurusan){{'selected'}} @endif>{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
                             @empty
                               @endforelse
                             </select>
                           </div>
-                          
                       </div>
-                    
+                      <div class="card-footer">
+                        <input type="submit" class="btn btn-info" value="Cari">
+                      </div>
+                    </form>
                   </div>
                 </div>
                 <div class="col-md-8">
@@ -88,7 +91,13 @@
                                      <th>Absensi</th>
                                  </thead>
                                  <tbody id="content-absensi">
-                                   
+                                   @if ($data != null || $data != "")
+                                       {!!$data!!}
+                                   @else
+                                       <tr>
+                                         <td class="text-muted text-center" colspan="100%">Tidak Ada Data </td>
+                                       </tr>
+                                   @endif
                                  </tbody>
                              </table>
                         </div>
@@ -105,32 +114,6 @@
   </div>
 @endsection
 @section('content-script')
-<script>
-  //Filter Absensi
-function filter_absensi(){
-    $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
-    var x = document.getElementById("filter_absensi_kelas").value;
-    var y = document.getElementById("filter_absensi_jurusan").value;
-    var z = document.getElementById("filter_absensi_tanggal").value;
-    $.ajax({
-             type:'POST',
-             url:"{{ route('ajaxRequest.filter_absensi') }}",
-             data:{kelas:x, jurusan:y,tanggal:z},
-             success:function(data){
-               if(data != ""){
-                document.getElementById("content-absensi").innerHTML = data;
-               }else{
-                document.getElementById("content-absensi").innerHTML = '<tr><td colspan="6" class="text-center text-mute">Tidak Ada Data</td></tr>';
-               }
-              
-             }
-          });
-  }
-  filter_absensi()
-</script>
+
     
 @endsection
