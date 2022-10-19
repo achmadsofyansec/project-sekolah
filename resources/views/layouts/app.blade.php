@@ -452,6 +452,12 @@ $(document).ready( function () {
         scrollCollapse: true,
         paging: false,
     });
+    $("table[id^='TABLE']").DataTable( {
+        scrollCollapse: true,
+        searching: false,
+        paging: true,
+        autoWidth: false,
+    });
     var select = $('select').select2({
       theme:'classic'
     });

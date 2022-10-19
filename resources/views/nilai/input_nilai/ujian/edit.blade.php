@@ -81,8 +81,8 @@
                     </form>
                     </div>
                 </div>  
-                <div class="col-md-8 mt-1">
-                  <div class="card card-info card-outline card-outline-tabs">
+                <div class="col-md-9 mt-1">
+                  <div class="card card-info card-outline">
                     <div class="card-header">
                       Data Nilai
                     </div>
