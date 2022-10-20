@@ -17,6 +17,7 @@ use App\Http\Controllers\PengeluaranDetailController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PosPenerimaanController;
 use App\Http\Controllers\PosPengeluaranController;
+use App\Http\Controllers\PrintPDFController;
 use App\Http\Controllers\RekaptulasiController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
@@ -72,8 +73,12 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/rekap_pertrx',[RekaptulasiController::class,'view_rekap_pertrx'])->name('rekap_pertrx');
         Route::get('/tunggakan',[PageController::class,'view_tunggakan'])->name('tunggakan');
         Route::get('/riwayat_pembayaran',[HistoryController::class,'view_riwayat_bayar'])->name('riwayat_bayar');
+        
         //Gateway
         Route::get('/wa_gateway',[PageController::class,'view_wa_gateway'])->name('wa_gateway');
+
+        //Print
+        Route::get('/print_pdf',[PrintPDFController::class,'laporan'])->name('print_pdf');
     });
 });
 

@@ -81,7 +81,7 @@
                         <div class="card-header">
                          Bulanan Siswa
                           <div class="card-tools">
-                            <a href="#" class="btn btn-primary" name="print_bulanan_harian" id="print_bulanan_harian"><i class="fas fa-print"></i> Print</a>
+                            <a href="{{route('print_pdf')}}" target="_blank" class="btn btn-primary" name="print_bulanan_harian" id="print_bulanan_harian"><i class="fas fa-print"></i> Print</a>
                           </div>
                         </div>
                         <div class="card-body">
@@ -292,4 +292,12 @@
     </div>
 </div>
 </div>
+@endsection
+@section('content-script')
+@if ($req->filter_awal != null && $req->filter_akhir != null)
+<script>
+  
+</script>  
+@endif
+  
 @endsection
