@@ -123,8 +123,6 @@
                           @forelse ($detail as $item)
                               <tr>
                                 <td>{{$loop->index +1 }}</td>
-                                <td>{{$item->kode_siswa}}</td>
-                                <td>{{$item->kode_peminjaman}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->jumlah}}</td>
                                 <td><form onsubmpit="return confirm('Apakah Anda yakin ?')"
