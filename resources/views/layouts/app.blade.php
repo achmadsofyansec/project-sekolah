@@ -240,14 +240,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo url('/pengembalian') ?>" class="nav-link">
-              <i class="nav-icon fas fa-paste text-danger"></i>
-              <p>
-               Data Pengembalian
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="<?php echo url('/denda') ?>" class="nav-link">
               <i class="nav-icon fas fa-file-invoice-dollar text-success"></i>
               <p>

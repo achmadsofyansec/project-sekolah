@@ -31,7 +31,10 @@ class PeminjamanController extends Controller
                                         ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
                                             ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
                                             ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman']);
-        return view('peminjaman.index',compact(['data','siswa', 'kategori']));
+        
+        $detail = SarprasPeminjamanDetail::join('data_siswas', 'data_siswas.id', '=', 'sarpras_peminjaman_details.kode.siswa')
+                                            ->join('sarpras_peminjamans', 'sarpras_peminjamans.kode_peminjaman', '=', 'sarpras_peminjaman_details.kode_siswa');
+        return view('peminjaman.index',compact(['data','siswa', 'kategori', 'detail']));
     }
 
     /**
@@ -176,7 +179,11 @@ class PeminjamanController extends Controller
             ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
             ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman'])->first();
         $kategori = SarprasDataAset::latest()->get();
-        $detail = SarprasPeminjamanDetail::join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman')->get();
+        $detail = SarprasPeminjamanDetail::join('data_siswas', 'sarpras_peminjaman_details.kode_siswa', '=', 'data_siswas.id')
+                                            ->join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman')
+                                            ->where([['sarpras_peminjamans.id','=',$id]])
+                                            ->get();
+       // $detail = SarprasPeminjamanDetail::join('sarpras_peminjamans', 'sarpras_peminjaman_details.kode_peminjaman', '=', 'sarpras_peminjamans.kode_peminjaman')->get();
         return view('peminjaman.edit',compact(['data', 'kategori', 'detail']));
     }
 

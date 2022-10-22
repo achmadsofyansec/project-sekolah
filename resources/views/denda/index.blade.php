@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('page', 'Denda / Pelanggaran')
+@section('page', 'Denda')
 @section('content-app')
-  <div class="content-wrapper">
-    <div class="content-header">
+<div class="content-wrapper">
+<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -17,46 +17,81 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+<div class="content">
+    <div class="container-fluid">
         <div class="row-mb-2">
-            <div class="col-md-12 mt-1">
-              @if(session('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
-              </div>
-              @endif
-              @if(session('success'))
-              <div class="alert alert-primary">
-                  {{ session('success') }}
-              </div>
-              @endif
-              <div class="card card-outline card-secondary">
-                   <div class="card-header">
-                   <a type="button" href="{{ route('denda.create')}}" class="btn btn-succes"><i class="fas fa-plus"></i> Pengembalian</a>
-                   </div>
-                   <div class="card-body">      
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>
-                                    <th>Nama Peminjam</th>                     
-                                    <th>Unit</th>
-                                    <th>Pelanggaran</th>
-                                    <th>Denda</th>
-                                    <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                     
-                                </tbody>  
-                            </table>
-                       </div>
-                   </div>
-                </div>
+          <div class="col-md-12 mt-1">
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
             </div>
+            @endif
+            @if(session('success'))
+            <div class="alert alert-primary">
+                {{ session('success') }}
+            </div>
+            @endif
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                    <div class="card-tools">
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-denda"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table table-border">
+                        <thead>
+                          <th>No</th>
+                          <th>Nama Siswa</th>
+                          <th>Kelas / Jurusan</th>
+                          <th>Unit</th>
+                          <th>Pelanggaran</th>
+                          <th>Total Denda</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                          @forelse ($data as $item)
+                              <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
+                                <td>{{$item->unit}}</td>
+                                <td>{{$item->pelanggaran}}</td>
+                                <td>Rp. {{$item->total_denda}}</td>
+                                <td>@if ($item->status == '0')
+                                  <span class="btn btn-success">Lunas</span>
+                               @elseif($item->status == '1')
+                               <span class="btn btn-danger">Belum Lunas</span>
+                               @else 
+                               <span class="btn btn-danger">Hilang</span>
+                               @endif</td>
+                              
+                          
+                          <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                            action="{{ route('denda.destroy',$item->id) }}" method="POST">
+                            <a href="{{ route('denda.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                            </form></td>
+                          </tr>
+                          @empty   
+                          @endforelse
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-    </section>
-    <!-- /.content -->
-  </div>
+    @include('denda.create')
+</div>
+</div>
 @endsection

@@ -89,7 +89,7 @@
                             <th>Waktu</th>
                           </thead>
                           <tbody>
-                            @forelse ($peminjaman as $item)
+                            @forelse ($data as $item)
                               <tr>
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $item->nama }}</td>
@@ -111,7 +111,7 @@
           <div class="col-md-7">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i>Grafik Dokumen</h3>
+                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i>Grafik Aset</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
@@ -124,7 +124,7 @@
                 <div class="d-md-flex">
                   <div class="p-1 flex-fill" style="overflow: hidden">
                     <!-- Map will be created here -->
-                    <canvas id="dokumen-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
+                    <canvas id="sarpras-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
                     </canvas>
                   </div>
                 </div><!-- /.d-md-flex -->
@@ -141,33 +141,33 @@
 @section('content-script')
 
 <script>
-  $(document).ready(function(){
-    var donutChartCanvas = $('#dokumen-chart').get(0).getContext('2d')
-  var donutData        = {
-  labels: [
-      'SarprasGedung',
-      'SarprasPemijamans',
-      'SarprasPengembalian',
-      'SarprasDataAset',
-  ],
-  datasets: [
-    {
-      data: [{{ $aset->count() }}, {{ $peminjaman->count() }}, {{ $pengembalian->count() }}, {{ $kategori->count() }}].
-      backgroundColor: ['#28a745', '#ffc107', '#dc3545', '#17a2b8', '#007bff'],
+$(document).ready(function(){
+  var donutChartCanvas = $('#sarpras-chart').get(0).getContext('2d')
+var donutData  = {
+labels: [
+    'Masuk',
+    'Izin',
+    'Tanpa Keterangan',
+    'Sakit',
+    'Belum Absen'
+],
+datasets: [
+  {
+    data: [{{$masuk->count()}},{{$izin->count()}},{{$tanpa_keterangan->count()}},{{$sakit->count()}},{{$belum_absen}}],
+    backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8','#007bff'],
     }
   ]
-  
-  }
-  var donutOptions     = {
-  maintainAspectRatio : false,
-  responsive : true,
-  }
+}
+var donutOptions     = {
+maintainAspectRatio : false,
+responsive : true,
+}
 
-  new Chart(donutChartCanvas, {
-    type: 'doughnut',
-    data: donutData,
-    options: donutOptions
-    });
+new Chart(donutChartCanvas, {
+  type: 'doughnut',
+  data: donutData,
+  options: donutOptions
   });
+});
 </script>
 @endsection

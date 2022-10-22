@@ -127,7 +127,7 @@
                                 <td>{{$item->kode_peminjaman}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->jumlah}}</td>
-                                <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                <td><form onsubmpit="return confirm('Apakah Anda yakin ?')"
                                   action="{{ route('peminjaman-detail.destroy',$item->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
