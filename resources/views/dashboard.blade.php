@@ -140,5 +140,33 @@
 @endsection
 @section('content-script')
 
+<script>
+$(document).ready(function(){
+  var donutChartCanvas = $('#sarpras-chart').get(0).getContext('2d')
+var donutData  = {
+labels: [
+    'Asset',
+    'Kategori',
+    'pengembalian',
+    'Peminjaman',
+],
+datasets: [
+  {
+    data: [{{$aset->count()}},{{$kategori->count()}},{{$pengembalian->count()}},{{$peminjaman->count()}},
+    backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8'],
+    }
+  ]
+}
+var donutOptions     = {
+maintainAspectRatio : false,
+responsive : true,
+}
 
+new Chart(donutChartCanvas, {
+  type: 'doughnut',
+  data: donutData,
+  options: donutOptions
+  });
+});
+</script>
 @endsection
