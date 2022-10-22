@@ -140,34 +140,5 @@
 @endsection
 @section('content-script')
 
-<script>
-$(document).ready(function(){
-  var donutChartCanvas = $('#sarpras-chart').get(0).getContext('2d')
-var donutData  = {
-labels: [
-    'Masuk',
-    'Izin',
-    'Tanpa Keterangan',
-    'Sakit',
-    'Belum Absen'
-],
-datasets: [
-  {
-    data: [{{$masuk->count()}},{{$izin->count()}},{{$tanpa_keterangan->count()}},{{$sakit->count()}},{{$belum_absen}}],
-    backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8','#007bff'],
-    }
-  ]
-}
-var donutOptions     = {
-maintainAspectRatio : false,
-responsive : true,
-}
 
-new Chart(donutChartCanvas, {
-  type: 'doughnut',
-  data: donutData,
-  options: donutOptions
-  });
-});
-</script>
 @endsection
