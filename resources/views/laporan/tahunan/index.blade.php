@@ -79,7 +79,13 @@
                         <div class="card-header">
                          Bulanan Siswa
                           <div class="card-tools">
-                            <a href="#" class="btn btn-primary" name="print_bulanan_harian" id="print_bulanan_harian"><i class="fas fa-print"></i> Print</a>
+                            <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                              <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                              <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                              <input type="hidden" name="type" id="type" value="tahunan">
+                              <input type="hidden" name="nama" id="nama" value="bulanan siswa">
+                              <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                            </form>
                           </div>
                         </div>
                         <div class="card-body">
@@ -120,8 +126,14 @@
                         <div class="card-header">
                           NonBulanan Siswa
                            <div class="card-tools">
-                             <a href="#" class="btn btn-primary" name="print_nonbulanan_harian" id="print"><i class="fas fa-print"></i> Print</a>
-                           </div>
+                            <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                              <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                              <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                              <input type="hidden" name="type" id="type" value="tahunan">
+                              <input type="hidden" name="nama" id="nama" value="nonbulanan siswa">
+                              <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                            </form>
+                          </div>
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
@@ -161,8 +173,14 @@
                         <div class="card-header">
                           Tabungan Siswa
                            <div class="card-tools">
-                             <a href="#" class="btn btn-primary" name="print_tabungan_harian" id="print"><i class="fas fa-print"></i> Print</a>
-                           </div>
+                            <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                              <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                              <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                              <input type="hidden" name="type" id="type" value="tahunan">
+                              <input type="hidden" name="nama" id="nama" value="tabungan siswa">
+                              <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                            </form>
+                          </div>
                          </div>
                          <div class="card-body">
                            <div class="table-responsive">
@@ -204,7 +222,13 @@
                         <div class="card-header">
                           Penerimaan Lain
                            <div class="card-tools">
-                             <a href="#" class="btn btn-primary" name="print_terima_lain_harian" id="print"><i class="fas fa-print"></i> Print</a>
+                            <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                              <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                              <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                              <input type="hidden" name="type" id="type" value="tahunan">
+                              <input type="hidden" name="nama" id="nama" value="penerimaan lain">
+                              <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                            </form>
                            </div>
                          </div>
                          <div class="card-body">
@@ -243,8 +267,13 @@
                         <div class="card-header">
                           Pengeluaran
                            <div class="card-tools">
-                             <a href="#" class="btn btn-primary" name="print_pengeluaran_harian" id="print"><i class="fas fa-print"></i> Print</a>
-                           </div>
+                            <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                              <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                              <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                              <input type="hidden" name="type" id="type" value="tahunan">
+                              <input type="hidden" name="nama" id="nama" value="pengeluaran">
+                              <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                            </form> </div>
                          </div>
                          <div class="card-body">
                           <div class="table-responsive">
