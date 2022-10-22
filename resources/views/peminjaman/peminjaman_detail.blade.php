@@ -12,10 +12,10 @@
         <div class="modal-body">
             <div class="card-body">
                 <div class="form-grup">
-                    <input type="text" name="kode_peminjaman" id="kode_peminjaman" value="{{ $data->kode_peminjaman }}">
+                    <input type="hidden" name="kode_peminjaman" id="kode_peminjaman" value="{{ $data->kode_peminjaman }}">
                 </div>
                 <div class="form-grup">
-                  <input type="text" name="kode_siswa" id="kode_siswa" value="{{ $data->kode_siswa }}">
+                  <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{ $data->kode_siswa }}">
               </div>
                 <div class="form-group">
                   <label>Unit</label>
