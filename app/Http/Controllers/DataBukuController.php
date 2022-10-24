@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Buku;
+use App\Models\Sumber;
+use App\Models\Kategori;
 
 class DataBukuController extends Controller
 {
@@ -28,8 +30,8 @@ class DataBukuController extends Controller
      */
     public function create()
     {
-        $kategori = DB::table('perpustakaan_kategoris')->select(['perpustakaan_Kategoris.*'])->get();
-        $sumber = DB::table('perpustakaan_sumbers')->select(['perpustakaan_Sumbers.*'])->get();
+        $kategori = Kategori::latest()->get();
+        $sumber =   Sumber::latest()->get();
         return view('master.buku.create',compact(['sumber','kategori']));
         
     }

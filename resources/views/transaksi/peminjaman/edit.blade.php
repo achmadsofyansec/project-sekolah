@@ -115,7 +115,9 @@
                                   if($selisih < 0){
                                     echo "Tidak Ada";
                                   }else{
-                                  echo $selisih." hari (Rp.". $dendabuku*$selisih.")";
+                                    $data123 = $dendabuku * $selisih;
+                                    
+                                  echo $selisih." hari (Rp.".number_format($data123).")";
                                 }
                                  ?>
                                 @empty

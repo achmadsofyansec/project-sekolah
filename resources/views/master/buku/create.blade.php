@@ -121,8 +121,8 @@
                                         <label>Sumber</label>
                                         <select class="form-control" name="id_sumber" id="id_sumber" required>
                                         <option id="">Pilih Sumber</option>
-                                          @forelse ($sumber as $item)
-                                        <option id="{{$item->nama_sumber}}">{{$item->nama_sumber}}</option>
+                                          @forelse ($sumber as $item1)
+                                        <option id="{{$item1->nama_sumber}}">{{$item1->nama_sumber}}</option>
                                           @empty
                                               
                                           @endforelse
