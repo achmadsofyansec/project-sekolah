@@ -13,13 +13,16 @@ class CreatePengunjungPerpusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_pengunjung_perpuses', function (Blueprint $table) {
-            $table->id();
-            $table->string('nis');
-            $table->string('kode_buku');
-            $table->string('keperluan');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_pengunjung_perpuses')){
+            Schema::create('perpustakaan_pengunjung_perpuses', function (Blueprint $table) {
+                $table->id();
+                $table->string('nis');
+                $table->string('kode_buku');
+                $table->string('keperluan');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

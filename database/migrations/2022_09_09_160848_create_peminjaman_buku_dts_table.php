@@ -13,18 +13,21 @@ class CreatePeminjamanBukuDtsTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_peminjaman_buku_dts', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_siswa');
-            $table->string('kode_buku');
-            $table->string('jumlah');
-            $table->string('durasi');
-            $table->string('status');
-            $table->string('desc_pinjam');
-            $table->string('kondisi');
-            $table->string('tanggal_pinjam');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_peminjaman_buku_dts')){
+            Schema::create('perpustakaan_peminjaman_buku_dts', function (Blueprint $table) {
+                $table->id();
+                $table->string('id_siswa');
+                $table->string('kode_buku');
+                $table->string('jumlah');
+                $table->string('durasi');
+                $table->string('status');
+                $table->string('desc_pinjam');
+                $table->string('kondisi');
+                $table->string('tanggal_pinjam');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

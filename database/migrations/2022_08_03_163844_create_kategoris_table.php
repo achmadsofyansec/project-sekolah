@@ -13,11 +13,14 @@ class CreateKategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_kategoris', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_kategori');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_kategoris')){
+            Schema::create('perpustakaan_kategoris', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_kategori');
+                $table->timestamps();
+            }); 
+        }
+       
 }
     /**
      * Reverse the migrations.

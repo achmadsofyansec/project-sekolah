@@ -13,13 +13,16 @@ class CreatePeminjamanBukusTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_peminjaman_bukus', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_siswa');
-            $table->string('tanggungan');
-            $table->text('desc_pinjam');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_peminjaman_bukus')){
+            Schema::create('perpustakaan_peminjaman_bukus', function (Blueprint $table) {
+                $table->id();
+                $table->string('id_siswa');
+                $table->string('tanggungan');
+                $table->text('desc_pinjam');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

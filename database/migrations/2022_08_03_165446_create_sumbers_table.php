@@ -13,11 +13,14 @@ class CreateSumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_sumbers', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_sumber');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_sumbers')){
+            Schema::create('perpustakaan_sumbers', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_sumber');
+                $table->timestamps();
+            }); 
+        }
+        
     }
 
     /**

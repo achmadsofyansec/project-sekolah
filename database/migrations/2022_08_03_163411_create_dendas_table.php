@@ -13,11 +13,14 @@ class CreateDendasTable extends Migration
      */
     public function up()
     {
-        Schema::create('perpustakaan_dendas', function (Blueprint $table) {
-            $table->id();
-            $table->string('tarif_denda');
-            $table->timestamps();
-        });
+        if(Schema::hasTable('perpustakaan_dendas')){
+            Schema::create('perpustakaan_dendas', function (Blueprint $table) {
+                $table->id();
+                $table->string('tarif_denda');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

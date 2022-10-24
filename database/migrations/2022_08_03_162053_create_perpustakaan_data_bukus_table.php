@@ -13,6 +13,7 @@ class CreatePerpustakaanDataBukusTable extends Migration
      */
     public function up()
     {
+       if (Schema::hasTable('perpustakaan_data_bukus')) {
         Schema::create('perpustakaan_data_bukus', function (Blueprint $table) {
             $table->id();
             $table->string('kode_buku');
@@ -35,6 +36,9 @@ class CreatePerpustakaanDataBukusTable extends Migration
             $table->string('id_kategori');
             $table->timestamps();
         });
+        }
+        
+        
     }
 
     /**
