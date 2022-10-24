@@ -13,7 +13,7 @@ class CreateDendasTable extends Migration
      */
     public function up()
     {
-        if(Schema::hasTable('perpustakaan_dendas')){
+        if(!Schema::hasTable('perpustakaan_dendas')){
             Schema::create('perpustakaan_dendas', function (Blueprint $table) {
                 $table->id();
                 $table->string('tarif_denda');

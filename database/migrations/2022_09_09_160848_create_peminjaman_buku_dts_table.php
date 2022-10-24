@@ -13,7 +13,7 @@ class CreatePeminjamanBukuDtsTable extends Migration
      */
     public function up()
     {
-        if(Schema::hasTable('perpustakaan_peminjaman_buku_dts')){
+        if(!Schema::hasTable('perpustakaan_peminjaman_buku_dts')){
             Schema::create('perpustakaan_peminjaman_buku_dts', function (Blueprint $table) {
                 $table->id();
                 $table->string('id_siswa');

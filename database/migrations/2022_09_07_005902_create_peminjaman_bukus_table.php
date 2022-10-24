@@ -13,7 +13,7 @@ class CreatePeminjamanBukusTable extends Migration
      */
     public function up()
     {
-        if(Schema::hasTable('perpustakaan_peminjaman_bukus')){
+        if(!Schema::hasTable('perpustakaan_peminjaman_bukus')){
             Schema::create('perpustakaan_peminjaman_bukus', function (Blueprint $table) {
                 $table->id();
                 $table->string('id_siswa');

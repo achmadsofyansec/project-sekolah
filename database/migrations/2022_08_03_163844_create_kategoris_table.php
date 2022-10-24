@@ -13,7 +13,7 @@ class CreateKategorisTable extends Migration
      */
     public function up()
     {
-        if(Schema::hasTable('perpustakaan_kategoris')){
+        if(!Schema::hasTable('perpustakaan_kategoris')){
             Schema::create('perpustakaan_kategoris', function (Blueprint $table) {
                 $table->id();
                 $table->string('nama_kategori');
