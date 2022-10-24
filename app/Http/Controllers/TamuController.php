@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\data_tamu;
+use App\Models\BukuTamu_tamu;
 use Illuminate\Http\Request;
 
 class TamuController extends Controller
@@ -15,7 +16,7 @@ class TamuController extends Controller
     public function index()
     {
         //
-        $tamu = data_tamu::latest()->get();
+        $tamu = BukuTamu_tamu::latest()->get();
         return view('tamu.data_tamu.index',compact('tamu'));
     }
 
@@ -47,7 +48,7 @@ class TamuController extends Controller
             'no_telp'=> ['required'],
         ]);
         if($validate){
-            $create = data_tamu::create([
+            $create = BukuTamu_tamu::create([
                 'nama_tamu'=> $request->nama_tamu,
                 'asal_tamu'=> $request->asal_tamu,
                 'alamat_tamu'=> $request->alamat_tamu,
@@ -90,7 +91,7 @@ class TamuController extends Controller
     public function edit($id)
     {
         //
-        $data = data_tamu::findOrFail($id);
+        $data = BukuTamu_tamu::findOrFail($id);
         return view('tamu.data_tamu.edit',compact('data'));
     }
 
@@ -112,7 +113,7 @@ class TamuController extends Controller
             'no_telp'=> ['required'],
         ]);
         if($validate){
-            $update = data_tamu::findOrFail($id);
+            $update = BukuTamu_tamu::findOrFail($id);
             $update->update([
                 'nama_tamu'=> $request->nama_tamu,
                 'asal_tamu'=> $request->asal_tamu,
@@ -145,7 +146,7 @@ class TamuController extends Controller
     public function destroy($id)
     {
         //
-        $data = data_tamu::findOrFail($id);
+        $data = BukuTamu_tamu::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()

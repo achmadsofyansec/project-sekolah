@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agenda;
+use App\Models\BukuTamu_agenda;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -15,7 +15,7 @@ class AgendaController extends Controller
     public function index()
     {
         //
-        $agenda = Agenda::latest()->get();
+        $agenda = BukuTamu_agenda::latest()->get();
         return view('agenda.index',compact('agenda'));
     }
 
@@ -46,7 +46,7 @@ class AgendaController extends Controller
             'desc_agenda' => ['required'],
         ]);
         if($validate){
-            $create = Agenda::create([
+            $create = BukuTamu_agenda::create([
                 'tgl_mulai_agenda' => $request->tgl_mulai,
                 'tgl_selesai_agenda' => $request->tgl_selesai,
                 'nama_agenda' => $request->agenda,
@@ -88,7 +88,7 @@ class AgendaController extends Controller
     public function edit($id)
     {
         //
-        $data = Agenda::findOrFail($id);
+        $data = BukuTamu_agenda::findOrFail($id);
         return view('agenda.edit',compact('data'));
     }
 
@@ -109,7 +109,7 @@ class AgendaController extends Controller
             'desc_agenda' => ['required'],
         ]);
         if($validate){
-            $update = Agenda::findOrFail($id);
+            $update = BukuTamu_agenda::findOrFail($id);
             $update->update([
                 'tgl_mulai_agenda' => $request->tgl_mulai,
                 'tgl_selesai_agenda' => $request->tgl_selesai,
@@ -141,7 +141,7 @@ class AgendaController extends Controller
     public function destroy($id)
     {
         //
-        $data = Agenda::findOrFail($id);
+        $data = BukuTamu_agenda::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()

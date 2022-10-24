@@ -24,11 +24,11 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //Dashboard
         Route::get('/',[PageController::class,'index'])->name('dashboard');
-        Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
         Route::resource('tamu',TamuController::class);
         Route::resource('agenda',AgendaController::class);
         Route::get('/manual_book',[PageController::class,'view_book'])->name('book');
