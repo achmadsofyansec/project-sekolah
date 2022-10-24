@@ -35,20 +35,27 @@ class PrintPDFController extends Controller
 
             $b = new DateTime($req->filter_akhir);
             $filter_akhir = $b->format('d/m/Y');
-            
+            $f_awal = "";
+            $f_akhir = "";
             $isi .= '<center><div style="text-transform:uppercase;"><h4> LAPORAN '.$req->type.' '.$req->nama.'</h4></div></center><br>';
             $isi .= 'Periode : '.$filter_awal.' - '.$filter_akhir.'<br>';
 
             switch($req->type){
                 case "harian":
                     $where = [['tgl_bayar','>=',$req->filter_awal],['tgl_bayar','<=',$req->filter_akhir]];
+                    $f_awal = $req->filter_awal;
+                    $f_akhir = $req->filter_akhir;
                     break;
                 case "bulanan":
                     $where = [['tgl_bayar','>=',$req->filter_awal."-01"],['tgl_bayar','<=',$req->filter_akhir."-".date('t')]];
+                    $f_awal = $req->filter_awal."-01";
+                    $f_akhir = $req->filter_akhir."-".date('t');
                     break;
                 case "tahunan":
                     $where = [['tgl_bayar','>=',$req->filter_awal."-01-01"],['tgl_bayar','<=',$req->filter_akhir."-12-".date('t')]];
-                        break;
+                    $f_awal = $req->filter_awal."-01-01";
+                    $f_akhir = $req->filter_akhir."-12-".date('t');    
+                    break;
             }
             switch($req->nama){
                 case "bulanan siswa":
@@ -119,12 +126,12 @@ class PrintPDFController extends Controller
                   $isi .= '</tbody></table>';
                 break;
                 case "tabungan siswa":
-                    //$data_isi = keuangan_tabungan_siswa_detail::join('keuangan_tabungan_siswas','keuangan_tabungan_siswa_details.kode_tabungan','=','keuangan_tabungan_siswas.id')
-                    //->join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
-                    //->join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa')
-                    //->join('kelas','aktivitas_belajars.kode_kelas','=','kelas.kode_kelas')
-                    //->where($where)
-                    //->get(['keuangan_tabungan_siswa_details.*','keuangan_tabungan_siswa_details.id as id_tabungan','keuangan_tabungan_siswas.*','data_siswas.*','kelas.*','keuangan_tabungan_siswa_details.created_at as tgl_bayar']);
+                    $data_isi = keuangan_tabungan_siswa_detail::join('keuangan_tabungan_siswas','keuangan_tabungan_siswa_details.kode_tabungan','=','keuangan_tabungan_siswas.id')
+                    ->join('data_siswas','keuangan_tabungan_siswas.kode_siswa','=','data_siswas.id')
+                    ->join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa')
+                    ->join('kelas','aktivitas_belajars.kode_kelas','=','kelas.kode_kelas')
+                    ->where([['keuangan_tabungan_siswa_details.created_at','>=',$f_awal." 00:00:00"],['keuangan_tabungan_siswa_details.created_at','<=',$f_akhir." 00:00:00"]])
+                    ->get(['keuangan_tabungan_siswa_details.*','keuangan_tabungan_siswa_details.id as id_tabungan','keuangan_tabungan_siswas.*','data_siswas.*','kelas.*','keuangan_tabungan_siswa_details.created_at as tgl_bayar']);
                     $isi .= '<table border="1" align="center" width="100%">
                     <thead>
                     <th>No</th>
@@ -135,14 +142,27 @@ class PrintPDFController extends Controller
                     <th>IN / OUT</th>
                   </thead>
                   <tbody>';
+                  $no = 1;
+                  foreach ($data_isi as $item) {
+                    $type = $item->type_detail  == 0 ? "IN" : "OUT"; 
+                   $isi .= '<tr style="text-align:center;">
+                   <td>'.$no++.'</td>
+                   <td>'.date('Y-m-d', strtotime($item->tgl_bayar)).'</td>
+                   <td>'.$item->nama.'</td>
+                   <td>( '.$item->kode_kelas.' ) '.$item->nama_kelas.'</td>
+                   <td>Rp.'.number_format($item->nominal_detail).'</td>
+                   <td>'.$type.'</td>
+                 </tr>';
+                  }
                   $isi .= '</tbody></table>';
                     break;
                 case "penerimaan lain":
-                   // $data_isi = keuangan_penerimaan_lain_detail::join('keuangan_penerimaan_lains','keuangan_penerimaan_lain_details.kode_penerimaan','=','keuangan_penerimaan_lains.id')
-                   // ->join('methode_pembayarans','keuangan_penerimaan_lains.methode_bayar','=','methode_pembayarans.kode_methode')
-                   // ->where($where)                                                        
-                   // ->get(['keuangan_penerimaan_lain_details.id as id_penerimaan','keuangan_penerimaan_lain_details.*','keuangan_penerimaan_lains.*','methode_pembayarans.*']);
-                    $isi .= '<table><thead>
+                  $data_isi = keuangan_penerimaan_lain_detail::join('keuangan_penerimaan_lains','keuangan_penerimaan_lain_details.kode_penerimaan','=','keuangan_penerimaan_lains.id')
+                                                                    ->join('methode_pembayarans','keuangan_penerimaan_lains.methode_bayar','=','methode_pembayarans.kode_methode')
+                                                                    ->where([['keuangan_penerimaan_lains.tgl_penerimaan','>=',$f_awal],['keuangan_penerimaan_lains.tgl_penerimaan','<=',$f_akhir]])                                                        
+                                                                    ->get(['keuangan_penerimaan_lain_details.id as id_penerimaan','keuangan_penerimaan_lain_details.*','keuangan_penerimaan_lains.*','methode_pembayarans.*']);
+                    $isi .= '<table border="1" align="center" width="100%">
+                    <thead>
                     <th>No</th>
                     <th>Tanggal</th>
                     <th>Dari</th>
@@ -151,17 +171,29 @@ class PrintPDFController extends Controller
                     <th>Methode</th>
                   </thead>
                   <tbody>';
-                 
+                  $no = 1;
+                  foreach ($data_isi as $item) {
+                    $isi .= ' <tr style="text-align:center;">
+                    <td>'.$no++.'</td>
+                    <td>'.$item->tgl_penerimaan.'</td>
+                    <td>'.$item->penerimaan_dari.'</td>
+                    <td>Rp.'.number_format($item->detail_jumlah).'</td>
+                    <td>'.$item->desc_penerimaan.'</span>
+                     <td>'.$item->nama_methode.'</td>
+                    </td>
+                  </tr>';
+                  }
                   $isi .= '</tbody></table>';
                 break;
                 case "pengeluaran":
-                   // $data_isi = keuangan_pengeluaran_detail::join('keuangan_pengeluarans','keuangan_pengeluaran_details.kode_pengeluaran','=','keuangan_pengeluarans.id')
-                   // ->join('methode_pembayarans','keuangan_pengeluarans.methode_bayar','=','methode_pembayarans.kode_methode')
-                   // ->join('pos_penerimaans','keuangan_pengeluaran_details.pos_sumber','=','pos_penerimaans.kode_pos')
-                   // ->join('pos_pengeluarans','keuangan_pengeluaran_details.pos_keluar','=','pos_pengeluarans.kode_pos')
-                   // ->where($where)
-                   // ->get(['pos_penerimaans.nama_pos as sumber_dana','keuangan_pengeluaran_details.id as id_pengeluaran','keuangan_pengeluaran_details.*','keuangan_pengeluarans.*','methode_pembayarans.*','pos_penerimaans.*','pos_pengeluarans.*']);
-                    $isi .= '<table><thead>
+                    $data_isi = keuangan_pengeluaran_detail::join('keuangan_pengeluarans','keuangan_pengeluaran_details.kode_pengeluaran','=','keuangan_pengeluarans.id')
+                    ->join('methode_pembayarans','keuangan_pengeluarans.methode_bayar','=','methode_pembayarans.kode_methode')
+                    ->join('pos_penerimaans','keuangan_pengeluaran_details.pos_sumber','=','pos_penerimaans.kode_pos')
+                    ->join('pos_pengeluarans','keuangan_pengeluaran_details.pos_keluar','=','pos_pengeluarans.kode_pos')
+                    ->where([['keuangan_pengeluarans.tgl_pengeluaran','>=',$f_awal],['keuangan_pengeluarans.tgl_pengeluaran','<=',$f_akhir]])
+                    ->get(['pos_penerimaans.nama_pos as sumber_dana','keuangan_pengeluaran_details.id as id_pengeluaran','keuangan_pengeluaran_details.*','keuangan_pengeluarans.*','methode_pembayarans.*','pos_penerimaans.*','pos_pengeluarans.*']);
+                    $isi .= '<table border="1" align="center" width="100%">
+                    <thead>
                     <th>No</th>
                     <th>Tanggal</th>
                     <th>Sumber</th>
@@ -170,7 +202,18 @@ class PrintPDFController extends Controller
                     <th>Ket</th>
                   </thead>
                   <tbody>';
-                 
+                  $no = 1;
+                  foreach ($data_isi as $item) {
+                    $isi .= ' <tr style="text-align:center;">
+                    <td>'.$no++.'</td>
+                    <td>'.$item->tgl_pengeluaran.'</td>
+                    <td>'.$item->sumber_dana.'</td>
+                    <td>'.$item->nama_pos.'</td>
+                    <td>Rp.'.number_format($item->detail_jumlah).'</td>
+                    <td>'.$item->detail_keterangan.'
+                    </td>
+                  </tr>';
+                  }
                   $isi .= '</tbody></table>';
                 break;
             }

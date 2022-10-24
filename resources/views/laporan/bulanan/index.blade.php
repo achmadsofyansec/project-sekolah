@@ -175,8 +175,8 @@
                             <form action="{{route('print_pdf')}}" method="GET" target="_blank">
                               <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
                               <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
-                              <input type="hidden" name="type" id="type" value="tabungan">
-                              <input type="hidden" name="nama" id="nama" value="penerimaan lain">
+                              <input type="hidden" name="type" id="type" value="bulanan">
+                              <input type="hidden" name="nama" id="nama" value="tabungan siswa">
                               <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
                             </form>
                            </div>
