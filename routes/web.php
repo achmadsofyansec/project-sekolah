@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Data_siswaController;
 use App\Http\Controllers\KelulusanController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PengaturanController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 //View Pages In Admin Dashboard
 Route::get('/',[PageController::class,'index'])->name('dashboard');
+Route::get('/portal', [PageController::class, 'portal']);
+Route::resource('/nilai', NilaiController::class);
 Route::get('/home',[PageController::class,'index'])->name('dashboard');
 Route::get('/datasiswa', [Data_siswaController::class, 'index']);
 Route::get('/pengumuman',[PageController::class,'view_pengumuman']);

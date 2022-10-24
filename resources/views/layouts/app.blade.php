@@ -117,17 +117,26 @@
             </a>
           </li>
           <li class="nav-header">Data Master</li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="<?php echo url('/datasiswa') ?>" class="nav-link">
               <i class="nav-icon fas fa-user text-success"></i>
               <p>
                Data Siswa
               </p>
             </a>
+          </li> --}}
+          <li class="nav-item">
+            <a href="<?php echo url('/nilai') ?>" class="nav-link">
+              <i class="nav-icon fas fa-book text-warning"></i>
+              <p>
+               Data Nilai
+              </p>
+            </a>
           </li>
+          
           <li class="nav-item">
             <a href="<?php echo url('/pengaturan') ?>" class="nav-link">
-              <i class="nav-icon fas fa-cogs text-success"></i>
+              <i class="nav-icon fas fa-cogs text-primary"></i>
               <p>
                Pengaturan
               </p>
