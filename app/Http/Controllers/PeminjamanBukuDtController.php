@@ -61,6 +61,7 @@ class PeminjamanBukuDtController extends Controller
             
             $create1 = Pengunjung_perpus::create([
                 'nis' => $request->id_siswa,
+                'kode_buku' => $request->kode_buku,
                 'keperluan' => $request->keperluan
             ]);
             if($create){
@@ -114,9 +115,42 @@ class PeminjamanBukuDtController extends Controller
      * @param  \App\Models\PeminjamanBukuDt  $peminjamanBukuDt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PeminjamanBukuDt $peminjamanBukuDt)
+    public function update(Request $request, $id)
     {
-        //
+        {
+        
+            $validate = $this->validate($request,[
+                'status' => ['required'],
+                'nis_siswa' => ['required'],
+                'keperluan' => ['required'],
+                'kode_buku' => ['required'],
+                
+            ]);
+            if($validate){
+                $update = PeminjamanBukuDt::findOrFail($id);
+                $update->update([
+                    'status' => $request->status,
+                ]);
+                $create = Pengunjung_perpus::create([
+                    'nis' => $request->nis_siswa,
+                    'kode_buku' => $request->kode_buku,
+                    'keperluan' => $request->keperluan,
+                ]);
+                if($update){
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'success' => 'peminjaman Has Been Update successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
+            }
+        }
     }
 
     /**

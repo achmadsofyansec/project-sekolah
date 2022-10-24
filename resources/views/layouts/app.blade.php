@@ -101,7 +101,7 @@
           <img src="{{asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"></a>
+          <a href="#" class="d-block"><?php echo strtoupper(auth()->user()->name);?></a>
           <span class="badge badge-info right ">Administrator</span>
           <form action="<?php echo url('/signout') ?>" method="post">
           @csrf
@@ -195,14 +195,6 @@
 
          <li class="nav-header text-navy">LAPORAN</li>
           <li class="nav-item has-treeview">
-            <a href="<?php echo url('/'); ?>/siswa/siswa" class="nav-link">
-              <i class="nav-icon fas fa-id-card text-navy"></i>
-              <p>
-                Data Siswa
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-print text-navy"></i>
               <p>
@@ -234,14 +226,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="<?php echo url('/'); ?>/app/password" class="nav-link">
-              <i class="nav-icon fas fa-lock text-navy"></i>
-              <p>
-                Ubah Password
-              </p>
-            </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="<?php echo url('pengaturan/denda'); ?>" class="nav-link">

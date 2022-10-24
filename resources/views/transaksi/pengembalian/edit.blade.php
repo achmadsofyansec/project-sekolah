@@ -39,7 +39,7 @@
                       Data Siswa
                     </div>
                   </div>
-                  <form action="{{route('peminjaman_buku.update',$data->id_peminjaman)}}" method="POST" enctype="multipart">
+                  <form action="{{route ('pengembalian.update',$data->id_peminjaman)}}" method="POST" enctype="multipart">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="card-footer">
                       <button class="btn btn-primary" type="submit" id="simpan_pinjaman" name="simpan_pinjaman">Simpan</button>
-                      <a href="{{route('peminjaman_buku.index')}}" class="btn btn-danger" id="kembali" name="kembali">Kembali</a>
+                      <a href="{{route('pengembalian.index')}}" class="btn btn-danger" id="kembali" name="kembali">Kembali</a>
                     </div>
                   </form>
                 </div>
@@ -122,12 +122,13 @@
                                 } ?></td>
                                 <td>
                                   <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                    action="{{ route('pengembalian.update',$item->id_pinjam)}}" method="POST" enctype="multipart/form-data">
+                                    action="{{ route('data_peminjaman.update',$item->id_pinjam)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="nis_siswa" id="nis_siswa" value="{{$data->id_siswa}}" >
                                     <input type="hidden" id="status" name="status" value="0">
                                     <input type="hidden" id="keperluan" name="keperluan" value="Kembali Buku">
+                                    <input type="hidden" id="kode_buku" name="kode_buku" value="{{$item->kode_buku}}">
                                     <button type="submit" class="btn btn-primary btn-xs">Kembali</button>
                                     </form></td>
                           </tr>

@@ -32,7 +32,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PageController::class,'index'])->name('dashboard');
 Route::post('/signout',[PageController::class,'logout']);
-
+Route::group(['middleware'=>['prevent-back']],function(){
+    Route::group(['middleware'=>['auth']],function(){
 //transaksi
 Route::resource('buku',DataBukuController::class);
 Route::resource('kategori',KategoriController::class);
@@ -42,12 +43,8 @@ Route::resource('pengembalian',PengembalianBukuController::class);
 Route::resource('data_peminjaman',PeminjamanBukuDtController::class);
 Route::resource('denda',DendaController::class);
 
-//siswa
-Route::get('/siswa/siswa',[PageController::class,'siswa']);
-Route::get('/siswa/siswa_detail',[PageController::class,'siswa_detail']);
-
 //denda
-Route::get('/pengaturan/denda_save',[PageController::class,'denda_save']);
+Route::post('/pengaturan/denda_save',[PageController::class,'denda_save']);
 Route::get('/pengaturan/denda',[PageController::class,'denda']);
 
 //laporan
@@ -56,10 +53,9 @@ Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
 Route::get('/laporan/buku',[PageController::class,'laporan_buku']);
 Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
 
-//ganti pass
-Route::get('/app/password',[PageController::class,'password']);
-
 //ajax
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
 Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
 Route::post('ajaxRequestTable', [AjaxController::class, 'filter_table'])->name('ajaxRequestTable.filter_table');
+});
+});

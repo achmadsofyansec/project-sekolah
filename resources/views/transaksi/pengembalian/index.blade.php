@@ -56,7 +56,7 @@
                               <td>@if ($item->tanggungan == 0)
                                  <span class="btn btn-success">Dikembalikan</span>
                               @else
-                              <span class="btn btn-success">Dipinjam</span>
+                              <span class="btn btn-danger">Dipinjam</span>
                               @endif</td>
                               <td style="text-align: center">
                               <form onsubmit="return confirm('Apakah Anda yakin ?')"

@@ -96,15 +96,16 @@
                             <td>{{$loop->index +1}}</td>
                             <td>{{$item->kode_buku}}</td>
                             <td>{{$item->jumlah}}</td>
-                            <td><?php $tujuh_hari = mktime(0,0,0, date('n'), date('j') + $item->durasi, date('Y'));
-                              $kembali = date('Y-m-d', $tujuh_hari);
-                              echo $kembali;?></td>
+                            <td><?php
+                            $tanggal_pinjam = $item->tanggal_pinjam;
+                            $tanggal_kembali = date('Y-m-d', strtotime($item->durasi.' days', strtotime($tanggal_pinjam))); 
+                          echo $tanggal_kembali;?></td>
                                 @forelse ($denda as $item1)
                               <td>
                                 <?php 
                                   $dendabuku = $item1->tarif_denda;
                                   $tgl_sekarang = date("Y-m-d");
-                                  $tgl_kembali = $kembali;
+                                  $tgl_kembali = $tanggal_kembali;
                                   $sel1 = explode('-',$tgl_kembali);
                                   $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
                                   $sel2 = explode('-',$tgl_sekarang);

@@ -8,9 +8,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-2">
-            <div class="card card-navy card-outline">
-              <center><h1 class="m-0 text-dark" style="text-shadow: 2px 2px 4px #17a2b8;"><i class="fal fa-school mt-1"></i> <br>DAFTAR LAYOUT INFORMASI PERPUSTAKAAN</h1> </center>
-              <hr>
               <div class="container-fluid">
                 <div class="row">
                   <!-- DATA KELAS -->
@@ -72,7 +69,7 @@
                         
                         <div class="row">
            <!-- /.col -->
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card card-navy">
               <div class="card-header">
                 <h3 class="card-title"><i class="fad fa-spin fa-chart-pie"></i> Grafik Pengunjung Perpustakaan</h3>
@@ -83,25 +80,13 @@
                 </div>
               </div>
               <div class="card-body">
-                <div id="pie-absen" style="background:none;height: 400px; width:100%; margin: 0 auto"></div>
+                <canvas id="absen-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
+                </canvas>
               </div>
               <!-- /.card-body -->
             </div>
           </div>
           <!-- /.col -->
-          <div class="col-md-6 ">
-            <div class="card card-navy card-outline">
-              <div class="card-header">
-                <h3 class="card-title text-navy" ><i class="fad fa-calendar-check"></i> Catatan Agenda Atau Kegiatan</h3>
-                <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                      </button>
-                    </div>
-                </div>
-              <div class="card-body p-0 mr-2 ml-2 mb-2">
-                  <div id="calendar"></div>
-              </div>
-            </div>
           </div>
         </div>
                       </div>
@@ -111,7 +96,7 @@
     
                 </div>  
 
-              </div>
+              
             </div>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -169,96 +154,34 @@
     </form>
   </div>
 </div>
+@section('content-script')
 <script>
-  $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'prevYear,nextYear',
-    },
-
-    events: "<?php echo url('/'); ?>/home/get_calendar",
-
-    dayClick: function(date, jsEvent, view) {
-
-      var tanggal = date.getDate();
-      var bulan = date.getMonth() + 1;
-      var tahun = date.getFullYear();
-      var fullDate = tahun + '-' + bulan + '-' + tanggal;
-
-      $('#addModal').modal('toggle');
-      $('#addModal').modal('show');
-
-      $("#inputDate").val(fullDate);
-      $("#labelDate").text(fullDate);
-      $("#inputYear").val(date.getFullYear());
-      $("#labelYear").text(date.getFullYear());
-    },
-
-    eventClick: function(calEvent, jsEvent, view) {
-      $("#delModal").modal('toggle');
-      $("#delModal").modal('show');
-      $("#idDel").val(calEvent.id);
-      $("#showYear").text(calEvent.year);
-
-      var tgl = calEvent.start.getDate();
-      var bln = calEvent.start.getMonth() + 1;
-      var thn = calEvent.start.getFullYear();
-
-      $("#showDate").text(tgl + '-' + bln + '-' + thn);
-      $("#showDesc").text(calEvent.title);
-    }
-
-
-  });
-</script>
-
-<script>
-  Highcharts.chart('pie-absen', {
-    chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,
-      backgroundColor: 'transparent',
-      type: 'pie'
-    },
-    title: {
-      text: ''
-    },
-    tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-          style: {
-            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-          }
-        }
+  $(document).ready(function(){
+    var donutChartCanvas = $('#absen-chart').get(0).getContext('2d')
+  var donutData        = {
+  labels: [
+      'Buku',
+      'Pinjam',
+      'Pengunjung',
+  ],
+  datasets: [
+    {
+      data: [{{$buku->count()}},{{$pinjaman->count()}},{{$pengunjung->count()}}],
+      backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8','#007bff'],
       }
-    },
-    series: [{
-      name: 'Kategori',
-      colorByPoint: true,
-      data: [{
-        name: 'Baca Buku',
-        y: 
-      }, {
-        name: 'Baca dan Pinjam',
-        y: 
-      }, {
-        name: 'Kembali Buku',
-        y: 
-      }, {
-        name: 'Pinjam Buku',
-        y:
-      }]
-    }]
+    ]
+  }
+  var donutOptions     = {
+  maintainAspectRatio : false,
+  responsive : true,
+  }
+
+  new Chart(donutChartCanvas, {
+    type: 'doughnut',
+    data: donutData,
+    options: donutOptions
+    });
   });
 </script>
-</script>
+@endsection
 @endsection

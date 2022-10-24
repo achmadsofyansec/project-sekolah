@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PengembalianBuku;
 use App\Models\PeminjamanBukuDt;
 use App\Models\Pengunjung_perpus;
+use App\Models\Peminjaman_buku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Maatwebsite\Excel\Facades\Excel;
@@ -94,23 +95,19 @@ class PengembalianBukuController extends Controller
         {
         
             $validate = $this->validate($request,[
-                'status' => ['required'],
-                'nis_siswa' => ['required'],
-                'keperluan' => ['required'],
+                'tanggungan' => ['required'],
+                'desc_pinjam' => ['required'],
                 
             ]);
             if($validate){
-                $update = PeminjamanBukuDt::findOrFail($id);
+                $update = Peminjaman_buku::findOrFail($id);
                 $update->update([
-                    'status' => $request->status,
-                ]);
-                $create = Pengunjung_perpus::create([
-                    'nis' => $request->nis_siswa,
-                    'keperluan' => $request->keperluan,
+                    'tanggungan' => $request->tanggungan,
+                    'desc_pinjam' => $request->desc_pinjam,
                 ]);
                 if($update){
                     return redirect()
-                    ->back()
+                    ->route('pengembalian.index')
                     ->with([
                         'success' => 'peminjaman Has Been Update successfully'
                     ]);

@@ -84,7 +84,7 @@
                   <div class="card-header border-transparent">
                     <center>
                         <h4 class="m-0 text-dark mt-3" style="text-shadow: 2px 2px 4px #17a2b8;">
-              <img src=">" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
+              <img src="{{$img}}" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
                <br></h4>
                       <h4 style="margin:0;">Laporan Pengunjung Perpus </h4>
                       <p style="margin:0;">Periode : </p>

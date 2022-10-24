@@ -50,7 +50,7 @@
                             <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
                           </div>
                         
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="@foreach ($peminjaman as $peminjaman){{$peminjaman->tgl_awal}}@endforeach" required>
+                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                         
                         </div>
                       </div>
@@ -95,7 +95,6 @@
                             <th>No</th>
                               <th>Nama Siswa</th>
                               <th>Kode Buku</th>
-                              <th>Judul Buku</th>
                               <th>Jumlah</th>
                               <th>Tgl Pinjam</th>
                               <th>Tgl Kembali</th>
@@ -108,7 +107,56 @@
                           @forelse ($peminjaman as $item)
                 <tr>
                   <td>{{$loop->index +1}}</td>
-                  <td>{{$item->keperluan}}</td>
+                  <td>{{$item->nama}}</td>
+                  <td>{{$item->kode_buku}}</td>
+                  <td>{{$item->jumlah}}</td>
+                  <td>{{$item->tanggal_pinjam}}</td>
+                  <td><?php $tujuh_hari = mktime(0,0,0, date('n'), date('j') + $item->durasi, date('Y'));
+                    $kembali = date('Y-m-d', $tujuh_hari);
+                    echo $kembali;?></td>
+                  <td><?php if($item->status == 1){
+                    echo "Dipinjam";
+                  }else{
+                    echo "Dikembalikan";
+                  } ?></td>
+                  @forelse ($denda as $item1)
+                  <td>
+                    <?php 
+                      $dendabuku = $item1->tarif_denda;
+                      $tgl_sekarang = date("Y-m-d");
+                      $tgl_kembali = $kembali;
+                      $sel1 = explode('-',$tgl_kembali);
+                      $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
+                      $sel2 = explode('-',$tgl_sekarang);
+                      $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
+                      $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
+                      $selisih = $selisih/86400;
+                      if($selisih < 0){
+                        echo "Tidak";
+                      }else{
+                      echo $selisih;
+                    }
+                     ?>
+                  </td><td>
+                    <?php 
+                      $dendabuku = $item1->tarif_denda;
+                      $tgl_sekarang = date("Y-m-d");
+                      $tgl_kembali = $kembali;
+                      $sel1 = explode('-',$tgl_kembali);
+                      $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
+                      $sel2 = explode('-',$tgl_sekarang);
+                      $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
+                      $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
+                      $selisih = $selisih/86400;
+                      if($selisih < 0){
+                        echo "Tidak Ada";
+                      }else{
+                      echo $selisih." hari (Rp.". $dendabuku*$selisih.")";
+                    }
+                     ?>
+                    @empty
+                    @endforelse
+                  </td>
                   @empty
                 </tr>
                 @endforelse

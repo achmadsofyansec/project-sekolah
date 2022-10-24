@@ -20,10 +20,11 @@ class PageController extends Controller
     //VIEW Pages
     public function index(Request $request)
     {
+        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
         $buku = Buku::latest()->get();
         $pinjaman = Peminjaman_buku::latest()->get();
         $pengunjung = Pengunjung_perpus::latest()->get();
-        return view('dashboard', compact('buku', 'pinjaman', 'pengunjung'));
+        return view('dashboard', compact('buku', 'pinjaman', 'pengunjung','data'));
     }
 
     public function pengembalian()
@@ -33,21 +34,63 @@ class PageController extends Controller
 
     public function laporan_peminjaman()
     {
-        $peminjaman = Pengunjung_perpus::latest()->where('keperluan','=','Pinjam Buku')->get();
-        return view('laporan.peminjaman.index', compact('peminjaman'));
+        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+        $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+        $denda = DB::table('perpustakaan_dendas')->get();
+        $peminjaman = DB::table('perpustakaan_peminjaman_buku_dts')
+        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')->get();
+        return view('laporan.peminjaman.index', compact('peminjaman','denda','img'));
     }
 
 
     public function denda()
     {
-        $denda = Denda::latest()->get();
-        return view('pengaturan.denda', compact('denda'));
+        $cek = Denda::latest()->get();
+        $data = null;
+        if($cek->count() > 0){
+            $data = $cek->first();
+        }
+        return view('pengaturan.denda',compact(['data']));
     }
 
-    public function denda_save()
+    public function denda_save(Request $request)
     {
-        $denda = Denda::latest()->get();
-        return view('pengaturan.denda', compact('denda'));
+        $credential = $this->validate($request,[
+            'denda' => ['required'],
+        ]);
+        if($credential){
+            $cek = Denda::latest()->get();
+            $data = "";
+            if($cek->count() > 0){
+                $data = $cek->first();
+                $data->update([
+                    'tarif_denda'=> $request->denda
+                ]);
+            }else{
+                $data = Denda::create([
+                    'tarif_denda' => $request->denda,
+                ]);
+            }
+            if($data){
+                return redirect()
+                ->back()
+                ->with([
+                    'success' => 'Denda Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 
     public function laporan_buku()
@@ -58,22 +101,13 @@ class PageController extends Controller
 
     public function laporan_pengunjung()
     {
+        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+        $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
         $pengunjung = DB::table('perpustakaan_pengunjung_perpuses')
                             ->join('data_siswas','data_siswas.nisn','=','perpustakaan_pengunjung_perpuses.nis')
                             ->get();
-        return view('laporan.pengunjung.index', compact('pengunjung'));
+        return view('laporan.pengunjung.index', compact('pengunjung','img'));
     }
-
-    public function password()
-    {
-        return view('app.password');
-    }
-
-    public function siswa_detail()
-    {
-        return view('siswa.siswa_detail');
-    }
-
 
 
     public function logout(Request $request)
@@ -87,9 +121,4 @@ class PageController extends Controller
         return redirect('../sekolahApp/');
     }
 
-    public function siswa()
-    {
-        $siswa = Siswa::latest()->get();
-        return view('siswa.index', compact('siswa'));
-    }
 }

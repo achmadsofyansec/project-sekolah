@@ -17,13 +17,22 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="alert alert-primary">
+        {{ session('success') }}
+    </div>
+    @endif
       <!-- Main row -->
       <div class="row">
 			<div class="col-md-12">
                 <div class="card">
-                  @foreach ($denda as $item)
-                    <form role="form" action="{{route('denda.update',$item->id)}}" method="post">
-                  @endforeach
+                    <form role="form" action="{{url('/pengaturan/denda_save')}}" method="POST" enctype="multipart/form-data">
+                      @csrf
 					      <div class="alert alert-success" >
 					        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="fa fa-remove"></i>
@@ -38,7 +47,12 @@
                                         <span class="input-group-append">
                                         <button type="button" class="btn bg-info btn-flat"><i class="fas fa-dollar-sign"> </i> Tarif Denda Telat Per Hari</button>
                                       </span>
-                                      <input type="number" class="form-control" name="denda" value="@foreach ($denda as $item) {{$item->tarif_denda}} @endforeach" required>
+                                      @if ($data != null)
+                                        <input type="number" class="form-control" value="{{$data->tarif_denda}}" name="denda" id="denda" required>    
+                                        @else
+                                        <input type="number" class="form-control" value="0" name="denda" id="denda" required>    
+                                      @endif
+                                      
                                       <span class="input-group-append">
                                         <button type="submit" class="btn bg-navy btn-flat"><i class="fa fa-save"> </i> Simpan Tarif Denda</button>
                                       </span>
