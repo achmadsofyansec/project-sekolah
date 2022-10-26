@@ -79,7 +79,13 @@
                             <div class="card-header">
                              Harian
                               <div class="card-tools">
-                                <a href="#" class="btn btn-primary" name="print_harian" id="print_bulanan_harian"><i class="fas fa-print"></i> Print</a>
+                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                  <input type="hidden" name="type" id="type" value="nilai">
+                                  <input type="hidden" name="nama" id="nama" value="harian">
+                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                                </form>
                               </div>
                             </div>
                             <div class="card-body">
@@ -120,7 +126,13 @@
                             <div class="card-header">
                               Ujian
                                <div class="card-tools">
-                                 <a href="#" class="btn btn-primary" name="print_ujian" id="print"><i class="fas fa-print"></i> Print</a>
+                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                  <input type="hidden" name="type" id="type" value="nilai">
+                                  <input type="hidden" name="nama" id="nama" value="ujian">
+                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                                </form>
                                </div>
                              </div>
                              <div class="card-body">
@@ -161,7 +173,13 @@
                             <div class="card-header">
                               Prestasi
                                <div class="card-tools">
-                                 <a href="#" class="btn btn-primary" name="print_prestasi" id="print"><i class="fas fa-print"></i> Print</a>
+                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                  <input type="hidden" name="type" id="type" value="nilai">
+                                  <input type="hidden" name="nama" id="nama" value="prestasi">
+                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                                </form>
                                </div>
                              </div>
                              <div class="card-body">
@@ -200,7 +218,13 @@
                             <div class="card-header">
                               Rapor
                                <div class="card-tools">
-                                 <a href="#" class="btn btn-primary" name="print_rapor" id="print"><i class="fas fa-print"></i> Print</a>
+                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                  <input type="hidden" name="type" id="type" value="nilai">
+                                  <input type="hidden" name="nama" id="nama" value="rapor">
+                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
+                                </form>
                                </div>
                              </div>
                              <div class="card-body">

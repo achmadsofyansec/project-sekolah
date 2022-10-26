@@ -23,6 +23,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PindahKelasController;
 use App\Http\Controllers\PredikatController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
 use Illuminate\Support\Facades\Route;
@@ -71,7 +72,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('perizinan',PerizinanController::class);
 
         //Laporan
-        Route::get('/lap_absensi',[LaporanController::class,'view_lap_absensi'])->name('laporan_absensi');
+        //Route::get('/lap_absensi',[LaporanController::class,'view_lap_absensi'])->name('laporan_absensi');
         Route::get('/lap_nilai',[LaporanController::class,'view_lap_nilai'])->name('laporan_nilai');
 
         //inputnilai
@@ -93,5 +94,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');
         Route::post('input_nilai_detail', [AjaxController::class, 'input_nilai'])->name('ajaxRequest.input_nilai_detail');
+        Route::get('/print_pdf',[PrintController::class,'laporan'])->name('print_pdf');
     });
 });

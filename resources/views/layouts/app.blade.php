@@ -384,12 +384,14 @@
                   <p>Nilai</p>
                 </a>
               </li>
+              <!--
               <li class="nav-item">
                 <a href="<?php echo url('/lap_absensi') ?>" class="nav-link">
                   <i class="fas fa-calendar-alt nav-icon text-success"></i>
                   <p>Absensi</p>
                 </a>
               </li>
+              -->
             </ul>
           </li>
         </ul>
