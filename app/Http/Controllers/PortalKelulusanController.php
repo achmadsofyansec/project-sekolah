@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengaturan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PengaturanController extends Controller
+class PortalKelulusanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class PengaturanController extends Controller
      */
     public function index()
     {
-        //
-        $pengaturan = Pengaturan::latest()->get();
-        return view('pengaturan.index',compact('pengaturan'));
-        
+        return view('portal.main.index');
     }
 
     /**
@@ -61,9 +58,6 @@ class PengaturanController extends Controller
     public function edit($id)
     {
         //
-        $data = Pengaturan::findOrFail($id);
-        return view('pengaturan.edit',compact('data'));
-
     }
 
     /**
@@ -76,34 +70,6 @@ class PengaturanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $validate = $this->validate($request,[
-            'tanggal_pengumuman' => ['required'],
-            'tahun' => ['required'],
-            'informasi_kelulusan' => ['required'],
-            'informasi_lain' => ['required'],
-        ]);
-        if($validate){
-            $update = Pengaturan::findOrFail($id);
-            $update->update([
-                'pengumuman' => $request->tanggal_penguman,
-                'tahun' => $request->tahun,
-                'info_kelulusan' => $request->informasi_kelulusan,
-                'info_lainya' => $request->informasi_lain,
-            ]);
-            if($update){
-                return redirect()
-                ->route('pengaturan.index')
-                ->with([
-                    'success' => 'Pengaturan Has Been Update successfully'
-                ]);
-            }else{
-                return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Some problem has occurred, please try again'
-                ]);
-            }
-        }
     }
 
     /**

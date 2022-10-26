@@ -29,8 +29,8 @@ class PageController extends Controller
         return view('singkronisasi.index');
     }
 
-    public function portal(){
-        return view('portal.index');
+    public function login_portal(){
+        return view('portal.main.login');
     }
 
     public function nilai(){

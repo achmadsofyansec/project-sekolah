@@ -6,6 +6,8 @@ use App\Http\Controllers\Data_siswaController;
 use App\Http\Controllers\KelulusanController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\PengaturanPortalController;
+use App\Http\Controllers\PortalKelulusanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,16 +23,24 @@ use Illuminate\Support\Facades\Route;
 
 //View Pages In Admin Dashboard
 Route::get('/',[PageController::class,'index'])->name('dashboard');
-Route::get('/portal', [PageController::class, 'portal']);
+
+// Portal
+Route::resource('/portal', PortalKelulusanController::class);
+Route::get('/portal-login',[PageController::class, 'login_portal']);
+
+// Nilai
 Route::resource('/nilai', NilaiController::class);
-Route::get('/home',[PageController::class,'index'])->name('dashboard');
-Route::get('/datasiswa', [Data_siswaController::class, 'index']);
-Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
-Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
-Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
-Route::resource('pengaturan',PengaturanController::class);
-Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
-Route::get('/kelulusan',[KelulusanController::class,'index']);
+
+// Pengaturan
+Route::resource('/pengaturan', PengaturanPortalController::class);
+// Route::get('/home',[PageController::class,'index'])->name('dashboard');
+// Route::get('/datasiswa', [Data_siswaController::class, 'index']);
+// Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
+// Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
+// Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
+// Route::resource('pengaturan',PengaturanController::class);
+// Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
+// Route::get('/kelulusan',[KelulusanController::class,'index']);
 
 
 // Route::get('/kelulusan', function () {
