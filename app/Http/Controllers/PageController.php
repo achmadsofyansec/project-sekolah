@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agenda;
-use App\Models\data_tamu;
+use App\Models\BukuTamu_agenda;
+use App\Models\BukuTamu_tamu;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +14,8 @@ class PageController extends Controller
     
     //VIEW Pages
     public function index(Request $request){
-        $agenda = Agenda::latest()->get();
-        $tamu = data_tamu::latest()->get();
+        $agenda = BukuTamu_agenda::latest()->get();
+        $tamu = BukuTamu_tamu::latest()->get();
         return view('dashboard',compact(['agenda','tamu']));
     }
     public function view_portal(){

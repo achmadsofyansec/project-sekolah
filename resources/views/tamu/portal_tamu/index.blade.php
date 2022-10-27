@@ -25,15 +25,16 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                           <label>Nama</label>
-                                          <input type="text" name="nama_tamu" id="nama_tamu" placeholder="Masukkan Nama" class="form-control" required>
+                                          <input type="text" name="nama_tamu" id="nama_tamu" placeholder="&#xf007;  Masukkan Nama" class="form-control fas" required>
                                         </div>
                                         <div class="form-group">
                                           <label>Asal / Instansi</label>
-                                          <input type="text" name="asal_tamu" id="asal_tamu" placeholder="Masukkan Asal" class="form-control" required>
+                                          <input type="text" name="asal_tamu" id="asal_tamu" placeholder="&#xf099; Masukkan Asal"  class="form-control fa" required>
                                         </div>
                                         <div class="form-group">
+                                          
                                           <label>Alamat</label>
-                                          <textarea name="alamat_tamu" id="alamat_tamu" cols="30" rows="8" placeholder="Masukkan Alamat" class="form-control"></textarea>
+                                          <textarea name="alamat_tamu" id="alamat_tamu" cols="30" rows="8" placeholder="&#xe1b0; Masukkan Alamat" class="form-control fas"></textarea>
                                         </div>
                                         <div class="form-group">
                                           <label>Keperluan</label>
