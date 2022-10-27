@@ -112,7 +112,7 @@
                                   $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
                                   $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
                                   $selisih = $selisih/86400;
-                                  if($selisih < 0){
+                                  if($selisih <= 0){
                                     echo "Tidak Ada";
                                   }else{
                                     $data123 = $dendabuku * $selisih;

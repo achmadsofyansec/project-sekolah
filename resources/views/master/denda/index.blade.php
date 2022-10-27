@@ -51,13 +51,20 @@
                     @forelse ($denda as $item)
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->kode_buku}}</td>
+                                        <td>{{$item->judul_buku}}</td>
+                                        <td>{{$item->tanggal_pinjam}}</td>
+                                        <td><?php
+                                          $tanggal_pinjam = $item->tanggal_pinjam;
+                                          $tanggal_kembali = date('Y-m-d', strtotime($item->durasi.' days', strtotime($tanggal_pinjam))); 
+                                        echo $tanggal_kembali;?></td>
+                                        <td><?php if($item->status == 1){
+                                          echo "Dipinjam";
+                                        }else{
+                                          echo "Dikembalikan";
+                                        } ?></td>
+                                        <td>{{$tanggal_kembali}}</td>
                                         <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
                                             <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>

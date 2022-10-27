@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Denda;
+use App\Models\PeminjamanBukuDt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DendaController extends Controller
 {
@@ -14,8 +16,13 @@ class DendaController extends Controller
      */
     public function index()
     {
-        $denda = Denda::latest()->get();
-        return view('master.denda.index',compact('denda'));
+        $item = DB::table('perpustakaan_peminjaman_buku_dts')->get('tanggal_pinjam');
+        $item1 = DB::table('perpustakaan_peminjaman_buku_dts')->get('durasi');
+        $tanggal_kembali = date("Y-m-d");
+        $denda = DB::table('perpustakaan_peminjaman_buku_dts')
+                ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
+                ->join('perpustakaan_data_bukus','perpustakaan_data_bukus.kode_buku','=','perpustakaan_peminjaman_buku_dts.kode_buku')->get();
+        return view('master.denda.index',compact('denda','tanggal_kembali'));
     }
 
     /**
@@ -26,6 +33,7 @@ class DendaController extends Controller
     public function create()
     {
         return view('master.denda.tambah_denda');
+        
     }
 
     /**
