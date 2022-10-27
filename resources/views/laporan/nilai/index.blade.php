@@ -78,15 +78,6 @@
                           <div class="tab-pane text-left fade show active" id="vert-tabs-1" role="tabpanel" aria-labelledby="vert-tabs-1-tab">
                             <div class="card-header">
                              Harian
-                              <div class="card-tools">
-                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
-                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
-                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
-                                  <input type="hidden" name="type" id="type" value="nilai">
-                                  <input type="hidden" name="nama" id="nama" value="harian">
-                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
-                                </form>
-                              </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -108,8 +99,16 @@
                                       <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}} </td>
                                       <td>{{$item->nama_mapel}} ({{$item->kategori_nilai}}) </td>
                                       <td>
-                                        <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                        <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                          <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                          <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                          <input type="hidden" name="kode_kelas" id="filter_awal" value="{{$item->kode_kelas}}" >
+                                          <input type="hidden" name="kode_jurusan" id="filter_akhir" value="{{$item->kode_jurusan}}" >
+                                          <input type="hidden" name="type" id="type" value="nilai">
+                                          <input type="hidden" name="nama" id="nama" value="harian">
+                                          <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
+                                          <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                        </form>
                                     </td>
                                       </tr>
                                   @empty
@@ -125,15 +124,6 @@
                           <div class="tab-pane text-left fade show " id="vert-tabs-2" role="tabpanel" aria-labelledby="vert-tabs-2-tab">
                             <div class="card-header">
                               Ujian
-                               <div class="card-tools">
-                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
-                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
-                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
-                                  <input type="hidden" name="type" id="type" value="nilai">
-                                  <input type="hidden" name="nama" id="nama" value="ujian">
-                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
-                                </form>
-                               </div>
                              </div>
                              <div class="card-body">
                               <div class="table-responsive">
@@ -155,8 +145,16 @@
                                     <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}} </td>
                                     <td>{{$item->nama_mapel}} ({{$item->kategori_nilai}}) </td>
                                     <td>
-                                      <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i></a>
-                                      <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                      <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                        <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                        <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                        <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$item->kode_kelas}}" >
+                                        <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$item->kode_jurusan}}" >
+                                        <input type="hidden" name="type" id="type" value="nilai">
+                                        <input type="hidden" name="nama" id="nama" value="ujian">
+                                        <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
+                                        <a href="#" data-toggle="modal" data-target="#modal-view-ujian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                      </form>
                                   </td>
                                     </tr>
                                 @empty
@@ -172,15 +170,6 @@
                           <div class="tab-pane text-left fade show " id="vert-tabs-3" role="tabpanel" aria-labelledby="vert-tabs-3-tab">
                             <div class="card-header">
                               Prestasi
-                               <div class="card-tools">
-                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
-                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
-                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
-                                  <input type="hidden" name="type" id="type" value="nilai">
-                                  <input type="hidden" name="nama" id="nama" value="prestasi">
-                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
-                                </form>
-                               </div>
                              </div>
                              <div class="card-body">
                               <div class="table-responsive">
@@ -202,8 +191,16 @@
                                             <td>{{$item->nama_lomba}}</td>
                                             <td>{{$item->tahun_lomba}}</td>
                                             <td>
-                                              <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i></a>
-                                              <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                              <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                                <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                                <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                                <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$item->kode_kelas}}" >
+                                                <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$item->kode_jurusan}}" >
+                                                <input type="hidden" name="type" id="type" value="nilai">
+                                                <input type="hidden" name="nama" id="nama" value="prestasi">
+                                                <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
+                                                <a href="#" data-toggle="modal" data-target="#modal-view-prestasi" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                              </form>
                                           </td>
                                           </tr>
                                       @empty
@@ -217,15 +214,6 @@
                           <div class="tab-pane text-left fade show " id="vert-tabs-4" role="tabpanel" aria-labelledby="vert-tabs-4-tab">
                             <div class="card-header">
                               Rapor
-                               <div class="card-tools">
-                                <form action="{{route('print_pdf')}}" method="GET" target="_blank">
-                                  <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
-                                  <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
-                                  <input type="hidden" name="type" id="type" value="nilai">
-                                  <input type="hidden" name="nama" id="nama" value="rapor">
-                                  <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
-                                </form>
-                               </div>
                              </div>
                              <div class="card-body">
                               <div class="table-responsive">
@@ -247,8 +235,16 @@
                                     <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}} </td>
                                     <td>{{$item->nama_mapel}} ({{$item->kategori_nilai}}) </td>
                                     <td>
-                                      <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i></a>
-                                      <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                      <form action="{{route('print_pdf')}}" method="GET" target="_blank">
+                                        <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}" >
+                                        <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}" >
+                                        <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$item->kode_kelas}}" >
+                                        <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$item->kode_jurusan}}" >
+                                        <input type="hidden" name="type" id="type" value="nilai">
+                                        <input type="hidden" name="nama" id="nama" value="rapor">
+                                        <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
+                                        <a href="#" data-toggle="modal" data-target="#modal-view-rapor" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                      </form>
                                   </td>
                                     </tr>
                                 @empty

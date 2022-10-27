@@ -56,7 +56,8 @@ class AbsensiController extends Controller
                         <td>'.$item->nama.'</td>
                         <td>'.$item->kode_kelas.'</td>
                         <td>'.$item->kode_jurusan.'</td>
-                        <td>'.$absen.'</td>';
+                        <td>'.$absen.'</td>
+                        </tr>';
                 }
             }
             return view('absensi.absen.index',compact(['kelas','jurusan','req','data']));
