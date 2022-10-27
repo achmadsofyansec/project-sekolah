@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('page', 'Data Nilai')
+@section('page', 'Data Niali')
 @section('content-app')
-  <div class="content-wrapper">
-    <div class="content-header">
+<div class="content-wrapper">
+<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -17,74 +17,109 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+<div class="content">
+    <div class="container-fluid">
         <div class="row-mb-2">
-            <div class="col-md-12 mt-1">
-              @if(session('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
-              </div>
-              @endif
-              @if(session('success'))
-              <div class="alert alert-primary">
-                  {{ session('success') }}
-              </div>
-              @endif
-                <div class="card card-outline card-secondary">
-                   <div class="card-header">
-                   <a type="button" href="" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-                   </div>
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>                     
-                                    <th>Nama</th>
-                                    <th>Kelas</th>
-                                    <th>Matematika</th>
-                                    <th>Bind</th>
-                                    <th>Bahasa Inggris</th>
-                                    <th>Kejurusan</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                    @forelse ($lulus as $item)
-                                        <td>{{ $loop->index+1 }}</td>
-                                        <td>Achmad Sofyan</td>
-                                        <td>XII RPL A</td>
-                                        <td>{{ $item->bind }}</td>
-                                        <td>{{ $item->bing }}</td>
-                                        <td>{{ $item->mat }}</td>
-                                        <td>{{ $item->kejurusan }}</td>
-                                        <td>{{ $item->status }}</td>
-                                        <td>
-                                            <form onsubmit="return confirm('Apakah Anda yakin ?')"
-                                            action="" method="POST">
-                                            <a href="" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                                            @csrf
-                                              @method('DELETE')
-                                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-                                            </form>
-                                          </td>
-                                          </tr>
-                                        </td>
-                                    @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
-                                      </tr>
-                                    @endforelse
-                                </tbody>  
-                            </table>
-                       </div>
-                   </div>
-                </div>
+          <div class="col-md-12 mt-1">
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
             </div>
+            @endif
+            @if(session('success'))
+            <div class="alert alert-primary">
+                {{ session('success') }}
+            </div>
+            @endif
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                    <div class="card-tools">
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-nilai"><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table table-border">
+                        <thead>
+                          <th>No</th>
+                          <th>Nama Siswa</th>
+                          <th>Kelas / Jurusan</th>
+                          <th>Nomor Ujian</th>
+                          <th>Bahasa Indonesia</th>
+                          <th>Matematika</th>
+                          <th>Kejurusan</th>
+                          <th>Bahasa Inggris</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                          @forelse ($data as $item)
+                              <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
+                                <td>{{$item->kode_ujian}}</td>
+                                <td>@if ($item->bind < 75)
+                                  <span class="btn btn-warning">{{ $item->bind }}</span>
+                               @elseif($item->bind > 75)
+                               <span class="btn btn-success">{{ $item->bind }}</span>
+                               @else
+                               <span class="btn btn-danger">{{ $item->bind }}</span>
+                               @endif</td>
+                               <td>@if ($item->mat < 75)
+                                <span class="btn btn-warning">{{ $item->mat }}</span>
+                             @elseif($item->mat > 75)
+                             <span class="btn btn-success">{{ $item->mat }}</span>
+                             @else
+                             <span class="btn btn-danger">{{ $item->mat }}</span>
+                             @endif</td>
+                             <td>@if ($item->kejurusan < 75)
+                                  <span class="btn btn-warning">{{ $item->kejurusan }}</span>
+                               @elseif($item->kejurusan > 75)
+                               <span class="btn btn-success">{{ $item->kejurusan }}</span>
+                               @else
+                               <span class="btn btn-danger">{{ $item->kejurusan }}</span>
+                               @endif</td>
+                               <td>@if ($item->bing < 75)
+                                <span class="btn btn-warning">{{ $item->bing }}</span>
+                             @elseif($item->bing > 75)
+                             <span class="btn btn-success">{{ $item->bing }}</span>
+                             @else
+                             <span class="btn btn-danger">{{ $item->bing }}</span>
+                             @endif</td>
+                                <td>@if ($item->status == '0')
+                                  <span class="btn btn-danger">Tidak Lulus</span>
+                               @elseif($item->status == '1')
+                               <span class="btn btn-success">Lulus</span>
+                               @else 
+                               <span class="btn btn-primary">Belum Ujian / Drop Out</span>
+                               @endif</td>
+                              
+                          
+                          <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                            action="{{ route('nilai.destroy',$item->id) }}" method="POST">
+                            <a href="{{ route('nilai.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </form></td>
+                          </tr>
+                          @empty   
+                          @endforelse
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-    </section>
-    <!-- /.content -->
-  </div>
+    @extends('nilai.create')
+</div>
+</div>
 @endsection

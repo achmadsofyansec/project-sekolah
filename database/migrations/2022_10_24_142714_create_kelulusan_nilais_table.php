@@ -17,7 +17,7 @@ class CreateKelulusanNilaisTable extends Migration
             Schema::create('kelulusan_nilais', function (Blueprint $table) {
                 $table->id();
                 $table->integer('kode_siswa');
-                $table->string('kode_unjian');
+                $table->string('kode_ujian');
                 $table->integer('bind');
                 $table->integer('bing');
                 $table->integer('mat');
