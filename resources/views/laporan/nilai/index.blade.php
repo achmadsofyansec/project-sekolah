@@ -107,7 +107,7 @@
                                           <input type="hidden" name="type" id="type" value="nilai">
                                           <input type="hidden" name="nama" id="nama" value="harian">
                                           <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
-                                          <a href="#" data-toggle="modal" data-target="#modal-view-harian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                         </form>
                                     </td>
                                       </tr>
@@ -153,7 +153,7 @@
                                         <input type="hidden" name="type" id="type" value="nilai">
                                         <input type="hidden" name="nama" id="nama" value="ujian">
                                         <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
-                                        <a href="#" data-toggle="modal" data-target="#modal-view-ujian" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                       </form>
                                   </td>
                                     </tr>
@@ -199,7 +199,7 @@
                                                 <input type="hidden" name="type" id="type" value="nilai">
                                                 <input type="hidden" name="nama" id="nama" value="prestasi">
                                                 <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
-                                                <a href="#" data-toggle="modal" data-target="#modal-view-prestasi" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                                <a href="#" data-toggle="modal" data-target="#modal-view" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                               </form>
                                           </td>
                                           </tr>
@@ -243,7 +243,7 @@
                                         <input type="hidden" name="type" id="type" value="nilai">
                                         <input type="hidden" name="nama" id="nama" value="rapor">
                                         <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
-                                        <a href="#" data-toggle="modal" data-target="#modal-view-rapor" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                       </form>
                                   </td>
                                     </tr>
@@ -263,7 +263,23 @@
                   </div>
                 </div>
               </div>
-            </div> 
+            </div>
+        @forelse ($harian as $item)
+          @include('laporan.nilai.modal.view')
+        @empty
+        @endforelse
+        @forelse ($ujian as $item)
+          @include('laporan.nilai.modal.view')
+        @empty
+        @endforelse
+        @forelse ($prestasi as $item)
+          @include('laporan.nilai.modal.view_prestasi')
+        @empty
+        @endforelse
+        @forelse ($rapor as $item)
+          @include('laporan.nilai.modal.view')
+        @empty
+        @endforelse
         @endif
     </div>
     </section>

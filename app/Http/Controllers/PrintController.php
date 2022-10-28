@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\akademik_nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -19,7 +20,6 @@ class PrintController extends Controller
         $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
         $name = $tgl.'_Laporan-pdf';
         $isi = "";
-        $where = [];
         $data_isi = "";
        $req = $request;
        if($req->filter_awal != null || $req->filter_akhir != null){
@@ -36,7 +36,13 @@ class PrintController extends Controller
 
         switch($req->nama){
             case "harian":
-
+                $harian = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
+                ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
+                ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
+                ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
+                ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
+                ->where([['type_nilai','=','harian'],['tgl_input','>=',$req->filter_awal],['tgl_input','<=',$req->filter_akhir]])
+                ->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*']);    
             break;
             case "ujian":
 
