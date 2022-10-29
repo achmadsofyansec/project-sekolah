@@ -45,9 +45,9 @@
                   <label>Status Kelulusan</label>
                   <select name="status" id="status" class="form-control">
                     <option value="">--- Pilih Status Kelulusan ---</option>
-                    <option value="1">Lulus</option>
-                    <option value="0">Tidak Lulus</option>
-                    <option value="2">Drop Out</option>
+                    <option value="Lulus">Lulus</option>
+                    <option value="Tidak Lulus">Tidak Lulus</option>
+                    <option value="Drop Out">Drop Out</option>
                   </select>
                 </div>
             </div>

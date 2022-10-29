@@ -106,7 +106,16 @@ class NilaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = KelulusanNilai::findOrFail($id);
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $lulus = KelulusanNilai::join('data_siswas','kelulusan_nilais.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->where([['data_siswas.status_siswa','=','Aktif']])
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+                                            ,'kelulusan_nilais.kode_ujian as kode_kode_ujian'
+                                            ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan']);
+        return view('nilai.edit',compact(['data', 'lulus', 'siswa']));
     }
 
     /**
@@ -118,7 +127,38 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'kode_ujian' => ['required'],
+            'bind' => ['required'],
+            'bing' => ['required'],
+            'mat' => ['required'],
+            'kejurusan' => ['required'],
+            'status' => ['required'],
+        ]);
+        if($validate){
+            $update = KelulusanNilai::findOrFail($id);
+            $update->update([
+                    'kode_ujian' => $request->kode_ujian,
+                    'bind' => $request->bind,
+                    'bing' => $request->bing,
+                    'mat' => $request->mat,
+                    'kejurusan' => $request->kejurusan,
+                    'status' => $request->status,
+            ]);
+            if($update){
+                return redirect()
+                ->route('nilai.index')
+                ->with([
+                    'success' => 'Data Nilai Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
@@ -129,6 +169,20 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = KelulusanNilai::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('nilai.index')
+            ->with([
+                'success' => 'Data Nilai Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }
