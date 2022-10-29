@@ -46,7 +46,7 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $this->validate($request,[
+        $credential = $this->validate($request,[
             'kode_siswa' => ['required'],
             'kode_ujian' => ['required'],
             'bind' => ['required'],
@@ -55,41 +55,35 @@ class NilaiController extends Controller
             'kejurusan' => ['required'],
             'status' => ['required'],
         ]);
-        if($validate){
-            $cek = SarprasPeminjamans::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
-            if(!$cek){
-                $qode = Str::random(6);
-                $length = SarprasPeminjamans::latest()->get()->count();
-                $kode = 'PMJ_'.$qode.$length;
-                $create= SarprasPeminjamans::create([
-                    'kode_peminjaman' => $kode,
-                    'kode_siswa' => $request->kode_siswa,
-                    'kode_ujian' => $request->kode_ujian,
-                    'bind' => $request->bind,
-                    'bing' => $request->bing,
-                    'mat' => $request->mat,
-                    'kejurusan' => $request->kejurusan,
+        if($credential){
+            $create = KelulusanNilai::create([
+            'kode_siswa' => $request->kode_siswa,
+            'kode_ujian' => $request->kode_ujian,
+            'bind' => $request->bind,
+            'bing' => $request->bing,
+            'mat' => $request->mat,
+            'kejurusan' => $request->kejurusan,
+            'status' => $request->status,
+            ]);
+            if($create){
+                return redirect()
+                ->route('nilai.index')
+                ->with([
+                    'success' => 'Data Nilai Has Been Added successfully'
                 ]);
-                if($create){
-                    return redirect()
-                    ->route('peminjaman.index')
-                    ->with([
-                        'success' => 'Peminjman Has Been Added successfully'
-                    ]);
-                }else{
-                    return redirect()
-                    ->back()
-                    ->with([
-                        'error' => 'Some problem has occurred, please try again'
-                    ]);
-                }
             }else{
                 return redirect()
-                    ->route('peminjman.index')
-                    ->with([
-                        'success' => 'Peminjaman Has Been Already Added'
-                    ]);
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
             }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
         }
     }
 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="#modal-tambah-nilai">
+<div class="modal fade" id="modal-tambah-nilai">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -21,22 +21,35 @@
                         @endforelse
                     </select>
                 </div>
-                
                 <div class="form-group">
-                    <input type="hidden" name="status_peminjaman" id="status_peminjaman" class="form-control" value="0">
+                    <label>Nomor Ujian</label>
+                    <input type="text" name="kode_ujian" id="kode_ujian" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Peminjaman</label>
-                    <input type="datetime-local" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control">
+                  <label>Nilai Bahasa Indonesia</label>
+                  <input type="number" name="bind" id="bind" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input type="hidden" name="tgl_pengembalian" id="tgl_pengembalian" class="form-control" value="Belum Dikembalikan">
-                  <input type="hidden" name="penerima" id="penerima" class="form-control" value="Belum Diterima">
-              </div>
+                  <label>Nilai Bahasa Inggris</label>
+                  <input type="number" name="bing" id="bing" class="form-control">
+                </div>
                 <div class="form-group">
-                  <label>Deskripsi Peminjaman</label>
-                  <textarea name="desc_peminjaman" id="desc_peminjaman" class="form-control" cols="30" rows="10"></textarea>
-              </div>
+                  <label>Nilai Matematika</label>
+                  <input type="number" name="mat" id="mat" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Nilai Kejurusan</label>
+                  <input type="number" name="kejurusan" id="kejurusan" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Status Kelulusan</label>
+                  <select name="status" id="status" class="form-control">
+                    <option value="">--- Pilih Status Kelulusan ---</option>
+                    <option value="1">Lulus</option>
+                    <option value="0">Tidak Lulus</option>
+                    <option value="2">Drop Out</option>
+                  </select>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
