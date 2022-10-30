@@ -27,7 +27,9 @@ class PeminjamanDetail extends Controller
     {
         // $data = SarprasPeminjamanDetail::latest()->get();
         $kategori = SarprasKategoriAset::latest()->get();
-        $data = SarprasPeminjamanDetail::join('sarpras_peminjamans.kode_peminjaman', '=', 'sarpras_peminjaman_details.kode_peminjaman')->get();
+        $data = SarprasPeminjamanDetail::join('sarpras_peminjamans.kode_peminjaman', '=', 'sarpras_peminjaman_details.kode_peminjaman')
+        ->jon('data_siswas', 'data_siswas.kode_siswa', '=', 'sarpras_peminjamans.kode_siswa')
+        ->get();
         return view('peminjaman.peminjaman_detail', compact(['data', 'kategori']));
     }
 
@@ -41,18 +43,20 @@ class PeminjamanDetail extends Controller
     {
         $credential = $this->validate($request,[
             'kode_peminjaman' => ['required'],
+            'kode_siswa' => ['required'],
             'unit' => ['required'],
             'jumlah' => ['required'],
         ]);
         if($credential){
             $create = SarprasPeminjamanDetail::create([
                 'kode_peminjaman' => $request->kode_peminjaman,
+                'kode_siswa' => $request->kode_siswa,
                 'unit' => $request->unit,
                 'jumlah' => $request->jumlah,
             ]);
             if($create){
                 return redirect()
-                ->route('peminjaman.index')
+                ->back()
                 ->with([
                     'success' => 'Data Peminjaman Has Been Added successfully'
                 ]);
@@ -112,13 +116,13 @@ class PeminjamanDetail extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode_peminjaman)
     {
-        $data = SarprasPeminjamanDetail::findOrFail($id);
+        $data = SarprasPeminjamanDetail::findOrFail($kode_peminjaman);
         $data->delete();
         if($data){
             return redirect()
-            ->route('peminjaman.index')
+            ->back()
             ->with([
                 'success' => 'peminjaman Has Been Deleted successfully'
             ]);

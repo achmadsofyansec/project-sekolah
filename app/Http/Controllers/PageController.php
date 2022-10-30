@@ -19,8 +19,14 @@ class PageController extends Controller
         $peminjaman = SarprasPeminjamans::latest()->get();
         $pengembalian = SarprasPengembalian::latest()->get();
         $kategori = SarprasDataAset::latest()->get();
+        $data = SarprasPeminjamans::join('data_siswas','sarpras_peminjamans.kode_siswa','=','data_siswas.id')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where([['data_siswas.status_siswa','=','Aktif']])
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+            ,'sarpras_peminjamans.kode_peminjaman as kode_peminjaman'
+            ,'sarpras_peminjamans.*','sarpras_peminjamans.id as id_peminjaman']);
         
-        return view('dashboard', compact(['aset', 'peminjaman', 'pengembalian', 'kategori']));
+        return view('dashboard', compact(['aset', 'peminjaman', 'pengembalian', 'kategori', 'data']));
     }
     public function view_umum(){
         return view('asset_tetap.umum.index');

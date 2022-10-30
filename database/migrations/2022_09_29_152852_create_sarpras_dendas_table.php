@@ -16,7 +16,12 @@ class CreateSarprasDendasTable extends Migration
         if(!Schema::hasTable('sarpras_dendas')) {
             Schema::create('sarpras_dendas', function (Blueprint $table) {
                 $table->id();
-                $table->integer('denda');
+                $table->string('kode_siswa');
+                $table->string('kode_denda');
+                $table->string('unit');
+                $table->string('pelanggaran');
+                $table->string('total_denda');
+                $table->string('status');
                 $table->timestamps();
             });
         } 

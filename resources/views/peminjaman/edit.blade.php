@@ -92,7 +92,7 @@
                     <div class="card-body">
                         <div class="forrm-grup">
                           <label>Nama</label>
-                          <input type="text" name="tgl_peminjaman" id="tgl_peminjaman" class="form-control" value="{{ $data->nama }}" readonly>
+                          <input type="text"  class="form-control" value="{{ $data->nama }}" readonly>
                         </div>
                         <div class="forrm-grup">
                           <label>Kelas</label>
@@ -125,7 +125,7 @@
                                 <td>{{$loop->index +1 }}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->jumlah}}</td>
-                                <td><form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                <td><form onsubmpit="return confirm('Apakah Anda yakin ?')"
                                   action="{{ route('peminjaman-detail.destroy',$item->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')

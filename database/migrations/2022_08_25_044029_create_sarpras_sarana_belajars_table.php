@@ -13,8 +13,8 @@ class CreateSarprasSaranaBelajarsTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('sarpras_lapangans')) {
-            Schema::create('sarpras_lapangans', function (Blueprint $table) {
+        if(!Schema::hasTable('sarpras_sarana_belajars')) {
+            Schema::create('sarpras_sarana_belajars', function (Blueprint $table) {
                 $table->id();
                 $table->string('sarana_pembelajaran');
                 $table->text('deskripsi');

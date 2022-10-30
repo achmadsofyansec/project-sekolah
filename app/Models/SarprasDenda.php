@@ -9,6 +9,11 @@ class SarprasDenda extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'denda'
+        'kode_siswa',
+        'kode_denda',
+        'unit',
+        'pelanggaran',
+        'total_denda',
+        'status',
     ];
 }

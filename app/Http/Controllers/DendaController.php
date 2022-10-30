@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_siswa;
+use App\Models\SarprasDataAset;
 use Illuminate\Http\Request;
 use App\Models\SarprasDenda;
+use Illuminate\Support\Str;
 
 class DendaController extends Controller
 {
@@ -15,7 +18,14 @@ class DendaController extends Controller
     public function index()
     {
         $denda = SarprasDenda::latest()->get();
-        return view('denda.index', compact('denda'));
+        $kategori = SarprasDataAset::latest()->get();
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $data = SarprasDenda::join('data_siswas','sarpras_dendas.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+                                            ,'sarpras_dendas.*','sarpras_dendas.id as id_denda']);
+        return view('denda.index', compact('data', 'kategori', 'siswa'));
     }
 
     /**
@@ -25,7 +35,7 @@ class DendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('denda.create');
     }
 
     /**
@@ -36,7 +46,43 @@ class DendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate($request,[
+            'kode_siswa' => 'required',
+            'unit' => 'required',
+            'pelanggaran' => 'required',
+            'total_denda' => 'required',
+            'status' => 'required',
+        ]);
+        
+        if($validate){
+            $cek = SarprasDenda::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
+            if(!$cek){
+                $qode =  Str::random(6);
+                $length = SarprasDenda::latest()->get()->count();
+                $kode = 'DN_'.$qode.$length;
+                $create= SarprasDenda::create([
+                    'kode_denda' => $kode,
+                    'kode_siswa' => $request->kode_siswa,
+                    'unit' => $request->unit,
+                    'pelanggaran' => $request->pelanggaran,
+                    'total_denda' => $request->total_denda,
+                    'status' => $request->status,
+                ]);
+                if($create){
+                    return redirect()
+                    ->route('denda.index')
+                    ->with([
+                        'success' => 'Denda Has Been Added successfully'
+                    ]);
+                }else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'error' => 'Some problem has occurred, please try again'
+                    ]);
+                }
+            }
+        }
     }
 
     /**
@@ -81,6 +127,20 @@ class DendaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SarprasDenda::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('denda.index')
+            ->with([
+                'success' => 'Data Denda Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

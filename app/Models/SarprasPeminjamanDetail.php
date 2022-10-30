@@ -11,6 +11,7 @@ class SarprasPeminjamanDetail extends Model
     
     protected $fillable = [
         'kode_peminjaman',
+        'kode_siswa',
         'unit',
         'jumlah',
     ];
