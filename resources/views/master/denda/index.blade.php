@@ -64,7 +64,29 @@
                                         }else{
                                           echo "Dikembalikan";
                                         } ?></td>
-                                        <td>{{$tanggal_kembali}}</td>
+                                         @forelse ($denda1 as $item1)
+                                         <td>
+                                           <?php 
+                                             $dendabuku = $item1->tarif_denda;
+                                             $tgl_sekarang = date("Y-m-d");
+                                             $tgl_kembali = $tanggal_kembali;
+                                             $sel1 = explode('-',$tgl_kembali);
+                                             $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
+                                             $sel2 = explode('-',$tgl_sekarang);
+                                             $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
+                                             $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
+                                             $selisih = $selisih/86400;
+                                             if($selisih <= 0){
+                                               echo "Tidak Ada";
+                                             }else{
+                                               $data123 = $dendabuku * $selisih;
+                                               
+                                             echo $selisih." hari (Rp.".number_format($data123).")";
+                                           }
+                                            ?>
+                                           @empty
+                                           @endforelse
+                                           </td>
                                         <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
                                             <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>

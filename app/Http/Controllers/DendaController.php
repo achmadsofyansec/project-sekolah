@@ -16,13 +16,14 @@ class DendaController extends Controller
      */
     public function index()
     {
-        $item = DB::table('perpustakaan_peminjaman_buku_dts')->get('tanggal_pinjam');
-        $item1 = DB::table('perpustakaan_peminjaman_buku_dts')->get('durasi');
-        $tanggal_kembali = date("Y-m-d");
+        $hari_ini = date('Y-m-d'); 
         $denda = DB::table('perpustakaan_peminjaman_buku_dts')
                 ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
-                ->join('perpustakaan_data_bukus','perpustakaan_data_bukus.kode_buku','=','perpustakaan_peminjaman_buku_dts.kode_buku')->get();
-        return view('master.denda.index',compact('denda','tanggal_kembali'));
+                ->join('perpustakaan_data_bukus','perpustakaan_data_bukus.kode_buku','=','perpustakaan_peminjaman_buku_dts.kode_buku')
+                ->where('tanggal_pinjam','<',$hari_ini)
+                ->get();
+        $denda1 = DB::table('perpustakaan_dendas')->get();
+        return view('master.denda.index',compact('denda','denda1'));
     }
 
     /**
