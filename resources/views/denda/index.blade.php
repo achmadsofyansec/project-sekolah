@@ -61,12 +61,12 @@
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->pelanggaran}}</td>
                                 <td>Rp. {{$item->total_denda}}</td>
-                                <td>@if ($item->status == '0')
+                                <td>@if ($item->status == 'Lunas')
                                   <span class="btn btn-success">Lunas</span>
-                               @elseif($item->status == '1')
+                               @elseif($item->status == 'Belum Lunas')
                                <span class="btn btn-danger">Belum Lunas</span>
                                @else 
-                               <span class="btn btn-danger">Hilang</span>
+                               <span class="btn btn-danger">Tidak Ada Data</span>
                                @endif</td>
                               
                           

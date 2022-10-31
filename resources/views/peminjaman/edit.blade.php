@@ -68,7 +68,7 @@
                       </div>
                         <div class="forrm-grup">
                           <label>Penerima</label>
-                          <input type="text" name="penerima" id="penerima" class="form-control" value="{{ $data->penerima }}">
+                          <input type="text" name="penerima" id="penerima" class="form-control" value="<?php echo strtoupper(auth()->user()->name);?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Peminjaman</label>

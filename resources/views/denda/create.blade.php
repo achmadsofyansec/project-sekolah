@@ -43,8 +43,8 @@
             <label>Status</label>
             <select name="status" id="stautus" class="form-control">
               <option value="">--- Status ---</option>
-              <option value="0">Lunas</option>
-              <option value="1">Belum Lunas</option>
+              <option value="Lunas">Lunas</option>
+              <option value="Belum Lunas">Belum Lunas</option>
             </select>
         </div>
           </div>

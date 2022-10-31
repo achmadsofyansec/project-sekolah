@@ -104,7 +104,15 @@ class DendaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SarprasDenda::findOrFail($id);
+        $kategori = SarprasDataAset::latest()->get();
+        $siswa = data_siswa::join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*']);
+        $denda= SarprasDenda::join('data_siswas','sarpras_dendas.kode_siswa','=','data_siswas.id')
+                                        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                                        ->get(['data_siswas.*','data_siswas.id as id_siswa','aktivitas_belajars.*'
+                                            ,'sarpras_dendas.*','sarpras_dendas.id as id_denda']);
+        return view('denda.edit', compact('data', 'kategori', 'siswa', 'denda'));
     }
 
     /**
@@ -116,7 +124,34 @@ class DendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'unit' => 'required',
+            'pelanggaran' => 'required',
+            'total_denda' => 'required',
+            'status' => 'required',
+        ]);
+        if($validate){
+            $update = SarprasDenda::findOrFail($id);
+            $update->update([
+                'unit' => $request->unit,
+                'pelanggaran' => $request->pelanggaran,
+                'total_denda' => $request->total_denda,
+                'status' => $request->status,
+            ]);
+            if($update){
+                return redirect()
+                ->route('denda.index')
+                ->with([
+                    'success' => 'Denda Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
