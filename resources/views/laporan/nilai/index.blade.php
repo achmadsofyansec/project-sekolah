@@ -106,6 +106,7 @@
                                           <input type="hidden" name="kode_jurusan" id="filter_akhir" value="{{$item->kode_jurusan}}" >
                                           <input type="hidden" name="type" id="type" value="nilai">
                                           <input type="hidden" name="nama" id="nama" value="harian">
+                                        <input type="hidden" name="id_nilai" id="id_nilai" value="{{$item->id_nilai}}">
                                           <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
                                         <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                         </form>
@@ -152,6 +153,7 @@
                                         <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$item->kode_jurusan}}" >
                                         <input type="hidden" name="type" id="type" value="nilai">
                                         <input type="hidden" name="nama" id="nama" value="ujian">
+                                        <input type="hidden" name="id_nilai" id="id_nilai" value="{{$item->id_nilai}}">
                                         <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
                                         <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                       </form>
@@ -242,6 +244,7 @@
                                         <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$item->kode_jurusan}}" >
                                         <input type="hidden" name="type" id="type" value="nilai">
                                         <input type="hidden" name="nama" id="nama" value="rapor">
+                                        <input type="hidden" name="id_nilai" id="id_nilai" value="{{$item->id_nilai}}">
                                         <button type="submit" class="btn-sm btn-primary"><i class="fas fa-print"></i></button>
                                         <a href="#" data-toggle="modal" data-target="#modal-view-{{$item->id_nilai}}" class="btn-sm btn-light"><i class="fas fa-eye"></i></a>
                                       </form>

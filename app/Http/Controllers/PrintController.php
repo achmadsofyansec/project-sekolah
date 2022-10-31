@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\akademik_nilai;
+use App\Models\akademik_nilai_details;
+use App\Models\akademik_nilai_prestasi;
+use App\Models\data_siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
+use PHPUnit\Framework\Constraint\Count;
 
 class PrintController extends Controller
 {
@@ -36,18 +40,72 @@ class PrintController extends Controller
 
         switch($req->nama){
             case "harian":
-                $harian = akademik_nilai::join('kelas','akademik_nilais.kode_kelas','=','kelas.kode_kelas')
-                ->join('jurusans','akademik_nilais.kode_jurusan','=','jurusans.kode_jurusan')
-                ->join('mata_pelajarans','akademik_nilais.kode_mapel','=','mata_pelajarans.kode_mapel')
-                ->join('akademik_kategori_nilais','akademik_nilais.kode_kategori','=','akademik_kategori_nilais.id')
-                ->join('tahun_ajarans','akademik_nilais.kode_tahun_ajaran','=','tahun_ajarans.kode_tahun_ajaran')
-                ->where([['type_nilai','=','harian'],['tgl_input','>=',$req->filter_awal],['tgl_input','<=',$req->filter_akhir]])
-                ->get(['akademik_nilais.*','akademik_nilais.id as id_nilai','kelas.*','jurusans.*','tahun_ajarans.*','mata_pelajarans.*','akademik_kategori_nilais.id as id_kategori_nilai','akademik_kategori_nilais.*']);    
-            break;
             case "ujian":
-
-            break;
             case "rapor":
+                $data_isi = akademik_nilai_details::join('data_siswas','akademik_nilai_details.kode_siswa','=','data_siswas.id')
+                                                    ->join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa')
+                                                    ->where([['akademik_nilai_details.kode_nilai','=',$req->id_nilai]])
+                                                    ->get(['akademik_nilai_details.*','data_siswas.*','aktivitas_belajars.*']);
+                $isi .= '<table border="1" align="center" width="100%"><thead>
+                            <th style="width:5%">No</th>
+                            <th style="width: 20%;">NISN</th>
+                            <th style="width: 55%;">Nama</th>
+                            <th>Nilai</th>
+                            </thead>
+                        <tbody>';
+                $no = 1;
+                if(count($data_isi) > 0){
+                    foreach ($data_isi as $item) {
+                   
+                        $isi .= '<tr>
+                            <td>'.$no++.'</td>
+                            <td>'.$item->nisn.'</td>
+                            <td>'.$item->nama.'</td>
+                            <td>'.$item->nilai.'</td>
+                        </tr>';
+                    }   
+                }else{
+                    $isi .= '<tr>
+                            <td colspan="4" class="text-center text-muted">Tidak Ada Data</td>
+                            </tr>';
+                }
+                $isi .= '</tbody></table>';
+            break;
+            case "prestasi":
+                $data_isi = akademik_nilai_prestasi::join('data_siswas','akademik_nilai_prestasis.kode_siswa','=','data_siswas.id')
+                ->where([['akademik_nilai_prestasis.created_at','>=',$req->filter_awal." 00:00:00"],['akademik_nilai_prestasis.created_at','<=',$req->filter_akhir." 00:00:00"]])
+                ->get(['akademik_nilai_prestasis.id as id_prestasi','akademik_nilai_prestasis.*','data_siswas.*']);
+                $isi .= '<table border="1" align="center" width="100%"> <thead>
+                            <th>No</th>
+                            <th>NISN</th>
+                            <th>Nama</th>
+                            <th>Lomba</th>
+                            <th>Tahun</th>
+                            <th>Penyelenggara</th>
+                            <th>Tingkat</th>
+                            <th>Peringkat Yang Diraih</th>
+                        </thead>
+                        <tbody>';
+                $no = 1;
+                if(count($data_isi) > 0){
+                    foreach ($data_isi as $item) {
+                        $isi .= '<tr>
+                            <td>'.$no++.'</td>
+                            <td>'.$item->nisn.'</td>
+                            <td>'.$item->nama.'</td>
+                            <td>'.$item->nama_lomba.'</td>
+                            <td>'.$item->tahun_lomba.'</td>
+                            <td>'.$item->nama_penyelenggara.'</td>
+                            <td>'.$item->tingkat_lomba.'</td>
+                            <td>'.$item->peringkat_lomba.'</td>
+                        </tr>';
+                    }   
+                }else{
+                    $isi .= '<tr>
+                            <td colspan="8" class="text-center text-muted">Tidak Ada Data</td>
+                            </tr>';
+                }
+                $isi .= '</tbody></table>';
             break;
         }
 
