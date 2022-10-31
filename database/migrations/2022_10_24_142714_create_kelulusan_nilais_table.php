@@ -9,7 +9,7 @@ class CreateKelulusanNilaisTable extends Migration
     /**
      * Run the migrations.
      *
-     * p
+    * p
      * @return void
      */
     public function up()
@@ -23,7 +23,7 @@ class CreateKelulusanNilaisTable extends Migration
                 $table->integer('bing');
                 $table->integer('mat');
                 $table->integer('kejurusan');
-                $table->integer('status');
+                $table->string('status');
                 $table->timestamps();
             });
         } 

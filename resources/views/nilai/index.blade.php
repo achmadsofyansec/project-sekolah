@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Data Niali')
+@section('page', 'Data Nilai')
 @section('content-app')
 <div class="content-wrapper">
 <div class="content-header">
@@ -89,9 +89,9 @@
                              @else
                              <span class="btn btn-danger">{{ $item->bing }}</span>
                              @endif</td>
-                                <td>@if ($item->status == '0')
+                                <td>@if ($item->status == 'Tidak Lulus')
                                   <span class="btn btn-danger">Tidak Lulus</span>
-                               @elseif($item->status == '1')
+                               @elseif($item->status == 'Lulus')
                                <span class="btn btn-success">Lulus</span>
                                @else 
                                <span class="btn btn-primary">Belum Ujian / Drop Out</span>
