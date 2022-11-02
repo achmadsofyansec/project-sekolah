@@ -23,7 +23,6 @@ class AuthSignIn
         $user = DB::table('users')->join('roles','users.id_role','=','roles.id')->select('*')->where('roles.roles_access','=',$role)->get();
         if($user){
             return $next($request);
-            
         }
         
        return redirect('login')->with('error',"Username Or Password Not Correct");

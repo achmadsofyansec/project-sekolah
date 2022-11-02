@@ -32,7 +32,7 @@
                                     <tbody>
                                       @foreach ($data as $item)
                                           <tr>
-                                            <td>{{$item->count()}}</td>
+                                            <td>{{$loop->index + 1}}</td>
                                             <td>{{$item->roles_name}}</td>
                                           </tr>
                                       @endforeach
