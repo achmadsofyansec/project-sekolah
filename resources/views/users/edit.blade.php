@@ -47,7 +47,7 @@
                                     <select name="id_role" id="id_role" class="form-control">
                                         <option value="">Pilih Jabatan</option>
                                         @forelse ($jabatan as $item)
-                                            <option value="{{$item->id}}" @if ($item->id == $data->id_role)
+                                            <option value="{{$item->id_roles}}" @if ($item->id_roles == $data->id_role)
                                                 {{ 'selected' }}
                                             @endif>{{$item->roles_name}}</option>
                                         @empty

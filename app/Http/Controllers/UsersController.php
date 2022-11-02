@@ -17,14 +17,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-       $data = DB::table('users')->join('roles','users.id_role','=','roles.id')->select(['users.*','roles.*','users.id as userid'])->get();
-       return view('users.index',compact('data'));
+       $data = DB::table('users')->join('roles','users.id_role','=','roles.id_roles')->select(['users.*','roles.*','users.id as userid'])->get();
+       $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+       return view('users.index',compact(['data','roles']));
     }
 
     public function create()
     {
         $data = Role::latest()->get();
-        return view('users.create',compact('data'));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('users.create',compact(['data','roles']));
 
     }
 
@@ -84,7 +86,8 @@ class UsersController extends Controller
     {
         $data = User::findOrFail($id);
         $jabatan = Role::latest()->get();
-        return view('users.edit',compact(['data','jabatan']));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('users.edit',compact(['data','jabatan','roles']));
     }
 
     /**

@@ -46,7 +46,7 @@
                                     <select name="id_role" id="id_role" class="form-control" required>
                                         <option value="">Pilih Jabatan</option>
                                         @forelse ($data as $item)
-                                            <option value="{{$item->id}}">{{$item->roles_name}}</option>
+                                            <option value="{{$item->id_roles}}">{{$item->roles_name}}</option>
                                         @empty
                                             
                                         @endforelse

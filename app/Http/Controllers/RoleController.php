@@ -15,7 +15,8 @@ class RoleController extends Controller
     public function index()
     {
         $data = Role::latest()->get();
-        return view('jabatan.index',compact('data'));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('jabatan.index',compact(['data','roles']));
         //
     }
 

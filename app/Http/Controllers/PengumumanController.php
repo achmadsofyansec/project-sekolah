@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notif;
+use App\Models\Role;
 use App\Models\Upload;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class PengumumanController extends Controller
     public function index()
     {
         $data = Notif::latest()->get();
-        return view('pengumuman.index',compact('data'));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('pengumuman.index',compact(['data','roles']));
         //
     }
 
@@ -27,7 +29,8 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('pengumuman.create');
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('pengumuman.create',compact(['roles']));
         //
     }
 
@@ -94,7 +97,8 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         $data = Notif::findOrFail($id);
-        return view('pengumuman.edit',compact('data'));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('pengumuman.edit',compact(['data','roles']));
         //
     }
 

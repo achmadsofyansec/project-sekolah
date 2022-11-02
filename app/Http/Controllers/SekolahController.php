@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class SekolahController extends Controller
         $kecamatan = DB::table('kecamatan')->select(['kecamatan.*'])->get();
         $kelurahan = DB::table('kelurahan')->select(['kelurahan.*'])->get();
         $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
-        return view('sekolah.index',compact(['data','kecamatan','kelurahan','img']));
+        $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
+        return view('sekolah.index',compact(['data','kecamatan','kelurahan','img','roles']));
     }
 
     /**
