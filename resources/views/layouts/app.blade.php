@@ -142,6 +142,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">Portal</li>
+          <li class="nav-item">
+            <a href="<?php echo url('/portals') ?>" class="nav-link">
+              <i class="nav-icon fas fa-school text-primary"></i>
+              <p>
+               Portal
+              </p>
+            </a>
+          </li>
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user text-success"></i>
@@ -167,7 +176,7 @@
               </p>
             </a>
           </li> -->
-          <li class="nav-header">Pengaturan</li>
+          {{-- <li class="nav-header">Pengaturan</li>
           <li class="nav-item">
             <a href="<?php echo url('/pengumuman') ?>" class="nav-link">
               <i class="nav-icon far fa-clipboard text-danger"></i>
@@ -185,7 +194,7 @@
               <i class="nav-icon fas fa-cube text-info"></i>
               <p>Singkronisasi</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
