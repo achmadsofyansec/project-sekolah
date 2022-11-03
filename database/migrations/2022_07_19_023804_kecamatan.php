@@ -13,13 +13,16 @@ class Kecamatan extends Migration
      */
     public function up()
     {
-        Schema::create('kecamatan', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kecamatan');
-            $table->string('nama_kecamatan');
-            $table->string('ket_kecamatan');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('kecamatan')){
+            Schema::create('kecamatan', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode_kecamatan');
+                $table->string('nama_kecamatan');
+                $table->string('ket_kecamatan');
+                $table->timestamps();
+            });
+        }
+       
         //
     }
 

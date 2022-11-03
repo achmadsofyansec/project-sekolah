@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Kelurahan extends Migration
+class CreateHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class Kelurahan extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('kelurahan')){
-            Schema::create('kelurahan', function (Blueprint $table) {
+        if(!Schema::hasTable('histories')){
+            Schema::create('histories', function (Blueprint $table) {
                 $table->id();
-                $table->string('kode_kelurahan');
-                $table->string('kode_kecamatan');
-                $table->string('nama_kelurahan');
+                $table->string('IP');
+                $table->string('user');
+                $table->string('activity');
                 $table->timestamps();
             });
         }
-      
-        //
+        
     }
 
     /**
@@ -33,7 +32,6 @@ class Kelurahan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelurahan');
-        //
+        Schema::dropIfExists('histories');
     }
 }

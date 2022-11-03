@@ -13,14 +13,17 @@ class CreateNotifsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifs', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_pengumuman');
-            $table->string('isi_pengumuman');
-            $table->string('file_pengumuman');
-            $table->string('status_pengumuman');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('notifs')){
+            Schema::create('notifs', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_pengumuman');
+                $table->string('isi_pengumuman');
+                $table->string('file_pengumuman');
+                $table->string('status_pengumuman');
+                $table->timestamps();
+            });
+        }
+       
     }
 
     /**

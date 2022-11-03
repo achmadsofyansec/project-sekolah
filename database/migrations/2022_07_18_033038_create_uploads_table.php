@@ -13,12 +13,15 @@ class CreateUploadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uploads', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('path');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('uploads')){
+            Schema::create('uploads', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('path');
+                $table->timestamps();
+            });
+        }
+      
     }
 
     /**
