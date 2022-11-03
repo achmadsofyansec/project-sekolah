@@ -15,11 +15,10 @@ class CreatePengaturansTable extends Migration
     {
         Schema::create('pengaturans', function (Blueprint $table) {
             $table->id();
-            $table->string('banner');
-            $table->timestamp('pengumuman');
-            $table->integer('tahun');
-            $table->string('info_kelulusan');
-            $table->string('info_lainya');
+            $table->string('nama_sekolah');
+            $table->string('tahun_ajaran');
+            $table->string('deskripsi');
+
             $table->timestamps();
         });
     }

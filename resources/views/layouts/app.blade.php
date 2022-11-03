@@ -144,7 +144,7 @@
           </li>
           <li class="nav-header">Portal</li>
           <li class="nav-item">
-            <a href="<?php echo url('/portals') ?>" class="nav-link">
+            <a href="<?php echo url('/portal') ?>" class="nav-link">
               <i class="nav-icon fas fa-school text-primary"></i>
               <p>
                Portal

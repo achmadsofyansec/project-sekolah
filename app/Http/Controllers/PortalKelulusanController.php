@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengaturan;
 use Illuminate\Http\Request;
 
 class PortalKelulusanController extends Controller
@@ -14,7 +15,8 @@ class PortalKelulusanController extends Controller
      */
     public function index()
     {
-        return view('portal.main.index');
+        $lulus = Pengaturan::latest()->get();
+        return view('portal.main.index', compact('lulus'));
     }
 
     /**
