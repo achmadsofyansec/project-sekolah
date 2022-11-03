@@ -15,8 +15,9 @@
                       {{ session('success') }}
                   </div>
                   @endif
-                       <div class="card-header" >
-                       </div>
+                  <form action="{{url('/portal/tambah')}}" method="POST" >
+                    @csrf
+                  <div class="row">
                         <div class="col-md-8 mt-1">
                             <div class="card card-outline card-navy">
                                 <div class="card-header">
@@ -45,11 +46,41 @@
                                           <input type="text" name="no_telp" id="no_telp" placeholder="Masukkan No Telepon" class="form-control" required>
                                         </div>
                                       </div>
-                                        <a type="button" href="{{route('tamu.create')}}" class="btn col-12" style="background-color: #df4231; color:white;"><i class="fas fa-plus"></i> Tambah</a>
-                                
+                                        <button class="btn col-12" id="submit" name="submit" style="background-color: #df4231; color:white;"><i class="fas fa-plus"></i> Tambah</button>
                                 </div>
                         </div>
                     </div>
+                    <div class="col-md-4 mt-1">
+                      <div class="card card-outline card-navy">
+                          <div class="card-header">
+                              <center><h1 class="m-0" style="color:#df4231;"><br>AGENDA ACARA</h1> </center>
+                              <center style="color: grey">------------------------------</center>
+                              <div class="card-body">
+                                <div class="row">
+                                  @forelse ($agenda as $item)
+                                  <div class="col-md-6">
+                                    <label>Tanggal Mulai</label>
+                                    <input type="date" name="tgl_mulai" id="tgl_mulai" style="text-align: center;" value="{{$item->tgl_mulai_agenda}}"  class="form-control " readonly>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label>Tanggal Selesai</label>
+                                    <input type="date" name="tgl_akhir" id="tgl_akhir" style="text-align: center;"  value="{{$item->tgl_selesai_agenda}}"  class="form-control " readonly>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>Nama Acara</label>
+                                    <input type="textarea" name="acara" id="acara" value="{{$item->nama_agenda}}"  class="form-control " readonly>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>Deskripsi</label>
+                                    <input type="textarea" name="desc" id="desc" value="{{$item->desc_agenda}}"  class="form-control " readonly>
+                                    <hr size="10px" />
+                                  </div>
+                                  @empty
+                                  @endforelse
+                                </div>
+                                
+                          </div>
+                  </div>
                 </div>
             </div>
     <!-- /.content -->

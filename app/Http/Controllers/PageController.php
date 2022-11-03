@@ -19,7 +19,41 @@ class PageController extends Controller
         return view('dashboard',compact(['agenda','tamu']));
     }
     public function view_portal(){
-        return view('tamu.portal_tamu.index');
+        $agenda = BukuTamu_agenda::latest()->limit(3)->get();
+        return view('tamu.portal_tamu.index',compact(['agenda']));
+    }
+    public function store_portal(Request $request ){
+        //
+          //
+          $validate = $this->validate($request,[
+            'nama_tamu'=> ['required'],
+            'asal_tamu'=> ['required'],
+            'alamat_tamu'=> ['required'],
+            'keperluan'=> ['required'],
+            'no_telp'=> ['required'],
+        ]);
+        if($validate){
+            $create = BukuTamu_tamu::create([
+                'nama_tamu'=> $request->nama_tamu,
+                'asal_tamu'=> $request->asal_tamu,
+                'alamat_tamu'=> $request->alamat_tamu,
+                'keperluan'=> $request->keperluan,
+                'no_telp'=> $request->no_telp,
+            ]);
+            if($create){
+                return redirect()
+                ->back()
+                ->with([
+                    'success' => 'Tamu Has Been Added successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
     public function view_book(){
         return view('manual_book.index');
