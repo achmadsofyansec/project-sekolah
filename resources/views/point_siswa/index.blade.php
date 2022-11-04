@@ -40,24 +40,24 @@
                         Filter Point
                       </div>
                     </div>
-                  <form action="{{route('absensi.index')}}" method="GET">
+                  <form action="{{route('point_siswa.index')}}" method="GET">
                       <div class="card-body">
                           <div class="form-group">
                             <label >Kelas</label>
-                            <select name="filter_absensi_kelas" id="filter_absensi_kelas" class="form-control" style="width: 100%;">
+                            <select name="filter_poin_kelas" id="filter_poin_kelas" class="form-control" style="width: 100%;">
                               <option value="">-- Semua Kelas -- </option>
                               @forelse ($kelas as $item)
-                            <option value="{{$item->kode_kelas}}" @if($req->filter_absensi_kelas != null && $req->filter_absensi_kelas == $item->kode_kelas){{'selected'}} @endif>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
+                            <option value="{{$item->kode_kelas}}" @if($req->filter_poin_kelas != null && $req->filter_poin_kelas == $item->kode_kelas){{'selected'}} @endif>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
                             @empty
                               @endforelse
                             </select>
                           </div>
                           <div class="form-group">
                             <label >Jurusan</label>
-                            <select name="filter_absensi_jurusan" id="filter_absensi_jurusan" class="form-control" style="width: 100%;">
+                            <select name="filter_poin_jurusan" id="filter_poin_jurusan" class="form-control" style="width: 100%;">
                             <option value="">-- Semua Jurusan -- </option>
                               @forelse ($jurusan as $item)
-                            <option value="{{$item->kode_jurusan}}" @if($req->filter_absensi_jurusan != null && $req->filter_absensi_jurusan == $item->kode_jurusan){{'selected'}} @endif>{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
+                            <option value="{{$item->kode_jurusan}}" @if($req->filter_poin_jurusan != null && $req->filter_poin_jurusan == $item->kode_jurusan){{'selected'}} @endif>{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
                             @empty
                               @endforelse
                             </select>
@@ -73,7 +73,7 @@
                   <div class="card card-outline card-info">
                     <div class="card-header">
                       <div class="card-title">
-                        Data Absensi
+                        Data Point
                       </div>
                     </div>
                     <div class="card-body">
@@ -84,9 +84,9 @@
                                      <th>Nama</th>
                                      <th>Kelas</th>
                                      <th>Jurusan</th>
-                                     <th>Absensi</th>
+                                     <th>Point</th>
                                  </thead>
-                                 <tbody id="content-absensi">
+                                 <tbody id="content-poin">
                                    @if ($data != null || $data != "")
                                        {!!$data!!}
                                    @else

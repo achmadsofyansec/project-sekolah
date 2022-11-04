@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jurusan;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class PoinSiswaController extends Controller
@@ -14,6 +16,14 @@ class PoinSiswaController extends Controller
     public function index(Request $request)
     {
         //
+        $jurusan = jurusan::latest()->get();
+        $kelas = Kelas::latest()->get();
+        $req = $request;
+        $data = "";
+        if($req != null){
+
+        }
+        return view('point_siswa.index',compact(['jurusan','kelas','req','data']));
     }
 
     /**

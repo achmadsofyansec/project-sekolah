@@ -5,6 +5,7 @@ use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\PoinPelanggaranController;
+use App\Http\Controllers\PoinSiswaController;
 use App\Http\Controllers\SanksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('barang_sitaan',BarangSitaanController::class);
         //Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
         //LAIN LAIN
-        Route::get('point_siswa',[PageController::class,'view_point_siswa'])->name('point_siswa');
+        Route::resource('point_siswa',PoinSiswaController::class);
         Route::get('/lap_pelanggaran',[PageController::class,'view_lap_pelanggaran'])->name('lap_pelanggaran');
         Route::get('/lap_kehadiran',[PageController::class,'view_lap_kehadiran'])->name('lap_kehadiran');
         //Route::get('/lap_peminjaman',[PageController::class,'view_lap_peminjaman'])->name('lap_peminjaman');
