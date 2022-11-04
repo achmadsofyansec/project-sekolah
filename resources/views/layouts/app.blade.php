@@ -164,6 +164,7 @@
               </p>
             </a>
           </li>
+          <!--
           <li class="nav-item">
             <a href="<?php echo url('/peminjaman') ?>" class="nav-link">
               <i class="nav-icon fas fa-people-carry text-navy"></i>
@@ -172,6 +173,7 @@
               </p>
             </a>
           </li>
+        -->
           <li class="nav-header">Lain Lain</li>
           <li class="nav-item">
             <a href="<?php echo url('/point_siswa') ?>" class="nav-link">
@@ -202,12 +204,14 @@
                   <p>Kehadiran</p>
                 </a>
               </li>
+              <!--
               <li class="nav-item">
                 <a href="<?php echo url('/lap_peminjaman') ?>" class="nav-link">
                   <i class="fas fa-people-carry nav-icon text-navy"></i>
                   <p>Peminjaman</p>
                 </a>
               </li>
+            -->
               <li class="nav-item">
                 <a href="<?php echo url('/lap_sitaan') ?>" class="nav-link">
                   <i class="fas fa-box-open nav-icon text-navy"></i>
