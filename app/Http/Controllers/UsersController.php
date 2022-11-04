@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,11 @@ class UsersController extends Controller
                 'id_role' => $request->id_role,
             ]);
             if($create){
+                History::create([
+                    'IP' => $request->ip(),
+                    'user' => auth()->user()->id,
+                    'activity' =>"Create User: ".$request->name,
+                ]);
                 return redirect()
                     ->route('user.index')
                     ->with([
@@ -123,6 +129,11 @@ class UsersController extends Controller
             $update = User::findOrFail($id);
             $update->update($data);
             if($update){
+                History::create([
+                    'IP' => $request->ip(),
+                    'user' => auth()->user()->id,
+                    'activity' =>"Update User: ".$request->name,
+                ]);
                 return redirect()
                     ->route('user.index')
                     ->with([

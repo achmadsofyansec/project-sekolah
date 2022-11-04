@@ -229,5 +229,6 @@ $(document).ready( function () {
     });
 } );
     </script>
+    @yield('content-script')
 </body>
 </html>

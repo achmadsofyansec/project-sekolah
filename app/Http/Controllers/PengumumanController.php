@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Notif;
 use App\Models\Role;
 use App\Models\Upload;
@@ -61,6 +62,11 @@ class PengumumanController extends Controller
                 Upload::create([
                     'name' => $name,
                     'path' => public_path('uploads')."/".$name
+                ]);
+                History::create([
+                    'IP' => $request->ip(),
+                    'user' => auth()->user()->id,
+                    'activity' =>"Create Pengumuman :".$request->nama_pengumuman,
                 ]);
                 return redirect()
                 ->route('pengumuman.index')
@@ -141,6 +147,11 @@ class PengumumanController extends Controller
             }
             $update->update($data);
             if($update){
+                History::create([
+                    'IP' => $request->ip(),
+                    'user' => auth()->user()->id,
+                    'activity' =>"Update Pengumuman :".$request->nama_pengumuman,
+                ]);
                 return redirect()
                 ->route('pengumuman.index')
                 ->with([

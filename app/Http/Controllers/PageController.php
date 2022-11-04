@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\History;
+use App\Models\Notif;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,8 +18,10 @@ class PageController extends Controller
             default:
                     $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
                     $users = User::join('roles','users.id_role','=','roles.id_roles')->get(['users.id as id_users','users.*','roles.*']);
-                    $history = History::join('users','histories.user','=','users.id')->where([['histories.created_at','>=',date('Y-m-d').' 00:00:00'],['histories.created_at','>=',date('Y-m-d').' 23:59:59']])->get(['histories.id as id_history','users.*','histories.*']);
-                    return view('dashboard',compact(['roles','users','history']));
+                    $history = History::join('users','histories.user','=','users.id')->where([['histories.created_at','>=',date('Y-m-d').' 00:00:00'],['histories.created_at','<=',date('Y-m-d').' 23:59:59']])->get(['histories.id as id_history','users.*','histories.*']);
+                    $jabatan = Role::latest()->get();
+                    $pengumuman = Notif::latest()->get();
+                    return view('dashboard',compact(['roles','users','history','jabatan','pengumuman']));
             break;
             case "2":
                 return redirect("../akademik");

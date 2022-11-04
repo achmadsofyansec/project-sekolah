@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -138,6 +139,11 @@ class SekolahController extends Controller
          }
          $update = DB::table('sekolahs')->where('sekolahs.id','=',$id)->update($data);
          if($update){
+            History::create([
+                'IP' => $request->ip(),
+                'user' => auth()->user()->id,
+                'activity' =>"Update Data Sekolah",
+            ]);
             return redirect()
             ->route('sekolah.index')
             ->with([

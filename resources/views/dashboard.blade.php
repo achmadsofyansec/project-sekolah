@@ -141,7 +141,7 @@
                       <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
                       <div class="info-box-content">
                         <span class="info-box-text text-pink" ><b>BUKU TAMU</b></span>
-                        <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi.1.0</font>
+                        <font size="1" style="text-shadow: 2px 2px 4px #827e7e">App Versi Beta</font>
                       </div>
                     </div></a>
                     <!-- /.info-box -->
@@ -179,11 +179,16 @@
               <div class="card card-outline card-success">
                 <div class="card-header">
                   <h1 class="card-title">
-                    Grafik Data User
+                    Data Sistem Sekolah
                   </h1>
                 </div>
                 <div class="card-body">
-
+                  <div class="d-md-flex">
+                    <div class="p-1 flex-fill" style="overflow: hidden">
+                      <canvas id="data-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
+                      </canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -223,4 +228,35 @@
     </div>
     <!-- /.content -->
   </div>
+@endsection
+
+@section('content-script')
+<script>
+  $(document).ready(function(){
+    var donutChartCanvas = $('#data-chart').get(0).getContext('2d')
+  var donutData        = {
+  labels: [
+      'User',
+      'Jabatan',
+      'Pengumuman'
+  ],
+  datasets: [
+    {
+      data: [{{$users->count()}},{{$jabatan->count()}},{{$pengumuman->count()}}],
+      backgroundColor : ['#28a745', '#ffc107', '#dc3545'],
+      }
+    ]
+  }
+  var donutOptions     = {
+  maintainAspectRatio : false,
+  responsive : true,
+  }
+
+  new Chart(donutChartCanvas, {
+    type: 'doughnut',
+    data: donutData,
+    options: donutOptions
+    });
+  });
+</script>
 @endsection

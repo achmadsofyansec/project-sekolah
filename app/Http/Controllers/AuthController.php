@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,13 @@ class AuthController extends Controller
        ]);
        if(Auth::attempt($credential)){
             $request->session()->regenerate();
-            return redirect()->intended('/');   
+            History::create([
+                'IP' => $request->ip(),
+                'user' => auth()->user()->id,
+                'activity' =>"Sign In",
+            ]);
+            return redirect()->intended('/');
+            
        }
        
        return redirect('login')->with('error',"Email Or Password Incorrect")->onlyInput('email');
