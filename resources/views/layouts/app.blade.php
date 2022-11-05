@@ -198,13 +198,14 @@
                   <p>Pelanggaran</p>
                 </a>
               </li>
+              <!--
               <li class="nav-item">
                 <a href="<?php echo url('/lap_kehadiran') ?>" class="nav-link">
                   <i class="fas fa-calendar-check nav-icon text-navy"></i>
                   <p>Kehadiran</p>
                 </a>
               </li>
-              <!--
+              
               <li class="nav-item">
                 <a href="<?php echo url('/lap_peminjaman') ?>" class="nav-link">
                   <i class="fas fa-people-carry nav-icon text-navy"></i>

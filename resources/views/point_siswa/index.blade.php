@@ -34,7 +34,7 @@
               @endif
               <div class="row">
                 <div class="col-md-4">
-                  <div class="card card-outline card-info">
+                  <div class="card card-outline card-navy">
                     <div class="card-header">
                       <div class="card-title">
                         Filter Point
@@ -64,13 +64,13 @@
                           </div>
                       </div>
                       <div class="card-footer">
-                        <input type="submit" class="btn btn-info" value="Cari">
+                        <input type="submit" class="btn btn-primary" value="Cari">
                       </div>
                     </form>
                   </div>
                 </div>
                 <div class="col-md-8">
-                  <div class="card card-outline card-info">
+                  <div class="card card-outline card-navy">
                     <div class="card-header">
                       <div class="card-title">
                         Data Point
@@ -78,12 +78,12 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                             <table class="table" >
+                             <table class="table">
                                  <thead>
                                      <th>No</th>
+                                     <th>NIK</th>
+                                     <th>NISN</th>
                                      <th>Nama</th>
-                                     <th>Kelas</th>
-                                     <th>Jurusan</th>
                                      <th>Point</th>
                                  </thead>
                                  <tbody id="content-poin">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangSitaanController;
 use App\Http\Controllers\KehadiranController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\PoinPelanggaranController;
@@ -37,7 +38,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //Route::get('/peminjaman',[PageController::class,'view_peminjaman'])->name('peminjaman');
         //LAIN LAIN
         Route::resource('point_siswa',PoinSiswaController::class);
-        Route::get('/lap_pelanggaran',[PageController::class,'view_lap_pelanggaran'])->name('lap_pelanggaran');
+        Route::get('/lap_pelanggaran',[LaporanController::class,'view_lap_pelanggaran'])->name('lap_pelanggaran');
         Route::get('/lap_kehadiran',[PageController::class,'view_lap_kehadiran'])->name('lap_kehadiran');
         //Route::get('/lap_peminjaman',[PageController::class,'view_lap_peminjaman'])->name('lap_peminjaman');
         Route::get('/lap_sitaan',[PageController::class,'view_lap_sitaan'])->name('lap_sitaan');

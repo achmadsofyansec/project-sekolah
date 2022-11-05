@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\data_siswa;
 use App\Models\pelanggaran;
 use App\Models\point_pelanggaran;
+use App\Models\tahun_ajaran;
 use DateTime;
 use Illuminate\Http\Request;
 
@@ -55,10 +56,15 @@ class PelanggaranController extends Controller
             'pelanggaran' => ['required'],
         ]);
         if($validation){
+            $siswas = data_siswa::join('aktivitas_belajars','data_siswas.nik','=','aktivitas_belajars.kode_siswa')
+            ->where([['data_siswas.id','=',$request->siswa]])
+            ->get(['aktivitas_belajars.*','data_siswas.*'])->first();    
             $data_poin = point_pelanggaran::findOrFail($request->pelanggaran);
             if($data_poin){
                 $create = pelanggaran::create([
                     'id_siswa'  => $request->siswa,
+                    'id_kelas' => $siswas->kode_kelas,
+                    'tahun_ajaran' => '-',
                     'id_poin_pelanggaran' => $request->pelanggaran,
                     'tanggal_pelanggaran' => $request->tgl_pelanggaran,
                     'poin_minus' => $data_poin->poin,

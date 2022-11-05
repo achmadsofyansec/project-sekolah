@@ -42,9 +42,7 @@ class PageController extends Controller
     public function view_point_siswa(){
         return view('point_siswa.index');
     }
-    public function view_lap_pelanggaran(){
-        return view('laporan.pelanggaran.index');
-    }
+    
     public function view_lap_kehadiran(){
         return view('laporan.kehadiran.index');
     }
