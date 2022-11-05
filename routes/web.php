@@ -41,7 +41,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/lap_pelanggaran',[LaporanController::class,'view_lap_pelanggaran'])->name('lap_pelanggaran');
         Route::get('/lap_kehadiran',[PageController::class,'view_lap_kehadiran'])->name('lap_kehadiran');
         //Route::get('/lap_peminjaman',[PageController::class,'view_lap_peminjaman'])->name('lap_peminjaman');
-        Route::get('/lap_sitaan',[PageController::class,'view_lap_sitaan'])->name('lap_sitaan');
+        Route::get('/lap_sitaan',[LaporanController::class,'view_lap_sitaan'])->name('lap_sitaan');
     });
 });
 

@@ -49,10 +49,7 @@ class PageController extends Controller
     public function view_lap_peminjaman(){
         return view('laporan.peminjaman.index');
     }
-    public function view_lap_sitaan(){
-        return view('laporan.barang_sitaan.index');
-        
-    }
+    
     public function logout(Request $request){
         Auth::logout();
      

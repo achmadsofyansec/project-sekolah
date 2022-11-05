@@ -13,4 +13,12 @@ class LaporanController extends Controller
         }
         return view('laporan.pelanggaran.index',compact(['req']));
     }
+    public function view_lap_sitaan(Request $request){
+        $req = $request;
+        if($req != null){
+            
+        }
+        return view('laporan.barang_sitaan.index',compact(['req']));
+        
+    }
 }
