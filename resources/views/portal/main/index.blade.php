@@ -3,7 +3,9 @@
 @section('class-body', 'login-page')
 @section('content-auth')
 <div class="mb-5">
-  <h2 class="">Selamat Datang di portal kelulusan SMKN 1 MALANG Tahun ajaran 2020 - 2022</h2>
+  <h2 class="">Selamat Datang di portal kelulusan @foreach ($lulus as $lulus)
+    
+  {{ $lulus->nama_sekolah }} Tahun ajaran {{ $lulus->tahun_ajaran }}</h2>
 </div>
 <div class="login-box">
   <!-- /.login-logo -->
@@ -17,7 +19,7 @@
                       {{ session('error') }}
                   </div>
               @endif   
-                      <p class="login-box-msg">Harap masukkan <b>Nomor Ujian</b> pada form dibawah pastikan nomor ujian benar seperti ketentuan sekolah. Contoh nomor ujian yang valid adalah <b>111-11-1-11-111-1</b></p>
+                      <p class="login-box-msg">{{ $lulus->deskripsi }}</p>@endforeach
               <form action="<?php echo url('/portal') ?>" method="post">
                 @csrf
                 <div class="input-group mb-3">
