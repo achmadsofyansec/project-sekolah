@@ -26,16 +26,16 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                           <label>Nama</label>
-                                          <input type="text" name="nama_tamu" id="nama_tamu" placeholder="&#xf007;  Masukkan Nama" class="form-control fas" required>
+                                          <input type="text" name="nama_tamu" id="nama_tamu" placeholder="Masukkan Nama" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                           <label>Asal / Instansi</label>
-                                          <input type="text" name="asal_tamu" id="asal_tamu" placeholder="&#xf099; Masukkan Asal"  class="form-control fa" required>
+                                          <input type="text" name="asal_tamu" id="asal_tamu" placeholder="Masukkan Asal"  class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                           
                                           <label>Alamat</label>
-                                          <textarea name="alamat_tamu" id="alamat_tamu" cols="30" rows="8" placeholder="&#xe1b0; Masukkan Alamat" class="form-control fas"></textarea>
+                                          <textarea name="alamat_tamu" id="alamat_tamu" cols="30" rows="8" placeholder="Masukkan Alamat" class="form-control"></textarea>
                                         </div>
                                         <div class="form-group">
                                           <label>Keperluan</label>
@@ -55,32 +55,19 @@
                           <div class="card-header">
                               <center><h1 class="m-0" style="color:#df4231;"><br>AGENDA ACARA</h1> </center>
                               <center style="color: grey">------------------------------</center>
-                              <div class="card-body">
-                                <div class="row">
+                                <div class="card-body">
                                   @forelse ($agenda as $item)
-                                  <div class="col-md-6">
-                                    <label>Tanggal Mulai</label>
-                                    <input type="date" name="tgl_mulai" id="tgl_mulai" style="text-align: center;" value="{{$item->tgl_mulai_agenda}}"  class="form-control " readonly>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <label>Tanggal Selesai</label>
-                                    <input type="date" name="tgl_akhir" id="tgl_akhir" style="text-align: center;"  value="{{$item->tgl_selesai_agenda}}"  class="form-control " readonly>
-                                  </div>
-                                  <div class="col-md-12">
-                                    <label>Nama Acara</label>
-                                    <input type="textarea" name="acara" id="acara" value="{{$item->nama_agenda}}"  class="form-control " readonly>
-                                  </div>
-                                  <div class="col-md-12">
-                                    <label>Deskripsi</label>
-                                    <input type="textarea" name="desc" id="desc" value="{{$item->desc_agenda}}"  class="form-control " readonly>
-                                    <hr size="10px" />
-                                  </div>
-                                  @empty
-                                  @endforelse
+                                    <center>
+                                      <label>{{$item->tgl_mulai_agenda}} - {{$item->tgl_mulai_agenda}}</label>
+                                    </center>
+                                <h4 style="color: #df4231; font-weight: bold;">- {{$item->nama_agenda}} -</h4>
+                                <div class="card-footer">
+                                  <p>{{$item->desc_agenda}}</p></div>
+                                @empty
+                                <div class="card-footer">
+                                  Tidak Ada Data
                                 </div>
-                                
-                          </div>
-                  </div>
+                                @endforelse
                 </div>
             </div>
     <!-- /.content -->

@@ -19,7 +19,8 @@ class PageController extends Controller
         return view('dashboard',compact(['agenda','tamu']));
     }
     public function view_portal(){
-        $agenda = BukuTamu_agenda::latest()->limit(3)->get();
+        $date = date('Y-m-d');
+        $agenda = BukuTamu_agenda::latest()->get();
         return view('tamu.portal_tamu.index',compact(['agenda']));
     }
     public function store_portal(Request $request ){
