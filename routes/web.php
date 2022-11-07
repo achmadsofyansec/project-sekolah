@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CariController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Data_siswaController;
 use App\Http\Controllers\KelulusanController;
@@ -41,6 +42,7 @@ Route::resource('/pengaturan', PengaturanPortalController::class);
 // Route::resource('pengaturan',PengaturanController::class);
 // Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
 // Route::get('/kelulusan',[KelulusanController::class,'index']);
+Route::get('/cari', [CariController::class, 'cari']);
 
 
 // Route::get('/kelulusan', function () {
