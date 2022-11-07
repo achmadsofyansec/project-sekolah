@@ -34,7 +34,7 @@
             @endif
             <div class="card card-navy card-outline">
               <div class="card-body">
-                <form action="{{route('lap_pelanggaran')}}" method="GET">
+                <form action="{{route('lap_sitaan')}}" method="GET">
                   <div class="row">
                     <div class="col-md-5">
                       <div class="form-group">

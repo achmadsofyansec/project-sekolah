@@ -64,7 +64,7 @@ class PelanggaranController extends Controller
                 $create = pelanggaran::create([
                     'id_siswa'  => $request->siswa,
                     'id_kelas' => $siswas->kode_kelas,
-                    'tahun_ajaran' => '-',
+                    'tahun_ajaran' => $siswas->kode_tahun_ajaran,
                     'id_poin_pelanggaran' => $request->pelanggaran,
                     'tanggal_pelanggaran' => $request->tgl_pelanggaran,
                     'poin_minus' => $data_poin->poin,

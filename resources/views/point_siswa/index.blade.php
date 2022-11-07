@@ -84,6 +84,7 @@
                                      <th>NIK</th>
                                      <th>NISN</th>
                                      <th>Nama</th>
+                                     <th>Kelas / Jurusan</th>
                                      <th>Point</th>
                                  </thead>
                                  <tbody id="content-poin">

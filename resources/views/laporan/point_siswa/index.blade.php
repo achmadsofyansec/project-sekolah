@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Laporan Pelanggaran')
+@section('page', 'Laporan Point Siswa')
 @section('content-app')
   <div class="content-wrapper">
     <!-- Main content -->
@@ -34,17 +34,29 @@
               @endif
               <div class="card card-navy card-outline">
                 <div class="card-body">
-                  <form action="{{route('lap_pelanggaran')}}" method="GET">
+                  <form action="{{route('lap_point_siswa')}}" method="GET">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
-                          <input type="date" name="filter_awal" value="@if($req->filter_awal != null){{$req->filter_awal}}@endif" id="filter_awal" class="form-control" required>
-                        </div>
+                            <select name="filter_poin_kelas" id="filter_poin_kelas" class="form-control" style="width: 100%;">
+                              <option value="">-- Semua Kelas -- </option>
+                              @forelse ($kelas as $item)
+                            <option value="{{$item->kode_kelas}}" @if($req->filter_poin_kelas != null && $req->filter_poin_kelas == $item->kode_kelas){{'selected'}} @endif>{{$item->kode_kelas}} ( {{$item->nama_kelas}} ) </option>
+                            @empty
+                              @endforelse
+                            </select>
+                          </div>
                       </div>
                       <div class="col-md-5">
-                        <div class="form-group">                         
-                          <input type="date" name="filter_akhir" value="@if($req->filter_akhir != null){{$req->filter_akhir}}@endif" id="filter_akhir" class="form-control" required>
-                        </div>
+                        <div class="form-group">
+                            <select name="filter_poin_jurusan" id="filter_poin_jurusan" class="form-control" style="width: 100%;">
+                            <option value="">-- Semua Jurusan -- </option>
+                              @forelse ($jurusan as $item)
+                            <option value="{{$item->kode_jurusan}}" @if($req->filter_poin_jurusan != null && $req->filter_poin_jurusan == $item->kode_jurusan){{'selected'}} @endif>{{$item->kode_jurusan}} ( {{$item->nama_jurusan}} ) </option>
+                            @empty
+                              @endforelse
+                            </select>
+                          </div>
                       </div>
                         <div class="col-md-2">
                           <div class="form-group">
@@ -57,13 +69,13 @@
               </div>
             </div>
         </div>
-        @if ($req->filter_awal !=null && $req->filter_akhir != null )
+        @if ($req->filter_poin_jurusan !=null && $req->filter_poin_kelas != null )
         <div class="row">
           <div class="col-md-12">
               <div class="card card-outline card-navy">
                 <div class="card-header">
                   <div class="card-title">
-                    Laporan Pelanggaran
+                    Laporan Point Siswa
                   </div>
                   <div class="card-tools">
                     <form action="#">
@@ -80,8 +92,6 @@
                       <th>NISN</th>
                       <th>Nama</th>
                       <th>Kelas / Jurusan</th>
-                      <th>Pelanggaran</th>
-                      <th>Sanksi</th>
                       <th>Poin</th>
                     </thead>
                     <tbody>

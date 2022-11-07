@@ -212,11 +212,18 @@
                   <p>Peminjaman</p>
                 </a>
               </li>
-            -->
+           
               <li class="nav-item">
                 <a href="<?php echo url('/lap_sitaan') ?>" class="nav-link">
                   <i class="fas fa-box-open nav-icon text-navy"></i>
                   <p>Barang Sitaan</p>
+                </a>
+              </li>
+            -->
+              <li class="nav-item">
+                <a href="<?php echo url('/lap_point_siswa') ?>" class="nav-link">
+                  <i class="fas fa-box-open nav-icon text-navy"></i>
+                  <p>Point Siswa</p>
                 </a>
               </li>
             </ul>

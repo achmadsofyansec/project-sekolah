@@ -28,10 +28,10 @@ class PoinSiswaController extends Controller
             $jurusan1 = ['aktivitas_belajars.kode_jurusan','!=','null'];
 
             if($req->filter_poin_kelas != null){
-                $kelas1 = ['aktivitas_belajars.kode_kelas','!=',$req->filter_poin_kelas];
+                $kelas1 = ['aktivitas_belajars.kode_kelas','=',$req->filter_poin_kelas];
             }
             if($req->filter_poin_jurusan != null){
-                $jurusan1 = ['aktivitas_belajars.kode_jurusan','!=',$req->filter_poin_jurusan];
+                $jurusan1 = ['aktivitas_belajars.kode_jurusan','=',$req->filter_poin_jurusan];
             }
             $data_siswas = data_siswa::join("aktivitas_belajars","aktivitas_belajars.kode_siswa","=",'data_siswas.nik')
                     ->where([['data_siswas.status_siswa','=','Aktif'],$kelas1,$jurusan1])
@@ -49,6 +49,7 @@ class PoinSiswaController extends Controller
                     <td>'.$item->nik.'</td>
                     <td>'.$item->nisn.'</td>
                     <td>'.$item->nama.'</td>
+                    <td>'.$item->kode_kelas.'/ '.$item->kode_jurusan.'</td>
                     <td>'.$last_point.'</td>
                     </tr>';
             }
