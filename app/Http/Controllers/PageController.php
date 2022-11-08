@@ -37,4 +37,7 @@ class PageController extends Controller
         return view('nilai.index');
     }
     
+    public function cek(){
+        return view('cari');
+    }
 }
