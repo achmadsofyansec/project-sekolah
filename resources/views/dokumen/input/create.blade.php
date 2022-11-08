@@ -125,6 +125,7 @@
                                         <div class="form-group">
                                             <label>Jenis Dokumen</label>
                                             <select class="form-control" id="nama_jenis_dokumen" name="nama_jenis_dokumen">
+                                                <option value="">Pilih Jenis Dokumen</option>
                                                 @forelse ($jenis_dokumen as $jenis_dokumen)
                                                     <option value="{{ $jenis_dokumen->nama_jenis_dokumen }}">{{ $jenis_dokumen->nama_jenis_dokumen }}</option>
                                                     @empty
@@ -137,7 +138,7 @@
                                         <div class="form-group">
                                             <label>Map</label>
                                             <select class="form-control" id="nama_map" name="nama_map">
-                                                <option value="">-- Pilih Map --</option>
+                                                <option value="">Pilih Map</option>
                                                 @forelse ($map as $map)
                                                     <option value="{{ $map->nama_map }}">{{ $map->nama_map }}</option>
                                                     @empty

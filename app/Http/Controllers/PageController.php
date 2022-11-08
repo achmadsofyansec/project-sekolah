@@ -30,9 +30,7 @@ class PageController extends Controller
         $dokumen = Dokumen::latest()->get();
         return view('dashboard',compact(['jenis_dokumen','ruangan','lemari','box','dokumen','map','urut','rak']));
     }
-    public function view_laporan(){
-        return view('laporan.index');
-    }
+    
     public function view_manual_book(){
         return view('manual_book.index');
     }
