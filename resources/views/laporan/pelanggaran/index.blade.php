@@ -34,7 +34,7 @@
               @endif
               <div class="card card-navy card-outline">
                 <div class="card-body">
-                  <form action="{{route('lap_pelanggaran')}}" method="GET">
+                  <form action="{{route('lap_pelanggaran')}}" method="GET" >
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
@@ -66,7 +66,9 @@
                     Laporan Pelanggaran
                   </div>
                   <div class="card-tools">
-                    <form action="#">
+                    <form action="{{route('print_lap_pelanggaran_siswa')}}" target="_blank" method="GET">
+                      <input type="hidden" name="filter_awal" id="filter_awal" value="{{$req->filter_awal}}">
+                      <input type="hidden" name="filter_akhir" id="filter_akhir" value="{{$req->filter_akhir}}">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
                     </form>
                   </div>

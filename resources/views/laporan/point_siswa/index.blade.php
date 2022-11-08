@@ -78,7 +78,9 @@
                     Laporan Point Siswa
                   </div>
                   <div class="card-tools">
-                    <form action="#">
+                    <form action="{{route('print_lap_point_siswa')}}" target="_blank" method="GET">
+                      <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$req->filter_poin_kelas}}">
+                      <input type="hidden" name="kode_jurusan" id="kode_jurusan" value="{{$req->filter_poin_jurusan}}">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Print</button>
                     </form>
                   </div>
