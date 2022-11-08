@@ -117,36 +117,20 @@
           </li>
           <li class="nav-header">Umum</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo url('/app') ?>" class="nav-link">
               <i class="nav-icon fab fa-buromobelexperte text-info"></i>
               <p>
                 App
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo url('/guru') ?>" class="nav-link">
-                  <i class="fas fa-bolt nav-icon text-primary"></i>
-                  <p>Modul</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo url('/siswa') ?>" class="nav-link">
-                  <i class="fas fa-charging-station nav-icon text-danger"></i>
-                  <p>API</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tools text-primary"></i>
-              <p>
-                Testing Tools
-              </p>
+            <a href="<?php echo url('/api') ?>" class="nav-link">
+              <i class="fas fa-charging-station nav-icon text-danger"></i>
+              <p>API</p>
             </a>
           </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
