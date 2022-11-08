@@ -7,6 +7,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\PoinPelanggaranController;
 use App\Http\Controllers\PoinSiswaController;
+use App\Http\Controllers\PrintPDFController;
 use App\Http\Controllers\SanksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,10 +40,12 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //LAIN LAIN
         Route::resource('point_siswa',PoinSiswaController::class);
         Route::get('/lap_pelanggaran',[LaporanController::class,'view_lap_pelanggaran'])->name('lap_pelanggaran');
-        Route::get('/lap_kehadiran',[PageController::class,'view_lap_kehadiran'])->name('lap_kehadiran');
+        //Route::get('/lap_kehadiran',[PageController::class,'view_lap_kehadiran'])->name('lap_kehadiran');
         //Route::get('/lap_peminjaman',[PageController::class,'view_lap_peminjaman'])->name('lap_peminjaman');
-      //Route::get('/lap_sitaan',[LaporanController::class,'view_lap_sitaan'])->name('lap_sitaan');
+        //Route::get('/lap_sitaan',[LaporanController::class,'view_lap_sitaan'])->name('lap_sitaan');
         Route::get('/lap_point_siswa',[LaporanController::class,'view_lap_point_siswa'])->name('lap_point_siswa');
+        Route::get('/print_lap_point_siswa',[PrintPDFController::class,'lap_point_siswa'])->name('print_lap_point_siswa');
+        Route::get('/print_lap_pelanggaran_siswa',[PrintPDFController::class,'lap_pelanggaran_siswa'])->name('print_lap_pelanggaran_siswa');
     });
 });
 
