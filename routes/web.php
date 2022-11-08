@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SekolahController;
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*

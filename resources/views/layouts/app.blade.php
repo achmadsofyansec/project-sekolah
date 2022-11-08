@@ -31,7 +31,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -79,7 +79,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-dark elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -112,6 +112,38 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Umum</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
+              <p>
+                App
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/guru') ?>" class="nav-link">
+                  <i class="fas fa-bolt nav-icon text-primary"></i>
+                  <p>Modul</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/siswa') ?>" class="nav-link">
+                  <i class="fas fa-charging-station nav-icon text-danger"></i>
+                  <p>API</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tools text-primary"></i>
+              <p>
+                Testing Tools
               </p>
             </a>
           </li>
@@ -176,5 +208,6 @@ $(document).ready( function () {
     });
 } );
     </script>
+    @yield('content-script')
 </body>
 </html>
