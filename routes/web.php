@@ -16,6 +16,7 @@ use App\Http\Controllers\UrutController;
 use App\Http\Controllers\TamuController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PrintPDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('urut',UrutController::class);
         Route::resource('input_dokumen',DokumenController::class);
         Route::get('/laporan',[LaporanController::class,'view_laporan'])->name('laporan');
+        Route::get('/print_laporan',[PrintPDFController::class,'print_laporan'])->name('print_laporan');
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
     });
 });
