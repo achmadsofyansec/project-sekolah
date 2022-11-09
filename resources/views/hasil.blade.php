@@ -18,7 +18,7 @@
               <div class="main_title">
   
                 <div class="card">
-                  <h2 class="mb-3 mt-3">Hasil Pencarian</h2>
+                  <h4 class="px-4 mb-3 mt-3">Hasil Pencarian</h2>
                 </div>
                 
                 <!--<div class="card">
@@ -65,147 +65,66 @@
                           <td><span style="float: left;">&nbsp;1.</span></td>
                           <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
                           <td><span style="float: left;">&nbsp;</span></td>
-                          <td><span style="float: left;">&nbsp;{{Round($usp_pabp)}}</span></td>
-                          <td><span style="float: left;">&nbsp;{{Round($ns_pabp)}}</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                        </tr>
+                        <tr>
+                          <td><span style="float: left;">&nbsp;1.</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;2.</span></td>
-                          <td><span style="float: left;">&nbsp;Pendidikan Kewarganegaraan</span></td>
-                          <td><span style="float: left;">&nbsp;{{Round($nr_ppkn)}}</span></td>
-                          <td><span style="float: left;">&nbsp;{{Round($usp_ppkn)}}</span></td>
-                          <td><span style="float: left;">&nbsp;{{Round($ns_ppkn)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;3.</span></td>
-                          <td><span style="float: left;">&nbsp;Bahasa Indonesia</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($nr_bind)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($usp_bind)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($ns_bind)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;4.</span></td>
-                          <td><span style="float: left;">&nbsp;Matematika</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($nr_mtk)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($usp_mtk)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($ns_mtk)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;5.</span></td>
-                          <td><span style="float: left;">&nbsp;Sejarah Indonesia</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($nr_si)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($usp_si)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($ns_si)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;6.</span></td>
-                          <td><span style="float: left;">&nbsp;Bahasa Inggris</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($nr_bing)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($usp_bing)}}</span></td>
-                          <td><span style="float: left">&nbsp;{{Round($ns_bing)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
-                        <tr>
-                          <td><strong>#</strong></td>
-                          <td><span style="float: left;">&nbsp;<strong>Muatan Kewilayahan</span></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                       
                         <tr>
                           <td><span style="float: left;">&nbsp;1.</span></td>
-                          <td><span style="float: left;">&nbsp;Seni Budaya</span></td>
-                          <td><span style="float: left;">{{Round($nr_sbdy)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_sbdy)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_sbdy)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
                         <tr>
                           <td><span style="float: left;">&nbsp;2.</span></td>
-                          <td><span style="float: left;">&nbsp;Pendidikan Jasmani, Olahraga dan Kesehatan</span></td>
-                          <td><span style="float: left;">{{Round($nr_penjas)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_penjas)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_penjas)}}</span></td>
+                          <td><span style="float: left;">&nbsp;Pendidikan Agama dan Budi Pekerti</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
+                          <td><span style="float: left;">&nbsp;</span></td>
                         </tr>
-                        <tr>
-                          <td><strong>#</strong></td>
-                          <td><span style="float: left;">&nbsp;<strong>Muatan Lokal</span></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;1.</span></td>
-                          <td><span style="float: left;">&nbsp;Bahasa Jawa</span></td>
-                          <td><span style="float: left;">{{Round($nr_bjw)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_bjw)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_bjw)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><strong>#</strong></td>
-                          <td><span style="float: left;">&nbsp;<strong>Muatan Peminatan Kejuruan</span></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;1.</span></td>
-                          <td><span style="float: left;">&nbsp;Simulasi dan Komunikasi Digital</span></td>
-                          <td><span style="float: left;">{{Round($nr_simdig)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_simdig)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_simdig)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;2.</span></td>
-                          <td><span style="float: left;">&nbsp;Fisika</span></td>
-                          <td><span style="float: left;">{{Round($nr_fis)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_fis)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_fis)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;3.</span></td>
-                          <td><span style="float: left;">&nbsp;Kimia</span></td>
-                          <td><span style="float: left;">{{Round($nr_kim)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_kim)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_kim)}}</span></td>
-                        </tr>
-                        </tr>
-                        @if($dataCari->k_keahlian == "Agribisnis Perikanan Air Tawar")
-                        <tr>
-                          <td><span style="float: left;">&nbsp;4.</span></td>
-                          <td><span style="float: left;">&nbsp;Biologi</span></td>
-                          <td><span style="float: left;">{{Round($nr_bio)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_bio)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_bio)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;5.</span></td>
-                          <td><span style="float: left;">&nbsp;Dasar Program Keahlian</span></td>
-                          <td><span style="float: left;">{{Round($nr_dasar_pk)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_dasar_pk)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_dasar_pk)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;6.</span></td>
-                          <td><span style="float: left;">&nbsp;Paket Keahlian</span></td>
-                          <td><span style="float: left;">{{Round($nr_paket_k)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_paket_k)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_paket_k)}}</span></td>
-                        </tr>
-                        @endif
-                        @if($dataCari->k_keahlian != "Agribisnis Perikanan Air Tawar")
-                        
-                        <tr>
-                          <td><span style="float: left;">&nbsp;4.</span></td>
-                          <td><span style="float: left;">&nbsp;Dasar Program Keahlian</span></td>
-                          <td><span style="float: left;">{{Round($nr_dasar_pk)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_dasar_pk)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_dasar_pk)}}</span></td>
-                        </tr>
-                        <tr>
-                          <td><span style="float: left;">&nbsp;5.</span></td>
-                          <td><span style="float: left;">&nbsp;Paket Keahlian</span></td>
-                          <td><span style="float: left;">{{Round($nr_paket_k)}}</span></td>
-                          <td><span style="float: left;">{{Round($usp_paket_k)}}</span></td>
-                          <td><span style="float: left;">{{Round($ns_paket_k)}}</span></td>
-                        @endif
                         
                       </tbody>
                     </table>
@@ -216,6 +135,7 @@
                   </div>
                   <div style="float: left;">
                     <a target="_blank" href="" class="btn btn-success"><i class="fa fa-print"></i>&nbsp;&nbsp;Cetak SKL</a>
+                    <a href="{{  URL('/portal') }}" class="btn btn-danger">&nbsp;&nbsp;Kembali</a>
                   </div>
                   @endif
                   @if($dataCari->status == "Tidak Lulus")
@@ -230,12 +150,13 @@
                   </div>
                   @endif
                 </div>
+                @endif
               </div>
             </div>
-          @endif
+          
           @if($dataCari == null)
             <div class="alert alert-danger mt-3">
-                Data <strong>Tidak Ditemukan <a href="{{URL('/')}}">Kembali Cari</a></strong></a>.
+                Data <strong>Tidak Ditemukan <a href="{{URL('/portal')}}">Kembali Cari</a></strong></a>.
             </div>
           @endif
         </div>
