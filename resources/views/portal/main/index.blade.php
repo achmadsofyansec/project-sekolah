@@ -1,11 +1,9 @@
 @extends('layouts.auth_layout')
-@section('page', 'Sign In')
+@section('page', 'Portal Kelulusan')
 @section('class-body', 'login-page')
 @section('content-auth')
 <div class="mb-5">
-  <h2 class="">Selamat Datang di portal kelulusan @foreach ($lulus as $lulus)
-    
-  {{ $lulus->nama_sekolah }} Tahun ajaran {{ $lulus->tahun_ajaran }}</h2>
+  <h2 class="">Selamat Datang di portal kelulusan 
 </div>
 <div class="login-box">
   <!-- /.login-logo -->
@@ -19,12 +17,11 @@
                       {{ session('error') }}
                   </div>
               @endif   
-                      <p class="login-box-msg">{{ $lulus->deskripsi }}</p>@endforeach
-              <form action="<?php echo url('/portal') ?>" method="post">
-                @csrf
+                      <p class="login-box-msg"></p>
+              <form class="form_area" id=""  action="{{ route('cari') }}" method="post">
+               {!!csrf_field() !!}
                 <div class="input-group mb-3">
-                  <input type="text" name="nisn" id="nisn" class="form-control" placeholder="111-11-1-11-111-1">
-                  <div class="input-group-append">
+                  <input type="text" name="no_peserta" id="nisn" class="form-control" placeholder="123456789">
                     <div class="input-group-text">
                       <span class="fas fa-user"></span>
                     </div>

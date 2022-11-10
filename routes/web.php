@@ -23,14 +23,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 //View Pages In Admin Dashboard
-// Route::get('/',[PageController::class,'index'])->name('dashboard');
+Route::get('/',[PageController::class,'index'])->name('dashboard');
 
 // Portal
-// Route::resource('/portal', PortalKelulusanController::class);
- Route::get('/portal-login',[PageController::class, 'login_portal']);
+
+ Route::get('/portal', [CariController::class, 'portal'])->name('portal');
+ Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
+ Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
+ Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
 
 // Nilai
-// Route::resource('/nilai', NilaiController::class);
+Route::resource('/nilai', NilaiController::class);
 
 // Pengaturan
 // Route::resource('/pengaturan', PengaturanPortalController::class);
@@ -44,9 +47,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/kelulusan',[KelulusanController::class,'index']);
 // Route::get('/cari', [CariController::class, 'cari']);
 
-Route::get('/portal', [CariController::class, 'portal'])->name('cari');
-Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
-Route::get('hasil/{id}', [CariController::class, 'hasilCari']);
 
 
 // Route::get('/kelulusan', function () {
