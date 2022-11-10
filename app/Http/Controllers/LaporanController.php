@@ -27,6 +27,8 @@ class LaporanController extends Controller
         $jenis_dokumen = ArsipJenisDokumen::latest()->get();
         $urut = ArsipDataUrut::latest()->get();
         if($req != null){
+
+            
             $dari_tanggal = $req->filter_dari_tanggal != null ? ['dokumens.created_at','>=',$req->filter_dari_tanggal." 00:00:00"] : ['dokumens.created_at','!=',null];
             $sampai_tanggal = $req->filter_sampai_tanggal != null ? ['dokumens.created_at','<=',$req->filter_sampai_tanggal." 23:59:59"] : ['dokumens.created_at','!=',null];
             $nama_ruangan = $req->nama_ruangan != null ? ['dokumens.ruangan','=',$req->nama_ruangan] : ['dokumens.ruangan','!=','null'];

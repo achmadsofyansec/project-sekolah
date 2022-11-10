@@ -160,8 +160,17 @@
                        Laporan Arsip
                       </div>
                       <div class="card-tools">
-                      <form action="{{route('print_laporan')}}" method="GET">
-                        <button type="submit" class="btn btn-primary" name="print_laporan" id="print_laporan"><i class="fas fa-print"></i> Print</button>
+                      <form action="{{route('print_laporan')}}" method="GET" target="_blank">
+                      <input type="hidden" name="filter_dari_tanggal" id="filter_dari_tanggal" value="{{$req->filter_dari_tanggal}}">
+                      <input type="hidden" name="filter_sampai_tanggal" id="filter_sampai_tanggal" value="{{$req->filter_sampai_tanggal}}">
+                      <input type="hidden" name="nama_ruangan" id="nama_ruangan" value="{{$req->nama_ruangan}}">
+                      <input type="hidden" name="nama_map" id="nama_map" value="{{$req->nama_map}}">
+                      <input type="hidden" name="nama_jenis_dokumen" id="nama_jenis_dokumen" value="{{$req->nama_jenis_dokumen}}">
+                      <input type="hidden" name="nama_urut" id="nama_urut" value="{{$req->nama_urut}}">
+                      <input type="hidden" name="nama_box" id="nama_box" value="{{$req->nama_box}}">
+                      <input type="hidden" name="nama_rak" id="nama_rak" value="{{$req->nama_rak}}">
+                      <input type="hidden" name="nama_lemari" id="nama_lemari" value="{{$req->nama_lemari}}">
+                      <button type="submit" class="btn btn-primary" name="print_laporan" id="print_laporan"><i class="fas fa-print"></i> Print</button>
                       </form>
                       </div>
                     </div>
