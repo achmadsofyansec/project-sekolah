@@ -37,6 +37,8 @@ Route::resource('/nilai', NilaiController::class);
 
 // Pengaturan
 // Route::resource('/pengaturan', PengaturanPortalController::class);
+Route::get('/pengaturan', [CariController::class, 'pengaturan'])->name('pengaturan');
+Route::post('/editWaktu', [CariController::class, 'editWaktu'])->name('editWaktu');
 // Route::get('/home',[PageController::class,'index'])->name('dashboard');
 // Route::get('/datasiswa', [Data_siswaController::class, 'index']);
 // Route::get('/pengumuman',[PageController::class,'view_pengumuman']);

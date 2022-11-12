@@ -18,7 +18,7 @@
                   </div>
               @endif   
                       <p class="login-box-msg"></p>
-              <form class="form_area" id=""  action="{{ route('cari') }}" method="post">
+            <form class="form_area" id=""  action="{{ route('cari') }}" method="post">
                {!!csrf_field() !!}
                 <div class="input-group mb-3">
                   <input type="text" name="no_peserta" id="nisn" class="form-control" placeholder="123456789">

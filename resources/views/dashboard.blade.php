@@ -6,76 +6,79 @@
       <!-- Content Header (Page header) -->
       <div class="content-header animated bounceIn">
           <div class="container-fluid">
-              <div class="row mb-2">
-                  <div class="col-sm-12 mt-2">
-                      <div class="card card-info card-outline">
-                          <center>
-                              <h1 class="m-0 text-dark" ><i class="fas fa-school mt-1"></i> <br>DATA KELULUSAN SISWA</h1>
-                          </center>
-                          <hr>
-                          <div class="container-fluid">
-                              <div class="row">
-
-
-                                  <div class="col-md-12">
-                                      <div class="card card-info card-outline">
-                                          <div class="card-header">
-                                              <h3 class="card-title text-info"><i class="fas fa-users-class"></i> DATA PENDAFTARAN</h3>
-                                              <div class="card-tools">
-                                                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                  </button>
-                                              </div>
-                                          </div>
-                                          <div class="card-body p-0">
-                                              <div class="row mt-3 ml-1 mr-1">
-                                                  <div class="col-md-4">
-                                                      <a style="color:black;">
-                                                          <div class="info-box">
-                                                              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
-                                                              <div class="info-box-content">
-                                                                  <span class="info-box-text text-danger"><b>TOTAL KELULUSAN SISWA</b></span>
-                                                                  <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">50</span>
-                                                              </div>
-                                                          </div>
-                                                      </a>
-                                                  </div>
-
-                                                  <div class="col-md-4">
-                                                      <a style="color:black;">
-                                                          <div class="info-box">
-                                                              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
-                                                              <div class="info-box-content">
-                                                                  <span class="info-box-text text-danger"><b>LULUS</b></span>
-                                                                  <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">50</span>
-                                                              </div>
-                                                          </div>
-                                                      </a>
-                                                  </div>
-
-                                                  <div class="col-md-4">
-                                                      <a style="color:black;">
-                                                          <div class="info-box">
-                                                              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-times"></i></span>
-                                                              <div class="info-box-content">
-                                                                  <span class="info-box-text text-danger"><b>TIDAK LULUS</b></span>
-                                                                  <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">56</span>
-                                                              </div>
-                                                          </div>
-                                                      </a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                              </div>
-
-                          </div>
+            <div class="row">
+                <div class="col-md-5">
+                  <div class="card card-outline card-success">
+                    <div class="card-header">
+                      <h1 class="card-title">
+                        Data Kelulusan
+                      </h1>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-md-flex">
+                        <div class="p-1 flex-fill" style="overflow: hidden">
+                          <canvas id="data-chart" style="min-height: 250px; height: 310px; max-width: 100%; display: block; width: 370px;">
+                          </canvas>
+                        </div>
                       </div>
-                  </div><!-- /.col -->
-              </div><!-- /.row -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="card card-outline card-success">
+                    <div class="card-header">
+                      <h1 class="card-title">
+                        Nilai Siswa
+                      </h1>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table" id="dataTable">
+                          <thead>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Rata Rata</th>
+                            
+                          </thead>
+                          <tbody>
+                           
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
   </div>
+@endsection
+@section('content-script')
+<script>
+  $(document).ready(function(){
+    var donutChartCanvas = $('#data-chart').get(0).getContext('2d')
+  var donutData        = {
+  labels: [
+      'Lulus',
+      'Tidak Lulus',
+      'Drop Out'
+  ],
+  datasets: [
+    {
+      data: ['30','115','60'],
+      backgroundColor : ['#28a745', '#ffc107', '#dc3545'],
+      }
+    ]
+  }
+  var donutOptions     = {
+  maintainAspectRatio : false,
+  responsive : true,
+  }
+  new Chart(donutChartCanvas, {
+    type: 'doughnut',
+    data: donutData,
+    options: donutOptions
+    });
+  });
+</script>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\data_siswa;
 use App\Models\KelulusanNilai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class CariController extends Controller
@@ -45,5 +46,18 @@ class CariController extends Controller
                                             ->where('kode_ujian', '=', $id)->first();
 		return view('portal.main.cetakSkl', compact('dataCari'));
 	}
+
+    public function editWaktu(Request $request){
+		
+
+        return view('pengaturan.index', compact(['data']));
+	}
+
+    public function pengaturan(Request $request) {
+        //dd($dataWaktu);
+        $data = DB::table('kelulusan_waktus')->where('id', '=', 1)->get();
+
+        return view('portal.pengaturan.index',compact('data'));
+    }
     
 }
