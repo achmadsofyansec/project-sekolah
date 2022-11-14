@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 //View Pages In Admin Dashboard
 
-Route::get('/',[PageController::class,'index'])->name('dashboard');
+
 Route::post('/signout',[PageController::class,'logout']);
-
-
+Route::group(['middleware'=>['prevent-back']],function(){
+    Route::group(['middleware'=>['auth']],function(){
+        Route::get('/',[PageController::class,'index'])->name('dashboard');
+        Route::get('/aplikasi',[PageController::class,'view_app'])->name('aplikasi');
+        Route::get('/devices',[PageController::class,'view_devices'])->name('devices');
+    });
+});
 

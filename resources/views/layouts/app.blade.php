@@ -117,7 +117,7 @@
           </li>
           <li class="nav-header">Umum</li>
           <li class="nav-item">
-            <a href="<?php echo url('/app') ?>" class="nav-link">
+            <a href="<?php echo url('/aplikasi') ?>" class="nav-link">
               <i class="nav-icon fab fa-buromobelexperte text-info"></i>
               <p>
                 App
@@ -125,12 +125,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo url('/api') ?>" class="nav-link">
-              <i class="fas fa-charging-station nav-icon text-danger"></i>
-              <p>API</p>
+            <a href="<?php echo url('/devices') ?>" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
+              <p>
+                Devices
+              </p>
             </a>
           </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -13,6 +13,12 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
+    public function view_app(Request $request){
+        return view('app.index');
+    }
+    public function view_devices(Request $request){
+        return view('devices.index');
+    }
     public function logout(Request $request){
         Auth::logout();
      
@@ -22,5 +28,4 @@ class PageController extends Controller
      
         return redirect('../sekolahApp/');
        }
-    
 }
