@@ -22,7 +22,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         Route::get('/aplikasi',[PageController::class,'view_app'])->name('aplikasi');
-        Route::get('/devices',[PageController::class,'view_devices'])->name('devices');
+        Route::get('/devices_wa',[PageController::class,'view_devices_wa'])->name('devices_wa');
+        Route::get('/message_wa',[PageController::class,'view_message_wa'])->name('message_Wa');
+        Route::get('/outbox_wa',[PageController::class,'view_outbox_wa'])->name('outbox_wa');
     });
 });
 

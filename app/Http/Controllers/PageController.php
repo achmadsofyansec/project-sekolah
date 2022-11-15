@@ -16,8 +16,14 @@ class PageController extends Controller
     public function view_app(Request $request){
         return view('app.index');
     }
-    public function view_devices(Request $request){
-        return view('devices.index');
+    public function view_devices_wa(Request $request){
+        return view('wa.devices.index');
+    }
+    public function view_message_wa(Request $request){
+        return view('wa.message.index');
+    }
+    public function view_outbox_wa(Request $request){
+        return view('wa.outbox.index');
     }
     public function logout(Request $request){
         Auth::logout();

@@ -124,13 +124,41 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">Add On</li>
           <li class="nav-item">
-            <a href="<?php echo url('/devices') ?>" class="nav-link">
-              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-whatsapp text-success text-success"></i>
               <p>
-                Devices
+                WhatsApp
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo url('/devices_wa') ?>" class="nav-link">
+                  <i class="nav-icon fas fa-angle-right text-success"></i>
+                  <p>
+                    Devices
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/message_wa') ?>" class="nav-link">
+                  <i class="nav-icon fas fa-angle-right text-success"></i>
+                  <p>
+                    Message
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo url('/outbox_wa') ?>" class="nav-link">
+                  <i class="nav-icon fas fa-angle-right text-success"></i>
+                  <p>
+                    Outbox
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
