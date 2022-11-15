@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\data_siswa;
 use App\Models\KelulusanNilai;
+use App\Models\KelulusanWaktu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -33,8 +34,25 @@ class CariController extends Controller
                                             ,'kelulusan_nilais.kode_ujian as kode_kode_ujian'
                                             ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan'])
                                             ->where('kode_ujian', '=', $id)->first();
-        return view('portal.main.hasil', compact('dataCari'));
+
+        $dataWaktu = KelulusanWaktu::where('id', '=', 1)->get();
+		date_default_timezone_set('Asia/Jakarta');
+	    $sekarang = date('Y-m-d H:i:');
+	    $tanggal = $dataWaktu->batas_akhir;
+        
+	    if($sekarang > $tanggal){
+			return view('portal.main.hasil', compact('dataCari', 'dataWaktu'));
+		} else if($sekarang < $tanggal){
+			return Redirect::to('/portal');
+		}
 	}
+
+    public function waktuKelulusan(Request $request) {
+        $dataWaktu = KelulusanWaktu::latest()->get();
+        return view('portal.main.index', compact('dataWaktu'));
+        dd($dataWaktu);
+        
+    }
 
     public function cetak(Request $request, $id){
 		$dataCari = KelulusanNilai::join('data_siswas','kelulusan_nilais.kode_siswa','=','data_siswas.id')
