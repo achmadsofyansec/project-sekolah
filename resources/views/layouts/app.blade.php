@@ -79,7 +79,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-dark-success elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
       <img src="{{asset('public/dist/img/AdminLTELogo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -113,6 +113,32 @@
               <p>
                 Dashboard
               </p>
+            </a>
+          </li>
+          <li class="nav-header">UAMNU</li>
+          <li class="nav-item">
+            <a href="<?php echo url('/uamnu') ?>" class="nav-link">
+              <i class="fas fa-folder-open nav-icon"></i>
+              <p>UAMNU</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/history_uamnu') ?>" class="nav-link">
+              <i class="fas fa-calendar-times nav-icon"></i>
+              <p>History</p>
+            </a>
+          </li>
+          <li class="nav-header">Lain Lain</li>
+          <li class="nav-item">
+            <a href="<?php echo url('/bantuan') ?>" class="nav-link">
+              <i class="fas fa-chalkboard-teacher nav-icon"></i>
+              <p>Bantuan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo url('/sarankritik') ?>" class="nav-link">
+              <i class="fas fa-book-reader nav-icon"></i>
+              <p>Saran Dan Kritik</p>
             </a>
           </li>
         </ul>

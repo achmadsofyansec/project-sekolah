@@ -13,6 +13,18 @@ class PageController extends Controller
     public function index(Request $request){
         return view('dashboard');
     }
+    public function uamnu(Request $request){
+        return view('uamnu.data.index');
+    }
+    public function history_uamnu(Request $request){
+        return view('uamnu.history.index');
+    }
+    public function bantuan(Request $request){
+        return view('bantuan.index');
+    }
+    public function sarankritik(Request $request){
+        return view('saranKritik.index');
+    }
     public function logout(Request $request){
         Auth::logout();
      

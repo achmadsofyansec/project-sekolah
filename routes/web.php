@@ -21,8 +21,17 @@ use Illuminate\Support\Facades\Route;
 
 //View Pages In Admin Dashboard
 
-Route::get('/',[PageController::class,'index'])->name('dashboard');
+
 Route::post('/signout',[PageController::class,'logout']);
+Route::group(['middleware'=>['prevent-back']],function(){
+    Route::group(['middleware'=>['auth']],function(){
+        Route::get('/',[PageController::class,'index'])->name('dashboard');
+        Route::get('/uamnu',[PageController::class,'uamnu'])->name('uamnu');
+        Route::get('/history_uamnu',[PageController::class,'history_uamnu'])->name('history_uamnu');
+        Route::get('/bantuan',[PageController::class,'bantuan'])->name('bantuan');
+        Route::get('/sarankritik',[PageController::class,'sarankritik'])->name('sarankritik');
+    });
+});
 
 
 
