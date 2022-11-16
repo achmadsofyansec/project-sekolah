@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\History;
+use App\Models\jenjang;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -19,9 +20,10 @@ class SekolahController extends Controller
         $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
         $kecamatan = DB::table('kecamatan')->select(['kecamatan.*'])->get();
         $kelurahan = DB::table('kelurahan')->select(['kelurahan.*'])->get();
+        $jenjang = jenjang::latest()->get();
         $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
         $roles = Role::where([['roles.id_roles','=',auth()->user()->id_role]])->get(['roles.*'])->first();
-        return view('sekolah.index',compact(['data','kecamatan','kelurahan','img','roles']));
+        return view('sekolah.index',compact(['data','kecamatan','kelurahan','img','roles','jenjang']));
     }
 
     /**
@@ -94,6 +96,8 @@ class SekolahController extends Controller
             'nomor_hp' => ['required'],
             'email' =>['required'],
             'website' => ['required'],
+            'status' =>['required'],
+            'jenjang' => ['required'],
             
      ]);
      if($credential){
@@ -117,6 +121,8 @@ class SekolahController extends Controller
                 'nomor_hp' =>  $request->nomor_hp,
                 'email' =>  $request->email,
                 'website' =>  $request->website,
+                'status' =>  $request->status,
+                'jenjang' =>  $request->jenjang,
                 'logo_sekolah' =>  $name,
             ];
          }else{
@@ -134,6 +140,8 @@ class SekolahController extends Controller
                 'kode_pos' =>  $request->kode_pos,
                 'nomor_hp' =>  $request->nomor_hp,
                 'email' =>  $request->email,
+                'status' =>  $request->status,
+                'jenjang' =>  $request->jenjang,
                 'website' =>  $request->website,
             ];
          }

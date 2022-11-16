@@ -25,6 +25,7 @@ class Sekolah extends Model
         'email',
         'website',
         'logo_sekolah',
-
+        'jenjang',
+        'status',
     ];
 }

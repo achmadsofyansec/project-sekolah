@@ -79,6 +79,31 @@
                   </select>
                 </div>
                 <div class="form-group">
+                  <label>Status</label>
+                  <select name="status" id="status" class="form-control">
+                    <option @if ($data->status == null)
+                        {{'selected'}}
+                    @endif>Belum Diset</option>
+                    <option @if ($data->status == "Swasta")
+                      {{'selected'}}
+                        @endif>Swasta</option>
+                        <option @if ($data->status == "Negeri")
+                          {{'selected'}}
+                      @endif>Negeri</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Jenjang</label>
+                  <select name="jenjang" id="jenjang" class="form-control">
+                    <option value="">Belum Diset</option>
+                      @foreach ($jenjang as $item_jenjang)
+                  <option value="{{$item_jenjang->kode_jenjang}}" @if ($data->jenjang == $item_jenjang->kode_jenjang)
+                      {{'selected'}}
+                  @endif>( {{$item_jenjang->nama_jenjang}} ) {{$item_jenjang->ket_jenjang}}</option>
+                      @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Nama Sekolah</label>
                   <input type="text" value="{{$data->nama_sekolah}}" name="nama_sekolah" id="nama_sekolah" class="form-control" placeholder="Nama Sekolah">
                 </div>
