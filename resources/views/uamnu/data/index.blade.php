@@ -41,8 +41,17 @@
                       <table id="dataTable" class="table table-border">
                         <thead>
                           <th>No</th>
+                          <th>Type</th>
+                          <th>Jumlah</th>
+                          <th>Tanggal Order</th>
+                          <th>Tanggal Ujian</th>
+                          <th>Status Pembayaran</th>
+                          <th>Status</th>
                           <th>Aksi</th>
                         </thead>
+                        <tbody>
+                          
+                        </tbody>
                       </table>
                     </div>
                   </div>
