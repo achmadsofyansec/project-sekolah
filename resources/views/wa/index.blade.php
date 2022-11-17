@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Message')
+@section('page', 'Gateway WhatsApp')
 @section('content-app')
   <div class="content-wrapper">
     <!-- Main content -->
@@ -41,8 +41,35 @@
                       <table id="dataTable" class="table table-border">
                         <thead>
                           <th>No</th>
+                          <th>Nomor</th>
+                          <th>Nama</th>
+                          <th>Deskripsi</th>
+                          <th>Status</th>
                           <th>Aksi</th>
                         </thead>
+                        <tbody>
+                            @forelse ($data as $item)
+                                <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$item->wa_number}}</td>
+                                <td>{{$item->wa_name}}</td>
+                                <td>{{$item->wa_desc}}</td>
+                                <td>@if ($item->wa_multidevices == 1)
+                                    <span class="badge badge-success">Multidevices</span>
+                                    @else
+                                    <span class="badge badge-danger">Singledevices</span>
+                                @endif / @if ($item->wa_status == 1)
+                                    <span class="badge badge-primary">Connected</span>
+                                    @else
+                                    <span class="badge badge-danger">Disconnected</span>
+                                @endif</td>
+                                <td>
+                                    
+                                </td>
+                                </tr>
+                            @empty
+                            @endforelse
+                        </tbody>
                       </table>
                     </div>
                   </div>

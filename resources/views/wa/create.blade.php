@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Device')
+@section('page', 'Tambah WhatsApp')
 @section('content-app')
   <div class="content-wrapper">
     <!-- Main content -->
@@ -37,14 +37,6 @@
                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                      <table id="dataTable" class="table table-border">
-                        <thead>
-                          <th>No</th>
-                          <th>Aksi</th>
-                        </thead>
-                      </table>
-                    </div>
                   </div>
                 </div>
               </div>
