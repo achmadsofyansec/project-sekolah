@@ -22,45 +22,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//View Pages In Admin Dashboard
-Route::get('/',[PageController::class,'index'])->name('dashboard');
+Route::post('/signout',[PageController::class,'logout']);
+Route::group(['middleware'=>['prevent-back']],function(){
+    Route::group(['middleware'=>['auth']],function(){
+        //View Pages In Admin Dashboard
+        Route::get('/',[PageController::class,'index'])->name('dashboard');
 
-// Portal
+        // Portal
 
- Route::get('/portal', [CariController::class, 'portal'])->name('portal');
- Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
- Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
- Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
+        Route::get('/portal', [CariController::class, 'portal'])->name('portal');
+        Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
+        Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
+        Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
 
-// Nilai
-Route::resource('/nilai', NilaiController::class);
-
-// Pengaturan
-// Route::resource('/pengaturan', PengaturanPortalController::class);
-Route::get('/pengaturan', [CariController::class, 'pengaturan'])->name('pengaturan');
-Route::post('/editWaktu', [CariController::class, 'editWaktu'])->name('editWaktu');
-// Route::get('/home',[PageController::class,'index'])->name('dashboard');
-// Route::get('/datasiswa', [Data_siswaController::class, 'index']);
-// Route::get('/pengumuman',[PageController::class,'view_pengumuman']);
-// Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
-// Route::get('/singkronisasi',[PageController::class,'view_singkronisasi']);
-// Route::resource('pengaturan',PengaturanController::class);
-// Route::put('update-pengaturan/{id}', [PengaturanController::class,'update']);
-// Route::get('/kelulusan',[KelulusanController::class,'index']);
-// Route::get('/cari', [CariController::class, 'cari']);
+        // Nilai
+        Route::resource('/nilai', NilaiController::class);
+    });
+});
 
 
-
-// Route::get('/kelulusan', function () {
-//     return view('kelulusan.index');
-// );
-
-// Route::get('/sekolah', function() {
-//     return view('sekolah.index', [
-//         'title' => 'Data kelulusan',
-//         'categories' => Category::all()
-//     ]);
-// });
 
 
 
