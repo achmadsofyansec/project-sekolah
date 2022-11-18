@@ -32,15 +32,16 @@
                     {{ session('success') }}
                 </div>
                 @endif
+                
                 <div class="card card-black card-outline">
                   <div class="card-header">
                   <a type="button" href="{{route('wa.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                   <div class="card-tools">
                     <p>
-                    @if ($con == true)
-                      <span class="btn btn-success"> Connect Local Module</span>
+                    @if ($con != true)
+                    <a href="" class="btn btn-success"> Connect Local Module </a>
                       @else
-                      <span class="btn btn-danger"> Disconnect Local Module</span>
+                      <a href="" class="btn btn-danger"> Disconnect Local Module </a>
                     </p>
                     @endif
                   </div>
@@ -77,11 +78,13 @@
                                   action="{{ route('wa.destroy',$item->id) }}" method="POST">
                                   @if ($item->wa_status != 1)
                                   <a href="{{ route('wa_scan',$item->id) }}" class="btn btn-success"><i class="fas fa-eye"></i> Scan</a>
+                                  @else
+                                  <a href="{{ route('wa_disconnect',$item->id) }}" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Disconnect</a>
                                   @endif
-                                  <a href="{{ route('wa.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                  <a href="{{ route('wa.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                   @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                   </form>
                                 </td>
                                 </tr>

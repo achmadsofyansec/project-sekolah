@@ -39,7 +39,11 @@
                                 <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Data WhatsApp</h1>
                             </div>
                             <div class="card-body">
-
+                              <p>1. Scan QR</p>
+                              <p>2. Setelah Selesai Masuk dan Aktif Silahkan Klik Tombol Selesai</p>
+                            </div>
+                            <div class="card-footer">
+                            <a href="{{route('wa.index')}}" class="btn btn-success">Selesai</a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +53,9 @@
                                 <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span>Qr Code</h1>
                             </div>
                             <div class="card-body">
-                                
+                              @if ($qr != null)
+                              <img src="{{ $qr }}" alt="" style="height:300px">
+                              @endif
                             </div>
                         </div>
                     </div>
@@ -60,4 +66,7 @@
     </div>
     <!-- /.content -->
   </div>
+@endsection
+@section('content-script')
+    
 @endsection

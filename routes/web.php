@@ -25,6 +25,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/aplikasi',[PageController::class,'view_app'])->name('aplikasi');
         Route::resource('/wa',WAController::class);
         Route::get('/wa/{id}/scan',[WAController::class,'scan'])->name('wa_scan');
+        Route::get('/wa/{id}/disconnect',[WAController::class,'disconnect'])->name('wa_disconnect');
+        Route::get('/wa/modul_connect',[WAController::class,'modul_connect'])->name('modul_connect');
         Route::get('/outbox',[PageController::class,'view_outbox'])->name('outbox');
     });
 });

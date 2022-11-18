@@ -37,6 +37,6 @@ class ConnectWhatsappModule extends Command
      */
     public function handle()
     {
-        return $this->exec();
+        return 0;
     }
 }
