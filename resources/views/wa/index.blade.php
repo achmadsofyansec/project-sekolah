@@ -34,7 +34,16 @@
                 @endif
                 <div class="card card-black card-outline">
                   <div class="card-header">
-                  <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  <a type="button" href="{{route('wa.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  <div class="card-tools">
+                    <p>
+                    @if ($con == true)
+                      <span class="btn btn-success"> Connect Local Module</span>
+                      @else
+                      <span class="btn btn-danger"> Disconnect Local Module</span>
+                    </p>
+                    @endif
+                  </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -57,14 +66,23 @@
                                 <td>@if ($item->wa_multidevices == 1)
                                     <span class="badge badge-success">Multidevices</span>
                                     @else
-                                    <span class="badge badge-danger">Singledevices</span>
+                                    <span class="badge badge-warning">Singledevices</span>
                                 @endif / @if ($item->wa_status == 1)
                                     <span class="badge badge-primary">Connected</span>
                                     @else
                                     <span class="badge badge-danger">Disconnected</span>
                                 @endif</td>
                                 <td>
-                                    
+                                  <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                  action="{{ route('wa.destroy',$item->id) }}" method="POST">
+                                  @if ($item->wa_status != 1)
+                                  <a href="{{ route('wa_scan',$item->id) }}" class="btn btn-success"><i class="fas fa-eye"></i> Scan</a>
+                                  @endif
+                                  <a href="{{ route('wa.edit',$item->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                  @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                  </form>
                                 </td>
                                 </tr>
                             @empty

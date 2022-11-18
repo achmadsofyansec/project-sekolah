@@ -12,6 +12,7 @@ class integrasi_wa extends Model
         'wa_name',
         'wa_desc',
         'wa_number',
+        'wa_status',
         'wa_multidevices',
     ];
 }

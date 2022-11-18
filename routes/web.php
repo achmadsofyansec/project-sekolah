@@ -23,7 +23,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         Route::get('/aplikasi',[PageController::class,'view_app'])->name('aplikasi');
-        Route::get('/wa',[WAController::class,'index'])->name('wa');
+        Route::resource('/wa',WAController::class);
+        Route::get('/wa/{id}/scan',[WAController::class,'scan'])->name('wa_scan');
         Route::get('/outbox',[PageController::class,'view_outbox'])->name('outbox');
     });
 });

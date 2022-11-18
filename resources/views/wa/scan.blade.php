@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Outbox')
+@section('page', 'Scan WhatsApp')
 @section('content-app')
   <div class="content-wrapper">
     <!-- Main content -->
@@ -32,17 +32,27 @@
                     {{ session('success') }}
                 </div>
                 @endif
-                <div class="card card-black card-outline">
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table id="dataTable" class="table table-border">
-                        <thead>
-                          <th>No</th>
-                          <th>Aksi</th>
-                        </thead>
-                      </table>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Data WhatsApp</h1>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span>Qr Code</h1>
+                            </div>
+                            <div class="card-body">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>
