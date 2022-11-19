@@ -543,6 +543,8 @@ class ComposerStaticInitb3646ad0d9875d627006246fdf76dd1b
         'App\\Models\\Pengaturan' => __DIR__ . '/../..' . '/app/Models/Pengaturan.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\data_siswa' => __DIR__ . '/../..' . '/app/Models/data_siswa.php',
+        'App\\Models\\sekolah' => __DIR__ . '/../..' . '/app/Models/sekolah.php',
+        'App\\Models\\tahun_ajaran' => __DIR__ . '/../..' . '/app/Models/tahun_ajaran.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

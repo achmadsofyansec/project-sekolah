@@ -33,6 +33,8 @@ return array(
     'App\\Models\\Pengaturan' => $baseDir . '/app/Models/Pengaturan.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\data_siswa' => $baseDir . '/app/Models/data_siswa.php',
+    'App\\Models\\sekolah' => $baseDir . '/app/Models/sekolah.php',
+    'App\\Models\\tahun_ajaran' => $baseDir . '/app/Models/tahun_ajaran.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

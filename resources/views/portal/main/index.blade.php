@@ -3,16 +3,6 @@
 @section('class-body', 'login-page')
 @section('content-auth')
 
-  {{-- @if($sekarang > $tanggal)
-    @php
-      $portal = "";
-    @endphp
-  @endif
-  @if($sekarang <= $tanggal)
-    @php
-      $portal = "clockdiv";
-    @endphp
-  @endif --}}
 
 <div class="mb-5">
   <h2 class="">Selamat Datang di portal kelulusan 
@@ -29,13 +19,6 @@
                       {{ session('error') }}
                   </div>
               @endif
-              @foreach ($dataWaktu as $dataWaktu)
-              @php
-                date_default_timezone_set('Asia/Jakarta');
-                $sekarang = date('Y-m-d H:i:');
-                $tanggal = $dataWaktu->batas_akhir;
-              @endphp
-              @if($sekarang > $tanggal)
               <p class="login-box-msg"></p>
               <form class="form_area" id=""  action="{{ route('cari') }}" method="post">
                  {!!csrf_field() !!}
@@ -55,8 +38,8 @@
                   </div>
                 </form>
               </div>
-              @endif
-              @endforeach
+              
+              
               
             
             <!-- /.card-body -->
