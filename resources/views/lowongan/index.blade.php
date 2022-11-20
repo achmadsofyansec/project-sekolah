@@ -52,7 +52,7 @@
                                                 <tr>
                                                     <td>{{ $loop->index + 1 }}</td>
                                                     <td>{{ $item->judul }}</td>
-                                                    <td>{{ $item->created_at }}</td>
+                                                    <td>{{ $item->tanggal }}</td>
                                                     <td>
                                                         @if ($item->file != '-')
                                                             <img src="{{ config('app.url') . '/assets/uploads/' . $item->file }}"

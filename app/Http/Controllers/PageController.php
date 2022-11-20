@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\alumni_lowongan_kerja;
 use Illuminate\Support\Facades\Auth;
 use PDO;
 
@@ -30,6 +31,10 @@ class PageController extends Controller
     }
     public function view_manual(){
         return view('manual.index');
+    }
+    public function portal(){
+        $alumni_lowongan_kerja = alumni_lowongan_kerja::latest()->get();
+        return view('portal.index',compact('alumni_lowongan_kerja'));
     }
     public function login(){
         return redirect('../sekolahApp/');

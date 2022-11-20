@@ -11,6 +11,7 @@ class alumni_lowongan_kerja extends Model
     protected $fillable = [
         'judul',
         'isi',
-        'file'
+        'file',
+        'tanggal'
     ];
 }

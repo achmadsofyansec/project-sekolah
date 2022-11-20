@@ -18,6 +18,7 @@ class CreateAlumniLowonganKerjasTable extends Migration
             $table->string('judul');
             $table->string('isi');
             $table->string('file');
+            $table->string('tanggal');
             $table->timestamps();
         });
     }

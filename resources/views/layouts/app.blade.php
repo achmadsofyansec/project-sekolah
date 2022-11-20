@@ -165,6 +165,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?php echo url('/portal') ?>" class="nav-link">
+              <i class="nav-icon fas fa-copy text-info"></i>
+              <p>
+               Portal Alumni
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?php echo url('/manual_book') ?>" class="nav-link">
               <i class="nav-icon fas fa-book text-warning"></i>
               <p>

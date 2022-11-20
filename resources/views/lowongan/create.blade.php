@@ -43,8 +43,7 @@
                                         <label class="col-sm-5 col-form-label">Judul Lowongan Kerja</label>
                                         <div class="col-sm-12">
                                             <div class="input-group input-group">
-                                                <input type="text" class="form-control" name="judul" id="judul"
-                                                    required>
+                                                <input type="text" class="form-control" name="judul" id="judul" required>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +73,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
                 <div class="animated fadeInRight col-md-4">
                     <div class="callout callout-purple">
                         <h4><span class="fa fa-info-circle text-danger"></span> Petunjuk dan Bantuan</h4>
@@ -94,7 +92,9 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> 
+        </div>
+
     </div>
     </section>
     <!-- /.content -->

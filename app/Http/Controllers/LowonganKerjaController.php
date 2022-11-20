@@ -44,6 +44,7 @@ class LowonganKerjaController extends Controller
 
         if ($credential) {
             $data = [];
+            $tglnow = date('Y-m-d');
             $file = $request->file('file');
             if ($file != null) {
                 $name = $request->file('file')->getClientOriginalName();
@@ -52,12 +53,14 @@ class LowonganKerjaController extends Controller
                     'judul' => $request->judul,
                     'isi' => $request->isi,
                     'file' => $name,
+                    'tanggal' => $tglnow,
                 ];
             } else {
                 $data = [
                     'judul' => $request->judul,
                     'isi' => $request->isi,
                     'file' => '-',
+                    'tanggal' => $tglnow,
                 ];
             }
             $create = alumni_lowongan_kerja::create($data);
