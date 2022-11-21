@@ -115,23 +115,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">Umum</li>
-          <li class="nav-item">
-            <a href="<?php echo url('/aplikasi') ?>" class="nav-link">
-              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
-              <p>
-                App
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/outbox') ?>" class="nav-link">
-              <i class="nav-icon fas fa-level-up-alt text-danger"></i>
-              <p>
-                Outbox
-              </p>
-            </a>
-          </li>
           <li class="nav-header">Modul</li>
           <li class="nav-item">
             <a href="<?php echo url('/wa') ?>" class="nav-link">
@@ -141,6 +124,26 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">Gateway Options</li>
+          <!--
+          <li class="nav-item">
+            <a href="<?php echo url('/aplikasi') ?>" class="nav-link">
+              <i class="nav-icon fab fa-buromobelexperte text-info"></i>
+              <p>
+                App
+              </p>
+            </a>
+          </li>
+          -->
+          <li class="nav-item">
+            <a href="<?php echo url('/outbox') ?>" class="nav-link">
+              <i class="nav-icon fas fa-level-up-alt text-danger"></i>
+              <p>
+                Outbox
+              </p>
+            </a>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

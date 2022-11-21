@@ -38,8 +38,24 @@
                       <table id="dataTable" class="table table-border">
                         <thead>
                           <th>No</th>
+                          <th>Sender</th>
+                          <th>Nomor Tujuan</th>
+                          <th>Pesan</th>
                           <th>Aksi</th>
                         </thead>
+                        <tbody>
+                          @forelse ($data as $item)
+                              <tr>
+                              <td>{{$loop->index + 1}}</td>
+                              <td>{{$item->wa_number}}( Whatsapp )</td>
+                              <td>{{$item->nomor_tujuan}}</td>
+                              <td>{{$item->pesan}}</td>
+                              <td>{{$item->status}}</td>
+                              </tr>
+                          @empty
+                              
+                          @endforelse
+                        </tbody>
                       </table>
                     </div>
                   </div>
