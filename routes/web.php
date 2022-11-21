@@ -24,6 +24,7 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TabunganController;
 use App\Http\Controllers\TabunganDetailController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\WAController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,10 +74,10 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/rekap_pertrx',[RekaptulasiController::class,'view_rekap_pertrx'])->name('rekap_pertrx');
         Route::get('/tunggakan',[PageController::class,'view_tunggakan'])->name('tunggakan');
         Route::get('/riwayat_pembayaran',[HistoryController::class,'view_riwayat_bayar'])->name('riwayat_bayar');
-        
         //Gateway
-        Route::get('/wa_gateway',[PageController::class,'view_wa_gateway'])->name('wa_gateway');
-
+        Route::get('/wa_gateway',[WAController::class,'index'])->name('wa_gateway');
+        Route::get('/wa/{id}/scan',[WAController::class,'scan'])->name('wa_scan');
+        Route::get('/wa/{id}/disconnect',[WAController::class,'disconnect'])->name('wa_disconnect');
         //Print
         Route::get('/print_pdf',[PrintPDFController::class,'laporan'])->name('print_pdf');
     });

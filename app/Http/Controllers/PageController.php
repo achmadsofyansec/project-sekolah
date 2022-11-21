@@ -36,11 +36,7 @@ class PageController extends Controller
     public function view_tunggakan(){
         return view('tunggakan.index');
     }
-  
     
-    public function view_wa_gateway(){
-        return view('gateway.wa.index');
-    }
 
 
     public function logout(Request $request){
