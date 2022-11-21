@@ -127,7 +127,38 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'kode_ujian' => ['required'],
+            'bind' => ['required'],
+            'bing' => ['required'],
+            'mat' => ['required'],
+            'kejurusan' => ['required'],
+            'status' => ['required'],
+        ]);
+        if($validate){
+            $update = KelulusanNilai::findOrFail($id);
+            $update->update([
+                    'kode_ujian' => $request->kode_ujian,
+                    'bind' => $request->bind,
+                    'bing' => $request->bing,
+                    'mat' => $request->mat,
+                    'kejurusan' => $request->kejurusan,
+                    'status' => $request->status,
+            ]);
+            if($update){
+                return redirect()
+                ->route('nilai.index')
+                ->with([
+                    'success' => 'Data Nilai Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**

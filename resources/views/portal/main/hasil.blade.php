@@ -17,9 +17,7 @@
               @endif
               <div class="main_title">
   
-                <div class="card">
-                  <h4 class="px-4 mb-3 mt-3">Hasil Pencarian</h2>
-                </div>
+                
                 
                 <!--<div class="card">
                   <div class="card-body">Basic card</div>

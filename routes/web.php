@@ -27,6 +27,12 @@ Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //View Pages In Admin Dashboard
         Route::get('/',[PageController::class,'index'])->name('dashboard');
+        
+        // Nilai
+        Route::resource('/nilai', NilaiController::class);
+    });
+});
+
 
         // Portal
 
@@ -34,12 +40,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
         Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
         Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
-
-        // Nilai
-        Route::resource('/nilai', NilaiController::class);
-    });
-});
-
 
 
 

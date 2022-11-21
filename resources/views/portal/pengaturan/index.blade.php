@@ -62,7 +62,7 @@
                                               </div>
                                             @endif
                                     <div class="col-sm-12">
-                                        <input type="datetime-local" class="form-control" id="nama_lemari" name="nama_lemari" value="{{$data->batas_akhir}" required="" placeholder="YYYY-MM-DD H:i:s"/>
+                                        <input type="datetime-local" class="form-control" id="nama_lemari" name="nama_lemari" value="{{$data->batas_akhir}}" required="" placeholder="YYYY-MM-DD H:i:s"/>
                                     </div>
                                 </div>
                             <div class="card-footer">

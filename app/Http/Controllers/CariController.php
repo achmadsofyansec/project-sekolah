@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\data_siswa;
 use App\Models\KelulusanNilai;
 use App\Models\KelulusanWaktu;
+use App\Models\sekolah;
+use App\Models\tahun_ajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -13,7 +15,9 @@ use Illuminate\Support\Facades\Redirect;
 class CariController extends Controller
 {
     public function portal(Request $request){
-        return view('portal.main.index');
+        $sekolah = sekolah::latest()->get();
+        $tahun_ajaran = tahun_ajaran::where('status_tahun_ajaran', '=', 'Aktif')->get();
+        return view('portal.main.index', compact('sekolah', 'tahun_ajaran'));
     }
 
     public function cekNomor(Request $request){
@@ -35,22 +39,7 @@ class CariController extends Controller
                                             ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan'])
                                             ->where('kode_ujian', '=', $id)->first();
 
-        $dataWaktu = KelulusanWaktu::where('id', '=', 1)->get();
-		date_default_timezone_set('Asia/Jakarta');
-	    $sekarang = date('Y-m-d H:i:');
-	    $tanggal = $dataWaktu->batas_akhir;
-        
-	    if($sekarang > $tanggal){
-			return view('portal.main.hasil', compact('dataCari', 'dataWaktu'));
-		} else if($sekarang < $tanggal){
-			return Redirect::to('/portal');
-		}
-	}
-
-    public function waktuKelulusan(Request $request) {
-        $dataWaktu = KelulusanWaktu::latest()->get();
-        return view('portal.main.index', compact('dataWaktu'));
-        dd($dataWaktu);
+       return view('portal.main.hasil', compact('dataCari'));
         
     }
 
