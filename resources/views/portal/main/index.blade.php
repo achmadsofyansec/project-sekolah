@@ -2,7 +2,10 @@
 @section('page', 'Portal Kelulusan')
 @section('class-body', 'login-page')
 @section('content-auth')
-
+<?php 
+  $waktu = date_default_timezone_set('Asia/Jakarta');
+  $sekarang = date('y-m-d h:i:s');
+?>
 <style>
   .limiter {
   width: 100%;
@@ -217,8 +220,9 @@
       </span>
       
       
+      
       <div class="validate-input">
-          <input class="form-control mb-5" type="number" name="no_peserta">
+          <input class="form-control mb-5" type="number" name="no_peserta" placeholder="Masukkan Nomor Ujian Contoh :  123456789 ">
         </div>
     
 

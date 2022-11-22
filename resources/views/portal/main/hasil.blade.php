@@ -160,7 +160,7 @@
             </div>
           
           @if($dataCari == null)
-            <div class="alert alert-danger mt-3">
+            <div class="alert alert-danger mb-3">
                 Data <strong>Tidak Ditemukan <a href="{{URL('/portal')}}">Kembali Cari</a></strong></a>.
             </div>
           @endif

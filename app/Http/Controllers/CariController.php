@@ -17,7 +17,9 @@ class CariController extends Controller
     public function portal(Request $request){
         $sekolah = sekolah::latest()->get();
         $tahun_ajaran = tahun_ajaran::where('status_tahun_ajaran', '=', 'Aktif')->get();
-        return view('portal.main.index', compact('sekolah', 'tahun_ajaran'));
+        $waktu = KelulusanWaktu::latest()->get();
+        return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
+        
     }
 
     public function cekNomor(Request $request){
@@ -38,6 +40,7 @@ class CariController extends Controller
                                             ,'kelulusan_nilais.kode_ujian as kode_kode_ujian'
                                             ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan'])
                                             ->where('kode_ujian', '=', $id)->first();
+       
 
        return view('portal.main.hasil', compact('dataCari'));
         

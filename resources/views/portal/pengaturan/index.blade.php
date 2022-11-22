@@ -53,18 +53,7 @@
                         <form action="{{ route('editWaktu') }}" method="POST">
                           {!!csrf_field() !!}
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Waktu Kelulusan</label>
-                                @if(Session::has('waktu'))
-                                              <div class="alert alert-success alert-dismissable">
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                  Akses Pengumuman <strong>Berhasil</strong> diperbarui
-                                                <!--<a href="#" class="alert-link">Alert Link</a>.-->
-                                              </div>
-                                            @endif
-                                    <div class="col-sm-12">
-                                        <input type="datetime-local" class="form-control" id="nama_lemari" name="nama_lemari" value="{{$data->batas_akhir}}" required="" placeholder="YYYY-MM-DD H:i:s"/>
-                                    </div>
-                                </div>
+                                
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
                                 <a href="" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
