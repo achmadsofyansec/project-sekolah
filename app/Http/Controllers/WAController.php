@@ -89,4 +89,7 @@ class WAController extends Controller
         $data = integrasi_wa::latest()->get();
         return view('gateway.wa.index',compact(['con','data']));
     }
+    public function sendMessages(Request $request){
+        
+    }
 }
