@@ -227,4 +227,26 @@ class PrintPDFController extends Controller
         }
         
     }
+    public function cetak_struk(Request $req){
+      $tgl = "";
+      $data = DB::table('sekolahs')
+        ->join('kelurahan','sekolahs.kode_kelurahan','=','kelurahan.kode_kelurahan')
+        ->join('kecamatan','sekolahs.kode_kecamatan','=','kecamatan.kode_kecamatan')
+        ->select(['sekolahs.*','sekolahs.id as id_sekolah','kelurahan.*','kecamatan.*'])->first();
+      $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+      $name = $tgl.'_Laporan-pdf';
+      $isi = "";
+      if($req != null){
+        $isi .= '<center><div style="text-transform:uppercase;"><p style="font-size:20px; font-weight:bold;"> BUKTI PEMBAYARAN SISWA </p><hr></div></center>';
+        $isi .= 'Periode : ';
+
+      }
+      $pdf = PDF::loadview('layouts.laporan_print',[
+        'data' => $data,
+        'name' => $name,
+        'img' => $img,
+        'isi' => $isi
+        ]);
+    return $pdf->stream();
+    }
 }

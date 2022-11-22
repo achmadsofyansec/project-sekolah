@@ -80,6 +80,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/wa/{id}/disconnect',[WAController::class,'disconnect'])->name('wa_disconnect');
         //Print
         Route::get('/print_pdf',[PrintPDFController::class,'laporan'])->name('print_pdf');
+        Route::get('/cetak_struk',[PrintPDFController::class,'cetak_struk'])->name('cetak_struk');
     });
 });
 

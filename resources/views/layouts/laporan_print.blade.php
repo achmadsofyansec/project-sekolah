@@ -14,8 +14,8 @@
 <body>
     <table width="100%">
         <tr>
-            <td width="20% rowspan="2" valign="top" align="center"><img src="{{$img}}" width="130" height="130" alt=""></td>
-            <td width="80%" align="center"><h2 style="text-transform: uppercase;">{{$data->nama_sekolah}}</h2><p>{{$data->alamat_sekolah}}<br> Kec.{{$data->nama_kecamatan}}, Kel.{{$data->nama_kelurahan}}<br>Telp:{{$data->nomor_hp}}, Email : {{$data->email}}, Website : {{$data->website}}</p></td>
+            <td width="20% rowspan="2" valign="top" align="center"><img src="{{$img}}" width="110" height="110" alt=""></td>
+            <td width="80%" align="center"><h4 style="text-transform: uppercase;">{{$data->nama_sekolah}}</h4><p style="font-size: 15px;">{{$data->alamat_sekolah}} <br> Kec.{{$data->nama_kecamatan}}, Kel.{{$data->nama_kelurahan}}<br>Telp : {{$data->nomor_hp}}, Email : {{$data->email}}, Website : {{$data->website}}</p></td>
         </tr>
     </table>
     <hr style="border-top:3px solid #000;">

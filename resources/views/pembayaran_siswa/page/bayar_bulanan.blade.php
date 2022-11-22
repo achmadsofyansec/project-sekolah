@@ -93,7 +93,7 @@
                                         @if ($c->status_pembayaran == '0')
                                         <a href="#" data-toggle="modal" data-target="#modal-bulanan-<?= $c->id_bulanan?>" class="btn-sm btn-success"><i class="fas fa-cash-register"></i> Bayar</a>
                                           @else
-                                          <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</a>
+                                      <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</a>
                                       @endif
                                       </td>
                                     </tr>
