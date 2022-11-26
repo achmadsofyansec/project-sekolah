@@ -8,6 +8,8 @@ use App\Models\KelulusanNilai;
 use App\Models\KelulusanWaktu;
 use App\Models\sekolah;
 use App\Models\tahun_ajaran;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -40,10 +42,18 @@ class CariController extends Controller
                                             ,'kelulusan_nilais.kode_ujian as kode_kode_ujian'
                                             ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan'])
                                             ->where('kode_ujian', '=', $id)->first();
-       
+        // $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
+        $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
+        $timezone = 'Asia/Jakarta';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
 
-       return view('portal.main.hasil', compact('dataCari'));
-        
+    //    if ($waktu > $tanggal) {
+    //     return view('portal.main.hasil', compact('dataCari', 'waktu'));
+    //    } else {
+    //     return $this->portal($request);
+    //    }   
+    return view('portal.main.hasil', compact('dataCari', 'waktu'));
     }
 
     public function cetak(Request $request, $id){

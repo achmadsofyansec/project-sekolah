@@ -3,8 +3,9 @@
 @section('class-body', 'login-page')
 @section('content-auth')
 <?php 
-  $waktu = date_default_timezone_set('Asia/Jakarta');
-  $sekarang = date('y-m-d h:i:s');
+   $timezone = 'Asia/Jakarta';
+   $date = new DateTime('now', new DateTimeZone($timezone));
+   $tanggal = $date->format('Y-m-d');
 ?>
 <style>
   .limiter {
@@ -203,6 +204,7 @@
 </style>
 <div class="limiter">
   <div class="container-login100">
+    @if ($waktu > $tanggal)
     <div class="wrap-login100">
       <form class="login100-form validate-form" action="{{ route('cari') }}" method="POST">
         {!! csrf_field() !!}
@@ -239,6 +241,43 @@
         </div>
       </div>
     </div>
+    @endif
+    @if ($waktu < $tanggal)
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        {!! csrf_field() !!}
+      <span class="login100-form-title">
+        PORTAL KELULUSAN
+      </span>
+      <span class="login100-form-title p-b-43">
+        @foreach ($sekolah as $item)
+        {{ $item->nama_sekolah }}  
+        @endforeach
+        BELUM BISA DIAKSES
+      
+      </span>
+      
+      <div class="validate-input">
+          <input class="form-control mb-5" type="number" name="no_peserta" placeholder="Portal Bisa Diakses Pada {{ $tanggal }}" disabled>
+        </div>
+    
+
+        <div class="container-login100-form-btn">
+          <button type="submit" class="login100-form-btn">
+            CEK KELULUSAN
+          </button>
+        </div>
+      </form>
+
+      <div class="login100-more" style="background-image: url('images/bg-01.jpeg');">
+        <div class="row">
+          
+        </div>
+      </div>
+    </div>
+    @endif
+  
+    
   </div>
 </div>
 @endsection

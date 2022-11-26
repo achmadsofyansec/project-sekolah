@@ -64,7 +64,7 @@
 <div class="book">
     <div class="page">
         <div class="subpage">
-          <img style="margin-left: -118px; margin-top: -115px;" src="{{asset('public/bahanSKL/kop.PNG')}}">
+          {{-- <img style="margin-left: -118px; margin-top: -115px;" src="{{asset('public/bahanSKL/kop.PNG')}}"> --}}
           <p style="margin-left: -80px; margin-right: -90px; margin-bottom: 0px; margin-top: 5px;">
             Yang bertanda tangan di bawah ini, Kepala  Sekolah Menengah Kejuruan Negeri 2 Madiun, Menerangkan bahwa :
           </p>
@@ -210,7 +210,7 @@
             Surat Keterangan Lulus ini dapat di gunakan sesuai dengan kebutuhan, berlaku 6 bulan sejak 02 Mei 2020 sampai dengan 02 Nopember 2020 atau sampai terbitnya ijazah asli.
           </p>
           <br>
-          <img style="margin-left: -118px; margin-top: -10px;" src="{{asset('public/bahanSKL/bawah.PNG')}}">
+          {{-- <img style="margin-left: -118px; margin-top: -10px;" src="{{asset('public/bahanSKL/bawah.PNG')}}"> --}}
         </div>    
     </div>
 

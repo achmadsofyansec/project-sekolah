@@ -15,7 +15,7 @@ class CreateKelulusanWaktusTable extends Migration
     {
         Schema::create('kelulusan_waktus', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('batas_akhir');
+            $table->date('batas_akhir');
             $table->timestamps();
         });
     }
