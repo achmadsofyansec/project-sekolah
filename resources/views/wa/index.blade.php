@@ -39,9 +39,9 @@
                   <div class="card-tools">
                     <p>
                     @if ($con != true)
-                    <a href="" class="btn btn-success"> Connect Local Module </a>
+                    <span class="badge btn-danger">Module Disconnected </span>
                       @else
-                      <a href="" class="btn btn-danger"> Disconnect Local Module </a>
+                      <span class="badge btn-connected"> Module Connected </span>
                     </p>
                     @endif
                   </div>
