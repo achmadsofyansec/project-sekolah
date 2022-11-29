@@ -16,6 +16,22 @@ class PrintPDFController extends Controller
 {
 
     //
+    public function HeadPDF($name,$isi){
+      $tgl = date('Ymdhis');
+      $data = DB::table('sekolahs')
+        ->join('kelurahan','sekolahs.kode_kelurahan','=','kelurahan.kode_kelurahan')
+        ->join('kecamatan','sekolahs.kode_kecamatan','=','kecamatan.kode_kecamatan')
+        ->select(['sekolahs.*','sekolahs.id as id_sekolah','kelurahan.*','kecamatan.*'])->first();
+      $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+      $name = $tgl."-".$name;
+      $pdf = PDF::loadview('layouts.laporan_print',[
+        'data' => $data,
+        'name' => $name,
+        'img' => $img,
+        'isi' => $isi
+        ]);
+    return $pdf->stream();
+    }
     public function laporan(Request $req)
     {
         $tgl = date('Ymdhis');
@@ -228,25 +244,65 @@ class PrintPDFController extends Controller
         
     }
     public function cetak_struk(Request $req){
-      $tgl = "";
-      $data = DB::table('sekolahs')
-        ->join('kelurahan','sekolahs.kode_kelurahan','=','kelurahan.kode_kelurahan')
-        ->join('kecamatan','sekolahs.kode_kecamatan','=','kecamatan.kode_kecamatan')
-        ->select(['sekolahs.*','sekolahs.id as id_sekolah','kelurahan.*','kecamatan.*'])->first();
-      $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
-      $name = $tgl.'_Laporan-pdf';
+      $name = "STRUK-PEMBAYARAN-PDF";
       $isi = "";
       if($req != null){
-        $isi .= '<center><div style="text-transform:uppercase;"><p style="font-size:20px; font-weight:bold;"> BUKTI PEMBAYARAN SISWA </p><hr></div></center>';
-        $isi .= 'Periode : ';
-
+        switch($req->nama_pembayaran){
+          case "bulanan_siswa":
+            $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+            ->where([['keuangan_pembayaran_bulanans.id','=',$req->id_bulanan]])
+            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*']);
+            $isi .= '<center><div style="text-transform:uppercase;"><p style="font-size:20px; font-weight:bold;"> BUKTI PEMBAYARAN BULANAN SISWA </p><hr></div></center>';
+            $isi .= '<table width="100%">
+                    <tr>
+                        <td>Periode</td>
+                        <td>:</td>
+                        <td> '.$req->bulan_pembayaran.' ('.$req->tahun_ajaran.')</td>
+                        <td></td>
+                        <td style="text-align:right;">Tanggal</td>
+                        <td>:</td>
+                        <td> '.$req->tgl_bayar.'</td>
+                    </tr>
+                    <tr>
+                        <td>NISN</td>
+                        <td>:</td>
+                        <td>'.$req->nisn.'</td>
+                        <td></td>
+                        <td style="text-align:right;">Kelas</td>
+                        <td>:</td>
+                        <td>'.$req->kode_kelas.'</td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>'.$req->nama.'</td>
+                    </tr>
+                    </table><hr>';
+            $isi .= '<table width="100%" border="1">
+                      <tr style="text-align:center;">
+                        <td width="5%">No</td>
+                        <td width="70%">Pembayaran</td>
+                        <td width="25%">Nominal</td>
+                      </tr>';
+            $total = 0;
+            $no = 1;
+            foreach ($detail_bulanan as $item) {
+              $total = $total + $item->tagihan_pembayaran;
+                $isi .='<tr">
+                        <td width="5%">'.$no++.'</td>
+                        <td width="70%">'.$item->nama_biaya.' Bulan '.$item->bulan_pembayaran.'</td>
+                        <td width="25%">Rp.'.number_format($item->tagihan_pembayaran).'.-</td>
+                      </tr>';
+            }
+            $isi .='<tr>
+                        <td width="75" colspan="2">Total Pembayaran</td>
+                        <td width="25%">Rp.'.number_format($total).'.-</td>
+                      </tr>
+                      </table>';
+          break;
+        }
       }
-      $pdf = PDF::loadview('layouts.laporan_print',[
-        'data' => $data,
-        'name' => $name,
-        'img' => $img,
-        'isi' => $isi
-        ]);
-    return $pdf->stream();
+      //dd($req);
+      return $this->HeadPDF($name,$isi);
     }
 }

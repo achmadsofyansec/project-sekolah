@@ -35,7 +35,19 @@
                                 @if ($c->status_pembayaran == '0')
                                 <span class="badge badge-danger"> {{'Tagihan Belum Lunas'}}</span>
                                   @else
-                                  <a href="#" class="btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</a>
+                                  <form action="{{route('cetak_struk')}}" method="POST" target="_blank">
+                                    @csrf
+                                    <input type="hidden" name="type" id="type" value="pembayaran">
+                                    <input type="hidden" name="nama_pembayaran" id="nama_pembayaran" value="bulanan_siswa">
+                                    <input type="hidden" name="tahun_ajaran" id="tahun_ajaran" value="{{$c->tahun_ajaran}}">
+                                    <input type="hidden" name="bulan_pembayaran" id="bulan_pembayaran" value="{{$c->bulan_pembayaran}}">
+                                    <input type="hidden" name="nisn" id="nisn" value="{{$data->nisn}}">
+                                    <input type="hidden" name="nama" id="nama" value="{{$data->nama}}">
+                                    <input type="hidden" name="id_bulanan" id="id_bulanan" value="{{$c->id_bulanan}}">
+                                    <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$c->kode_kelas}}">
+                                    <input type="hidden" name="tgl_bayar" id="tgl_bayar" value="{{$c->tgl_bayar}}">
+                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</button>
+                                  </form>
                               @endif
                                 
                               </td>

@@ -25,10 +25,10 @@
         <tr>
           <td align="center" width="70%"></td>
           <td width="30%">
-           Jakarta, 20 Oktober 2022    <br/>Kepala Tata Usaha,<br/><br/><br/><br/>
-            <b><u>ABDUL MUIS</u><br/>343434343434</b>
+            Petugas<br/><br/><br/><br/>
+            <b> (.............................) </b>
           </td>
         </tr>
-        </table>
+    </table>
 </body>
 </html>
