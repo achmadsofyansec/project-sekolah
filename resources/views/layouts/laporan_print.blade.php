@@ -20,7 +20,7 @@
     </table>
     <hr style="border-top:3px solid #000;">
     {!!$isi!!}
-    <br><br><br>
+    <br>
     <table width="100%">
         <tr>
           <td align="center" width="70%"></td>

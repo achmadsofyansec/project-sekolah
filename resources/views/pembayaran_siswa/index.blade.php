@@ -217,6 +217,17 @@
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                               @else
+                              <form action="{{route('cetak_struk')}}" method="POST" target="_blank">
+                                @csrf
+                                <input type="hidden" name="type" id="type" value="all">
+                                <input type="hidden" name="nama_pembayaran" id="nama_pembayaran" value="nonbulanan_siswa">
+                                <input type="hidden" name="tahun_ajaran" id="tahun_ajaran" value="{{$item->tahun_ajaran}}">
+                                <input type="hidden" name="nisn" id="nisn" value="{{$data->nisn}}">
+                                <input type="hidden" name="nama" id="nama" value="{{$data->nama}}">
+                                <input type="hidden" name="id_detail" id="id_detail" value="{{$item->id_nonbulanan}}">
+                                <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$item->kode_kelas}}">
+                                <button type="submit" class="btn btn-light"><i class="fas fa-print"></i></button>
+                              </form>
                               <a href="#" data-toggle="modal" data-target="#modal-view-nonbulanan<?= $item->id_nonbulanan ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                             @endif
                           </td>

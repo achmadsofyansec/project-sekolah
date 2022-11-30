@@ -264,11 +264,11 @@ class BulananController extends Controller
                 $img = config('app.url').'/assets/uploads/'.$data->foto_siswa;
             }
             $data_bulanan = keuangan_pembayaran_bulanan::groupBy('keuangan_pembayaran_bulanans.kode_biaya_siswa')
-            ->join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
-            ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
-            ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
-            ->where([['keuangan_pembayaran_bulanans.id','=',$id]])
-            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.id as id_biayas','biaya_siswas.*','kelas.*','tahun_ajarans.*','tahun_ajarans.id as id_tahun_ajaran'])->first();
+                        ->join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+                        ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
+                        ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
+                        ->where([['keuangan_pembayaran_bulanans.id','=',$id]])
+                        ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.id as id_biayas','biaya_siswas.*','kelas.*','tahun_ajarans.*','tahun_ajarans.id as id_tahun_ajaran'])->first();
             $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                         ->join('kelas','keuangan_pembayaran_bulanans.kode_kelas','=','kelas.id')
                                                         ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')

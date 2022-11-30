@@ -244,10 +244,71 @@ class PrintPDFController extends Controller
         
     }
     public function cetak_struk(Request $req){
+      date_default_timezone_set("Asia/Jakarta");
+      $tgl = date('Y-m-d h:i:s');
       $name = "STRUK-PEMBAYARAN-PDF";
       $isi = "";
       if($req != null){
         switch($req->nama_pembayaran){
+          case "nonbulanan_siswa":
+            $where = $req->type == "all" ? ['keuangan_pembayaran_nonbulanans.id','=',$req->id_detail] : ['keuangan_detail_nonbulanans.id','=',$req->id_detail];
+            $detail_non_bulanan = keuangan_detail_nonbulanan::join('keuangan_pembayaran_nonbulanans','keuangan_detail_nonbulanans.kode_non_bulanan','=','keuangan_pembayaran_nonbulanans.id')
+                        ->join('kelas','keuangan_pembayaran_nonbulanans.kode_kelas','=','kelas.id')
+                        ->join('methode_pembayarans','keuangan_detail_nonbulanans.jenis_pembayaran_detail','=','methode_pembayarans.id')
+                        ->join('biaya_siswas','keuangan_pembayaran_nonbulanans.kode_biaya_siswa','=','biaya_siswas.id')
+                        ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
+                        ->where([$where])
+                        ->get(['keuangan_detail_nonbulanans.id as id_detail','keuangan_detail_nonbulanans.*','keuangan_pembayaran_nonbulanans.*','methode_pembayarans.*','tahun_ajarans.*','kelas.*','kelas.kode_kelas as id_kelases','biaya_siswas.*']);
+            $isi .= '<center><div style="text-transform:uppercase;"><p style="font-size:20px; font-weight:bold;"> BUKTI PEMBAYARAN NONBULANAN SISWA </p><hr></div></center>';
+            $isi .= '<table width="100%">
+                    <tr>
+                        <td>Tahun Ajaran</td>
+                        <td>:</td>
+                        <td>'.$req->tahun_ajaran.'</td>
+                        <td></td>
+                        <td style="text-align:right;">Tanggal</td>
+                        <td>:</td>
+                        <td>'.$tgl.'</td>
+                    </tr>
+                    <tr>
+                        <td>NISN</td>
+                        <td>:</td>
+                        <td>'.$req->nisn.'</td>
+                        <td></td>
+                        <td style="text-align:right;">Kelas</td>
+                        <td>:</td>
+                        <td>'.$req->kode_kelas.'</td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>'.$req->nama.'</td>
+                    </tr>
+                    </table><hr>';
+            $isi .= '<table width="100%" border="1">
+                      <tr style="text-align:center;">
+                        <td width="5%">No</td>
+                        <td width="25%">Tgl</td>
+                        <td width="50%">Pembayaran</td>
+                        <td width="20%">Nominal</td>
+                      </tr>';
+            $no = 1;
+            $total = 0;
+            foreach ($detail_non_bulanan as $item) {
+              $total = $total + $item->nominal_detail;
+              $isi .= '<tr>
+                <td width="5%">'.$no++.'</td>
+                <td width="25%">'.$item->tgl_input_detail.'</td>
+                <td width="50%">'.$item->nama_biaya.'</td>
+                <td width="20%">Rp.'.number_format($item->nominal_detail).',-</td>
+              </tr>';
+            }
+            $isi .='<tr>
+                        <td width="75" colspan="3">Total Pembayaran</td>
+                        <td width="25%">Rp.'.number_format($total).'.-</td>
+                      </tr>
+                      </table>';
+          break;
           case "bulanan_siswa":
             $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
             ->where([['keuangan_pembayaran_bulanans.id','=',$req->id_bulanan]])

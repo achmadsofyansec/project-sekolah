@@ -61,11 +61,12 @@ class PembayaranSiswaController extends Controller
                                                             ->where([['kode_siswa','=',$request->kode_siswa],['tahun_ajarans.id','=',$request->tahun_ajaran]])
                                                             ->get(['keuangan_pembayaran_nonbulanans.id as id_nonbulanan','keuangan_pembayaran_nonbulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
             $detail_non_bulanan = keuangan_detail_nonbulanan::join('keuangan_pembayaran_nonbulanans','keuangan_detail_nonbulanans.kode_non_bulanan','=','keuangan_pembayaran_nonbulanans.id')
+                                                            ->join('kelas','keuangan_pembayaran_nonbulanans.kode_kelas','=','kelas.id')
                                                             ->join('methode_pembayarans','keuangan_detail_nonbulanans.jenis_pembayaran_detail','=','methode_pembayarans.id')
                                                             ->join('biaya_siswas','keuangan_pembayaran_nonbulanans.kode_biaya_siswa','=','biaya_siswas.id')
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                             ->where([['keuangan_pembayaran_nonbulanans.kode_siswa','=',$request->kode_siswa],['tahun_ajarans.id','=',$request->tahun_ajaran]])
-                                                            ->get(['keuangan_detail_nonbulanans.id as id_detail','keuangan_detail_nonbulanans.*','keuangan_pembayaran_nonbulanans.*','methode_pembayarans.*']);
+                                                            ->get(['keuangan_detail_nonbulanans.id as id_detail','keuangan_detail_nonbulanans.*','keuangan_pembayaran_nonbulanans.*','methode_pembayarans.*','tahun_ajarans.*','kelas.*','kelas.kode_kelas as id_kelases']);
             $nonbulanan = biaya_siswa::join('pos_penerimaans','biaya_siswas.pos_biaya','=','pos_penerimaans.id')
                                                             ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                             ->where([['tipe_biaya','=','NONBULANAN'],['tahun_ajarans.id','=',$request->tahun_ajaran]])
