@@ -22,26 +22,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('login',[PageController::class,'login'])->name('login');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //View Pages In Admin Dashboard
         Route::get('/',[PageController::class,'index'])->name('dashboard');
-        
+
         // Nilai
         Route::resource('/nilai', NilaiController::class);
     });
 });
 
+// Portal
 
-        // Portal
-
-        Route::get('/portal', [CariController::class, 'portal'])->name('portal');
-        Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
-        Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
-        Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
-
-
+Route::get('/portal', [CariController::class, 'portal'])->name('portal');
+Route::post('/cekNomor', [CariController::class, 'cekNomor'])->name('cari');
+Route::get('/hasil/{id}', [CariController::class, 'hasilCari'])->name('hasil');
+Route::get('/cetak/{id}', [CariController::class, 'cetak'])->name('cetak');
 
 
 

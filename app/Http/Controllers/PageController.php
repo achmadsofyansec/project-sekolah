@@ -22,31 +22,19 @@ class PageController extends Controller
         $dropout = KelulusanNilai::where('status', '=', 'Drop Out')->get();
         return view('dashboard', compact('siswa', 'lulus', 'tidaklulus', 'dropout', 'sekolah', 'tahun_ajaran'));
     }
-    public function view_jabatan(){
-        return view('jabatan.index');
-    }
-    public function view_users(){
-        return view('users.index');
-    }
-    public function view_pengumuman(){
-        return view('pengumuman.index');
-    }
-    public function view_pemeliharaan(){
-        return view('pemeliharaan.index');
-    }
-    public function view_singkronisasi(){
-        return view('singkronisasi.index');
+
+    public function logout(Request $request){
+        Auth::logout();
+     
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+     
+        return redirect('../sekolahApp/');
     }
 
-    public function login_portal(){
-        return view('portal.main.login');
-    }
-
-    public function nilai(){
-        return view('nilai.index');
-    }
+    public function login(Request $request){
+        return redirect('../sekolahApp/');
     
-    public function cek(){
-        return view('cari');
     }
 }

@@ -67,7 +67,7 @@
           <i class="far fa-user text-white"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <form action="/signout" method="post">
+          <form action="<?php echo url('/signout')?>" method="post">
           @csrf
           <input type="submit" class="dropdown-item dropdown-footer" value="Log out"></input>
           </form>
@@ -97,7 +97,7 @@
           <a href="#" class="d-block"></a>
           <span class="badge badge-info right ">Administrator</span>
           
-          <form action="/signout" method="post">
+          <form action="<?php echo url('/signout')?>" method="post">
           @csrf
           <button type="submit" class="badge badge-danger right ">Logout <i class="nav-icon fas fa-sign-out-alt"></i></button>
           </form>
