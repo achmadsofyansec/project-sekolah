@@ -39,13 +39,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//View Pages In Admin Dashboard
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('login',[PageController::class,'login'])->name('login');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
         //Data Asset
-        Route::resource('gedung', GedungController::class);
+        Route::resource('/gedung', GedungController::class);
         Route::resource('/ruangan', RuanganController::class);
         Route::resource('/lapangan', LapanganController::class);
         Route::resource('/sarana_belajar', SaranaBelajarController::class);
@@ -74,9 +74,6 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
-
     });
 });
-
-
 

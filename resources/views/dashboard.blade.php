@@ -27,7 +27,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-graduate"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text text-danger" ><b>Data Aset</b></span>
-                <font  style="text-shadow: 2px 2px 4px #827e7e"><?= $aset->count(); ?></font>
+                <font  style="text-shadow: 2px 2px 4px #827e7e"><?= $dataAset->count(); ?></font>
               </div>
             </div></a>
           </div>
@@ -36,8 +36,8 @@
             <div class="info-box shadow-lg">
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-people-carry"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text text-primary" ><b>Peminjaman</b></span>
-                <font style="text-shadow: 2px 2px 4px #827e7e"><?= $peminjaman->count(); ?></font>
+                <span class="info-box-text text-primary" ><b>Data Peminjam</b></span>
+                <font style="text-shadow: 2px 2px 4px #827e7e"><?= $dataPeminjaman->count(); ?></font>
               </div>
             </div></a>
           </div>
@@ -56,7 +56,7 @@
             <div class="info-box shadow-lg">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-paste"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text text-info" ><b>Kategori</b></span>
+                <span class="info-box-text text-info" ><b>Kategori Aset</b></span>
                 <font style="text-shadow: 2px 2px 4px #827e7e"><?= $kategori->count(); ?></font>
               </div>
             </div></a>
@@ -64,10 +64,10 @@
           
         </div>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-7">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i> PEMINJAMAN HARI INI</h3>
+                <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i> DATA PEMINJAMAN</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
@@ -84,17 +84,23 @@
                       <table class="table table-bordered">
                           <thead>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Unit</th>
+                            <th>Nama</th>      
                             <th>Waktu</th>
+                            <th>Status</th>
                           </thead>
                           <tbody>
                             @forelse ($data as $item)
                               <tr>
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->unit }}</td>
                                 <td>{{ $item->tgl_peminjaman }}</td>
+                                <td>@if ($item->status_peminjaman == '0')
+                                  <span class="btn btn-warning">Dipinjam</span>
+                               @elseif($item->status_peminjaman == '1')
+                               <span class="btn btn-success">Dikembalikan</span>
+                               @else 
+                               <span class="btn btn-danger">Hilang</span>
+                               @endif</td>
                               </tr>
                             @empty
                               
@@ -108,7 +114,7 @@
               <!-- /.card-body -->
             </div>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-5">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title "><i class="nav-icon fas fa-calendar-alt text-danger"></i>Grafik Aset</h3>
@@ -139,34 +145,32 @@
   </div>
 @endsection
 @section('content-script')
-
 <script>
-$(document).ready(function(){
-  var donutChartCanvas = $('#sarpras-chart').get(0).getContext('2d')
-var donutData  = {
-labels: [
-    'Asset',
-    'Kategori',
-    'pengembalian',
-    'Peminjaman',
-],
-datasets: [
-  {
-    data: [{{$aset->count()}},{{$kategori->count()}},{{$pengembalian->count()}},{{$peminjaman->count()}},
-    backgroundColor : ['#28a745', '#ffc107', '#dc3545', '#17a2b8'],
-    }
-  ]
-}
-var donutOptions     = {
-maintainAspectRatio : false,
-responsive : true,
-}
+  $(document).ready(function(){
+    var donutChartCanvas = $('#sarpras-chart').get(0).getContext('2d')
+  var donutData        = {
+  labels: [
+      'Peminjaman',
+      'Pengembalian',
+      'Denda'
+  ],
+  datasets: [
+    {
+      data: [{{$peminjaman->count()}}, {{$pengembalian->count()}}, {{$denda->count()}}],
+      backgroundColor : ['#28a745','#dc3545', '#ffc107'],
+      }
+    ]
+  }
+  var donutOptions     = {
+  maintainAspectRatio : false,
+  responsive : true,
+  }
 
-new Chart(donutChartCanvas, {
-  type: 'doughnut',
-  data: donutData,
-  options: donutOptions
+  new Chart(donutChartCanvas, {
+    type: 'doughnut',
+    data: donutData,
+    options: donutOptions
+    });
   });
-});
 </script>
 @endsection
