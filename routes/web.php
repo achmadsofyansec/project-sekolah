@@ -32,6 +32,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
 
         // Nilai
         Route::resource('/nilai', NilaiController::class);
+
+        // Pengaturan Portal
+        Route::resource('/pengaturan', PengaturanPortalController::class);
     });
 });
 

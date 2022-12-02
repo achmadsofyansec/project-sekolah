@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models\Pengaturan;
+use App\Models\KelulusanWaktu;
 use Illuminate\Http\Request;
 
 class PengaturanPortalController extends Controller
@@ -16,7 +16,7 @@ class PengaturanPortalController extends Controller
      */
     public function index()
     {
-        $data = DB::table('pengaturans')->select(['pengaturans.*', 'pengaturans.id as id_pengaturan'])->first();
+        $data = DB::table('kelulusan_waktus')->select(['kelulusan_waktus.*', 'kelulusan_waktus.id as id_pengaturan'])->first();
         return view('portal.pengaturan.index', compact('data'));
     }
 
@@ -73,24 +73,21 @@ class PengaturanPortalController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'nama_sekolah' => ['required'],
-            'tahun_ajaran' => ['required'],
-            'deskripsi' => ['required'],
+            'batas_akhir' => ['required']
 
         ]);
         if($validate){
-            $update = Pengaturan::findOrFail($id);
+            $update = KelulusanWaktu::findOrFail($id);
             $update->update([
-                'nama_sekolah' => $request->nama_sekolah,
-                'tahun_ajaran' => $request->tahun_ajaran,
-                'deskripsi' => $request->deskripsi,
+                'batas_akhir' => $request->batas_akhir
             ]);
-            $update = DB::table('pengaturans')->where('pengaturans.id','=',$id);
+            $update = DB::table('kelulusan_waktus')->where('kelulusan_waktus.id','=',$id);
+
             if($update){
                 return redirect()
                 ->route('pengaturan.index')
                 ->with([
-                    'success' => 'Pengaturan Has Been Update successfully'
+                    'success' => 'Pengaturan Portal Has Been Update successfully'
                 ]);
             }else{
                 return redirect()

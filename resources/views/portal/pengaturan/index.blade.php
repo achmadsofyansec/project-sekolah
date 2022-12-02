@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Pengaturan')
+@section('page', 'Edit Portal')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -40,8 +40,8 @@
                           <h1 class="card-title"> <span class="badge badge-danger"><i class="fas fa-angle-right right"></i></span> Petunjuk</h1>
                         </div>
                         <div class="card-body">
-                          <p>1. Ubah Isi <b>Pengaturan</b> Dengan Baik dan Benar.</p>
-                          <p>2. Simpan Data Pengaturan Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
+                          <p>1. Ubah Isi <b>Data Portal Kelulusan</b> Dengan Baik dan Benar.</p>
+                          <p>2. Simpan Data Portal Kelulusan Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
                         </div>
                         <div class="card-footer">
                           Untuk <b>Keterangan dan Informasi</b>  lebih lanjut silahkan hubungi Bagian <b>IT (Information & Technology)</b> 
@@ -50,13 +50,18 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="{{ route('editWaktu') }}" method="POST">
-                          {!!csrf_field() !!}
-                            <div class="form-group row">
-                                
+                        <form action="{{route('pengaturan.update', $data->id)}}" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Waktu Open Portal</label>
+                                    <input type="date" name="batas_akhir" id="batas_akhir" class="form-control" value="{{ $data->batas_akhir }}" required>
+                                  </div>
+                            </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                                <a href="" class="btn btn-danger"><i class="fas fa-undo"></i> Kembali</a>
+                            <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
+                            
                             </div>
                         </form>
                     </div>

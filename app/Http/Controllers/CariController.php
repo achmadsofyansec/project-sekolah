@@ -19,8 +19,19 @@ class CariController extends Controller
     public function portal(Request $request){
         $sekolah = sekolah::latest()->get();
         $tahun_ajaran = tahun_ajaran::where('status_tahun_ajaran', '=', 'Aktif')->get();
-        $waktu = KelulusanWaktu::latest()->get();
-        return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
+        $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
+        // dd($waktu);
+        $timezone = 'Asia/Jakarta';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
+
+        // if($tanggal > $waktu) {
+        //     return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
+        // } else {
+        //     return view('portal.main.belum', compact('sekolah', 'tahun_ajaran', 'waktu'));
+        // }
+
+         return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
         
     }
 

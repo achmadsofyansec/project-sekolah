@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class KelulusanWaktu extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'batas_akhir'
+    ];
 }
