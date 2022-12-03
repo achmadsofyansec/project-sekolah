@@ -33,7 +33,7 @@ class PageController extends Controller
         return view('manual.index');
     }
     public function portal(){
-        $alumni_lowongan_kerja = alumni_lowongan_kerja::latest()->get();
+        $alumni_lowongan_kerja = alumni_lowongan_kerja::orderBy('id','DESC')->paginate(4);
         return view('portal.index',compact('alumni_lowongan_kerja'));
     }
     public function login(){

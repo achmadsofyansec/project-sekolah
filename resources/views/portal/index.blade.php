@@ -3,7 +3,7 @@
 @section('content-app')
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(34, 192, 113) ;">
+    <nav class=" navbar navbar-expand navbar-pink navbar-dark" style="background-color: #e83e8c;">
         <div class="container">
                 <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('dist/images/logo.png')}}" height="50"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,15 +12,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo url('about') ?>">Beranda</a>
-                    </li>
-                         <li class="nav-item">
-                      <a class="nav-link" href="<?php echo url('/') ?>">Lowongan Kerja</a>
+                      <a class="nav-link" type="button" href="<?php echo url('/portal') ?>">Beranda</a>
                     </li>
                      <li class="nav-item">
-                      <a class="nav-link" href="<?php echo url('contact') ?>">Pengumuman</a>
+                      <a class="nav-link" href="<?php echo url('/pengumuman') ?>">Pengumuman</a>
                     </li>
-                    <a class="nav-link" href="<?php echo url('contact') ?>">Login</a>
+                    <a class="nav-link" href="<?php echo url('/login') ?>">Login</a>
                     <li>
                     </li>
                   </ul>
@@ -28,29 +25,67 @@
               </div>
           </nav>
           @forelse ($alumni_lowongan_kerja as $item)
-          <div class="container">
-            <div class="row" style="margin-top: 4%">
-              <div class="col-md-12">
-                <div class="card">
-                    <img class="p-5" src="{{ config('app.url') . '/assets/uploads/' . $item->file }}" width="20%">
-                <h1 class="card-title mt-5 ml-3">{{$item->judul}}</h1>
-                  <div class="card-body">
-                    <br />
-                    <p><b>Deskripsi : {{$item->isi}}</b> <a href=""></a> </p>
-                    <a href="" class="btn btn-primary ">Selengkapnya &rarr;</a>
-                  </div>
-                  <div class="card-footer text-muted">
-                    Posted on {{$item->tanggal}}
+          <body>
+            <div class="container">
+              <div class="row" style="margin-top: 10px">
+                <div class="col-md-12">
+                  <div class="card">
+                    <img class="card-img-top" src="" alt="">
+                    <div class="card-body">
+                      <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <th style="width: 40%">Perusahaan</th>
+                                    <th style="width: 20%">Tanggal Publish</th>
+                                    <th style="width: 40%">Deskripsi</th>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><img src="{{ config('app.url') . '/assets/uploads/' . $item->file }}"
+                                              width="100">  {{ $item->judul }}</td>
+                                            <td>{{ $item->tanggal }}</td>
+                                            <td>{{ $item->isi }}</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href=" ?id={{$item->id}}"><button type="button" class="btn bg-pink float-right">Selengkapnya</button></a>
+                    </div>
                   </div>
                 </div>
-                <ul class="pagination justify-content-center mb-4">
-                </ul>
               </div>
             </div>
-          </div>
+          </body>
           @empty
-          <div class="container">
-            <p>Tidak Ada Lowongan Kerja</p>
-          </div>
+          <body>
+            <div class="container">
+              <div class="row" style="margin-top: 10px">
+                <div class="col-md-12">
+                  <div class="card">
+                    <p>Tidak Ada Data</p>
+              </div>
+            </div>
+          </body>
           @endforelse
+          <div class="pagination justify-content-center">
+            {{$alumni_lowongan_kerja->links('pagination::bootstrap-4')}}
+          </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="page-footer" style="background-color: #e83e8c;">
+  
+  <div class="footer-copyright text-center py-3">
+  <strong>Copyright &copy; 2014-2021 <a href="#">Jamanu Maarif NU</a>.</strong>
+  All rights reserved.
+  </div>
+  
+  <div class="footer-copyright text-center pt-3">
+    <b>Version</b> 3.2.0
+  </div>
+
+</footer>
+
 @endsection
