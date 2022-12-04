@@ -5,7 +5,7 @@
     <!-- Navbar -->
     <nav class=" navbar navbar-expand navbar-pink navbar-dark" style="background-color: #e83e8c;">
         <div class="container">
-                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('dist/images/logo.png')}}" height="50"></a>
+                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('public/dist/img/jamanu_logo.png')}}" height="50"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,7 +49,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href=" ?id={{$item->id}}"><button type="button" class="btn bg-pink float-right">Selengkapnya</button></a>
+                        <a href="<?php echo url('/detail',$item->id)?>"><button type="button" class="btn bg-pink float-right">Selengkapnya</button></a>
                     </div>
                   </div>
                 </div>

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 Route::get('login',[PageController::class,'login'])->name('login');
 Route::get('portal',[PageController::class,'portal'])->name('portal');
+Route::get('detail/{id}',[PageController::class,'detail'])->name('detail');
 Route::post('/signout',[PageController::class,'logout']);
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){

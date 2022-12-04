@@ -36,6 +36,10 @@ class PageController extends Controller
         $alumni_lowongan_kerja = alumni_lowongan_kerja::orderBy('id','DESC')->paginate(4);
         return view('portal.index',compact('alumni_lowongan_kerja'));
     }
+    public function detail($id){
+        $data = alumni_lowongan_kerja::latest()->where('id','=',$id)->get();
+        return view('portal.detail',compact('data'));
+    }
     public function login(){
         return redirect('../sekolahApp/');
        }
