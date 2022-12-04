@@ -13,6 +13,7 @@ class CreateAlumniLowonganKerjasTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('perpustakaan_data_bukus')) {
         Schema::create('alumni_lowongan_kerjas', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
@@ -22,6 +23,8 @@ class CreateAlumniLowonganKerjasTable extends Migration
             $table->timestamps();
         });
     }
+    }
+    
 
     /**
      * Reverse the migrations.
