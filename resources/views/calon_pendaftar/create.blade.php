@@ -1,8 +1,24 @@
-@extends('layouts.portal')
+@extends('layouts.app')
 @section('page', 'Tambah Data Siswa')
-
+@section('content-app')
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">@yield('page')</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?= url('/')?>">Home</a></li>
+              <li class="breadcrumb-item active">@yield('page')</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
     <!-- Main content -->
-    <section class="content pt-5">
+    <section class="content">
       <div class="container-fluid">
         <div class="row-mb-2">
             <div class="col-md-12 mt-1">
@@ -28,18 +44,6 @@
                             <div class="card card-outline card-info">
                                 <div class="card-header">
                                    <h1 class="card-title">
-                                    <i class="fas fa-document"></i>
-                                    Tatacara Pendaftaran
-                                    </h1> 
-                                </div>
-                                <div class="card-body">
-                                    <p>1. Ubah Isi <b>TES</b> Dengan Baik dan Benar.</p>
-                                <p>2. Simpan Data TES Dengan Cara Menekan <b>Tombol <button class="btn btn-success"><i class="fas fa-save"> Simpan</i></button></b>  Yang berada di bawah Form</p>
-                                </div>
-                            </div>
-                            <div class="card card-outline card-info">
-                                <div class="card-header">
-                                   <h1 class="card-title">
                                     <i class="fas fa-image"></i>
                                     Foto Siswa
                                     </h1> 
@@ -62,7 +66,6 @@
                                     <a href="{{route('pendaftar.index')}}" class="btn btn-danger">Kembali</a>
                                 </div>
                             </div>
-                            
                         </div>
                         <div class="col-md-8">
                             <div class="card card-outline card-info">
@@ -449,9 +452,11 @@
                
             </div>
         </div>
+    </div>
     </section>
     <!-- /.content -->
-
+  </div>
+@endsection
 @section('content-script')
     <script>
         $('#foto_siswa').change( function(event) {

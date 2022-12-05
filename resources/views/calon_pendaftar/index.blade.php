@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Calon Peserta Didik')
+@section('page', 'Pendaftaran Siswa')
 @section('content-app')
   <div class="content-wrapper">
     <div class="content-header">
@@ -21,37 +21,75 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row-mb-2">
-          <div class="col-md-12 mt-1">
-            @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-            @endif
-            @if(session('success'))
-            <div class="alert alert-primary">
-                {{ session('success') }}
-            </div>
-            @endif
-            <div class="card card-info card-outline">
-              <div class="card-header">
-                <a type="button" href="" class="btn btn-info"><i class="fas fa-plus"></i> Tambah</a>
+            <div class="col-md-12 mt-1">
+              @if(session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
               </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="dataTable" class="table table-border">
-                    <thead>
-                      <th>No</th>
-                      <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-primary">
+                  {{ session('success') }}
+              </div>
+              @endif
+                <div class="card card-outline card-info">
+                   <div class="card-header">
+                   <a type="button" href="{{ route('pendaftar.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
+                   
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                            <table id="dataTable" class="table">
+                                <thead>
+                                    <th>No</th>
+                                    <th>Foto</th>
+                                    <th>NISN</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Tempat, Tanggal Lahir</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+                                   @forelse ($pendaftar as $item)
+                                      <tr>
+                                      <td>{{$loop->index + 1}}</td>
+                                      <td>                                       
+                                        <p>Tidak Ada Foto</p>
+                                      </td>
+                                      <td>{{$item->nisn}}</td>
+                                      <td>{{$item->nama}}</td>
+                                      <td>{{$item->tmp_lahir}}, {{$item->tgl_lhr}}</td>
+                                     <td>@if ($item->status_siswa == 'Ditolak')
+                                          <span class="btn btn-danger">Ditolak</span>
+                                           @elseif($item->status_siswa == 'Diterima')
+                                           <span class="btn btn-success">Diterima</span>
+                                           @else 
+                                           <span class="btn btn-primary">Diverivikasi</span>
+                                           @endif
+                                     </td>
+                                      <td>
+                                        <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                        action="{{ route('pendaftar.destroy', $item->id) }}" method="POST">
+                                        <a href="{{route('pendaftar.edit', $item->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                      </td>
+                                      </tr>
+                                  @empty
+                                      <tr>
+                                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
+                                      </tr>
+                                  @endforelse
+                                </tbody>
+                            </table>
+                       </div>
+                   </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
