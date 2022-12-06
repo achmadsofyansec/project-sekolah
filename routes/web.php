@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PendaftaranSiswaController;
+use App\Http\Controllers\PendaftaranSiswaPortalController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/pendaftar', PendaftaranSiswaController::class);
         Route::get('/pengumuman',[PageController::class,'view_pengumuman'])->name('pengumuman');
         Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
+        Route::resource('/portal-pendaftaran', PendaftaranSiswaPortalController::class);
         Route::get('/pengaturan',[PageController::class,'view_pengaturan'])->name('pengaturan');
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
     });
