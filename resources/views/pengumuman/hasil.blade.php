@@ -54,10 +54,74 @@
                                     
                                 </div>
                             </div>
+                                            @if($dataCari != null)
+                <div class="section-top-border">
+                  <table class="table table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <td><span style="float: left;">No. Pendaftaran</span></td>
+                        <td><span style="float: left;">: {{ $dataCari->id }} </span></td>
+                      </tr>
+                      <tr>
+                        <td><span style="float: left;">NIK</span></td>
+                        <td><span style="float: left;">: {{ $dataCari->nik }} </span></td>
+                      </tr>
+                      <tr>
+                        <td><span style="float: left;">Nama Calon Siswa</span></td>
+                        <td><span style="float: left;">: {{ $dataCari->nama }} </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  @if($dataCari->status_siswa == "Diterima")
+                  <div class="alert alert-success">
+                    Selamat Anda <strong>Diterima</strong> Silahkan Melakukan Daftar Ulang</a>.
+                  </div>
+                  <div style="float: left;">
+                    <a href="{{URL('/pengumuman')}}" class="btn btn-danger">
+                      <i class="fa fa-sign-out"></i>
+                      Kembali
+                    </a>
+                  </div>
+                  
+                  @endif
+                  @if($dataCari->status_siswa == "Pendaftar")
+                  <div class="alert alert-primary">
+                    Mohon sabar data anda sedang kami Verivikasi
+                  </div>
+                  <div style="float: left;">
+                    <a href="{{URL('/pengumuman')}}" class="btn btn-danger">
+                      <i class="fa fa-sign-out"></i>
+                      Kembali
+                    </a>
+                  </div>
+                  
+                  @endif
+                  @if($dataCari->status_siswa == "Ditolak")
+                  <div class="alert alert-danger">
+                    Mohon Maaf anda dinyatakan <strong> Tidak Diterima</strong></a>.
+                  </div> 
+                  <div style="float: left;">
+                    <a href="{{URL('/pengumuman')}}" class="btn btn-danger">
+                      <i class="fa fa-sign-out"></i>
+                      Kembali
+                    </a>
+                  </div>
+                  @endif
+                </div>
+                @endif
+              </div>
+            </div>
+          
+          @if($dataCari == null)
+            <div class="alert alert-danger mb-3">
+                Data <strong>Tidak Ditemukan <a href="{{URL('/pengumuman')}}">Kembali Cari</a></strong></a>.
+            </div>
+          @endif
                         </div>
                         
                     </div>
-                    </form>           
+                    </form>    
+
             </div>
         </div>
     </section>

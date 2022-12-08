@@ -216,6 +216,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
 <script type="text/javascript">
+
 $(document).ready( function () {
     $('#dataTable').DataTable({
       scrollY: '200px',
@@ -224,5 +225,6 @@ $(document).ready( function () {
     });
 } );
     </script>
+    @yield('content-script')
 </body>
 </html>
