@@ -43,7 +43,7 @@
                                 <thead>
                                     <th>No</th>
                                     <th>Foto</th>
-                                    <th>NISN</th>
+                                    <th>NIK</th>
                                     <th>Nama Siswa</th>
                                     <th>Tempat, Tanggal Lahir</th>
                                     <th>Status</th>
@@ -56,7 +56,7 @@
                                       <td>                                       
                                         <p>Tidak Ada Foto</p>
                                       </td>
-                                      <td>{{$item->nisn}}</td>
+                                      <td>{{$item->nik}}</td>
                                       <td>{{$item->nama}}</td>
                                       <td>{{$item->tmp_lahir}}, {{$item->tgl_lhr}}</td>
                                      <td>@if ($item->status_siswa == 'Ditolak')
