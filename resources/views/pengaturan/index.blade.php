@@ -50,17 +50,19 @@
                 </div>  
                 <div class="col-md-8 mt-1">
                     <div class="card card-outline card-info">
-                        <form action="" enctype="multipart/form-data" method="POST">
+                        <form action="{{route('pengaturan.update', $data->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Waktu portal Pendaftaran dibuka</label>
-                                    <input type="date" name="batas_akhir" id="batas_akhir" class="form-control" value="" required>
+                                    
+                                    <input type="date" name="portal_open" id="portal_open" class="form-control" value="{{ $data->portal_open }}" required>
+                                  
                                   </div>
                                   <div class="form-group">
                                     <label>Waktu portal Pengumuman dibuka</label>
-                                    <input type="date" name="batas_akhir" id="batas_akhir" class="form-control" value="" required>
+                                    <input type="date" name="pengumuman_open" id="pengumuman_open" class="form-control" value="{{ $data->pengumuman_open }}"required>
                                   </div>
                             </div>
                             <div class="card-footer">

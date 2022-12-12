@@ -21,7 +21,7 @@
         </div>
         <div class="row-mb-2">
             <div class="container-fluid">
-                    <form action="{{route('cari')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('pendaftar.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                         <div class="col-md-12">
@@ -29,9 +29,24 @@
                                 <div class="card-header">
                                    <h1 class="text-center h1">
                                     <div class="text-center">
-                                       <b>CEK PENERIMAAN SISWA BARU SMK SIPINTER</b> 
-                                    </div>           
+                                       <b>SELAMAT DATANG DI PORTAL PENDAFTARAN PESERTA DIDIK BARU TAHUN 2023/2024 SMK SIPINTER</b> 
+                                    </div>
+                                   
                                     </h1> 
+                                </div>
+                                
+                            </div>
+                            <div class="card card-outline card-info">
+                                <div class="card-header">
+                                   <h1 class="card-title">
+                                    <!-- <i class="fas fa-image"></i> -->
+                                    <b>Harap Untuk Dibaca Terlebih Dahulu</b>  
+                                    </h1> 
+                                   <!--  <div class="card-tools">
+                                      <button type="button" class="btn btn-danger" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                      </button>
+                                    </div> -->
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center alert alert-danger">
@@ -53,14 +68,27 @@
                                     </div> -->
                                     
                                 </div>
+                                
                             </div>
-                                          
+                            <!-- <div class="card  card-info">
+                                <div class="card-header">
+                                   <h1 class="text-center h1">
+                                    <div class="text-center mt-1">
+                                
+                                    <a href="{{route('portal-pendaftaran.create')}}" class="btn btn-success">PORTAL PENDAFTARAN</a>
+                                    </div>
+                                   
+                                    </h1> 
+                                </div> -->
+                            
                         </div>
                         
                     </div>
-                    </form>    
-
+                    </form>
+                    
+               
             </div>
         </div>
     </section>
     <!-- /.content -->
+

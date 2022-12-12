@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\ppdbPengaturan;
 
@@ -14,8 +16,8 @@ class PengaturanController extends Controller
      */
     public function index()
     {
-        $pegaturan = ppdbPengaturan::first();
-        return view('pengaturan.index', compact('pengaturan'));
+        $data = DB::table('ppdb_pengaturans')->select(['ppdb_pengaturans.*', 'ppdb_pengaturans.id as id_pengaturan'])->first();
+        return view('pengaturan.index', compact('data'));
     }
 
     /**
@@ -58,7 +60,7 @@ class PengaturanController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -70,7 +72,33 @@ class PengaturanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'portal_open' => ['required'],
+            'pengumuman_open' => ['required']
+
+        ]);
+        if($validate){
+            $update = ppdbPengaturan::findOrFail($id);
+            $update->update([
+                'portal_open' => $request->portal_open,
+                'pengumuman_open' => $request->pengumuman_open
+            ]);
+            $update = DB::table('ppdb_pengaturans')->where('ppdb_pengaturans.id','=',$id);
+           
+            if($update){
+                return redirect()
+                ->route('pengaturan.index')
+                ->with([
+                    'success' => 'Pengaturan Portal Has Been Update successfully'
+                ]);
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+            }
+        }
     }
 
     /**
