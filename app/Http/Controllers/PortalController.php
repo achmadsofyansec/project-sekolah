@@ -29,6 +29,22 @@ class PortalController extends Controller
         
     }
 
+    public function pendaftaran(Request $request){
+       $pegumuman = ppdbPengaturan::first();
+       $portalTampil = $pegumuman->portal_open;
+        $timezone = 'Asia/Jakarta';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
+      
+       if ($tanggal > $portalTampil) {
+          return view('portal.index'); 
+        } else {
+          return view('portal.hasil'); 
+        }
+      
+        
+    }
+
     public function cari(Request $request){
         $pendaftar = $request->pendaftar;
         // return view('hasil'.$no_peserta);

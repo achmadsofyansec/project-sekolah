@@ -48,7 +48,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::post('/pengumuman/cari',[PortalController::class,'cari'])->name('cari');
         Route::get('/pengumuman/{id}',[PortalController::class,'hasil'])->name('hasil');
         
-        Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
+        Route::get('/portal',[PortalController::class,'pendaftaran'])->name('portal');
         Route::resource('/portal-pendaftaran', PendaftaranSiswaPortalController::class);
 
 

@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center alert alert-danger">
-                                       <p>Mohon portal pengecekan penerimaan siswa baru saat ini masih ditutup, Silahkan kembali lain waktu, Terima Kasih</p> 
+                                       <p>Mohon maaf portal Pendaftaran Siswa Baru belum dibuka silahkan menunggu info lebih lanjut !</p> 
                                     </div>    
                                     <!-- <div class="row">
                                         <div class="col-sm-3"></div>

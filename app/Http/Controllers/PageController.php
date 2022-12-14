@@ -26,9 +26,6 @@ class PageController extends Controller
     public function view_pengumuman(){
         return view('pengumuman.index');
     }
-    public function view_portal(){
-        return view('portal.index');
-    }
     public function view_pengaturan(){
         return view('pengaturan.index');
     }
