@@ -61,8 +61,7 @@
                             </div>
                             <div class="card-footer">
                             <button type="submit" class="btn btn-success" ><i class="fas fa-save"></i> Simpan</button>
-                            
-                            </div>
+                                                      </div>
                         </form>
                     </div>
                 </div>  

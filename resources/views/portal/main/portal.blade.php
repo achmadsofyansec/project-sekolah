@@ -205,7 +205,7 @@
 <div class="limiter">
   <div class="container-login100">
     <div class="wrap-login100">
-      <form class="login100-form validate-form" action="{{ route('cari') }}" method="POST">
+      <form class="login100-form validate-form">
         {!! csrf_field() !!}
       <span class="login100-form-title">
         PORTAL KELULUSAN
@@ -214,24 +214,14 @@
         @foreach ($sekolah as $item)
         {{ $item->nama_sekolah }}  
         @endforeach
-        TAHUN AJARAN  
-        @foreach ($tahun_ajaran as $item)
-        {{ $item->tahun_ajaran }}
-        @endforeach
+        BELUM BISA DIAKSES
+      
       </span>
       
-      
-      
       <div class="validate-input">
-          <input class="form-control mb-5" type="number" name="no_peserta" placeholder="Masukkan Nomor Ujian Contoh :  123456789 ">
+          <input class="form-control mb-5" type="number" name="no_peserta" placeholder="Portal Bisa Diakses Pada {{ $waktuOpen }}" disabled>
         </div>
     
-
-        <div class="container-login100-form-btn">
-          <button type="submit" class="login100-form-btn">
-            CEK KELULUSAN
-          </button>
-        </div>
       </form>
 
       <div class="login100-more" style="background-image: url('images/bg-01.jpeg');">
@@ -239,7 +229,9 @@
           
         </div>
       </div>
-    </div>    
+    </div>
+  
+    
   </div>
 </div>
 @endsection

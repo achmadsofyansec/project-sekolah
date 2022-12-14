@@ -19,19 +19,20 @@ class CariController extends Controller
     public function portal(Request $request){
         $sekolah = sekolah::latest()->get();
         $tahun_ajaran = tahun_ajaran::where('status_tahun_ajaran', '=', 'Aktif')->get();
-        $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
+        $waktu = KelulusanWaktu::first();
+        $waktuOpen = $waktu->batas_akhir;
+        
         // dd($waktu);
         $timezone = 'Asia/Jakarta';
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
 
-        // if($tanggal > $waktu) {
-        //     return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
-        // } else {
-        //     return view('portal.main.belum', compact('sekolah', 'tahun_ajaran', 'waktu'));
-        // }
-
-         return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
+       if ($tanggal > $waktuOpen) {
+          // return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
+            dd(true);
+        } else {
+          return view('portal.main.portal', compact('sekolah', 'tahun_ajaran', 'waktu', 'waktuOpen'));
+        }
         
     }
 
@@ -53,11 +54,20 @@ class CariController extends Controller
                                             ,'kelulusan_nilais.kode_ujian as kode_kode_ujian'
                                             ,'kelulusan_nilais.*','kelulusan_nilais.id as id_kelulusan'])
                                             ->where('kode_ujian', '=', $id)->first();
-        // $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
-        $waktu = KelulusanWaktu::where('id', 1)->get(['batas_akhir']);
+       $waktu = KelulusanWaktu::first();
+       $tampil = $waktu->batas_akhir;
+        // $waktu = KelulusanWaktu::where('id','=', 1)->get();
+       
         $timezone = 'Asia/Jakarta';
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
+        $tes = "2023-01-01";
+        dd($tampil);
+        if ($tes < $tanggal) {
+
+            dd(true);
+        }
+       
 
     //    if ($waktu > $tanggal) {
     //     return view('portal.main.hasil', compact('dataCari', 'waktu'));
