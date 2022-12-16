@@ -13,11 +13,11 @@ class CreateAlumniPengumumenTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('perpustakaan_data_bukus')) {
+        if (!Schema::hasTable('alumni_pengumumen')) {
         Schema::create('alumni_pengumumen', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('isi');
+            $table->longtext('isi');
             $table->string('file');
             $table->timestamps();
         });

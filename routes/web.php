@@ -23,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 Route::get('login',[PageController::class,'login'])->name('login');
 Route::get('portal',[PageController::class,'portal'])->name('portal');
-Route::get('detail/{id}',[PageController::class,'detail'])->name('detail');
+Route::get('portal/detail/{id}',[PageController::class,'detail'])->name('detail');
+Route::get('portal/pengumuman',[PageController::class,'portal_pengumuman'])->name('pengumuman');
+Route::get('portal/pengumuman/{id}',[PageController::class,'detail_pengumuman'])->name('pengumuman');
+Route::get('login',[PageController::class,'portal_login'])->name('login');
 Route::post('/signout',[PageController::class,'logout']);
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){

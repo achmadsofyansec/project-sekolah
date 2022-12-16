@@ -13,11 +13,11 @@ class CreateAlumniLowonganKerjasTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('perpustakaan_data_bukus')) {
+        if (!Schema::hasTable('alumni_lowongan_kerjas')) {
         Schema::create('alumni_lowongan_kerjas', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('isi');
+            $table->longText('isi');
             $table->string('file');
             $table->string('tanggal');
             $table->timestamps();

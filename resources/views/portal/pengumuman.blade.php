@@ -24,52 +24,36 @@
                 </div>
               </div>
           </nav>
+
           <body>
             <div class="container">
-          <h2><b class="card-text" style="color: #e83e8c;">LOWONGAN KERJA</b></h2>
-          @forelse ($alumni_lowongan_kerja as $item)
-               <div class="row" style="margin-top: 10px">
+              <div class="row" style="margin-top: 10px">
                 <div class="col-md-12">
+                <h2><b class="card-text" style="color: #e83e8c;">PENGUMUMAN</b></h2>
                   <div class="card">
-                    <img class="card-img-top" src="" alt="">
                     <div class="card-body">
+                    <h2><b class="card-title ml-3" style="color: #e83e8c;">Terbaru</b></h2>
                       <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <th style="width: 40%">Perusahaan</th>
-                                    <th style="width: 20%">Tanggal Publish</th>
-                                    <th style="width: 40%">Deskripsi</th>
-                                </thead>
-                                <tbody>
+                        @forelse ($data as $item)
+                            <table class="table mb-5">
                                         <tr>
-                                            <td><img src="{{ config('app.url') . '/assets/uploads/' . $item->file }}"
-                                              width="100">  {{ $item->judul }}</td>
-                                            <td>{{ $item->tanggal }}</td>
-                                            <td >{{ Str::limit($item->isi, 200) }}</td>
+                                            <td width="20%"><a href="<?php echo url('/portal/pengumuman',$item->id) ?>"><img src="{{ config('app.url') . '/assets/uploads/' . $item->file }}" width="100px"></a></td>
+                                            <td>{{$item->updated_at}}</br><p><a href="<?php echo url('/portal/pengumuman',$item->id) ?>" class="text-dark">{{$item->judul}}</a><br></p><small style="color: #e83e8c;">Deskripsi :</small><div class="p-3 mb-3 bg-light text-dark">{{ Str::limit($item->isi, 200) }}</div></td>
                                         </tr>
                                 </tbody>
                             </table>
+                            @empty
+                        @endforelse
                         </div>
-                        <a href="<?php echo url('/portal/detail',$item->id)?>"><button type="button" class="btn bg-pink float-right">Selengkapnya</button></a>
                     </div>
                   </div>
                 </div>
               </div>
-              @empty
-              <body>
-                <div class="container">
-                  <div class="row" style="margin-top: 10px">
-                    <div class="col-md-12">
-                      <div class="card">
-                        <p>Tidak Ada Data</p>
-                  </div>
-                </div>
-              </body>
-              @endforelse
             </div>
           </body>
+          </body>
           <div class="pagination justify-content-center">
-            {{$alumni_lowongan_kerja->links('pagination::bootstrap-4')}}
+            {{$data->links('pagination::bootstrap-4')}}
           </div>
     </div>
 </div>

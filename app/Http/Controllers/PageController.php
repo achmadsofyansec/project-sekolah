@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\alumni_lowongan_kerja;
+use App\Models\alumni_pengumuman;
 use Illuminate\Support\Facades\Auth;
 use PDO;
 
@@ -40,6 +42,17 @@ class PageController extends Controller
         $data = alumni_lowongan_kerja::latest()->where('id','=',$id)->get();
         return view('portal.detail',compact('data'));
     }
+    public function portal_pengumuman(){
+        $data = alumni_pengumuman::orderBy('id','DESC')->paginate(4);
+        return view('portal.pengumuman', compact('data'));
+    }
+    public function detail_pengumuman($id){
+        $data = alumni_pengumuman::latest()->where('id','=',$id)->get();
+        return view('portal.pengumuman_detail', compact('data'));
+    }
+    public function portal_login(){
+    }
+    
     public function login(){
         return redirect('../sekolahApp/');
        }
