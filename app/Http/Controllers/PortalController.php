@@ -54,6 +54,6 @@ class PortalController extends Controller
 
     public function hasil(Request $request, $id){
        $dataCari = ppbdSiswa::where('nik', '=', $id)->first();
-       return view('pengumuman.hasil', compact('dataCari'));
+       return view('pengumuman.hasil1', compact('dataCari'));
     }
 }
