@@ -13,7 +13,7 @@ class PendaftaranSiswaPortalController extends Controller
      */
     public function index()
     {
-       
+       return view('portal.pendaftaran');
     }
 
     /**
@@ -178,7 +178,7 @@ class PendaftaranSiswaPortalController extends Controller
             }
             if($create){
                     return redirect()
-                    ->route('pendaftar.index')
+                    ->route('portal.sukses')
                     ->with([
                         'success' => 'Data Pendaftar Has Been Updated successfully'
                     ]);
