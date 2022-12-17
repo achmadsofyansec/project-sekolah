@@ -17,7 +17,7 @@ class PageController extends Controller
         $perempuan = ppbdSiswa::where('jns_kelamin', '=', 'Perempuan')->get();
         $diterima = ppbdSiswa::where('status_siswa', '=', 'Diterima')->get();
         $ditolak = ppbdSiswa::where('status_siswa', '=', 'Ditolak')->get();
-        $proses = ppbdSiswa::where('status_siswa', '=', 'Pendaftar')->get();
+        $proses = ppbdSiswa::where('status_siswa', '=', 'Diverivikasi')->get();
         return view('dashboard', compact('pendaftar', 'laki', 'perempuan', 'diterima', 'ditolak', 'proses'));
     }
     public function view_pendaftar(){

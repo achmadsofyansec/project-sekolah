@@ -15,6 +15,7 @@ class PengaturanSeeder extends Seeder
     public function run()
     {
         DB::table('ppdb_pengaturans')->insert([
+            'id' => '1',
             'portal_open' => '2022-12-13',
             'pengumuman_open' => '2022-12-13',           
         ]);
