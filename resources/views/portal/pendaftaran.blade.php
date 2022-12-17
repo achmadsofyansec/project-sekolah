@@ -2,7 +2,7 @@
 @section('page', 'Tambah Data Siswa')
 
     <!-- Main content -->
-    <section class="content pt-5">
+    <section class="content mt-2">
       <div class="container-fluid">
         <div class="row-mb-2">
             <div class="col-md-12 mt-1">
@@ -20,10 +20,41 @@
             </div>
         </div>
         <div class="row-mb-2">
+             <nav class="navbar navbar-expand-lg mb-3 ">
+  <a class="navbar-brand font-weight-bold text-success" href="#">JAMANU</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link font-weight-normal" href="{{route('pengumuman')}}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-normal text-success" href="{{route('portal')}}">Portal Pendaftaran <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-normal" href="{{route('pengumuman')}}">Portal Pengumuman</a>
+      </li>
+    </ul>
+  </div>
+</nav>
             <div class="container-fluid">
                     <form action="{{route('pendaftar.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+                            <div class="col-md-12">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                   <h1 class="text-center h1">
+                                    <div class="text-center">
+                                       <b>SELAMAT DATANG DI PORTAL PENDAFTARAN PESERTA DIDIK BARU TAHUN 2023/2024 SMK SIPINTER</b> 
+                                    </div>
+                                   
+                                    </h1> 
+                                </div>
+                            </div>
+                            </div>
                         <div class="col-md-4">
                             <div class="card card-outline card-info">
                                 <div class="card-header">

@@ -2,7 +2,7 @@
 @section('page', 'Tambah Data Siswa')
 
     <!-- Main content -->
-    <section class="content pt-5">
+    <section class="content">
       <div class="container-fluid">
         <div class="row-mb-2">
             <div class="col-md-12 mt-1">
@@ -20,6 +20,26 @@
             </div>
         </div>
         <div class="row-mb-2">
+            <div class="row-mb-2">
+            <nav class="navbar navbar-expand-lg mb-3 ">
+  <a class="navbar-brand font-weight-bold text-success" href="#">JAMANU</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <!-- <li class="nav-item active">
+        <a class="nav-link font-weight-normal" href="#">Home</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link font-weight-normal" href="{{route('portal')}}">Portal Pendaftaran </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-normal text-success" href="{{route('pengumuman')}}">Portal Pengumuman <span class="sr-only">(current)</a>
+      </li>
+    </ul>
+  </div>
+</nav>
             <div class="container-fluid">
                     <form action="{{route('cari')}}" method="post" enctype="multipart/form-data">
                         @csrf
