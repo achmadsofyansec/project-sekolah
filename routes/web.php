@@ -26,6 +26,7 @@ use App\Http\Controllers\LahanController;
 use App\Http\Controllers\SanitasiController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\PeminjamanDetail;
+use App\Http\Controllers\GedungShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
         Route::resource('/laboratorium', LaboratoriumController::class);
         Route::resource('/lahan', LahanController::class);
+        Route::get('/test', [GedungShowController::class, 'index'])->name('gedungshow');
         Route::resource('/mebel', MebelController::class);
         Route::resource('/olahraga_seni', OlahragaSeniController::class);
         Route::resource('/penerangan_internet', PeneranganInternetController::class);

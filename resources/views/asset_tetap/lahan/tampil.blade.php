@@ -46,6 +46,7 @@
                                     <th>Kepemilikan</th>
                                     <th>Tahun Dibangun</th>
                                     <th>Luas Gedung</th>
+                                    <th>Aksi</th>
                                 </thead>
                                 <tbody>
                                   @forelse ($kepemilikan as $data)
@@ -55,6 +56,7 @@
                                     <td>{{ $data->kepemilikan }}</td>
                                     <td>{{ $data->tahun_dibangun }}</td>
                                     <td>{{ $data->luas_gedung }}</td>
+                                    <td><a href="<?php echo url('/test') ?>" class="btn btn-success"><i class="fas fa-edit"></i> Show</a></td>
                                 </tbody>
                                   @empty
                                       <tr>
@@ -65,7 +67,7 @@
                             </table>
                        </div>
                    </div>
-                   <div class="card-body">
+                  <!--  <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                   <thead>
@@ -93,7 +95,7 @@
                                 </tbody> 
                             </table>
                        </div>
-                   </div>
+                   </div> -->
                 </div>
             </div>
         </div>
