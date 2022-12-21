@@ -56,7 +56,7 @@
                                     <td>{{ $data->kepemilikan }}</td>
                                     <td>{{ $data->tahun_dibangun }}</td>
                                     <td>{{ $data->luas_gedung }}</td>
-                                    <td><a href="<?php echo url('/test') ?>" class="btn btn-success"><i class="fas fa-edit"></i> Show</a></td>
+                                    <td><a href="{{ route('gedungshow.show', $data->nama_gedung) }}" class="btn btn-success"><i class="fas fa-edit"></i> Show</a></td>
                                 </tbody>
                                   @empty
                                       <tr>

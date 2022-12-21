@@ -136,7 +136,6 @@ class LahanController extends Controller
         ->get();
         $kepemilikan = DB::table('sarpras_lahans')
                     ->join('sarpras_gedungs', 'sarpras_lahans.nama_lahan', '=', 'sarpras_gedungs.nama_lahan')
-                    ->join('sarpras_ruangans', 'sarpras_gedungs.nama_gedung', '=', 'sarpras_ruangans.nama_gedung')
                     ->get();            
         return view('asset_tetap.lahan.tampil',compact (['lahan', 'kepemilikan', 'penggunaan']));
     }

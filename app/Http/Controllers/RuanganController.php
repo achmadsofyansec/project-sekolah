@@ -181,6 +181,7 @@ class RuanganController extends Controller
 
             $update = SarprasRuangan::findOrFail($id);
             $update->update($data);
+            
             if($update){
                 return redirect()
                 ->route('ruangan.index')
