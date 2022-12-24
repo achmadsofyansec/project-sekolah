@@ -35,7 +35,7 @@
                 <div class="card card-outline card-secondary">
                    <div class="card-header">
                    <a type="button" href="{{ route('lahan.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-
+                   <a href="{{ route('export_lahan') }}" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -71,7 +71,7 @@
                                       </tr>
                                   @empty
                                       <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
                                       </tr>
                                   <td>
                                     @endforelse

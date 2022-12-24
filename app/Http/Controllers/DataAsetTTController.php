@@ -188,7 +188,7 @@ class DataAsetTTController extends Controller
      */
     public function destroy($id)
     {
-        $data = SarprasAsetLain::findOrFail($id);
+        $data = SarprasDataAset::findOrFail($id);
         $data->delete();
         if($data){
             return redirect()

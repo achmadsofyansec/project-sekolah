@@ -60,7 +60,7 @@
                                 </tbody>
                                   @empty
                                       <tr>
-                                        <td colspan="5" class="text-center text-mute">Tidak Ada Data</td>
+                                        <td colspan="7" class="text-center text-mute">Tidak Ada Data</td>
                                       </tr>
                                     @endforelse
                                 </tbody>  

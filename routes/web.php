@@ -27,6 +27,7 @@ use App\Http\Controllers\SanitasiController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\PeminjamanDetail;
 use App\Http\Controllers\GedungShowallController;
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/signout',[PageController::class,'logout']);
-Route::get('login',[PageController::class,'login'])->name('login');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
@@ -56,6 +56,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/kebutuhan_tambahan', KebutuhanTambahanController::class);
         Route::resource('/laboratorium', LaboratoriumController::class);
         Route::resource('/lahan', LahanController::class);
+
+        
+
         Route::resource('/gedungshow', GedungShowallController::class);
         Route::resource('/mebel', MebelController::class);
         Route::resource('/olahraga_seni', OlahragaSeniController::class);
@@ -78,4 +81,4 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
     });
 });
-
+Route::get('/tes', [ExportController::class, 'export_lahan'])->name('export_lahan');
