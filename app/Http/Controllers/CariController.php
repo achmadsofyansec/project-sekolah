@@ -28,8 +28,7 @@ class CariController extends Controller
         $tanggal = $date->format('Y-m-d');
 
        if ($tanggal > $waktuOpen) {
-          // return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
-            dd(true);
+          return view('portal.main.index', compact('sekolah', 'tahun_ajaran', 'waktu'));
         } else {
           return view('portal.main.portal', compact('sekolah', 'tahun_ajaran', 'waktu', 'waktuOpen'));
         }
@@ -61,11 +60,11 @@ class CariController extends Controller
         $timezone = 'Asia/Jakarta';
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
-        $tes = "2023-01-01";
-        dd($tampil);
-        if ($tes < $tanggal) {
-
-            dd(true);
+       
+       if ($tanggal > $tampil) {
+           return view('portal.main.hasil', compact('dataCari', 'waktu'));
+        } else {
+          return $this->portal($request);
         }
        
 
