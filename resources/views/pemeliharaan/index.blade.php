@@ -27,7 +27,11 @@
               <h1 class="card-title">Pemeliharaan</h1>
             </div>
             <div class="card-body">
-                <button class="btn btn-success"><i class="fas fa-save"></i> Backup Database</button>
+              <form action="{{route('backup_db')}}" method="GET">
+                @method('GET')
+                <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Backup Database</button>
+              </form>
+                
             </div>
           </div>
         </div>

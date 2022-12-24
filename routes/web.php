@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PemeliharaanController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
@@ -33,7 +34,8 @@ Route::group(['middleware'=>['prevent-back']],function(){
             Route::get('/jabatan',[RoleController::class,'index']);
             Route::resource('user',UsersController::class);
             Route::resource('pengumuman',PengumumanController::class);
-            Route::get('/pemeliharaan',[PageController::class,'view_pemeliharaan']);
+            Route::get('/pemeliharaan',[PemeliharaanController::class,'index']);
+            Route::get('/backup_db',[PemeliharaanController::class,'backup_db'])->name('backup_db');
             Route::get('/singkronisasi',[SyncController::class,'index']);
         });
     });
