@@ -166,6 +166,7 @@
             <a href="<?php echo url('/singkronisasi') ?>" class="nav-link">
               <i class="nav-icon fas fa-cube text-info"></i>
               <p>Singkronisasi</p>
+              <span class="badge badge-success">Soon</span>
             </a>
           </li>
         </ul>
