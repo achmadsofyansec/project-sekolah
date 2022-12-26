@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\data_siswa;
+use App\Models\keuangan_detail_bulanan;
 use App\Models\keuangan_history;
 use App\Models\keuangan_pembayaran_bulanan;
 use App\Models\methode_pembayaran;
@@ -274,8 +275,11 @@ class BulananController extends Controller
                                                         ->join('tahun_ajarans','biaya_siswas.tahun_ajaran_biaya','=','tahun_ajarans.id')
                                                         ->where([['kode_siswa','=',$bulanan->kode_siswa],['kode_biaya_siswa','=',$bulanan->kode_biaya_siswa]])
                                                         ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*','kelas.*','tahun_ajarans.*']);
+            $data_detail_bulanan = keuangan_detail_bulanan::join('keuangan_pembayaran_bulanans','keuangan_detail_bulanans.kode_bulanan','=','keuangan_pembayaran_bulanans.id')
+                                                            ->join('methode_pembayarans','keuangan_detail_bulanans.jenis_pembayaran_detail','=','methode_pembayarans.id')
+                                                            ->get(['keuangan_detail_bulanans.*','keuangan_detail_bulanans.id as id_detail_bulanan','keuangan_pembayaran_bulanans.*','methode_pembayarans.*']);
         }
-        return view('pembayaran_siswa.page.bayar_bulanan',compact(['data','data_bulanan','img','detail_bulanan','jenis_bayar'])); 
+        return view('pembayaran_siswa.page.bayar_bulanan',compact(['data','data_detail_bulanan','data_bulanan','img','detail_bulanan','jenis_bayar'])); 
     }
 
     /**

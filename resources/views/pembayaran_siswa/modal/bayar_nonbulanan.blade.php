@@ -13,7 +13,7 @@
               <form action="{{route('bayar_non_bulanan.store')}}" method="POST">
                 @csrf
               <div class="card-body">
-                <input type="hidden" name="kode_non_bulanan" id="kode_kelas" value="{{$item->id_nonbulanan}}" required>
+                <input type="hidden" name="kode_non_bulanan" id="kode_bulanan" value="{{$item->id_nonbulanan}}" required>
                 <div class="form-group">
                   <label>Tanggal Bayar</label>
                   <input type="date" name="tgl_input_detail" id="tgl_input_detail" value="<?= date('Y-m-d') ?>" class="form-control" required>

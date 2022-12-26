@@ -10,10 +10,11 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-12">
-              <form action="{{route('bulanan.update',$item->id_bulanan)}}" method="POST">
+              <form action="{{route('detail_bulanan.store')}}" method="POST">
                 @csrf
-                @method('PUT')
+                @method('POST')
               <div class="card-body">
+                <input type="hidden" name="kode_bulanan" id="kode_bulanan" value="{{$item->id_bulanan}}">
                 <input type="hidden" name="kode_biaya" id="kode_biaya" value="{{$data_bulanan->id_biayas}}">
                 <input type="hidden" name="kode_siswa" id="kode_siswa" value="{{$data->id_siswa}}">
                 <div class="form-group">

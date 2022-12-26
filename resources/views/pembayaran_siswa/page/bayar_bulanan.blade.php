@@ -92,7 +92,8 @@
                                       <td>
                                         @if ($c->status_pembayaran == '0')
                                         <a href="#" data-toggle="modal" data-target="#modal-bulanan-<?= $c->id_bulanan?>" class="btn-sm btn-success"><i class="fas fa-cash-register"></i> Bayar</a>
-                                          @else
+                                        <a href="#" data-toggle="modal" data-target="#modal-detail-bulanan-<?= $c->id_bulanan?>" class="btn-sm btn-warning"><i class="fas fa-eye"></i> Detail</a>  
+                                        @else
                                           <form action="{{route('cetak_struk')}}" method="POST" target="_blank">
                                             @csrf
                                             <input type="hidden" name="type" id="type" value="pembayaran">
@@ -104,7 +105,7 @@
                                             <input type="hidden" name="id_bulanan" id="id_bulanan" value="{{$c->id_bulanan}}">
                                             <input type="hidden" name="kode_kelas" id="kode_kelas" value="{{$c->kode_kelas}}">
                                             <input type="hidden" name="tgl_bayar" id="tgl_bayar" value="{{$c->tgl_bayar}}">
-                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-print"></i> Cetak Struk</button>
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-print"></i>Struk</button>
                                           </form>
                                       @endif
                                       </td>
@@ -118,6 +119,7 @@
         </div>
         @forelse ($detail_bulanan as $item)
         @include('pembayaran_siswa.modal.bayar_bulanan')
+        @include('pembayaran_siswa.modal.view_bayar_bulanan')
         @empty
         @endforelse
       </div>

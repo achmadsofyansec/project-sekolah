@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keuangan_detail_bulanan;
 use App\Models\keuangan_detail_nonbulanan;
 use App\Models\keuangan_pembayaran_bulanan;
 use App\Models\keuangan_penerimaan_lain_detail;
@@ -310,9 +311,10 @@ class PrintPDFController extends Controller
                       </table>';
           break;
           case "bulanan_siswa":
-            $detail_bulanan = keuangan_pembayaran_bulanan::join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
+            $detail_bulanan = keuangan_detail_bulanan::join('keuangan_pembayaran_bulanans','keuangan_detail_bulanans.kode_bulanan','=','keuangan_pembayaran_bulanans.id')
+            ->join('biaya_siswas','keuangan_pembayaran_bulanans.kode_biaya_siswa','=','biaya_siswas.id')
             ->where([['keuangan_pembayaran_bulanans.id','=',$req->id_bulanan]])
-            ->get(['keuangan_pembayaran_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*']);
+            ->get(['keuangan_detail_bulanans.*','keuangan_detail_bulanans.id as id_bulanan','keuangan_pembayaran_bulanans.*','biaya_siswas.*']);
             $isi .= '<center><div style="text-transform:uppercase;"><p style="font-size:20px; font-weight:bold;"> BUKTI PEMBAYARAN BULANAN SISWA </p><hr></div></center>';
             $isi .= '<table width="100%">
                     <tr>
@@ -342,21 +344,23 @@ class PrintPDFController extends Controller
             $isi .= '<table width="100%" border="1">
                       <tr style="text-align:center;">
                         <td width="5%">No</td>
-                        <td width="70%">Pembayaran</td>
+                        <td width="20%">Tgl Bayar</td>
+                        <td width="50%">Pembayaran</td>
                         <td width="25%">Nominal</td>
                       </tr>';
             $total = 0;
             $no = 1;
             foreach ($detail_bulanan as $item) {
-              $total = $total + $item->tagihan_pembayaran;
+              $total = $total + $item->nominal_detail;
                 $isi .='<tr">
                         <td width="5%">'.$no++.'</td>
-                        <td width="70%">'.$item->nama_biaya.' Bulan '.$item->bulan_pembayaran.'</td>
-                        <td width="25%">Rp.'.number_format($item->tagihan_pembayaran).'.-</td>
+                        <td width="20%">'.$item->tgl_input_detail.'</td>
+                        <td width="50%">'.$item->nama_biaya.' Bulan '.$item->bulan_pembayaran.'</td>
+                        <td width="25%">Rp.'.number_format($item->nominal_detail).'.-</td>
                       </tr>';
             }
             $isi .='<tr>
-                        <td width="75" colspan="2">Total Pembayaran</td>
+                        <td width="75" colspan="3">Total Pembayaran</td>
                         <td width="25%">Rp.'.number_format($total).'.-</td>
                       </tr>
                       </table>';

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BiayaSiswaController;
 use App\Http\Controllers\BulananController;
+use App\Http\Controllers\BulananDetailController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MethodeController;
@@ -53,6 +54,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         // Pembayaran
         Route::get('pembayaran_siswa',[PembayaranSiswaController::class,'index'])->name('pembayaran_siswa');
         Route::resource('bulanan',BulananController::class);
+        Route::resource('detail_bulanan',BulananDetailController::class);
         Route::resource('non_bulanan',NonBulananController::class);
         Route::resource('bayar_non_bulanan',NonBulananDetailController::class);
         Route::resource('biaya_siswa',BiayaSiswaController::class);
