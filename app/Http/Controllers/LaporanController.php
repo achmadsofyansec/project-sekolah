@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 class LaporanController extends Controller
 {
     //
-    public function view_laporan(Request $request){
+    public function view_laporan(Request $request)
+    {
 
         $req = $request;
         $data = "";
