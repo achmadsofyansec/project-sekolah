@@ -147,7 +147,7 @@ class LapanganController extends Controller
                 'kondisi' => $request->kondisi,
                 'panjang' => $request->panjang,
                 'lebar' => $request->lebar,
-                'foto' => '-',
+                
                 ];
             }
 

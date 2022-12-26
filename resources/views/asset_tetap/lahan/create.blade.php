@@ -81,6 +81,7 @@
                                   <label class="col-sm-3 col-form-label">Status</label>
                                     <div class="col-sm-12">
                                         <select class="form-control" id="status_lahan" name="status_lahan" placeholder=" ">
+                                            <option>--- Pilih Lahan ---</option>
                                             <option>LAHAN UTAMA</option>
                                             <option>LAHAN TAMBAHAN</option>
                                             <option>LAHAN TIDAK DIGUNAKAN</option>

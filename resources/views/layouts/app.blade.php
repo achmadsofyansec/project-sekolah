@@ -269,12 +269,6 @@
                   <p>Peminjaman</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo url('/laporan_pengembalian') ?>" class="nav-link">
-                  <i class="fas fa-angle-right nav-icon text-navy"></i>
-                  <p>Pengembalian</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -347,10 +341,10 @@ $(document).ready( function () {
         paging: false,
     });
 } );
-// $(document).ready(function() {
-//     $('select').select2();
-//     $
-// });
+$(document).ready(function() {
+    $('.select-siswa').select2();
+    
+});
     </script>
 
     @yield('content-script')

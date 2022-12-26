@@ -59,15 +59,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Kondisi</label>
-                                    <input type="text" name="kondisi" id="kondisi" class="form-control" required>
+                                    <select type="text" name="kondisi" id="kondisi" class="form-control" required>
+                                      <option value="">--- Kondisi ---</option>
+                                      <option value="Baik">Baik</option>
+                                      <option value="Rusak Sedang">Rusak Sedang</option>
+                                      <option value="Rusak Parah">Rusak Parah</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Panjang</label>
-                                    <input type="text" name="panjang" id="panjang" class="form-control" required>
+                                    <input type="number" name="panjang" id="panjang" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Lebar</label>
-                                    <input type="text" name="lebar" id="lebar" class="form-control" required>
+                                    <input type="number" name="lebar" id="lebar" class="form-control" required>
                                 </div>
                                  <div class="form-group">
                                     <label>Foto</label>

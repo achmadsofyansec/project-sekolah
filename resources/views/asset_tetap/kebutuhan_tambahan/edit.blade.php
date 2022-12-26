@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Tahun Pengajuan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="tahun_pengajuan" name="tahun_pengajuan" value="{{ $data->tahun_pengajuan }}" required />
+                                        <input type="number" class="form-control" id="tahun_pengajuan" name="tahun_pengajuan" value="{{ $data->tahun_pengajuan }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jumlah" name="jumlah" value="{{ $data->jumlah }}" required />
+                                        <input type="number" class="form-control" id="jumlah" name="jumlah" value="{{ $data->jumlah }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Rangking</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="rangking" name="rangking" value="{{ $data->rangking }}" required />
+                                        <input type="number" class="form-control" id="rangking" name="rangking" value="{{ $data->rangking }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -45,43 +45,41 @@ class DendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validate = $this->validate($request,[
-            'kode_siswa' => 'required',
-            'unit' => 'required',
-            'pelanggaran' => 'required',
-            'total_denda' => 'required',
-            'status' => 'required',
+    {   
+        $credential = $this->validate($request,[
+            'kode_siswa' => ['required'],
+            'unit' => ['required'],
+            'pelanggaran' => ['required'],
+            'total_denda' => ['required'],
+            'status' => ['required'],
         ]);
-        
-        if($validate){
-            $cek = SarprasDenda::where([['kode_siswa','=',$request->kode_siswa]])->get()->first();
-            if(!$cek){
-                $qode =  Str::random(6);
-                $length = SarprasDenda::latest()->get()->count();
-                $kode = 'DN_'.$qode.$length;
-                $create= SarprasDenda::create([
-                    'kode_denda' => $kode,
-                    'kode_siswa' => $request->kode_siswa,
-                    'unit' => $request->unit,
-                    'pelanggaran' => $request->pelanggaran,
-                    'total_denda' => $request->total_denda,
-                    'status' => $request->status,
+        if($credential){
+            $create = SarprasDenda::create([
+                'kode_siswa' => $request->kode_siswa,
+                'unit' => $request->unit,
+                'pelanggaran' => $request->pelanggaran,
+                'total_denda' => $request->total_denda,
+                'status' => $request->status,
+            ]);
+            if($create){
+                return redirect()
+                ->route('denda.index')
+                ->with([
+                    'success' => 'Data Denda Has Been Added successfully'
                 ]);
-                if($create){
-                    return redirect()
-                    ->route('denda.index')
-                    ->with([
-                        'success' => 'Denda Has Been Added successfully'
-                    ]);
-                }else{
-                    return redirect()
-                    ->back()
-                    ->with([
-                        'error' => 'Some problem has occurred, please try again'
-                    ]);
-                }
+            }else{
+                return redirect()
+                ->back()
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
             }
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
         }
     }
 
@@ -125,10 +123,10 @@ class DendaController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'unit' => 'required',
-            'pelanggaran' => 'required',
-            'total_denda' => 'required',
-            'status' => 'required',
+            'unit' => ['required'],
+            'pelanggaran' => ['required'],
+            'total_denda' => ['required'],
+            'status' => ['required'],
         ]);
         if($validate){
             $update = SarprasDenda::findOrFail($id);

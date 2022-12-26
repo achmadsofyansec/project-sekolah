@@ -43,13 +43,31 @@
                 <div class="form-group">    
                   <label>Sumber Air Bersih</label>
                   <select name="sumber_air_bersih" id="sumber_air_bersih" class="form-control">
-                    <option value="">{{ $data->sumber_air_bersih }}</option>
+                    {{-- <option value="">{{ $data->sumber_air_bersih }}</option>
                     <option value="Air PAM">Air PAM</option>
                     <option value="Air Kemasan">Air Kemasan</option>
                     <option value="Sumur">Sumur</option>
                     <option value="Pompa">Pompa</option>
                     <option value="Lainnya">Lainnya</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Tidak Ada">Tidak Ada</option> --}}
+                    <option value="Air PAM" @if ($data->sumber_air_bersih == "Air PAM")
+                      {{'selected'}}
+                    @endif>Air PAM</option>
+                    <option value="Air Kemasan" @if ($data->sumber_air_bersih == "Air Kemasan")
+                      {{'selected'}}
+                    @endif>Air Kemasan</option>
+                    <option value="Sumur" @if ($data->sumber_air_bersih == "Sumur")
+                      {{'selected'}}
+                    @endif>Sumur</option>
+                    <option value="Pompa" @if ($data->sumber_air_bersih == "Pompa")
+                      {{'selected'}}
+                    @endif>Pompa</option>
+                    <option value="Lainnya" @if ($data->sumber_air_bersih == "Lainnya")
+                      {{'selected'}}
+                    @endif>Lainnya</option>
+                    <option value="Tidak Ada" @if ($data->sumber_air_bersih == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    

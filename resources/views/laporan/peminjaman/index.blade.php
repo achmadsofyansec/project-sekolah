@@ -32,23 +32,87 @@
                   {{ session('success') }}
               </div>
               @endif
-                <div class="card card-outline card-secondary">
-                   <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Export</a>
-                   </div>
-                   <div class="card-body">
-                       <div class="table-responsive">
-                            <table id="dataTable" class="table">
-                                <thead>
-                                    <th>No</th>                                   
-                                    <th>Aksi</th>
-                                </thead>
-                              <tbody>
-                                </tbody>  
-                            </table>
-                       </div>
-                   </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card card-outline card-primary">
+                    <div class="card-header">
+                      <div class="card-title">
+                        Filter
+                      </div>
+                    </div>
+                  <form action="" method="GET">
+                      <div class="card-body">
+                                  <div class="form-group">
+                                    <label>Dari Tanggal</label>
+                                    <input type="date" name="filter_dari_tanggal" id="filter_dari_tanggal" value="" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Sampai Tanggal</label>
+                                    <input type="date" name="filter_sampai_tanggal" id="filter_sampai_tanggal" value="" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Status Peminjaman</label>
+                                    <select class="form-control" id="nama_ruangan" name="nama_ruangan">
+                                            <option value="">Pilih Peminjaman</option>
+                                            <option value="">Dipinjam</option>
+                                            <option value="">Dikembalikan</option>
+                                            <option value="">Hilang</option>
+                                    </select>
+                                </div>
+                      </div>
+                        
+                      <div class="card-footer">
+                        <input type="submit" class="btn btn-primary" value="Cari">
+                      </div>
+                    </form>
+                  </div>
                 </div>
+                <div class="col-md-9">
+                  <div class="card card-outline card-primary">
+                    <div class="card-header">
+                      <div class="card-title">
+                       Laporan Peminjaman
+                      </div>
+                      <div class="card-tools">
+                     
+                      </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                             <table class="table" id="dataTable">
+                                 <thead>
+                                      <th>No</th>
+                                      <th>Nama Siswa</th>
+                                      <th>Kelas / Jurusan</th>
+                                      <th>Waktu Peminjaman</th>
+                                      <th>Waktu Pengembalian</th>
+                                      <th>Tanggal Input</th>
+                                      <th>Status</th>
+                                 </thead>
+                                 @forelse ($data as $item)
+                              <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
+                                <td>{{$item->tgl_peminjaman}}</td>
+                                <td>{{$item->tgl_pengembalian}}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>@if ($item->status_peminjaman == '0')
+                                  <span class="btn btn-warning">Dipinjam</span>
+                               @elseif($item->status_peminjaman == '1')
+                               <span class="btn btn-success">Dikembalikan</span>
+                               @else 
+                               <span class="btn btn-danger">Hilang</span>
+                               @endif</td>
+                          </tr>
+                          @empty   
+                          @endforelse
+                             </table>
+                        </div>
+                    </div>
+                 </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>

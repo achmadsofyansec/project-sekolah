@@ -59,7 +59,7 @@ class SaranaBelajarController extends Controller
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
                 'fungsi' => $request->fungsi,
-                'foto' => '-',
+                
                 ];
             }
             $create = SarprasSaranaBelajar::create($data);

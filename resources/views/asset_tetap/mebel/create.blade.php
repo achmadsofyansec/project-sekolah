@@ -59,15 +59,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah Baik</label>
-                                    <input type="text" name="jml_baik" id="jml_baik" class="form-control" required>
+                                    <input type="number" name="jml_baik" id="jml_baik" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah Rusak Ringan</label>
-                                    <input type="text" name="jml_rusak_ringan" id="jml_rusak_ringan" class="form-control" required>
+                                    <input type="number" name="jml_rusak_ringan" id="jml_rusak_ringan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah Rusak Berat</label>
-                                    <input type="text" name="jml_rusak_berat" id="jml_rusak_berat" class="form-control" required>
+                                    <input type="number" name="jml_rusak_berat" id="jml_rusak_berat" class="form-control" required>
                                 </div>
                                  <div class="form-group">
                                     <label>Foto</label>

@@ -159,7 +159,7 @@ class KebutuhanTambahanController extends Controller
                 'sifat' => $request->sifat,
                 'rangking' => $request->rangking,
                 'kategori_kondisi' => $request->kategori_kondisi,
-                'foto' => '-'
+                
                 ];
             }
 

@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Tahun Pengajuan</label>
-                                    <input type="text" name="tahun_pengajuan" id="tahun_pengajuan" class="form-control" required>
+                                    <input type="number" name="tahun_pengajuan" id="tahun_pengajuan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Jenis</label>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah</label>
-                                    <input type="text" name="jumlah" id="jumlah" class="form-control" required>
+                                    <input type="number" name="jumlah" id="jumlah" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Sifat</label>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Rangking</label>
-                                    <input type="text" name="rangking" id="rangking" class="form-control" required>
+                                    <input type="number" name="rangking" id="rangking" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori Kondisi</label>

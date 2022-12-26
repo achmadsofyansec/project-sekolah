@@ -76,7 +76,7 @@ class RuanganController extends Controller
                 'tahun_dibangun' => $request->tahun_dibangun,
                 'panjang' => $request->panjang,
                 'lebar' => $request->lebar,
-                'foto' => '-',
+                
 
                 ];
             }

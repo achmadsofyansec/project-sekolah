@@ -13,7 +13,7 @@
           <div class="card-body">
               <div class="form-group">
                   <label>Data Siswa</label>
-                  <select name="kode_siswa" id="kode_siswa" class="form-control" style="width: 100%;" required>
+                  <select name="kode_siswa" id="kode_siswa" class="select-siswa" style="width: 100%;" required>
                       <option value="">--- Pilih Siswa ---</option>
                       @forelse ($siswa as $item)
                   <option value="{{$item->id_siswa}}">{{$item->nama}} - {{$item->kode_kelas}} {{$item->kode_jurusan}}</option>
@@ -23,7 +23,7 @@
               </div>
               <div class="form-group">
                   <label>Unit</label>
-                  <select name="unit" id="unit" class="form-control" style="width: 100%;" required>
+                  <select name="unit" id="unit" class="select-siswa" style="width: 100%;" required>
                     <option value="">--- Pilih Unit ---</option>
                     @forelse ($kategori as $item)
                 <option value="{{$item->unit}}">{{$item->unit}}</option>

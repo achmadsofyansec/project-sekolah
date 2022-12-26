@@ -74,7 +74,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
         //Laporan
         Route::get('/laporan_aset',[PageController::class,'view_laporan_aset'])->name('laporan_aset');
-        Route::get('/laporan_peminjaman',[PageController::class,'view_laporan_peminjaman'])->name('laporan_peminjaman');
+        Route::get('/laporan_peminjaman',[ExportController::class,'laporan_view'])->name('laporan_view');
         Route::get('/laporan_pengembalian',[PageController::class,'view_laporan_pengembalian'])->name('laporan_pengembalian');
         
         // Manual Book

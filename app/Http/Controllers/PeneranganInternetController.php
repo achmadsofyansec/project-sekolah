@@ -65,7 +65,7 @@ class PeneranganInternetController extends Controller
                 'jml_baik' => $request->jml_baik,
                 'jml_rusak_ringan' => $request->jml_rusak_ringan,
                 'jml_rusak_berat' => $request->jml_rusak_berat,
-                'foto' => '-',
+                
 
                 ];
             }

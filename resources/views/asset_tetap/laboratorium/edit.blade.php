@@ -63,19 +63,19 @@
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jumlah Baik</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_baik" name="jml_baik" value="{{ $data->jml_baik }}" required />
+                                        <input type="number" class="form-control" id="jml_baik" name="jml_baik" value="{{ $data->jml_baik }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jumlah Rusak Ringan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_ringan" name="jml_rusak_ringan" value="{{ $data->jml_rusak_ringan }}" required />
+                                        <input type="number" class="form-control" id="jml_rusak_ringan" name="jml_rusak_ringan" value="{{ $data->jml_rusak_ringan }}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                   <label class="col-sm-3 col-form-label">Jumlah Rusak Berat</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="jml_rusak_berat" name="jml_rusak_berat" value="{{ $data->jml_rusak_berat }}" required />
+                                        <input type="number" class="form-control" id="jml_rusak_berat" name="jml_rusak_berat" value="{{ $data->jml_rusak_berat }}" required />
                                     </div>
                                 </div>
                                 <div class="row">

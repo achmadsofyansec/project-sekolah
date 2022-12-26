@@ -135,7 +135,7 @@ class AsetLainController extends Controller
                 $data = [
                 'unit' => $request->unit,
                 'fungsi' => $request->fungsi,
-                'foto' => '-',
+                
                 ];
             }
 
