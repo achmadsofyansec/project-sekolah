@@ -166,7 +166,7 @@
           </li>
           <li class="nav-item">
             <a href="<?php echo url('/portal') ?>" class="nav-link">
-              <i class="nav-icon fas fa-copy text-info"></i>
+              <i class="nav-icon fas fa-school text-info"></i>
               <p>
                Portal Alumni
               </p>

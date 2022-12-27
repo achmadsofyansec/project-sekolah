@@ -34,17 +34,38 @@
               @endif
                 <div class="card card-outline card-navy">
                    <div class="card-header">
-                   <a type="button" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Export</a>
+                   <a type="button" href="{{route('export_alumni')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Export</a>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
                             <table id="dataTable" class="table">
                                 <thead>
                                     <th>No</th>                                   
-                                    <th>Aksi</th>
+                                    <th>NIK</th>                                   
+                                    <th>Nama</th>                                   
+                                    <th>NISN</th>                                   
+                                    <th>Jenis Kelamin</th>  
+                                    <th>Kelas/Jurusan</th>                                 
+                                    <th>Tempat Lahir</th>                                   
+                                    <th>Tanggal Lahir</th>                                   
+                                    <th>Kode ujian</th>                                   
                                 </thead>
                               <tbody>
-                                </tbody>  
+                                @forelse($data as $item)
+                                <td>{{$loop->index +1}}</td>
+                                <td>{{$item->nik}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->jns_kelamin}}</td>
+                                <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
+                                <td>{{$item->nik}}</td>
+                                <td>{{$item->tmp_lahir}}</td>
+                                <td>{{$item->tgl_lhr}}</td>
+                                <td>{{$item->kode_ujian}}</td>
+                                <td></td>
+                                @empty
+                                <td colspan="9">Tidak Ada Lulusan</td>
+                                @endforelse
+                              </tbody>  
                             </table>
                        </div>
                    </div>

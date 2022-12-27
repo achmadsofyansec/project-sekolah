@@ -36,7 +36,7 @@
               <h3 class="card-text">{{$item->judul}}</h3>
               <center><img class="img-fluid rounded" src="{{ config('app.url') . '/assets/uploads/' . $item->file }}" width="300px"></center>
             </div>
-                <textarea rows="40" class="form-control col-md-12 p-5" readonly>{{$item->isi}}</textarea>
+                <textarea class="form-control col-md-12 p-5" rows="40" readonly>{{$item->isi}}</textarea>
           </div>
         </div>
       </div>

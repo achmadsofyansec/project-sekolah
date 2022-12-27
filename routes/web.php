@@ -7,6 +7,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ExportImport;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::get('portal',[PageController::class,'portal'])->name('portal');
 Route::get('portal/detail/{id}',[PageController::class,'detail'])->name('detail');
 Route::get('portal/pengumuman',[PageController::class,'portal_pengumuman'])->name('pengumuman');
 Route::get('portal/pengumuman/{id}',[PageController::class,'detail_pengumuman'])->name('pengumuman');
+Route::get('/export_alumni',[ExportImport::class,'ExportAlumni'])->name('export_alumni');
 Route::get('login',[PageController::class,'portal_login'])->name('login');
 Route::post('/signout',[PageController::class,'logout']);
 Route::group(['middleware'=>['prevent-back']],function(){

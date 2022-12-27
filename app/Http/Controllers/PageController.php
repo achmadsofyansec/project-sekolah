@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\alumni_lowongan_kerja;
 use App\Models\alumni_pengumuman;
@@ -17,7 +18,11 @@ class PageController extends Controller
         return view('dashboard');
     }
     public function view_alumni(){
-        return view('alumni.index');
+        $data = DB::table('data_siswas')
+        ->join('kelulusan_nilais','kelulusan_nilais.kode_siswa','=','data_siswas.id')
+        ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+        ->where('kelulusan_nilais.status','=','lulus')->get();
+        return view('alumni.index',compact('data'));
     }
     public function view_lowongan(){
         return view('lowongan.index');
