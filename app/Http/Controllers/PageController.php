@@ -20,7 +20,7 @@ class PageController extends Controller
     }
     public function view_portal(){
         $date = date('Y-m-d');
-        $agenda = BukuTamu_agenda::latest()->get();
+        $agenda = BukuTamu_agenda::latest()->where('tgl_mulai_agenda','<=',$date)->where('tgl_selesai_agenda','>=',$date)->get();
         return view('tamu.portal_tamu.index',compact(['agenda']));
     }
     public function store_portal(Request $request ){

@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                   @forelse ($agenda as $item)
                                     <center>
-                                      <label>{{$item->tgl_mulai_agenda}} - {{$item->tgl_mulai_agenda}}</label>
+                                      <label>{{$item->tgl_mulai_agenda}} - {{$item->tgl_selesai_agenda}}</label>
                                     </center>
                                 <h4 style="color: #df4231; font-weight: bold;">- {{$item->nama_agenda}} -</h4>
                                 <div class="card-footer">
