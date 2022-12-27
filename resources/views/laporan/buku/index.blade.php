@@ -45,7 +45,7 @@
 
                 <div class="card" id="cetak">
                   <div class="card-header border-transparent text-right">
-                        <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>/laporan/buku_excel" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
+                        <a class="btn bg-navy btn-sm" href="{{route('export_buku')}}" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body p-0">
@@ -66,12 +66,12 @@
                           @foreach ($buku as $buku)
                           <?php $i = 1 ?>
                                 <tr>
-                                    <td><?php echo $i++ ?></td>
+                                    <td>{{$loop->index +1}}</td>
                                     <td>{{$buku->kode_buku}}</td>
                                     <td>{{$buku->judul_buku}}</td>
                                     <td>{{$buku->penerbit}}</td>
                                     <td>{{$buku->pengarang}}</td>
-                                    <td>{{$buku -> lokasi}}</td>
+                                    <td>{{$buku->lokasi}}</td>
                                     <td>{{$buku->jumlah_buku}}</td>
                                    
                                 </tr>

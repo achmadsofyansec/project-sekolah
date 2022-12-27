@@ -62,10 +62,14 @@ class DataBukuController extends Controller
             'no_inventaris' => ['required'],
             'lokasi' => ['required'],
             'deskripsi_buku' => ['required'],
-            'foto_buku' => ['required'],
         ]);
         if($credential){
-            $create = Buku::create([
+            $data = [];
+            $file = $request->file('foto_buku');
+            if($file != null){
+                $name = $request->file('foto_buku')->getClientOriginalName();
+                $file ->move('../assets/uploads', $name);
+                $data = [
                 'judul_buku' => $request->judul_buku,
                 'kode_buku' => $request->kode_buku,
                 'pengarang' => $request->pengarang,
@@ -83,8 +87,31 @@ class DataBukuController extends Controller
                 'no_inventaris' => $request->no_inventaris,
                 'lokasi' => $request->lokasi,
                 'deskripsi_buku' => $request->deskripsi_buku,
-                'foto_buku' => $request->foto_buku,
-            ]);
+                'foto_buku' => $name,
+                ];
+            }else{
+                $data = [
+                    'judul_buku' => $request->judul_buku,
+                    'kode_buku' => $request->kode_buku,
+                    'pengarang' => $request->pengarang,
+                    'penerbit' => $request->penerbit,
+                    'tahun_terbit' => $request->tahun_terbit,
+                    'tempat_terbit' => $request->tempat_terbit,
+                    'total_halaman' => $request->total_halaman,
+                    'tinggi_buku' => $request->tinggi_buku,
+                    'ddc' => $request->ddc,
+                    'isbn' => $request->isbn,
+                    'jumlah_buku' => $request->jumlah_buku,
+                    'id_sumber' => $request->id_sumber,
+                    'id_kategori' => $request->id_kategori,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                    'no_inventaris' => $request->no_inventaris,
+                    'lokasi' => $request->lokasi,
+                    'deskripsi_buku' => $request->deskripsi_buku,
+                    'foto_buku' => '-',
+                ];
+            }
+            $create = Buku::create($data);
             if($create){
                 return redirect()
                 ->route('buku.index')
@@ -162,30 +189,56 @@ class DataBukuController extends Controller
             'no_inventaris' => ['required'],
             'lokasi' => ['required'],
             'deskripsi_buku' => ['required'],
-            'foto_buku' => ['required'],
         ]);
         if($validate){
+            $data = [];
+            $file = $request->file('foto_buku');
+            if($file != null){
+                $name = $request->file('foto_buku')->getClientOriginalName();
+                $file->move('../assets/uploads',$name);
+                $data = [
+                    'judul_buku' => $request->judul_buku,
+                    'kode_buku' => $request->kode_buku,
+                    'pengarang' => $request->pengarang,
+                    'penerbit' => $request->penerbit,
+                    'tahun_terbit' => $request->tahun_terbit,
+                    'tempat_terbit' => $request->tempat_terbit,
+                    'total_halaman' => $request->total_halaman,
+                    'tinggi_buku' => $request->tinggi_buku,
+                    'ddc' => $request->ddc,
+                    'isbn' => $request->isbn,
+                    'jumlah_buku' => $request->jumlah_buku,
+                    'id_sumber' => $request->id_sumber,
+                    'id_kategori' => $request->id_kategori,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                    'no_inventaris' => $request->no_inventaris,
+                    'lokasi' => $request->lokasi,
+                    'deskripsi_buku' => $request->deskripsi_buku,
+                    'foto_buku' => $name,
+                ];
+            }else{
+                $data = [
+                    'judul_buku' => $request->judul_buku,
+                    'kode_buku' => $request->kode_buku,
+                    'pengarang' => $request->pengarang,
+                    'penerbit' => $request->penerbit,
+                    'tahun_terbit' => $request->tahun_terbit,
+                    'tempat_terbit' => $request->tempat_terbit,
+                    'total_halaman' => $request->total_halaman,
+                    'tinggi_buku' => $request->tinggi_buku,
+                    'ddc' => $request->ddc,
+                    'isbn' => $request->isbn,
+                    'jumlah_buku' => $request->jumlah_buku,
+                    'id_sumber' => $request->id_sumber,
+                    'id_kategori' => $request->id_kategori,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                    'no_inventaris' => $request->no_inventaris,
+                    'lokasi' => $request->lokasi,
+                    'deskripsi_buku' => $request->deskripsi_buku,
+                ];
+            }
             $update = Buku::findOrFail($id);
-            $update->update([
-                'judul_buku' => $request->judul_buku,
-                'kode_buku' => $request->kode_buku,
-                'pengarang' => $request->pengarang,
-                'penerbit' => $request->penerbit,
-                'tahun_terbit' => $request->tahun_terbit,
-                'tempat_terbit' => $request->tempat_terbit,
-                'total_halaman' => $request->total_halaman,
-                'tinggi_buku' => $request->tinggi_buku,
-                'ddc' => $request->ddc,
-                'isbn' => $request->isbn,
-                'jumlah_buku' => $request->jumlah_buku,
-                'id_sumber' => $request->id_sumber,
-                'id_kategori' => $request->id_kategori,
-                'tanggal_masuk' => $request->tanggal_masuk,
-                'no_inventaris' => $request->no_inventaris,
-                'lokasi' => $request->lokasi,
-                'deskripsi_buku' => $request->deskripsi_buku,
-                'foto_buku' => $request->foto_buku,
-            ]);
+            $update->update($data);
             if($update){
                 return redirect()
                 ->route('buku.index')

@@ -31,35 +31,36 @@
               <div class="card-header col-md-12">
 
                 <a><i class="fa fa-file-search text-info"> </i> Cari Data Pengunjung Berdasarkan</a>
-                <form role="form" action="<?php echo url('/'); ?>/laporan/proses_tampil_pengunjung" method="post">
+                <form role="form" action="{{url('laporan/pengunjung')}}" method="get">
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Dari Tanggal</label>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
-                            <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
+                          <div class="input-group-prepend" data-date="" data-date-format="yyyy-mm-dd">
                           </div>
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                          <input class="form-control" type="date" value="@if($req->tgl_awal != null){{$req->tgl_awal}}@endif" name="tgl_awal" id="tgl_awal" >
                         </div>
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <label>Sampai Tanggal</label>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
-                          <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
+                      <div class="form-group">
+                        <label>Sampai Tanggal</label>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend" data-date="" data-date-format="yyyy-mm-dd">
+                          </div>
+                          <input class="form-control" type="date" value="@if($req->tgl_akhir != null){{$req->tgl_akhir}}@endif" name="tgl_akhir" id="tgl_akhir" >
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Keperluan</label>
-                                        <select class="form-control select2" type="text" name="keperluan" id="keperluan">
-                                            <option value="all">[ SEMUA KEPERLUAN ]</option>
-                                            <option value="Baca Buku">Baca Buku</option>
-                                            <option value="Baca dan Pinjam">Baca dan Pinjam</option>
+                                        <select class="form-control" type="text" name="keperluan" id="keperluan">
+                                          @if($req->keperluan != ''){
+                                            echo <option value="">{{$req->keperluan}}</option>
+                                          }@endif
+                                            <option value="all">[ SEMUA KEPERLUAN ]</option>>
                                             <option value="Pinjam Buku">Pinjam Buku</option>
                                             <option value="Kembali Buku">Kembali Buku</option>
                                         </select>
@@ -69,22 +70,18 @@
                       <div class="input-group">
                       <div class="btn-group btn-group-sm">
                         <button class="btn bg-info btn-sm"><i class="fa fa-search "> </i> Tampilkan Data</button>
-                        <button class="btn bg-navy btn-sm" onclick="printDiv('cetak')"><i class="fa fa-print "> </i> Print Data</button>
-                        <a class="btn btn-danger btn-sm" href="<?php echo url('/'); ?>/laporan/pengunjung_excel/" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('export_pengunjung')}}" target="_blank"><i class="fa fa-download"> </i> Export</a>
                       </div>
                       </div>
                     </div> 
                   </div>
                 </form>
               </div>
-              <!-- /.card-header -->
-              <!-- TABLE: LATEST ORDERS -->
-              <?php if (!empty($pengunjung)) { ?>
                 <div class="card" id="cetak">
                   <div class="card-header border-transparent">
                     <center>
                         <h4 class="m-0 text-dark mt-3" style="text-shadow: 2px 2px 4px #17a2b8;">
-              <img src="{{$img}}" alt="Logo" class="brand-image img-rounded " style="width:60px;height:60px;">
+              <img src="{{$img}}" alt="Logo" class="brand-image img-rounded " style="width:80px;height:60px;">
                <br></h4>
                       <h4 style="margin:0;">Laporan Pengunjung Perpus </h4>
                       <p style="margin:0;">Periode : </p>
@@ -108,9 +105,9 @@
                                 <tr>
                                     <td>{{$loop->index +1}}</td>
                                     <td>{{$item->nama}}</td>
-                                    <td>{{$item->nisn}}</td>
+                                    <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
                                     <td>{{$item->keperluan}}</td>
-                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->create_pengunjung}}</td>
                                     @empty
                                     <tr>
                                       <td colspan="5">tidak ada data</td>
@@ -125,7 +122,6 @@
                   <!-- /.card-body -->
                   <!-- /.card-footer -->
                 </div>
-              <?php } ?>
               <!-- /.card -->
             </div>
             <!-- /.col -->

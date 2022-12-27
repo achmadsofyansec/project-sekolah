@@ -24,8 +24,7 @@
                     @php
                         $tanggalnow = date('Y-m-d');
                     @endphp
-                    <input type="text" id="id_siswa" name="id_siswa" value="{{$data->id_siswa}}">
-                    <input type="hidden" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>">
+                    <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_siswa}}">
                     <input type="hidden" id="keperluan" name="keperluan" value="Pinjam Buku">
                     <input type="hidden" id="status" name="status" value="1">
                     <div class="form-group">
@@ -33,20 +32,17 @@
                       <input type="number" name="jumlah" id="jumlah" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>Durasi (Hari)</label>
-                      <input type="number" name="durasi" id="durasi" value="1" class="form-control" required>
+                      <label>Tanggal Pinjam</label>
+                      <input class="form-control" type="date" id="tanggal_pinjam" name="tanggal_pinjam" value="<?php echo $tanggalnow ?>" required>
+                    </div><div class="form-group">
+                      <label>Tanggal Kembali</label>
+                      <input type="date" name="tanggal_kembali" id="tanggal_kembali" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>Keterangan</label>
                       <textarea name="desc_pinjam" id="desc_pinjam" cols="30" rows="10" class="form-control"></textarea>
                     </div>
-                    <div class="form-group">
-                      <label>Kondisi Buku</label>
-                      <select name="kondisi" id="kondisi" class="form-control" style="width: 100%;" required>
-                      <option value="Baik">Baik</option>
-                      <option value="Rusak">Rusak</option>
-                      </select>
-                  </div>
+                      <input type="hidden" name="kondisi" id="kondisi" value="1" required>
                   </div>
         </div>
         <div class="modal-footer">

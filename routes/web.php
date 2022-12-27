@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\PengumumanController;
@@ -15,6 +14,7 @@ use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\PeminjamanBukuDtController;
 use App\Http\Controllers\PengembalianBukuController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\ExportImport;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +32,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PageController::class,'index'])->name('dashboard');
 Route::post('/signout',[PageController::class,'logout']);
+
+//export
+Route::get('/export_buku',[ExportImport::class,'ExportBuku'])->name('export_buku');
+Route::get('/export_peminjaman',[ExportImport::class,'ExportPeminjaman'])->name('export_peminjaman');
+Route::get('/export_pengunjung',[ExportImport::class,'ExportPengunjung'])->name('export_pengunjung');
+
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
 //transaksi
@@ -58,4 +64,6 @@ Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRe
 Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
 Route::post('ajaxRequestTable', [AjaxController::class, 'filter_table'])->name('ajaxRequestTable.filter_table');
 });
+
+
 });

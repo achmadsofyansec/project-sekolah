@@ -14,7 +14,7 @@ class PeminjamanBukuDt extends Model
         'id_siswa',
         'kode_buku',
         'jumlah',
-        'durasi',
+        'tanggal_kembali',
         'status',
         'desc_pinjam',
         'kondisi',

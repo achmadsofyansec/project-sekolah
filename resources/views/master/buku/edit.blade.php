@@ -177,15 +177,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Foto Buku</label>
-                                        <input type="file" name="foto_buku">
-                                        <p class="help-block">Format File Harus .jpg atau .png</p> 
-                                            <img src="{{$buku->foto_buku}}" style="width:100px;height:100px;">
-                                    </div>
+                                <div class="col-md-4">
+                                  @if ($buku->foto_buku != '-')
+                                <img src="{{asset('../assets/uploads/'.$buku->foto_buku)}}" alt="Image" class="img" width="60" height="100">
+                                  @else
+                                    Tidak Ada Foto
+                                  @endif
                                 </div>
-                            </div>
+                                <div class="col-md-8">
+                                  <div class="form-grup">
+                                    <label>Foto</label>
+                                    <input type="file" name="foto" id="foto" class="form-control">
+                                </div>
+                                </div>
+                              </div>
                         </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-right">

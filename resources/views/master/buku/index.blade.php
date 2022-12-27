@@ -41,8 +41,8 @@
               <div class="card-header">
                 <div class="btn-group btn-group-sm">
                <a class="btn btn-info btn-sm" href="{{route('buku.create')}}"><i class="fa fa-plus"> </i> Tambah Data</a>
-               <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalImport"><i class="fas fa-file-excel"> </i> Import Excel</a>
-               <a class="btn bg-navy btn-sm" href="<?php echo url('/'); ?>/master/buku/export" target="_blank"><i class="fa fa-download"> </i> Download Data Buku</a>
+               <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalImport"><i class="fas fa-file-excel"> </i> Import</a>
+               <a class="btn bg-navy btn-sm" href="{{route('export_buku')}}"><i class="fa fa-file-export" target="_blank"> </i> Export</a>
            </div>
               </div>
               <!-- /.card-header -->
@@ -152,16 +152,4 @@
           </div>
     </div>
 </div>
-
-
-<script>
-    $(".detail-buku").click(function() {
-        var id_buku = $(this).attr("data-id_buku");
-        $.get("<?php echo url('/'); ?>/master/ajax_detail_buku", {
-            id_buku: id_buku
-        }, function(data) {
-            $(".tempat_buku").html(data);
-        });
-    });
-</script>
 @endsection

@@ -69,8 +69,7 @@
                       <div class="input-group mb-3">
                       <div class="btn-group btn-group-sm">
                         <button class="btn bg-info btn-sm"><i class="fa fa-search "> </i> Tampilkan Data</button>
-                        <button class="btn bg-navy btn-sm" onclick="printDiv('cetak')"><i class="fa fa-print "> </i> Print Data</button>
-                        <a class="btn btn-danger btn-sm" href="<?php echo url('/'); ?>laporan/peminjaman_excel/" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('export_peminjaman')}}" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
                       </div>
                       </div>
                     </div>                             
@@ -111,10 +110,7 @@
                   <td>{{$item->kode_buku}}</td>
                   <td>{{$item->jumlah}}</td>
                   <td>{{$item->tanggal_pinjam}}</td>
-                  <td><?php
-                    $tanggal_pinjam = $item->tanggal_pinjam;
-                    $tanggal_kembali = date('Y-m-d', strtotime($item->durasi.' days', strtotime($tanggal_pinjam))); 
-                  echo $tanggal_kembali;?></td>
+                  <td>{{$item->tanggal_kembali}}</td>
                   <td><?php if($item->status == 1){
                     echo "Dipinjam";
                   }else{
@@ -125,7 +121,7 @@
                     <?php 
                       $dendabuku = $item1->tarif_denda;
                       $tgl_sekarang = date("Y-m-d");
-                      $tgl_kembali = $tanggal_kembali;
+                      $tgl_kembali = $item->tanggal_kembali;
                       $sel1 = explode('-',$tgl_kembali);
                       $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
                       $sel2 = explode('-',$tgl_sekarang);
@@ -135,24 +131,15 @@
                       if($selisih < 0){
                         echo "Tidak";
                       }else{
-                      echo $selisih;
+                      echo $selisih. ' Hari';
                     }
                      ?>
                   </td><td>
-                    <?php 
-                      $dendabuku = $item1->tarif_denda;
-                      $tgl_sekarang = date("Y-m-d");
-                      $tgl_kembali = $tanggal_kembali;
-                      $sel1 = explode('-',$tgl_kembali);
-                      $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
-                      $sel2 = explode('-',$tgl_sekarang);
-                      $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
-                      $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
-                      $selisih = $selisih/86400;
+                    <?php
                       if($selisih < 0){
                         echo "Tidak Ada";
                       }else{
-                      echo $selisih." hari (Rp.". $dendabuku*$selisih.")";
+                      echo "Rp. ".number_format($dendabuku*$selisih) ;
                     }
                      ?>
                     @empty

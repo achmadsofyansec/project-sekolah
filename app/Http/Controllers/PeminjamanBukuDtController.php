@@ -43,7 +43,7 @@ class PeminjamanBukuDtController extends Controller
             'keperluan' => ['required'],
             'status' => ['required'],
             'jumlah' => ['required'],
-            'durasi' => ['required'],
+            'tanggal_kembali' => ['required'],
             'desc_pinjam' => ['required'],
             'kondisi' => ['required'],
         ]);
@@ -54,7 +54,7 @@ class PeminjamanBukuDtController extends Controller
                 'jumlah' => $request->jumlah,
                 'status' => $request->status,
                 'tanggal_pinjam' => $request->tanggal_pinjam,
-                'durasi' => $request->durasi,
+                'tanggal_kembali' => $request->tanggal_kembali,
                 'desc_pinjam' => $request->desc_pinjam,
                 'kondisi' => $request->kondisi,
             ]);

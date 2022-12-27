@@ -19,11 +19,11 @@ class CreatePeminjamanBukuDtsTable extends Migration
                 $table->string('id_siswa');
                 $table->string('kode_buku');
                 $table->string('jumlah');
-                $table->string('durasi');
                 $table->string('status');
                 $table->string('desc_pinjam');
                 $table->string('kondisi');
-                $table->string('tanggal_pinjam');
+                $table->date('tanggal_pinjam');
+                $table->date('tanggal_kembali');
                 $table->timestamps();
             });
         }

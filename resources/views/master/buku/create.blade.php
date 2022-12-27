@@ -177,7 +177,7 @@
                                         <label>Foto Buku</label>
                                         <input type="file" name="foto_buku">
                                         <p class="help-block">Format File Harus .jpg atau .png</p> 
-                                            <img src="" style="width:100px;height:100px;">
+                                        <img src="" style="width:100px;height:100px;">
                                     </div>
                                 </div>
                             </div>

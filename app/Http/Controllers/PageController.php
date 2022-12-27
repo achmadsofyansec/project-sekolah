@@ -12,6 +12,8 @@ use App\Models\Peminjaman_buku;
 use App\Models\Pengunjung_perpus;
 use App\Models\Siswa;
 use App\Models\Denda;
+use DateTime;
+
 
 
 class PageController extends Controller
@@ -99,14 +101,17 @@ class PageController extends Controller
         return view('laporan.buku.index', compact('buku'));
     }
 
-    public function laporan_pengunjung()
+    public function laporan_pengunjung(Request $request)
     {
         $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
         $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+        $req = $request;
+        $data = "";
         $pengunjung = DB::table('perpustakaan_pengunjung_perpuses')
                             ->join('data_siswas','data_siswas.nisn','=','perpustakaan_pengunjung_perpuses.nis')
-                            ->get();
-        return view('laporan.pengunjung.index', compact('pengunjung','img'));
+                            ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+                            ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_pengunjung_perpuses.*','perpustakaan_pengunjung_perpuses.id as id_pengunjung','aktivitas_belajars.*','perpustakaan_pengunjung_perpuses.updated_at as create_pengunjung']);
+        return view('laporan.pengunjung.index', compact('pengunjung','img','req'));
     }
 
 
