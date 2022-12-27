@@ -40,25 +40,21 @@
                         Filter
                       </div>
                     </div>
-                  <form action="" method="GET">
+                  <form action="{{ route('laporan_view') }}" method="GET">
                       <div class="card-body">
                                   <div class="form-group">
                                     <label>Dari Tanggal</label>
-                                    <input type="date" name="filter_dari_tanggal" id="filter_dari_tanggal" value="" class="form-control">
+                                    <input type="date" name="filter_dari_tanggal" id="filter_dari_tanggal" value="@if ($req->filter_dari_tanggal != null)
+                                        {{$req->filter_dari_tanggal}}
+                                    @endif" class="form-control">
                                   </div>
                                   <div class="form-group">
                                     <label>Sampai Tanggal</label>
-                                    <input type="date" name="filter_sampai_tanggal" id="filter_sampai_tanggal" value="" class="form-control">
+                                    <input type="date" name="filter_sampai_tanggal" id="filter_sampai_tanggal" value="@if ($req->filter_sampai_tanggal != null)
+                                        {{$req->filter_sampai_tanggal}}
+                                    @endif" class="form-control">
                                   </div>
-                                  <div class="form-group">
-                                    <label>Status Peminjaman</label>
-                                    <select class="form-control" id="nama_ruangan" name="nama_ruangan">
-                                            <option value="">Pilih Peminjaman</option>
-                                            <option value="">Dipinjam</option>
-                                            <option value="">Dikembalikan</option>
-                                            <option value="">Hilang</option>
-                                    </select>
-                                </div>
+                                  
                       </div>
                         
                       <div class="card-footer">
@@ -74,7 +70,14 @@
                        Laporan Peminjaman
                       </div>
                       <div class="card-tools">
-                     
+                         <form action="" method="GET" target="_blank">
+                          <input type="hidden" name="filter_dari_tanggal" id="filter_dari_tanggal" value="{{$req->filter_dari_tanggal}}">
+                          <input type="hidden" name="filter_sampai_tanggal" id="filter_sampai_tanggal" value="{{$req->filter_sampai_tanggal}}">
+                          <input type="hidden" name="status_peminjaman" id="status_peminjaman" value="{{$req->status_peminjaman}}">
+                          
+                          <a href="{{ route('export_peminjaman_all') }}" class="btn btn-primary my-3" target="_blank"><i class="fas fa-print"></i> Export XLSX</a>
+                          <a href="" class="btn btn-danger my-3" target="_blank"><i class="fas fa-print"></i> Export PDF</a>
+                      </form>
                       </div>
                     </div>
                     <div class="card-body">
@@ -89,24 +92,13 @@
                                       <th>Tanggal Input</th>
                                       <th>Status</th>
                                  </thead>
-                                 @forelse ($data as $item)
-                              <tr>
-                                <td>{{$loop->index + 1}}</td>
-                                <td>{{$item->nama}}</td>
-                                <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                                <td>{{$item->tgl_peminjaman}}</td>
-                                <td>{{$item->tgl_pengembalian}}</td>
-                                <td>{{$item->created_at}}</td>
-                                <td>@if ($item->status_peminjaman == '0')
-                                  <span class="btn btn-warning">Dipinjam</span>
-                               @elseif($item->status_peminjaman == '1')
-                               <span class="btn btn-success">Dikembalikan</span>
-                               @else 
-                               <span class="btn btn-danger">Hilang</span>
-                               @endif</td>
-                          </tr>
-                          @empty   
-                          @endforelse
+                                @if ($data != null || $data != "")
+                                  {!!$data!!}
+                                  @else
+                                      <tr>
+                                        <td class="text-muted text-center" colspan="100%">Tidak Ada Data </td>
+                                      </tr>
+                                  @endif
                              </table>
                         </div>
                     </div>

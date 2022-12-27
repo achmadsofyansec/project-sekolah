@@ -34,8 +34,8 @@ class PageController extends Controller
         return view('dashboard', compact(['aset', 'peminjaman', 'pengembalian', 'kategori', 'data', 'denda', 'dataPeminjaman', 'dataAset']));
     }
     
-    public function view_laporan_peminjaman(){
-        return view('laporan.peminjaman.index');
+    public function view_laporan_asset(){
+        return view('laporan.laporan_asset.index');
     }
     public function view_laporan_pengembalian(){
         return view('laporan.pengembalian.index');

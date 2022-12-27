@@ -73,12 +73,33 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('/denda', DendaController::class);
         
         //Laporan
-        Route::get('/laporan_aset',[PageController::class,'view_laporan_aset'])->name('laporan_aset');
-        Route::get('/laporan_peminjaman',[ExportController::class,'laporan_view'])->name('laporan_view');
+        Route::get('/laporan_aset',[PageController::class,'view_laporan_asset'])->name('laporan_aset');
+        Route::get('/laporan_peminjaman',[ExportController::class,'laporan_cari'])->name('laporan_view');
         Route::get('/laporan_pengembalian',[PageController::class,'view_laporan_pengembalian'])->name('laporan_pengembalian');
         
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
     });
 });
-Route::get('/tes', [ExportController::class, 'export_lahan'])->name('export_lahan');
+
+// Export EXCELL
+Route::get('/exp_peminjaman', [ExportController::class, 'export_peminjaman_all'])->name('export_peminjaman_all');
+Route::get('/exp_gedung', [ExportController::class, 'exp_gedung'])->name('exp_gedung');
+Route::get('/exp_ruagan', [ExportController::class, 'exp_ruagan'])->name('exp_ruagan');
+Route::get('/exp_lapangan', [ExportController::class, 'exp_lapangan'])->name('exp_lapangan');
+Route::get('/exp_sarana_belajar', [ExportController::class, 'exp_sarana_belajar'])->name('exp_sarana_belajar');
+Route::get('/exp_asset_lain', [ExportController::class, 'exp_asset_lain'])->name('exp_asset_lain');
+Route::get('/exp_asset_tt', [ExportController::class, 'exp_asset_tt'])->name('exp_asset_tt');
+Route::get('/exp_kategori_tt', [ExportController::class, 'exp_kategori_tt'])->name('exp_kategori_tt');
+Route::get('/exp_kebutuhan_tambahan', [ExportController::class, 'exp_kebutuhan_tambahan'])->name('exp_kebutuhan_tambahan');
+Route::get('/exp_laboratorium', [ExportController::class, 'exp_laboratorium'])->name('exp_laboratorium');
+Route::get('/exp_lahan', [ExportController::class, 'exp_lahan'])->name('exp_lahan');
+Route::get('/exp_mebel', [ExportController::class, 'exp_mebel'])->name('exp_mebel');
+Route::get('/exp_olahraga_seni', [ExportController::class, 'exp_olahraga_seni'])->name('exp_olahraga_seni');
+Route::get('/exp_penerangan_internet', [ExportController::class, 'exp_penerangan_internet'])->name('exp_penerangan_internet');
+Route::get('/exp_sanitasi', [ExportController::class, 'exp_sanitasi'])->name('exp_sanitasi');
+Route::get('/exp_sarana_administrasi', [ExportController::class, 'exp_sarana_administrasi'])->name('exp_sarana_administrasi');
+
+
+
+
