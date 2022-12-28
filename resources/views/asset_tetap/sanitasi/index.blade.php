@@ -43,13 +43,9 @@
                 <div class="form-group">    
                   <label>Sumber Air Bersih</label>
                   <select name="sumber_air_bersih" id="sumber_air_bersih" class="form-control">
-                    {{-- <option value="">{{ $data->sumber_air_bersih }}</option>
-                    <option value="Air PAM">Air PAM</option>
-                    <option value="Air Kemasan">Air Kemasan</option>
-                    <option value="Sumur">Sumur</option>
-                    <option value="Pompa">Pompa</option>
-                    <option value="Lainnya">Lainnya</option>
-                    <option value="Tidak Ada">Tidak Ada</option> --}}
+                    <option value="Pilih Opsi" @if ($data->sumber_air_bersih == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
                     <option value="Air PAM" @if ($data->sumber_air_bersih == "Air PAM")
                       {{'selected'}}
                     @endif>Air PAM</option>
@@ -73,44 +69,86 @@
                 <div class="form-group">    
                   <label>Sumber Air Minum</label>
                   <select name="sumber_air_minum" id="sumber_air_minum" class="form-control">
-                    <option value="">{{ $data->sumber_air_minum }}</option>
-                    <option value="Disediakan Oleh Madrasah">Disediakan Oleh Madrasah</option>
-                    <option value="Disediakan Oleh Siswa">Disediakan Oleh Siswa</option>
-                    <option value="Tidak ada">Tidak ada</option>
+                    <option value="Pilih Opsi" @if ($data->sumber_air_minum == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Disediakan Oleh Madrasah" @if ($data->sumber_air_minum == "Disediakan Oleh Madrasah")
+                      {{'selected'}}
+                    @endif>Disediakan Oleh Madrasah</option>
+                    <option value="Disediakan Oleh Siswa" @if ($data->sumber_air_minum == "Disediakan Oleh Siswa")
+                      {{'selected'}}
+                    @endif>Disediakan Oleh Siswa</option>
+                    <option value="Tidak ada" @if ($data->sumber_air_minum == "Tidak ada")
+                      {{'selected'}}
+                    @endif>Tidak ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Kecukupan Air Bersih</label>
+                  
                   <select name="kecukupan_air_bersih" id="kecukupan_air_bersih" class="form-control">
-                    <option value="">{{ $data->kecukupan_air_bersih }}</option>
-                    <option value="Cukup Setiap Saat">Cukup Setiap Saat</option>
-                    <option value="Cukup Tapi Tidak Setiap Saat">Cukup Tapi Tidak Setiap Saat</option>
-                    <option value="Tidak Cukup">Tidak Cukup</option>
+                    <option value="Pilih Opsi" @if ($data->kecukupan_air_bersih == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Cukup Setiap Saat" @if ($data->kecukupan_air_bersih == "Cukup Setiap Saat")
+                      {{'selected'}}
+                    @endif>Cukup Setiap Saat</option>
+                    <option value="Cukup Tapi Tidak Setiap Saat" @if ($data->kecukupan_air_bersih == "Cukup Tapi Tidak Setiap Saat")
+                      {{'selected'}}
+                    @endif>Cukup Tapi Tidak Setiap Saat</option>
+                    <option value="Tidak Cukup" @if ($data->kecukupan_air_bersih == "Tidak Cukup")
+                      {{'selected'}}
+                    @endif>Tidak Cukup</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madarasah Menyediakan Jamban Yang Dilengkapi Fasilitas Pendukung Untuk Siswa Berkebutuhan Khusus</label>
                   <select name="fasilitas_jamban_khusus" id="fasilitas_jamban_khusus" class="form-control">
-                    <option value="">{{ $data->fasilitas_jamban_khusus }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->fasilitas_jamban_khusus == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->fasilitas_jamban_khusus == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->fasilitas_jamban_khusus == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
+              
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Tipe toilet yang dimiliki madrasah</label>
                   <select name="tipe_toilet" id="tipe_toilet" class="form-control">
-                    <option value="">{{ $data->tipe_toilet }}</option>
-                    <option value="Leher agsa ( jamban duduk/jongkok )">Leher agsa ( jamban duduk/jongkok )</option>
-                    <option value="Cubluk dengan tutup">Cubluk dengan tutup</option>
-                    <option value="Tidak ada jamban">Tidak ada jamban</option>
+                    <option value="Pilih Opsi" @if ($data->tipe_toilet == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Leher agsa ( jamban duduk/jongkok )" @if ($data->tipe_toilet == "Leher agsa ( jamban duduk/jongkok )")
+                      {{'selected'}}
+                    @endif>Leher agsa ( jamban duduk/jongkok )</option>
+                    <option value="Cubluk dengan tutup" @if ($data->tipe_toilet == "Cubluk dengan tutup")
+                      {{'selected'}}
+                    @endif>Cubluk dengan tutup</option>
+                    <option value="Tidak ada jamban" @if ($data->tipe_toilet == "Tidak ada jamban")
+                      {{'selected'}}
+                    @endif>Tidak ada jamban</option>
+
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah menyediakan pembalut cadangan?</label>
                   <select name="pembalut_cadangan" id="pembalut_cadangan" class="form-control">
-                    <option value="">{{ $data->pembalut_cadangan }}</option>
-                    <option value="Meyediakan tetapi siswi harus membeli">Meyediakan tetapi siswi harus membeli</option>
-                    <option value="Menyediakan dengan cara memberikan secara gratis">Menyediakan dengan cara memberikan secara gratis</option>
+                    <option value="Pilih Opsi" @if ($data->pembalut_cadangan == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Meyediakan tetapi siswi harus membeli" @if ($data->pembalut_cadangan == "Meyediakan tetapi siswi harus membeli")
+                      {{'selected'}}
+                    @endif>Meyediakan tetapi siswi harus membeli</option>
+                    <option value="Menyediakan dengan cara memberikan secara gratis" @if ($data->pembalut_cadangan == "Menyediakan dengan cara memberikan secara gratis")
+                      {{'selected'}}
+                    @endif>Menyediakan dengan cara memberikan secara gratis</option>
+                    <option value="Tidak ada" @if ($data->pembalut_cadangan == "Tidak ada")
+                      {{'selected'}}
+                    @endif>Tidak ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
@@ -126,111 +164,192 @@
                 <input type="number" value="{{ $data->jumlah_cuci_tangan_kr }}" name="jumlah_cuci_tangan_kr" id="jumlah_cuci_tangan_kr" class="form-control" placeholder="0">
                 </div>
                 <div class="form-group">    
-                  <label>Apakah sabun dan air menggalir tersedia di tempat cuci tangan?</label>
-                  <select name="jumlah_sabun_cuci_tangan" id="jumlah_sabun_cuci_tangan" class="form-control">
-                    <option value="">{{ $data->jumlah_sabun_cuci_tangan }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
-                  </select>
+                  <label>Jumlah sabun cuci tangan</label>
+                  
+                    <input type="number" value="{{ $data->jumlah_sabun_cuci_tangan }}" name="jumlah_sabun_cuci_tangan" id="jumlah_sabun_cuci_tangan" class="form-control" placeholder="0">
+                 
                 </div>
                 <div class="form-group">    
                   <label>Madrasah memiliki saluran pembuangan air limbah dari jamban?</label>
                   <select name="pembuangan_limbah" id="pembuangan_limbah" class="form-control">
-                    <option value="">{{ $data->pembuangan_limbah }}</option>
-                    <option value="Ada saluran pembuangan air limbah ke tangki septik atau IPAL">Ada saluran pembuangan air limbah ke tangki septik atau IPAL</option>
-                    <option value="Ada saluran pembuangan air limbah ke selokan/kali/sungai">Ada saluran pembuangan air limbah ke selokan/kali/sungai</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->pembuangan_limbah == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada saluran pembuangan air limbah ke tangki septik atau IPAL" @if ($data->pembuangan_limbah == "Ada saluran pembuangan air limbah ke tangki septik atau IPAL")
+                      {{'selected'}}
+                    @endif>Ada saluran pembuangan air limbah ke tangki septik atau IPAL</option>
+                    <option value="Ada saluran pembuangan air limbah ke selokan/kali/sungai" @if ($data->pembuangan_limbah == "Ada saluran pembuangan air limbah ke selokan/kali/sungai")
+                      {{'selected'}}
+                    @endif>Ada saluran pembuangan air limbah ke selokan/kali/sungai</option>
+                    <option value="Tidak ada" @if ($data->pembuangan_limbah == "Tidak ada")
+                      {{'selected'}}
+                    @endif>Tidak ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah pernah menguras tangki septik tank dalam 3 hingga 5 tahun terakhir dengan truk / motor sedot tinja?</label>
                   <select name="waktu_pembuagan_limbah" id="waktu_pembuagan_limbah" class="form-control">
-                    <option value="">{{ $data->waktu_pembuagan_limbah }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->waktu_pembuagan_limbah == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->waktu_pembuagan_limbah == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->waktu_pembuagan_limbah == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah memiliki selokan untuk mengindari genangan air?</label>
                   <select name="selokan_air" id="selokan_air" class="form-control">
-                    <option value="">{{ $data->selokan_air }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->selokan_air == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->selokan_air == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->selokan_air == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah menyediakan tempat sampah di setiap ruang kelas?</label>
                   <select name="tempat_sampah_kelas" id="tempat_sampah_kelas" class="form-control">
-                    <option value="">{{ $data->tempat_sampah_kelas }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->tempat_sampah_kelas == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->tempat_sampah_kelas == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->tempat_sampah_kelas == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah menyediakan tempat sampah tertutup di setiap unit jamban perempuan?</label>
                   <select name="tempat_sampah_tertutup" id="tempat_sampah_tertutup" class="form-control">
-                    <option value="">{{ $data->tempat_sampah_tertutup }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->tempat_sampah_tertutup == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->tempat_sampah_tertutup == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->tempat_sampah_tertutup == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah menyediakan cermin di setiap unit jamban perempuan?</label>
                   <select name="cermin" id="cermin" class="form-control">
-                    <option value="">{{ $data->cermin }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->cermin == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->cermin == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->cermin == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Madrasah memiliki tempat pembuangan sampah sementara (TPS) yang tertutup?</label>
                   <select name="tps" id="tps" class="form-control">
-                    <option value="">{{ $data->tps }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->tps == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->tps == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->tps == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Sampah dari tempat pembuangan sementara diangkut secara rutin?</label>
                   <select name="pengangkatan_sampah" id="pengangkatan_sampah" class="form-control">
-                    <option value="">{{ $data->pengangkatan_sampah }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->pengangkatan_sampah == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->pengangkatan_sampah == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->pengangkatan_sampah == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Anggaran untuk pengagankatan sampah</label>
                   <select name="anggaran_pemeliharaan" id="anggaran_pemeliharaan" class="form-control">
-                    <option value="">{{ $data->anggaran_pemeliharaan }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->anggaran_pemeliharaan == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->anggaran_pemeliharaan == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->anggaran_pemeliharaan == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Ada kegiatan rutin yang melibatkan siswa untuk memelihara dan merawat fasilitas sanitasi dari madrasah?</label>
                   <select name="kegiatan_rutin" id="kegiatan_rutin" class="form-control">
-                    <option value="">{{ $data->kegiatan_rutin }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->kegiatan_rutin == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->kegiatan_rutin == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->kegiatan_rutin == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Ada kemitraan dengan pihak luar untuk sanitasi madrasah?</label>
                   <select name="kemitraan_sekolah" id="kemitraan_sekolah" class="form-control">
-                    <option value="">{{ $data->kemitraan_sekolah }}</option>
-                    <option value="Ada dengan pemerintah daerah">Ada dengan pemerintah daerah</option>
-                    <option value="Ada dengan pukesmas">Ada dengan pukesmas</option>
-                    <option value="Ada dengan perusahaan swasta">Ada dengan perusahaan swasta</option>
-                    <option value="Ada dengan lembaga non-pemerintahan">Ada dengan lembaga non-pemerintahan</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->kemitraan_sekolah == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada dengan pemerintah daerah" @if ($data->kemitraan_sekolah == "Ada dengan pemerintah daerah")
+                      {{'selected'}}
+                    @endif>Ada dengan pemerintah daerah</option>
+                    <option value="Tidak Ada" @if ($data->kemitraan_sekolah == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
+                    <option value="Ada dengan pukesmas" @if ($data->kemitraan_sekolah == "Ada dengan pukesmas")
+                      {{'selected'}}
+                    @endif>Ada dengan pukesmas</option>
+                    <option value="Ada dengan perusahaan swasta" @if ($data->kemitraan_sekolah == "Ada dengan perusahaan swasta")
+                      {{'selected'}}
+                    @endif>Ada dengan perusahaan swasta</option>
+                    <option value="Ada dengan lembaga non-pemerintahan" @if ($data->kemitraan_sekolah == "Ada dengan lembaga non-pemerintahan")
+                      {{'selected'}}
+                    @endif>Ada dengan lembaga non-pemerintahan</option>
+                    <option value="Tidak Ada" @if ($data->kemitraan_sekolah == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="form-group">    
                   <label>Apakah jamban yang ada dipisahkan antara laki dan perempuan?</label>
                   <select name="pemisahan_jamban" id="pemisahan_jamban" class="form-control">
-                    <option value="">{{ $data->pemisahan_jamban }}</option>
-                    <option value="Ada">Ada</option>
-                    <option value="Tidak Ada">Tidak Ada</option>
+                    <option value="Pilih Opsi" @if ($data->pemisahan_jamban == "Pilih Opsi")
+                      {{'selected'}}
+                    @endif>-- Pilih Opsi --</option>
+                    <option value="Ada" @if ($data->pemisahan_jamban == "Ada")
+                      {{'selected'}}
+                    @endif>Ada</option>
+                    <option value="Tidak Ada" @if ($data->pemisahan_jamban == "Tidak Ada")
+                      {{'selected'}}
+                    @endif>Tidak Ada</option>
                   </select>
                 </div>
                 <div class="row">

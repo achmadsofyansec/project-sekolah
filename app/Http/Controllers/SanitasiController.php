@@ -71,7 +71,7 @@ class SanitasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        
         $validate = $this->validate($request,[
             'sumber_air_bersih' => ['required'],
             'sumber_air_minum' => ['required'],
@@ -102,6 +102,7 @@ class SanitasiController extends Controller
             'jumlah_jamban_rusak_pr' => ['required'],
             'jumlah_jamban_rusak_br' => ['required'],
         ]);
+        
         if($validate){
             $update = SarprasSanitasi::findOrFail($id);
             $update->update([
@@ -134,6 +135,7 @@ class SanitasiController extends Controller
                 'jumlah_jamban_rusak_pr' => $request->jumlah_jamban_rusak_pr,
                 'jumlah_jamban_rusak_br' => $request->jumlah_jamban_rusak_br,
             ]);
+            
             $update = DB::table('sarpras_sanitasis')->where('sarpras_sanitasis.id','=',$id);
             if($update){
                 return redirect()
