@@ -49,7 +49,7 @@ class PeneranganInternetController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                 $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/penerangan_internet',$name);
                 $data = [
                 'unit' => $request->unit,
                 'sumber' => $request->sumber,
@@ -137,7 +137,7 @@ class PeneranganInternetController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/penerangan_internet',$name);
                 $data = [
                 'unit' => $request->unit,
                 'sumber' => $request->sumber,

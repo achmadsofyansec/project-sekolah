@@ -52,7 +52,7 @@ class DataAsetTTController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move('../assets/uploads/sarpras/data_asset_tt',$name);
                 $data = [
                 'unit' => $request->unit,
                 'kategori' => $request->kategori,
@@ -141,7 +141,7 @@ class DataAsetTTController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move('../assets/upload',$name);
+                $foto->move('../assets/uploads/sarpras/data_asset_tt',$name);
                 $data = [
                 'unit' => $request->unit,
                 'kategori' => $request->kategori,

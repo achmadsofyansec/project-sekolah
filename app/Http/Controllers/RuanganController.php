@@ -56,7 +56,7 @@ class RuanganController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/ruangan',$name);
                 $data = [
                 'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
@@ -76,7 +76,7 @@ class RuanganController extends Controller
                 'tahun_dibangun' => $request->tahun_dibangun,
                 'panjang' => $request->panjang,
                 'lebar' => $request->lebar,
-                
+                'foto' => '-',
 
                 ];
             }
@@ -154,7 +154,7 @@ class RuanganController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/ruangan',$name);
                 $data = [
                 'nama_gedung' => $request->nama_gedung,
                 'jenis_ruangan' => $request->jenis_ruangan,
@@ -174,7 +174,7 @@ class RuanganController extends Controller
                 'tahun_dibangun' => $request->tahun_dibangun,
                 'panjang' => $request->panjang,
                 'lebar' => $request->lebar,
-                'foto' => '-',
+                
                 ];
             }
 

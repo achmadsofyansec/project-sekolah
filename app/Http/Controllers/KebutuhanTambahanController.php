@@ -50,7 +50,7 @@ class KebutuhanTambahanController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/kebutuhan_tambahan',$name);
                 $data = [
                 'tahun_pengajuan' => $request->tahun_pengajuan,
                 'jenis' => $request->jenis,
@@ -141,7 +141,7 @@ class KebutuhanTambahanController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/kebutuhan_tambahan',$name);
                 $data = [
                 'tahun_pengajuan' => $request->tahun_pengajuan,
                 'jenis' => $request->jenis,

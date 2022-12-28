@@ -47,7 +47,7 @@ class SaranaBelajarController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/sarana_belajar',$name);
                 $data = [
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
@@ -59,7 +59,7 @@ class SaranaBelajarController extends Controller
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
                 'fungsi' => $request->fungsi,
-                
+                'foto' => '-',
                 ];
             }
             $create = SarprasSaranaBelajar::create($data);
@@ -128,7 +128,7 @@ class SaranaBelajarController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/sarana_belajar',$name);
                 $data = [
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
@@ -140,7 +140,7 @@ class SaranaBelajarController extends Controller
                 'sarana_pembelajaran' => $request->sarana_pembelajaran,
                 'deskripsi' => $request->deskripsi,
                 'fungsi' => $request->fungsi,
-                'foto' => '-',
+                
                 ];
             }
 

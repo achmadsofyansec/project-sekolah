@@ -48,7 +48,7 @@ class MebelController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/mebel',$name);
                 $data = [
                 'unit' => $request->unit,
                 'jml_baik' => $request->jml_baik,
@@ -133,7 +133,7 @@ class MebelController extends Controller
             $foto = $request->file('foto');
             if($foto != null){
                 $name = $request->file('foto')->getClientOriginalName();
-                $foto->move(public_path('uploads'),$name);
+                $foto->move('../assets/uploads/sarpras/mebel',$name);
                 $data = [
                 'unit' => $request->unit,
                 'jml_baik' => $request->jml_baik,
@@ -147,7 +147,7 @@ class MebelController extends Controller
                 'jml_baik' => $request->jml_baik,
                 'jml_rusak_ringan' => $request->jml_rusak_ringan,
                 'jml_rusak_berat' => $request->jml_rusak_berat,
-                'foto' => '-',
+                
                 ];
             }
 
