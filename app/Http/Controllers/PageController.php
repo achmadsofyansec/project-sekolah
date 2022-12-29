@@ -57,14 +57,28 @@ class PageController extends Controller
             $dari_tanggal = $req->tgl_awal != null ? ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','>=',$req->tgl_awal." 00:00:00"] : ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','!=',null];
             $sampai_tanggal = $req->tgl_akhir != null ? ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','<=',$req->tgl_akhir." 23:59:59"] : ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','!=',null];
             $status = $req->status != null ? ['perpustakaan_peminjaman_buku_dts.status','=',$req->status] : ['perpustakaan_peminjaman_buku_dts.status','!=',null];
-            
             $denda = DB::table('perpustakaan_dendas')->get();
-            $laporanpeminjaman = DB::table('perpustakaan_peminjaman_buku_dts')->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
-            ->get();
+            dd($laporanpeminjaman = DB::table('perpustakaan_peminjaman_buku_dts')->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
+            ->where([$dari_tanggal,$sampai_tanggal,$status])
+            ->get());
             
             $no = 1;
             foreach ($laporanpeminjaman as $item) {
-               
+                if($item->status == 1){$dipinjam = "Dipinjam";}else{$dipinjam = "Dikembalikan";};
+            foreach ($denda as $item1){
+                $dendabuku = $item1->tarif_denda;
+                $tgl_sekarang = date("Y-m-d");
+                $tgl_kembali = $item->tanggal_kembali;
+                $sel1 = explode('-',$tgl_kembali);
+                $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
+                $sel2 = explode('-',$tgl_sekarang);
+                $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
+                $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
+                $selisih = $selisih/86400;
+                if($selisih <= 0){
+                  $data123 = "Tidak Ada";
+                }else{
+                  $data123 = $dendabuku * $selisih;
                 $data .='<tr>
                 <td>'.$no++.'</td>
                 <td>'.$item->nama.'</td>
@@ -72,7 +86,12 @@ class PageController extends Controller
                 <td>'.$item->jumlah.'</td>
                 <td>'.$item->tanggal_pinjam.'</td>
                 <td>'.$item->tanggal_kembali.'</td>
+                <td>'.$dipinjam.'</td>
+                <td>'.$selisih." hari".'</td>
+                <td>'. "(Rp.".number_format($data123).")".'</td>
                 </tr>';
+                }
+            }
             }
         }
 
