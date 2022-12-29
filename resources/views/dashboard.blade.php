@@ -22,7 +22,7 @@
                       </div>
                       <div class="card-body p-0">
                         <div class="row mt-3 ml-1 mr-1">
-                          <div class="col-12 col-sm-3 col-md-3">
+                          <div class="col-12 col-sm-3 col-md-4">
                             <a style="color:black;">
                             <div class="info-box">
                               <span class="info-box-icon bg-navy elevation-1"><i class="fad fa-books-medical"></i></span>
@@ -33,7 +33,7 @@
                             </div></a>
                           </div>
 
-                          <div class="col-12 col-sm-3 col-md-3">
+                          <div class="col-12 col-sm-3 col-md-4">
                             <a style="color:black;">
                             <div class="info-box">
                               <span class="info-box-icon bg-navy elevation-1"><i class="fas fa-users-class"></i></span>
@@ -44,24 +44,13 @@
                             </div></a>
                           </div>
 
-                          <div class="col-12 col-sm-3 col-md-3">
+                          <div class="col-12 col-sm-3 col-md-4">
                             <a style="color:black;">
                             <div class="info-box">
                               <span class="info-box-icon bg-navy elevation-1"><i class="fad fa-person-carry"></i></span>
                               <div class="info-box-content">
                                 <span class="info-box-text text-navy" ><b>PEMINJAMAN</b></span>
                                 <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">{{$pinjaman->count()}}</span>
-                              </div>
-                            </div></a>
-                          </div>
-
-                          <div class="col-12 col-sm-3 col-md-3">
-                            <a style="color:black;">
-                            <div class="info-box">
-                              <span class="info-box-icon bg-navy elevation-1"><i class="fas fa-money-check-alt"></i></span>
-                              <div class="info-box-content">
-                                <span class="info-box-text text-navy" ><b>TOTAL UANG DENDA</b></span>
-                                <span class="info-box-number " style="text-shadow: 2px 2px 4px #827e7e">0</span>
                               </div>
                             </div></a>
                           </div>
