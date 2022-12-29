@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 //View Pages In Admin Dashboard
 
-Route::get('/',[PageController::class,'index'])->name('dashboard');
+
 Route::post('/signout',[PageController::class,'logout']);
 
 //export
@@ -40,6 +40,7 @@ Route::get('/export_pengunjung',[ExportImport::class,'ExportPengunjung'])->name(
 
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
+        Route::get('/',[PageController::class,'index'])->name('dashboard');
 //transaksi
 Route::resource('buku',DataBukuController::class);
 Route::resource('kategori',KategoriController::class);
@@ -56,8 +57,10 @@ Route::get('/pengaturan/denda',[PageController::class,'denda']);
 //laporan
 Route::get('/laporan/buku',[PageController::class,'buku']);
 Route::get('/laporan/peminjaman',[PageController::class,'laporan_peminjaman']);
+route::get('/laporan/peminjaman',[PageController::class,'cari_peminjaman'])->name('cari_peminjaman');
 Route::get('/laporan/buku',[PageController::class,'laporan_buku']);
 Route::get('/laporan/pengunjung',[PageController::class,'laporan_pengunjung']);
+route::get('/laporan/pengunjung',[PageController::class,'cari_pengunjung'])->name('cari_pengunjung');
 
 //ajax
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');

@@ -22,11 +22,11 @@ class PeminjamanExport implements FromCollection,WithHeadings,ShouldAutoSize,Wit
     {
         return[
             'id',
+            'Nama Siswa',   
             'Kode Buku',
             'Jumlah',
             'Tanggal Pinjam',
             'Tanggal Kembali',
-            'Status',
         ];
     }
     public function styles(Worksheet $sheet)

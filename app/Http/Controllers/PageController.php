@@ -34,16 +34,50 @@ class PageController extends Controller
         return view('transaksi.pengembalian.index');
     }
 
-    public function laporan_peminjaman()
-    {
-        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
-        $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
-        $denda = DB::table('perpustakaan_dendas')->get();
-        $peminjaman = DB::table('perpustakaan_peminjaman_buku_dts')
-        ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')->get();
-        return view('laporan.peminjaman.index', compact('peminjaman','denda','img'));
-    }
+    // public function laporan_peminjaman( Request $request)
+    // {   
+    //     $req = $request;
+    //     $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+    //     $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
+    //     $denda = DB::table('perpustakaan_dendas')->get();
+    //     $peminjaman = DB::table('perpustakaan_peminjaman_buku_dts')
+    //     ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')->get();
+    //     return view('laporan.peminjaman.index', compact('peminjaman','denda','img','req'));
+    // }
 
+    public function cari_peminjaman(Request $request)
+    {
+        $data1 = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+        $img = config('app.url').'/assets/uploads/'.$data1->logo_sekolah;
+        $req = $request;
+        $data = "";
+        $pengunjung = Peminjaman_buku::latest()->get();
+        if($req != null){
+            
+            $dari_tanggal = $req->tgl_awal != null ? ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','>=',$req->tgl_awal." 00:00:00"] : ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','!=',null];
+            $sampai_tanggal = $req->tgl_akhir != null ? ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','<=',$req->tgl_akhir." 23:59:59"] : ['perpustakaan_peminjaman_buku_dts.tanggal_pinjam','!=',null];
+            $status = $req->status != null ? ['perpustakaan_peminjaman_buku_dts.status','=',$req->status] : ['perpustakaan_peminjaman_buku_dts.status','!=',null];
+            
+            $denda = DB::table('perpustakaan_dendas')->get();
+            $laporanpeminjaman = DB::table('perpustakaan_peminjaman_buku_dts')->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
+            ->get();
+            
+            $no = 1;
+            foreach ($laporanpeminjaman as $item) {
+               
+                $data .='<tr>
+                <td>'.$no++.'</td>
+                <td>'.$item->nama.'</td>
+                <td>'.$item->kode_buku.'</td>
+                <td>'.$item->jumlah.'</td>
+                <td>'.$item->tanggal_pinjam.'</td>
+                <td>'.$item->tanggal_kembali.'</td>
+                </tr>';
+            }
+        }
+
+        return view('laporan.peminjaman.index',compact(['data','img','req','pengunjung']));
+    }
 
     public function denda()
     {
@@ -103,15 +137,47 @@ class PageController extends Controller
 
     public function laporan_pengunjung(Request $request)
     {
-        $data = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
-        $img = config('app.url').'/assets/uploads/'.$data->logo_sekolah;
         $req = $request;
-        $data = "";
         $pengunjung = DB::table('perpustakaan_pengunjung_perpuses')
                             ->join('data_siswas','data_siswas.nisn','=','perpustakaan_pengunjung_perpuses.nis')
                             ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
                             ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_pengunjung_perpuses.*','perpustakaan_pengunjung_perpuses.id as id_pengunjung','aktivitas_belajars.*','perpustakaan_pengunjung_perpuses.updated_at as create_pengunjung']);
-        return view('laporan.pengunjung.index', compact('pengunjung','img','req'));
+        return view('laporan.pengunjung.index', compact('pengunjung','req'));
+    }
+
+    public function cari_pengunjung(Request $request)
+    {
+        $periode = DB::table('tahun_ajarans')->first();
+        $data1 = DB::table('sekolahs')->select(['sekolahs.*','sekolahs.id as id_sekolah'])->first();
+        $img = config('app.url').'/assets/uploads/'.$data1->logo_sekolah;
+        $req = $request;
+        $data = "";
+        $pengunjung = Pengunjung_perpus::latest()->get();
+        if($req != null){
+            
+            $dari_tanggal = $req->tgl_awal != null ? ['perpustakaan_pengunjung_perpuses.created_at','>=',$req->tgl_awal." 00:00:00"] : ['perpustakaan_pengunjung_perpuses.created_at','!=',null];
+            $sampai_tanggal = $req->tgl_akhir != null ? ['perpustakaan_pengunjung_perpuses.created_at','<=',$req->tgl_akhir." 23:59:59"] : ['perpustakaan_pengunjung_perpuses.created_at','!=',null];
+            $keperluan1 = $req->keperluan != null ? ['perpustakaan_pengunjung_perpuses.keperluan','=',$req->keperluan] : ['perpustakaan_pengunjung_perpuses.keperluan','!=',null];
+           
+            $laporanpengunjung = Pengunjung_perpus::join('data_siswas','data_siswas.nisn','=','perpustakaan_pengunjung_perpuses.nis')
+            ->join("aktivitas_belajars","data_siswas.nik",'=','aktivitas_belajars.kode_siswa')
+            ->where([$dari_tanggal,$sampai_tanggal,$keperluan1])
+            ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_pengunjung_perpuses.*','perpustakaan_pengunjung_perpuses.id as id_pengunjung','aktivitas_belajars.*','perpustakaan_pengunjung_perpuses.updated_at as create_pengunjung']);
+            
+            $no = 1;
+            foreach ($laporanpengunjung as $item) {
+               
+                $data .='<tr>
+                <td>'.$no++.'</td>
+                <td>'.$item->nama.'</td>
+                <td>'.$item->kode_kelas. ' / ' .$item->kode_jurusan.'</td>
+                <td>'.$item->keperluan.'</td>
+                <td>'.$item->create_pengunjung.'</td>
+                </tr>';
+            }
+        }
+
+        return view('laporan.pengunjung.index',compact(['data','img','req','pengunjung','periode']));
     }
 
 

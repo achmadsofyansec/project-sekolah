@@ -40,40 +40,50 @@
             <div class="card card-navy card-outline">
               <div class="card-header col-md-12">
                 <a><i class="fa fa-file-search text-navy"> </i> Cari Data Peminjaman</a>
-                <form role="form" action="<?php echo url('/'); ?>laporan/proses_tampil_peminjaman" method="post">
+                <form role="form" action="{{route('cari_peminjaman')}}" method="get">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="form-group">
                         <label>Dari Tanggal</label>
                         <div class="input-group mb-3">
-                          <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
-                            <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
+                          <div class="input-group-prepend" data-date="" data-date-format="yyyy-mm-dd">
                           </div>
-                        
-                          <input class="form-control tglcalendar" type="text" name="tgl_awal" readonly="readonly" placeholder="Dari Tanggal" value="" required>
-                        
+                          <input class="form-control" type="date" value="@if($req->tgl_awal != null){{$req->tgl_awal}}@endif" name="tgl_awal" id="tgl_awal" >
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <label>Sampai Tanggal</label>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend date" data-date="" data-date-format="yyyy-mm-dd">
-                          <button type="button" class="btn btn-danger"><i class="fal fa-calendar-alt"></i></button>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sampai Tanggal</label>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend" data-date="" data-date-format="yyyy-mm-dd">
+                          </div>
+                          <input class="form-control" type="date" value="@if($req->tgl_akhir != null){{$req->tgl_akhir}}@endif" name="tgl_akhir" id="tgl_akhir" >
                         </div>
-                        <input class="form-control tglcalendar" type="text" name="tgl_akhir" readonly="readonly" placeholder="Dari Tanggal" value="" required>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Status</label>
+                                        <select class="form-control" type="text" name="status" id="status">
+                                          @if($req->status != ''){
+                                            echo <option value=""></option>
+                                          }@endif
+                                            <option value="">[ SEMUA KEPERLUAN ]</option>>
+                                            <option value="1">Dipinjam</option>
+                                            <option value="0">Dikembalikan</option>
+                                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label>&nbsp;</label>
-                      <div class="input-group mb-3">
+                      <div class="input-group">
                       <div class="btn-group btn-group-sm">
                         <button class="btn bg-info btn-sm"><i class="fa fa-search "> </i> Tampilkan Data</button>
-                        <a class="btn btn-danger btn-sm" href="{{route('export_peminjaman')}}" target="_blank"><i class="fa fa-download"> </i> Export Excel</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('export_pengunjung')}}" target="_blank"><i class="fa fa-download"> </i> Export</a>
                       </div>
                       </div>
-                    </div>                             
-                    </div>
+                    </div> 
+                  </div>
                 </form>
               </div>
               <!-- /.card-header -->
@@ -102,53 +112,13 @@
                               <th>Denda</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          @forelse ($peminjaman as $item)
-                <tr>
-                  <td>{{$loop->index +1}}</td>
-                  <td>{{$item->nama}}</td>
-                  <td>{{$item->kode_buku}}</td>
-                  <td>{{$item->jumlah}}</td>
-                  <td>{{$item->tanggal_pinjam}}</td>
-                  <td>{{$item->tanggal_kembali}}</td>
-                  <td><?php if($item->status == 1){
-                    echo "Dipinjam";
-                  }else{
-                    echo "Dikembalikan";
-                  } ?></td>
-                  @forelse ($denda as $item1)
-                  <td>
-                    <?php 
-                      $dendabuku = $item1->tarif_denda;
-                      $tgl_sekarang = date("Y-m-d");
-                      $tgl_kembali = $item->tanggal_kembali;
-                      $sel1 = explode('-',$tgl_kembali);
-                      $sel1_pecah = $sel1[0].'-'.$sel1[1].'-'.$sel1[2];
-                      $sel2 = explode('-',$tgl_sekarang);
-                      $sel2_pecah = $sel2[0].'-'.$sel2[1].'-'.$sel2[2];
-                      $selisih = strtotime($sel2_pecah) - strtotime($sel1_pecah);
-                      $selisih = $selisih/86400;
-                      if($selisih < 0){
-                        echo "Tidak";
-                      }else{
-                      echo $selisih. ' Hari';
-                    }
-                     ?>
-                  </td><td>
-                    <?php
-                      if($selisih < 0){
-                        echo "Tidak Ada";
-                      }else{
-                      echo "Rp. ".number_format($dendabuku*$selisih) ;
-                    }
-                     ?>
-                    @empty
-                    @endforelse
-                  </td>
-                  @empty
-                </tr>
-                @endforelse
-                        </tbody>
+                        @if ($data != null || $data != "")
+                          {!!$data!!}
+                          @else
+                              <tr>
+                                <td class="text-muted text-center" colspan="100%">Tidak Ada Data </td>
+                              </tr>
+                          @endif
                       </table>
                     </div>
                     <!-- /.table-responsive -->

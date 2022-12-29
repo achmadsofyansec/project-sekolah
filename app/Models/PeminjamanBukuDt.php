@@ -19,5 +19,6 @@ class PeminjamanBukuDt extends Model
         'desc_pinjam',
         'kondisi',
         'tanggal_pinjam',
+        'tanggal_kembali',
     ];
 }

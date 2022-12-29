@@ -31,7 +31,7 @@
               <div class="card-header col-md-12">
 
                 <a><i class="fa fa-file-search text-info"> </i> Cari Data Pengunjung Berdasarkan</a>
-                <form role="form" action="{{url('laporan/pengunjung')}}" method="get">
+                <form role="form" action="{{route('cari_pengunjung')}}" method="get">
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
@@ -84,39 +84,29 @@
               <img src="{{$img}}" alt="Logo" class="brand-image img-rounded " style="width:80px;height:60px;">
                <br></h4>
                       <h4 style="margin:0;">Laporan Pengunjung Perpus </h4>
-                      <p style="margin:0;">Periode : </p>
+                      <p style="margin:0;">Periode : {{$periode->tahun_ajaran}}
                     </center>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body p-0">
                     <div class="table-responsive">
-                      <table class="table m-0 table-hover table-sm">
-                        <thead>
-                          <tr class="text-sm bg-navy">
-                            <th>No</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Kelas</th>
-                                    <th>Keperluan</th>
-                                    <th>Tanggal Kunjungan</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                                    @forelse ($pengunjung as $item)
-                                <tr>
-                                    <td>{{$loop->index +1}}</td>
-                                    <td>{{$item->nama}}</td>
-                                    <td>{{$item->kode_kelas}} / {{$item->kode_jurusan}}</td>
-                                    <td>{{$item->keperluan}}</td>
-                                    <td>{{$item->create_pengunjung}}</td>
-                                    @empty
-                                    <tr>
-                                      <td colspan="5">tidak ada data</td>
-                                    </tr>
-                                </tr>
-                                @endforelse
-                        </tbody>
+                      <table class="table" id="dataTable">
+                          <thead>
+                               <th>No</th>
+                               <th>Nama Siswa</th>
+                               <th>Kelas / Jurusan</th>
+                               <th>Keperluan</th>
+                               <th>Tanggal Kunjungan</th>
+                          </thead>
+                         @if ($data != null || $data != "")
+                           {!!$data!!}
+                           @else
+                               <tr>
+                                 <td class="text-muted text-center" colspan="100%">Tidak Ada Data </td>
+                               </tr>
+                           @endif
                       </table>
-                    </div>
+                 </div>
                     <!-- /.table-responsive -->
                   </div>
                   <!-- /.card-body -->
