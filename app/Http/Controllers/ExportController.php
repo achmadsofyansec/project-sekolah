@@ -157,7 +157,7 @@ class ExportController extends Controller
                 <td>'.$item->tgl_peminjaman.'</td>
                 <td>'.$item->tgl_pengembalian.'</td>
                 <td>'.$item->created_at.'</td>
-                <td>'.$item->status_peminjaman.'</td>
+                
                 
                 </tr>';
             }

@@ -21,7 +21,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
-use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\ManualbookController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\SanitasiController;
 use App\Http\Controllers\DendaController;
@@ -79,8 +79,12 @@ Route::group(['middleware'=>['prevent-back']],function(){
         
         // Manual Book
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
+       
     });
 });
+
+Route::get('/download',[ManualbookController::class,'download'])->name('download');
+
 
 // Export EXCELL
 Route::get('/exp_peminjaman', [ExportController::class, 'export_peminjaman_all'])->name('export_peminjaman_all');

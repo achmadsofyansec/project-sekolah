@@ -90,7 +90,7 @@
                                       <th>Waktu Peminjaman</th>
                                       <th>Waktu Pengembalian</th>
                                       <th>Tanggal Input</th>
-                                      <th>Status</th>
+                                      {{-- <th>Status</th> --}}
                                  </thead>
                                 @if ($data != null || $data != "")
                                   {!!$data!!}
