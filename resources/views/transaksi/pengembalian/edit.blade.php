@@ -124,7 +124,7 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="nis_siswa" id="nis_siswa" value="{{$data->id_siswa}}" >
-                                    <input type="hidden" id="status" name="status" value="0">
+                                    <input type="hidden" id="status" name="status" value="Dikembalikan">
                                     <input type="hidden" id="keperluan" name="keperluan" value="Kembali Buku">
                                     <input type="hidden" id="kode_buku" name="kode_buku" value="{{$item->kode_buku}}">
                                     <button type="submit" class="btn btn-primary btn-xs">Kembali</button>

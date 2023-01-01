@@ -26,7 +26,7 @@
                     @endphp
                     <input type="hidden" id="id_siswa" name="id_siswa" value="{{$data->id_siswa}}">
                     <input type="hidden" id="keperluan" name="keperluan" value="Pinjam Buku">
-                    <input type="hidden" id="status" name="status" value="1">
+                    <input type="hidden" id="status" name="status" value="Dipinjam">
                     <div class="form-group">
                       <label>Jumlah Buku</label>
                       <input type="number" name="jumlah" id="jumlah" class="form-control" required>

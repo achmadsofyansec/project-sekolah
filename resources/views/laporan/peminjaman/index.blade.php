@@ -67,11 +67,11 @@
                         <label>Status</label>
                                         <select class="form-control" type="text" name="status" id="status">
                                           @if($req->status != ''){
-                                            echo <option value=""></option>
+                                            echo <option value="{{$req->status}}">{{$req->status}}</option>
                                           }@endif
                                             <option value="">[ SEMUA KEPERLUAN ]</option>>
-                                            <option value="1">Dipinjam</option>
-                                            <option value="0">Dikembalikan</option>
+                                            <option value="Dipinjam">Dipinjam</option>
+                                            <option value="Dikembalikan">Dikembalikan</option>
                                         </select>
                       </div>
                     </div>
@@ -79,7 +79,7 @@
                       <div class="input-group">
                       <div class="btn-group btn-group-sm">
                         <button class="btn bg-info btn-sm"><i class="fa fa-search "> </i> Tampilkan Data</button>
-                        <a class="btn btn-danger btn-sm" href="{{route('export_pengunjung')}}" target="_blank"><i class="fa fa-download"> </i> Export</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('export_peminjaman')}}" target="_blank"><i class="fa fa-download"> </i> Export</a>
                       </div>
                       </div>
                     </div> 
