@@ -28,6 +28,7 @@ Route::get('portal/detail/{id}',[PageController::class,'detail'])->name('detail'
 Route::get('portal/pengumuman',[PageController::class,'portal_pengumuman'])->name('pengumuman');
 Route::get('portal/pengumuman/{id}',[PageController::class,'detail_pengumuman'])->name('pengumuman');
 Route::get('/export_alumni',[ExportImport::class,'ExportAlumni'])->name('export_alumni');
+Route::get('/manual_book/download',[PageController::class,'download'])->name('download');
 Route::get('login',[PageController::class,'portal_login'])->name('login');
 Route::post('/signout',[PageController::class,'logout']);
 Route::group(['middleware'=>['prevent-back']],function(){
@@ -38,7 +39,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/alumni',[PageController::class,'view_alumni'])->name('alumni');
         Route::get('/konfirmasi',[PageController::class,'view_konfirmasi'])->name('konfirmasi');
         Route::get('/laporan',[PageController::class,'view_laporan'])->name('laporan');
-        Route::get('/manual_book',[PageController::class,'view_manual'])->name('manual_book');
+        Route::get('/manual_book',[PageController::class,'view_manual'])->name('manual_book');       
     });
 });
 
