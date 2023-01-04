@@ -13,7 +13,7 @@ class CreatePredikatsTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('kelas')){
+        if(!Schema::hasTable('predikats')){
             Schema::create('predikats', function (Blueprint $table) {
                 $table->id();
                 $table->string('dari');

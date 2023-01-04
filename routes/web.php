@@ -44,6 +44,7 @@ Route::get('/back',[PageController::class,'back'])->name('back');
 Route::post('/signout',[PageController::class,'logout'])->name('signout');
 Route::post('/export_siswa',[ExportImport::class,'ExportSiswa'])->name('export_siswa');
 Route::get('/export_guru',[ExportImport::class,'ExportGuru'])->name('export_guru');
+Route::get('/manual_book/download',[PageController::class,'download'])->name('download');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         
@@ -90,6 +91,9 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('anggota_ekstra',AnggotaEkstraController::class);
         //Pindah / Naik Kelas
         Route::resource('pindah_kelas',PindahKelasController::class);
+        // Manual Book
+        Route::get('/manual_book',[PageController::class,'manual_book'])->name('manual_book');
+
         //AjaxRequest
         Route::post('ajaxRequest', [AjaxController::class, 'filter_absensi'])->name('ajaxRequest.filter_absensi');
         Route::post('filter_anggota_ekstra', [AjaxController::class, 'filter_anggota_ekstra'])->name('filter_anggota_ekstra');

@@ -18,19 +18,19 @@ class TahunAjaranSeeder extends Seeder
             [
                 'kode_tahun_ajaran' => 'EK-100',
                 'tahun_ajaran' => '2019/2020',
-                'semester' => '2',
+                //'semester' => '2',
                 'status_tahun_ajaran' => 'Nonaktif',
             ],
             [
                 'kode_tahun_ajaran' => 'EK-101',
                 'tahun_ajaran' => '2021/2022',
-                'semester' => '1',
+                //'semester' => '1',
                 'status_tahun_ajaran' => 'Nonaktif',
             ],
             [
                 'kode_tahun_ajaran' => 'EK-102',
                 'tahun_ajaran' => '2021/2022',
-                'semester' => '2',
+                //'semester' => '2',
                 'status_tahun_ajaran' => 'Aktif',
             ]
         ];

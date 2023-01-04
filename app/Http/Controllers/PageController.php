@@ -43,5 +43,15 @@ class PageController extends Controller
     public function back(){
         return redirect('../sekolahApp/');
        }
+
+    public function download(){
+        $file_path = public_path('uploads/pdf/manual-book-akademik.pdf');
+        return \response()->download( $file_path);
+    }
     
+    public function manual_book() {
+         return view('manual_book.index');
+    }
+    
+
 }
