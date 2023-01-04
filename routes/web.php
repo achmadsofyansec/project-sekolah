@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 //View Pages In Admin Dashboard
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('/manual_book/download',[PageController::class,'download'])->name('download');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //Dashboard
@@ -46,6 +47,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::get('/lap_point_siswa',[LaporanController::class,'view_lap_point_siswa'])->name('lap_point_siswa');
         Route::get('/print_lap_point_siswa',[PrintPDFController::class,'lap_point_siswa'])->name('print_lap_point_siswa');
         Route::get('/print_lap_pelanggaran_siswa',[PrintPDFController::class,'lap_pelanggaran_siswa'])->name('print_lap_pelanggaran_siswa');
+        Route::get('/manual_book',[PageController::class,'manual_book'])->name('manual_book');
     });
 });
 
