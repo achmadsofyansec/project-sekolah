@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signout',[PageController::class,'logout']);
 Route::get('login',[PageController::class,'login'])->name('login');
+Route::get('/manual_book/download',[PageController::class,'download'])->name('download');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
@@ -83,6 +84,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         //Print
         Route::get('/print_pdf',[PrintPDFController::class,'laporan'])->name('print_pdf');
         Route::post('/cetak_struk',[PrintPDFController::class,'cetak_struk'])->name('cetak_struk');
+        Route::get('/manual_book',[PageController::class,'manual_book'])->name('manual_book');
     });
 });
 
