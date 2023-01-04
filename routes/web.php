@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signout',[PageController::class,'logout']);
 Route::get('/portal',[PageController::class,'view_portal'])->name('portal');
 Route::post('/portal/tambah',[PageController::class,'store_portal'])->name('tambah_portal');
+Route::get('/manual_book/download',[PageController::class,'download'])->name('download');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //Dashboard

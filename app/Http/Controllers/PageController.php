@@ -67,6 +67,11 @@ class PageController extends Controller
         $request->session()->regenerateToken();
      
         return redirect('../sekolahApp/');
-       }
+    }
+
+    public function download(){
+        $file_path = public_path('uploads/pdf/manual-book-bukutamu.pdf');
+        return \response()->download( $file_path);
+    }
     
 }
