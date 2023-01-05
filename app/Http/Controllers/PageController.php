@@ -64,8 +64,6 @@ class PageController extends Controller
             
             $no = 1;
             foreach ($laporanpeminjaman as $item) {
-            foreach ($denda as $item1)
-                $dendabuku = $item1->tarif_denda;
                 $tgl_sekarang = date("Y-m-d");
                 $tgl_kembali = $item->tanggal_kembali;
                 $sel1 = explode('-',$tgl_kembali);
@@ -77,14 +75,8 @@ class PageController extends Controller
                 if($selisih <= 0){
                     $selisihasli = "Tidak";
                 }else{
-                    $selisihasli = $selisih. "hari";
+                    $selisihasli = $selisih. " hari";
                 }
-                  $data123 = $dendabuku * $selisih;
-                 if($data123 <= 0){
-                    $dataasli = "Tidak Ada Denda";
-                  }else{
-                    $dataasli = "(Rp.".number_format($data123).")";
-                  }
                 $data .='<tr>
                 <td>'.$no++.'</td>
                 <td>'.$item->nama.'</td>
@@ -94,10 +86,8 @@ class PageController extends Controller
                 <td>'.$item->tanggal_kembali.'</td>
                 <td>'.$item->status.'</td>
                 <td>'.$selisihasli.'</td>
-                <td>'.$dataasli.'</td>
                 </tr>';
                 
-        
             }
         }
 

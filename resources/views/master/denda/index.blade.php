@@ -29,13 +29,12 @@
           <div class="animated fadeInUp col-12">
             <div class="card card-info card-outline">
               <div class="card-header">
-               <a class="btn btn-info btn-sm" href="{{route('denda.create')}}"><i class="fa fa-plus"> </i> Transaksi Denda</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
-                <table id="datatb" class="table table-bordered table-hover table-striped table-sm">
+                <table id="dataTable" class="table table-bordered table-hover table-striped table-sm">
                   <thead>
-                    <tr class="text-info bg-navy text-sm">
+                    <tr>
                         <th>No</th>
                         <th>Nama Siswa</th>
                         <th>Kode Buku</th>
@@ -56,14 +55,9 @@
                                         <td>{{$item->judul_buku}}</td>
                                         <td>{{$item->tanggal_pinjam}}</td>
                                         <td><?php
-                                          $tanggal_pinjam = $item->tanggal_pinjam;
-                                          $tanggal_kembali = date('Y-m-d', strtotime($item->durasi.' days', strtotime($tanggal_pinjam))); 
+                                          $tanggal_kembali =$item->tanggal_kembali; 
                                         echo $tanggal_kembali;?></td>
-                                        <td><?php if($item->status == 1){
-                                          echo "Dipinjam";
-                                        }else{
-                                          echo "Dikembalikan";
-                                        } ?></td>
+                                        <td>{{$item->status}}</td>
                                          @forelse ($denda1 as $item1)
                                          <td>
                                            <?php 
@@ -89,14 +83,15 @@
                                            </td>
                                         <td style="text-align:center;width:150px;">
                                             <div class="btn-group btn-group-sm">
-                                            <a class="btn bg-navy btn-xs" href=""><i class="fa fa-edit"> </i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="" onclick="return confirm('Yakin ingin hapus data ? ');"><i class="fa fa-trash"> </i> Hapus </a>
+                                              <form onsubmit="return confirm('Apakah Anda yakin ?')"
+                                            action="{{ route('denda.destroy',$item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i> Hapus </a></button>
+                                          </form>
                                         </div>
                                         </td>
                                         @empty
-                                    <tr>
-                                      <td colspan="9">tidak ada data</td>
-                                    </tr>
                                 </tr>
                       @endforelse
                   </tbody>

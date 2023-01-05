@@ -120,11 +120,7 @@
                                 @empty
                                 @endforelse
                                 </td>
-                                <td><?php if($item->status == 1){
-                                  echo "Belum" ."<br>". "Dikembalikan";
-                                }else{
-                                  echo "Telah Dikembalikan";
-                                } ?></td>
+                                <td>{{$item->status}}</td>
                                 <td style="text-align: center">
                                   <form onsubmit="return confirm('Apakah Anda yakin ?')"
                                     action="{{ route('data_peminjaman.destroy',$item->id)}}" method="POST">

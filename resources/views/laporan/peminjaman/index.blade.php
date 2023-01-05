@@ -109,7 +109,6 @@
                               <th>Tgl Kembali</th>
                               <th>Status</th>
                               <th>Telat</th>
-                              <th>Denda</th>
                           </tr>
                         </thead>
                         @if ($data != null || $data != "")

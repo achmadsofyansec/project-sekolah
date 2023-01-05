@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Tambah Buku')
+@section('page', 'Edit Buku')
 @section('content-app')
 
   <!-- Content Wrapper. Contains page content -->

@@ -43,9 +43,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
-                <table id="datatb" class="table table-bordered table-hover table-striped table-sm">
+                <table id="dataTable" class="table table-bordered table-hover table-striped table-sm">
                   <thead>
-                    <tr class="text-info bg-navy">
+                    <tr>
                       <th>No</th>
                       <th>Sumber Buku</th>
                       <th>Aksi</th>

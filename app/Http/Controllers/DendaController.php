@@ -20,7 +20,7 @@ class DendaController extends Controller
         $denda = DB::table('perpustakaan_peminjaman_buku_dts')
                 ->join('data_siswas','data_siswas.nisn','=','perpustakaan_peminjaman_buku_dts.id_siswa')
                 ->join('perpustakaan_data_bukus','perpustakaan_data_bukus.kode_buku','=','perpustakaan_peminjaman_buku_dts.kode_buku')
-                ->where('tanggal_pinjam','<',$hari_ini)
+                ->where('tanggal_kembali','<',$hari_ini)
                 ->get();
         $denda1 = DB::table('perpustakaan_dendas')->get();
         return view('master.denda.index',compact('denda','denda1'));
@@ -90,6 +90,20 @@ class DendaController extends Controller
      */
     public function destroy(Denda $denda)
     {
-        //
+        $data = Denda::findOrFail($id);
+        $data->delete();
+        if($data){
+            return redirect()
+            ->route('denda.index')
+            ->with([
+                'success' => 'Denda Has Been Deleted successfully'
+            ]);
+        }else{
+            return redirect()
+            ->back()
+            ->with([
+                'error' => 'Some problem has occurred, please try again'
+            ]);
+        }
     }
 }

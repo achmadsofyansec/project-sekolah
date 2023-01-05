@@ -110,7 +110,7 @@ class PeminjamanBukuController extends Controller
          ->where([['perpustakaan_peminjaman_bukus.id_siswa','=',$id]])
          ->get(['data_siswas.*','data_siswas.id as id_siswa','perpustakaan_peminjaman_bukus.id as id_peminjaman','perpustakaan_peminjaman_bukus.*','aktivitas_belajars.*'])->first();
          $buku = DB::table('perpustakaan_data_bukus')->get();
-         $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', '1')->where('id_siswa','=',$id)->get();
+         $tanggungan = DB::table('perpustakaan_peminjaman_buku_dts')->where('status', '=', 'Dipinjam')->where('id_siswa','=',$id)->get();
          $denda = DB::table('perpustakaan_dendas')->get();
          $pinjam = DB::table('perpustakaan_peminjaman_buku_dts')->where('id_siswa','=',$id)->get();
          return view('transaksi.peminjaman.edit',compact(['data','denda','tanggungan','pinjam','buku']));
