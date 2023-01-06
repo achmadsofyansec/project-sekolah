@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('/download',[PageController::class,'download'])->name('download');
+
 
 //export
 Route::get('/export_buku',[ExportImport::class,'ExportBuku'])->name('export_buku');
@@ -66,6 +68,8 @@ route::get('/laporan/pengunjung',[PageController::class,'cari_pengunjung'])->nam
 Route::post('ajaxRequest', [AjaxController::class, 'filter_buku'])->name('ajaxRequest.filter_buku');
 Route::post('ajaxRequestNisn', [AjaxController::class, 'filter_siswa'])->name('ajaxRequestNisn.filter_siswa');
 Route::post('ajaxRequestTable', [AjaxController::class, 'filter_table'])->name('ajaxRequestTable.filter_table');
+
+Route::get('/manual_book',[PageController::class,'manual_book'])->name('manual_book');
 });
 
 

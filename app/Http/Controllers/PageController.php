@@ -207,4 +207,12 @@ class PageController extends Controller
         return redirect('../sekolahApp/');
     }
 
+    public function manual_book(){
+        return view('manual_book.index');
+    }
+
+    public function download(){
+        $file_path = public_path('uploads/pdf/manual-book-perpustakaan.pdf');
+        return \response()->download( $file_path);
+    }
 }
