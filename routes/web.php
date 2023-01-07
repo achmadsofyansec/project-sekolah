@@ -24,17 +24,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('/download',[PageController::class,'download'])->name('download');
 Route::get('login',[PageController::class,'login'])->name('login');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         //View Pages In Admin Dashboard
         Route::get('/',[PageController::class,'index'])->name('dashboard');
 
+
+        
         // Nilai
         Route::resource('/nilai', NilaiController::class);
-
+        
         // Pengaturan Portal
         Route::resource('/pengaturan', PengaturanPortalController::class);
+        Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('view_manual_book');
     });
 });
 

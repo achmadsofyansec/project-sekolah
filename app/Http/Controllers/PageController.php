@@ -23,6 +23,9 @@ class PageController extends Controller
         return view('dashboard', compact('siswa', 'lulus', 'tidaklulus', 'dropout', 'sekolah', 'tahun_ajaran'));
     }
 
+    public function view_manual_book(){
+        return view('manual_book.index');
+    }
     public function logout(Request $request){
         Auth::logout();
      
@@ -31,6 +34,11 @@ class PageController extends Controller
         $request->session()->regenerateToken();
      
         return redirect('../sekolahApp/');
+    }
+
+    public function download(){
+        $file_path = public_path('uploads/pdf/manual-book-cekkelulusan.pdf');
+        return response()->download( $file_path);
     }
 
     public function login(Request $request){

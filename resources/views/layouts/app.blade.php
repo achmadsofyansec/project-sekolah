@@ -176,25 +176,15 @@
               </p>
             </a>
           </li> -->
-          {{-- <li class="nav-header">Pengaturan</li>
+         
           <li class="nav-item">
-            <a href="<?php echo url('/pengumuman') ?>" class="nav-link">
-              <i class="nav-icon far fa-clipboard text-danger"></i>
-              <p>Pengumuman</p>
+            <a href="<?php echo url('/manual_book') ?>" class="nav-link">
+              <i class="nav-icon fas fa-book text-info"></i>
+              <p>
+               Manual Book
+              </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo url('/pemeliharaan') ?>" class="nav-link">
-              <i class="nav-icon fas fa-database text-success"></i>
-              <p>Pemeliharaan</p>
-            </a>
-          </li> 
-          <li class="nav-item">
-            <a href="<?php echo url('/singkronisasi') ?>" class="nav-link">
-              <i class="nav-icon fas fa-cube text-info"></i>
-              <p>Singkronisasi</p>
-            </a>
-          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
