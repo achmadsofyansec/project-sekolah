@@ -9,7 +9,7 @@ class ManualbookController extends Controller
 {
     public function download(){
         $file_path = public_path('uploads/pdf/manual-book-sarpras.pdf');
-        return \response()->download( $file_path);
+        return response()->download( $file_path);
     }
 }
 
