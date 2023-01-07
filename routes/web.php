@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/signout',[PageController::class,'logout']);
+Route::get('/download',[PageController::class,'download'])->name('download');
 Route::group(['middleware'=>['prevent-back']],function(){
     Route::group(['middleware'=>['auth']],function(){
         Route::get('/',[PageController::class,'index'])->name('dashboard');
@@ -44,7 +45,7 @@ Route::group(['middleware'=>['prevent-back']],function(){
         Route::resource('box',BoxController::class);
         Route::resource('map',MapController::class);
         Route::resource('urut',UrutController::class);
-        Route::resource('input_dokumen',DokumenController::class);
+        Route::resource('input_dokumen',DsokumenController::class);
         Route::get('/laporan',[LaporanController::class,'view_laporan'])->name('laporan');
         Route::get('/print_laporan',[PrintPDFController::class,'print_laporan'])->name('print_laporan');
         Route::get('/manual_book',[PageController::class,'view_manual_book'])->name('manual_book');
